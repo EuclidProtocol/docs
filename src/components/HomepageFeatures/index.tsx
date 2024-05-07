@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        ahead and move your docs into the docs directory.
       </>
     ),
   },
@@ -55,7 +55,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        ahead and move your docs into the docs directory.
       </>
     ),
   },
@@ -79,7 +79,7 @@ function Feature({ title, Svg, description }: FeatureItem) {
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+        <p className="text-white">{description}</p>
       </div>
     </div>
   );

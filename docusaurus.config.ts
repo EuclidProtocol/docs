@@ -67,6 +67,10 @@ const config: Config = {
   ],
 
   themeConfig: {
+    colorMode: {
+      defaultMode: "dark", // Set dark mode as default
+      disableSwitch: true, // Disable the option to switch between light and dark modes
+    },
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
