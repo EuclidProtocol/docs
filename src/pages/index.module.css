@@ -4,10 +4,13 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 2rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.hero-main {
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +23,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.headingMain {
+  font-family: "ClashDisplayMedium", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+
+.headinSub {
+  font-size: 1rem;
 }
