@@ -45,3 +45,10 @@ footer {
 .navbar {
   background-color: black !important;
 }
+
+@font-face {
+  font-family: "ClashDisplayMedium";
+  src: url("ClashDisplayMedium.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
