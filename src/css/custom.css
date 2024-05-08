@@ -53,12 +53,9 @@ footer {
   font-style: normal;
 }
 
-* {
-  background-color: black !important;
-}
-
 .btn-main {
   color: white !important;
+  background-color: black;
 }
 
 .btn-main:hover {
@@ -68,4 +65,8 @@ footer {
 .sub-heading {
   font-size: 1.2rem !important;
   font-weight: 500 !important;
+}
+
+.main-wrapper {
+  background-color: black !important;
 }
