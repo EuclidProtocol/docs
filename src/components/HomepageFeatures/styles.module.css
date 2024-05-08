@@ -3,6 +3,13 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  background-image: url("/img/section2bg.jpg");
+  background-color: black;
+  /* opacity: 40%; */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .featureSvg {

@@ -4,10 +4,27 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 2rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-image: url("/img/section2bg.jpg");
+  background-color: black;
+  /* opacity: 40%; */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.section-two-bg {
+  background-image: url("/img/section2bg.jpg");
+  background-color: black;
+  /* opacity: 40%; */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +37,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.headingMain {
+  font-family: "ClashDisplayMedium", sans-serif;
+  font-size: 3.9rem;
+  font-weight: 440;
+  margin-bottom: 0rem !important;
+}
+
+.headinSub {
+  font-size: 3.5rem !important;
+  font-weight: 700;
 }

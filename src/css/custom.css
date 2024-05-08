@@ -18,7 +18,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -27,4 +27,46 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* --ifm-footer-background-color: rgba(0, 0, 0, 1); */
+}
+
+.darkBg {
+  background-color: black;
+}
+
+.text-white {
+  color: white;
+}
+
+footer {
+  background-color: black !important;
+}
+
+.navbar {
+  background-color: black !important;
+}
+
+@font-face {
+  font-family: "ClashDisplayMedium";
+  src: url("ClashDisplayMedium.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.btn-main {
+  color: white !important;
+  background-color: black;
+}
+
+.btn-main:hover {
+  background-color: #1fa588 !important;
+}
+
+.sub-heading {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+
+.main-wrapper {
+  background-color: black !important;
 }
