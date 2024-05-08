@@ -15,12 +15,12 @@ function HomepageHeader() {
         <Heading as="h1" className={clsx("text-white", styles.headingMain)}>
           {siteConfig.title}
         </Heading>
-        <p className={clsx("text-white", styles.headingSub)}>
+        <p className={clsx("text-white sub-heading", styles.headingSub)}>
           {siteConfig.tagline}
         </p>
-        <div className={styles.buttons}>
+        <div className={clsx("text-white", styles.buttons)}>
           <Link
-            className="button button--secondary button--lg"
+            className={clsx("button btn-main button--secondary button--lg")}
             to="/docs/intro"
           >
             Explore Docs!

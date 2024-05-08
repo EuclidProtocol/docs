@@ -41,10 +41,11 @@
 
 .headingMain {
   font-family: "ClashDisplayMedium", sans-serif;
-  font-size: 3.5rem;
-  font-weight: 500;
+  font-size: 3.9rem;
+  font-weight: 440;
 }
 
 .headinSub {
-  font-size: 1rem;
+  font-size: 3.5rem !important;
+  font-weight: 700;
 }
