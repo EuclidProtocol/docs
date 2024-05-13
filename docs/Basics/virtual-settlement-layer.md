@@ -4,9 +4,9 @@ sidebar_position: 2
 
 # Virtual Settlement Layer
 
-A **Virtual Settlement Layer** (VLS) is a layer-1 blockchain that is responsible settling all transactions within the Euclid system.  
+A **Virtual Settlement Layer** (VSL) is a layer-1 blockchain that is responsible settling all transactions within the Euclid system.  
 
-A VLS requires different components and characteristics in order to ensure that Euclid Unified Liquidity Layer operates securely and efficiently.
+A VSL requires different components and characteristics in order to ensure that Euclid Unified Liquidity Layer operates securely and efficiently.
 
 ## State Machine 
 
@@ -20,11 +20,11 @@ Euclid requires a VSL that offers **instant finality**. Instant finality is when
 
 ## Scalability 
 
-Since Euclid's VLS would process and settle transactions for numerous Euclid integrated blockchains, that will grow with time, the VLS needs to be able to process a high number of transactions per second while maintaining security and decentralization. 
+Since Euclid's VSL would process and settle transactions for numerous Euclid integrated blockchains, that will grow with time, the VSL needs to be able to process a high number of transactions per second while maintaining security and decentralization. 
 
 ## Secure 
 
-Although Euclid puts all the required checks and security barriers in place to ensure the security of the system, a secure VLS ensures that the Euclid system operates without any downtime. The VLS needs to be able to protect itself from any 51% attack, double-spending, and various other forms of exploits.
+Although Euclid puts all the required checks and security barriers in place to ensure the security of the system, a secure VSL ensures that the Euclid system operates without any downtime. The VSL needs to be able to protect itself from any 51% attack, double-spending, and various other forms of exploits.
 
 ## Interoperability
 
@@ -32,7 +32,7 @@ Euclid requires a VSL that is able to connect efficiently with the Euclid Messag
 
 ## Nibiru Chain
 
-The Hub and VLS of Euclid will be [Nibiru Chain](https://www.nibiru.fi), as the chain has all of the requirements for a VLS due to its optimized arcitecture.
+The Hub and VSL of Euclid will be [Nibiru Chain](https://www.nibiru.fi), as the chain has all of the requirements for a VSL due to its optimized arcitecture.
 
 1. **Tendermint Core:** Nibiru utilizes [Tendermint Core](https://tendermint.com/core/) as its consensus engine that ensures a decentralized state machine with instant finality.
 

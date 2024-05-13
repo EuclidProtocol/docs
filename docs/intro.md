@@ -23,14 +23,14 @@ The **Unified Liquidity Layer** has three main components:
 
 ## Virtual Settlement Layer
 
-To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its Virtual Settlement Layer. Euclid's VLS is a layer-1 blockchain with instant finality where all liquidity across the blockchain is tallied, computed and settled. 
+To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its Virtual Settlement Layer. Euclid's VSL is a layer-1 blockchain with instant finality where all liquidity across the blockchain is tallied, computed and settled. 
 
-Euclid utilizies [Nibiru Chain](https://nibiru.fi/) as its VLS due to its DeFi focused approach, instant finality architecture, and optimized block space to support over 40,000 TPS (Transactions per Second). With Nibiru's goal of being the DeFi Hub of the blockchain,
-and its extensive roadmap and integrations, it makes sense for Euclid's VLS to be on Nibiru.
+Euclid utilizies [Nibiru Chain](https://nibiru.fi/) as its VSL due to its DeFi focused approach, instant finality architecture, and optimized block space to support over 40,000 TPS (Transactions per Second). With Nibiru's goal of being the DeFi Hub of the blockchain,
+and its extensive roadmap and integrations, it makes sense for Euclid's VSL to be on Nibiru.
 
 ### Virtual Pools
 
-Virtual Pools are the main component of the VLS based on Cosmwasm Smart Contracts. Virtual Pools are pools that are responsible for tallying the liquidity for a certain token pair across the entire Euclid ecosystem. 
+Virtual Pools are the main component of the VSL based on Cosmwasm Smart Contracts. Virtual Pools are pools that are responsible for tallying the liquidity for a certain token pair across the entire Euclid ecosystem. 
 
 All liquidity across the blockchain is settled in the Virtual Pool which then sends results back to the Euclid pools across the ecosystem. 
 
