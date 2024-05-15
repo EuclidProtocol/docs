@@ -107,7 +107,7 @@ export default function HomepageFeatures(): JSX.Element {
         <div className={styles.started}>Getting Started</div>
       </section>
       <section className={styles.features}>
-        <div className="container">
+        <div className="container bottomContainer">
           <div className={clsx("row", styles.bottomRow)}>
             {FeatureList2.map((props, idx) => (
               <Feature2 key={idx} {...props} />
