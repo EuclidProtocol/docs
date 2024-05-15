@@ -16,3 +16,23 @@
   height: 200px;
   width: 200px;
 }
+
+.started {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-size: 3rem;
+  width: 100vw;
+  font-family: "ClashDisplayMedium";
+  src: url("/src/css/ClashDisplayMedium.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
