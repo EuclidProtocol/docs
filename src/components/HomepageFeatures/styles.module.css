@@ -22,7 +22,7 @@
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  font-size: 3rem;
+  font-size: 8vh;
   width: 100vw;
   font-family: "ClashDisplayMedium";
   src: url("/src/css/ClashDisplayMedium.otf") format("opentype");
