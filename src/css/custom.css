@@ -53,6 +53,13 @@ footer {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "SK Modernist";
+  src: url("Sk-Modernist-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .btn-main {
   color: white !important;
   background-color: black;
@@ -69,4 +76,28 @@ footer {
 
 .main-wrapper {
   background-color: black !important;
+}
+
+.font-secondary {
+  font-family: "SK Modernist";
+  font-size: large;
+}
+
+.card {
+  cursor: pointer;
+  background: transparent;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.card:hover {
+  border: 1px solid;
+  border-radius: 5px;
+  border: 1.5px solid rgba(93, 93, 93, 1);
+}
+
+.card-content {
+  padding: 20px;
 }
