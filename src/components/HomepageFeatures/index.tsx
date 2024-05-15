@@ -13,7 +13,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "Easy to Integrate",
-    Svg: require("@site/static/img/integrate.svg").default,
+    Svg: require("@site/static/img/integrate_dark.svg").default,
     description: (
       <>
         Euclid API was designed from the ground up to easily be integrated into
@@ -23,7 +23,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Permissionless",
-    Svg: require("@site/static/img/permissionless.svg").default,
+    Svg: require("@site/static/img/permissionless_dark.svg").default,
     description: (
       <>
         Euclid can be integrated instantly into smart contracts or an interface
@@ -46,7 +46,7 @@ const FeatureList: FeatureItem[] = [
 const FeatureList2: FeatureItem[] = [
   {
     title: "Learn The Basics",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    Svg: require("@site/static/img/learn.svg").default,
     description: (
       <>
         Docusaurus was designed from the ground up to be easily installed and
@@ -63,8 +63,10 @@ function Feature({ title, Svg, description }: FeatureItem) {
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h2">{title}</Heading>
+      <div className="text--center padding-horiz--md ">
+        <Heading as="h3" className="heading-main">
+          {title}
+        </Heading>
         <p className="text-white font-secondary">{description}</p>
       </div>
     </div>
@@ -79,7 +81,9 @@ function Feature2({ title, Svg, description, link }: FeatureItem) {
           <Svg className={styles.featureSvg} role="img" />
         </div>
         <div className="text--center padding-horiz--md">
-          <Heading as="h2">{title}</Heading>
+          <Heading as="h3" className="heading-main">
+            {title}
+          </Heading>
           <p className="text-white font-secondary">{description}</p>
         </div>
       </Link>
