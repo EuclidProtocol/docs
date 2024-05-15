@@ -101,3 +101,7 @@ footer {
 .card-content {
   padding: 20px;
 }
+
+.heading-main {
+  margin-top: 1.5rem !important;
+}
