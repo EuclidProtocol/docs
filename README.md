@@ -41,4 +41,4 @@ This command generates static content into the `build` directory and can be serv
 
 ### Liscense
 
-Distributed under the Apache License, Version 2.0. See LICENSE[https://github.com/EuclidProtocol/docs/blob/main/LICENSE] for more information.
+Distributed under the Apache License, Version 2.0. See [LICENSE](https://github.com/EuclidProtocol/docs/blob/main/LICENSE) for more information.
