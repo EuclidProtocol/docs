@@ -2,48 +2,38 @@
 sidebar_position: 1
 ---
 
-# Euclid Protocol Overview
+# Introduction
 
-Euclid is an open-source decentralized unified liquidity layer designed to allow any application to integrate into a unified source of truth.
+Euclid is an open-source decentralized unified liquidity layer designed to allow any application to integrate into a unified source of truth. By creating a unified liquidity layer that connects blockchains, Euclid fosters a collaborative ecosytem where everyone benefits from increased liquidity, reduced slippage, and a seamless trading experience.
 
-Using smart contracts deployed on all integrated blockchains and the Euclid Messaging Protocol, Euclid allows developers to **permissionlessly** integrate with Euclid Unified Liquidity that spans across the entire blockchain to perform token swaps, add or remove liquidity from different available token pairs.
+Furthermore, Euclid's modular architecture empowers dApps to access a vast pool of liquidity from any integrated chain, enabling them to easily interact with tokens across the entire ecosystem. 
 
-## Architecture
+# Mission
 
-The **Unified Liquidity Layer** has three main components:
+Euclid's mission is to unlock the true potential of decentralized finance by empowering developers, users, and token projects with a robust, permissionless, and efficient protocol for accessing and managing liquidity across the entire blockchain space.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A. Native smart contracts deployed on all Euclid integrated blockchains.
+# Transforming the DeFi Landscape
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B. Euclid Messaging Protocol
+### The Problems before Euclid
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C. A Virtual Settlement Layer for Liquidity (VSL)
+Before Euclid, the DeFi landscape faced significant challenges due to fragmented liquidity. High slippage was a major issue; limited liquidity on individual DEXs and chains caused significant price fluctuations, particularly for larger trades, resulting in a poor user experience and unpredictable trading costs. Additionally, moving assets between different blockchains was complex and costly, requiring users to navigate bridges and deal with potential security risks and delays. New DeFi projects struggled to attract liquidity, often having to compete with established platforms for a limited pool of users and capital. All of this has created a frustrating and inefficient user experience.
 
+## What Euclid Offers to the Space
 
-![Euclid Architecture](../static/img/arch.jpg)
+Euclid's unified liquidity protocol directly addresses these challenges, creating a more efficient, interconnected, and user-friendly DeFi ecosystem.
 
-## Virtual Settlement Layer
+### DEXs
 
-To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its Virtual Settlement Layer. Euclid's VSL is a layer-1 blockchain with instant finality where all liquidity across the blockchain is tallied, computed and settled. 
+Integrating with Euclid grants DEXs access to a significantly larger, unified liquidity pool. This leads to deeper order books, tighter spreads, and reduced slippage for their users, making the platform more attractive for trading. Additionally, DEXs can leverage Euclid's existing infrastructure and APIs, allowing them to focus on developing unique features and user experiences rather than building and maintaining complex liquidity management systems. By utilizing Euclid's unified liquidity layer, DEXs can attract users from various chains, expanding their reach and potential trading volume.
 
-Euclid utilizies [Nibiru Chain](https://nibiru.fi/) as its VSL due to its DeFi focused approach, instant finality architecture, and optimized block space to support over 40,000 TPS (Transactions per Second). With Nibiru's goal of being the DeFi Hub of the blockchain,
-and its extensive roadmap and integrations, it makes sense for Euclid's VSL to be on Nibiru.
+### Users
 
-### Virtual Pools
+For users, Euclid offers a smoother trading experience. Unified liquidity results in less slippage and more predictable pricing, making trading more efficient and user-friendly. Users can also seamlessly trade assets across different blockchains without the need for bridging processes, simplifying cross-chain interactions.
 
-Virtual Pools are the main component of the VSL based on Cosmwasm Smart Contracts. Virtual Pools are pools that are responsible for tallying the liquidity for a certain token pair across the entire Euclid ecosystem. 
+### Token Projects
 
-All liquidity across the blockchain is settled in the Virtual Pool which then sends results back to the Euclid pools across the ecosystem. 
+Token projects benefit from increased visibility and higher trading volume. Integration with Euclid exposes tokens to a wider audience of traders and investors across multiple chains, enhancing their visibility within the DeFi ecosystem. Euclid's unified liquidity and interoperability open up a world of new possibilities for token projects where they can leverage Euclid's protocol to build innovative cross-chain applications and unlock previously inaccessible use cases, driving further adoption and utility for their tokens.
 
-## Euclid Messaging Protocol
+## How is Euclid Able to Offer all of the Above?
 
-The **Euclid Messaging Protocol** (EMP) is a cross-chain messaging protocol that is built on IBC (Inter-Blockchain Communication). Although IBC is mainly built for the Cosmos Ecosystem, our EMP extends IBC across the entire blockchain with integrations with Axelar, Skip Protocol, CCTP etc...
-
-### Trustless Messaging
-
-**EMP** allows guaranteed finality messaging between blockchains through decentralized [relayers](https://tutorials.cosmos.network/academy/2-cosmos-concepts/13-relayer-intro.html). Euclid's Relayers allow for trustless messaging between blockchain, since the relayers are built in a way that you only need to trust the blockchain and not the relayers themselves as they only relay a secured hash of the message. 
-
-This ensures that exploits seen in other bridges can't occur through our messaging through sending malicious messages. 
-
-### Guaranteed Finality
-
-Our Messaging Protocol and Virtual Settlement Layer both guarantee instant finality of transactions across the entire blockchain which ensures user funds will never be stuck in any smart contract on any blockchain.
+In the upcoming sections, we will be taking a look at the inovative architecture Euclid has created to be able to tackle all the existing problems in the Defi space.

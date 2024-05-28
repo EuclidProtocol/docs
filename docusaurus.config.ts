@@ -4,7 +4,9 @@ import type * as Preset from "@docusaurus/preset-classic";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
+
 const config: Config = {
+  
   title: "Euclid Protocol",
   tagline: "Modular, Accessible, Unified Liquidity Layer",
   favicon: "img/star.png",
@@ -48,7 +50,7 @@ const config: Config = {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/EuclidProtocol/docs/",
+          editUrl: "https://github.com//docs/",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -81,13 +83,20 @@ const config: Config = {
         src: "img/EuclidLogo.svg",
       },
       items: [
-        {
+         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
           label: "Introduction",
         },
-        { to: "/blog", label: "Blog", position: "left" },
+      
+        {
+          href: "https://www.euclidprotocol.io/",
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          position: "right",
+          label: "Website",
+        },
         {
           href: "https://github.com/EuclidProtocol/docs",
           label: "GitHub",
@@ -137,6 +146,7 @@ const config: Config = {
       darkTheme: prismThemes.vsDark,
     },
   } satisfies Preset.ThemeConfig,
+  
 };
 
 export default config;
