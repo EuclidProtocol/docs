@@ -1,3 +1,18 @@
+
+  <h2 align="center">Euclid Docs</h2>
+
+  <p align="center">
+    Euclid's documentation repo. Built with Docusaurus.
+    <br />
+    <a href="https://docs.euclidprotocol.io"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/EuclidProtocol/docs/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/EuclidProtocol/docs/issues">Request Feature</a>
+  </p>
+</p>
+
 # Website
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
@@ -24,18 +39,6 @@ $ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+### Liscense
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Distributed under the Apache License, Version 2.0. See LICENSE[https://github.com/EuclidProtocol/docs/blob/main/LICENSE] for more information.

@@ -11,7 +11,7 @@ The **Unified Liquidity Layer** has three main components:
 
 **C. Native Smart Contracts:** A set of smart contracts deployed on each integrated chain responsible for pool creation and communication with the Virtual Settlement Layer using EMP.
 
-![Euclid Architecture](../../static/img/architecture.png)
+![Euclid Architecture](../../static/img/arch-no-logo.png)
 
 ## Virtual Settlement Layer
 

@@ -83,12 +83,6 @@ const config: Config = {
         src: "img/EuclidLogo.svg",
       },
       items: [
-        {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Home",
-        },
          {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
