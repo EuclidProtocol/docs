@@ -109,3 +109,45 @@ footer {
 .bottomContainer {
   padding: 3rem !important;
 }
+
+.menu__list-item-collapsible {
+  background-color: transparent; /* Replace with your desired color */
+  transition: background-color 0.2s; /* Smooth transition */
+}
+
+/* Hover effect for category boxes */
+.menu__list-item-collapsible:hover {
+  background-color: #4fddbf; /* Replace with your desired hover color */
+}
+
+/* Style for all sidebar items */
+.menu__link {
+  transition: background-color 0.1s, color 0.1s; /* Smooth transition */
+}
+
+/* Hover effect for all sidebar items */
+.menu__link:hover {
+  background-color: #4fddbf; /* Replace with your desired hover background color */
+  color: #333333; /* Replace with your desired hover text color */
+}
+
+.card {
+  background-color: transparent; /* Replace with your desired background color */
+  /* Optional: Add rounded corners */
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  margin-top: 5;
+}
+
+.footer__col img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 15px;
+
+  /* Adjust margin as needed */
+}
