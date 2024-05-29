@@ -4,9 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
-
 const config: Config = {
-  
   title: "Euclid Protocol",
   tagline: "Modular, Accessible, Unified Liquidity Layer",
   favicon: "img/star.png",
@@ -41,7 +39,6 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/EuclidProtocol/docs/",
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
@@ -50,7 +47,6 @@ const config: Config = {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com//docs/",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -74,7 +70,7 @@ const config: Config = {
       disableSwitch: true, // Disable the option to switch between light and dark modes
     },
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/EuclidLogo.svg",
     navbar: {
       style: "dark",
       title: "",
@@ -83,20 +79,13 @@ const config: Config = {
         src: "img/EuclidLogo.svg",
       },
       items: [
-         {
+        {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
           label: "Introduction",
         },
-      
-        {
-          href: "https://www.euclidprotocol.io/",
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "right",
-          label: "Website",
-        },
+
         {
           href: "https://github.com/EuclidProtocol/docs",
           label: "GitHub",
@@ -106,39 +95,52 @@ const config: Config = {
     },
     footer: {
       style: "dark",
-      // links: [
-      //   {
-      //     title: "Docs",
-      //     items: [
-      //       {
-      //         label: "Intro",
-      //         to: "/docs/intro",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "Community",
-      //     items: [
-      //       {
-      //         label: "Twitter",
-      //         href: "https://twitter.com/docusaurus",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "More",
-      //     items: [
-      //       {
-      //         label: "Blog",
-      //         to: "/blog",
-      //       },
-      //       {
-      //         label: "GitHub",
-      //         href: "https://github.com/facebook/docusaurus",
-      //       },
-      //     ],
-      //   },
-      // ],
+
+      links: [
+        {
+          items: [
+            {
+              html: `
+                <img src="/img/EuclidLogo.svg" alt="Logo" style="width: 150px; height: auto;" />
+              `,
+            },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            {
+              label: "Telegram",
+              href: "https://t.me/Euclid_Protocol",
+            },
+            {
+              label: "Twitter",
+              href: "https://x.com/EuclidProtocol",
+            },
+            {
+              label: "Medium",
+              href: "https://euclidprotocol.medium.com/",
+            },
+          ],
+        },
+        {
+          title: "More",
+          items: [
+            {
+              label: "App",
+              href: "https://www.euclidprotocol.io/",
+            },
+            {
+              label: "Website",
+              href: "https://www.euclidprotocol.io/",
+            },
+            {
+              label: "GitHub",
+              href: "https://github.com/EuclidProtocol/docs",
+            },
+          ],
+        },
+      ],
       copyright: `Copyright © ${new Date().getFullYear()} Euclid Development, Inc. All Rights Reserved.`,
     },
     prism: {
@@ -146,7 +148,6 @@ const config: Config = {
       darkTheme: prismThemes.vsDark,
     },
   } satisfies Preset.ThemeConfig,
-  
 };
 
 export default config;
