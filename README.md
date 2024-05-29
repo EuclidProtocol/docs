@@ -1,6 +1,6 @@
   <p>&nbsp;</p>
 <p align="center">
-<img src="/docs/static/img/Euclid-readme.png" width=1000, height=500>
+<img src="/static/img/Euclid-readme.png" width=1000, height=300>
 </p>
   
   
