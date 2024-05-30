@@ -46,3 +46,15 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .col {
+    flex: 0 0 100%; /* Ensure columns take full width on mobile */
+    max-width: 100%;
+  }
+
+  .featureSvg {
+    width: 100%;
+    max-width: 100px; /* Adjust max width for better fit on mobile */
+  }
+}
