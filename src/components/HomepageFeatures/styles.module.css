@@ -12,9 +12,9 @@
   background-attachment: fixed;
 }
 
-.featureSvg {
+.featureImg {
   height: 150px;
-  width: 200px;
+  width: 160px;
 }
 
 .started {
@@ -22,7 +22,7 @@
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  font-size: 7vh;
+  font-size: 6.8vh;
   width: 100vw;
   font-family: "ClashDisplayMedium";
   src: url("/src/css/ClashDisplayMedium.otf") format("opentype");
@@ -30,9 +30,29 @@
   font-style: normal;
 }
 
+@media screen and (max-width: 500px) {
+  .started {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 6.5vh;
+    width: 100vw;
+    font-family: "ClashDisplayMedium";
+    src: url("/src/css/ClashDisplayMedium.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
 .bottomRow {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.permissionlessImage {
+  height: 150px !important;
+  width: 125px !important;
 }
