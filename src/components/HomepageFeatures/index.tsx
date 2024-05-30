@@ -47,11 +47,7 @@ const FeatureList2: FeatureItem[] = [
   {
     title: "Learn The Basics",
     Svg: require("@site/static/img/learn.svg").default,
-    description: (
-      <>
-        Start here to explore the fundamentals of Euclid Protocol
-      </>
-    ),
+    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
     link: "docs/intro",
   },
 ];
@@ -59,7 +55,7 @@ const FeatureList2: FeatureItem[] = [
 function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className={clsx("col col--4")}>
-      <div className="text--center">
+      <div className={styles.svg}>
         <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md ">
