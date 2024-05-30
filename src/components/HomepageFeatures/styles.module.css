@@ -5,23 +5,22 @@
   width: 100%;
   background-image: url("/img/section2bg.jpg");
   background-color: black;
-  /* opacity: 40%; */
-
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
 
 .featureSvg {
-  height: 150px;
-  width: 200px;
+  height: auto;
+  width: 100%;
+  max-width: 200px;
 }
 
 .started {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 7vh;
   width: 100vw;
   font-family: "ClashDisplayMedium";
@@ -35,4 +34,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
