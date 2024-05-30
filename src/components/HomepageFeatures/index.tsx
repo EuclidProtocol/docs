@@ -13,7 +13,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "Easy to Integrate",
-    Svg: require("@site/static/img/Group.svg").default,
+    Svg: require("@site/static/img/integrate_dark.svg").default,
     description: (
       <>
         Euclid API was designed from the ground up to easily be integrated into
