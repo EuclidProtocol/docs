@@ -14,4 +14,4 @@ Virtual Pools *solely* exist on the **Virtual Settlement Layer** and never hold 
 
 ## Guaranteed Finality
 
-Since Virtual Pools exist on a Virtual Settlement Layer, all transactions performed are finalized and committed to a blockchain before relayed back to any pool on the chain, this ensures that any change is finalized in sequence before another transaction is committed to avoid any double spending or similar exploit.
+Since Virtual Pools exist on a Virtual Settlement Layer, all transactions performed are finalized and committed to a blockchain before being relayed back to any pool on the chain, ensuring that any change is finalized in sequence before another transaction is committed to avoid any double spending or similar exploits.
