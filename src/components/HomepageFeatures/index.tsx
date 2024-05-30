@@ -12,6 +12,16 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
+    title: "Easy to Integrate",
+    Svg: require("@site/static/img/Group.svg").default,
+    description: (
+      <>
+        Euclid API was designed from the ground up to easily be integrated into
+        your application and get it running up quickly.
+      </>
+    ),
+  },
+  {
     title: "Modular",
     Svg: require("@site/static/img/modular.svg").default,
     description: (
@@ -28,16 +38,6 @@ const FeatureList: FeatureItem[] = [
       <>
         Euclid can be integrated instantly into smart contracts or an interface
         without requiring any payment or key.
-      </>
-    ),
-  },
-  {
-    title: "Easy to Integrate",
-    Svg: require("@site/static/img/integrate_dark.svg").default,
-    description: (
-      <>
-        Euclid API was designed from the ground up to easily be integrated into
-        your application and get it running up quickly.
       </>
     ),
   },
