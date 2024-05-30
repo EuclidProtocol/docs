@@ -22,22 +22,22 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "Modular",
-    Svg: require("@site/static/img/modular.svg").default,
-    description: (
-      <>
-        Euclid can be integrated on a smart contract level on different
-        blockchains, or using Euclid’s API on any interface.
-      </>
-    ),
-  },
-  {
     title: "Permissionless",
     Svg: require("@site/static/img/permissionless_dark.svg").default,
     description: (
       <>
         Euclid can be integrated instantly into smart contracts or an interface
         without requiring any payment or key.
+      </>
+    ),
+  },
+  {
+    title: "Modular",
+    Svg: require("@site/static/img/modular.svg").default,
+    description: (
+      <>
+        Euclid can be integrated on a smart contract level on different
+        blockchains, or using Euclid’s API on any interface.
       </>
     ),
   },
