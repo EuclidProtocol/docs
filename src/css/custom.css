@@ -42,6 +42,10 @@ footer {
   background-color: black !important;
 }
 
+.footer {
+  border-top: 0.5px solid #cccccc65 !important;
+}
+
 .navbar {
   background-color: black !important;
 }
@@ -150,4 +154,8 @@ footer {
   margin-bottom: 15px;
 
   /* Adjust margin as needed */
+}
+
+.footer-border {
+  border-top: 1px solid #ccc; /* Change the color to your preference */
 }
