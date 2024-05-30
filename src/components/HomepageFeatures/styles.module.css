@@ -10,12 +10,17 @@
   background-attachment: fixed;
 }
 
+.container {
+  overflow: visible;
+}
+
 .featureSvg {
   height: auto;
   width: 100%;
   max-width: 200px;
+  display: block;
+  margin: 0 auto; /* Center the SVG */
 }
-
 .started {
   display: flex;
   flex-direction: column;
