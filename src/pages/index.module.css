@@ -50,3 +50,12 @@
   font-size: 3.5rem !important;
   font-weight: 700;
 }
+
+@media screen and (max-width: 400px) {
+  .headingMain {
+    font-family: "ClashDisplayMedium", sans-serif;
+    font-size: 3.1rem;
+    font-weight: 440;
+    margin-bottom: 0rem !important;
+  }
+}

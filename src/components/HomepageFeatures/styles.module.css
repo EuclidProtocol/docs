@@ -30,6 +30,21 @@
   font-style: normal;
 }
 
+@media screen and (max-width: 400px) {
+  .started {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 6.5vh;
+    width: 100vw;
+    font-family: "ClashDisplayMedium";
+    src: url("/src/css/ClashDisplayMedium.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
 .bottomRow {
   display: flex;
   flex-direction: column;
