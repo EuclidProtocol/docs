@@ -5,7 +5,7 @@ import Link from "@docusaurus/Link";
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<"svg">>;
+  imgSrc: string;
   description: JSX.Element;
   link?: string;
 };
@@ -13,7 +13,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "Easy to Integrate",
-    Svg: require("@site/static/img/integrate_dark.svg").default,
+    imgSrc: require("@site/static/img/integrate_dark.png").default,
     description: (
       <>
         Euclid API was designed from the ground up to easily be integrated into
@@ -23,7 +23,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Permissionless",
-    Svg: require("@site/static/img/permissionless_dark.svg").default,
+    imgSrc: require("@site/static/img/permissionless_dark.png").default,
     description: (
       <>
         Euclid can be integrated instantly into smart contracts or an interface
@@ -33,7 +33,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Modular",
-    Svg: require("@site/static/img/modular.svg").default,
+    imgSrc: require("@site/static/img/modular_dark.png").default,
     description: (
       <>
         Euclid can be integrated on a smart contract level on different
@@ -46,17 +46,17 @@ const FeatureList: FeatureItem[] = [
 const FeatureList2: FeatureItem[] = [
   {
     title: "Learn The Basics",
-    Svg: require("@site/static/img/learn.svg").default,
+    imgSrc: require("@site/static/img/learn_dark.png").default,
     description: <>Start here to explore the fundamentals of Euclid Protocol</>,
     link: "docs/intro",
   },
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, imgSrc, description }: FeatureItem) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img src={imgSrc} className={styles.featureImg} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3" className="heading-main">
@@ -68,12 +68,12 @@ function Feature({ title, Svg, description }: FeatureItem) {
   );
 }
 
-function Feature2({ title, Svg, description, link }: FeatureItem) {
+function Feature2({ title, imgSrc, description, link }: FeatureItem) {
   return (
     <div className={clsx("col col--4 card")}>
       <Link href={link}>
         <div className="text--center">
-          <Svg className={styles.featureSvg} role="img" />
+          <img src={imgSrc} className={styles.featureImg} alt={title} />
         </div>
         <div className="text--center padding-horiz--md">
           <Heading as="h3" className="heading-main">
