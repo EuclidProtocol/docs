@@ -8,6 +8,7 @@ type FeatureItem = {
   imgSrc: string;
   description: JSX.Element;
   link?: string;
+  extraClass?: string;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -30,6 +31,7 @@ const FeatureList: FeatureItem[] = [
         without requiring any payment or key.
       </>
     ),
+    extraClass: styles.permissionlessImage,
   },
   {
     title: "Modular",
@@ -52,11 +54,15 @@ const FeatureList2: FeatureItem[] = [
   },
 ];
 
-function Feature({ title, imgSrc, description }: FeatureItem) {
+function Feature({ title, imgSrc, description, extraClass }: FeatureItem) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
-        <img src={imgSrc} className={styles.featureImg} alt={title} />
+        <img
+          src={imgSrc}
+          className={clsx(styles.featureImg, extraClass)}
+          alt={title}
+        />
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3" className="heading-main">

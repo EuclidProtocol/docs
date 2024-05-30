@@ -36,3 +36,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.permissionlessImage {
+  height: 150px !important;
+  width: 125px !important;
+}
