@@ -30,7 +30,7 @@
   font-style: normal;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .started {
     display: flex !important;
     flex-direction: column !important;
