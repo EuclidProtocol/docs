@@ -1,32 +1,31 @@
 .features {
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 2rem 0;
   width: 100%;
   background-image: url("/img/section2bg.jpg");
   background-color: black;
+  /* opacity: 40%; */
+
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
 
 .featureImg {
-  height: auto;
-  width: 100%;
-  max-width: 200px;
-  display: block;
-  margin: 0 auto; /* Center the image */
+  height: 150px;
+  width: 160px;
 }
 
 .started {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
   font-size: 7vh;
   width: 100vw;
   font-family: "ClashDisplayMedium";
+  src: url("/src/css/ClashDisplayMedium.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
@@ -36,24 +35,4 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center; /* Ensure text is centered */
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-  .col {
-    flex: 0 0 100%; /* Ensure columns take full width on mobile */
-    max-width: 100%;
-  }
-
-  .featureImg {
-    width: 100%;
-    max-width: 100px; /* Adjust max width for better fit on mobile */
-  }
 }
