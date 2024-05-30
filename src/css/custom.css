@@ -97,8 +97,7 @@ footer {
 }
 
 .card:hover {
-  border: 1px solid;
-  border-radius: 5px;
+  border-radius: 4px;
   border: 1.5px solid rgba(93, 93, 93, 1);
 }
 
