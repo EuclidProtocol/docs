@@ -40,6 +40,7 @@
 
 footer {
   background-color: black !important;
+  bottom: 0;
 }
 
 .footer {
@@ -90,15 +91,19 @@ footer {
 .card {
   cursor: pointer;
   background: transparent;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  padding: 2rem;
+  border: 1.5px solid rgba(93, 93, 93, 1);
+  border-radius: 4px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+
+  /* z-index: 100; */
+  /* background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px); */
 }
 
 .card:hover {
-  border-radius: 4px;
-  border: 1.5px solid rgba(93, 93, 93, 1);
+  box-shadow: 0 0 15px 5px rgba(31, 165, 136, 0.75);
 }
 
 .card-content {
