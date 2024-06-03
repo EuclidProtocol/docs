@@ -30,10 +30,10 @@ Integrating with Euclid grants DEXs access to a significantly larger, unified li
 
 For users, Euclid offers a smoother trading experience. Unified liquidity results in less slippage and more predictable pricing, making trading more efficient and user-friendly. Users can also seamlessly trade assets across different blockchains without the need for bridging processes, simplifying cross-chain interactions.
 
-### Token Projects
+### Protocols
 
-Token projects benefit from increased visibility and higher trading volume. Integration with Euclid exposes tokens to a wider audience of traders and investors across multiple chains, enhancing their visibility within the DeFi ecosystem. Euclid's unified liquidity and interoperability open up a world of new possibilities for token projects where they can leverage Euclid's protocol to build innovative cross-chain applications and unlock previously inaccessible use cases, driving further adoption and utility for their tokens.
+Integration with Euclid exposes protocols to a wider audience of traders and users across multiple chains, enhancing their visibility within the DeFi ecosystem. Euclid's unified liquidity and interoperability open up a world of new possibilities for these where they can leverage Euclid's protocol to build innovative cross-chain applications and unlock previously inaccessible use cases, driving further adoption and utility for their tokens.
 
 ## How is Euclid Able to Offer all of the Above?
 
-In the upcoming sections, we will be taking a look at the inovative architecture Euclid has created to be able to tackle all the existing problems in the Defi space.
+In the upcoming sections, we will be taking a look at the innovative architecture Euclid has created to be able to tackle all the existing problems in the Defi space.
