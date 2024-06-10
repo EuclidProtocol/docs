@@ -3,7 +3,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { CustomSearch } from "./src/components/CustomSearch";
+// import { CustomSearch } from "./src/components/CustomSearch";
 
 const config: Config = {
   title: "Euclid Protocol",
@@ -162,6 +162,22 @@ const config: Config = {
       require.resolve("docusaurus-lunr-search"),
       {
         // Optional: Add additional Lunr.js options here
+      },
+    ],
+  ],
+
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      {
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
       },
     ],
   ],
