@@ -3,6 +3,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+// import { CustomSearch } from "./src/components/CustomSearch";
 
 const config: Config = {
   title: "Euclid Protocol",
@@ -91,6 +92,12 @@ const config: Config = {
           label: "GitHub",
           position: "right",
         },
+
+        // {
+        //   type: "custom",
+        //   position: "right",
+        //   component: CustomSearch, // Use your custom search component
+        // },
       ],
     },
     footer: {
@@ -101,8 +108,8 @@ const config: Config = {
           items: [
             {
               html: `
-                <img src="/img/EuclidLogo.svg" alt="Logo" style="width: 150px; height: auto;" />
-              `,
+              <img src="/img/EuclidLogo.svg" alt="Logo" style="width: 150px; height: auto;" />
+            `,
             },
           ],
         },
@@ -148,6 +155,32 @@ const config: Config = {
       darkTheme: prismThemes.vsDark,
     },
   } satisfies Preset.ThemeConfig,
+
+  // Add the lunr search plugin configuration
+  plugins: [
+    [
+      require.resolve("docusaurus-lunr-search"),
+      {
+        // Optional: Add additional Lunr.js options here
+      },
+    ],
+  ],
+
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      {
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+      },
+    ],
+  ],
 };
 
 export default config;
