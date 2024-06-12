@@ -16,7 +16,7 @@ Euclid's mission is to unlock the true potential of decentralized fina
 
 ### The Problems before Euclid
 
-Before Euclid, the DeFi landscape faced significant challenges due to fragmented liquidity. High slippage was a major issue; limited liquidity on individual DEXs and chains caused significant price fluctuations, particularly for larger trades, resulting in a poor user experience and unpredictable trading costs. Additionally, moving assets between different blockchains was complex and costly, requiring users to navigate bridges and deal with potential security risks and delays. New DeFi projects struggled to attract liquidity, often having to compete with established platforms for a limited pool of users and capital. All of this has created a frustrating and inefficient user experience.
+Before Euclid, the DeFi landscape faced significant challenges due to fragmented liquidity. Limited liquidity on individual DEXs and chains caused significant price fluctuations, particularly for larger trades, resulting in a poor user experience and unpredictable trading costs. Additionally, moving assets between different blockchains was complex and costly, requiring users to navigate bridges and deal with potential security risks and delays. New DeFi projects struggled to attract liquidity, often having to compete with established platforms for a limited pool of users and capital. All of this has created a frustrating and inefficient market and user experience.
 
 ## What Euclid Offers to the Space
 

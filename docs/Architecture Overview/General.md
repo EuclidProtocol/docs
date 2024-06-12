@@ -2,8 +2,10 @@
 sidebar_position: 1
 description: "Get a General Introduction into Euclid's Architecture"
 ---
+## LiquiSync Model
+To successfully create a unified liquidity layer for all blockchains, Euclid has developed a new architecture termed the LiquiSync model. This model consists of several parts that all work together to provide a seemless and efficient layer for protocols and users alike. 
 
-The **Unified Liquidity Layer** has three main components:
+**LiquiSync** has three main components:
 
 **A. Virtual Settlement Layer for Liquidity (VSL):** The VLS is a layer built on the hub chain Nibiru that is responsible for consolidating all the virtual pools and performing the necessary calculations for swaps.
 
@@ -11,9 +13,13 @@ The **Unified Liquidity Layer** has three main components:
 
 **C. Native Smart Contracts:** A set of smart contracts deployed on each integrated chain responsible for pool creation and communication with the Virtual Settlement Layer using EMP.
 
+:::note
+The bottom layer acts like a CPAMM pool but is in fact a series of escrows. We will dive deeper into it in later sections.
+:::
+
 ![Euclid Architecture](../../static/img/arch-no-logo.png)
 
-## Virtual Settlement Layer
+### Virtual Settlement Layer
 
 To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its Virtual Settlement Layer. Euclid's VSL is a layer-1 blockchain with instant finality where all liquidity across the blockchain is tallied, computed and settled.
 
@@ -39,3 +45,4 @@ This ensures that exploits seen in other bridges can't occur through our messagi
 ### Guaranteed Finality
 
 Our Messaging Protocol and Virtual Settlement Layer both guarantee instant finality of transactions across the entire blockchain which ensures user funds will never be stuck in any smart contract on any blockchain.
+

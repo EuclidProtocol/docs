@@ -32,5 +32,7 @@ Relayers are responsible for transmitting messages containing essential informat
 - **Liquidity updates:** Relayers constantly communicate changes in liquidity balances between the VSL and the individual chain pools, ensuring a consistent view of the unified liquidity across the ecosystem.
 
 #### Euclid's Private Relayers
-
+:::tip
+The Euclid system **only** requires one relayer between the VSL and each integrated chain. 
+:::
 Public relayers often contend with a high volume of IBC packets bearing different messages and executions. Euclid addresses this by deploying private relayers tailored specifically to manage messages from the Euclid system, filtering out all other packets. These dedicated relayers will significantly enhance execution times compared to those offered by public relayers.
