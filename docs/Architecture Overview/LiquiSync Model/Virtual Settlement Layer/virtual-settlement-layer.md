@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 description: "Learn About Euclid's Virtual Settlement Layer (VSL)"
 ---
 
-# Virtual Settlement Layer
+# Overview
 
 A Virtual Settlement Layer (VSL) serves as the backbone of the Euclid system, responsible for settling all transactions securely and efficiently. To fulfill this crucial role, a VSL requires the following components and characteristics:
 
@@ -31,7 +31,7 @@ Euclid requires a VSL that is able to connect efficiently with the Euclid Messag
 
 ## Nibiru Chain
 
-The Hub and VSL of Euclid will be [Nibiru Chain](https://www.nibiru.fi), as the chain has all of the requirements for a VSL due to its optimized arcitecture.
+The Hub and VSL of Euclid will be on [Nibiru Chain](https://www.nibiru.fi), as the chain has all of the requirements for a VSL due to its optimized arcitecture.
 
 1. **Tendermint Core:** Nibiru utilizes [Tendermint Core](https://tendermint.com/core/) as its consensus engine that ensures a decentralized state machine with instant finality.
 
@@ -42,3 +42,16 @@ The Hub and VSL of Euclid will be [Nibiru Chain](https://www.nibiru.fi), as the 
 4. **IBC enabled**: Nibiru integrates [IBC protocol](https://www.ibcprotocol.dev/), which allows for complete integration of the Euclid Messaging Protocol.
 
 To read more about Nibiru Chain and what they offer, check out their [docs](https://nibiru.fi/docs).
+
+
+## VSL Components
+
+:::note
+Add diagram
+:::
+
+The VSL is composed of three main parts:
+
+- [Virtual Liquidity Pools (VLP)](../Virtual%20Settlement%20Layer/virtual-pools.md)
+- [Virtual Coins (VCoins)](../Virtual%20Settlement%20Layer/virtual-coins.md)
+- [Escrow Balance Tracker](../Virtual%20Settlement%20Layer/escrow-balance.md)
