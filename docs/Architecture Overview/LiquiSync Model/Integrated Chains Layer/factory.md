@@ -2,11 +2,12 @@
 sidebar_position: 1
 description: "Learn About Euclid's Escrow factory smart contract"
 ---
+
 # Factory
 
 ## Introduction
 
-The Factory smart contract in the Euclid system serves as the core component for managing user interactions with liquidity pools and facilitating swaps. Its primary role is to handle requests from users and communicate these requests to the [router contract](../router.md). The factory contract simplifies user interactions by providing a single point of access for various operations, such as swaps, adding liquidity, and removing liquidity. 
+The Factory smart contract in the Euclid system serves as the core component for managing user interactions with liquidity pools and facilitating swaps. Its primary role is to handle requests from users and communicate these requests to the [router contract](../router.md). The factory contract simplifies user interactions by providing a single point of access for various operations, such as swaps, adding liquidity, and removing liquidity.
 
 ## Single Entry point for Requests
 
@@ -22,10 +23,9 @@ The Factory contract is the sole point of communication between the chains and t
 
 The following diagram illustrates the workflow of the factory contract for a swap request:
 :::tip
-We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../Euclid%20Protocol/euclid-pool.md) section.
+We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../../Euclid%20Protocol/euclid-smart-contracts.md) section.
 :::
 
 :::note
 Add diagram
 :::
-

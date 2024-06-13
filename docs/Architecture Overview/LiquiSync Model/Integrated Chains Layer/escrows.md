@@ -2,16 +2,17 @@
 sidebar_position: 2
 description: "Learn About Euclid's escrows"
 ---
-# Escrows 
+
+# Escrows
 
 ## Introduction
 
-The Escrow smart contract is a simple contract that holds one type of token. Each integrated chain will have these escrows deployed holding the liquidity for the tokens. Whenever a swap is successfull, the factory contract of the chain will forward a message from the router to the escrow requesting a release of tokens to the user who initiated the swap. 
+The Escrow smart contract is a simple contract that holds one type of token. Each integrated chain will have these escrows deployed holding the liquidity for the tokens. Whenever a swap is successfull, the factory contract of the chain will forward a message from the router to the escrow requesting a release of tokens to the user who initiated the swap.
 
 ## Workflow
 
 :::tip
-We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../Euclid%20Protocol/euclid-pool.md) section.
+We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../../Euclid%20Protocol/euclid-smart-contracts.md) section.
 :::
 
 The following diagram illustrates the workflow of the escrow contract for a swap request:
