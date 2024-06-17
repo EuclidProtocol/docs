@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Router is a pivotal component within the Euclid ecosystem, designed to manage and facilitate the coordination of liquidity pools and swaps across different chains. It serves as an intermediary layer that routes requests between the virtual settlement layer and the integrated chains, ensuring efficient and secure operations. The primary purpose of the Router contract is to act as the central communication hub that connects different parts of the Euclid ecosystem.
+The Router is a pivotal component within the Euclid layer, designed to manage and facilitate the coordination of liquidity pools and swaps across different chains. It serves as an intermediary layer that routes requests between the virtual settlement layer and the integrated chains, ensuring efficient and secure operations. The primary purpose of the Router contract is to act as the central communication hub that connects different parts of the Euclid layer.
 
 The Router performs the following tasks:
 

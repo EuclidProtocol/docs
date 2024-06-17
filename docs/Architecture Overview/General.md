@@ -2,10 +2,8 @@
 sidebar_position: 1
 description: "Get a General Introduction into Euclid's Architecture"
 ---
-## LiquiSync Model
-To successfully create a unified liquidity layer for all blockchains, Euclid has developed a new architecture termed the LiquiSync model. This model consists of several parts that all work together to provide a seemless and efficient layer for protocols and users alike. 
 
-**LiquiSync** has three main components:
+The **Unified Liquidity Layer** has three main components:
 
 **A. Virtual Settlement Layer for Liquidity (VSL):** The VLS is a layer built on the hub chain Nibiru that is responsible for consolidating all the virtual pools and performing the necessary calculations for swaps.
 
@@ -23,14 +21,14 @@ The bottom layer acts like a CPAMM pool but is in fact a series of escrows. We w
 
 To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its Virtual Settlement Layer. Euclid's VSL is a layer-1 blockchain with instant finality where all liquidity across the blockchain is tallied, computed and settled.
 
-Euclid utilizies [Nibiru Chain](https://nibiru.fi/) as its VSL due to its DeFi focused approach, instant finality architecture, and optimized block space to support over 40,000 TPS (Transactions per Second). With Nibiru's goal of being the DeFi Hub of the blockchain,
-and its extensive roadmap and integrations, it makes sense for Euclid's VSL to be on Nibiru.
+Euclid utilizies [Nibiru Chain](https://nibiru.fi/) as its VSL due to its DeFi focused approach, instant finality architecture, and optimized block space to support over 40,000 TPS (Transactions per Second). Nibiru's goal of being the DeFi Hub of the blockchain,
+and its extensive roadmap and integrations, makes it the perfect fit for Euclid's VSL.
 
 ### Virtual Pools
 
-Virtual Pools are the main component of the VSL based on Cosmwasm Smart Contracts. Virtual Pools are pools that are responsible for tallying the liquidity for a certain token pair across the entire Euclid ecosystem. They allow external systems to query and retrieve detailed information about the Virtual Pool, including token pair details, overall liquidity status, pending swaps and liquidity additions, and current token reserves.
+Virtual Pools are the main component of the VSL based on Cosmwasm Smart Contracts. Virtual Pools are pools that are responsible for tallying the liquidity for a certain token pair across the entire Euclid layer. They allow external systems to query and retrieve detailed information about the Virtual Pool, including token pair details, overall liquidity status, pending swaps and liquidity additions, and current token reserves.
 
-All liquidity across the blockchain is settled in the Virtual Pool which then sends results back to the Euclid pools across the ecosystem.
+All liquidity across all integrated blockchains is settled in the Virtual Pool which then sends results back to the Euclid pools across the ecosystem.
 
 ## Euclid Messaging Protocol
 

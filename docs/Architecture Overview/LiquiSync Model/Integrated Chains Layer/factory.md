@@ -12,7 +12,7 @@ The Factory smart contract in the Euclid system serves as the core component for
 
 The Factory contract is the sole point of communication between the chains and the VSL. This is beneficial for the system for the following reasons:
 
-- **Stremlined Processing for Requests:** This ensures that all request coming from a single chain are processed in a streamlined manner by the factory, removing the possibility of inconsistencies or conflicts that could arise from handling requests in multiple locations and ensuring that operations are executed in the correct order.
+- **Streamlined Processing for Requests:** This ensures that all request coming from a single chain are processed in a streamlined manner by the factory, removing the possibility of inconsistencies or conflicts that could arise from handling requests in multiple locations and ensuring that operations are executed in the correct sequential order.
 
 - **Improved Security:** Having all messages pass through the a single factory facilitates the implementation of security measures that ensure that all requests received are legitimate.
 
@@ -29,3 +29,13 @@ We will dive deeper into each of the contract's messages and queries in the [Euc
 Add diagram
 :::
 
+1. User sends the swap request to the factory
+2. Factory forwards the message to the router through a dedicated channel
+3. Router forwards the messsage to the VSL where the calculations are performed for the swap
+4. VSL returns an acknowledgement to the router 
+5. Router forwards the ack to the factory through the dedicated channel
+6. Factory forwards the ack to the escrow to release the tokens to the user
+
+:::note
+In case the ack is an error, the user is refunded and all the state changes are reverted.
+:::
