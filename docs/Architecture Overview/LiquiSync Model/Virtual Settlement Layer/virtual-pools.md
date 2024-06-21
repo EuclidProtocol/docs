@@ -11,16 +11,14 @@ Euclid **Virtual Pools** are responsible of keeping track and settling transacti
 
 Virtual Pools *solely* exist on the **Virtual Settlement Layer** and never hold any tokens but rather keep track of all existing tokens for the token pair in the Euclid ecosystem. These virtual pools allow to unify the liquidity across the blockchain without actually having to bridge or move the tokens from one chain to another. This ensures that liquidity remains *decentralized* and *modular*.
 
-:::note
-Change to new diagram when done
-:::
-
 ## Workflow
 
 :::tip
 We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../Euclid%20Protocol/euclid-pool.md) section.
 :::
-
+:::note
+Change to new diagram when fixed
+:::
 The following diagram illustrates the interaction between the VLP and the rest of the Euclid system.
 ![Euclid Virtual Pools](../../../../static/img/virtual-pools.png)
 

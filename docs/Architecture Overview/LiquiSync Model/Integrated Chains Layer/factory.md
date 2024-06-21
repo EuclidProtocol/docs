@@ -22,12 +22,10 @@ The Factory contract is the sole point of communication between the chains and t
 
 The following diagram illustrates the workflow of the factory contract for a swap request:
 :::tip
-We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../Euclid%20Protocol/euclid-pool.md) section.
+We will dive deeper into each execute and query messages in the [Factory Smart Contract](../../../Euclid%20Smart%20Contracts/Factory.md) section.
 :::
 
-:::note
-Add diagram
-:::
+ ![Factory Architecture](../../../../static/img/Factory.png)
 
 1. User sends the swap request to the factory
 2. Factory forwards the message to the router through a dedicated channel

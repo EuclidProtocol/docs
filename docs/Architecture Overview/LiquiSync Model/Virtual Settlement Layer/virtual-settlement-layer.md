@@ -45,12 +45,9 @@ To read more about Nibiru Chain and what they offer, check out their [docs](http
 
 
 ## VSL Components
-
-:::note
-Add diagram
-:::
+ ![Factory Architecture](../../../../static/img/VSL.png)
 
 The VSL is composed of two main parts:
 
-- [Virtual Liquidity Pools (VLP)](../Virtual%20Settlement%20Layer/virtual-pools.md)
-- [Virtual Balances](../Virtual%20Settlement%20Layer/virtual-balances.md)
+- [Virtual Liquidity Pools (VLP)](../Virtual%20Settlement%20Layer/virtual-pools.md): The VSL is responsible for performing all calculations related to swaps for its token pair.
+- [Virtual Balances](../Virtual%20Settlement%20Layer/virtual-balances.md): Virtual balance keeps track of all the balances of users and VLPs making sure nothing is ever lost.

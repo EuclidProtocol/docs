@@ -28,9 +28,9 @@ We will dive deeper into each of the contract's messages and queries in the [Euc
 :::
 
 Whenever a user requests a swap for some token, the Virtual Balance contract will mint the tokens for the user and add it to the balance:
-
 :::note
-add diagram
+add diagram when fixed
 :::
 
-Then when the swap is complete and the escrow has released the tokens to the user, the Virtual Balance contract will receive a request to burn the tokens from the user's balance.
+Then when the swap is complete and the escrow has released the tokens to the user, the Virtual Balance contract will receive a request to burn the tokens from the user's balance:
+![Euclid Virtual Pools](../../../../static/img/Balace-success.png)
