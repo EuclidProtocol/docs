@@ -14,13 +14,11 @@ Virtual Pools *solely* exist on the **Virtual Settlement Layer** and never hold 
 ## Workflow
 
 :::tip
-We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../Euclid%20Protocol/euclid-pool.md) section.
+We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../../Euclid%20Smart%20Contracts/Virtual%20Liquidity%20Pools.md) section.
 :::
-:::note
-Change to new diagram when fixed
-:::
+
 The following diagram illustrates the interaction between the VLP and the rest of the Euclid system.
-![Euclid Virtual Pools](../../../../static/img/virtual-pools.png)
+![Euclid Virtual Pools](../../../../static/img/new-arch.png)
 
 ## Guaranteed Finality
 

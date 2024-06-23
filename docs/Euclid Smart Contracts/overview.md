@@ -10,17 +10,4 @@ In the [Architecture Overview](../Architecture%20Overview/General.md), we took a
 Since the Factory smart contract is the only entry point for users/projects to interact with the Euclid layer, we will be providing a breakdown of the execute messages as well as the queries. For the rest of the contracts, no messages can be called directly on them so we are only interested in the available queries.
 
 
-:::note
-ask frontend to make these bexes with links to each page
-:::
-
-The Euclid layer consists of 5 different smart contracts:
-
-- Factory
-- Router
-- Virtual Pool
-- Virtual Balance
-- Escrow
-
-
 

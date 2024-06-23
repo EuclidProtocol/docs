@@ -19,18 +19,14 @@ Euclid's Virtual Balances are virtual tokens that are minted to mimick 1/1 the b
 - **Security Failsafe:** In case any of the integrated chains suddenly crashes, or for some reason a swap is successfull in the VSL but the reply fails to reach the escrow to release the tokens, the user's balance will saved in the Virtual Balance contract, and the user can decide to extract the tokens on another chain. 
 
 ## Workflow
-:::note
-make sure if it mints or transfers from the other balance.
-:::
 
 :::tip
-We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../Euclid%20Protocol/euclid-pool.md) section.
+We will dive deeper into each of the contract's messages and queries in the [Euclid Smart Contracts](../../../Euclid%20Smart%20Contracts/Virtual%20balances.md) section.
 :::
 
-Whenever a user requests a swap for some token, the Virtual Balance contract will mint the tokens for the user and add it to the balance:
-:::note
-add diagram when fixed
-:::
+Whenever a user requests a swap for some token, the Virtual Balance contract will transfer the tokens from the VLP balance to the user's balance:
+
+![Euclid Virtual balances](../../../../static/img/fixed-vb.png)
 
 Then when the swap is complete and the escrow has released the tokens to the user, the Virtual Balance contract will receive a request to burn the tokens from the user's balance:
-![Euclid Virtual Pools](../../../../static/img/Balace-success.png)
+![Euclid Virtual balances](../../../../static/img/Balace-success.png)
