@@ -2,11 +2,12 @@
 sidebar_position: 1
 description: "Learn About Euclid's Escrow factory smart contract"
 ---
+
 # Factory
 
 ## Introduction
 
-The Factory smart contract in the Euclid system serves as the core component for managing user interactions with liquidity pools and facilitating swaps. Its primary role is to handle requests from users and communicate these requests to the [router contract](../router.md). The factory contract simplifies user interactions by providing a single point of access for various operations, such as swaps, adding liquidity, and removing liquidity. 
+The Factory smart contract in the Euclid system serves as the core component for managing user interactions with liquidity pools and facilitating swaps. Its primary role is to handle requests from users and communicate these requests to the [router contract](../router.md). The factory contract simplifies user interactions by providing a single point of access for various operations, such as swaps, adding liquidity, and removing liquidity.
 
 ## Single Entry point for Requests
 
@@ -25,12 +26,12 @@ The following diagram illustrates the workflow of the factory contract for a swa
 We will dive deeper into each execute and query messages in the [Factory Smart Contract](../../../Euclid%20Smart%20Contracts/Factory.md) section.
 :::
 
- ![Factory Architecture](../../../../static/img/Factory.png)
+![Factory Architecture](../../../../static/img/Factory.png)
 
 1. User sends the swap request to the factory
 2. Factory forwards the message to the router through a dedicated channel
 3. Router forwards the messsage to the VSL where the calculations are performed for the swap
-4. VSL returns an acknowledgement to the router 
+4. VSL returns an acknowledgement to the router
 5. Router forwards the ack to the factory through the dedicated channel
 6. Factory forwards the ack to the escrow to release the tokens to the user
 
