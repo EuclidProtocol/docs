@@ -66,6 +66,9 @@ const config: Config = {
   ],
 
   themeConfig: {
+    metadata: [
+      { name: "image", content: "img/EuclidLogo.svg" }, // Image for social preview
+    ],
     colorMode: {
       defaultMode: "dark", // Set dark mode as default
       disableSwitch: true, // Disable the option to switch between light and dark modes
