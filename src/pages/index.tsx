@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
+      title={`${siteConfig.title.toUpperCase()}`}
       description="The Official Docs for euclid protocol"
     >
       <HomepageHeader />
