@@ -34,7 +34,7 @@
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    font-size: 6.5vh;
+    font-size: 6.1vh;
     width: 100vw;
     font-family: "ClashDisplayMedium";
     src: url("/src/css/ClashDisplayMedium.otf") format("opentype");
