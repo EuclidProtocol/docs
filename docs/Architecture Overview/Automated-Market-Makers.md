@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: "What are Automated Market Makers (AMM)"
 
 ---
