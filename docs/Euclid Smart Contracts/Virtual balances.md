@@ -5,7 +5,7 @@ description: "The Virtual Balance Smart Contract"
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract as users are not allowed to execute any messages on the Virtual Balance contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the Virtual Balance contract.
 :::
 List of queries that can be performed on the VLP contract.
 
@@ -44,7 +44,7 @@ pub struct State {
 | `admin`       | The contract address of the admin of the contract.|
 
 ### GetBalance 
-Queries the balance of the the specified user on the specified chain for the specified token.
+Queries the balance of the specified user on the specified chain for the specified token.
 ```rust
 pub enum QueryMsg {
 

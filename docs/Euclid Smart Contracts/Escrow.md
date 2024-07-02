@@ -5,7 +5,7 @@ description: "The Escrow Smart Contract"
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract as users are not allowed to execute any messages on the Escrow contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the Escrow contract.
 :::
 List of queries that can be performed on the VLP contract.
 
@@ -21,7 +21,7 @@ pub enum QueryMsg {
 JSON Example:
 
 ```JSON
-{"token_id:{}}
+{"token_id":{}}
 ```
 
 The query returns the following response:
@@ -46,7 +46,7 @@ pub enum QueryMsg {
 ```
 ***TokenInfo***
 
- Struct holding information about a token including the token Id and the type.
+ Struct holding information about a token, including the token Id and the type.
 
  ```rust
  pub struct TokenInfo {

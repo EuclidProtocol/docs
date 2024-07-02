@@ -8,7 +8,7 @@ description: "What are Automated Market Makers (AMM)"
 # Automated Market Makers
 
 An **Automated Market Maker** (AMM) allow digital assets to be traded without permission by using liquidity pools instead 
-of a tradtional market of buyers and sellers (an orderbook). 
+of a traditional market of buyers and sellers (an orderbook). 
 
 AMMs are powered by liquidity providers, that provide a pair of assets to a pool that sets the price and liquidity of a certain pool.
 
@@ -23,7 +23,7 @@ $$
  k = x * y
 $$  
 
-CPMMs ensure that a pool cannot be drained of a certain asset unlike [Constant Sum Market Makers](https://members.delphidigital.io/learn/constant-sum-automated-market-maker-csamm). This leads to what is called execution slippage, which is the difference between the **actual price** (ratio of assets), and the price at which a trade is executed.
+CPMMs ensure that a pool cannot be drained of a certain asset, unlike [Constant Sum Market Makers](https://members.delphidigital.io/learn/constant-sum-automated-market-maker-csamm). This leads to what is called execution slippage, which is the difference between the **actual price** (ratio of assets), and the price at which a trade is executed.
 
 #### Example
 
@@ -49,16 +49,16 @@ The trader receives 9.1 Y tokens instead of the expected 10 Y tokens based on a 
 
 ### Limitations
 
-Currently a CPMM pool relies solely on the assets in the pool smart contract in order to calculate the price and the slippage of the transaction. This creates what we call an **_inefficient_** market, since the smart contract does not have access to all the market information outside of its own component.
+Currently, a CPMM pool relies solely on the assets in the pool smart contract in order to calculate the price and the slippage of the transaction. This creates what we call an **_inefficient_** market, since the smart contract does not have access to all the market information outside of its own component.
 
-This means that although \$20,000,000 of liquidity can exist outside of a smart contract for this pair across the blockchain, if the pair has \$200 of liquidity, the slippage and inefficient pricing makes it unusable.
+This means that although \$20,000,000 of liquidity can exist outside of a smart contract for this pair across the blockchain, if the pair has \$200 of liquidity, the slippage and inefficient pricing make it unusable.
 
 ### Euclid's Solution
 
-Euclid aggregates liquidity from multiple CPMM pools across various blockchains, creating a unified pool for each token pair. This significantly increases the depth of liquidity, reducing slippage and enabling more efficient trading.
+Euclid aggregates liquidity from multiple token reserves across various blockchains, creating a unified pool for each token pair. This significantly increases the depth of liquidity, reduces slippage, and enables more efficient trading.
 
 #### Example
-Assuming Euclid is connected to just 2 pools each having 100 X and 100 Y tokens, the same trader mentioned above would get the following for the same transaction on an exchange using the Euclid layer:
+Assuming Euclid is connected to just 2 pools, each having 100 X and 100 Y tokens, the same trader mentioned above would get the following for the same transaction on an exchange using the Euclid layer:
 
 $$ x \cdot y = k $$
 

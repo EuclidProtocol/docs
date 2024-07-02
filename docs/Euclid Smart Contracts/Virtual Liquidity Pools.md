@@ -5,7 +5,7 @@ description: "The Virtual Liquidity Pool Smart Contract"
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract as users are not allowed to execute any messages on the VLP contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the VLP contract.
 :::
 List of queries that can be performed on the VLP contract.
 
@@ -173,7 +173,7 @@ pub struct Pool {
 | Name         | Description                                 |
 |--------------|---------------------------------------------|
 | `chain`      | The chain where the pool is deployed.       |
-| `pair`       | The token Id of each and type of each token of the pool.  |
+| `pair`       | The token Id and type of each token of the pool.  |
 | `reserve_1`  | The total reserve of the first token in the VLP on the specified chain.       |
 | `reserve_2`  | The total reserve of the second token in the VLP on the specified chain.      |
 

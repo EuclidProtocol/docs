@@ -47,7 +47,7 @@ pub enum ExecuteMsg {
 | **asset_in** |  The asset being swapped in. |
 | **asset_out** | The asset being swapped out. |
 | **amount_in** | The amount of asset_in being swapped. An equal amount of funds need to be attached to the message. |
-| **min_amount_out** |  The minimum amount of asset_out that needs to be obtained for the swap to be considered successful. If the amount is not achieved, the swap will fail and the attached funds are returned to the user. |
+| **min_amount_out** |  The minimum amount of asset_out that needs to be obtained for the swap to be considered successful. If the amount is not achieved, the swap will fail, and the attached funds are returned to the user. |
 | **timeout** |  Duration in seconds after which the swap will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
 | **swaps** | A vector containing all the VLP addresses needed for the requested swap path. In case of a multi-hop swap, more than one VLP needs to be specified. |
 
@@ -233,7 +233,7 @@ pub enum ExecuteMsg {
 ```
 | Name | Description |
 |---|---|
-| denom | The new denomination to be added for the speicified token Id.|
+| denom | The new denomination to be added for the specified token Id.|
 | token_id | The Id that points to the token and all of its denominations.  |
 
 JSON Example:
@@ -261,7 +261,7 @@ pub enum ExecuteMsg {
 ```
 | Name | Description |
 |---|---|
-| denom | The denomination to be removed for the speicified token Id.|
+| denom | The denomination to be removed for the specified token Id.|
 | token_id | The Id that points to the token and all of its denominations.  |
 
 JSON Example:
@@ -391,7 +391,7 @@ pub struct PairInfo {
 
 ### GetAllPools
 
-Queries all the pools registered in the factory returning the VLP address for the pool and the token information for the pair.
+Queries all the pools registered in the factory, returning the VLP address for the pool and the token information for the pair.
 
 ```rust
 pub enum QueryMsg {
@@ -479,7 +479,7 @@ pub struct SwapInfo {
 | **swap_id**       | The unique Id for the swap.                           |
 
 ### PendingLiquidity
-Queries the Liquidity that is pending for the specified user address.
+Queries the liquidity that is pending for the specified user address.
 ```rust
 pub enum QueryMsg {
   #[returns(GetPendingLiquidityResponse)]

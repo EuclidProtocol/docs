@@ -5,7 +5,7 @@ description: "The Virtual Balance Smart Contract"
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract as users are not allowed to execute any messages on the Router contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the Router contract.
 :::
 
 List of queries that can be performed on the Router contract.
@@ -36,7 +36,7 @@ pub struct StateResponse {
 ```
 | **Name**       | **Description**                                 |
 |----------------|-------------------------------------------------|
-| **admin**       | The admin address which is the only address allowed to call messages on the contract.|
+| **admin**       | The admin address, which is the only address allowed to call messages on the contract.|
 | **vlp_code_id**| The code_id used to instantiate new vlp contracts on the hub chain.|
 | **vcoin_address**| The address of the Virtual Balance contract used by the router.     |
 
@@ -216,7 +216,7 @@ pub struct SimulateSwapResponse {
 
     pub struct SwapOutChain {
     pub chain: Chain,
-    // amount of tokens releasd on the above chain.
+    // amount of tokens released on the above chain.
     pub amount: Uint128,
 }
 
@@ -224,6 +224,6 @@ pub struct SimulateSwapResponse {
 ```
 | Name             | Description                                       |
 |------------------|---------------------------------------------------|
-| `amount_out`  | The amount of tokens that the user will recieve         |
+| `amount_out`  | The amount of tokens that the user will recieve.         |
 | `asset_out`     | The token Id of the token that will be received by the user after the swap. |
 | `out_chains`    | A vector of chains and amounts where the tokens will be released.  |
