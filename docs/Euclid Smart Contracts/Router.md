@@ -2,10 +2,11 @@
 sidebar_position: 5
 description: "The Virtual Balance Smart Contract"
 ---
+import Tabs from '@site/src/components/Tabs';
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract as users are not allowed to execute any messages on the Router contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the Router contract.
 :::
 
 List of queries that can be performed on the Router contract.
@@ -13,17 +14,28 @@ List of queries that can be performed on the Router contract.
 ### GetState
 Quries the state of the contract.
 
-```rust 
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
     #[returns(StateResponse)]
     GetState {},
 }
-```
-JSON Example:
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 
-```JSON
 {"get_state":{}}
-```
+`
+}
+]} />
 
 The query returns the following response:
 
@@ -36,30 +48,43 @@ pub struct StateResponse {
 ```
 | **Name**       | **Description**                                 |
 |----------------|-------------------------------------------------|
-| **admin**       | The admin address which is the only address allowed to call messages on the contract.|
+| **admin**       | The admin address, which is the only address allowed to call messages on the contract.|
 | **vlp_code_id**| The code_id used to instantiate new vlp contracts on the hub chain.|
 | **vcoin_address**| The address of the Virtual Balance contract used by the router.     |
 
 
 ### GetChain
 Queries information about the specified chain.
-
-```rust 
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
     #[returns(ChainResponse)]
     GetChain { chain_id: String },
 }
-```
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+
+{"get_chain":{"chain_id":"chain-1"}}
+`
+}
+]} />
+
 | **Name**       | **Description**                                 |
 |----------------|-------------------------------------------------|
 | **chain_id**       | The unique Id of the chain to get info for.|
 
-JSON Example:
-```JSON
-{"get_chain"{"chain_id":"chain-1"}}
-```
 
 The query returns the following response:
+
 ```rust
 pub struct ChainResponse {
     pub chain: Chain,
@@ -84,32 +109,52 @@ pub struct Chain {
 ### GetAllChains
 Queries information about all the chains connected to the router.
 
-```rust 
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+
 pub enum QueryMsg {
 #[returns(AllChainResponse)]
-    GetAllChains {},
+GetAllChains {},
 }
-```
-JSON Example:
-```JSON
-{"get_all_chains"{}}
-```
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{"get_all_chains":{}}
+`
+}
+]} />
+
 The query returns a vector of **ChainResponse** each containing information about one chain. 
 
 ### GetVlp
-```rust 
+Queries the VLP address for the specified token pair.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
    #[returns(VlpResponse)]
     GetVlp { token_1: Token, token_2: Token },
 }
-```
-| **Name**       | **Description**                                 |
-|----------------|-------------------------------------------------|
-| **token_1**       | The Id of the first token in the VLP to fetch.|
-| **token_2**| The Id of the second token in the VLP to fetch.|
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 
-JSON Example:
-```JSON
 {
   "get_vlp": {
     "token_1": {
@@ -120,7 +165,14 @@ JSON Example:
     }
   }
 }
-```
+`
+}
+]} />
+
+| **Name**       | **Description**                                 |
+|----------------|-------------------------------------------------|
+| **token_1**       | The Id of the first token in the VLP to fetch.|
+| **token_2**| The Id of the second token in the VLP to fetch.|
 
 The query returns the following response:
 
@@ -141,21 +193,40 @@ pub struct VlpResponse {
 ### GetAllVlps
 Queries all the VLP addresses for all token pairs.
 
-```rust 
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
   #[returns(AllVlpResponse)]
     GetAllVlps {},
 }
-```
-JSON Example:
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {"get_all_vlps":{}}
-```
+`
+}
+]} />
+
 The query returns a vector of **VlpResponse** each containing information about on VLP.
 
 ### SimulateSwap
 Simulates a specified swap.
-```rust 
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+
 pub enum QueryMsg {
     #[returns(SimulateSwapResponse)]
     SimulateSwap(QuerySimulateSwap),
@@ -170,21 +241,13 @@ pub enum QueryMsg {
     pub swaps: Vec<NextSwap>,
 }
 }
-```
-| Name             | Description                                       |
-|------------------|---------------------------------------------------|
-| `factory_chain`  | The address of the factory contract.          |
-| `to_address`     | The address to send the swapped assets to.        |
-| `to_chain_id`    | The chain Id where the assets will be sent.       |
-| `asset_in`       | The token being swapped.                          |
-| `amount_in`      | The amount of the asset being swapped.            |
-| `min_amount_out` | The minimum amount of the output asset expected for the swap to be considered a success.  |
-| `swaps`          | A vector of addresses of VLPs that the swap will go through. Used in case of multi-hop swaps.                      |
-
-
-JSON Example:
-
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
   "simulate_swap": {
     "factory_chain": "cosmo1...",
@@ -205,7 +268,23 @@ JSON Example:
     ]
   }
 }
-```
+`
+}
+]} />
+
+| Name             | Description                                       |
+|------------------|---------------------------------------------------|
+| `factory_chain`  | The address of the factory contract.          |
+| `to_address`     | The address to send the swapped assets to.        |
+| `to_chain_id`    | The chain Id where the assets will be sent.       |
+| `asset_in`       | The token being swapped.                          |
+| `amount_in`      | The amount of the asset being swapped.            |
+| `min_amount_out` | The minimum amount of the output asset expected for the swap to be considered a success.  |
+| `swaps`          | A vector of addresses of VLPs that the swap will go through. Used in case of multi-hop swaps.                      |
+
+
+JSON Example:
+
 The query returns the following response:
 
 ```rust
@@ -216,7 +295,7 @@ pub struct SimulateSwapResponse {
 
     pub struct SwapOutChain {
     pub chain: Chain,
-    // amount of tokens releasd on the above chain.
+    // amount of tokens released on the above chain.
     pub amount: Uint128,
 }
 
@@ -224,6 +303,6 @@ pub struct SimulateSwapResponse {
 ```
 | Name             | Description                                       |
 |------------------|---------------------------------------------------|
-| `amount_out`  | The amount of tokens that the user will recieve         |
+| `amount_out`  | The amount of tokens that the user will recieve.         |
 | `asset_out`     | The token Id of the token that will be received by the user after the swap. |
 | `out_chains`    | A vector of chains and amounts where the tokens will be released.  |

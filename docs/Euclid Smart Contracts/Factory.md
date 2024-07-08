@@ -3,11 +3,14 @@ sidebar_position: 2
 description: "The Factory Smart Contract"
 ---
 
+import Tabs from '@site/src/components/Tabs';
+
 ## Instantiate Message
 
 :::note
 Each integrated chain has its own factory contract. These contracts will be created by Euclid whenever an integration with a new chain occurs.
 :::
+
 
 ```rust
 pub struct InstantiateMsg {
@@ -30,7 +33,13 @@ List of execute messages that can be performed on the Factory contract.
 ### ExecuteSwapRequest
 
 Requests a swap for the specified token pair.
-```rust
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content:`
 pub enum ExecuteMsg {
   ExecuteSwapRequest {
         asset_in: TokenInfo,
@@ -41,48 +50,13 @@ pub enum ExecuteMsg {
         swaps: Vec<NextSwap>,
     },
 }
-```
-| Name | Description |
-|---|---|
-| **asset_in** |  The asset being swapped in. |
-| **asset_out** | The asset being swapped out. |
-| **amount_in** | The amount of asset_in being swapped. An equal amount of funds need to be attached to the message. |
-| **min_amount_out** |  The minimum amount of asset_out that needs to be obtained for the swap to be considered successful. If the amount is not achieved, the swap will fail and the attached funds are returned to the user. |
-| **timeout** |  Duration in seconds after which the swap will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
-| **swaps** | A vector containing all the VLP addresses needed for the requested swap path. In case of a multi-hop swap, more than one VLP needs to be specified. |
-
-:::note
-- The swap paths are calculated on the backend when using the Eulcid API and the most efficient path is used for the **swaps** field.
-- Each token has a unique token Id that is used to identify it. Same tokens with different denominations (IBC) share the same token Id.
-
-:::
-With the following structs:
-
-```rust
-/// Struct holding information about a specific token.
-pub struct TokenInfo {
-    token: Token,
-    token_type: TokenType,
-}
-
-pub struct Token {
-/// Unique Id that points to the token type.
-    pub id: String,
-}
-
-pub enum TokenType {
-    /// Native tokens
-    Native { denom: String },
-    /// CW20 tokens
-    Smart { contract_address: String },
-}
-/// The address of the VLP contract needed for the next swap.
-pub struct NextSwap {
-    pub vlp_address: String,
-}
-```
-JSON Example:
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
   "execute_swap_request":{
     "asset_in": {
@@ -113,18 +87,67 @@ JSON Example:
             "vlp_address": "nibi1..."
         },
         {
-            "vlp_address": "nibi2..."
+            "vlp_address": "nibi1..."
         }
     ]
   }
 }
+`
+}
+]} />
+
+| Name | Description |
+|---|---|
+| **asset_in** |  The asset being swapped in. |
+| **asset_out** | The asset being swapped out. |
+| **amount_in** | The amount of asset_in being swapped. An equal amount of funds need to be attached to the message. |
+| **min_amount_out** |  The minimum amount of asset_out that needs to be obtained for the swap to be considered successful. If the amount is not achieved, the swap will fail, and the attached funds are returned to the user. |
+| **timeout** |  Duration in seconds after which the swap will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
+| **swaps** | A vector containing all the VLP addresses needed for the requested swap path. In case of a multi-hop swap, more than one VLP needs to be specified. |
+
+:::note
+- The swap paths are calculated on the backend when using the Eulcid API and the most efficient path is used for the **swaps** field.
+- Each token has a unique token Id that is used to identify it. Same tokens with different denominations (IBC) share the same token Id.
+:::
+
+With the following structs:
+
+```rust
+/// Struct holding information about a specific token.
+pub struct TokenInfo {
+    token: Token,
+    token_type: TokenType,
+}
+
+pub struct Token {
+/// Unique Id that points to the token.
+    pub id: String,
+}
+
+pub enum TokenType {
+    /// Native tokens
+    Native { denom: String },
+    /// CW20 tokens
+    Smart { contract_address: String },
+}
+/// The address of the VLP contract needed for the next swap.
+pub struct NextSwap {
+    pub vlp_address: String,
+}
 ```
+
+
 
 ### AddLiquidityRequest
 
 Send a message to the VLP requesting the addition of liquidity to the specified token pair.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum ExecuteMsg {
  AddLiquidityRequest {
         vlp_address: String,
@@ -134,7 +157,26 @@ pub enum ExecuteMsg {
         timeout: Option<u64>,
     },
 }
-```
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "add_liquidity_request": {
+    "vlp_address": "nibi1...",
+    "token_1_liquidity": "10000",  
+    "token_2_liquidity": "40000",  
+    "slippage_tolerance": 500,        
+    "timeout": 120                    
+  }
+}
+`
+}
+]} />
+
 | **Name** | Description |
 |---|---|
 | **vlp_address** | The address of the virtual liquidity pool for the token pair. |
@@ -143,32 +185,59 @@ pub enum ExecuteMsg {
 | **slippage_tolerance** | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as a percentage between 1 and 100. |
 | **timeout** | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. | 
 
-JSON Example:
-
-```JSON
-{
-  "add_liquidity_request": {
-    "vlp_address": "string_value_here",
-    "token_1_liquidity": "10000",  
-    "token_2_liquidity": "40000",  
-    "slippage_tolerance": 500,        
-    "timeout": 120                    
-  }
-}
-```
-
 ### RequestPoolCreation
 
 Sends a request to the VSL to create a new pool.
-
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum ExecuteMsg {
      RequestPoolCreation {
         pair_info: PairInfo,
         timeout: Option<u64>,
     },
 }
-```
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "request_pool_creation": {
+    "pair_info": {
+      "token_1": {
+          "token": {
+              "id": "token_1_id_value"
+        },
+          "token_type": {
+              "native": {
+                "denom": "native_denom_value"
+          }
+        }
+      },
+      "token_2": {
+          "token": {
+              "id": "token_2_id_value"
+        },
+        "token_type": {
+          "native": {
+            "denom": "native_denom_value"
+          }
+        }
+      }
+    },
+    "timeout": 120
+  }
+}
+`
+}
+]} />
+
 | **Name** | Description |
 |---|---|
 | **pair_info** | Key information needed about the 2 tokens to be able to create a new pool. |
@@ -186,86 +255,68 @@ pub struct PairInfo {
 }
 ```
 
-
-JSON Example:
-
-```JSON
-
-{
-  "request_pool_creation": {
-    "pair_info": {
-      "token_1": {
-        "token": {
-          "id": "token_1_id_value"
-        },
-        "token_type": {
-          "native": {
-            "denom": "native_denom_value"
-          }
-        }
-      },
-      "token_2": {
-        "token": {
-          "id": "token_2_id_value"
-        },
-        "token_type": {
-          "native": {
-            "denom": "native_denom_value"
-          }
-        }
-      }
-    },
-    "timeout": 120
-  }
-}
-```
-
-### RequestAddAllowedDenom
+### RequestRegisterDenom
 
 Requests the addition of a denomination for a token. 
-```rust
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum ExecuteMsg {
-  RequestAddAllowedDenom {
+  RequestRegisterDenom {
         denom: String,
         token_id: Token,
     },
 }
-```
-| Name | Description |
-|---|---|
-| denom | The new denomination to be added for the speicified token Id.|
-| token_id | The Id that points to the token and all of its denominations.  |
-
-JSON Example:
-
-```JSON
+`
+},
 {
-  "request_add_allowed_denom": {
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "request_register_denom": {
     "denom": "uatom",
     "token_id": {
       "id": "atom" 
     }
   }
 }
-```
+`
+}
+]} />
+
+| Name | Description |
+|---|---|
+| denom | The new denomination to be added for the specified token Id.|
+| token_id | The Id that points to the token and all of its denominations.  |
+
 ### RequestDeregisterDenom 
 Requests the removal of a specific denomination for a token. 
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum ExecuteMsg {
   RequestDeregisterDenom {
         denom: String,
         token_id: Token,
     },
 }
-```
-| Name | Description |
-|---|---|
-| denom | The denomination to be removed for the speicified token Id.|
-| token_id | The Id that points to the token and all of its denominations.  |
-
-JSON Example:
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
   "request_deregister_denom": {
     "denom": "uatom",
@@ -274,7 +325,14 @@ JSON Example:
     }
   }
 }
-```
+`
+}
+]} />
+
+| Name | Description |
+|---|---|
+| denom | The denomination to be removed for the specified token Id.|
+| token_id | The Id that points to the token and all of its denominations.  |
 
 ## Query Messages 
 
@@ -284,17 +342,28 @@ List of queries that can be performed on the Factory contract.
 
 Queries the information related to the Factory setup.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
 #[returns(StateResponse)]
     GetState {},
 }
-```
-
-JSON Example:
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {"get_state":{}}
-```
+`
+}
+]} />
+
 The query returns the following response:
 
 ```rust
@@ -313,32 +382,35 @@ pub struct StateResponse {
 | **hub_channel**    | The IBC channel used to forward messages to and from the hub.                  |
 | **admin**          | The address of the admin of the factory.                        |
 
-JSON Example:
-```JSON
-{
-  "chain_id": "nibiru-2",
-  "router_contract": "nibi1...",
-  "hub_channel": "hub_channel_value",
-  "admin": "cosmo1..."
-}
-```
-
 ### GetEscrow
 Queries the Escrow address for the specified token Id.
-```rust
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
     #[returns(GetEscrowResponse)]
     GetEscrow { token_id: String },
 }
-```
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{"get_escrow":{"token_id":"id_1"}}
+`
+}
+]} />
+
 | **Name** | **Description** |
 |---|---|
 | **token_id** | The token Id of the token we want to get the escrow for. |
 
-JSON Example:
-```JSON
-{"get_escrow":{"token_id":"id_1"}}
-```
 The query returns the following response:
 ```rust
 #[cw_serde]
@@ -354,25 +426,35 @@ pub struct GetEscrowResponse {
 
 Queries the token pair information for the specified VLP address.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
     #[returns(GetPoolResponse)]
     GetPool { vlp: String },
 }
-```
-| **Name** | **Description** |
-|---|---|
-| **vlp** | The address of the virtual liquidity pool. |
-
-JSON Example:
-
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
   "get_pool":{
     "vlp":"nibi1..."
   }
 }
-```
+`
+}
+]} />
+
+| **Name** | **Description** |
+|---|---|
+| **vlp** | The address of the virtual liquidity pool. |
 
 The query returns the following response:
 
@@ -391,22 +473,32 @@ pub struct PairInfo {
 
 ### GetAllPools
 
-Queries all the pools registered in the factory returning the VLP address for the pool and the token information for the pair.
+Queries all the pools registered in the factory, returning the VLP address for the pool and the token information for the pair.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
  #[returns(AllPoolsResponse)]
     GetAllPools {},
 }
-```
-
-JSON Example:
-
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
 "get_all_pools":{}
 }
-```
+`
+}
+]} />
+
 The query returns the following response:
 
 ```rust
@@ -424,7 +516,12 @@ pub struct PoolVlpResponse {
 
 ### PendingSwapsUser
 Queries the swaps that are pending for the specified user address.
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
     #[returns(GetPendingSwapsResponse)]
     PendingSwapsUser {
@@ -433,15 +530,13 @@ pub enum QueryMsg {
         upper_limit: Option<u128>,
     },
 }
-```
-| **Name**       | **Description**                                 |
-|----------------|-------------------------------------------------|
-| **user**       | The address of the user to query swaps for.                     |
-| **lower_limit**| Optional lower limit for pagination.            |
-| **upper_limit**| Optional upper limit for pagination.            |
-
-JSON Example:
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
   "pending_swaps_user": {
     "user": "cosmo1...",
@@ -449,7 +544,16 @@ JSON Example:
     "upper_limit": 15
   }
 }
-```
+`
+}
+]} />
+
+| **Name**       | **Description**                                 |
+|----------------|-------------------------------------------------|
+| **user**       | The address of the user to query swaps for.                     |
+| **lower_limit**| Optional lower limit for pagination.            |
+| **upper_limit**| Optional upper limit for pagination.            |
+
 The query returns the following response:
 
 ```rust
@@ -479,8 +583,14 @@ pub struct SwapInfo {
 | **swap_id**       | The unique Id for the swap.                           |
 
 ### PendingLiquidity
-Queries the Liquidity that is pending for the specified user address.
-```rust
+
+Queries the liquidity that is pending for the specified user address.
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
   #[returns(GetPendingLiquidityResponse)]
     PendingLiquidity {
@@ -489,23 +599,30 @@ pub enum QueryMsg {
         upper_limit: Option<u128>,
     },
 }
-```
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "pending_liquidity": {
+    "user": "cosmo1...",
+    "lower_limit": 20,
+    "upper_limit": 30
+  }
+}
+`
+}
+]} />
+
 | **Name**       | **Description**                                 |
 |----------------|-------------------------------------------------|
 | **user**       | The address of the user to query liquidity for.                       |
 | **lower_limit**| Optional lower limit for pagination.            |
 | **upper_limit**| Optional upper limit for pagination.            |
 
-JSON Example:
-```JSON
-{
-  "pending_swaps_user": {
-    "user": "cosmo1...",
-    "lower_limit": 20,
-    "upper_limit": 30
-  }
-}
-```
 The query returns the following response:
 
 ```rust

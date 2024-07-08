@@ -2,19 +2,25 @@
 sidebar_position: 2
 description: "The Virtual Liquidity Pool Smart Contract"
 ---
+import Tabs from '@site/src/components/Tabs';
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract as users are not allowed to execute any messages on the VLP contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the VLP contract.
 :::
 List of queries that can be performed on the VLP contract.
 
 ### SimulateSwap
 Simulates a swap for the specified asset in the VLP.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
-    // Query to simulate a swap for the asset
+
     #[returns(GetSwapResponse)]
     SimulateSwap {
         asset: Token,
@@ -22,15 +28,13 @@ pub enum QueryMsg {
         swaps: Vec<NextSwap>,
     },
 }
-```
-| Name          | Description                       |
-|---------------|-----------------------------------|
-| `asset`       | The token being swapped in. Provide the token Id for the token. Needs to be one of the two tokens in the VLP.|
-| `asset_amount`| The amount of the asset provided.          |
-| `swaps`       | A vector of the addresses of the VLPs for next swaps. Used in case of multi-hop swaps.  |
-
-JSON Example:
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
   "simulate_swap": {
     "asset": {
@@ -39,15 +43,24 @@ JSON Example:
     "asset_amount": "1000",
     "swaps": [
       {
-        "vlp_address": "cosmo1..."
+        "vlp_address": "nibi1..."
       },
       {
-        "vlp_address": "comso1..."
+        "vlp_address": "nibi1..."
       }
     ]
   }
 }
-```
+`
+}
+]} />
+
+| Name          | Description                       |
+|---------------|-----------------------------------|
+| `asset`       | The token being swapped in. Provide the token Id for the token. Needs to be one of the two tokens in the VLP.|
+| `asset_amount`| The amount of the asset provided.          |
+| `swaps`       | A vector of the addresses of the VLPs for next swaps. Used in case of multi-hop swaps.  |
+
 The query returns the following response:
 
 ```rust
@@ -65,18 +78,30 @@ pub struct GetSwapResponse {
 ### Liquidity
 Queries the total liquidity reserves for the token pair in the VLP.
 
-```rust 
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
     #[returns(GetLiquidityResponse)]
     Liquidity {},
 }
-```
-JSON Example:
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {
   "liquidity": {}
 }
-```
+`
+}
+]} />
+
 The query returns the following response:
 
 ```rust
@@ -102,17 +127,28 @@ pub struct Pair {
 ### Fee
 Queries the distribution structure for any applied fees on the VLP.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
   #[returns(FeeResponse)]
     Fee {},
 }
-```
-JSON Example:
-
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {"fee":{}}
-```
+`
+}
+]} />
+
 The query returns the following response:
 
 ```rust
@@ -138,22 +174,32 @@ pub struct Fee {
 ### Pool
 Queries the pool information for the VLP pair on the specified chain.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
    #[returns(PoolResponse)]
     Pool { chain_id: String },
 }
-```
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{"pool":{}}
+`
+}
+]} />
 
 | Name          | Description                       |
 |---------------|-----------------------------------|
 | `chain_id`       | The Id of the chain to get pool info from for the pair. |
 
-JSON Example:
-
-```JSON
-{"pool":{}}
-```
 The query returns the following response:
 
 ```rust
@@ -173,24 +219,34 @@ pub struct Pool {
 | Name         | Description                                 |
 |--------------|---------------------------------------------|
 | `chain`      | The chain where the pool is deployed.       |
-| `pair`       | The token Id of each and type of each token of the pool.  |
+| `pair`       | The token Id and type of each token of the pool.  |
 | `reserve_1`  | The total reserve of the first token in the VLP on the specified chain.       |
 | `reserve_2`  | The total reserve of the second token in the VLP on the specified chain.      |
 
 ### GetAllPools
 Queries all the pools for the token pair of the VLP on all chains.
 
-```rust 
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum QueryMsg {
       #[returns(AllPoolsResponse)]
     GetAllPools {},
 }
-```
-JSON Example:
-
-```JSON
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
 {"get_all_pools":{}}
-```
+`
+}
+]} />
 
 The query returns the following response:
 
