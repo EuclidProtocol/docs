@@ -92,6 +92,13 @@ const config: Config = {
           position: "left",
           label: "Smart Contracts",
         },
+
+        {
+          type: "docSidebar",
+          sidebarId: "apiSidebar",
+          position: "left",
+          label: "API",
+        },
  
         {
           href: "https://github.com/EuclidProtocol/docs",
