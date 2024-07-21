@@ -6,7 +6,7 @@ import Tabs from '@site/src/components/Tabs';
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract, as users are not allowed to execute any messages on the Router contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the Router contract directly.
 :::
 
 List of queries that can be performed on the Router contract.
@@ -46,11 +46,11 @@ pub struct StateResponse {
     pub vcoin_address: Option<Addr>,
 }
 ```
-| **Name**       | **Description**                                 |
-|----------------|-------------------------------------------------|
-| **admin**       | The admin address, which is the only address allowed to call messages on the contract.|
-| **vlp_code_id**| The code_id used to instantiate new vlp contracts on the hub chain.|
-| **vcoin_address**| The address of the Virtual Balance contract used by the router.     |
+| **Name**         | **Type**          | **Description**                                                                                 |
+|------------------|-------------------|-------------------------------------------------------------------------------------------------|
+| **admin**        | `String`          | The admin address, which is the only address allowed to call messages on the contract.          |
+| **vlp_code_id**  | `u64`             | The code_id used to instantiate new VLP contracts on the hub chain.                             |
+| **vcoin_address**| `Option<Addr>`    | The address of the Virtual Balance contract used by the router.                                 |
 
 
 ### GetChain
@@ -63,7 +63,7 @@ language: 'rust',
 content: `
 pub enum QueryMsg {
     #[returns(ChainResponse)]
-    GetChain { chain_id: String },
+    GetChain { chain_uid: ChainUid },
 }
 `
 },
@@ -73,14 +73,14 @@ label: 'JSON',
 language: 'json',
 content: `
 
-{"get_chain":{"chain_id":"chain-1"}}
+{"get_chain":{"chain_uid":"chainA"}}
 `
 }
 ]} />
 
-| **Name**       | **Description**                                 |
+| **Name**       | String| **Description**                                 |
 |----------------|-------------------------------------------------|
-| **chain_id**       | The unique Id of the chain to get info for.|
+| **chain_uid**       |ChainUid| The unique Id of the chain to get info for.|
 
 
 The query returns the following response:
@@ -88,6 +88,7 @@ The query returns the following response:
 ```rust
 pub struct ChainResponse {
     pub chain: Chain,
+    pub chain_uid: ChainUid,
 }
 
 pub struct Chain {
@@ -97,12 +98,12 @@ pub struct Chain {
     pub from_factory_channel: String,
 }
 ```
-| **Name**       | **Description**                                 |
-|----------------|-------------------------------------------------|
-| **factory_chain_id**       | The chain Id of the factory. |
-| **factory**| The contract address of the factory contract on the specified chain.|
-| **from_hub_channel**| The channel Id that connects the hub to the router.     |
-| **from_factory_channel**| The channel Id that connnects the factory to the router.    |
+| **Name**              | **Type**   | **Description**                                                             |
+|-----------------------|------------|-----------------------------------------------------------------------------|
+| **factory_chain_id**  | `String`   | The chain Id of the factory.                                                |
+| **factory**           | `String`   | The contract address of the factory contract on the specified chain.         |
+| **from_hub_channel**  | `String`   | The channel Id that connects the hub to the router.                         |
+| **from_factory_channel** | `String` | The channel Id that connects the factory to the router.                     |
 
 
 
@@ -145,7 +146,7 @@ language: 'rust',
 content: `
 pub enum QueryMsg {
    #[returns(VlpResponse)]
-    GetVlp { token_1: Token, token_2: Token },
+    GetVlp { pair: Pair },
 }
 `
 },
@@ -154,14 +155,11 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
-
 {
   "get_vlp": {
-    "token_1": {
-      "id": "token_1_id_value"
-    },
-    "token_2": {
-      "id": "token_2_id_value"
+    "pair": {
+      "token_1": "atom",
+      "token_2": "osmo"
     }
   }
 }
@@ -169,10 +167,9 @@ content: `
 }
 ]} />
 
-| **Name**       | **Description**                                 |
-|----------------|-------------------------------------------------|
-| **token_1**       | The Id of the first token in the VLP to fetch.|
-| **token_2**| The Id of the second token in the VLP to fetch.|
+| **Name**  | **Type** | **Description**                      |
+|-----------|----------|--------------------------------------|
+| `pair`    | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)   | The pair of tokens for the query.    |
 
 The query returns the following response:
 
@@ -199,10 +196,13 @@ id: 'rust-example',
 label: 'Rust',
 language: 'rust',
 content: `
-pub enum QueryMsg {
   #[returns(AllVlpResponse)]
-    GetAllVlps {},
-}
+    GetAllVlps {
+        start: Option<(Token, Token)>,
+        end: Option<(Token, Token)>,
+        skip: Option<usize>,
+        limit: Option<usize>,
+    },
 `
 },
 {
@@ -215,32 +215,35 @@ content: `
 }
 ]} />
 
+| **Name**  | **Type**                       | **Description**                                              |
+|-----------|--------------------------------|--------------------------------------------------------------|
+| `start`   | `Option<(Token, Token)>`       | Optional start pair of tokens for pagination.                |
+| `end`     | `Option<(Token, Token)>`       | Optional end pair of tokens for pagination.                  |
+| `skip`    | `Option<usize>`                | Optional number of pairs to skip. Defaults to 0.                            |
+| `limit`   | `Option<usize>`                | Optional limit on the number of pairs to return. Limit defaults to 10.            |
+
 The query returns a vector of **VlpResponse** each containing information about on VLP.
 
 ### SimulateSwap
-Simulates a specified swap.
+Simulates a swap based on the specified info.
 
 <Tabs tabs={[
 {
 id: 'rust-example',
 label: 'Rust',
 language: 'rust',
-content: `
-
-pub enum QueryMsg {
-    #[returns(SimulateSwapResponse)]
+content:`
+   #[returns(SimulateSwapResponse)]
     SimulateSwap(QuerySimulateSwap),
 
     pub struct QuerySimulateSwap {
-    pub factory_chain: String,
-    pub to_address: String,
-    pub to_chain_id: String,
     pub asset_in: Token,
     pub amount_in: Uint128,
+    pub asset_out: Token,
     pub min_amount_out: Uint128,
-    pub swaps: Vec<NextSwap>,
+    pub swaps: Vec<NextSwapPair>,
 }
-}
+
 `
 },
 {
@@ -248,22 +251,21 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
+
 {
   "simulate_swap": {
-    "factory_chain": "cosmo1...",
-    "to_address": "cosmo1...",
-    "to_chain_id": "destination_chain_id_value",
-    "asset_in": {
-      "id": "input_token_id_value"
-    },
-    "amount_in": "1000",
-    "min_amount_out": "900",
+    "asset_in": "tokenA",
+    "amount_in": "1000000",
+    "asset_out": "tokenB",
+    "min_amount_out": "950000",
     "swaps": [
       {
-        "vlp_address": "address1"
+        "token_in": "tokenA",
+        "token_out": "tokenC"
       },
       {
-        "vlp_address": "address2"
+        "token_in": "tokenC",
+        "token_out": "tokenB"
       }
     ]
   }
@@ -272,37 +274,37 @@ content: `
 }
 ]} />
 
-| Name             | Description                                       |
-|------------------|---------------------------------------------------|
-| `factory_chain`  | The address of the factory contract.          |
-| `to_address`     | The address to send the swapped assets to.        |
-| `to_chain_id`    | The chain Id where the assets will be sent.       |
-| `asset_in`       | The token being swapped.                          |
-| `amount_in`      | The amount of the asset being swapped.            |
-| `min_amount_out` | The minimum amount of the output asset expected for the swap to be considered a success.  |
-| `swaps`          | A vector of addresses of VLPs that the swap will go through. Used in case of multi-hop swaps.                      |
+| **Name**         | **Type**            | **Description**                                             |
+|------------------|---------------------|-------------------------------------------------------------|
+| `asset_in`       | [`Token`](../Euclid%20Smart%20Contracts/overview#token)             | The identifier for the input asset token.                   |
+| `amount_in`      | `Uint128`           | The amount of the input asset token.                        |
+| `asset_out`      | `Token`             | The identifier for the output asset token.                  |
+| `min_amount_out` | `Uint128`           | The minimum amount of the output asset token.               |
+| `swaps`          | `Vec<NextSwapPair>` | A list of swap pairs needed to complete the swap.           |
 
+With the following struct:
 
-JSON Example:
+```rust
+
+/// The next token pair in the swap route
+pub struct NextSwapPair {
+    pub token_in: Token,
+    pub token_out: Token,
+}
+```
+| **Name**   | **Type**  | **Description**                                   |
+|------------|-----------|---------------------------------------------------|
+| `token_in` |[`Token`](../Euclid%20Smart%20Contracts/overview#token)   | The token Id for the input token in the swap.   |
+| `token_out`| [`Token`](../Euclid%20Smart%20Contracts/overview#token)   | The token Id for the output token in the swap.  |
 
 The query returns the following response:
-
 ```rust
 pub struct SimulateSwapResponse {
     pub amount_out: Uint128,
     pub asset_out: Token,
-    pub out_chains: Vec<SwapOutChain>,
-
-    pub struct SwapOutChain {
-    pub chain: Chain,
-    // amount of tokens released on the above chain.
-    pub amount: Uint128,
-}
-
 }
 ```
-| Name             | Description                                       |
-|------------------|---------------------------------------------------|
-| `amount_out`  | The amount of tokens that the user will recieve.         |
-| `asset_out`     | The token Id of the token that will be received by the user after the swap. |
-| `out_chains`    | A vector of chains and amounts where the tokens will be released.  |
+| **Name**     | **Type**  | **Description**                               |
+|--------------|-----------|-----------------------------------------------|
+| `amount_out` | `Uint128` | The amount of the output asset.               |
+| `asset_out`  | [`Token`](../Euclid%20Smart%20Contracts/overview#token)   | The identifier for the output asset token.    |

@@ -6,7 +6,7 @@ import Tabs from '@site/src/components/Tabs';
 
 ## Query Messages 
 :::note
-We will only go through the queries for this contract, as users are not allowed to execute any messages on the Virtual Balance contract.
+We will only go through the queries for this contract, as users are not allowed to execute any messages on the Virtual Balance contract directly.
 :::
 List of queries that can be performed on the VLP contract.
 
@@ -48,10 +48,10 @@ pub struct State {
 }
 ```
 
-| Name          | Description                       |
-|---------------|-----------------------------------|
-| `router`       | The contract address of the router that relays to and from this contract.|
-| `admin`       | The contract address of the admin of the contract.|
+| **Name** | **Type**  | **Description**                                                                     |
+|----------|-----------|-------------------------------------------------------------------------------------|
+| `router` | `String`  | The contract address of the router that relays to and from this contract.            |
+| `admin`  | `Addr`    | The contract address of the admin of the contract.                                   |
 
 ### GetBalance 
 Queries the balance of the specified user on the specified chain for the specified token.
@@ -68,9 +68,13 @@ pub enum QueryMsg {
 }
 
 pub struct BalanceKey {
-    pub chain_id: ChainId,
-    pub address: AnyChainAddress,
+    pub cross_chain_user: CrossChainUser,
     pub token_id: TokenId,
+}
+
+pub struct CrossChainUser {
+    pub chain_uid: ChainUid,
+    pub address: String,
 }
 `
 },
@@ -80,13 +84,13 @@ label: 'JSON',
 language: 'json',
 content: `
 {
-  "get_balance":{
-    "balance_key":{
-    "chain_id": "chain_id_value",
-    "address": "cosmo1...",
-    "token_id": {
-      "id": "token_id_value"
-    }
+  "get_balance": {
+    "balance_key": {
+      "cross_chain_user": {
+        "chain_uid": "chainC",
+        "address": "comso1..."
+      },
+      "token_id": "token-id"
     }
   }
 }
@@ -94,24 +98,29 @@ content: `
 }
 ]} />
 
-| Name          | Description                       |
-|---------------|-----------------------------------|
-| `chain_id`       | The unique Id of the chain we want to get the balance on. Specified as a string.|
-| `address`       | The address of the user to query the balance for. Specified as a string.|
-| `token_id`       | The Id of the token to get the balance of.|
+| **Name**       | **Type**         | **Description**                              |
+|----------------|------------------|----------------------------------------------|
+| `balance_key`  | `BalanceKey`     | The key used to get the balance.             |
+
+BalanceKey:
+
+| **Name**            | **Type**          | **Description**   |
+|---------------------|-------------------|-----------------------------------------------------------|
+| `cross_chain_user`  | `CrossChainUser`  | The user on the specified chain.                          |
+| `token_id`          | `TokenId`         | The identifier of the token.                              |
+
+
 
 The query returns the following response:
 
 ```rust 
 pub struct GetBalanceResponse {
     pub amount: Uint128,
-    pub balance_key: BalanceKey,
 }
 ```
 | Name          | Description                       |
 |---------------|-----------------------------------|
 | `amount`       | The amount of tokens in the specified user's balance. |
-| `balance_key`       | The chain Id, address of user, and token_id.|
 
 ### GetUserBalances
 
@@ -125,7 +134,7 @@ language: 'rust',
 content: `
 pub enum QueryMsg {
     #[returns(GetUserBalancesResponse)]
-    GetUserBalances { chain_id: String, address: String },
+    GetUserBalances { user: CrossChainUser },
 }
 `
 },
@@ -134,12 +143,13 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
-
 {
-    "get_user_balances":{
-    "chain_id":"chain_id_value",
-    "address":"cosmos1..."
+  "get_user_balances": {
+    "user": {
+      "chain_uid": "chainA",
+      "address": "nibi1..."
     }
+  }
 }
 `
 }
@@ -147,7 +157,7 @@ content: `
 
 | Name          | Description                       |
 |---------------|-----------------------------------|
-| `chain_id`       | The unique Id of the chain we want to get the balances on.|
+| `chain_uid`       | The unique Id of the chain we want to get the balances on.|
 | `address`       | Address of the user we are getting the balances for.|
 
 The query returns a vector of **GetBalanceResponse** with each belonging to the balance of a token.
