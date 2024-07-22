@@ -19,9 +19,9 @@ Queries contract information for the specified chain Id and Type.
 
 ```graphql
 
-query Chains($chainId: String!, $type: String!) {
+query Contracts($chainUId: String!, $type: String!) {
   chains {
-    contracts(chainId: $chainId, type: $type) {
+    contracts(chainUId: $chainUId, type: $type) {
       CreatedAt
       UpdatedAt
       ContractAddress
@@ -39,9 +39,9 @@ query Chains($chainId: String!, $type: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Chains($chainUId: String!, $type: String!) {\n  chains {\n    contracts(chainUId: $chainUId, type: $type) {\n      CreatedAt\n      UpdatedAt\n      ContractAddress\n      ChainUID\n      Type\n    }\n  }\n}","variables":{"chainUId":"vsl","type":"vlp"}}'
+    --data '{"query":"query Contracts($chainUId: String!, $type: String!) {\n  chains {\n    contracts(chainUId: $chainUId, type: $type) {\n      CreatedAt\n      UpdatedAt\n      ContractAddress\n      ChainUID\n      Type\n    }\n  }\n}","variables":{"chainUId":"vsl","type":"vlp"}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDOAFACRSU0CqAkmOkQMop4aAcwCEAGiKMUBAA4Ie-QUlEBKIsAA6SIkRbU66rTp1QIqPBSgoGe9lx7NWSTmAnS5D9wjWbtxnSR4CBQoCGAAgihG-kRsMmAhYZHR-iRmApYo4WBgQbS0Kcbk%2BpwAIoU6ACqyCIUAvtENSHUgYiAAbhSCFABGADYItBggvjoaILbOXOM84%2B20feNi0eNeM0RzfTLjWi11QA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMISp4CGUKAzgBQAkUAFpQJZICqAkmOkQDKKPJwDmAQgA0RRigIAHBAOGikkgJRFgAHSREirDklra9Bg1HIjqdekc69%2Bsh9z4z5SgXMUItu-QsDEjwEShQEMABBFHMgoi4FMHDImLigsgpbKLAwUNpadIsSNkceABEigwAVXyKAXzjGpHqQKRAAN0pRSgAjABsEWgwQAIMdEFcnCYEJjtp%2Biak4ic8EGaI5-oUJvVb6oA)
 
 ### Arguments
 
@@ -55,7 +55,7 @@ curl --request POST \
 | CreatedAt       | String | The date and time when the contract was created.        |
 | UpdatedAt       | String | The date and time when the contract was last updated.   |
 | ContractAddress | String | The address of the contract on the blockchain.          |
-| ChainID         | String | The unique identifier of the chain where the contract is deployed. |
+| ChainUID         | String | The unique identifier of the chain where the contract is deployed. |
 | Type            | String | The type of the contract.         |
 
 ## Keplr Config
@@ -263,6 +263,46 @@ curl --request POST \
 | image         | String | URL to an image representing the token.         |
 | price         | Float  | The current price of the token.                 |
 
+## Token Metadata by Id
+
+Queries token metadata information for the specified token Id.
+
+```graphql
+query Token_metadata_by_Id($tokenId: String!) {
+  chains {
+    token_metadata_by_Id(token_id: $tokenId) {
+      coinDecimal
+      displayName
+      tokenId
+      description
+      image
+      price
+    }
+  }
+}
+```
+
+### Example
+
+```bash
+curl --request POST \
+    --header 'content-type: application/json' \
+    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --data '{"query":"query Token_metadata_by_Id($tokenId: String!) {\n  chains {\n    token_metadata_by_Id(token_id: $tokenId) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n    }\n  }\n}","variables":{"tokenId":"usdt"}}'
+```
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BoigIZh31UBGBVAkmABQAkKFZF3REAyijwBLJAHMAhAEoiwADpIiRKAAs60gM7K1GjQMpIaCeo2ZtOPU9UlgR-QUi5LV64xqgRpACIIUJJwdAA2Rj5EYJJ6AA7hdAQAcnSIUT4O7mCZxmAIelBS8SiSEEh5GqF0MghVRPFSUPXeGgC%2BUZ1I7SAANCAAbnRSdCzhhRggXhoqINlccyJzMHpgKHNqve1AA)
+
+### Return Fields
+
+| Field         | Type   | Description                                     |
+|---------------|--------|-------------------------------------------------|
+| coinDecimal   | Int    | The number of decimal places for the token.     |
+| displayName   | String | The display name of the token.                  |
+| tokenId       | String | The unique identifier of the token.             |
+| description   | String | A brief description of the token.               |
+| image         | String | URL to an image representing the token.         |
+| price         | Float  | The current price of the token in dollars.                |
+
 
 ## Chain Id
 
@@ -308,14 +348,16 @@ curl --request POST \
 
 ## Chain UIDs
 
-Queries the factory address and unique identifier (UID) for a specified chain using its chain ID.
+Queries the factory address, unique identifier (UID), name and logo for a specified chain using its chain ID.
 
 ```graphql
-query Chains($chainId: String!) {
+query Chain_id($chainId: String!) {
   chains {
     chain_uids(chain_id: $chainId) {
       factory_address
       chain_uid
+      display_name
+      logo
     }
   }
 }
@@ -327,10 +369,10 @@ query Chains($chainId: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Chains($chainId: String!) {\n  chains {\n    chain_uids(chain_id: $chainId) {\n      factory_address\n      chain_uid\n    }\n  }\n}","variables":{"chainId":"localpoola-1"}}'
+    --data '{"query":"query Chain_id($chainId: String!) {\n  chains {\n    chain_uids(chain_id: $chainId) {\n      factory_address\n      chain_uid\n      display_name\n      logo\n    }\n  }\n}","variables":{"chainId":"localpoola-1"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDOAFACRSU0CSY6RAyinjQHMAhAEoiwADpIiRFtTripMmXJoB9GFTANVSNVq7NWSDmMnTlMgGYUoKCITUUwYPAlq0ll2cY1avMgC%2BXsFIgSAANCAAbhT8FABGADbuGCDmMhIguhxZXFlJ0BRJAA4QEEkUALQAjFlS4YFAA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6VYAFACRSU0CSY6RAyinhoBzAIQBKIsAA6SIkTbUkAZ0ky5chTVowGSxproMerdki4Tps9XIBmFKCgiFaFMGDwIlStdfmntDD7WYFRKAA4ANhQEtEgUiEHqERBCEIkAvj6ZSOkgADQgAG4UghQARhGeGCCWclIgBlz1PPXJUBQRYRAQUQC0AIz1MrnpQA)
 
 ### Arguments
 
@@ -338,16 +380,50 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
-|------------------------|--------|---------------------------------------------------------|
-| chain_uids             | [ChainUID](#chainuid) | The factory address and UID for the specified chain. |
+| **Field**          | **Type** | **Description**                                      |
+|--------------------|----------|------------------------------------------------------|
+| `factory_address`  | `String` | The address of the factory contract.                 |
+| `chain_uid`        | `String` | The unique identifier (UID) of the chain.            |
+| `display_name`     | `String` | The display name of the chain.                       |
+| `logo`             | `String` | The URL or reference to the chain's logo image.      |
 
-### ChainUID
 
-| Field            | Type   | Description                               |
-|------------------|--------|-------------------------------------------|
-| factory_address  | String | The address of the factory contract.      |
-| chain_uid        | String | The unique identifier (UID) of the chain. |
+## All Chain UIDs
+Queries the factory address, unique identifier (UID), name and logo for a all chains.
+
+```graphql
+query All_chain_uids {
+  chains {
+    all_chain_uids {
+      factory_address
+      chain_uid
+      display_name
+      logo
+    }
+  }
+}
+```
+
+### Example
+
+```bash
+curl --request POST \
+    --header 'content-type: application/json' \
+    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --data '{"query":"query All_chain_uids {\n  chains {\n    all_chain_uids {\n      factory_address\n      chain_uid\n      display_name\n      logo\n    }\n  }\n}","variables":{}}'
+```
+
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BlABYCGAlkpTA2AM5HAA6SRRtRkk48%2B-InQrV6TFmxG9x4gGZ0oKCIUp0wYPAnbtFSgTOaswxpWAbsADmToFKSOoiviyEAOYQPAX2NApH8QABoQADc6PAY6ACMyAwwQUVD-IA)
+
+
+### Return Fields
+
+| **Field**          | **Type** | **Description**                                      |
+|--------------------|----------|------------------------------------------------------|
+| `factory_address`  | `String` | The address of the factory contract.                 |
+| `chain_uid`        | `String` | The unique identifier (UID) of the chain.            |
+| `display_name`     | `String` | The display name of the chain.                       |
+| `logo`             | `String` | The URL or reference to the chain's logo image.      |
 
 
 ## Router

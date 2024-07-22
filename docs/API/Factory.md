@@ -14,11 +14,11 @@ You can test any of the queries in the [GraphQL Playground](https://api.staging.
 
 ## All Pools
 
-Queries all pool information associated with a specified factory contract on a given blockchain. It includes details about each pool, including the token pairs involved and their respective types.
+Queries all pool information associated with a specified factory contract which is retrieved by a chain UID. It includes details about each pool, including the token pairs involved and their respective types. 
 
 ```graphql
-query Factory($contract: String!, $chainId: String!) {
-  factory(contract: $contract, chain_id: $chainId) {
+query Factory($chainUid: String!) {
+  factory(chain_uid: $chainUid) {
     all_pools {
       pools {
         pair {
@@ -37,22 +37,15 @@ query Factory($contract: String!, $chainId: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Factory($contract: String!, $chainId: String!) {\n  factory(contract: $contract, chain_id: $chainId) {\n    all_pools {\n      pools {\n        pair {\n          token_1\n          token_2\n        }\n        vlp\n      }\n    }\n  }\n}","variables":{"contract":"wasm1m8rqysrhhxj2zyvr9k4um7fcgmke72rnqtvfssasw4lat5pdna8sd0z7mz","chainId":"localpoola-1"}}'
+    --data '{"query":"query Factory($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    all_pools {\n      pools {\n        pair {\n          token_1\n          token_2\n        }\n        vlp\n      }\n    }\n  }\n}","variables":{"chainUid":"chaine"}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQSp4UrpEDKKeAlkgOYBCADREGACzJ8AkmHZdeAwQEoiwADpIiRAGatqBGo2at2DJt1aiokvgH0ecsTalJZqjVu1EyAG192AA4QEL4Azmqa3t7BoRGe0dGBUniRXoneVADWyHYAjFEZmRA5SHYATIUZAL5ViQBuvoF12rXpRG2tmtUgwiD1ZLxkAEa%2BCGEYIAlE6iDGlpSz6LMA7mRhcHlwABx4WARheOLiAB4AVuUAXgT1eACcWQAs8ADsOlD8cDkv5XhIWCh6jowmF1itHr4yCgAKyBMBIMjbMJgAAMlxecEus2EhVmLhkYCWMxAvmgflikIAtAUQN0QNUgA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcomQA259QAcIEcwGdJM06dv2nx16%2Bus8zk29TKgBrZHUARhcg4IgwjQAmaKCAX2TvADdza3S5NMCifLyZFJAAGhAMskEyACNzBAcMEC8iKRBVfS52nnbOpAR2kpAUoA)
 
 ### Arguments
 
-- **chainId** (String!): The identifier of the chain.
-- **contract** (String!): The contract address of the factory to query.
+- **chainUid** (String!): The unique identifier of the chain.
 
 ### Return Fields
-
-| Field                  | Type   | Description                                             |
-|------------------------|--------|---------------------------------------------------------|
-| all_pools              | [AllPools](#allpools) | All pool information associated with the specified factory.        |
-
-### AllPools
 
 | Field       | Type   | Description                             |
 |-------------|--------|-----------------------------------------|
@@ -77,8 +70,8 @@ curl --request POST \
 Queries the state information of a factory contract on a specified blockchain. It includes details about the factory's ID, chain ID, router contract, hub channel, and admin.
 
 ```graphql
-query Factory($contract: String!, $chainId: String!) {
-  factory(contract: $contract, chain_id: $chainId) {
+query Factory($chainUid: String!) {
+  factory(chain_uid: $chainUid) {
     state {
       chain_uid
       router_contract
@@ -94,15 +87,15 @@ query Factory($contract: String!, $chainId: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Factory($contract: String!, $chainId: String!) {\n  factory(contract: $contract, chain_id: $chainId) {\n    state {\n      chain_uid\n      router_contract\n      hub_channel\n      admin\n    }\n  }\n}","variables":{"contract":"wasm1m8rqysrhhxj2zyvr9k4um7fcgmke72rnqtvfssasw4lat5pdna8sd0z7mz","chainId":"localpoola-1"}}'
+    --data '{"query":"query Factory($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    state {\n      chain_uid\n      router_contract\n      hub_channel\n      admin\n    }\n  }\n}","variables":{"chainUid":"chaine"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQSp4UrpEDKKeAlkgOYBCADREGACzJ8AkmHZdeAwQEoiwADpIiRAGatqBGo2at2DJt1aiokvgH0ecsTalJZqjVu1EAzijIoCGqa3t4u9jCOIaFEeBAwgXh2xpaU0aHiMABGyZJISAgANuneZGBwfCUAvtE1SFUgwiAAbmS8ZFmFCD4YIJ7a6iApLGkYgwDuZD5wAIxwABx4WAQ%2BeOLiAB4AVgBMAF4EzXgAnADWACzwAOw6UPxwpwhXO3hIWCjNOj4%2BU%2BPnhQEAKwABzASDI8x8YAADHsrnA9oNhNFBuE3GBBuxBoVoGRCsCIBAAQBaGaDTQNKpAA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcogGcUZFAkkzTp1W01c79onggxredVAio8JVd7RhgAI19mJCQEABtg0zIwODYEgF9XDKQ0kAAaEAA3MkEyMNiEMwwQYzkpEEcOFwwiOoaEOpkctKA)
 
 ### Arguments
 
-- **chainId** (String!): The identifier of the chain.
-- **contract** (String!): The contract address of the factory to query.
+- **chainUid** (String!): The unique identifier of the chain.
+
 
 ### Return Fields
 
@@ -126,8 +119,8 @@ Queries all tokens associated with a factory contract on a specified blockchain.
 
 
 ```graphql
-query Factory($contract: String!, $chainId: String!) {
-  factory(contract: $contract, chain_id: $chainId) {
+query Factory($chainUid: String!) {
+  factory(chain_uid: $chainUid) {
     all_tokens {
       tokens
     }
@@ -140,16 +133,15 @@ query Factory($contract: String!, $chainId: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Factory($contract: String!, $chainId: String!) {\n  factory(contract: $contract, chain_id: $chainId) {\n    all_tokens {\n      tokens\n    }\n  }\n}","variables":{"contract":"wasm1m8rqysrhhxj2zyvr9k4um7fcgmke72rnqtvfssasw4lat5pdna8sd0z7mz","chainId":"localpoola-1"}}'
+    --data '{"query":"query Factory($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    all_tokens {\n      tokens\n    }\n  }\n}","variables":{"chainUid":"chaine"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQSp4UrpEDKKeAlkgOYBCADREGACzJ8AkmHZdeAwQEoiwADpIiRAGatqBGo2at2DJt1aiokvgH0ecsTalJZqjVu1EyAG192VADWyADOapre3sFhkd4AvnGJSPEgwiAAbmS8ZABGvgihGCCe2uogxpaU5ejlAO5koXAAjHAAHHhYBKF44uIAHgBWAEwAXgQZeACcQQAs8ADsOlD8cCELw3hIWCgZOqGhjXWzvmQoAKwADmBIZG2hYAAMowtwo%2BXCceUuMmA1ROVfNA-JcIBBTgBaZrlTSpeJAA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcomQA259VQDWyAM6SZp07YfPTAXw-eknkAA0IABuZIJkAEbmCPYYIMZyUiCq%2BlxJPEkpSAhJMv6eQA)
 
 
 ### Arguments
 
-- **chainId** (String!): The identifier of the chain.
-- **contract** (String!): The contract address of the factory to query.
+- **chainUid** (String!): The unique identifier of the chain.
 
 ### Return Fields
 
@@ -168,16 +160,20 @@ curl --request POST \
 Queries escrow information for a factory contract on a specified blockchain, including the escrow address and details about the denominations.
 
 ```graphql
-query Factory($contract: String!, $chainId: String!, $tokenId: String) {
-  factory(contract: $contract, chain_id: $chainId) {
+query Factory($chainUid: String!, $tokenId: String) {
+  factory(chain_uid: $chainUid) {
     escrow(token_id: $tokenId) {
       escrow_address
       denoms {
-        native {
-          denom
+        ... on NativeTokenType {
+          native {
+            denom
+          }
         }
-        smart {
-          contractAddress
+        ... on SmartTokenType {
+          smart {
+            contract_address
+          }
         }
       }
     }
@@ -190,16 +186,15 @@ query Factory($contract: String!, $chainId: String!, $tokenId: String) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Factory($contract: String!, $chainId: String!, $tokenId: String) {\n  factory(contract: $contract, chain_id: $chainId) {\n    escrow(token_id: $tokenId) {\n      escrow_address\n      denoms {\n        native {\n          denom\n        }\n        smart {\n          contractAddress\n        }\n      }\n    }\n  }\n}","variables":{"contract":"wasm1m8rqysrhhxj2zyvr9k4um7fcgmke72rnqtvfssasw4lat5pdna8sd0z7mz","chainId":"localpoola-1","tokenId":"osmo"}}'
+    --data '{"query":"query Factory($chainUid: String!, $tokenId: String) {\n  factory(chain_uid: $chainUid) {\n    escrow(token_id: $tokenId) {\n      escrow_address\n      denoms {\n        ... on NativeTokenType {\n          native {\n            denom\n          }\n        }\n        ... on SmartTokenType {\n          smart {\n            contract_address\n          }\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"chaine","tokenId":"usdt"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQSp4UrpEDKKeAlkgOYBCADREGACzJ8AkmHZdeAkWKoBrZLPnc%2B-AJRFgAHSREiAM1bUCNRs1bsGTbq1FRJfAPo85Yt1KSy%2BkYmpkQIAM5QeBAA7jRqyF4%2BdAkBYEHGoaERUbEeZGBgeBHhmVlEYMgQcOEGZeVESGQoPABuCHUhDaaVSNX15QC%2BA1nhcGR4KJ3dobbOlACChcXhpV1DI0TD69um24MgwiCtEzxkAEYANhEYIMGmhiBzLJSP6I8xZGMAjHAAHHgsARwnhxOIAB4AKwATAAvAitPAATlUABZ4AB2MxQfhwdQY6F4JBYFCtMyrL4xVGXZoAVgADmAmn9wmAAAywjFwWGPYTGR5%2BGRgN5ER6XaBkS70iAQGkAWm%2BvP5IFSshFjwgYwgj2MB0GQA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidKgGtkASW58BwgJRFgAHSREiAMwpVaTVkgD6MLjwbM2nMGs3adRBAGcoeCAHcaM5KctJPyQFBy1nZzcPb1MyMDA8N1dwiKIwZAg4V3UU1KIAOkKiCG0AOTIUFgA3BAAVCFkkWoIABwQcpzydJArq9scu1PSkTNyugF8xiMnO1ML84u1eODI8FHrG5raOwZ1XFbWd3Z0oEoEDWPjE12TZvJnBh9SnnSeZ8ZAxECrVljIAIwANm4MCABkQNCBjLYuJCeJDoUgEJCxClIcEFHCISAYK4wChIVoPuMgA)
 
 
 ### Arguments
 
-- **chainId** (String!): The identifier of the chain.
-- **contract** (String!): The contract address of the factory to query.
+- **chainUid** (String!): The unique identifier of the chain.
 - **token_id** (String!): The Id of the token to query in the escrow. 
 
 ### Return Fields
@@ -230,12 +225,12 @@ curl --request POST \
 
 ## VLP 
 
-Queries the VLP address for a specified token pair.
+Queries the VLP address for a specified token pair on the specified chain.
 
 ```graphql
 
-query Factory($contract: String!, $chainId: String!, $pair: PairInput) {
-  factory(contract: $contract, chain_id: $chainId) {
+query Factory($chainUid: String!, $pair: PairInput) {
+  factory(chain_uid: $chainUid) {
     vlp(pair: $pair) {
       vlp_address
     }
@@ -249,15 +244,14 @@ query Factory($contract: String!, $chainId: String!, $pair: PairInput) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Factory($contract: String!, $chainId: String!, $pair: PairInput) {\n  factory(contract: $contract, chain_id: $chainId) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"contract":"wasm1m8rqysrhhxj2zyvr9k4um7fcgmke72rnqtvfssasw4lat5pdna8sd0z7mz","chainId":"localpoola-1","pair":{"token_1":"osmo","token_2":"usdt"}}}'
+    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"chainUid":"chaine","pair":{"token_1":"osmo","token_2":"usdt"}}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQSp4UrpEDKKeAlkgOYBCADREGACzJ8AkmHZdeAkWIAOUvOwAK66UhUwUASiLAAOkiJEAZq2oEajZq3YMm3VqKiS%2BAfR5yxLykkWWMzC0siADcAGxUaNR4NVXUw80jI2JUfMjAwPAQAZ0L0yIBfUoqkMpBhECiyXjIAIxiijBBwy1MQR3dKHvQegHcyQrgARjgADjwsAkK8cXEADwArACYALwIovABOAGsAFngAdisofjhDhDONvCQsFCirYrHh45iyFABWFTASDI00KYAADFsznAtj1hOYekEZGBBkQejFoGQ4hAIN8ALQTWHwkCJPAorqokBUW5IHwEjAUiDjCCEiI9KnIHwbFE9GCglA9cxVGplIA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAA6s8PAAqyAkkikwUASiLAAOkiJEAZhSq0mrJAH0YXHg2ZtOYLbv0GiANwA2UmjJZykv54Lnru7t5SlmRgYHgIAM4JYe4AvinpSKkgYiAeZIJkAEZeiRggrjog5o5cVTxVNUgIVWJ6VcH12ilVVADWyJYAjF1VEAlwEK09IP2DAEyjIDAJYChVepnZqUA)
 
 ### Arguments
 
-- **chainId** (String!): The identifier of the chain.
-- **contract** (String!): The contract address of the factory to query.
+- **chainUid** (String!): The unique identifier of the chain.
 - **pair** (PairInput): The input for specifying the token pair by specifying token_1 and token_2.
 
 ### Return Fields

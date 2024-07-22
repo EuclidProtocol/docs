@@ -196,6 +196,7 @@ id: 'rust-example',
 label: 'Rust',
 language: 'rust',
 content: `
+pub enum QueryMsg {
   #[returns(AllVlpResponse)]
     GetAllVlps {
         start: Option<(Token, Token)>,
@@ -203,6 +204,7 @@ content: `
         skip: Option<usize>,
         limit: Option<usize>,
     },
+}
 `
 },
 {
@@ -308,3 +310,126 @@ pub struct SimulateSwapResponse {
 |--------------|-----------|-----------------------------------------------|
 | `amount_out` | `Uint128` | The amount of the output asset.               |
 | `asset_out`  | [`Token`](../Euclid%20Smart%20Contracts/overview#token)   | The identifier for the output asset token.    |
+
+
+### QueryTokenEscrows
+Returns a list of chain UIDs belonging to the chains that have an escrow with the specified token Id.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+    #[returns(TokenEscrowsResponse)]
+    QueryTokenEscrows {
+        token: Token,
+        start: Option<ChainUid>,
+        end: Option<ChainUid>,
+        skip: Option<usize>,
+        limit: Option<usize>,
+    },
+
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "query_token_escrows": {
+    "token": "usdt",
+    "start": "chainA",
+    "end": "chainD",
+    "limit": 20
+  }
+}
+`
+}
+]} />
+
+| **Field**   | **Type**             | **Description**                                      |
+|-------------|----------------------|------------------------------------------------------|
+| `token`     | [`Token`](../Euclid%20Smart%20Contracts/overview#token)              | The token identifier for which escrows are being queried. |
+| `start`     | `Option<ChainUid>`   | Optional start chain UID for pagination.             |
+| `end`       | `Option<ChainUid>`   | Optional end chain UID for pagination.               |
+| `skip`      | `Option<usize>`      | Optional number of entries to skip. Defaults to 0.              |
+| `limit`     | `Option<usize>`      | Optional limit on the number of entries to return. Defaults to 10.   |
+
+
+
+The query returns the following response:
+
+```rust
+pub struct TokenEscrowsResponse {
+    pub chains: Vec<ChainUid>,
+}
+```
+| **Field** | **Type**         | **Description**                      |
+|-----------|------------------|--------------------------------------|
+| `chains`  | `Vec<ChainUid>`  | The list of unique identifiers for the chains that have an escrow containing the specified token.​ |
+
+### QueryAllTokens
+Queries information on all available tokens.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+  #[returns(AllTokensResponse)]
+    QueryAllTokens {
+        start: Option<Token>,
+        end: Option<Token>,
+        skip: Option<usize>,
+        limit: Option<usize>,
+    }
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+ {
+  "query_all_tokens": {
+    "start": "usdc",
+    "end": "usdt",
+    "limit": 5
+  }
+}
+`
+}
+]} />
+
+| **Field**   | **Type**        | **Description**                                      |
+|-------------|-----------------|------------------------------------------------------|
+| `start`     | `Option<Token>` | Optional start token Id for pagination.              |
+| `end`       | `Option<Token>` | Optional end token ID for pagination.                |
+| `skip`      | `Option<usize>` | Optional number of entries to skip. Default to 0.                |
+| `limit`     | `Option<usize>` | Optional limit on the number of entries to return. Defaults to 10.  |
+
+The query returns the following response:
+
+```rust
+pub struct AllTokensResponse {
+    pub tokens: Vec<TokenResponse>,
+}
+
+
+pub struct TokenResponse {
+    pub token: Token,
+    pub chain_uid: ChainUid,
+}
+
+```
+| **Field**    | **Type**    | **Description**                      |
+|--------------|-------------|--------------------------------------|
+| `token`      | [`Token`](../Euclid%20Smart%20Contracts/overview#token)     | The unique identifier for the token. |
+| `chain_uid`  | `ChainUid`  | The unique identifier for the chain returned as a string. |
