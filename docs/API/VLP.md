@@ -200,15 +200,3 @@ curl --request POST \
 |------------------------|--------|---------------------------------------------------------|
 | token_1                | String | The identifier of the first token in the pair.          |
 | token_2                | String | The identifier of the second token in the pair.         |
-
-## Simulate Swap
-
-:::danger
-ASK ABOUT THIS 
-:::
-
-```graphql
-
-```
-
-### Example
