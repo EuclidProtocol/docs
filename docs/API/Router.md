@@ -3,10 +3,6 @@ sidebar_position: 3
 description: "Router Queries"
 ---
 
-:::danger
-Change to non staging link when you get the chance. 
-:::
-
 :::note
 You can test any of the queries in the [GraphQL Playground](https://api.staging.euclidprotocol.com/).  
 :::
@@ -39,10 +35,10 @@ query Router($chainUid: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/graphql' \
-    --data '{"query":"query Router($chainUid: String!) {\n  router {\n    chain(chain_uid: $chainUid) {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}","variables":{"chainUid":"chaine"}}'
+    --data '{"query":"query Router($chainUid: String!) {\n  router {\n    chain(chain_uid: $chainUid) {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}","variables":{"chainUid":"nibiru"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJFABYCGAlkgKrNjpEDKKerAOYBCAJRFgAHSREiecpTwTps2QxZIq61gH0YnbnSasOYcVJmq1xmRatWAZoygoIhHdqQ7OK%2B7KcubgS%2Bfg7ycDr0MABGHkxISAgANiH2YRARAa7u6gnJqbIAvgVEnno%2BlkW%2BxUiFIAA0IABujAKM0UkIAM4YIBaSIJ6mA9wDnggD9dJ1hUA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJFABYCGAlkgKrNjpEDKKerAOYBCAJRFgAHSREiecpTwTps2QxZIq61gH0YnbnSasOYcVJmq1xmRatWAZoygoIhHdqQ7OK%2B7KcubgS%2Bfg7ycDr0MABGHkxISAgANiH2YRARAa7u6gnJqbIAvgVEnno%2BlkW%2BxUiFIAA0IABujAKM0UkIAM4YIBaSIJ6mA9wDSMzRzHgwA-XSdYVAA)
 
 ### Arguments
 
@@ -71,8 +67,8 @@ Queries all chain info within the router contract.
 
 ```graphql
 
-query Router($contract: String!) {
-  router(contract: $contract) {
+query Router {
+  router {
     all_chains {
       chain {
         factory_chain_id
@@ -91,15 +87,11 @@ query Router($contract: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Router($contract: String!) {\n  router(contract: $contract) {\n    all_chains {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}","variables":{"contract":"wasm1f5djultkcmtxwyyadkjjjjmcncxf5yxz5qkz4qfjnkwqggrw7pdqxkvm82"}}'
+    --data '{"query":"query Router {\n  router {\n    all_chains {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}","variables":{}}'
 
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJFBKngIZQrpEDKKeAlkgOYBCAJRFgAHSREiecpTxV6jFmyJ0G3FaIlTpRJgBsDAfSgALJnwDOYyXr3nLUnffsAzFREKmLfYzzA7V2kPVi8CIOC3WThjMxgAIx8mJCQEA0jXaIhY0JRw5NT0zOkAXxKiRz8YAMzy3XrSkAAaEAA3Jl4mBIMEKwwQFyJxECVNVhH0EYB3Jis4AEY3AFYwACsYAxQAayg4FAAPaYICJjBttcu1uCgkKAOVggOAL2WsbeeAFiw3NaRt6ZYfj8PDTADsAAcwFgDts2nAABwAJhGzUkTVKQA)
-
-### Arguments
-
-- **contract** (String!): The contract address of the router to query.
+[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6UABacAlkgDObehwZDR9WtJkMAZpygoIhAcLF8RYdstXrNhI8ZVM4fQTABGOzkiQJuF5VYg21GrQScXNw8GAF8Qojk9GAMPcOl40JAAGhAAN048EU57bgRxDBBFBhoQKAhUPFNS9FKAd05xOABGAA8VNLSANgB2AjwkPFawAGsAZhQRgCtuNJ6egCY6qDqAVimYEc4EVdaFsbHOAC8ATnGkFQWu7kFWupge8W6FhYAWVdLkuiTQoA)
 
 ### Return Fields
 
@@ -143,7 +135,7 @@ curl --request POST \
     --data '{"query":"query Router($start: String, $end: String, $skip: Int, $limit: Int) {\n  router {\n    all_tokens(start: $start, end: $end, skip: $skip, limit: $limit) {\n      tokens {\n        token\n        chain_uid\n      }\n    }\n  }\n}","variables":{"start":null,"end":null,"skip":null,"limit":null}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJAM4oCGeK6RAyingJZIDmAGiI1kYNpx78h9ANbcADmwCSqaQBtucbqyIqUASiLAAOkiJE85SniOnz5xmrUB9FBBnI6VBsx30mLEKibCJIYEJ0corCkQpCGlp%2BCdqGJmb25m4eSHS26RmZ7sh2BeZQABaMvM4w3GAlGQC%2BDUTN6W2NIAIgAG7M3IwARmoIdBggacYgFVVIAKp1U2xTM7wIUwKmUz4sS0RIME6bSFOiewdHWyCx8ueHasdTySh3l0idjUA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJAM4oCGeK6RAyingJZIDmAGiI1kYNpx78h9ANbcADmwCSqaQBtucbqyIqUASiLAAOkiJE85SniOnz5xmrUB9FBBnI6VBsx30mLEKibCJIYEJ0corCkQpCGlp%2BCdqGJmb25m4eSHS26RmZ7sh2BeZQABaMvM4w3GAlGQC%2BDUTN6W2NIAIgAG7M3IwARmoIdBggacYgPixTbEgwTgKmU6JzRAtLK9NR65tqy0hTySh7iwemnY1AA)
 
 
 ### Arguments
@@ -186,11 +178,11 @@ query Factory($chainUid: String!, $pair: PairInput) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"chainUid":"chaine","pair":{"token_1":"osmo","token_2":"usdt"}}}'
+    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","pair":{"token_1":"pepe","token_2":"usdt"}}}'
 
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAA6s8PAAqyAkkikwUASiLAAOkiJEAZhSq0mrJAH0YXHg2ZtOYLbv0GiANwA2UmjJZykv54Lnru7t5SlmRgYHgIAM4JYe4AvinpSKkgYiAeZIJkAEZeiRggrgY6IOaOXNU81bVICNVietXBDdopVSBUANbIlgCM3dUQCXAQbb1E1YPDAEzjIDAJYCjVGXrZqUA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAA6s8PAAqyAkkikwUASiLAAOkiJEAZhSq0mrJAH0YXHg2ZtOYLbv0GiANwA2UmjJZykv54Lnru7t5SlmRgYHgIAM4JYe4AvinpSKkgYiAeZIJkAEZeiRggrgY6IOaOXNU81UgsRQEw1WJ61cEN2ilVIFQA1siWAIy93QhSCB39RNXDowBMkyAwCWAo1Rl62alAA)
 
 ### Arguments
 
@@ -227,11 +219,11 @@ query Router {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Router {\n  router {\n    all_vlps {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{}}'
+    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --data '{"query":"query Router {\n  router {\n    all_vlps {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}"}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6AN24AHAM5t6HBkLESpUme3kMUEANbI%2BARiXLVGpHwBMujgF9TFyVbMgANCAGc8AS04AjbglEYQtSTQgUAAWnC5IAKouYIHoRIEhYUgIgXZ0gcJheLFyHIH6mjoY8SAQonAQqab56pomxYEwomAogUo2IGZAA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6AN24AHAM5t6HBkLESpUme3kMUEANbI%2BARiXLVGpHwBMujgF9TFyVbMgANCAGc8AS04AjbglEYQIM0A)
 
 ### Return Fields
 
@@ -261,11 +253,11 @@ query Router($token: String!, $start: String, $end: String, $skip: Int, $limit: 
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Router($token: String!, $start: String, $end: String, $skip: Int, $limit: Int) {\n  router {\n    escrows(token: $token, start: $start, end: $end, skip: $skip, limit: $limit)\n  }\n}","variables":{"token":"usdt","start":null,"end":null,"skip":null,"limit":null}}'
+    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --data '{"query":"query Router($token: String!) {\n  router {\n    escrows(token: $token) {\n      chain_id\n      chain_uid\n    }\n  }\n}","variables":{"token":"usdt"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEAGiI0AzigCGeFC3ZdeQmsjAyO3HgpENOABxYBJVAoA2nOJ2lEDKAJRFgAHSREiecpTx3Hz5whFRXAO4iVPRMSCx0jMhCYpIWohJSQkoRSjFausKaOkImZvF55tZeRAC%2BjqUgAiAAbpKc4gBGRr4YIA5ORPYgUAAW4twAqpxg3SzdfQNICN0Cjt3aA3hjnp3O3aHIAPoAjCvdECJwELMl6yCbSFsATPsgMCJgKN0lpXOdG1FIdw9Ppx8gWJSFZIGBGIzvc5KEFgiElbrZbQw8GQrogQrPDBEUHgiogUpAA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEASiLAAOkiJE85SnmFiJEhAGcoUgO5Kq9JkhZ1GyIaPEKJUABYBDbgH1OYeaaIXrSGzHuOJAX0e%2Bk3iAANCAAbpZclgBGADbKGCDGEiIg2sgpLCkwSmAoKUFigd5AA)
 
 ### Arguments
 
@@ -300,12 +292,12 @@ query Router {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Router {\n  router {\n    state {\n      admin\n      vlp_code_id\n      vcoin_address\n    }\n  }\n}","variables":{}}'
+    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --data '{"query":"query Router {\n  router {\n    state {\n      admin\n      vlp_code_id\n      vcoin_address\n    }\n  }\n}"}'
 
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAzigIaVv0ODHmDgBLJOyFEAbgBsADgH0oEMAiViwUoTNUSlIsHgSdOOogF8p1pJZAAaEDJ54xPAEZzTGELUE0IFAAFjwSAKpagehEgSFhSAiBDnSBCmF40QJCgSgQANbISgCMWYEQnHAQyRa5BUUATGUgMJxgKIE2KQEgeYWSGLEtbR2OUoHcrqMxSDByct0Mgcjag7Pzi0Oc%2BWIKWesL4yByYuLTRAd09pZAA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAzigIaVv0ODHmDgBLJOyFEAbgBsADgH0oEMAiViwUoTNUSlIsHgSdOOogF8p1pJZAAaEDJ54xPAEZzTGECEtAA)
 
 
 ### Return Fields
@@ -321,7 +313,7 @@ curl --request POST \
 Simulates a swap operation and returns the amount to be received for the swap.
 
 ```graphql
-query Router($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [NextSwapPair]) {
+query Query($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {
   router {
     simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {
       amount_out
@@ -335,12 +327,12 @@ query Router($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmou
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Router($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [NextSwapPair]) {\n  router {\n    simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {\n      amount_out\n      asset_out\n    }\n  }\n}","variables":{"assetIn":"osmo","amountIn":"10","assetOut":"atom","minAmountOut":"1","swaps":[{"token_in":"osmo","token_out":"usdt"},{"token_in":"usdt","token_out":"usdc"},{"token_in":"usdc","token_out":"atom"}]}}'
+    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --data '{"query":"query Query($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {\n  router {\n    simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {\n      amount_out\n      asset_out\n    }\n  }\n}","variables":{"assetIn":"osmo","amountIn":"10","assetOut":"atom","minAmountOut":"1","swaps":["osmo","usdt","usdc","atom"]}}'
 
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJAIYDODCKAkkukQMop4CWSAOYBCADRF6ccqnace-IWImNmKAPIU5vASPE04AgIJSYqDSi0LdEhgHc6ABwacA2gDkEADxRd7DgAp0fHgAugCURMAAOkhERHjklHiRMXFxDHxwMAA2dJQA%2BnaOVCos%2BQKc9Ews7OJ0JqjlHMoNbEh11Sj5iZWl6hTiBkj59dJdPRJDxmPm4kVOlfMMEdGxaXGjpuMUqetEfd07a3EAvrtnSCcgoiAAbnT8dABG2QgMGCCrUSB97N%2Bc3wgDCk31EMW%2BmxkSH%2BRG%2BAEYAAyg8E-TrmGEQlAQODI6EgKatdEYWEgOG475LGEuXZxVZ7ElYgDWyCaGJAQJB1xpaW%2BTJZiTZMAYYBQ5OORBO4jpe15EGZwwEguFoq54risvlhxVAJAQrAUFx6vFkul6w1LMVxO%2BeoNqvp5uGAqtPyxOLtsONuxCYMuIBOQA)
+[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJAIYDOdCKAkkukQMop4CWSA5gEIANEVpwIMVK3ZdeAkWPqMUAeRgpZ3PkNFU4fAIISpajVvm6xdAO40ADnXYBtOTsEBdAJRFgAHSQiIjxJFHxfAKCguh44GAAbGjCAfVsHCmUmZL52WgYmVlEaE1RstiUSliQi-JRk0NzMsxRRAyRk4slShrE24y7m0TTHXOG6H39AqKDO03qNSOmiJvmURaCAX0WtpA2QYRAANxpeGgAjeIQ6DBBJvxAm1nv2e4g6CXvhAPvZ6SRnoj3ACMAAZPt8HrV1GsMICHigIHBwf8QH1KtCAcDkUF7mMAc5Xu8IOCQDA6GAYV9SeSoCSkoj7h4AnsNkA)
 
 ### Arguments
 
@@ -348,7 +340,7 @@ curl --request POST \
 - **amountIn** (String!): The amount of the input asset to swap.
 - **assetOut** (String!): The identifier of the output asset.
 - **minAmountOut** (String!): The minimum amount of the output asset expected from the swap.
-- **swaps** ([NextSwapPair]): The list of swap pairs to execute.
+- **swaps** ([String!]): The list of swaps to execute.
 
 ### Return Fields
 

@@ -5,7 +5,7 @@ description: "Get a General Introduction to Euclid's Architecture"
 
 The **Unified Liquidity Layer** has three main components:
 
-**A. Virtual Settlement Layer for Liquidity (VSL):** The VLS is a layer built on the hub chain Nibiru that is responsible for consolidating all the virtual pools and performing the necessary calculations for swaps.
+**A. Virtual Settlement Layer for Liquidity (VSL):** The VSL is a layer built on the hub chain Nibiru that is responsible for consolidating all the virtual pools and performing the necessary calculations for swaps.
 
 **B. Euclid Messaging Protocol (EMP):** The EMP is a protocol built on top of the existing IBC (Inter-Blockchain Communication) protocol that facilitates communication between the VSL and all Euclid integrated blockchains.
 

@@ -22,7 +22,7 @@ In the following sections, we will be covering all the available queries for the
 - [Factory](../API/Factory)
 - [Router](../API/Router)
 - [VLP](../API/VLP)
-- [VCoin](../API/Virtual-Balance)
+- [VCoin](../API/Virtual%20Balance)
 
 ## API Endpoints
 

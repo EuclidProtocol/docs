@@ -71,11 +71,6 @@ pub struct BalanceKey {
     pub cross_chain_user: CrossChainUser,
     pub token_id: TokenId,
 }
-
-pub struct CrossChainUser {
-    pub chain_uid: ChainUid,
-    pub address: String,
-}
 `
 },
 {
@@ -106,7 +101,7 @@ BalanceKey:
 
 | **Name**            | **Type**          | **Description**   |
 |---------------------|-------------------|-----------------------------------------------------------|
-| `cross_chain_user`  | `CrossChainUser`  | The user on the specified chain.                          |
+| `cross_chain_user`  | [`CrossChainUser`](../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The user on the specified chain.                          |
 | `token_id`          | `TokenId`         | The identifier of the token.                              |
 
 
@@ -124,7 +119,7 @@ pub struct GetBalanceResponse {
 
 ### GetUserBalances
 
-Queries all the balances for the specified user on the specified chain.
+Queries all the balances for all tokens for the specified user on the specified chain.
 
 <Tabs tabs={[
 {
@@ -160,4 +155,21 @@ content: `
 | `chain_uid`       | The unique Id of the chain we want to get the balances on.|
 | `address`       | Address of the user we are getting the balances for.|
 
-The query returns a vector of **GetBalanceResponse** with each belonging to the balance of a token.
+
+The query returns the following response:
+
+```rust 
+pub struct GetUserBalancesResponse {
+    pub balances: Vec<GetUserBalancesResponseItem>,
+}
+
+pub struct GetUserBalancesResponseItem {
+    pub amount: Uint128,
+    pub token_id: String,
+}
+
+```
+| Name          | Description                       |
+|---------------|-----------------------------------|
+| `amount`       | The amount of tokens in the specified user's balance. |
+| `token_id`       | The Id of the token the amount corresponds to. |

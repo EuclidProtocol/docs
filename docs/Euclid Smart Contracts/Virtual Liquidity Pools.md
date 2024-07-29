@@ -10,6 +10,56 @@ We will only go through the queries for this contract, as users are not allowed 
 :::
 List of queries that can be performed on the VLP contract.
 
+### State
+Queries the state of the VLP contract.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+   #[returns(GetStateResponse)]
+    State {},
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{"state":{}}
+`
+}
+]} />
+
+The query returns the following response:
+
+```rust
+pub struct GetStateResponse {
+    pub pair: Pair,
+    pub router: String,
+    pub vcoin: String,
+    pub fee: Fee,
+    pub last_updated: u64,
+    pub total_lp_tokens: Uint128,
+    pub admin: String,
+}
+```
+
+| Field            | Type            | Description                                                           |
+|------------------|-----------------|-----------------------------------------------------------------------|
+| `pair`           | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)           | The token pair of the VLP.                            |
+| `router`         | `String`        | The address of the router contract.                                   |
+| `vcoin`          | `String`        | The address of the Virtual balance contract.                                    |
+| `fee`            | [`Fee`](#fee)           | The fee structure for the transactions.                               |
+| `last_updated`   | `u64`           | The timestamp of the last update to the state.                        |
+| `total_lp_tokens`| `Uint128`       | The total amount of liquidity pool tokens.                            |
+| `admin`          | `String`        | The address of the admin of the contract.                             |
+
+
 ### SimulateSwap
 Simulates a swap for the specified asset in the VLP.
 
@@ -173,19 +223,12 @@ pub struct Fee {
     pub recipient: CrossChainUser,
 }
 
-pub struct CrossChainUser {
-    pub chain_uid: ChainUid,
-    pub address: String,
-}
-
-pub struct ChainUid(String);
-
 ```
 | **Name**          | **Type**          | **Description**                                                                                     |
 |-------------------|-------------------|-----------------------------------------------------------------------------------------------------|
 | **lp_fee_bps**    | `u64`             | Fee for liquidity providers, in basis points.                                                       |
 | **euclid_fee_bps**| `u64`             | Fee for Euclid treasury, distributed among stakers and other Euclid-related rewards, in basis points e. 1 = 0.01% 10000 = 100%.|
-| **recipient**     | `CrossChainUser`  | The recipient for the fee. Can be an address on any chain.                                                                       |
+| **recipient**     | [`CrossChainUser`](../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The recipient for the fee. Can be an address on any chain.                                                                       |
 
 ### Pool
 Queries the pool information for the VLP pair on the specified chain.

@@ -109,3 +109,61 @@ pub struct Pair {
 |------------|----------|--------------------------------|
 | **token_1**| [`Token`](#token)  | Id of the first token in the pair. |
 | **token_2**| [`Token`](#token)  | Id of the second token in the pair.|
+
+### CrossChainUserWithLimit
+
+Struct that defines a user address and limit on a specified chain. Used to define the amount of funds an address on a specific chain should receive.
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub struct CrossChainUserWithLimit {
+    pub user: CrossChainUser,
+    pub limit: Option<Uint128>,
+}
+
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+
+"cross_chain_addresses":{
+        "user": {
+              "chain_uid": "chainA",
+              "address": "comso1..."
+                },
+        "limit": "500"
+    }
+`
+}
+
+]} />
+
+| Field       | Type                            | Description                                                            |
+|-------------|---------------------------------|------------------------------------------------------------------------|
+| `user`      | [`CrossChainUser`](#crosschainuser) | Information on the cross chain user including the address and chain UID.          |
+| `limit`     | `Option<Uint128>`               | An optional limit to the amount of asset to be received by the user address. Will take the maximum amount if not specified. |
+
+### CrossChainUser
+
+The chain UID and address of the user.
+
+```rust
+pub struct CrossChainUser {
+    pub chain_uid: ChainUid,
+    pub address: String,
+}
+
+
+pub struct ChainUid(String);
+```
+
+| Field       | Type                | Description                            |
+|-------------|---------------------|----------------------------------------|
+| `chain_uid` | `ChainUid` | The unique identifier of the chain.    |
+| `address`   | `String`            | The address of the user on the chain.  |

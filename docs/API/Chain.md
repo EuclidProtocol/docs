@@ -5,10 +5,6 @@ description: "Introduction Into Euclid's API"
 
 # Chains
 
-:::danger
-Change to non staging link when you get the chance. 
-:::
-
 :::note
 You can test any of the queries in the [GraphQL Playground](https://api.staging.euclidprotocol.com/).  
 :::
@@ -324,9 +320,9 @@ query Chain_id($chainUid: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Chain_id($chainUid: String!) {\n  chains {\n    chain_id(chain_uid: $chainUid) {\n      chain_id\n      factory_address\n    }\n  }\n}","variables":{"chainUid":"chaine"}}'
+    --data '{"query":"query Chain_id($chainUid: String!) {\n  chains {\n    chain_id(chain_uid: $chainUid) {\n      chain_id\n      factory_address\n    }\n  }\n}","variables":{"chainUid":"nibiru"}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6VYAFACRSU0CqD6RAyinhoBzAIQBKIsAA6SIkTbUkAZ0ky5chTXpNNdGNyKt2SLmAnTZ6jce1qrRAGYUoKCIVoUwYPAiVK7cgC%2BdsFIgSAANCAAbhSCFABGADa%2BGCAWclIguqZZPFm6CFky4YFAA)
+[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6VYAFACRSU0CqD6RAyinhoBzAIQBKIsAA6SIkTbUkAZ0ky5chTXpNNdGNyKt2SLmAnTZ6jce1qrRAGYUoKCIVoUwYPAiVK7cgC%2BdsFIgSAANCAAbhSCFABGADa%2BGCAWclIguqZZPFlIVAlUeDBZMuGBQA)
 
 ### Arguments
 

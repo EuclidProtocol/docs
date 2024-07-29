@@ -44,6 +44,7 @@ pub struct StateResponse {
     pub admin: String,
     pub vlp_code_id: u64,
     pub vcoin_address: Option<Addr>,
+    pub locked: bool,
 }
 ```
 | **Name**         | **Type**          | **Description**                                                                                 |
@@ -51,7 +52,7 @@ pub struct StateResponse {
 | **admin**        | `String`          | The admin address, which is the only address allowed to call messages on the contract.          |
 | **vlp_code_id**  | `u64`             | The code_id used to instantiate new VLP contracts on the hub chain.                             |
 | **vcoin_address**| `Option<Addr>`    | The address of the Virtual Balance contract used by the router.                                 |
-
+| **locked**| `bool`    | Whether the contract is locked or not.                                 |
 
 ### GetChain
 Queries information about the specified chain.
@@ -79,7 +80,7 @@ content: `
 ]} />
 
 | **Name**       | String| **Description**                                 |
-|----------------|-------------------------------------------------|
+|----------------|-------------|-------------------------------------------------|
 | **chain_uid**       |ChainUid| The unique Id of the chain to get info for.|
 
 

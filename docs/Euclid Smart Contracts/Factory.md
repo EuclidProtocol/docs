@@ -98,9 +98,9 @@ content: `
 | `asset_out`             | [`Token`](../Euclid%20Smart%20Contracts/overview#token)                         | The token being swapped out.                                                                                              |
 | `amount_in`             | `Uint128`                       | Amount of the input asset.                                                                                                |
 | `min_amount_out`        | `Uint128`                       | Minimum amount of the output asset for the swap to be considered a success.                                               |
-| `timeout`               | `Option<u64>`                   | Optional timeout for the swap. Can be set up to 240 seconds and defaults to 60 if not specified.                          |
+| `timeout`               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.|
 | `swaps`                 | `Vec<NextSwapPair>`             | The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used. |
-| `cross_chain_addresses` | `Vec<CrossChainUserWithLimit>`  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. |
+| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. |
 | `partner_fee`           | `Option<PartnerFee>`            | Optional partner fee information for swaps.                                                                               |
 
 :::note
@@ -116,21 +116,6 @@ pub struct NextSwapPair {
     pub token_in: Token,
     pub token_out: Token,
 }
-// List of user addresses to receive the asset_out 
-pub struct CrossChainUserWithLimit {
-    pub user: CrossChainUser,
-    // A limit to the amount of asset_out to receive for the specified user address.
-    pub limit: Option<Uint128>,
-}
-
-// The chain unique Id and user address on that chain to receive the tokens.
-pub struct CrossChainUser {
-    pub chain_uid: ChainUid,
-    pub address: String,
-}
-
-// The unique Identifier for the chain.
-pub struct ChainUid(String);
 
 // The percentage of the fee for platform. Specified in basis points ie. 1 = 0.01% 10000 = 100%
 pub struct PartnerFee {
@@ -140,7 +125,63 @@ pub struct PartnerFee {
 
 ```
 
+### WithdrawVCoin
 
+Withdraws funds from the a user's virtual balance to the specified chains.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+ pub enum ExecuteMsg{
+ WithdrawVcoin {
+        token: Token,
+        amount: Uint128,
+        cross_chain_addresses: Vec<CrossChainUserWithLimit>,
+        timeout: Option<u64>,
+    },
+ }
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+    "withdraw_vcoin": {
+        "token": "usdt",
+        "amount": "10000",
+        "cross_chain_addresses": [
+            {
+                "user": {
+                    "chain_uid": "chain-1",
+                    "address": "nibi1..."
+                },
+                "limit": "500"
+            },
+            {
+                "user": {
+                    "chain_uid": "chain-2",
+                    "address": "cosmo1..."
+                }
+            }
+        ],
+        "timeout": 100
+    }
+}
+`
+}
+]} />
+
+| Field                      | Type                                    | Description                                                                                           |
+|----------------------------|-----------------------------------------|-------------------------------------------------------------------------------------------------------|
+| `token`                    | [`Token`](../Euclid%20Smart%20Contracts/overview#token)                                  | The token to withdraw.                                                                                |
+| `amount`                   | `Uint128`                               | The amount of fund to withdraw.                                                                      |
+| `cross_chain_addresses`    |[`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)         |       A set of addresses to specify where the funds should be released. The first element specified in the vector has highest priority and so on.                                            |
+| `timeout`                  | `Option<u64>`                           | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
 
 ### AddLiquidityRequest
 
@@ -273,7 +314,7 @@ content: `
 | Field                | Type                                | Description                                                                                                              |
 |----------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | `pair`               | [`PairWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
-| `timeout`            | `Option<u64>`                       | Optional timeout for the request. Can be set to a max of 240 seconds and is set to 60 seconds by default.                |
+| `timeout`            | `Option<u64>`                       | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.                |
 | `lp_token_name`      | `String`                            | Name of the liquidity pool token.                                                                                        |
 | `lp_token_symbol`    | `String`                            | Symbol of the liquidity pool token.                                                                                      |
 | `lp_token_decimal`   | `u8`                                | Decimal places for the liquidity pool token.                                                                             |
@@ -508,7 +549,7 @@ pub struct AllPoolsResponse {
 
 pub struct PoolVlpResponse {
     // Token Id of each token in the pool
-    pub pair_info: Pair,
+    pub pair: Pair,
     // Address of the vlp hosting the pair.
     pub vlp: String,
 }
@@ -591,7 +632,7 @@ pub struct SwapRequest {
 | **min_amount_out**     | `Uint128`                          | The minimum amount of the asset being received for the swap to be a success.      |
 | **swaps**              | `Vec<NextSwapPair>`                | The different swaps to get from asset_in to asset_out. |
 | **timeout**            | `IbcTimeout`                       | The timeout time for the swap. Returned as a timestamp.                 |
-| **cross_chain_addresses** | `Vec<CrossChainUserWithLimit>` |  A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on.      |
+| **cross_chain_addresses** | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  |  A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on.      |
 | **partner_fee_amount** | `Uint128`                          | The amount of the partner fee.                       |
 | **partner_fee_recipient** | `Option<Addr>`                 | The recipient of the partner fee.                    |
 
