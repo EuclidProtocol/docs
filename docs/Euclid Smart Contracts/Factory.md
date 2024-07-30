@@ -7,6 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 
 :::note
 Each integrated chain has its own factory contract. These contracts will be created by Euclid whenever an integration with a new chain occurs.
+You can read about the factory architecture [here](../Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/factory.md)
 :::
 
 ## Execute Messages
@@ -112,7 +113,7 @@ With the following structs:
 ```rust
 
 /// The next token pair in the swap route
-pub struct NextSwapPair {
+pub struct NextSwapPair { 
     pub token_in: Token,
     pub token_out: Token,
 }

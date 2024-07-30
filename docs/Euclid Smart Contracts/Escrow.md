@@ -7,6 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Escrow contract directly.
+You can read about the Escrow architecture [here](../Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/escrows.md)
 :::
 List of queries that can be performed on the Escrow contract.
 

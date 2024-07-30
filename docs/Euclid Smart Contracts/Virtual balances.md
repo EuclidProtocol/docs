@@ -7,6 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Virtual Balance contract directly.
+You can read about the Virtual balance architecture [here](../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-balances.md)
 :::
 List of queries that can be performed on the VLP contract.
 
