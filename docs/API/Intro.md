@@ -18,11 +18,11 @@ Before reading these docs and using the Api, it is recommended you familiarise y
 
 In the following sections, we will be covering all the available queries for the following:
 
-- [Chain](../API/Chain)
-- [Factory](../API/Factory)
-- [Router](../API/Router)
-- [VLP](../API/VLP)
-- [VCoin](../API/Virtual%20Balance)
+- [Chain](../API/GQL/Chain/All%20Chain%20UIDs.md)
+- [Factory](../API/GQL/Factory/All%20Pools.md)
+- [Router](../API/GQL/Router/All%20Chains.md)
+- [VLP](../API/GQL/VLP/All%20Pools.md)
+- [VCoin](../API/GQL/Virtual%20Balance/Balance.md)
 
 ## API Endpoints
 
