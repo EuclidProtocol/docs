@@ -11,7 +11,7 @@ The Euclid API is designed to facilitate interactions with the Euclid platform, 
 The Euclid API is built using GraphQL, a powerful query language for APIs that allows clients to request exactly the data they need. This approach avoids both the problems of over and under-fetching data, while also allowing for a more powerful and flexible Api.
 
 :::note
-Before reading these docs and using the Api, it is recommended you familiarise yourself with [GraphQL](https://graphql.org/learn/) by reading the official GraphQL documentation.
+Before reading these docs and using the API, it is recommended you familiarise yourself with [GraphQL](https://graphql.org/learn/) by reading the official GraphQL documentation.
 :::
 
 ## Available Queries
