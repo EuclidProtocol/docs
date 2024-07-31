@@ -38,4 +38,4 @@ Here is a list of the available API endpoints:
 ### POST
 
 - https://api.staging.euclidprotocol.com/api/v1/routes 
-- https://api.staging.euclidprotocol.com/api/v1/simulate_swap 
+- https://api.staging.euclidprotocol.com/api/v1/simulate-swap 

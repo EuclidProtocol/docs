@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1 
 ---
+import Tabs from '@site/src/components/Tabs';
 
 # Swap Request
 
@@ -48,12 +49,39 @@ curl -X 'POST' \
 | `amount_in`             | `Uint128`                       | Amount of the input asset.                                                                                                |
 | `min_amount_out`        | `Uint128`                       | Minimum amount of the output asset for the swap to be considered a success.                                               |
 | `timeout`               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.|
-| `swaps`                 | `Vec<NextSwapPair>`             | The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used. |
+| `swaps`                 | `Vec<String>`             | The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used. |
 | `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../../../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. |
-| `partner_fee`           | `Option<PartnerFee>`            | Optional partner fee information for swaps.                                                                               |
+| `partner_fee`           | [`Option<PartnerFee>`](#partnerfee)            | Optional partner fee information for swaps.                                                                     |
 | `sender`           | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The address performing the swap request.                                                       |
 
-
+### PartnerFee
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub struct PartnerFee {
+    // The percentage of the fee for platform 
+    pub partner_fee_bps: u64,
+    // The address to receive the fee.
+    pub recipient: String,
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+partner_fee": {
+    "partner_fee_bps": 50,
+    "recipent": "nibi1..."
+  },
+`
+}
+]} />
+```
 ### Example Response
 
 ```json

@@ -52,6 +52,6 @@ curl --request POST \
 | Field                  | Type   | Description                                             |
 |------------------------|--------|---------------------------------------------------------|
 | factory_chain_id       | String | The factory chain ID.                                   |
-| factory                | String | The contract address of the factory.                             |
-| from_hub_channel       | String | The channel from hub to factory.                   |
-| from_factory_channel   | String | The channel from factory to hub.               |
+| factory                | String | The contract address of the factory.                    |
+| from_hub_channel       | String | The channel from hub to factory.                        |
+| from_factory_channel   | String | The channel from factory to hub.                        |
