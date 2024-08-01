@@ -50,7 +50,7 @@ const FeatureList2: FeatureItem[] = [
     title: "Learn The Basics",
     imgSrc: require("@site/static/img/learn_dark.png").default,
     description: <>Start here to explore the fundamentals of Euclid Protocol</>,
-    link: "docs/intro",
+    link: "docs/Architecture Overview/intro",
   },
 ];
 

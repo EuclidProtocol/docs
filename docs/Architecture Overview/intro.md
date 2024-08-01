@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-Euclid is an open-source decentralized unified liquidity layer designed to allow any application to integrate into a unified source of truth. By creating a unified liquidity layer that connects blockchains, Euclid fosters a collaborative ecosytem where everyone benefits from increased liquidity, reduced slippage, and a seamless trading experience.
+Euclid is an open-source decentralized unified liquidity layer designed to allow any application to integrate into a unified source of truth. By creating a unified liquidity layer that connects blockchains, Euclid fosters a collaborative ecosystem where everyone benefits from increased liquidity, reduced slippage, and a seamless trading experience.
 
 Furthermore, Euclid's modular architecture empowers dApps to access a vast pool of liquidity from any integrated chain, enabling them to easily interact with tokens across the entire ecosystem. 
 
@@ -14,7 +14,7 @@ Euclid's mission is to unlock the true potential of decentralized fina
 
 # Transforming the DeFi Landscape
 
-### The Problems before Euclid
+### The Problems Before Euclid
 
 Before Euclid, the DeFi landscape faced significant challenges due to fragmented liquidity. Limited liquidity on individual DEXs and chains caused significant price fluctuations, particularly for larger trades, resulting in a poor user experience and unpredictable trading costs. Additionally, moving assets between different blockchains was complex and costly, requiring users to navigate bridges and deal with potential security risks and delays. New DeFi projects struggled to attract liquidity, often having to compete with established platforms for a limited pool of users and capital. All of this has created a frustrating and inefficient market and user experience.
 
@@ -32,7 +32,7 @@ For users, Euclid offers a smoother trading experience. Unified liquidity result
 
 ### Protocols
 
-Integration with Euclid exposes protocols to a wider audience of traders and users across multiple chains, enhancing their visibility within the DeFi ecosystem. Euclid's unified liquidity and interoperability open up a world of new possibilities for these where they can leverage Euclid's protocol to build innovative cross-chain applications and unlock previously inaccessible use cases, driving further adoption and utility for their tokens.
+Integration with Euclid exposes protocols to a wider audience of traders and users across multiple chains, enhancing their visibility within the DeFi ecosystem. Euclid's unified liquidity and interoperability open up a world of new possibilities for these protocols, where they can leverage Euclid's protocol to build innovative cross-chain applications and unlock previously inaccessible use cases, driving further adoption and utility for their tokens.
 
 ## How is Euclid Able to Offer all of the Above?
 
