@@ -39,12 +39,6 @@ curl --request POST \
 
 | Field       | Type   | Description                             |
 |-------------|--------|-----------------------------------------|
-| pools       | [PoolDetails](#pooldetails) | Details of the individual pools.             |
-
-### PoolDetails
-
-| Field       | Type   | Description                             |
-|-------------|--------|-----------------------------------------|
 | pair        | [Pair](#pair) | Information about the token pairs.              |
 | vlp         | String | The contract address of the VLP.                     |
 

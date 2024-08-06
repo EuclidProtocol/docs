@@ -15,6 +15,9 @@ You can read about the factory architecture [here](../Architecture%20Overview/Ar
 List of execute messages that can be performed on the Factory contract.
 
 ### ExecuteSwapRequest
+:::note
+The `asset_in` in this case is always a native token that is attached as funds to the message. To perform a swap on CW20 tokens refer to [`Swap`](#swap).
+:::
 
 Performs a swap taking the asset_in and releasing asset_out. The tokens can be released on multiple chains if specified by cross_chain_addresses. 
 
@@ -101,8 +104,8 @@ content: `
 | `min_amount_out`        | `Uint128`                       | Minimum amount of the output asset for the swap to be considered a success.                                               |
 | `timeout`               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.|
 | `swaps`                 | `Vec<NextSwapPair>`             | The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used. |
-| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. |
-| `partner_fee`           | `Option<PartnerFee>`            | Optional partner fee information for swaps.                                                                               |
+| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the swap. If limit is not specified, then the maximum amount is taken.  |
+| `partner_fee`           | `Option<PartnerFee>`            | Optional partner fee information for swaps.  The maximum fee that can be set is 10%.                                                                       |
 
 :::note
 - The swap paths are calculated on the backend when using the Eulcid API and the most efficient path is used by default for the **swaps** field.
@@ -128,7 +131,7 @@ pub struct PartnerFee {
 
 ### WithdrawVCoin
 
-Withdraws funds from the a user's virtual balance to the specified chains.
+Withdraws funds from the user's virtual balance to the specified chains.
 
 <Tabs tabs={[
 {
@@ -181,12 +184,18 @@ content: `
 |----------------------------|-----------------------------------------|-------------------------------------------------------------------------------------------------------|
 | `token`                    | [`Token`](../Euclid%20Smart%20Contracts/overview#token)                                  | The token to withdraw.                                                                                |
 | `amount`                   | `Uint128`                               | The amount of fund to withdraw.                                                                      |
-| `cross_chain_addresses`    |[`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)         |       A set of addresses to specify where the funds should be released. The first element specified in the vector has highest priority and so on.                                            |
+| `cross_chain_addresses`    |[`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)         |       A set of addresses to specify where the funds should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. If limit is not specified, then the maximum amount is taken.                                          |
 | `timeout`                  | `Option<u64>`                           | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
 
 ### AddLiquidityRequest
 
-Send a message to the VLP requesting the addition of liquidity to the specified token pair.
+:::note
+The user will receive LP tokens representing their share of liquidity in the pool. These tokens can be then used to withdraw the added liquidity later on.
+:::
+
+Send a message to the VLP requesting the addition of liquidity to the specified token pair. There are two types of tokens that can be used:
+- **Native:** For native, funds should be attached along with the message.
+- **CW20:** For CW20, the tokens should be provided to the factory contract as an CW20 allowance before calling `AddLiquidityRequest`. The factory will then handle the transfer of the tokens to the pool.
 
 <Tabs tabs={[
 {
@@ -340,7 +349,9 @@ pub struct InstantiateMarketingInfo {
 | [`logo`](https://docs.rs/cw20/latest/cw20/enum.Logo.html)        | Optional logo information.           |
 
 ### RequestRegisterDenom
-
+:::note
+Can only be called by the Admin of the Factory.
+:::
 Requests the addition of a denomination for a token. 
 
 <Tabs tabs={[
@@ -382,6 +393,9 @@ content: `
 | `token`| [`TokenWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)  | Information about the token to register.|
 
 ### RequestDeregisterDenom 
+:::note
+Can only be called by the Admin of the Factory.
+:::
 Requests the removal of a specific denomination for a token. 
 
 <Tabs tabs={[
@@ -422,6 +436,210 @@ content: `
 |--------|-------------------|--------------------------------------------|
 | `token`| [`TokenWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)  | Information about the token to deregister.  |
 
+## CW20 Messages
+
+### CW20 Receive
+
+Handles the case of receiving CW20 tokens from a CW20 contract.
+
+```rust
+Receive(Cw20ReceiveMsg),
+
+pub struct Cw20ReceiveMsg {
+    pub sender: String,
+    pub amount: Uint128,
+    pub msg: Binary,
+}
+
+```
+The `msg` needs to be a CW20HookMsg encoded in base64.
+
+```rust
+pub enum Cw20HookMsg {
+    Swap {
+        asset_in: TokenWithDenom,
+        asset_out: Token,
+        min_amount_out: Uint128,
+        swaps: Vec<NextSwapPair>,
+        timeout: Option<u64>,
+        cross_chain_addresses: Vec<CrossChainUserWithLimit>,
+        partner_fee: Option<PartnerFee>,
+    },
+
+    RemoveLiquidity {
+        pair: Pair,
+        lp_allocation: Uint128,
+        timeout: Option<u64>,
+        // First element in array has highest priority
+        cross_chain_addresses: Vec<CrossChainUserWithLimit>,
+    },
+}
+```
+
+:::note
+These messages are not called directly on the factory. They are attached as a `msg` when sending CW20 tokens to this contract. The CW20 `Send` message is the following:
+```rust
+pub enum Cw20ExecuteMsg {
+  /// Send is a base message to transfer tokens to a contract and trigger an action
+  /// on the receiving contract.
+ Send {
+        contract: String,
+        amount: Uint128,
+        // Base64 encoded message of the JSON representation for the message (In our case either Swap or RemoveLiquidity).
+        msg: Binary,
+    },
+}
+```
+:::
+
+
+### Swap
+
+Perform a swap on the sent CW20 tokens.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content:`
+  pub enum ExecuteMsg {
+    ExecuteSwapRequest {
+        asset_in: TokenWithDenom,
+        asset_out: Token,
+        amount_in: Uint128,
+        min_amount_out: Uint128,
+        timeout: Option<u64>,
+        swaps: Vec<NextSwapPair>,
+        cross_chain_addresses: Vec<CrossChainUserWithLimit>,
+        partner_fee: Option<PartnerFee>,
+    },
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+"execute_swap_request": {
+  "asset_in": {
+    "token": "tokenA",
+    "token_type": {
+      "smart": {
+        "contract_address": "nibi1..."
+      }
+    }
+  },
+  "asset_out": "tokenB",
+  "amount_in": "1000000",
+  "min_amount_out": "950000",
+  "timeout": 120,
+  "swaps": [
+    {
+      "token_in": "tokenA",
+      "token_out": "tokenC"
+    },
+    {
+      "token_in": "tokenC",
+      "token_out": "tokenB"
+    }
+  ],
+  "cross_chain_addresses": [
+    {
+      "user": {
+        "chain_uid": "chain1",
+        "address": "cosmo1..."
+      },
+      "limit": "150000"
+    },
+    {
+      "user": {
+        "chain_uid": "chain2",
+        "address": "nibi1..."
+      },
+      "limit": "200000"
+    }
+  ],
+  "partner_fee": {
+    "partner_fee_bps": 50,
+    "recipient": "nibi1..."
+  }
+ } 
+}
+`
+}
+]} />
+
+:::note
+The fields are the same for a native [swap](#executeswaprequest). 
+:::
+
+### Remove Liquidity
+
+:::note
+You can only call RemoveLiquidity if you have previously added liquidity to the pool by calling AddLiquidity.
+:::
+
+Receives the sent CW20 LP tokens and withdraws liquidity originally added into the pool by the sender.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+ RemoveLiquidity {
+        pair: Pair,
+        lp_allocation: Uint128,
+        timeout: Option<u64>,
+        cross_chain_addresses: Vec<CrossChainUserWithLimit>,
+    },
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+
+{ "remove_liquidity":{
+    "pair": {
+        "token_1": "udst",
+        "token_2": "nibi"
+    },
+    "lp_allocation": "100000000000",  
+    "timeout": 120,  
+    "cross_chain_addresses": [
+        {
+            "user": {
+                "chain_uid": "chainA",
+                "address": "cosmo1..."
+            },
+            "limit": "5000"  
+        },
+        {
+            "user": {
+                "chain_uid": "ChainB",
+                "address": "nibi1..."
+            },
+            "limit": null  
+        }
+    ]
+ }
+}
+`
+}
+]} />
+
+| Field                 | Type                            | Description                                                   |
+|-----------------------|---------------------------------|---------------------------------------------------------------|
+| pair                  | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)                 | The pair of tokens for which liquidity is being removed. |
+| lp_allocation         | `Uint128`                       | The amount of LP tokens being returned to the pool.          |
+| timeout               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
+                         |
+| cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit) |  A set of addresses to specify where the liquidity should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.       |
 
 ## Query Messages 
 
@@ -472,6 +690,7 @@ pub struct StateResponse {
 | **admin**          | `String`        | The address of the admin of the factory.                                                      |
 
 ### GetEscrow
+
 Queries the Escrow address for the specified token Id.
 
 <Tabs tabs={[
@@ -563,6 +782,7 @@ pub struct Pair {
 ```
 
 ### PendingSwapsUser
+
 Queries the swaps that are pending for the specified user address.
 <Tabs tabs={[
 {

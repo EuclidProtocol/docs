@@ -113,6 +113,7 @@ pub struct Pair {
 ### CrossChainUserWithLimit
 
 Struct that defines a user address and limit on a specified chain. Used to define the amount of funds an address on a specific chain should receive.
+
 <Tabs tabs={[
 {
 id: 'rust-example',

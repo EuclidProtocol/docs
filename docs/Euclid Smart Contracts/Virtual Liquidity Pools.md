@@ -227,8 +227,8 @@ pub struct Fee {
 ```
 | **Name**          | **Type**          | **Description**                                                                                     |
 |-------------------|-------------------|-----------------------------------------------------------------------------------------------------|
-| **lp_fee_bps**    | `u64`             | Fee for liquidity providers, in basis points.                                                       |
-| **euclid_fee_bps**| `u64`             | Fee for Euclid treasury, distributed among stakers and other Euclid-related rewards, in basis points e. 1 = 0.01% 10000 = 100%.|
+| **lp_fee_bps**    | `u64`             | Fee for liquidity providers, in basis points.  Can be set to a maximum of 10%.                                                      |
+| **euclid_fee_bps**| `u64`             | Fee for Euclid treasury, distributed among stakers and other Euclid-related rewards, in basis points e. 1 = 0.01% 10000 = 100%. Can be set to a maximum of 10%. |
 | **recipient**     | [`CrossChainUser`](../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The recipient for the fee. Can be an address on any chain.                                                                       |
 
 ### Pool
@@ -242,7 +242,7 @@ language: 'rust',
 content: `
 pub enum QueryMsg {
    #[returns(PoolResponse)]
-    Pool { chain_uid: String },
+    Pool { chain_uid: ChainUid },
 }
 `
 },
@@ -260,9 +260,9 @@ content: `
 }
 ]} />
 
-| Name          | Description                       |
-|---------------|-----------------------------------|
-| `chain_uid`       | The unique Id of the chain to retrieve the pool information from for the pair. |
+| Name          | Type          | Description                                                                                 |
+|---------------|---------------|---------------------------------------------------------------------------------------------|
+| `chain_uid`   | [`ChainUid`](../Euclid%20Smart%20Contracts/overview#crosschainuser)    | The unique ID of the chain to retrieve the pool information from for the pair.              |
 
 The query returns the following response:
 
@@ -315,11 +315,11 @@ pub struct AllPoolsResponse {
 }
 
 pub struct PoolInfo {
-    pub chain_uid: String,
+    pub chain_uid: ChainUid,
     pub pool: PoolResponse,
 }
 ```
 | **Name**   | **Type**       | **Description**                                                                 |
 |------------|----------------|-------------------------------------------------------------------------------|
-| `chain_uid`| `String`       | The unique Id of the chain where the pool is deployed.                        |
+| `chain_uid`| [`ChainUid`](../Euclid%20Smart%20Contracts/overview#crosschainuser)       | The unique Id of the chain where the pool is deployed.                        |
 | `pool`     | `PoolResponse` | The information on the pool. Same as the struct returned by the **Pool** query.|
