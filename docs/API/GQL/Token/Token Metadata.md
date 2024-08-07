@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Token Metadata
@@ -7,9 +7,9 @@ sidebar_position: 3
 Queries token metadata information for all tokens.
 
 ```graphql
-query Chains {
-  chains {
-    token_metadata {
+query Token {
+  token {
+    token_metadatas {
       coinDecimal
       displayName
       tokenId
@@ -27,9 +27,9 @@ query Chains {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Chains {\n  chains {\n    token_metadata {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n    }\n  }\n}"}'
+    --data '{"query":"query Token {\n  token {\n    token_metadatas {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n    }\n  }\n}"}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDORwAOkkUVJTfUy60ShAGtkAfUQoKYCuIbNevKBBoARBFCpwKAG1lyiYKrQAOmigQByFRDrn8hSAJJhrvMAlpQ8VQyioQkz1nUKAHMEAKJDTygwnlYAXx0EpDiQABoQADcKTwoAI003DBAQOKA)
+[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyRwAOkkUShVbfQ480gPqIoCGYPvwDO1Ou3ZQIASyQARBFGlw%2BAG3ESiYacIAOqvgQByfRBolNKSAJJhz7MAmFQ803SmkQk9hsr4BzBB8iXVcoILYGAF8NGKQokAAaEAA3Plc%2BACNVJwwQECigA)
 
 ### Return Fields
 

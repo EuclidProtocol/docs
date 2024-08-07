@@ -9,7 +9,7 @@ import Tabs from '@site/src/components/Tabs';
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Virtual Balance contract directly.
 You can read about the Virtual balance architecture [here](../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-balances.md)
 :::
-List of queries that can be performed on the VLP contract.
+List of queries that can be performed on the Virtual Balance contract.
 
 ### GetState
 Queries the state returning the address of the router and admin of the contract.
@@ -55,7 +55,7 @@ pub struct State {
 | `admin`  | `Addr`    | The contract address of the admin of the contract.                                   |
 
 ### GetBalance 
-Queries the balance of the specified user on the specified chain for the specified token.
+Queries the virtual balance of the specified user on the specified chain for the specified token.
 
 <Tabs tabs={[
 {
@@ -120,7 +120,7 @@ pub struct GetBalanceResponse {
 
 ### GetUserBalances
 
-Queries all the balances for all tokens for the specified user on the specified chain.
+Queries all the virtual balances for all tokens for the specified user on the specified chain.
 
 <Tabs tabs={[
 {
