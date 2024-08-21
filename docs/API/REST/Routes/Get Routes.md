@@ -9,12 +9,12 @@ Gets all swap routes available when swapping the specified asset_in to receive t
 ### Request URL
 
 ```bash
-https://api.staging.euclidprotocol.com/dev/api/v1/routes
+https://api.euclidprotocol.com/api/v1/routes
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.staging.euclidprotocol.com/dev/api/v1/routes' \
+  'https://api.euclidprotocol.com/api/v1/routes' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

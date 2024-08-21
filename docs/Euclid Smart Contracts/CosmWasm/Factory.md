@@ -7,7 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 
 :::note
 Each integrated chain has its own factory contract. These contracts will be created by Euclid whenever an integration with a new chain occurs.
-You can read about the factory architecture [here](../Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/factory.md)
+You can read about the factory architecture [here](../../Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/factory.md)
 :::
 
 ## Execute Messages
@@ -87,7 +87,7 @@ content: `
     }
   ],
   "partner_fee": {
-    "partner_fee_bps": 50,
+    "partner_fee_bps": 30,
     "recipient": "nibi1..."
   }
  } 
@@ -98,14 +98,14 @@ content: `
 
 | Field                   | Type                            | Description                                                                                                               |
 |-------------------------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `asset_in`              | [`TokenWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)               | The token being swapped in.                                                                                               |
-| `asset_out`             | [`Token`](../Euclid%20Smart%20Contracts/overview#token)                         | The token being swapped out.                                                                                              |
+| `asset_in`              | [`TokenWithDenom`](overview.md#tokenwithdenom)               | The token being swapped in.                                                                                               |
+| `asset_out`             | [`Token`](overview#token)                         | The token being swapped out.                                                                                              |
 | `amount_in`             | `Uint128`                       | Amount of the input asset.                                                                                                |
 | `min_amount_out`        | `Uint128`                       | Minimum amount of the output asset for the swap to be considered a success.                                               |
 | `timeout`               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.|
 | `swaps`                 | `Vec<NextSwapPair>`             | The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used. |
-| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the swap. If limit is not specified, then the maximum amount is taken.  |
-| `partner_fee`           | `Option<PartnerFee>`            | Optional partner fee information for swaps.  The maximum fee that can be set is 10%.                                                                       |
+| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the swap. If limit is not specified, then the maximum amount is taken.  |
+| `partner_fee`           | `Option<PartnerFee>`            | Optional partner fee information for swaps.  The maximum fee that can be set is 30 (0.3%).                                                                       |
 
 :::note
 - The swap paths are calculated on the backend when using the Eulcid API and the most efficient path is used by default for the **swaps** field.
@@ -123,6 +123,7 @@ pub struct NextSwapPair {
 
 // The percentage of the fee for platform. Specified in basis points ie. 1 = 0.01% 10000 = 100%
 pub struct PartnerFee {
+    // Cannot be set greater than 30 (0.3%)
     pub partner_fee_bps: u64,
     pub recipient: String,
 }
@@ -182,9 +183,9 @@ content: `
 
 | Field                      | Type                                    | Description                                                                                           |
 |----------------------------|-----------------------------------------|-------------------------------------------------------------------------------------------------------|
-| `token`                    | [`Token`](../Euclid%20Smart%20Contracts/overview#token)                                  | The token to withdraw.                                                                                |
+| `token`                    | [`Token`](overview#token)                                  | The token to withdraw.                                                                                |
 | `amount`                   | `Uint128`                               | The amount of fund to withdraw.                                                                      |
-| `cross_chain_addresses`    |[`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)         |       A set of addresses to specify where the funds should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. If limit is not specified, then the maximum amount is taken.                                          |
+| `cross_chain_addresses`    |[`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)         |       A set of addresses to specify where the funds should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. If limit is not specified, then the maximum amount is taken.                                          |
 | `timeout`                  | `Option<u64>`                           | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
 
 ### AddLiquidityRequest
@@ -195,7 +196,7 @@ The user will receive LP tokens representing their share of liquidity in the poo
 
 Send a message to the VLP requesting the addition of liquidity to the specified token pair. There are two types of tokens that can be used:
 - **Native:** For native, funds should be attached along with the message.
-- **CW20:** For CW20, the tokens should be provided to the factory contract as an CW20 allowance before calling `AddLiquidityRequest`. The factory will then handle the transfer of the tokens to the pool.
+- **CW20:** For CW20, the tokens should be provided to the factory contract as a CW20 allowance before calling `AddLiquidityRequest`. The factory will then handle the transfer of the tokens to the pool.
 
 <Tabs tabs={[
 {
@@ -251,7 +252,7 @@ content: `
 
 | **Name**              | **Type**             | **Description**                                                                                                       |
 |-----------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| **pair_info**         | [`PairWithDenom`](../Euclid%20Smart%20Contracts/overview#pairwithdenom)      | The two tokens to add liquidity to.                                                                                   |
+| **pair_info**         | [`PairWithDenom`](overview#pairwithdenom)      | The two tokens to add liquidity to.                                                                                   |
 | **token_1_liquidity** | `Uint128`            | The amount of liquidity added for the first token of the pair.                                                        |
 | **token_2_liquidity** | `Uint128`            | The amount of liquidity added for the second token of the pair.                                                       |
 | **slippage_tolerance**| `u64`                | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as a percentage between 1 and 100. |
@@ -323,7 +324,7 @@ content: `
 
 | Field                | Type                                | Description                                                                                                              |
 |----------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| `pair`               | [`PairWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
+| `pair`               | [`PairWithDenom`](overview#tokenwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
 | `timeout`            | `Option<u64>`                       | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.                |
 | `lp_token_name`      | `String`                            | Name of the liquidity pool token.                                                                                        |
 | `lp_token_symbol`    | `String`                            | Symbol of the liquidity pool token.                                                                                      |
@@ -348,93 +349,6 @@ pub struct InstantiateMarketingInfo {
 | `marketing`   | Optional marketing URL.              |
 | [`logo`](https://docs.rs/cw20/latest/cw20/enum.Logo.html)        | Optional logo information.           |
 
-### RequestRegisterDenom
-:::note
-Can only be called by the Admin of the Factory.
-:::
-Requests the addition of a denomination for a token. 
-
-<Tabs tabs={[
-{
-id: 'rust-example',
-label: 'Rust',
-language: 'rust',
-content: `
-pub enum ExecuteMsg {
-  RequestRegisterDenom {
-        token: TokenWithDenom,
-    }
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "request_register_denom": {
-    "token": {
-      "token": "token-id",
-      "token_type": {
-        "native": {
-          "denom": "native-denom"
-        }
-      }
-    }
-  }
-}
-}
-`
-}
-]} />
-
-| Field  | Type              | Description                                |
-|--------|-------------------|--------------------------------------------|
-| `token`| [`TokenWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)  | Information about the token to register.|
-
-### RequestDeregisterDenom 
-:::note
-Can only be called by the Admin of the Factory.
-:::
-Requests the removal of a specific denomination for a token. 
-
-<Tabs tabs={[
-{
-id: 'rust-example',
-label: 'Rust',
-language: 'rust',
-content: `
-pub enum ExecuteMsg {
-  RequestDeregisterDenom {
-        token: TokenWithDenom,
-    }
-}
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "request_deregister_denom": {
-    "token": {
-      "token": "token-id",
-      "token_type": {
-        "native": {
-          "denom": "native-denom"
-        }
-      }
-    }
-  }
-}
-`
-}
-]} />
-
-| Field  | Type              | Description                                |
-|--------|-------------------|--------------------------------------------|
-| `token`| [`TokenWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)  | Information about the token to deregister.  |
 
 ## CW20 Messages
 
@@ -490,6 +404,7 @@ pub enum Cw20ExecuteMsg {
     },
 }
 ```
+- The `msg` field here should be the Binary encoded representation of the JSON message of a  `CW20HookMsg` (Swap or RemoveLiquidity).
 :::
 
 
@@ -563,7 +478,7 @@ content: `
     }
   ],
   "partner_fee": {
-    "partner_fee_bps": 50,
+    "partner_fee_bps": 30,
     "recipient": "nibi1..."
   }
  } 
@@ -635,11 +550,11 @@ content: `
 
 | Field                 | Type                            | Description                                                   |
 |-----------------------|---------------------------------|---------------------------------------------------------------|
-| pair                  | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)                 | The pair of tokens for which liquidity is being removed. |
+| pair                  | [`Pair`](overview#pair)                 | The pair of tokens for which liquidity is being removed. |
 | lp_allocation         | `Uint128`                       | The amount of LP tokens being returned to the pool.          |
 | timeout               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
                          |
-| cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit) |  A set of addresses to specify where the liquidity should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.       |
+| cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit) |  A set of addresses to specify where the liquidity should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.       |
 
 ## Query Messages 
 
@@ -730,7 +645,7 @@ pub struct GetEscrowResponse {
 | **Name**         | **Type**            | **Description**                                                                   |
 |------------------|---------------------|-----------------------------------------------------------------------------------|
 | **escrow_address** | `Option<Addr>`    | The contract address of the escrow smart contract that holds the specified token. |
-| **denoms**       | [`Vec<TokenType>`](../Euclid%20Smart%20Contracts/overview#tokentype)    | A list of token types associated with the escrow.                                 |
+| **denoms**       | [`Vec<TokenType>`](overview#tokentype)    | A list of token types associated with the escrow.                                 |
 
 ### GetAllPools
 
@@ -794,10 +709,10 @@ pub enum QueryMsg {
     #[returns(GetPendingSwapsResponse)]
     PendingSwapsUser {
         user: Addr,
-        lower_limit: Option<u128>,
-        upper_limit: Option<u128>,
+        pagination: Pagination<Uint128>,
     },
 }
+
 `
 },
 {
@@ -808,8 +723,10 @@ content: `
 {
   "pending_swaps_user": {
     "user": "cosmo1...",
-    "lower_limit": 3,
-    "upper_limit": 15
+    "pagination": {
+      "min": "3",  
+      "max": "15"   
+    }
   }
 }
 `
@@ -819,8 +736,8 @@ content: `
 | **Name**       | **Type**         | **Description**                                 |
 |----------------|------------------|-------------------------------------------------|
 | **user**       | `Addr`           | The address of the user to query swaps for.     |
-| **lower_limit**| `Option<u128>`   | Optional lower limit for pagination.            |
-| **upper_limit**| `Option<u128>`   | Optional upper limit for pagination.            |
+| **pagination**| [`Pagination<Uin128>`](../CosmWasm/overview.md#pagination)   | Pagination parameters.          |
+
 
 The query returns the following response:
 
@@ -847,13 +764,13 @@ pub struct SwapRequest {
 |------------------------|------------------------------------|------------------------------------------------------|
 | **sender**             | `String`                           | The address of the user initiating the swap.         |
 | **tx_id**              | `String`                           | The transaction Id for the swap.                     |
-| **asset_in**           | [`TokenWithDenom`](../Euclid%20Smart%20Contracts/overview#tokenwithdenom)                  | The asset being swapped.                             |
+| **asset_in**           | [`TokenWithDenom`](overview#tokenwithdenom)                  | The asset being swapped.                             |
 | **asset_out**          | `Token`                            | The asset being received.                            |
 | **amount_in**          | `Uint128`                          | The amount of the asset being swapped.               |
 | **min_amount_out**     | `Uint128`                          | The minimum amount of the asset being received for the swap to be a success.      |
 | **swaps**              | `Vec<NextSwapPair>`                | The different swaps to get from asset_in to asset_out. |
 | **timeout**            | `IbcTimeout`                       | The timeout time for the swap. Returned as a timestamp.                 |
-| **cross_chain_addresses** | [`Vec<CrossChainUserWithLimit>`](../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  |  A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on.      |
+| **cross_chain_addresses** | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)  |  A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on.      |
 | **partner_fee_amount** | `Uint128`                          | The amount of the partner fee.                       |
 | **partner_fee_recipient** | `Option<Addr>`                 | The recipient of the partner fee.                    |
 
@@ -870,8 +787,7 @@ pub enum QueryMsg {
   #[returns(GetPendingLiquidityResponse)]
     PendingLiquidity {
         user: Addr,
-        lower_limit: Option<u128>,
-        upper_limit: Option<u128>,
+        pagination: Pagination<Uint128>,
     },
 }
 `
@@ -884,8 +800,9 @@ content: `
 {
   "pending_liquidity": {
     "user": "cosmo1...",
-    "lower_limit": 20,
-    "upper_limit": 30
+    "pagination": {
+      "min": "2",  
+      "max": "7"  
   }
 }
 `
@@ -895,8 +812,7 @@ content: `
 | **Name**       | **Description**                                 |
 |----------------|-------------------------------------------------|
 | **user**       | The address of the user to query liquidity for.                       |
-| **lower_limit**| Optional lower limit for pagination.            |
-| **upper_limit**| Optional upper limit for pagination.            |
+| **pagination**| [`Pagination<Uin128>`](../CosmWasm/overview.md#pagination)   | Pagination parameters.          |
 
 The query returns the following response:
 
@@ -919,7 +835,7 @@ pub struct AddLiquidityRequest {
 | **tx_id**            | `String`           | The unique Id for the liquidity transaction.         |
 | **token_1_liquidity**| `Uint128`          | The amount of liquidity for the first token.         |
 | **token_2_liquidity**| `Uint128`          | The amount of liquidity for the second token.        |
-| **pair_info**        | [`PairWithDenom`](../Euclid%20Smart%20Contracts/overview#pairwithdenom)     | Information about the token pair (Token Id and type for each token). |
+| **pair_info**        | [`PairWithDenom`](overview#pairwithdenom)     | Information about the token pair (Token Id and type for each token). |
 
 ### PendingRemoveLiquidity
 
@@ -949,8 +865,10 @@ content: `
 {
   "pending_liquidity": {
     "user": "cosmo1...",
-    "lower_limit": 20,
-    "upper_limit": 30
+    "pagination": {
+      "min": "5",  
+      "max": "15"  
+  }
   }
 }
 `
@@ -960,8 +878,7 @@ content: `
 | **Name**       | **Description**                                 |
 |----------------|-------------------------------------------------|
 | **user**       | The address of the user to query liquidity for.                       |
-| **lower_limit**| Optional lower limit for pagination.            |
-| **upper_limit**| Optional upper limit for pagination.            |
+| **pagination**| [`Pagination<Uin128>`](../CosmWasm/overview.md#pagination)   | Pagination parameters.          |
 
 The query returns the following response:
 
@@ -983,7 +900,7 @@ pub struct RemoveLiquidityRequest {
 | **sender**        | `String`           | The address of the user requesting to remove liquidity.     |
 | **tx_id**         | `String`           | The unique Id for the liquidity removal transaction.        |
 | **lp_allocation** | `Uint128`          | The amount of liquidity pool tokens allocated for removal.  |
-| **pair**          | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)             | Information about the token pair.                           |
+| **pair**          | [`Pair`](overview#pair)             | Information about the token pair.                           |
 | **cw20**          | `Addr`             | The address of the CW20 token contract.                     | 
 
 
@@ -1025,7 +942,7 @@ content: `
 
 | **Name**   | **Type** | **Description**                |
 |------------|----------|--------------------------------|
-| **pair**   | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)    | The pair of tokens to get the VLP address for. |
+| **pair**   | [`Pair`](overview#pair)    | The pair of tokens to get the VLP address for. |
 
 The query returns the following response:
 
@@ -1124,4 +1041,47 @@ pub struct AllTokensResponse {
 
 | **Name** | **Type**      | **Description**                        |
 |----------|---------------|----------------------------------------|
-| **tokens** | [`Vec<Token>`](../Euclid%20Smart%20Contracts/overview#token)  | A list of tokens. |
+| **tokens** | [`Vec<Token>`](overview#token)  | A list of tokens. |
+
+### GetPartnerFeesCollected
+Queries the total amount of fees collected by the set partner fee.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+  #[returns(PartnerFeesCollectedResponse)]
+  GetPartnerFeesCollected {},
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "get_partner_fees_collected": {}
+}
+`
+}
+]} />
+
+The query returns the following response:
+
+```rust
+pub struct PartnerFeesCollectedResponse {
+    pub total: DenomFees,
+}
+
+pub struct DenomFees {
+    pub totals: HashMap<String, Uint128>,
+}
+
+```
+| **Field**  | **Type**                         | **Description**                                         | 
+|------------|----------------------------------|---------------------------------------------------------|
+| `totals`   | `HashMap<String, Uint128>`       | A map that stores the total fees collected for each denomination. | 

@@ -9,12 +9,12 @@ Generates a transaction to add liquidity to a pool.
 ### Request URL
  
 ```bash
-https://api.staging.euclidprotocol.com/dev/api/v1/execute/liquidity/add
+https://api.euclidprotocol.com/api/v1/execute/liquidity/add
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.staging.euclidprotocol.com/dev/api/v1/execute/liquidity/add' \
+  'https://api.euclidprotocol.com/api/v1/execute/liquidity/add' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -49,12 +49,12 @@ curl -X 'POST' \
 
 | **Name**              | **Type**             | **Description**                                                                                                       |
 |-----------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `pair_info`        | [`PairWithDenom`](../../../Euclid%20Smart%20Contracts/overview#pairwithdenom)      | The two tokens to add liquidity to.                                                                                   |
+| `pair_info`        | [`PairWithDenom`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#pairwithdenom)      | The two tokens to add liquidity to.                                                                                   |
 | `token_1_liquidity` | `Uint128`            | The amount of liquidity added for the first token of the pair.                                                        |
 | `token_2_liquidity` | `Uint128`            | The amount of liquidity added for the second token of the pair.                                                       |
 | `slippage_tolerance`| `u64`                | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as a percentage between 1 and 100. |
 | `timeout`          | `Option<u64>`        | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
-| `sender`          | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The address performing the swap request.                                                       |
+| `sender`          | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)  | The address performing the swap request.                                                       |
 
 ### Example Response
 

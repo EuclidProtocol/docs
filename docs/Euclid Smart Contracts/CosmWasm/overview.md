@@ -6,7 +6,7 @@ import Tabs from '@site/src/components/Tabs';
 
 # Overview
 
-In the [Architecture Overview](../Architecture%20Overview/General%20Overview.md), we took a look at the different components that make up the Euclid Unified Liquidity layer. In this section, we will be looking at each of the Euclid smart contracts and their respective messages. 
+In the [Architecture Overview](../../Architecture%20Overview/General%20Overview.md), we took a look at the different components that make up the Euclid Unified Liquidity layer. In this section, we will be looking at each of the Euclid smart contracts and their respective messages. 
 
 Since the Factory smart contract is the only entry point for users/projects to interact with the Euclid layer, we will be providing a breakdown of the execute messages as well as the queries. For the rest of the contracts, no messages can be called directly on them so we are only interested in the available queries.
 
@@ -168,3 +168,46 @@ pub struct ChainUid(String);
 |-------------|---------------------|----------------------------------------|
 | `chain_uid` | `ChainUid` | The unique identifier of the chain.    |
 | `address`   | `String`            | The address of the user on the chain.  |
+
+### Pagination
+Struct used to define pagination parameters.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub struct Pagination<T> {
+    pub min: Option<T>,
+    pub max: Option<T>,
+    pub skip: Option<u64>,
+    pub limit: Option<u64>,
+}
+
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+
+
+"pagination": {
+  "min": "3",       
+  "max": "15",      
+  "skip": 2,       
+  "limit": 10       
+    }
+`
+}
+
+]} />
+
+| **Field**  | **Type**           | **Description**                                  | 
+|------------|--------------------|--------------------------------------------------|
+| `min`      | `T`  | The lower limit value, used to filter results. Type depends on the type of Id used.   |
+| `max`      | `T` | The upper limit value, used to filter results. Type depends on the type of Id used.   | 
+| `skip`     | `u64`    | Number of results to skip from the result set. Defaults to 0 if not specified.   | 
+| `limit`    | `u64`    | Maximum number of results to return. Defaults to 10 if not specified.          | 

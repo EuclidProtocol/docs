@@ -23,10 +23,10 @@ query Factory($chainUid: String!, $vlpAddress: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
-    --data '{"query":"query Factory($chainUid: String!, $vlpAddress: String!) {\n  factory(chain_uid: $chainUid) {\n    get_token_address(vlp_address: $vlpAddress) {\n      token_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","vlpAddress":"wasm1zhhfwhuyyc88jdr5rncn75uf0lf3pta4lwk68d6y7vncyqxxllrqun6zen"}}'
+    --url 'https://api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Factory($chainUid: String!, $vlpAddress: String!) {\n  factory(chain_uid: $chainUid) {\n    get_token_address(vlp_address: $vlpAddress) {\n      token_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","vlpAddress":"nibi1m4ns69zvkk2zv0946mw298tlky5ckvu08rtxggtg29p784kc5sxqa9u8ly"}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAG4AbAA4BBMGDwIAzmp79BSUQEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAPHTZokIQo9lQA1sj2ZMqqGjSycuGR6pqSsUoqiV4mvr4hYRFpGpm%2BAL6FJUhFIGIgUmSCZABGMuoYIN5GILbuXO087Ugs9Sx4MO1iJu0pCQUY7QDuZGpwAIwAXoyM5rOMMAQEUAAc%2BwBWKgCseEhQSADspzDmAAwy5gDMcihkACwys8EAbPswH8CNcpJcCFgAB6QmQyPA4JB-FbIdomCpFIA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAG4AbAA4BBMGDwIAzmp79BSUQEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAPHTZokIQo9lQA1sj2ZMqqGjSycuGR6pqSsUoqiV4mvr4hYRFpGpm%2BAL6FJUhFIGIgUmSCZABGMuoYIN5GILbuXO087Ugs9Sx4MO1iJu0pCQUYfQMsAIxwACxIagBsAJwAXlLBwQBMOwAMG0trcADu%2BxsAHCgywQQArFDBUjBHN3goAB5CQighNc5AB2G5LYJQJ5qH5YMgbGA3GQEdomCpFIA)
 
 ### Arguments
 

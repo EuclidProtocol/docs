@@ -36,11 +36,11 @@ query Vlp($contract: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Vlp($contract: String!) {\n  vlp(contract: $contract) {\n    state {\n      pair {\n        token_1\n        token_2\n      }\n      router\n      vcoin\n      fee {\n        lp_fee_bps\n        euclid_fee_bps\n        recipient {\n          chain_uid\n          address\n        }\n      }\n      last_updated\n      total_lp_tokens\n      admin\n    }\n  }\n}","variables":{"contract":"wasm1zhhfwhuyyc88jdr5rncn75uf0lf3pta4lwk68d6y7vncyqxxllrqun6zen"}}'
+    --url 'https://api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Vlp($contract: String!) {\n  vlp(contract: $contract) {\n    state {\n      pair {\n        token_1\n        token_2\n      }\n      router\n      vcoin\n      fee {\n        lp_fee_bps\n        euclid_fee_bps\n        recipient {\n          chain_uid\n          address\n        }\n      }\n      last_updated\n      total_lp_tokens\n      admin\n    }\n  }\n}","variables":{"contract":"nibi1m4ns69zvkk2zv0946mw298tlky5ckvu08rtxggtg29p784kc5sxqa9u8ly"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIAlEWAAdJESIA3SlXqMWbInQbdloiVOlEAziiYoEYybt0UmPPKZ3npKCAGtkAfQCMZ%2Bw%2BduATF7mAL6BungQMMZ4odIy9HwxRABmCCba3tKUrikIrgBGFHqJ0ggwUGQ8YNmp%2BYXFRHgIUDwUPMgothm6UAAWVkiuMJX10kxgYI16RXb2ITPSc95kTAaDFGBGCGCJjoZkrlmOLkjT3mNwCTOLRHNBIAA0IDJMvEx5ZAh6GCDpROIgig0rH%2B7H%2BAHcVnB3AAvHo9JJgnowAgEKAADjRACsJgBWPBIKBIADsOJgSQADGQkgBmCiGAAsZDBTgAbGiwCyCESZASCFgAB78shkPA4JAs6HIf6SO5BIA)
+[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIAlEWAAdJESIA3SlXqMWbInQbdloiVOlEAziiYoEYybt0UmPPKZ3npKCAGtkAfQCMZ%2Bw%2BduATF7mAL6BungQMMZ4odIy9HwxRABmCCba3tKUrikIrgBGFHqJ0ggwUGQ8YNmp%2BYXFRHgIUDwUPMgothm6UAAWVkiuMJX10kxgYI16RXb2ITPSc95kTAaDFGBGCGCJjoZkrlmOLkjT3mNwCTOLRHNBIAA0IDJMvEx5ZAh6GCDpROIgig0rH%2B7H%2BAHcVnB3AAvHo9JJgnowAgEKAADjRACsJgBWPBIKBIADsOJgSQADGQkgBmCiGAAsZDBTgAbGiwCyCESZASCFgAB78shkPA4JAs6HIf6SO5BIA)
 
 ### Arguments
 
@@ -50,7 +50,7 @@ curl --request POST \
 
 | Field            | Type          | Description                                                     |
 |------------------|---------------|-----------------------------------------------------------------|
-| pair             | [`Pair`](../../../Euclid%20Smart%20Contracts/overview#pair)        | The token pair of the VLP.                                  |
+| pair             | [`Pair`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#pair)        | The token pair of the VLP.                                  |
 | router           | `String`      | The router contract address used by the VLP.                             |
 | vcoin            | `String`      | The contract address of the Virtual Balance contract used by the VLP.                              |
 | fee              | [`Fee`](#fee)         | The fee structure of the VLP.                                   |
@@ -72,4 +72,4 @@ pub struct Fee {
 |-------------------|-------------------|-----------------------------------------------------------------------------------------------------|
 | **lp_fee_bps**    | `u64`             | Fee for liquidity providers, in basis points.  Can be set to a maximum of 10%.                                                      |
 | **euclid_fee_bps**| `u64`             | Fee for Euclid treasury, distributed among stakers and other Euclid-related rewards, in basis points e. 1 = 0.01% 10000 = 100%. Can be set to a maximum of 10%. |
-| **recipient**     | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The recipient for the fee. Can be an address on any chain.                                                                       |
+| **recipient**     | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)  | The recipient for the fee. Can be an address on any chain.                                                                       |

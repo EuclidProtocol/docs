@@ -7,7 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the VLP contract.
-You can read about the VLP architecture [here](../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-pools.md)
+You can read about the VLP architecture [here](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-pools.md)
 :::
 List of queries that can be performed on the VLP contract.
 
@@ -52,7 +52,7 @@ pub struct GetStateResponse {
 
 | Field            | Type            | Description                                                           |
 |------------------|-----------------|-----------------------------------------------------------------------|
-| `pair`           | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)           | The token pair of the VLP.                            |
+| `pair`           | [`Pair`](overview#pair)           | The token pair of the VLP.                            |
 | `router`         | `String`        | The address of the router contract.                                   |
 | `vcoin`          | `String`        | The address of the Virtual balance contract.                                    |
 | `fee`            | [`Fee`](#fee)           | The fee structure for the transactions.                               |
@@ -107,7 +107,7 @@ content: `
 
 | **Name**        | **Type**            | **Description**                               |
 |-----------------|---------------------|-----------------------------------------------|
-| **asset**       | [`Token`](../Euclid%20Smart%20Contracts/overview#token)              | The asset being swapped.                      |
+| **asset**       | [`Token`](overview#token)              | The asset being swapped.                      |
 | **asset_amount**| `Uint128`           | The amount of the asset being swapped.        |
 | **swaps**       | `Vec<NextSwapVlp>`  | A vector of VLP addresses that will be used for the swap.       |
 
@@ -129,7 +129,7 @@ pub struct GetSwapResponse {
 | Name          | Type       | Description                                              |
 |---------------|------------|----------------------------------------------------------|
 | `amount_out`  | `Uint128`  | The amount of asset_out that will be released.           |
-| `asset_out`   | [`Token`](../Euclid%20Smart%20Contracts/overview#token)     | The token Id of the asset going out of the VLP.          |
+| `asset_out`   | [`Token`](overview#token)     | The token Id of the asset going out of the VLP.          |
 
 ### Liquidity
 Queries the total liquidity reserves for the token pair in the VLP.
@@ -177,7 +177,7 @@ pub struct GetLiquidityResponse {
 ```
 | **Name**          | **Type**        | **Description**                                                                                                                   |
 |-------------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| `pair`            | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)          | The token pair involved in the liquidity. The token Id for each token is returned.                                                |
+| `pair`            | [`Pair`](overview#pair)          | The token pair involved in the liquidity. The token Id for each token is returned.                                                |
 | `token_1_reserve` | `Uint128`       | The reserve amount of the first token.                                                                                            |
 | `token_2_reserve` | `Uint128`       | The reserve amount of the second token.                                                                                           |
 | `total_lp_tokens` | `Uint128`       | The total amount of liquidity pool tokens. These tokens are given to a user whenever they add liquidity to a pool and can be returned to the VLP to withdraw the added liquidity later on. |
@@ -229,7 +229,7 @@ pub struct Fee {
 |-------------------|-------------------|-----------------------------------------------------------------------------------------------------|
 | **lp_fee_bps**    | `u64`             | Fee for liquidity providers, in basis points.  Can be set to a maximum of 10%.                                                      |
 | **euclid_fee_bps**| `u64`             | Fee for Euclid treasury, distributed among stakers and other Euclid-related rewards, in basis points e. 1 = 0.01% 10000 = 100%. Can be set to a maximum of 10%. |
-| **recipient**     | [`CrossChainUser`](../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The recipient for the fee. Can be an address on any chain.                                                                       |
+| **recipient**     | [`CrossChainUser`](overview#crosschainuser)  | The recipient for the fee. Can be an address on any chain.                                                                       |
 
 ### Pool
 Queries the pool information for the VLP pair on the specified chain.
@@ -262,7 +262,7 @@ content: `
 
 | Name          | Type          | Description                                                                                 |
 |---------------|---------------|---------------------------------------------------------------------------------------------|
-| `chain_uid`   | [`ChainUid`](../Euclid%20Smart%20Contracts/overview#crosschainuser)    | The unique ID of the chain to retrieve the pool information from for the pair.              |
+| `chain_uid`   | [`ChainUid`](overview#crosschainuser)    | The unique ID of the chain to retrieve the pool information from for the pair.              |
 
 The query returns the following response:
 
@@ -321,5 +321,104 @@ pub struct PoolInfo {
 ```
 | **Name**   | **Type**       | **Description**                                                                 |
 |------------|----------------|-------------------------------------------------------------------------------|
-| `chain_uid`| [`ChainUid`](../Euclid%20Smart%20Contracts/overview#crosschainuser)       | The unique Id of the chain where the pool is deployed.                        |
+| `chain_uid`| [`ChainUid`](overview#crosschainuser)       | The unique Id of the chain where the pool is deployed.                        |
 | `pool`     | `PoolResponse` | The information on the pool. Same as the struct returned by the **Pool** query.|
+
+### TotalFeesCollected
+
+Queries the total amount of fees collected by the VLP.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+   #[returns(TotalFeesResponse)]
+    TotalFeesCollected {},
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "total_fees_collected": {}
+}
+`
+}
+]} />
+
+The query returns the following response:
+
+```rust
+pub struct TotalFeesResponse {
+    pub total_fees: TotalFees,
+}
+
+pub struct TotalFees {
+    // Fee for lp providers
+    pub lp_fees: DenomFees,
+    // Fee for euclid treasury, distributed among stakers and other euclid related rewards
+    pub euclid_fees: DenomFees,
+}
+
+pub struct DenomFees {
+    // A map to store the total fees per denomination
+    pub totals: HashMap<String, Uint128>,
+}
+```
+| **Field**       | **Type**           | **Description**                                      |
+|-----------------|--------------------|------------------------------------------------------|
+| `lp_fees`       | `DenomFees`          | The total fees allocated to liquidity providers (LPs). |
+| `euclid_fees`   | `DenomFees`​          | Fee for euclid treasury, distributed among stakers and other euclid related rewards                                                  | 
+
+### TotalFeesPerDenom
+
+Queries the total amount of fees collected by the VLP for the specified denom of funds.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+    #[returns(TotalFeesPerDenomResponse)]
+    TotalFeesPerDenom { denom: String },
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "total_fees_per_denom": {
+    "denom":"nibiru"
+  }
+}
+`
+}
+]} />
+
+| **Field** | **Type**  | **Description**                              |
+|-----------|-----------|----------------------------------------------|
+| `denom`   | `String`  | The denom of the fees to get the total for. |
+
+The query returns the following response:
+
+```rust
+pub struct TotalFeesPerDenomResponse {
+    pub lp_fees: Uint128,
+    pub euclid_fees: Uint128,
+}
+```
+| **Field**       | **Type**           | **Description**                                      |
+|-----------------|--------------------|------------------------------------------------------|
+| `lp_fees`       | `Uint128`          | The total fees allocated to liquidity providers (LPs). |
+| `euclid_fees`   | `Uint128`​          | Fee for euclid treasury, distributed among stakers and other euclid related rewards                                                  | 

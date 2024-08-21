@@ -7,7 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Virtual Balance contract directly.
-You can read about the Virtual balance architecture [here](../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-balances.md)
+You can read about the Virtual balance architecture [here](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-balances.md)
 :::
 List of queries that can be performed on the Virtual Balance contract.
 
@@ -102,7 +102,7 @@ BalanceKey:
 
 | **Name**            | **Type**          | **Description**   |
 |---------------------|-------------------|-----------------------------------------------------------|
-| `cross_chain_user`  | [`CrossChainUser`](../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The user on the specified chain.                          |
+| `cross_chain_user`  | [`CrossChainUser`](overview#crosschainuser)  | The user on the specified chain.                          |
 | `token_id`          | `TokenId`         | The identifier of the token.                              |
 
 

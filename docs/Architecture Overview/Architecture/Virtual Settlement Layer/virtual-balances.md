@@ -21,7 +21,7 @@ Euclid's Virtual Balances are virtual tokens that are minted to mimick 1/1 the b
 ## Workflow
 
 :::tip
-We will dive deeper into each of the contract's messages in the [Euclid Smart Contracts](../../../Euclid%20Smart%20Contracts/Virtual%20balances.md) section.
+We will dive deeper into each of the contract's messages in the [Euclid Smart Contracts](../../../Euclid%20Smart%20Contracts/CosmWasm/Virtual%20balances.md) section.
 :::
 
 Whenever a user requests a swap for some token, the Virtual Balance contract will transfer the tokens from the VLP balance to the user's balance:

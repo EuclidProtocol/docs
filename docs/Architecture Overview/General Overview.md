@@ -31,8 +31,10 @@ Virtual Pools are the main component of the VSL based on Cosmwasm Smart Contract
 All liquidity across all integrated blockchains is settled in the Virtual Pool which then sends results back to the Euclid pools across the ecosystem.
 
 ## Euclid Messaging Protocol
-
-The **Euclid Messaging Protocol** (EMP) is a cross-chain messaging protocol that is built on IBC. Although IBC is mainly built for the Cosmos Ecosystem, EMP extends IBC across the entire blockchain with integrations with Axelar, Skip Protocol, CCTP, etc...
+:::note
+By integrating with [Axelar](https://www.axelar.network), Euclid is able to unify liquidity for all chains regardless of the ecosystem they are found in.
+:::
+The **Euclid Messaging Protocol** (EMP) is a cross-chain messaging protocol that is built on IBC. Although IBC is mainly built for the Cosmos Ecosystem, EMP extends IBC across the entire blockchain space.
 
 ### Trustless Messaging
 

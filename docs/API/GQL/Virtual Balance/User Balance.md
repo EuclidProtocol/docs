@@ -24,11 +24,11 @@ query Vcoin($user: CrossChainUserInput) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Vcoin($user: CrossChainUserInput) {\n  vcoin {\n    user_balance(user: $user) {\n      balances {\n        amount\n        token_id\n      }\n    }\n  }\n}","variables":{"user":{"address":"nibi1...","chain_uid":"nibiru"}}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGpQQCWSAFACQwDO%2B6RAwnhAw6wBYCGVAKpM8ASSQAHGCgCURYAB0kRIgDdyVeUpUrG%2BAPoAjPgBs%2BSKAmp68LeiLmLlOlcbMWEDLc5cq%2BcCBhUbV8VFAgAa2R9CjAQlwBfeKIk51TUkAAaEFU%2BPAo%2BQxNPDBAnFQUQG0qWcp1KvjAwPE8GGqJKpApDCgBGADpByszkyqh%2BKn0YWPbO7oo8GEqQ9JAEoA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGpQQCWSAFACQwDO%2B6RAwnhAw6wBYCGVAKpM8ASSQAHGCgCURYAB0kRIgDdyVeUpUrG%2BAPoAjPgBs%2BSKAmp68LeiLmLlOlcbMWEDLc5cq%2BcCBhUbV8VFAgAa2R9CjAQlwBfeKIk51TUkAAaEFU%2BPAo%2BQxNPDBAnFQUQG0qWcp1KvjAwPE8GGqJKpApDCgBGADpByszkyqh%2BKn0YWPbO7oo8GEqQ9JAEoA)
 
 
 - **user** (CrossChainUserInput): The input specifying the user for the balance query by specifying the user address and chain UID.

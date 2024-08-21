@@ -24,11 +24,11 @@ query Router {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router {\n  router {\n    all_vlps {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}"}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6AN24AHAM5t6HBkLESpUme3kMUEANbI%2BARiXLVGpHwBMujgF9TFyVbMgANCAGc8AS04AjbglEYQIM0A)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6AN24AHAM5t6HBkLESpUme3kMUEANbI%2BARiXLVGpHwBMujgF9TFyVbMgANCAGc8AS04AjbglEYQIM0A)
 
 ### Return Fields
 

@@ -7,7 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Router contract directly.
-You can read about the Router architecture [here](../Architecture%20Overview/Architecture/router.md)
+You can read about the Router architecture [here](../../Architecture%20Overview/Architecture/router.md)
 :::
 
 List of queries that can be performed on the Router contract.
@@ -171,7 +171,7 @@ content: `
 
 | **Name**  | **Type** | **Description**                      |
 |-----------|----------|--------------------------------------|
-| `pair`    | [`Pair`](../Euclid%20Smart%20Contracts/overview#pair)   | The pair of tokens for the query.    |
+| `pair`    | [`Pair`](overview#pair)   | The pair of tokens for the query.    |
 
 The query returns the following response:
 
@@ -201,10 +201,7 @@ content: `
 pub enum QueryMsg {
   #[returns(AllVlpResponse)]
     GetAllVlps {
-        start: Option<(Token, Token)>,
-        end: Option<(Token, Token)>,
-        skip: Option<usize>,
-        limit: Option<usize>,
+        pagination: Pagination<(Token, Token)>,
     },
 }
 `
@@ -214,17 +211,24 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
-{"get_all_vlps":{}}
+{
+  "get_all_vlps": {
+    "pagination": {
+      "min": ["usdt", "usdc"],
+      "max": ["usdc", "dai"],
+      "skip": 5,
+      "limit": 10
+    }
+  }
+}
 `
 }
 ]} />
 
-| **Name**  | **Type**                       | **Description**                                              |
-|-----------|--------------------------------|--------------------------------------------------------------|
-| `start`   | `Option<(Token, Token)>`       | Optional start pair of tokens for pagination.                |
-| `end`     | `Option<(Token, Token)>`       | Optional end pair of tokens for pagination.                  |
-| `skip`    | `Option<usize>`                | Optional number of pairs to skip. Defaults to 0.                            |
-| `limit`   | `Option<usize>`                | Optional limit on the number of pairs to return. Limit defaults to 10.            |
+
+| **Field**      | **Type**                          | **Description**                                            |
+|----------------|-----------------------------------|------------------------------------------------------------|
+| `pagination`   | [`Pagination<(Token, Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
 
 The query returns a vector of **VlpResponse** each containing information about on VLP.
 
@@ -280,7 +284,7 @@ content: `
 
 | **Name**         | **Type**            | **Description**                                             |
 |------------------|---------------------|-------------------------------------------------------------|
-| `asset_in`       | [`Token`](../Euclid%20Smart%20Contracts/overview#token)             | The identifier for the input asset token.                   |
+| `asset_in`       | [`Token`](overview#token)             | The identifier for the input asset token.                   |
 | `amount_in`      | `Uint128`           | The amount of the input asset token.                        |
 | `asset_out`      | `Token`             | The identifier for the output asset token.                  |
 | `min_amount_out` | `Uint128`           | The minimum amount of the output asset token.               |
@@ -298,8 +302,8 @@ pub struct NextSwapPair {
 ```
 | **Name**   | **Type**  | **Description**                                   |
 |------------|-----------|---------------------------------------------------|
-| `token_in` |[`Token`](../Euclid%20Smart%20Contracts/overview#token)   | The token Id for the input token in the swap.   |
-| `token_out`| [`Token`](../Euclid%20Smart%20Contracts/overview#token)   | The token Id for the output token in the swap.  |
+| `token_in` |[`Token`](overview#token)   | The token Id for the input token in the swap.   |
+| `token_out`| [`Token`](overview#token)   | The token Id for the output token in the swap.  |
 
 The query returns the following response:
 ```rust
@@ -311,8 +315,63 @@ pub struct SimulateSwapResponse {
 | **Name**     | **Type**  | **Description**                               |
 |--------------|-----------|-----------------------------------------------|
 | `amount_out` | `Uint128` | The amount of the output asset.               |
-| `asset_out`  | [`Token`](../Euclid%20Smart%20Contracts/overview#token)   | The identifier for the output asset token.    |
+| `asset_out`  | [`Token`](overview#token)   | The identifier for the output asset token.    |
 
+### SimulateReleaseEscrow
+
+Simulates a request to release the specified token on the specified cross chain addresses.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+  #[returns(SimulateEscrowReleaseResponse)]
+    SimulateReleaseEscrow {
+        token: Token,
+        amount: Uint128,
+        cross_chain_addresses: Vec<CrossChainUserWithLimit>,
+    }
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "simulate_release_escrow": {
+    "token": "usdt",
+    "amount": "100000000",
+    "cross_chain_addresses": [
+      {
+        "user": {
+          "chain_uid": "nibi",
+          "address": "nibi1..."
+        },
+        "limit": "500000"
+      },
+      {
+        "user": {
+          "chain_uid": "ethereum",
+          "address": "0xb36ba2..."
+        }
+      }
+    ]
+  }
+}
+`
+}
+]} />
+
+| Field                 | Type                               | Description                                           |
+|-----------------------|------------------------------------|-------------------------------------------------------|
+| token                 | [`Token`](overview#token)                             | Identifier for the token.                             |
+| amount                | Uint128                   | Amount of token to be released.      |
+| cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)       |  A set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.|
 
 ### QueryTokenEscrows
 Returns a list of chain UIDs belonging to the chains that have an escrow with the specified token Id.
@@ -324,13 +383,10 @@ label: 'Rust',
 language: 'rust',
 content: `
 pub enum QueryMsg {
-    #[returns(TokenEscrowsResponse)]
+     #[returns(TokenEscrowsResponse)]
     QueryTokenEscrows {
         token: Token,
-        start: Option<ChainUid>,
-        end: Option<ChainUid>,
-        skip: Option<usize>,
-        limit: Option<usize>,
+        pagination: Pagination<ChainUid>,
     },
 
 }
@@ -344,9 +400,12 @@ content: `
 {
   "query_token_escrows": {
     "token": "usdt",
-    "start": "chainA",
-    "end": "chainD",
-    "limit": 20
+    "pagination": {
+      "min": "nibiru",
+      "max": "ethereum",
+      "skip": 3,
+      "limit": 20
+    }
   }
 }
 `
@@ -355,11 +414,8 @@ content: `
 
 | **Field**   | **Type**             | **Description**                                      |
 |-------------|----------------------|------------------------------------------------------|
-| `token`     | [`Token`](../Euclid%20Smart%20Contracts/overview#token)              | The token identifier for which escrows are being queried. |
-| `start`     | `Option<ChainUid>`   | Optional start chain UID for pagination.             |
-| `end`       | `Option<ChainUid>`   | Optional end chain UID for pagination.               |
-| `skip`      | `Option<usize>`      | Optional number of entries to skip. Defaults to 0.              |
-| `limit`     | `Option<usize>`      | Optional limit on the number of entries to return. Defaults to 10.   |
+| `token`     | [`Token`](overview#token)              | The token identifier for which escrows are being queried. |
+| `pagination`   | [`Pagination<(Token, Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
 
 
 
@@ -385,12 +441,7 @@ language: 'rust',
 content: `
 pub enum QueryMsg {
   #[returns(AllTokensResponse)]
-    QueryAllTokens {
-        start: Option<Token>,
-        end: Option<Token>,
-        skip: Option<usize>,
-        limit: Option<usize>,
-    }
+   QueryAllTokens { pagination: Pagination<Token> },
 }
 `
 },
@@ -399,11 +450,14 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
- {
+{
   "query_all_tokens": {
-    "start": "usdc",
-    "end": "usdt",
-    "limit": 5
+    "pagination": {
+      "min": "usdt",
+      "max": "usdt",
+      "skip": 2,
+      "limit": 20
+    }
   }
 }
 `
@@ -412,10 +466,7 @@ content: `
 
 | **Field**   | **Type**        | **Description**                                      |
 |-------------|-----------------|------------------------------------------------------|
-| `start`     | `Option<Token>` | Optional start token Id for pagination.              |
-| `end`       | `Option<Token>` | Optional end token ID for pagination.                |
-| `skip`      | `Option<usize>` | Optional number of entries to skip. Default to 0.                |
-| `limit`     | `Option<usize>` | Optional limit on the number of entries to return. Defaults to 10.  |
+| `pagination`   | [`Pagination<(Token, Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
 
 The query returns the following response:
 
@@ -433,5 +484,5 @@ pub struct TokenResponse {
 ```
 | **Field**    | **Type**    | **Description**                      |
 |--------------|-------------|--------------------------------------|
-| `token`      | [`Token`](../Euclid%20Smart%20Contracts/overview#token)     | The unique identifier for the token. |
+| `token`      | [`Token`](overview#token)     | The unique identifier for the token. |
 | `chain_uid`  | `ChainUid`  | The unique identifier for the chain returned as a string. |

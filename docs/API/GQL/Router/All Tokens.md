@@ -21,11 +21,11 @@ query Router($start: String, $end: String, $skip: Int, $limit: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router($start: String, $end: String, $skip: Int, $limit: Int) {\n  router {\n    all_tokens(start: $start, end: $end, skip: $skip, limit: $limit) {\n      tokens {\n        token\n        chain_uid\n      }\n    }\n  }\n}","variables":{"start":null,"end":null,"skip":null,"limit":null}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJAM4oCGeK6RAyingJZIDmAGiI1kYNpx78h9ANbcADmwCSqaQBtucbqyIqUASiLAAOkiJE85SniOnz5xmrUB9FBBnI6VBsx30mLEKibCJIYEJ0corCkQpCGlp%2BCdqGJmb25m4eSHS26RmZ7sh2BeZQABaMvM4w3GAlGQC%2BDUTN6W2NIAIgAG7M3IwARmoIdBggacYgPixTbEgwTgKmU6JzRAtLK9NR65tqy0hTySh7iwemnY1AA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJAM4oCGeK6RAyingJZIDmAGiI1kYNpx78h9ANbcADmwCSqaQBtucbqyIqUASiLAAOkiJE85SniOnz5xmrUB9FBBnI6VBsx30mLEKibCJIYEJ0corCkQpCGlp%2BCdqGJmb25m4eSHS26RmZ7sh2BeZQABaMvM4w3GAlGQC%2BDUTN6W2NIAIgAG7M3IwARmoIdBggacYgPixTbEgwTgKmU6JzRAtLK9NR65tqy0hTySh7iwemnY1AA)
 
 
 ### Arguments

@@ -15,11 +15,11 @@ query Router($token: String!, $start: String, $end: String, $skip: Int, $limit: 
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router($token: String!) {\n  router {\n    escrows(token: $token) {\n      chain_id\n      chain_uid\n    }\n  }\n}","variables":{"token":"usdt"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEASiLAAOkiJE85SnmFiJEhAGcoUgO5Kq9JkhZ1GyIaPEKJUABYBDbgH1OYeaaIXrSGzHuOJAX0e%2Bk3iAANCAAbpZclgBGADbKGCDGEiIg2sgpLCkwSmAoKUFigd5AA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEASiLAAOkiJE85SnmFiJEhAGcoUgO5Kq9JkhZ1GyIaPEKJUABYBDbgH1OYeaaIXrSGzHuOJAX0e%2Bk3iAANCAAbpZclgBGADbKGCDGEiIg2sgpLCkwSmAoKUFigd5AA)
 
 ### Arguments
 

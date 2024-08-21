@@ -28,11 +28,11 @@ query Router($chainUid: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router($chainUid: String!) {\n  router {\n    chain(chain_uid: $chainUid) {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}","variables":{"chainUid":"nibiru"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJFABYCGAlkgKrNjpEDKKerAOYBCAJRFgAHSREiecpTwTps2QxZIq61gH0YnbnSasOYcVJmq1xmRatWAZoygoIhHdqQ7OK%2B7KcubgS%2Bfg7ycDr0MABGHkxISAgANiH2YRARAa7u6gnJqbIAvgVEnno%2BlkW%2BxUiFIAA0IABujAKM0UkIAM4YIBaSIJ6mA9wDSMzRzHgwA-XSdYVAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJFABYCGAlkgKrNjpEDKKerAOYBCAJRFgAHSREiecpTwTps2QxZIq61gH0YnbnSasOYcVJmq1xmRatWAZoygoIhHdqQ7OK%2B7KcubgS%2Bfg7ycDr0MABGHkxISAgANiH2YRARAa7u6gnJqbIAvgVEnno%2BlkW%2BxUiFIAA0IABujAKM0UkIAM4YIBaSIJ6mA9wDSMzRzHgwA-XSdYVAA)
 
 ### Arguments
 

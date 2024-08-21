@@ -20,10 +20,10 @@ query Chain_id($chainUid: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Chain_id($chainUid: String!) {\n  chains {\n    chain_id(chain_uid: $chainUid) {\n      chain_id\n      factory_address\n    }\n  }\n}","variables":{"chainUid":"nibiru"}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6VYAFACRSU0CqD6RAyinhoBzAIQBKIsAA6SIkTbUkAZ0ky5chTXpNNdGNyKt2SLmAnTZ6jce1qrRAGYUoKCIVoUwYPAiVK7cgC%2BdsFIgSAANCAAbhSCFABGADa%2BGCAWclIguqZZPFlIVAlUeDBZMuGBQA)
+[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6VYAFACRSU0CqD6RAyinhoBzAIQBKIsAA6SIkTbUkAZ0ky5chTXpNNdGNyKt2SLmAnTZ6jce1qrRAGYUoKCIVoUwYPAiVK7cgC%2BdsFIgSAANCAAbhSCFABGADa%2BGCAWclIguqZZPFlIVAlUeDBZMuGBQA)
 
 ### Arguments
 

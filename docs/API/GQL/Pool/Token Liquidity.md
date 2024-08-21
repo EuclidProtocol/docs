@@ -22,11 +22,11 @@ query Pool($token: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Pool($token: String!) {\n  pool {\n    token_liquidity(token: $token) {\n      token\n      total_liquidity\n    }\n  }\n}","variables":{"token":"usdt"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACQoQDWy6RAyingJZIDmAhAEoiwADpIiRAA7kKwsRIn0mSAPoVOOTmE4oCVJcyJ1GyIaPELFJpPMtF6KAIYU1GmFp0FbEgL62-SD4gADQgAG6OXI4ARhQIAM4YIOYSIiAGNhhEaTDxYChpYkE%2BQA)
+[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACQoQDWy6RAyingJZIDmAhAEoiwADpIiRAA7kKwsRIn0mSAPoVOOTmE4oCVJcyJ1GyIaPELFJpPMtF6KAIYU1GmFp0FbEgL62-SD4gADQgAG6OXI4ARhQIAM4YIOYSIiAGNhhEaTDxYChpYkE%2BQA)
 
 ### Arguments
 

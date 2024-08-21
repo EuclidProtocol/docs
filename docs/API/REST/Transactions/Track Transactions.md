@@ -10,7 +10,7 @@ Gets all information on the specified transaction.
  
 ```bash
 curl -X 'POST' \
-  'https://api.staging.euclidprotocol.com/dev/api/v1/txn/track' \
+  'https://api.euclidprotocol.com/api/v1/txn/track' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

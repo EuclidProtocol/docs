@@ -7,7 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Escrow contract directly.
-You can read about the Escrow architecture [here](../Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/escrows.md)
+You can read about the Escrow architecture [here](../../Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/escrows.md)
 :::
 List of queries that can be performed on the Escrow contract.
 
@@ -85,7 +85,7 @@ JSON Example:
 
 | **Name** | **Type**      | **Description**                   |
 |----------|---------------|-----------------------------------|
-| `denom`  | [`TokenType`](../Euclid%20Smart%20Contracts/overview#tokentype)   | The type of token. Returns the denom for native and CW20 contract address for CW20 token.   |
+| `denom`  | [`TokenType`](overview#tokentype)   | The type of token. Returns the denom for native and CW20 contract address for CW20 token.   |
 
 The query returns the following response:
 
@@ -136,4 +136,4 @@ pub struct AllowedDenomsResponse {
 ```
 | **Name** | **Type**            | **Description**                              |
 |----------|---------------------|----------------------------------------------|
-| `denoms` | [`Vec<TokenType>`](../Euclid%20Smart%20Contracts/overview#tokentype)    | A list of allowed token types . |
+| `denoms` | [`Vec<TokenType>`](overview#tokentype)    | A list of allowed token types . |

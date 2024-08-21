@@ -22,11 +22,11 @@ query Pool($page: Int!, $limit: Int!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Pool($page: Int!, $limit: Int!) {\n  pool {\n    token_liquidities(page: $page, limit: $limit) {\n      token\n      total_liquidity\n    }\n  }\n}","variables":{"page":1,"limit":10}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACQAOAhgOYLpECSqAhADRE0UAlnEEo2nFFwCURYAB0kRInXIVZCpUpQQA1sgD6QnILCjBCAM5VGLNvWYI%2BQkWP7PRM%2BYs1bdyDT5E2igMFIaCxqYoBAFKAL4BCUhxIDwgAG4MeIIMAEYUlhggXkpyIDYIZWwAjDwBZe4oVUTVAAx1ySBxQA)
+[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACQAOAhgOYLpECSqAhADRE0UAlnEEo2nFFwCURYAB0kRInXIVZCpUpQQA1sgD6QnILCjBCAM5VGLNvWYI%2BQkWP7PRM%2BYs1bdyDT5E2igMFIaCxqYoBAFKAL4BCUhxIDwgAG4MeIIMAEYUlhggXkpyIDYIZWwAjDwBZe4oVUTVAAx1ySBxQA)
 
 ### Arguments
 

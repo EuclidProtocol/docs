@@ -6,7 +6,7 @@ sidebar_position: 6
 Queries the factory address, unique identifier (UID), name and logo for a specified chain using its chain ID.
 
 ```graphql
-query Chain_id($chainId: String!) {
+query Chain_uids($chainId: String!) {
   chains {
     chain_uids(chain_id: $chainId) {
       factory_address
@@ -23,11 +23,11 @@ query Chain_id($chainId: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Chain_id($chainId: String!) {\n  chains {\n    chain_uids(chain_id: $chainId) {\n      factory_address\n      chain_uid\n      display_name\n      logo\n    }\n  }\n}","variables":{"chainId":"localpoola-1"}}'
+    --url 'https://api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Chain_uids($chainId: String!) {\n  chains {\n    chain_uids(chain_id: $chainId) {\n      factory_address\n      chain_uid\n      display_name\n      logo\n    }\n  }\n}","variables":{"chainId":"localwasma-1"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6VYAFACRSU0CSY6RAyinhoBzAIQBKIsAA6SIkTbUkAZ0ky5chTVowGSxproMerdki4Tps9XIBmFKCgiFaFMGDwIlStdfmntDD7WYFRKAA4ANhQEtEgUiEHqERBCEIkAvj6ZSOkgADQgAG4UghQARhGeGCCWclIgBlz1PPXJUBQRYRAQUQC0AIz1MrnpQA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6MVYAzgBQAkUlNAkmOkQGUUeGgHMAhAEoiwADpIiRTtSRMZ8xYuU16jVtrqN%2BHLkl7S5CzYoBmFKCgiFaFMGDwImTDdaWndYD7WYFRMAA4ANhQEtEgUiEGaERCiEIkAvj6ZSOkgADQgAG4UIhQARhGeGCCWirIgBrz1-PXJUBQRAO4UTHAUALQAjPXyuelAA)
 
 ### Arguments
 
