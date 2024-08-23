@@ -22,9 +22,9 @@ query Cw($contract: String!, $chainUid: String!, $address: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Cw($contract: String!, $chainUid: String!, $address: String!) {\n  cw(contract: $contract, chain_uid: $chainUid) {\n    balance(address: $address) {\n      balance\n    }\n  }\n}","variables":{"contract":"wasm1rluylt6fnh5a55szyuh2qsg69nfsgcwm5faq8ujesdtd0yfugnkq2ft2ax","chainUid":"ethereum","address":"wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg"}}'
+    --data '{"query":"query Cw($contract: String!, $chainUid: String!) {\n  cw(contract: $contract, chain_uid: $chainUid) {\n    token_info {\n      name\n      symbol\n      decimals\n      total_supply\n    }\n  }\n}","variables":{"contract":"nibi16wdq5rux5p2fd7kyv2fq0yxus7z3axtm509w6f97fs0an9lemmdstzg69p","chainUid":"nibiru"}}'
 ```
-[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIDuAFACRQSp4CGUK6RAyingJZIDmAhABoiNABYMeAVS5hWHbnyEiGYMHgQBnDXM48BASiLAAOkiJEolWvSYsR1zreFRxPAPowZrMRKTSwhiZm5kQARgwANgxIUAgUKmqa2sqq6lqBpiEh4VExCJkhAL4FxUiFIIIgAG4M3AyhEZoYIEHmxiAOjMztrO1kDBpwAIx4ETAEESgAbABmSKIArAwLCxoAXgQwogBMWBq8UwCcSDP7lnALMwxYABwwAFaaYChgAAwEMzC8SADWWNszFDbBgAD3aggK7Rcvn8PSI7QQKFE%2BAQ8HBkJACTSGjhfQGwwALKIoCCIkgyBEsCgsAB2BYoFCgmZTGkEqo-KZwBinAAOvBuIKqrwAzD8ULx2qZyoUgA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIDuAFACRQSp4CGUK6RAyingJZIDmAhABoiNABYMeAVS5hWHbn34BKIsAA6SIkSiVa9JixF7OB4VHE8A%2BjBmsxEpNLAr1mrURQQA1sks8AZhCqGu7uSAyIIaFEAM4EcABGEAA2UaFgCFBccAzJMWnunii5ljEwAA7lyQQFAL5R9Ui1IIIgAG4M3AwJyQgxGCCuWmogxozMI6wjSFwJXACMAGxkYFgArHgwAB5r5QBM-mAA7F4EbQdYAAwEWzAxRwBeAMwMWyhwa5cAnGSL-l9HfwxS4MJBfXpwOBgGIoB68RZfcojQRREbmBxOSZEaazLibZEaZq1IA)
 
 ### Return Fields
 

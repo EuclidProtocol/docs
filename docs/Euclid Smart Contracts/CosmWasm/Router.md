@@ -415,7 +415,7 @@ content: `
 | **Field**   | **Type**             | **Description**                                      |
 |-------------|----------------------|------------------------------------------------------|
 | `token`     | [`Token`](overview#token)              | The token identifier for which escrows are being queried. |
-| `pagination`   | [`Pagination<(Token, Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
+| `pagination`   | [`Pagination<(ChainUid)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
 
 
 
@@ -423,12 +423,17 @@ The query returns the following response:
 
 ```rust
 pub struct TokenEscrowsResponse {
-    pub chains: Vec<ChainUid>,
+    pub chains: Vec<TokenEscrowChainResponse>,
+}
+pub struct TokenEscrowChainResponse {
+    pub chain_uid: ChainUid,
+    pub balance: Uint128,
 }
 ```
 | **Field** | **Type**         | **Description**                      |
 |-----------|------------------|--------------------------------------|
-| `chains`  | `Vec<ChainUid>`  | The list of unique identifiers for the chains that have an escrow containing the specified token.​ |
+| `chainUid`  | `Vec<ChainUid>`  | The unique identifiers for the chain that has an escrow containing the specified token.​ |
+|`balance`     | `Uint128`         | The amount of tokens in the escrow. 
 
 ### QueryAllTokens
 Queries information on all available tokens.
@@ -466,7 +471,7 @@ content: `
 
 | **Field**   | **Type**        | **Description**                                      |
 |-------------|-----------------|------------------------------------------------------|
-| `pagination`   | [`Pagination<(Token, Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
+| `pagination`   | [`Pagination<(Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
 
 The query returns the following response:
 

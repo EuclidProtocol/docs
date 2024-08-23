@@ -851,8 +851,7 @@ pub enum QueryMsg {
   #[returns(GetPendingLiquidityResponse)]
     PendingLiquidity {
         user: Addr,
-        lower_limit: Option<u128>,
-        upper_limit: Option<u128>,
+        pagination: Pagination<Uint128>,
     },
 }
 `
