@@ -5,7 +5,8 @@ import Tabs from '@site/src/components/Tabs';
 
 # Usage Examples
 
-In this guide, we’ll walk you through how to interact with a GraphQL API using some popular languages. 
+Example calls to the GraphQL API.
+ 
 ### JavaScript (Apollo Client)
 :::note
 - You can read more about the Apollo Client and its features in their [docs](https://www.apollographql.com/docs/).
