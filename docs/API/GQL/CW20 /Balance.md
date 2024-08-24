@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Balance
 
-Queries the amount of CW20 tokens held by the specified user for the specified contract address and chain.
+Queries the amount of CW20 tokens held by the specified user for the specified address and chain.
 
 ```graphql
 query Cw($contract: String!, $chainUid: String!, $address: String!) {

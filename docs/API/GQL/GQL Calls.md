@@ -5,8 +5,8 @@ import Tabs from '@site/src/components/Tabs';
 
 # Usage Examples
 
-Example calls to the GraphQL API.
- 
+Example calls to the Euclid GraphQL API.
+
 ### JavaScript (Apollo Client)
 :::note
 - You can read more about the Apollo Client and its features in their [docs](https://www.apollographql.com/docs/).
