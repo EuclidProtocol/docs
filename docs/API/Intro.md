@@ -25,7 +25,7 @@ In the following sections, we will be covering all the available queries for the
 - [VCoin](../API/GQL/Virtual%20Balance/Balance.md): Query information from the Virtual Balance contract.
 - [Pool](../API/GQL/Pool/Token%20Liquidity.md): Get information on Euclid pools such as liquidity and volume.
 - [Token](../API/GQL/Token/Token%20Metadata.md): Get token metadata for tokens.
-- [CW20](../API/GQL/CW20%20/Balance.md): Get information on a CW20 token. 
+- [CW20](../API/GQL/CW/Balance.md): Get information on a CW20 token. 
 
 ## REST API
 
