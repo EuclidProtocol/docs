@@ -19,7 +19,7 @@ The bottom layer acts like a CPAMM pool but is in fact a series of escrows. We w
 
 ### Virtual Settlement Layer
 
-To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its Virtual Settlement Layer. Euclid's VSL is a layer-1 blockchain with instant finality where all liquidity across the blockchain is tallied, computed, and settled.
+To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its **Virtual Settlement Layer**. Euclid's VSL is a layer-1 blockchain with instant finality where all liquidity across the blockchain is tallied, computed, and settled.
 
 Euclid utilizies [Nibiru Chain](https://nibiru.fi/) as its VSL due to its DeFi focused approach, instant finality architecture, and optimized block space to support over 40,000 TPS (Transactions per Second). Nibiru's goal of being the DeFi Hub of the blockchain,
 and its extensive roadmap and integrations, makes it the perfect fit for Euclid's VSL.

@@ -20,10 +20,10 @@ curl -X 'POST' \
   -d '{
   "amount_in": "10",
   "asset_in": "usdt",
-  "asset_out": "osmo",
-  "contract": "wasm1xfvv67yrnrxdk3tkjlv772wcw5jukae5x233az9k3nf26lhxwu7sv62245",
+  "asset_out": "nibi",
+  "contract": "nibi1nsvx0s8kj2jn0smcrz4t0wga9dtrjkvsfd24ay5jrkw3jgrhjmeq8suvmz",
   "min_amount_out": "1",
-  "swaps": ["usdt","osmo"]
+  "swaps": ["usdt","nibi"]
   
 }'
 ```
@@ -43,5 +43,5 @@ curl -X 'POST' \
 ### Example Response
 
 ```json
- {"data":{"amount_out":"10","asset_out":"osmo"}}
+ {"data":{"amount_out":"10","asset_out":"nibi"}}
 ```

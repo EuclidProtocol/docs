@@ -18,12 +18,14 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
+  "amount_in": "100",
   "token_in": "usdt",
   "token_out": "nibi"
 }'
 ```
 | Field       | Type   | Description                        |
 |-------------|--------|------------------------------------|
+| `amount_in`  | String | The amount of tokens being swapped in. |
 | `asset_in`  | String | The identifier of the asset being swapped in. |
 | `asset_out` | String | The identifier of the desired asset out.|
 
@@ -31,13 +33,15 @@ curl -X 'POST' \
 
 ```json
 {
-  "paths": [
-    [
-      "usdt",
-      "usdc",
-      "eth",
-      "nibi"
+  "paths":[
+    {
+    "route":["usdt","nibi"],
+    "amount_out":100
+    },
+    {
+      "route":["usdt","usdc","eth","nibi"],
+      "amount_out":100
+    }
     ]
-  ]
-}
+  }
 ```
