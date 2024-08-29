@@ -91,10 +91,12 @@ footer {
 .card {
   cursor: pointer;
   background: transparent;
-  padding: 2rem;
+  padding: 1rem;
   border: 1.5px solid rgba(93, 93, 93, 1);
   border-radius: 4px;
   transition: border 0.3s ease, box-shadow 0.3s ease;
+  width: 1/4;
+  margin: 1rem;
 
   /* z-index: 100; */
   /* background: rgba(255, 255, 255, 0.1);

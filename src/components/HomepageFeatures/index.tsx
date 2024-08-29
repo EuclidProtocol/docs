@@ -52,6 +52,18 @@ const FeatureList2: FeatureItem[] = [
     description: <>Start here to explore the fundamentals of Euclid Protocol</>,
     link: "docs/Architecture Overview/intro",
   },
+  {
+    title: "Euclid Smart Contract",
+    imgSrc: require("@site/static/img/Smart_Contract.png").default,
+    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
+    link: "docs/Architecture Overview/intro",
+  },
+  {
+    title: "Euclid Api",
+    imgSrc: require("@site/static/img/API.png").default,
+    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
+    link: "docs/Architecture Overview/intro",
+  },
 ];
 
 function Feature({ title, imgSrc, description, extraClass }: FeatureItem) {
@@ -76,7 +88,7 @@ function Feature({ title, imgSrc, description, extraClass }: FeatureItem) {
 
 function Feature2({ title, imgSrc, description, link }: FeatureItem) {
   return (
-    <div className={clsx("col col--4 card")}>
+    <div className={clsx("col col--3 card")}>
       <Link href={link}>
         <div className="text--center">
           <img src={imgSrc} className={styles.featureImg} alt={title} />
@@ -108,7 +120,7 @@ export default function HomepageFeatures(): JSX.Element {
         <div className={styles.started}>Getting Started</div>
       </section>
       <section className={styles.features}>
-        <div className="container bottomContainer">
+        <div className=" bottomContainer">
           <div className={clsx("row", styles.bottomRow)}>
             {FeatureList2.map((props, idx) => (
               <Feature2 key={idx} {...props} />
