@@ -28,6 +28,13 @@
   font-style: normal;
 }
 
+.feature2Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 500px) {
   .started {
     display: flex !important;
