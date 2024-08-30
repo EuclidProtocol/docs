@@ -29,21 +29,6 @@ Although Euclid puts all the required checks and security barriers in place to e
 
 Euclid requires a VSL that is able to connect efficiently with the Euclid Messaging Protocol. This is crucial to be able to facilitate cross-chain messaging from different ecosystems.
 
-## Nibiru Chain
-
-The Hub and VSL of Euclid will be on [Nibiru Chain](https://www.nibiru.fi), as the chain has all of the requirements for a VSL due to its optimized architecture:
-
-1. **Tendermint Core:** Nibiru utilizes [Tendermint Core](https://tendermint.com/core/) as its consensus engine that ensures a decentralized state machine with instant finality.
-
-2. **Superior Performance:** Due to Nibiru's optimized architecture, it offers very low block times (~1.4s) with maximum capacity that allows it to process around 40,000 transactions per second. Nibiru represents a 1,300x improvement and a 4x advance on the standard performance of chains leveraging the battle tested CometBFT consensus algorithm (previously known as Tendermint Core). This is done by Nibiru leveraging parallel optimistic execution.
-
-3. **Secure:** Nibiru has 150+ different validators that secure the blockchain from different locations, ensuring a sufficiently decentralized system that ensures uptime of the Euclid system. 
-
-4. **IBC enabled**: Nibiru integrates [IBC protocol](https://www.ibcprotocol.dev/), which allows for complete integration of the Euclid Messaging Protocol.
-
-To read more about Nibiru Chain and what they offer, check out their [docs](https://nibiru.fi/docs).
-
-
 ## VSL Components
  ![Factory Architecture](../../../../static/img/VSL.png)
 
