@@ -26,10 +26,10 @@ query Factory($chainUid: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Factory($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    all_pools {\n      pools {\n        pair {\n          token_1\n          token_2\n        }\n        vlp\n      }\n    }\n  }\n}","variables":{"chainUid":"nibiru"}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcomQA259QAcIEcwGdJM06dv2nx16%2Bus8zk29TKgBrZHUARhcg4IgwjQAmaKCAX2TvADdza3S5NMCifLyZFJAAGhAMskEyACNzBAcMEC8iKRBVfS52nnakFlqWPBh2kpAUoA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcomQA259QAcIEcwGdJM06dv2nx16%2Bus8zk29TKgBrZHUARhcg4IgwjQAmaKCAX2TvADdza3S5NMCifLyZFJAAGhAMskEyACNzBAcMEC8iKRBVfS52nnakFlqWPBh2kpAUoA)
 
 ### Arguments
 

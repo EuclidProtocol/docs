@@ -52,6 +52,18 @@ const FeatureList2: FeatureItem[] = [
     description: <>Start here to explore the fundamentals of Euclid Protocol</>,
     link: "docs/Architecture Overview/intro",
   },
+  {
+    title: "Euclid Smart Contract",
+    imgSrc: require("@site/static/img/Smart_Contract.png").default,
+    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
+    link: "docs/Euclid%20Smart%20Contracts/CosmWasm/overview",
+  },
+  {
+    title: "Euclid Api",
+    imgSrc: require("@site/static/img/API.png").default,
+    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
+    link: "/docs/API/Intro",
+  },
 ];
 
 function Feature({ title, imgSrc, description, extraClass }: FeatureItem) {
@@ -76,19 +88,21 @@ function Feature({ title, imgSrc, description, extraClass }: FeatureItem) {
 
 function Feature2({ title, imgSrc, description, link }: FeatureItem) {
   return (
-    <div className={clsx("col col--4 card")}>
-      <Link href={link}>
-        <div className="text--center">
-          <img src={imgSrc} className={styles.featureImg} alt={title} />
-        </div>
-        <div className="text--center padding-horiz--md">
-          <Heading as="h3" className="heading-main">
-            {title}
-          </Heading>
-          <p className="text-white font-secondary">{description}</p>
-        </div>
-      </Link>
-    </div>
+    <>
+      <div className={clsx("col col--3 card", styles.feature2Container)}>
+        <Link href={link}>
+          <div className="text--center">
+            <img src={imgSrc} className={styles.featureImg} alt={title} />
+          </div>
+          <div className="text--center padding-horiz--md">
+            <Heading as="h3" className="heading-main">
+              {title}
+            </Heading>
+            <p className="text-white font-secondary">{description}</p>
+          </div>
+        </Link>
+      </div>
+    </>
   );
 }
 

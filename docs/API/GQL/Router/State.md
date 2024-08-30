@@ -20,12 +20,12 @@ query Router {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router {\n  router {\n    state {\n      admin\n      vlp_code_id\n      vcoin_address\n    }\n  }\n}"}'
 
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAzigIaVv0ODHmDgBLJOyFEAbgBsADgH0oEMAiViwUoTNUSlIsHgSdOOogF8p1pJZAAaEDJ54xPAEZzTGECEtAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAzigIaVv0ODHmDgBLJOyFEAbgBsADgH0oEMAiViwUoTNUSlIsHgSdOOogF8p1pJZAAaEDJ54xPAEZzTGECEtAA)
 
 
 ### Return Fields

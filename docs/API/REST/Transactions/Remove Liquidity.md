@@ -9,12 +9,12 @@ Generates a transaction to remove liquidity from a pool.
 ### Request URL
  
 ```bash
-https://api.staging.euclidprotocol.com/dev/api/v1/execute/liquidity/remove
+https://api.euclidprotocol.com/api/v1/execute/liquidity/remove
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.staging.euclidprotocol.com/dev/api/v1/execute/liquidity/remove' \
+  'https://api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -35,10 +35,10 @@ curl -X 'POST' \
 ### Parameters
 | Field                    | Type   | Description                                                      |
 |--------------------------|--------|------------------------------------------------------------------|
-| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../../../Euclid%20Smart%20Contracts/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. |
+| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. |
 | `lp_allocation`          | String | The amount of liquidity pool allocation to be removed.           |
-| `pair`               | [`PairWithDenom`](../../../Euclid%20Smart%20Contracts/overview#tokenwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
-|`sender`         | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/overview#crosschainuser)  | The address performing the swap request.|       
+| `pair`               | [`PairWithDenom`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#tokenwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
+|`sender`         | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)  | The address performing the swap request.|       
 | `timeout`                | `Option<u64>`        | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
 | `vlp_address`            | String | The address of the VLP contract that the pool is on.                      |
 

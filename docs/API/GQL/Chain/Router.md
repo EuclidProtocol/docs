@@ -26,11 +26,11 @@ query Chains {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Chains {\n  chains {\n    router {\n      CreatedAt\n      UpdatedAt\n      ContractAddress\n      ChainUID\n      Type\n    }\n  }\n}"}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDORwAOkkUVJTfUy60XhDBT4GzXrxJ4EFIWACCKUWKIBVAA5hpCOQp5iSEVHgpQUssGEm1aivRyTKAkgBEbvACoFVCVwF9FfpB8QABoQADcKPCoKACMAGwRaDBAQHyA)
+[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDORwAOkkUVJTfUy60XhDBT4GzXrxJ4EFIWACCKUWKIBVAA5hpCOQp5iSEVHgpQUssGEm1aivRyTKAkgBEbvACoFVCVwF9FfpB8QABoQADcKPCoKACMAGwRaDBAQHyA)
 
 ### Arguments
 

@@ -35,11 +35,11 @@ query Chains($userAddress: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Chains($userAddress: String!) {\n  chains {\n    my_pools(user_address: $userAddress) {\n      height\n      tx_id\n      vlp\n      pair {\n        token_1\n        token_2\n      }\n      liquidity {\n        token_1_liquidity\n        token_2_liquidity\n      }\n      user {\n        sender\n        chain_uid\n      }\n    }\n  }\n}","variables":{"userAddress":"wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg"}}'
+    --url 'https://api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Pool($userAddress: String!, $chainUid: String) {\n  pool {\n    my_pools(user_address: $userAddress, chain_uid: $chainUid) {\n      height\n      vlp\n      user {\n        sender\n        chain_uid\n      }\n      pair {\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{"userAddress":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts","chainUid":"nibiru"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDOAFACQy34CCYYeCtt6RAZRR4aAcwCEASiLAAOkiJEolGrRnzFiuAQD6ABwgQANgxb4dFTt179mrPBy49a0uQs2KyCKqLIoNHkQoAB46VGABHgBuRnqRmnrUeOrugUEQANbIOgCM8R4omdkATPlEAL5lRlQ44VQoxG5pioVZSLk61bVg9QRlLUXtxZ01MHUNZZWpmmbJTc2sSGD4-Uoq7WMR04pTHrsV8uUgADQgURQiFABGRjwYIG6yILOO1rRP-E8A7hS0cDkAFjIUGCRiQXyMWBQWAA7ABWFAoCjBABmADYYQCohk0XAKCjaHpRAAOYJRAAMAGYMihRE9DiBykA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAG4AbAA4BBMGDwIAzmp79BSUQEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAPHTZokIQo9lQA1sj2ZMqqGjSycuGR6pqSsUoqiV4mvr4hYRFpGpm%2BAL6FJUhFIEVAA)
 
 
 ### Return Fields
@@ -49,9 +49,9 @@ curl --request POST \
 | height            | Int                   | The block height when the pool was created.                        |
 | tx_id             | String                | The transaction ID for the pool creation.                            |
 | vlp               | String                | The contract address of the VLP of the pool.                                 |
-| pair              | [Pair](../../../Euclid%20Smart%20Contracts/overview#pair)         | The pair of tokens in the pool.                |
+| pair              | [Pair](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#pair)         | The pair of tokens in the pool.                |
 | liquidity         | Liquidity| The amount of liquidity available for each token in the pair.             |
-| user              | [User](../../../Euclid%20Smart%20Contracts/overview#crosschainuser)         | The user details associated with the pool.     |
+| user              | [User](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)         | The user details associated with the pool.     |
 
 
 

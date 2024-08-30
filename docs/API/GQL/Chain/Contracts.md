@@ -27,10 +27,10 @@ query Contracts($chainUId: String!, $type: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Contracts($chainUId: String!, $type: String!) {\n  chains {\n    contracts(chainUId: $chainUId, type: $type) {\n      CreatedAt\n      UpdatedAt\n      ContractAddress\n      ChainUID\n      Type\n    }\n  }\n}","variables":{"chainUId":"vsl","type":"vlp"}}'
 ```
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMISp4CGUKAzgBQAkUAFpQJZICqAkmOkQDKKPJwDmAQgA0RRigIAHBAOGikkgJRFgAHSREirDklra9Bg1HIjqdekc69%2Bsh9z4z5SgXMUItu-QsDEjwEShQEMABBFHMgoi4FMHDImLigsgpbKLAwUNpadIsSNkceABEigwAVXyKAXzjGpHqQKRAAN0pRSgAjABsEWgwQAIMdEFcnCYEJjtp%2Biak4ic8EGaI5-oUJvVb6oA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMISp4CGUKAzgBQAkUAFpQJZICqAkmOkQDKKPJwDmAQgA0RRigIAHBAOGikkgJRFgAHSREirDklra9Bg1HIjqdekc69%2Bsh9z4z5SgXMUItu-QsDEjwEShQEMABBFHMgoi4FMHDImLigsgpbKLAwUNpadIsSNkceABEigwAVXyKAXzjGpHqQKRAAN0pRSgAjABsEWgwQAIMdEFcnCYEJjtp%2Biak4ic8EGaI5-oUJvVb6oA)
 
 ### Arguments
 

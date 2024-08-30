@@ -26,12 +26,12 @@ query Router {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
-    --data '{"query":"query Router {\n  router {\n    all_chains {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}","variables":{}}'
+    --url 'https://api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Router {\n  router {\n    all_chains {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}"}'
 
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/dev/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6UABacAlkgDObehwZDR9WtJkMAZpygoIhAcLF8RYdstXrNhI8ZVM4fQTABGOzkiQJuF5VYg21GrQScXNw8GAF8Qojk9GAMPcOl40JAAGhAAN048EU57bgRxDBBFBhoQKAhUPFNS9FKAd05xOABGAA8VNLSANgB2AjwkPFawAGsAZhQRgCtuNJ6egCY6qDqAVimYEc4EVdaFsbHOAC8ATnGkFQWu7kFWupge8W6FhYAWVdLkuiTQoA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6UABacAlkgDObehwZDR9WtJkMAZpygoIhAcLF8RYdstXrNhI8ZVM4fQTABGOzkiQJuF5VYg21GrQScXNw8GAF8Qojk9GAMPcOl40JAAGhAAN048EU57bgRxDBAQUKA)
 
 ### Return Fields
 

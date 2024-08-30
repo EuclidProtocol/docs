@@ -14,14 +14,14 @@ Euclid's Virtual Balances are virtual tokens that are minted to mimick 1/1 the b
 
 - **Global State Sync:** The total balances for the users and the VLPs for these virtual balances need to be exactly equal to the number of tokens stored by the [VSL](../Virtual%20Settlement%20Layer/virtual-settlement-layer.md) contract which equals the number of tokens found in the escrows on the integrated chains. This ensures that the entire system is in sync and swaps are being performed correctly.
 
-- **Flexible Swaps:** It is in Euclid's intention to allow users to swap using the virtual tokens, which is faster and cheaper than performing an actual swap. Then the user can swap the virtual tokens for real ones on any chain whenever they see fit.
+- **Flexible Swaps:** Euclid allow users to swap to virtual tokens. They can also swap using virtual tokens which is faster and cheaper than regular swaps. The user can then redeem the virtual tokens for real ones on any chain whenever they see fit.
 
 - **Security Failsafe:** In case any of the integrated chains suddenly crashes, or for some reason a swap is successful in the VSL but the reply fails to reach the escrow to release the tokens, the user's balance will be saved in the Virtual Balance contract, and the user can decide to extract the tokens on another chain. 
 
 ## Workflow
 
 :::tip
-We will dive deeper into each of the contract's messages in the [Euclid Smart Contracts](../../../Euclid%20Smart%20Contracts/Virtual%20balances.md) section.
+We will dive deeper into each of the contract's messages in the [Euclid Smart Contracts](../../../Euclid%20Smart%20Contracts/CosmWasm/Virtual%20balances.md) section.
 :::
 
 Whenever a user requests a swap for some token, the Virtual Balance contract will transfer the tokens from the VLP balance to the user's balance:

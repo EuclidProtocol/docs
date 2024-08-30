@@ -9,8 +9,13 @@ Euclid is an open-source decentralized unified liquidity layer designed to allow
 Furthermore, Euclid's modular architecture empowers dApps to access a vast pool of liquidity from any integrated chain, enabling them to easily interact with tokens across the entire ecosystem. 
 
 # Mission
+:::note
+Euclid is not restriced to any ecosystem and operates on any chain that integrates with the Euclid layer, whether in Cosmos, EVM, Solana or anywhere else. 
+:::
 
 Euclid's mission is to unlock the true potential of decentralized finance by empowering developers, users, and token projects with a robust, permissionless, and efficient protocol for accessing and managing liquidity across the entire blockchain space.
+
+![Euclid Connected Chains](../../static/img/Euclid-chains.jpg)
 
 # Transforming the DeFi Landscape
 

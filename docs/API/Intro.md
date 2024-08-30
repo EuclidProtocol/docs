@@ -25,7 +25,7 @@ In the following sections, we will be covering all the available queries for the
 - [VCoin](../API/GQL/Virtual%20Balance/Balance.md): Query information from the Virtual Balance contract.
 - [Pool](../API/GQL/Pool/Token%20Liquidity.md): Get information on Euclid pools such as liquidity and volume.
 - [Token](../API/GQL/Token/Token%20Metadata.md): Get token metadata for tokens.
-- [CW20](../API/GQL/CW20%20/Balance.md): Get information on a CW20 token. 
+- [CW20](../API/GQL/CW/Balance.md): Get information on a CW20 token. 
 
 ## REST API
 
@@ -43,12 +43,12 @@ Here is a list of the available API endpoints:
 
 ### GET
 
-- https://api.staging.euclidprotocol.com/api/v1/chains
-- https://api.staging.euclidprotocol.com/api/v1/contracts 
-- https://api.staging.euclidprotocol.com/api/v1/tokens
-- https://api.staging.euclidprotocol.com/api/v1/tokens/details 
+- https://api.euclidprotocol.com/api/v1/chains
+- https://api.euclidprotocol.com/api/v1/contracts 
+- https://api.euclidprotocol.com/api/v1/tokens
+- https://api.euclidprotocol.com/api/v1/tokens/details 
 
 ### POST
 
-- https://api.staging.euclidprotocol.com/api/v1/routes 
-- https://api.staging.euclidprotocol.com/api/v1/simulate-swap 
+- https://api.euclidprotocol.com/api/v1/routes 
+- https://api.euclidprotocol.com/api/v1/simulate-swap 
