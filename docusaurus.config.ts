@@ -94,11 +94,11 @@ const config: Config = {
           items: [
             {
               label: "Cosmwasm",
-              to: "https://github.com/EuclidProtocol/docs",
+              to: "/docs/Euclid%20Smart%20Contracts/CosmWasm/overview",
             },
             {
               label: "Solidity",
-              to: "https://github.com/EuclidProtocol/docs",
+              to: "/docs/Euclid%20Solidity%20Contracts/Solidity/overview",
             },
           ],
         },

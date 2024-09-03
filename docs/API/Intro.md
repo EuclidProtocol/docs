@@ -11,12 +11,20 @@ The Euclid API is designed to facilitate interactions with the Euclid platform, 
 The Euclid API is built using GraphQL, a powerful query language for APIs that allows clients to request exactly the data they need. This approach avoids both the problems of over and under-fetching data, while also allowing for a more powerful and flexible Api.
 
 :::note
-Before reading these docs and using the API, it is recommended you familiarise yourself with [GraphQL](https://graphql.org/learn/) by reading the official GraphQL documentation.
+- Before reading these docs and using the API, it is recommended you familiarise yourself with [GraphQL](https://graphql.org/learn/) by reading the official GraphQL documentation.
 :::
+
+In addition to the GraphQL API, Euclid also provides a REST API, a traditional and widely-used approach for accessing web services. The REST API is mostly used to generate transactions that can signed by a wallet and broadcast to chains.
+
+
 
 ## Available Queries
 
 In the following sections, we will be covering all the available queries for the following:
+
+:::tip
+For each query, you can find an example response if you select the "Open in Playground" link.
+:::
 
 - [Chain](../API/GQL/Chain/All%20Chain%20UIDs.md): Query information related to the chain.
 - [Factory](../API/GQL/Factory/All%20Pools.md): Query information from the factory contract.
@@ -36,19 +44,3 @@ In addition to the GraphQL API, the Euclid platform also provides a REST API for
 - [Routes](../API/REST/Routes/Get%20Routes.md): Get the available routes for a swap.
 - [Metadata](../API/REST/Metadata/Get%20Token%20Details.md): Get the price or information on tokens in Euclid pools.
 - [Transaction](../API/REST/Transactions/Swap.md): Generate transactions for various calls such as making swaps and adding/removing liquidity.
-
-## API Endpoints
-
-Here is a list of the available API endpoints:
-
-### GET
-
-- https://api.euclidprotocol.com/api/v1/chains
-- https://api.euclidprotocol.com/api/v1/contracts 
-- https://api.euclidprotocol.com/api/v1/tokens
-- https://api.euclidprotocol.com/api/v1/tokens/details 
-
-### POST
-
-- https://api.euclidprotocol.com/api/v1/routes 
-- https://api.euclidprotocol.com/api/v1/simulate-swap 

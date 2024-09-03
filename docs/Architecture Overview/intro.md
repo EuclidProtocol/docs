@@ -15,6 +15,8 @@ Euclid is not restriced to any ecosystem and operates on any chain that integrat
 
 Euclid's mission is to unlock the true potential of decentralized finance by empowering developers, users, and token projects with a robust, permissionless, and efficient protocol for accessing and managing liquidity across the entire blockchain space.
 
+![Euclid Connected Chains](../../static/img/Euclid-chains.jpg)
+
 # Transforming the DeFi Landscape
 
 ### The Problems Before Euclid

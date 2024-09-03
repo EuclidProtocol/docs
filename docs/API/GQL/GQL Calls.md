@@ -53,8 +53,6 @@ client
   .catch((error) => console.error(error));
 ```
 
-- Finall run `node <filename>.js` to run the script:
-
 Output:
 ```bash
 {
