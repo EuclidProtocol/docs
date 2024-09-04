@@ -9,13 +9,13 @@ Fetches the metadata for all tokens.
 ### Request URL
 
 ```bash
-https://api.staging.euclidprotocol.com/dev/api/v1/tokens/details
+https://api.euclidprotocol.com/api/v1/tokens/details
 ```
 
 ### Curl
 ```bash
 curl -X 'GET' \
-  'https://api.staging.euclidprotocol.com/dev/api/v1/tokens/details' \
+  'https://api.euclidprotocol.com/api/v1/tokens/details' \
   -H 'accept: application/json'
 ```
 

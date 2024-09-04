@@ -6,9 +6,9 @@ sidebar_position: 5
 Queries all the VLP contract addresses and specifies the tokens for each.
 
 ```graphql
-query Router {
+query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {
   router {
-    all_vlps {
+    all_vlps(max: $max, min: $min, skip: $skip, limit: $limit) {
       vlps {
         vlp
         token_1
@@ -24,11 +24,18 @@ query Router {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
-    --data '{"query":"query Router {\n  router {\n    all_vlps {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}"}'
+    --url 'https://api.euclidprotocol.com/graphql' \
+    --data '{"query":"query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {\n  router {\n    all_vlps(max: $max, min: $min, skip: $skip, limit: $limit) {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{"max":["pepe","usdt"],"min":["eth","usdc"],"skip":null,"limit":null}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6AN24AHAM5t6HBkLESpUme3kMUEANbI%2BARiXLVGpHwBMujgF9TFyVbMgANCAGc8AS04AjbglEYQIM0A)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BgG5kAOAzgBQAkcAhgB7pEDaAyijwBLJAHMAugBoibUTwFDRkmSwYBrYXR4BJVKrLC4wlLtQBKIsAA6SIkTwQYKfFdv377CjXrMO3WX8ZYyQeOSQZDS0wqLoZQ2NTWQSTSxs7D3taRjcMzKz6d3z7FAh1ZEoARiLi0vKkSgAmGo8AXxb2jM7WkCkQanYRdgAjMgQGDBB0%2B2sQf1mFWboEZdmpWZgGMBRZ6SLZkIW%2BWYQUAAs1ja2oXfWM2dijpBgKO5mQFJ2MImeKWx7WkA)
+
+### Arguments
+
+- **max** (String, String): The upper limit token pair that should be returned. Does not include the specified max value.
+- **min** (String, String): The lower limit token pair to start from. Includes the specified min value.
+- **skip** (Int): The number of results to skip in the response.
+- **limit** (Int): The maximum number of results to return.
 
 ### Return Fields
 

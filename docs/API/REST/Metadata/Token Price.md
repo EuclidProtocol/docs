@@ -9,12 +9,12 @@ Gets the token price of the asset_out based in reference to the asset_in.
 ### Request URL
 
 ```bash
-https://api.staging.euclidprotocol.com/dev/api/v1/token/price
+https://api.euclidprotocol.com/api/v1/token/price
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.staging.euclidprotocol.com/dev/api/v1/token/price' \
+  'https://api.euclidprotocol.com/api/v1/token/price' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

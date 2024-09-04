@@ -21,11 +21,11 @@ query Factory($chainUid: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Factory($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    all_tokens {\n      tokens\n    }\n  }\n}","variables":{"chainUid":"nibiru"}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcomQA259VQDWyAM6SZp07YfPTAXw-eknkAA0IABuZIJkAEbmCPYYIMZyUiCq%2BlxJPElILBEseDBJMv6eQA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcomQA259VQDWyAM6SZp07YfPTAXw-eknkAA0IABuZIJkAEbmCPYYIMZyUiCq%2BlxJPElILBEseDBJMv6eQA)
 
 
 ### Arguments

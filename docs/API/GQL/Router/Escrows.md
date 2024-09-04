@@ -4,9 +4,13 @@ sidebar_position: 6
 # Escrows
 Queries the chain UID that contain an escrow with the specified token.
 ```graphql
-query Router($token: String!, $start: String, $end: String, $skip: Int, $limit: Int) {
+query Escrows($token: String!, $max: String, $min: String, $skip: Int, $limit: Int) {
   router {
-    escrows(token: $token, start: $start, end: $end, skip: $skip, limit: $limit)
+    escrows(token: $token, max: $max, min: $min, skip: $skip, limit: $limit) {
+      chain_uid
+      balance
+      chain_id
+    }
   }
 }
 ```
@@ -15,19 +19,19 @@ query Router($token: String!, $start: String, $end: String, $skip: Int, $limit: 
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/graphql' \
-    --data '{"query":"query Router($token: String!) {\n  router {\n    escrows(token: $token) {\n      chain_id\n      chain_uid\n    }\n  }\n}","variables":{"token":"usdt"}}'
+    --url 'https://api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Escrows($token: String!, $max: String, $min: String, $skip: Int, $limit: Int) {\n  router {\n    escrows(token: $token, max: $max, min: $min, skip: $skip, limit: $limit) {\n      chain_uid\n      balance\n      chain_id\n    }\n  }\n}","variables":{"token":"usdt","limit":3,"max":null,"min":"nibiru","skip":null}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEASiLAAOkiJE85SnmFiJEhAGcoUgO5Kq9JkhZ1GyIaPEKJUABYBDbgH1OYeaaIXrSGzHuOJAX0e%2Bk3iAANCAAbpZclgBGADbKGCDGEiIg2sgpLCkwSmAoKUFigd5AA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIDOUeEA7mQBQAkKEA1sukQMop4CWSAcwCEAGiIM4AQwAeHbn0FiJ-OT34ClZFrwAOHAJKolAG15xeKA6gCURYAB0kRIlRgp8dx8%2BcIKVWnTMbEgcTKzIYlKy4lGRKjH8Ylq6ock6YqbmluKZFrYOTt7OUAAWkvwA%2BjC8YF5FRABGksaSSFAIdUWl5UgVNZ1EAL51w0iDICIgAG6SfJINxr4YIAXO9iBByOsc6zBkYCjrInXruYcYRADMx4XrUdtESDDGxjdrIOZID%2BtIvA28eBgRxOIDSDyeL0c40GQA)
 
 ### Arguments
 
 - **token** (String!): The identifier of the token.
-- **start** (String): The starting escrow identifier. Used for pagination.
-- **end** (String): The ending escrow identifier. Used for pagination.
-- **skip** (Int): The number of escrows to skip in the result set.
-- **limit** (Int): The maximum number of escrows to return.
+- **max** (ChainUID): The upper limit chain UID that should be returned. Does not include the specified max value.
+- **min** (ChainUID): The lower limit chain UID to start from. Includes the specified min value.
+- **skip** (Int): The number of results to skip in the resonse.
+- **limit** (Int): The maximum number of results to return.
 
 ### Return Fields
 

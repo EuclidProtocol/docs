@@ -23,11 +23,11 @@ query All_chain_uids {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.staging.euclidprotocol.com/dev/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query All_chain_uids {\n  chains {\n    all_chain_uids {\n      factory_address\n      chain_uid\n      display_name\n      logo\n    }\n  }\n}","variables":{}}'
 ```
 
-[Open in Playground](https://api.staging.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BlABYCGAlkpTA2AM5HAA6SRRtRkk48%2B-InQrV6TFmxG9x4gGZ0oKCIUp0wYPAnbtFSgTOaswxpWAbsADmToFKSOoiviyEAOYQPAX2NApH8QABoQADc6PAY6ACMyAwwQUVD-IA)
+[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BlABYCGAlkpTA2AM5HAA6SRRtRkk48%2B-InQrV6TFmxG9x4gGZ0oKCIUp0wYPAnbtFSgTOaswxpWAbsADmToFKSOoiviyEAOYQPAX2NApH8QABoQADc6PAY6ACMyAwwQUVD-IA)
 
 
 ### Return Fields

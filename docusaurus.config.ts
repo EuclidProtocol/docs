@@ -92,10 +92,20 @@ const config: Config = {
           label: "Introduction",
         },
         {
-          type: "docSidebar",
+          type: "dropdown",
           sidebarId: "contractsSidebar",
           position: "left",
           label: "Smart Contracts",
+          items: [
+            {
+              label: "Cosmwasm",
+              to: "/docs/Euclid%20Smart%20Contracts/CosmWasm/overview",
+            },
+            {
+              label: "Solidity",
+              to: "/docs/Euclid%20Solidity%20Contracts/Solidity/overview",
+            },
+          ],
         },
 
         {
@@ -104,7 +114,7 @@ const config: Config = {
           position: "left",
           label: "API",
         },
- 
+
         {
           href: "https://github.com/EuclidProtocol/docs",
           label: "GitHub",
