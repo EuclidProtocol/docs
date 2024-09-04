@@ -109,7 +109,7 @@ footer {
 }
 
 .card-content {
-  padding: 20px;
+  padding: 15px;
 }
 
 .heading-main {
@@ -117,7 +117,7 @@ footer {
 }
 
 .bottomContainer {
-  padding: 3rem !important;
+  padding: 2rem !important;
 }
 
 .menu__list-item-collapsible {
@@ -155,7 +155,7 @@ footer {
 }
 
 .footer__col img {
-  max-width: 200px;
+  max-width: 20rem;
   height: auto;
   margin-bottom: 15px;
 
