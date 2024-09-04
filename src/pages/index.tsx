@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="The Official Docs for euclid protocol"
+      description="The Official Docs For Euclid Protocol"
     >
       <HomepageHeader />
       <main>

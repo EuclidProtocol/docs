@@ -49,19 +49,19 @@ const FeatureList2: FeatureItem[] = [
   {
     title: "Learn The Basics",
     imgSrc: require("@site/static/img/learn_dark.png").default,
-    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
+    description: <>Explore the fundamentals of Euclid Protocol</>,
     link: "docs/Architecture Overview/intro",
   },
   {
-    title: "Euclid Smart Contract",
+    title: "Smart Contracts",
     imgSrc: require("@site/static/img/Smart_Contract.png").default,
-    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
+    description: <>Explore Euclid&apos;s smart contracts set</>,
     link: "docs/Euclid%20Smart%20Contracts/CosmWasm/overview",
   },
   {
     title: "Euclid Api",
     imgSrc: require("@site/static/img/API.png").default,
-    description: <>Start here to explore the fundamentals of Euclid Protocol</>,
+    description: <>Explore the fundamentals of Euclid&apos;s API</>,
     link: "/docs/API/Intro",
   },
 ];
