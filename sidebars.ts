@@ -14,20 +14,8 @@ const sidebars: SidebarsConfig = {
     "API/Intro",
     {
       type: "category",
-      label: "Developer Guides",
-      items: [
-        "API/Developer Guides/Add Liquidity",
-        "API/Developer Guides/Introduction",
-        "API/Developer Guides/Remove Liquidity",
-        "API/Developer Guides/Swap",
-        "API/Developer Guides/Withdraw Voucher",
-      ],
-    },
-    {
-      type: "category",
       label: "GQL",
       items: [
-        "API/GQL/GQL Calls",
         {
           type: "category",
           label: "Router",
@@ -110,6 +98,7 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Virtual Balance/User Balance",
           ],
         },
+        "API/GQL/GQL Calls",
       ],
     },
     {
@@ -151,6 +140,17 @@ const sidebars: SidebarsConfig = {
             "API/REST/Transactions/Withdraw Virtual Balance",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Developer Guides",
+      items: [
+        "API/Developer Guides/Introduction",
+        "API/Developer Guides/Add Liquidity",
+        "API/Developer Guides/Remove Liquidity",
+        "API/Developer Guides/Swap",
+        "API/Developer Guides/Withdraw Voucher",
       ],
     },
   ],
