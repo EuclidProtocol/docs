@@ -3,7 +3,7 @@ sidebar_position: 1
 description: "Introduction Into Euclid's API"
 ---
 
-# Introduction
+# Getting Started
 
 The Euclid API is designed to facilitate interactions with the Euclid platform, enabling users to perform a variety of actions such as querying data, executing transactions, and more. This documentation aims to provide comprehensive information on how to use the API, including details on available endpoints, request and response formats, and example usages.
 
