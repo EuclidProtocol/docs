@@ -7,7 +7,6 @@ description: "Introduction Into Euclid's API"
 
 The Euclid API is designed to facilitate interactions with the Euclid platform, enabling users to perform a variety of actions such as querying data, executing transactions, and more. This documentation aims to provide comprehensive information on how to use the API, including details on available endpoints, request and response formats, and example usages.
 
-
 The Euclid API is built using GraphQL, a powerful query language for APIs that allows clients to request exactly the data they need. This approach avoids both the problems of over and under-fetching data, while also allowing for a more powerful and flexible Api.
 
 :::note
@@ -34,6 +33,12 @@ For each query, you can find an example response if you select the "Open in Play
 - [Pool](../API/GQL/Pool/Token%20Liquidity.md): Get information on Euclid pools such as liquidity and volume.
 - [Token](../API/GQL/Token/Token%20Metadata.md): Get token metadata for tokens.
 - [CW20](../API/GQL/CW/Balance.md): Get information on a CW20 token. 
+
+### GraphQL Endpoints
+
+**Testnet**: [`https://testnet.api.euclidprotocol.com`](https://testnet.api.euclidprotocol.com)
+
+
 
 ## REST API
 

@@ -8,13 +8,13 @@ Gets all information on the specified transaction.
 
 ### Request URL
 ```bash
-https://api.euclidprotocol.com/api/v1/txn/track
+https://testnet.api.euclidprotocol.com/api/v1/txn/track
 ```
 ### Curl
  
 ```bash
 curl -X 'POST' \
-  'https://api.euclidprotocol.com/api/v1/txn/track' \
+  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

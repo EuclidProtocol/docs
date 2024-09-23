@@ -10,12 +10,12 @@ Generates a transaction for a swap request.
 ### Request URL
  
 ```bash
-https://api.euclidprotocol.com/api/v1/execute/swap
+https://testnet.api.euclidprotocol.com/api/v1/execute/swap
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.euclidprotocol.com/api/v1/execute/swap' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/swap' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

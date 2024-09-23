@@ -9,12 +9,12 @@ Generates a transaction to add liquidity to a pool.
 ### Request URL
  
 ```bash
-https://api.euclidprotocol.com/api/v1/execute/liquidity/add
+https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.euclidprotocol.com/api/v1/execute/liquidity/add' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

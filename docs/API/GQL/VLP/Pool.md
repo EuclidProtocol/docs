@@ -22,11 +22,11 @@ query Vlp($contract: String!, $chainUid: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Vlp($contract: String!, $chainUid: String!) {\n  vlp(contract: $contract) {\n    pool(chain_uid: $chainUid) {\n      reserve_1\n      reserve_2\n      lp_shares\n    }\n  }\n}","variables":{"contract":"nibi1m4ns69zvkk2zv0946mw298tlky5ckvu08rtxggtg29p784kc5sxqa9u8ly","chainUid":"nibiru"}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Pool($chainUid: String!, $contract: String!) {\n  vlp(contract: $contract) {\n    pool(chain_uid: $chainUid) {\n      reserve_1\n      reserve_2\n      lp_shares\n    }\n  }\n}","variables":{"chainUid":"nibiru","contract":"nibi147sw04ts68nxe80946m332rr8j79qqvas386al8d76jhamnnr99qj6xnfs"}}'
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIAlEWAAdJESIA3SlXqMWbInQbdloiVOlEmZMgH0KECGQDOYybt0mzl7TZtQAFkz6GYPMNafS7ZFY6ftJ4COb4MgiGAIy%2BIURhEXhRhgBM8SGUhuZuSZk2AL4FRMXBpb5lhSAANCAyTLxMAEZk4RggjkTiIIoarD3sPUg8zTwxcAAsSOYAbACcAF4yANYracsADPOTs3AA7mnzABwoZCsEAKxQKzIwm8d4KAAe-Pwo-EcUAOzHkytQS7mZ5YJjzGDHMgEHo1STVQpAA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACRQAWAhgJZICqzY6RAyinqwDmAQgA0ROhFR5GUFNz4CkIgJRFgAHSREiANwoAHKlCn9Z8iSenm1m7TqIHy1BiyQB9GJ250mrDmC2Wg4OeAgAzvi6CO4AjMEhRGGReNHuAEwJIYbu4UzJWUQAvgklSEUgoiC6jAKMAEYUERggdjoaIK7%2BnB3cHUjM9cx4MB2iCR1WZnK9RP2DzLEALADs4QDuAAxLKOEAbAAcSAAeCAebAJxLe3AAzLfpeHgHAFYrF1hYNeG3B3uMFAOYBWexeTDgSCQeAuHxee2OSAAZuEOloKkUgA)
 
 ### Arguments
 

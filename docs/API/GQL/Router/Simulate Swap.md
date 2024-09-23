@@ -5,7 +5,7 @@ sidebar_position: 8
 Simulates a swap operation and returns the amount to be received for the swap.
 
 ```graphql
-query Query($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {
+query Simulate_swap($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {
   router {
     simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {
       amount_out
@@ -19,12 +19,12 @@ query Query($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmoun
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Query($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {\n  router {\n    simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {\n      amount_out\n      asset_out\n    }\n  }\n}","variables":{"assetIn":"osmo","amountIn":"10","assetOut":"atom","minAmountOut":"1","swaps":["osmo","usdt","usdc","atom"]}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Simulate_swap($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {\n  router {\n    simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {\n      amount_out\n      asset_out\n    }\n  }\n}","variables":{"assetIn":"nibi","amountIn":"1000","assetOut":"fundenom","minAmountOut":"1","swaps":["nibi","fundenom"]}}'
 
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJAIYDOdCKAkkukQMop4CWSA5gEIANEVpwIMVK3ZdeAkWPqMUAeRgpZ3PkNFU4fAIISpajVvm6xdAO40ADnXYBtOTsEBdAJRFgAHSQiIjxJFHxfAKCguh44GAAbGjCAfVsHCmUmZL52WgYmVlEaE1RstiUSliQi-JRk0NzMsxRRAyRk4slShrE24y7m0TTHXOG6H39AqKDO03qNSOmiJvmURaCAX0WtpA2QYRAANxpeGgAjeIQ6DBBJvxAm1nv2e4g6CXvhAPvZ6SRnoj3ACMAAZPt8HrV1GsMICHigIHBwf8QH1KtCAcDkUF7mMAc5Xu8IOCQDA6GAYV9SeSoCSkoj7h4AnsNkA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMoCWcMANgIYoID6AzgO40AOAFACQ1NMIUASSTpSKPGSQBzAIQAaIrzgQYqEWJISpcxb36CA8jBSbtMhUrhSAgirUpjp8ZIt7WHJmIDaW13IBdAEoiYAAdJCIiPFV6PFCIqKimCmo6Rg8uPgEUBikxfRyRRRp7VDzRJVLVdSQSg1zYguyjE0VrJAZqhwYmq1syxzaiTK8lUZDwyKSo7vLYxJmiFsaTRaiAX0WtpA2QeRAANxpJGgAjKgQmDBApqLCQFZEHsQekMjOyB-lFh7nhJAvIgPACMAAYId9fo8Gk4gQ8AGZqMDICBwKHTB4dOw1IYoeEgEEY%2B4gUZA7xvD5ffaI5Go9EgAIRPYbIA)
 
 ### Arguments
 

@@ -9,12 +9,12 @@ Gets all chain information and configurations for all chains.
 ### Request URL
  
 ```bash
-https://api.euclidprotocol.com/api/v1/chains
+https://testnet.api.euclidprotocol.com/api/v1/chains
 ```
 ### Curl
 ```bash
 curl -X 'GET' \
-  'https://api.euclidprotocol.com/api/v1/chains' \
+  'https://testnet.api.euclidprotocol.com/api/v1/chains' \
   -H 'accept: application/json'
 ```
 
@@ -23,89 +23,127 @@ curl -X 'GET' \
 ```json
 {
   "data": [
-    {
-      "CreatedAt": "0001-01-01T00:00:00Z",
-      "UpdatedAt": "0001-01-01T00:00:00Z",
-      "chainId": "localpoolb-2",
-      "chainName": "Pool B",
-      "rpc": "https://chains.euclid.sumitdhiman.in:20142",
-      "rest": "https://chains.euclid.sumitdhiman.in:20242",
-      "bip44": {
-        "coinType": 118
+   {
+      "CreatedAt":"0001-01-01T00:00:00Z",
+      "UpdatedAt":"0001-01-01T00:00:00Z",
+      "chainId":"nibiru-testnet-1",
+      "chainName":"nibirutestnet",
+      "rpc":"https://rpc.testnet-1.nibiru.fi",
+      "rest":"https://lcd.testnet-1.nibiru.fi",
+      "bip44":{
+         "coinType":118
       },
-      "coinType": 118,
-      "bech32Config": {
-        "Bech32PrefixAccAddr": "wasm",
-        "Bech32PrefixAccPub": "wasmpub",
-        "Bech32PrefixValAddr": "wasmvaloper",
-        "Bech32PrefixValPub": "wasmvaloperpub",
-        "Bech32PrefixConsAddr": "wasmvalcons",
-        "Bech32PrefixConsPub": "wasmvalconspub"
+      "bech32Config":{
+         "Bech32PrefixAccAddr":"nibi",
+         "Bech32PrefixAccPub":"nibipub",
+         "Bech32PrefixValAddr":"nibivaloper",
+         "Bech32PrefixValPub":"nibivaloperpub",
+         "Bech32PrefixConsAddr":"nibivalcons",
+         "Bech32PrefixConsPub":"nibivalconspub"
       },
-      "currencies": [
-        {
-          "coinDenom": "STAKE",
-          "coinMinimalDenom": "stake",
-          "coinDecimals": 6,
-          "gasPriceStep": {}
-        },
-        {
-          "coinDenom": "ATOMB",
-          "coinMinimalDenom": "uatomb",
-          "coinDecimals": 6,
-          "gasPriceStep": {}
-        },
-        {
-          "coinDenom": "OSMOB",
-          "coinMinimalDenom": "uosmob",
-          "coinDecimals": 6,
-          "gasPriceStep": {}
-        },
-        {
-          "coinDenom": "POOLB",
-          "coinMinimalDenom": "upoolb",
-          "coinDecimals": 6,
-          "gasPriceStep": {}
-        },
-        {
-          "coinDenom": "USDCB",
-          "coinMinimalDenom": "uusdcb",
-          "coinDecimals": 6,
-          "gasPriceStep": {}
-        },
-        {
-          "coinDenom": "USDTB",
-          "coinMinimalDenom": "uusdtb",
-          "coinDecimals": 6,
-          "gasPriceStep": {}
-        }
+      "currencies":[
+         {
+            "coinDenom":"NIBI",
+            "coinMinimalDenom":"unibi",
+            "coinDecimals":6,
+            "gasPriceStep":{
+               
+            }
+         }
       ],
-      "feeCurrencies": [
-        {
-          "coinDenom": "POOLB",
-          "coinMinimalDenom": "upoolb",
-          "coinDecimals": 6,
-          "coinGeckoId": "unknown",
-          "gasPriceStep": {
-            "low": 0.01,
-            "average": 0.025,
-            "high": 0.03
-          }
-        }
+      "feeCurrencies":[
+         {
+            "coinDenom":"NIBI",
+            "coinMinimalDenom":"unibi",
+            "coinDecimals":6,
+            "gasPriceStep":{
+               "low":0.05,
+               "average":0.125,
+               "high":0.2
+            }
+         }
       ],
-      "gasPriceStep": {
-        "low": 0.01,
-        "average": 0.025,
-        "high": 0.03
+      "gasPriceStep":{
+         "low":0.05,
+         "average":0.125,
+         "high":0.2
       },
-      "stakeCurrency": {
-        "coinDenom": "POOLB",
-        "coinMinimalDenom": "upoolb",
-        "coinDecimals": 6,
-        "coinGeckoId": "unknown",
-        "gasPriceStep": {}
+      "stakeCurrency":{
+         "coinDenom":"NIBI",
+         "coinMinimalDenom":"unibi",
+         "coinDecimals":6,
+         "gasPriceStep":{
+            "low":0.05,
+            "average":0.125,
+            "high":0.2
+         }
+      },
+      "features":[
+         "cosmwasm"
+      ]
+   },
+   {
+      "CreatedAt":"0001-01-01T00:00:00Z",
+      "UpdatedAt":"0001-01-01T00:00:00Z",
+      "chainId":"osmo-test-5",
+      "chainName":"Osmosis Testnet",
+      "rpc":"https://rpc.testnet.osmosis.zone",
+      "rest":"https://lcd.testnet.osmosis.zone",
+      "bip44":{
+         "coinType":118
+      },
+      "bech32Config":{
+         "Bech32PrefixAccAddr":"osmo",
+         "Bech32PrefixAccPub":"osmopub",
+         "Bech32PrefixValAddr":"osmovaloper",
+         "Bech32PrefixValPub":"osmovaloperpub",
+         "Bech32PrefixConsAddr":"osmovalcons",
+         "Bech32PrefixConsPub":"osmovalconspub"
+      },
+      "currencies":[
+         {
+            "coinDenom":"OSMO",
+            "coinMinimalDenom":"uosmo",
+            "coinDecimals":6,
+            "gasPriceStep":{
+               
+            }
+         },
+         {
+            "coinDenom":"ION",
+            "coinMinimalDenom":"uion",
+            "coinDecimals":6,
+            "gasPriceStep":{
+               
+            }
+         }
+      ],
+      "feeCurrencies":[
+         {
+            "coinDenom":"OSMO",
+            "coinMinimalDenom":"uosmo",
+            "coinDecimals":6,
+            "gasPriceStep":{
+               "low":0.0025,
+               "average":0.025,
+               "high":0.04
+            }
+         }
+      ],
+      "gasPriceStep":{
+         "low":0.0025,
+         "average":0.025,
+         "high":0.04
+      },
+      "stakeCurrency":{
+         "coinDenom":"OSMO",
+         "coinMinimalDenom":"uosmo",
+         "coinDecimals":6,
+         "gasPriceStep":{
+            
+         }
       }
-    }
+   }
   ]
 }
 

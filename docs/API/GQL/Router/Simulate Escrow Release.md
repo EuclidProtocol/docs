@@ -8,17 +8,17 @@ Simulates the release of funds from an escrow.
 query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUserWithLimitInput]) {
   router {
     simulate_release_escrow(token: $token, amount: $amount, cross_chain_addresses: $crossChainAddresses) {
-      remaining_amount
       release_amounts {
         amount
         cross_chain_user {
-          user {
-            chain_uid
-            address
-          }
           limit
+          user {
+            address
+            chain_uid
+          }
         }
       }
+      remaining_amount
     }
   }
 }
@@ -28,12 +28,12 @@ query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUse
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUserWithLimitInput]) {\n  router {\n    simulate_release_escrow(token: $token, amount: $amount, cross_chain_addresses: $crossChainAddresses) {\n      remaining_amount\n      release_amounts {\n        amount\n        cross_chain_user {\n          user {\n            chain_uid\n            address\n          }\n          limit\n        }\n      }\n    }\n  }\n}","variables":{"token":"usdc","amount":10,"crossChainAddresses":[{"limit":null,"user":{"address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts","chain_uid":"ethereum"}}]}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUserWithLimitInput]) {\n  router {\n    simulate_release_escrow(token: $token, amount: $amount, cross_chain_addresses: $crossChainAddresses) {\n      release_amounts {\n        amount\n        cross_chain_user {\n          limit\n          user {\n            address\n            chain_uid\n          }\n        }\n      }\n      remaining_amount\n    }\n  }\n}","variables":{"token":"nibi","amount":10,"crossChainAddresses":[{"limit":null,"user":{"address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts","chain_uid":"nibiru"}}]}}'
 
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEAGiI0AhnHKoWASVRCaUPBADOSgMIALEdwCCYMHgQrDLANqrFKjVqQBVJfgDqnFOoAynOM5kAHCgF0ASiJgAB0kIiJFCnxgsIiIpQ8YABsRSgB9A2SEEXt0wwUIAHcqeiYkFjpGZCExCRRKuphZIkKVdKhNbnSRPQMjJUq2tS6kXX1DeyUg0PD4iKycvKbUJVi5%2BYiVlDjNiOGO0fSYezx1vfnkj2ddi6ITmNm7%2Bd6JlVvnzutjzjAPvYAvv94kCNiDgQY4NZuDweuJmjswaCIqCASABCAAG4iLgiABG2SUGBAsxCIDKyDJLDJJzAUDJQiIZO2VKIAEYAAwCXZk4ZWHR9SaGVkmD5PTZkq6eHYYIhIFLJblgiI006s8V7ZmC96yslITh4zhsgAs6igAA9kkgisksCgsAB2ACsKBQInNADMAGwO42YhheqEepTeHgADnNAGYGAQvSglAzgSqQF9ujBfqyyQgXPgEPAycDkeC5n4wmiAUA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEAGiI0AhnHKoWASVRCaUPBADOSgMIALEdwCCYMHgQrDLANqrFKjVqQBVJfgDqnFOoAynOM5kAHCgF0ASiJgAB0kIiJFCnxgsIiIpQ8YABsRSgB9A2SEEXt0wwUIAHcqeiYkFjpGZCExCRRKuphZIkKVdKhNbnSRPQMjJUq2tS6kXX1DeyUg0PD4iKycvKbUJVi5%2BYiVlDjNiOGO0fSYezx1vfnkj2ddi6ITmNm7%2Bd6JlVvnzutjzjAPvYAvv94kCNiDgQY4NZuDweuJmjswaCIqCASABCAAG4iLgiABG2SUGBAsxCIDKyDJLDJSE4eM4ZKERDJ2ypRAAjAAGAS7MnDKw6PqTQxskwfJ6bMlXTw7DBEJApZI8sERMkPPBsiV7FlC95yml0zjsgAs6igAA9kkgisksCgsAB2ACsKBQInNADMAGwO42YhheqEepTeHgADnNAGYGAQvSglIzgaqQF9ujBfmyDfS8DAycDkeC5n4wmiAUA)
 
 ### Arguments
 

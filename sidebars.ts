@@ -144,7 +144,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Developer Guides",
+      label: "Developer Guides ",
       items: [
         "API/Developer Guides/Introduction",
         "API/Developer Guides/Add Liquidity",

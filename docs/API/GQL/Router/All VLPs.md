@@ -24,11 +24,11 @@ query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {\n  router {\n    all_vlps(max: $max, min: $min, skip: $skip, limit: $limit) {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{"max":["pepe","usdt"],"min":["eth","usdc"],"skip":null,"limit":null}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {\n  router {\n    all_vlps(max: $max, min: $min, skip: $skip, limit: $limit) {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{"max":["fundenom","stars"],"min":["fundenom","nibi"],"skip":null,"limit":null}}'
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BgG5kAOAzgBQAkcAhgB7pEDaAyijwBLJAHMAugBoibUTwFDRkmSwYBrYXR4BJVKrLC4wlLtQBKIsAA6SIkTwQYKfFdv377CjXrMO3WX8ZYyQeOSQZDS0wqLoZQ2NTWQSTSxs7D3taRjcMzKz6d3z7FAh1ZEoARiLi0vKkSgAmGo8AXxb2jM7WkCkQanYRdgAjMgQGDBB0%2B2sQf1mFWboEZdmpWZgGMBRZ6SLZkIW%2BWYQUAAs1ja2oXfWM2dijpBgKO5mQFJ2MImeKWx7WkA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BgG5kAOAzgBQAkcAhgB7pEDaAyijwBLJAHMAugBoibUTwFDRkmSwYBrYXR4BJVKrLC4wlLtQBKIsAA6SIkTwQYKfFdv377CjXrMO3WX8ZYyQeOSQZDS0wqLoZQ2NTWQSTSxs7D3taRjcMzKz6d3z7FAh1ZEoARiLi0vKkSgAmGo8AXxb2jM7WkCkQanYRdgAjMgQGDBB0%2B2sQf1mFWYAzGCQwZAg4WalZhhRBhlnpItmQhb5l1fWkTe3ZpGFh4SOdjN3NOnOkGApXmZAUigvj8yLZOiBWkA)
 
 ### Arguments
 
