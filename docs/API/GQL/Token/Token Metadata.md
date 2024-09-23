@@ -26,10 +26,10 @@ query Token {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
     --data '{"query":"query Token {\n  token {\n    token_metadatas {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n    }\n  }\n}"}'
 ```
-[Open in Playground](https://api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyRwAOkkUShVbfQ480gPqIoCGYPvwDO1Ou3ZQIASyQARBFGlw%2BAG3ESiYacIAOqvgQByfRBolNKSAJJhz7MAmFQ803SmkQk9hsr4BzBB8iXVcoILYGAF8NGKQokAAaEAA3Plc%2BACNVJwwQECigA)
+[Open in Playground](https://testnet.api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyRwAOkkUShVbfQ480gPqIoCGYPvwDO1Ou3ZQIASyQARBFGlw%2BAG3ESiYacIAOqvgQByfRBolNKSAJJhz7MAmFQ803SmkQk9hsr4BzBB8iXVcoILYGAF8NGKQokAAaEAA3Plc%2BACNVJwwQECigA)
 
 ### Return Fields
 

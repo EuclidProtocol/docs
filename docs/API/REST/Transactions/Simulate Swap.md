@@ -9,12 +9,12 @@ Simulates a swap given the swap parameters.
 ### Request URL
  
 ```bash
-https://api.euclidprotocol.com/api/v1/simulate-swap
+https://testnet.api.euclidprotocol.com/api/v1/simulate-swap
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.euclidprotocol.com/api/v1/simulate-swap' \
+  'https://testnet.api.euclidprotocol.com/api/v1/simulate-swap' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

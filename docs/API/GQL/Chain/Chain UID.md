@@ -23,11 +23,11 @@ query Chain_uids($chainId: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Chain_uids($chainId: String!) {\n  chains {\n    chain_uids(chain_id: $chainId) {\n      factory_address\n      chain_uid\n      display_name\n      logo\n    }\n  }\n}","variables":{"chainId":"localwasma-1"}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Chain_uids($chainId: String!) {\n  chains {\n    chain_uids(chain_id: $chainId) {\n      factory_address\n      chain_uid\n      display_name\n      logo\n    }\n  }\n}","variables":{"chainId":"nibiru-testnet-1"}}'
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6MVYAzgBQAkUlNAkmOkQGUUeGgHMAhAEoiwADpIiRTtSRMZ8xYuU16jVtrqN%2BHLkl7S5CzYoBmFKCgiFaFMGDwImTDdaWndYD7WYFRMAA4ANhQEtEgUiEGaERCiEIkAvj6ZSOkgADQgAG4UIhQARhGeGCCWirIgBrz1-PXJUBQRAO4UTHAUALQAjPXyuelAA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6MVYAzgBQAkUlNAkmOkQGUUeGgHMAhAEoiwADpIiRTtSRMZ8xYuU16jVtrqN%2BHLkl7S5CzYoBmFKCgiFaFMGDwImTDdaWndYD7WYFRMAA4ANhQEtEgUiEGaERCiEIkAvj6ZSOkgADQgAG4UIhQARhGeGCCWirIgBrz1-PVIVGVUeDAAtCieKEgIKN0AjPXyuelAA)
 
 ### Arguments
 

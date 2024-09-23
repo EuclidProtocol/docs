@@ -81,8 +81,8 @@ query Query($chainId: String!) {
       "chain_config": {
         "chainID": "localwasma-1",
         "chainName": "Wasm Devnet",
-        "rpc": "https://api.euclidprotocol.com:20141",
-        "rest": "https://api.euclidprotocol.com:20241",
+        "rpc": "https://testnet.api.euclidprotocol.com:20141",
+        "rest": "https://testnet.api.euclidprotocol.com:20241",
         "coinType": 118
       }
     }

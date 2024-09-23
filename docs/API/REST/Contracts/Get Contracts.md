@@ -8,12 +8,12 @@ Fetches all the deployed smart contracts along with their chain Ids and types.
 ### Request URL
 
 ```bash
- https://api.euclidprotocol.com/api/v1/contracts
+ https://testnet.api.euclidprotocol.com/api/v1/contracts
 ```
 ### Curl
 ```bash
 curl -X 'GET' \
-  'https://api.euclidprotocol.com/api/v1/contracts' \
+  'https://testnet.api.euclidprotocol.com/api/v1/contracts' \
   -H 'accept: application/json'
 ```
 
