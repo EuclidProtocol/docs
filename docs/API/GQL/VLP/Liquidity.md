@@ -27,11 +27,11 @@ query Liquidity($contract: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Vlp($contract: String!) {\n  vlp(contract: $contract) {\n    liquidity {\n      pair {\n        token_1\n        token_2\n      }\n      token_1_reserve\n      token_2_reserve\n      total_lp_tokens\n    }\n  }\n}","variables":{"contract":"nibi1m4ns69zvkk2zv0946mw298tlky5ckvu08rtxggtg29p784kc5sxqa9u8ly"}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Liquidity($contract: String!) {\n  vlp(contract: $contract) {\n    liquidity {\n      pair {\n        token_1\n        token_2\n      }\n      token_1_reserve\n      token_2_reserve\n      total_lp_tokens\n    }\n  }\n}","variables":{"contract":"nibi147sw04ts68nxe80946m332rr8j79qqvas386al8d76jhamnnr99qj6xnfs"}}'
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIAlEWAAdJESIA3SlXqMWbInQbdloiVOlEyPHDzA8Uxbbt0UmPPGMkWLKCAGtkAfQCM9h9KeukbgBM3hYAviG6fu4ebngIAM74MggRvi7ugbEJSSk6jhAoTGRulG5RSPER4TrVoSAANCAyTLxMAEZkCRgg5kTiIIoarP3s-Ug8bTwecAAsFQBsAJwAXjLOzoGrAAyLM-NwAO6BiwAcKGTOBACsUM4yMFsneCgAHvz8KPzHFADsJzPOKBXeIvLBMRYwE5kAj9eqSOqhIA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABADICWOZYZKBAFACRQSp4CGUK6RAyinmSQBzAIQBKIsAA6SIkQBuAGwAOdZqw5ciTFv00TpsuUUUUYVGsUPHjytmTySZNmyggBrZAH0AjM5dybp5IXgBM-jYAvhHGQd4%2BXngIAM748ggxgR7eoYkpaRlGrhAobIpeKl5xSMkx0Ub1kSAANCDybAJsAEaKKRgg1kRSIOp6nMPcw0hkXWQ%2BACwA7MkA7gAM8yjJAGwAHEgAHgi7awCc89twAMxXoXh4uwBWi6dYWO3JV7vbZbtgi9tHgALNhwJBIPCnV6PbYHJAAM1qIBkTUiQA)
 
 ### Arguments
 

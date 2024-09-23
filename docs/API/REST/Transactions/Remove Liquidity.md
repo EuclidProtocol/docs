@@ -9,12 +9,12 @@ Generates a transaction to remove liquidity from a pool.
 ### Request URL
  
 ```bash
-https://api.euclidprotocol.com/api/v1/execute/liquidity/remove
+https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

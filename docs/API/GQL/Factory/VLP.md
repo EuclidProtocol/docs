@@ -23,10 +23,10 @@ query Factory($chainUid: String!, $pair: PairInput) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","pair":{"token_1":"atom","token_2":"usdc"}}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Vlp($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","pair":{"token_1":"nibi","token_2":"fundenom"}}}'
 ```
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAA6s8PAAqyAkkikwUASiLAAOkiJEAZhSq0mrJAH0YXHg2ZtOYLbv0GiANwA2UmjJZykv54Lnru7t5SlmRgYHgIAM4JYe4AvinpSKkgYiAeZIJkAEZeiRggrjog5o5cVTxVSCxFATBVYnpVwfXaKVVUANbIlgCMPVVkVHDtfSCDwwBM4yAwCWBQVXqZ2alAA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUAFgIYCWSAqs2OkQMop6sA5gEIANERoUWebgAVpASSQUYKAJRFgAHSREiAM0ZQUEQlQYskAfRidudJqw5gN23XqIA3SlSnMZEn54rjoeHt4UVoxgYHgIAM7xoR4AvslpSCkgoiCejAKMAEZkCRggbnpaIBZOnFXcVUjMhf4wVaLJVUH1msmVICYA1shWAIw9jc3M7X1EVUMjAEwTIPowSGDIEHBV6TpZKUA)
 
 ### Arguments
 

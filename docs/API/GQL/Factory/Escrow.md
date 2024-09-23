@@ -32,11 +32,11 @@ query Factory($chainUid: String!, $tokenId: String) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Factory($chainUid: String!, $tokenId: String) {\n  factory(chain_uid: $chainUid) {\n    escrow(token_id: $tokenId) {\n      escrow_address\n      denoms {\n        ... on NativeTokenType {\n          native {\n            denom\n          }\n        }\n        ... on SmartTokenType {\n          smart {\n            contract_address\n          }\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"nibiru","tokenId":"usdt"}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Escrow($chainUid: String!, $tokenId: String) {\n  factory(chain_uid: $chainUid) {\n    escrow(token_id: $tokenId) {\n      escrow_address\n      denoms {\n        ... on NativeTokenType {\n          native {\n            denom\n          }\n        }\n        ... on SmartTokenType {\n          smart {\n            contract_address\n          }\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"nibiru","tokenId":"nibi"}}'
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidKgGtkASW58BwgJRFgAHSREiAMwpVaTVkgD6MLjwbM2nMGs3adRBAGcoeCAHcaM5KctJPyQFBy1nZzcPb1MyMDA8N1dwiKIwZAg4V3UU1KIAOkKiCG0AOTIUFgA3BAAVCFkkWoIABwQcpzydJArq9scu1PSkTNyugF8xiMnO1ML84u1eODI8FHrG5raOwZ1XFbWd3Z0oEoEDWPjE12TZvJnBh9SnnSeZ8ZAxECrVljIAIwANm4MCABkQNCBjLYuJCeJCkCx-iw8DBIWIUpDggo4RCQDBXGAUJCtB9xkA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIDOUeEA7gBQAkUAFgIYCWSAqm2OkQMoo8HAOYBCADRF6KCAGtkASV4ChogJRFgAHSREiAMxZRZhWs3ZIA%2BjB59GrDtzCade-UQQUqdWQut20n5KLlq6Hh5elDRWLGBgeF5k4RFEYMgQcGRh7qlEAHSFRBB6AHIsKGwAbggAKvLItQQADgg5eRFIFdVtbh2p6UiZKf0AviOp47mphfnFevxwLHgo9f5Nre39RGRLK1vbRFAlQsYosfGJZMnTeVNjE-r3Hs9ToyASIFXLbCwARgAbLwYEB9IjaEAWJw8CF8CFINh-Nh4GAQiQpCHBJDKWHgkAIpEQ3TvUZAA)
 
 
 ### Arguments

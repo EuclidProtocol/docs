@@ -21,7 +21,7 @@ const fetch = require('cross-fetch');
 
 // Initialize the Apollo Client and define the GQL endpoint
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql', fetch }),
+  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql', fetch }),
   cache: new InMemoryCache(),
 });
 
@@ -80,7 +80,7 @@ import fetch from 'cross-fetch';
 
 // Initialize the Apollo Client
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql', fetch }),
+  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql', fetch }),
   cache: new InMemoryCache(),
 });
 
@@ -134,7 +134,7 @@ from gql.transport.requests import RequestsHTTPTransport
 
 # Configure the transport
 transport = RequestsHTTPTransport(
-    url='https://api.euclidprotocol.com/graphql',
+    url='https://testnet.api.euclidprotocol.com/graphql',
     use_json=True,
 )
 

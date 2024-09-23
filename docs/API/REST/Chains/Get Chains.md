@@ -9,12 +9,12 @@ Gets all chain information and configurations for all chains.
 ### Request URL
  
 ```bash
-https://api.euclidprotocol.com/api/v1/chains
+https://testnet.api.euclidprotocol.com/api/v1/chains
 ```
 ### Curl
 ```bash
 curl -X 'GET' \
-  'https://api.euclidprotocol.com/api/v1/chains' \
+  'https://testnet.api.euclidprotocol.com/api/v1/chains' \
   -H 'accept: application/json'
 ```
 

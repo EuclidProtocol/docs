@@ -176,7 +176,7 @@ Next, we need to select the amount of `token_in` to swap. This would be specifie
 In many cases, multiple routes can be taken to perform the desired swap. In this step, we will fetch these routes and select the one we want to use. This can be done using the [`Get Routes`](../REST/Routes/Get%20Routes.md) query:
 ```bash
 curl -X 'POST' \
-  'https://api.euclidprotocol.com/api/v1/routes' \
+  'https://testnet.api.euclidprotocol.com/api/v1/routes' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

@@ -5,10 +5,12 @@ sidebar_position: 4
 Queries the VLP contract address for the specified token pair.
 
 ```graphql
-query Factory($chainUid: String!, $pair: PairInput) {
-  factory(chain_uid: $chainUid) {
+query Vlp($pair: PairInput) {
+  router {
     vlp(pair: $pair) {
-      vlp_address
+      vlp
+      token_1
+      token_2
     }
   }
 }
@@ -19,16 +21,15 @@ query Factory($chainUid: String!, $pair: PairInput) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","pair":{"token_1":"pepe","token_2":"usdt"}}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Vlp($pair: PairInput) {\n  router {\n    vlp(pair: $pair) {\n      vlp\n      token_1\n      token_2\n    }\n  }\n}","variables":{"pair":{"token_1":"nibi","token_2":"fundenom"}}}'
 
 ```
 
-[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAA6s8PAAqyAkkikwUASiLAAOkiJEAZhSq0mrJAH0YXHg2ZtOYLbv0GiANwA2UmjJZykv54Lnru7t5SlmRgYHgIAM4JYe4AvinpSKkgYiAeZIJkAEZeiRggrgY6IOaOXNU81UgsRQEw1WJ61cEN2ilVIFQA1siWAIy93QhSCB39RNXDowBMkyAwCWAo1Rl62alAA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkFAhgJZ7pEAKTeAkkhTCgEoiwADpIiRPBH75hYiRIBulKg2as6nIaPEKlleXqIoIAa2QB9AIyG9J80gsAmW0QC%2Bhj0jcgANCEV6PEZ6ACMyBABnDBAdCREQNTwE1jiFBPtLGwwiBKRGUMYE31cMs0sXHISAMxgkMGQIOATPMR83IA)
 
 ### Arguments
 
-- **chainUid** (String!): The unique Id of the chain.
 - **pair** (PairInput): The two tokens included in the token pair.
 
 
@@ -37,3 +38,5 @@ curl --request POST \
 | Field                  | Type   | Description                                             |
 |------------------------|--------|---------------------------------------------------------|
 | vlp_address                    | String | The VLP contract address.                       |
+| token_1                    | String | The name of the first token in the pool.            |
+| token_2                    | String | The name of the second token in the pool            |
