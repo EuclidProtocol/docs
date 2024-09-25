@@ -21,15 +21,15 @@ curl -X 'POST' \
   "cross_chain_addresses": [],
   "lp_allocation": "1000000000",
   "pair": {
-    "token_1": "usdc",
-    "token_2": "usdt"
+    "token_1": "fundenom",
+    "token_2": "nibi"
   },
   "sender": {
-    "address": "wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg",
-    "chain_uid": "osmosis"
+    "address": "nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts",
+    "chain_uid": "nibiru"
   },
   "timeout": null,
-  "vlp_address": "wasm1zh2dlnjmr839t2dkgqclfq5893edt3agswa0kmhdznwrz4xjmyhs8walp0"
+  "vlp_address": "nibi147sw04ts68nxe80946m332rr8j79qqvas386al8d76jhamnnr99qj6xnfs"
 }'
 ```
 ### Parameters
@@ -46,30 +46,30 @@ curl -X 'POST' \
 
 ```json
 {
-  "sender": {
-    "chain_uid": "osmosis",
-    "address": "wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg"
-  },
-  "contract": "wasm1zh2dlnjmr839t2dkgqclfq5893edt3agswa0kmhdznwrz4xjmyhs8walp0",
-  "chain_id": "localpoolb-2",
-  "rpc_url": "http://rpc.url",
-  "rest_url": "http://rest.url",
-  "msgs": [
-    {
-      "contractAddress": "wasm1zh2dlnjmr839t2dkgqclfq5893edt3agswa0kmhdznwrz4xjmyhs8walp0",
-      "msg": {
-        {
-            "remove_liquidity":{
-                "cross_chain_addresses":[],
-                "lp_allocation":"1000000000",
-                "pair":{
-                    "token_1":"usdc",
-                    "token_2":"usdt"
-                    },
-            "timeout":null}}
-      },
-      "funds": []
-    }
-  ]
+   "sender":{
+      "chain_uid":"nibiru",
+      "address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts"
+   },
+   // factory address
+   "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+   "chain_id":"nibiru-testnet-1",
+   "rpc_url":"https://rpc.testnet-1.nibiru.fi",
+   "rest_url":"https://lcd.testnet-1.nibiru.fi",
+   "msgs":[
+      {
+         // VLP address
+         "contractAddress":"nibi1x7xu453v3vjq2ve65j66mtju7jsg93qzw55sktr7lvyl6gw7kuks4g0qem",
+         "msg":{
+            "send":{
+               "amount":"1000000000",
+               "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+               "msg":"eyJyZW1vdmVfbGlxdWlkaXR5Ijp7ImNyb3NzX2NoYWluX2FkZHJlc3NlcyI6W10sImxwX2FsbG9jYXRpb24iOiIxMDAwMDAwMDAwIiwicGFpciI6eyJ0b2tlbl8xIjoiZnVuZGVub20iLCJ0b2tlbl8yIjoibmliaSJ9LCJ0aW1lb3V0IjpudWxsfX0="
+            }
+         },
+         "funds":[
+            
+         ]
+      }
+   ]
 }
 ```

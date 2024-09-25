@@ -8,29 +8,29 @@ Generates a transaction to withdraw virtual balance tokens for a user.
 
 ### Request URL
 ```bash
-http://api.staging.euclidprotocol.com:0/api/v1/execute/vcoin/withdraw
+http://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'http://api.staging.euclidprotocol.com:0/api/v1/execute/vcoin/withdraw' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
   "sender": {
-    "chain_uid": "ethereum",
-    "address": "0xSenderAddress"
+    "chain_uid": "nibiru",
+    "address": "nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts"
   },
   "amount": "19917",
-  "token": "usdc",
-  "timeout": "",
+  "token": "nibi",
+  "timeout": null,
   "cross_chain_addresses": [
     {
       "user": {
-        "chain_uid": "nibiru",
+        "chain_uid": "ethereum",
         "address": "0xSenderAddress"
       },
-      "limit": ""
+      "limit": null
     }
   ]
 }'
@@ -49,28 +49,29 @@ curl -X 'POST' \
 
 ```json
 {
-  "sender": {
-    "chain_uid": "ethereum",
-    "address": "0xSenderAddress"
-  },
-  "contract": "wasm1hrpna9v7vs3stzyd4z3xf00676kf78zpe2u5ksvljswn2vnjp3ys8c5wp9",
-  "chain_id": "localwasma-1",
-  "rpc_url": "http://rpc.url",
-  "rest_url": "http://rest.url",
-  "msgs": [
-    {
-      "contractAddress": "wasm1hrpna9v7vs3stzyd4z3xf00676kf78zpe2u5ksvljswn2vnjp3ys8c5wp9",
-      "msg": {
-        "withdraw_vcoin": {
-          "amount": "19917",
-          "cross_chain_addresses": [],
-          "timeout": null,
-          "token": "usdc"
-        }
-      },
-      "funds": []
-    }
-  ]
+   "sender":{
+      "chain_uid":"nibiru",
+      "address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts"
+   },
+   "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+   "chain_id":"nibiru-testnet-1",
+   "rpc_url":"https://rpc.testnet-1.nibiru.fi",
+   "rest_url":"https://lcd.testnet-1.nibiru.fi",
+   "msgs":[
+      {
+         "contractAddress":"nibi1g9m9q9tntaejyu4sgy8n6uuqzeplwmeafzakx0y0kwh3xwu2hagsujjh5n",
+         "msg":{
+            "send":{
+               "amount":"1000000000",
+               "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+               "msg":"eyJzd2FwIjp7ImFzc2V0X2luIjp7InRva2VuIjoiZnVuZGVub20iLCJ0b2tlbl90eXBlIjp7InNtYXJ0Ijp7ImNvbnRyYWN0X2FkZHJlc3MiOiJuaWJpMWc5bTlxOXRudGFlanl1NHNneThuNnV1cXplcGx3bWVhZnpha3gweTBrd2gzeHd1MmhhZ3N1ampoNW4ifX19LCJhc3NldF9vdXQiOiJvc21vIiwiY3Jvc3NfY2hhaW5fYWRkcmVzc2VzIjpbXSwibWluX2Ftb3VudF9vdXQiOiIxIiwicGFydG5lcl9mZWUiOm51bGwsInN3YXBzIjpbeyJ0b2tlbl9pbiI6ImZ1bmRlbm9tIiwidG9rZW5fb3V0Ijoib3NtbyJ9XSwidGltZW91dCI6bnVsbH19"
+            }
+         },
+         "funds":[
+            
+         ]
+      }
+   ]
 }
 
 ```

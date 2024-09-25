@@ -21,10 +21,10 @@ curl -X 'POST' \
   -d '{
   "amount_in":"1000000000",
   "asset_in": {
-    "token": "usdt",
+    "token": "fundenom",
     "token_type": {
-      "native": {
-        "denom": "uusdta"
+      "smart": {
+        "contract_address": "nibi1g9m9q9tntaejyu4sgy8n6uuqzeplwmeafzakx0y0kwh3xwu2hagsujjh5n"
       }
     }
   },
@@ -33,10 +33,10 @@ curl -X 'POST' \
   "min_amount_out": "1",
  "partner_fee":null,
   "sender": {
-    "address": "wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg",
+    "address": "nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts",
     "chain_uid": "nibiru"
   },
-  "swaps":["usdt","osmo"],
+  "swaps":["fundenom","osmo"],
   "timeout":null
 }'
 ```
@@ -86,48 +86,28 @@ partner_fee": {
 
 ```json
 {
-  "sender": {
-    "chain_uid": "nibiru",
-    "address": "wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg"
-  },
-  "contract": "wasm1fahenpmk3t0qyzdx77zqu0ah9kluv88hmf68fx5u56gh9927juxsz94c2n",
-  "chain_id": "localpoola-1",
-  "rpc_url": "http://rpc.url",
-  "rest_url": "http://rest.url",
-  "msgs": [
-    {
-      "contractAddress": "wasm1fahenpmk3t0qyzdx77zqu0ah9kluv88hmf68fx5u56gh9927juxsz94c2n",
-      "msg": {
-        "execute_swap_request": {
-          "amount_in": "1000000000",
-          "asset_in": {
-            "token": "usdt",
-            "token_type": {
-              "native": {
-                "denom": "uusdta"
-              }
+   "sender":{
+      "chain_uid":"nibiru",
+      "address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts"
+   },
+   //factory address
+   "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+   "chain_id":"nibiru-testnet-1",
+   "rpc_url":"https://rpc.testnet-1.nibiru.fi",
+   "rest_url":"https://lcd.testnet-1.nibiru.fi",
+   "msgs":[
+      {
+         // smart token address
+         "contractAddress":"nibi1g9m9q9tntaejyu4sgy8n6uuqzeplwmeafzakx0y0kwh3xwu2hagsujjh5n",
+         "msg":{
+            "send":{
+               "amount":"1000000000",
+               "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+               "msg":"eyJzd2FwIjp7ImFzc2V0X2luIjp7InRva2VuIjoiZnVuZGVub20iLCJ0b2tlbl90eXBlIjp7InNtYXJ0Ijp7ImNvbnRyYWN0X2FkZHJlc3MiOiJuaWJpMWc5bTlxOXRudGFlanl1NHNneThuNnV1cXplcGx3bWVhZnpha3gweTBrd2gzeHd1MmhhZ3N1ampoNW4ifX19LCJhc3NldF9vdXQiOiJvc21vIiwiY3Jvc3NfY2hhaW5fYWRkcmVzc2VzIjpbXSwibWluX2Ftb3VudF9vdXQiOiIxIiwicGFydG5lcl9mZWUiOm51bGwsInN3YXBzIjpbeyJ0b2tlbl9pbiI6ImZ1bmRlbm9tIiwidG9rZW5fb3V0Ijoib3NtbyJ9XSwidGltZW91dCI6bnVsbH19"
             }
-          },
-          "asset_out": "osmo",
-          "cross_chain_addresses": [],
-          "min_amount_out": "1",
-          "partner_fee": null,
-          "swaps": [
-            {
-              "token_in": "usdt",
-              "token_out": "osmo"
-            }
-          ],
-          "timeout": null
-        }
-      },
-      "funds": [
-        {
-          "denom": "uusdta",
-          "amount": "1000000000"
-        }
-      ]
-    }
-  ]
+         },
+         "funds":[]
+      }
+   ]
 }
 ```
