@@ -20,27 +20,27 @@ curl -X 'POST' \
   -d '{
   "pair_info": {
     "token_1": {
-      "token": "usdc",
+      "token": "nibi",
       "token_type": {
         "native": {
-          "denom": "uusdcb"
+          "denom": "unibi"
         }
       }
     },
     "token_2": {
-      "token": "usdt",
+      "token": "stars",
       "token_type": {
         "native": {
-          "denom": "uusdtb"
+          "denom": "ustars"
         }
       }
     }
   },
   "sender": {
-    "address": "wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg",
-    "chain_uid": "osmosis"
+    "address": "nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts",
+    "chain_uid": "nibiru"
   },
-  "slippage_tolerance": 70,
+  "slippage_tolerance": 5,
   "token_1_liquidity": "1000000000",
   "token_2_liquidity": "1000440192"
 }'
@@ -60,53 +60,54 @@ curl -X 'POST' \
 
 ```json
 {
-  "sender": {
-    "chain_uid": "osmosis",
-    "address": "wasm14hcxlnwlqtq75ttaxf674vk6mafspg8xv03ktg"
-  },
-  "contract": "wasm1zh2dlnjmr839t2dkgqclfq5893edt3agswa0kmhdznwrz4xjmyhs8walp0",
-  "chain_id": "localpoolb-2",
-  "rpc_url": "http://rpc.url",
-  "rest_url": "http://rest.url",
-  "msgs": [
-    {
-      "contractAddress": "wasm1zh2dlnjmr839t2dkgqclfq5893edt3agswa0kmhdznwrz4xjmyhs8walp0",
-      "msg": {
-        "add_liquidity_request": {
-          "pair_info": {
-            "token_1": {
-              "token": "usdc",
-              "token_type": {
-                "native": {
-                  "denom": "uusdcb"
-                }
-              }
-            },
-            "token_2": {
-              "token": "usdt",
-              "token_type": {
-                "native": {
-                  "denom": "uusdtb"
-                }
-              }
+   "sender":{
+      "chain_uid":"nibiru",
+      "address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts"
+   },
+   "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+   "chain_id":"nibiru-testnet-1",
+   "rpc_url":"https://rpc.testnet-1.nibiru.fi",
+   "rest_url":"https://lcd.testnet-1.nibiru.fi",
+   "msgs":[
+      {
+        //factory address
+         "contractAddress":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
+         "msg":{
+            "add_liquidity_request":{
+               "pair_info":{
+                  "token_1":{
+                     "token":"nibi",
+                     "token_type":{
+                        "native":{
+                           "denom":"unibi"
+                        }
+                     }
+                  },
+                  "token_2":{
+                     "token":"stars",
+                     "token_type":{
+                        "native":{
+                           "denom":"ustars"
+                        }
+                     }
+                  }
+               },
+               "slippage_tolerance":5,
+               "token_1_liquidity":"1000000000",
+               "token_2_liquidity":"1000440192"
             }
-          },
-          "slippage_tolerance": 70,
-          "token_1_liquidity": "1000000000",
-          "token_2_liquidity": "1000440192"
-        }
-      },
-      "funds": [
-        {
-          "denom": "uusdcb",
-          "amount": "1000000000"
-        },
-        {
-          "denom": "uusdtb",
-          "amount": "1000440192"
-        }
-      ]
-    }
-  ]
+         },
+         "funds":[
+            {
+               "denom":"unibi",
+               "amount":"1000000000"
+            },
+            {
+               "denom":"ustars",
+               "amount":"1000440192"
+            }
+         ]
+      }
+   ]
 }
 ```

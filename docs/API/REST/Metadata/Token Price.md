@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Get Token Price
 
-Gets the token price of the asset_out based in reference to the asset_in.
+Gets the token price of the asset_out in reference to the asset_in.
 
 ### Request URL
 
@@ -18,7 +18,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "asset_in": "usdt",
+  "asset_in": "fundenom",
   "asset_out": "nibi"
 }'
 ```
@@ -33,6 +33,6 @@ curl -X 'POST' \
 
 ```json
 {
-  "amount": 1.0009282130745838
+ "amount":0.008118633378082513
 }
 ```

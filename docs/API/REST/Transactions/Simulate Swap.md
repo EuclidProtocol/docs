@@ -19,12 +19,11 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -d '{
   "amount_in": "10",
-  "asset_in": "usdt",
+  "asset_in": "fundenom",
   "asset_out": "nibi",
-  "contract": "nibi1nsvx0s8kj2jn0smcrz4t0wga9dtrjkvsfd24ay5jrkw3jgrhjmeq8suvmz",
+  "contract": "nibi1vndyr364cmexy3qq8zx4x2v757purq4flt9mj4qe3z2s2wn29v5sdfc830",
   "min_amount_out": "1",
-  "swaps": ["usdt","nibi"]
-  
+  "swaps": ["fundenom","nibi"]
 }'
 ```
 ### Parameters
@@ -43,5 +42,8 @@ curl -X 'POST' \
 ### Example Response
 
 ```json
- {"data":{"amount_out":"10","asset_out":"nibi"}}
+{
+   "amount_out":"1232",
+   "asset_out":"nibi"
+}
 ```

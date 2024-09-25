@@ -19,8 +19,8 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -d '{
   "amount_in": "100",
-  "token_in": "usdt",
-  "token_out": "nibi"
+  "token_in": "nibi",
+  "token_out": "stars"
 }'
 ```
 | Field       | Type   | Description                        |
@@ -33,15 +33,15 @@ curl -X 'POST' \
 
 ```json
 {
-  "paths":[
-    {
-    "route":["usdt","nibi"],
-    "amount_out":100
-    },
-    {
-      "route":["usdt","usdc","eth","nibi"],
-      "amount_out":100
-    }
-    ]
-  }
+   "paths":[
+      {
+         "route":[
+            "nibi",
+            "fundenom",
+            "stars"
+         ],
+         "amount_out":"1"
+      }
+   ]
+}
 ```

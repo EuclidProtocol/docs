@@ -10,12 +10,8 @@ Queries all chain info within the router contract.
 query Router {
   router {
     all_chains {
-      chain {
-        factory_chain_id
-        factory
-        from_hub_channel
-        from_factory_channel
-      }
+      factory
+      chain_id
       chain_uid
     }
   }
@@ -27,24 +23,18 @@ query Router {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Router {\n  router {\n    all_chains {\n      chain {\n        factory_chain_id\n        factory\n        from_hub_channel\n        from_factory_channel\n      }\n      chain_uid\n    }\n  }\n}"}'
+    --data '{"query":"query Router {\n  router {\n    all_chains {\n      factory\n      chain_id\n      chain_uid\n    }\n  }\n}"}'
 
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6UABacAlkgDObehwZDR9WtJkMAZpygoIhAcLF8RYdstXrNhI8ZVM4fQTABGOzkiQJuF5VYg21GrQScXNw8GAF8Qojk9GAMPcOl40JAAGhAAN048EU57bgRxDBAQUKA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6UABacAlkgDObehwYAzTlBQRC7GUSGikfEWFUyNYvjB16iAX1UWkZkABoQAN054RnAEbcE4jCBBmgA)
 
 ### Return Fields
-
-| Field                  | Type   | Description                                             |
-|------------------------|--------|---------------------------------------------------------|
-| chain                  | [Chain](#chain) | Detailed information about the chain.                  |
-| chain_uid              | String | The unique identifier (UID) of the chain.               |
 
 ### Chain
 
 | Field                  | Type   | Description                                             |
 |------------------------|--------|---------------------------------------------------------|
-| factory_chain_id       | String | The factory chain ID.                                   |
-| factory                | String | The contract address of the factory.                             |
-| from_hub_channel       | String | The channel from hub to factory.                   |
-| from_factory_channel   | String | The channel from factory to hub.               |
+| factory                | String | The contract address of the factory.                    |
+| chain_uid              | String | The chain UID we have queried.                          |
+| chain_id               | String | The chain Id of the above chain UID.                    |
