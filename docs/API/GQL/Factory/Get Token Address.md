@@ -24,9 +24,9 @@ query Factory($chainUid: String!, $vlpAddress: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token_info($contract: String!, $chainUid: String!) {\n  cw(contract: $contract, chain_uid: $chainUid) {\n    token_info {\n      name\n      symbol\n      decimals\n      total_supply\n    }\n  }\n}","variables":{"chainUid":"nibiru","contract":"nibi1mn6wlzm9hz72yyz09u98j54k6ceagy6tjnpl4n3k29f6zdsnc8xsthffg6"}}'
+    --data '{"query":"query Get_token_address($vlpAddress: String!, $chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    get_token_address(vlp_address: $vlpAddress) {\n      token_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","vlpAddress":"nibi147sw04ts68nxe80946m332rr8j79qqvas386al8d76jhamnnr99qj6xnfs"}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgJZIBmEAFACRQSp4CGUK6RAZRR46AcwCEAGiJsAFlzoBVGmH5CRSCQEoiwADpIiRKAHcm7Tjz4yLwq9Kjy6VGCv5yFSZWB37DRohQKajpGXQMAgKQuRAjIogBnAjgAIwgAGzjIsAQoGjgudISsgKCUQqoEmAAHavSCEoBfOOakRpBJEAA3LhEuFPSEBIwQPyM9EEdPbwn%2BCaQaFJo8GAnJOInbbl5ZonnFmgBGOCQANhN0gC84AE5ZS4B2ACYCAkuABhuYG4AOACsAKwAFnIpygCC4ogIpxQfyQdSBSAAzOQnjd6KdLmAEkgoD8AB4JFCyej0USnCYGdqNIA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAOIIoD6KEA1shQIZhh4IDObAFACQBuANgAcAgs1Yd0RAMoo8ASyQBzAIQAaItygALBgoCqcsJJnylygJRFgAHSREiAMwZRqhTtt1IKMQ5M079Q0sbO3siRXIqWnomFnYuAUFGMXi-RNE4jmDbMLDqOi9Y8TYcsIBfUoqkMpBVEF4GeQYAI352DBAQ%2B2sQD0CwHskepDlmuTwYHtVSnvSUjkGiYdG5AEYAFgB2NgB3AAZ1lDYANgAOJAAPBFO9gE5147gAZieAJjw8U4ArTdusLAabCep2ODH4pzAm2OXx0cCQSDwtz%2BX2OFyQDhKIFsNTKQA)
 
 ### Arguments
 
@@ -37,4 +37,4 @@ curl --request POST \
 
 | Field            | Type   | Description                               |
 |------------------|--------|-------------------------------------------|
-| token_address      | String | The contract address of the LP token of the specified VLP.      |
+| token_address      | String | The contract address of the LP token for the specified VLP.      |
