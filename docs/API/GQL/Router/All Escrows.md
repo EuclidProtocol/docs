@@ -1,8 +1,8 @@
----
+ ---
 sidebar_position: 6
 ---
 # Escrows
-Queries the chain UID that contain an escrow with the specified token. Returns information on the escrow if found.
+Queries all escrows for their chain UID, token, and total balance.
 
 ```graphql
 query Escrows($token: String!) {
@@ -21,14 +21,13 @@ query Escrows($token: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Escrows($token: String!) {\n  router {\n    escrows(token: $token) {\n      chain_uid\n      balance\n      chain_id\n    }\n  }\n}","variables":{"token":"euclid"}}'
+    --data '{"query":"query All_escrows($max: String, $min: String, $skip: Int, $limit: Int) {\n  router {\n    all_escrows(max: $max, min: $min, skip: $skip, limit: $limit) {\n      chain_uid\n      balance\n      token\n    }\n  }\n}","variables":{"max":null,"min":null,"skip":null,"limit":null}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIDOUeEA7mQBQAkKEA1sukQMop4CWSAcwCEASiLAAOkiJEqMFPnFSZMhBSq06zNkg5NWyMZOkqZUABYBDfgH0YvMMtNEARpYA2lpFARPTF6yQbBz8iAF8nCKQwkAAaEAA3Sz5LF3c1DBBjGQkQbWRcjlyEGCh3EJApGLCgA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BggM5R4QDuNAFACRwCGAHukQMoo8ASyQBzADREOovoJHipbGgGthABz4BJVErLC4wlNtQBKIsAA6SIkQYwU%2BC9du3OFanQbMWXXtL8pQyQ%2BGSQpVQ1QyPUpfUNjaXijcysbV1soAAtOUUoYYTAXDKIAI3dOJCgEYoyUCBVkWqIAX2K2pBaQCRAAN04RTlKyWgwQNNtLED8pviQYCgliqeDZonnF5ZAYtY2yJfSp5JRdhbJrLpagA)
 
 ### Arguments
 
-- **token** (String!): The identifier of the token.
 - **max** (ChainUID): The upper limit chain UID that should be returned. Does not include the specified max value.
 - **min** (ChainUID): The lower limit chain UID to start from. Includes the specified min value.
 - **skip** (Int): The number of results to skip in the resonse.
@@ -38,6 +37,6 @@ curl --request POST \
 
 | Field Name  | Type     | Description                                      |
 |-------------|----------|--------------------------------------------------|
-| `chain_uid` | `String` | The UID of the chain that has an escrow for the specified token. |
+| `chain_uid` | `String` | The UID of the chain that hosts the escrow. |
 | `balance`   | `String`  | The current amount of tokens held in the escrow.   |
-| `chain_id`  | `String`    | The Id of the chain that has an escrow for the specified token.   |
+| `token`  | `String`    | The tokne Id for the token stored in the escrow.  |

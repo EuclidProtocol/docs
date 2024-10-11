@@ -25,7 +25,7 @@ In the following sections, we will be covering all the available queries for the
 For each query, you can find an example response if you select the "Open in Playground" link.
 :::
 
-- [Chain](../API/GQL/Chain/All%20Chain%20UIDs.md): Query information related to the chain.
+- [Chain](../API/GQL/Chain/All%20Chains.md): Query information related to the chain.
 - [Factory](../API/GQL/Factory/All%20Pools.md): Query information from the factory contract.
 - [Router](../API/GQL/Router/All%20Chains.md): Query information from the router contract.
 - [VLP](../API/GQL/VLP/All%20Pools.md): Query information from VLP contracts.

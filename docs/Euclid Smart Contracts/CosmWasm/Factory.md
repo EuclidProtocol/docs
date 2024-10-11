@@ -73,14 +73,14 @@ content: `
   "cross_chain_addresses": [
     {
       "user": {
-        "chain_uid": "chain1",
-        "address": "cosmo1..."
+        "chain_uid": "osmosis",
+        "address": "osmo1..."
       },
       "limit": "150000"
     },
     {
       "user": {
-        "chain_uid": "chain2",
+        "chain_uid": "nibiru",
         "address": "nibi1..."
       },
       "limit": "200000"
@@ -101,10 +101,10 @@ content: `
 | `asset_in`              | [`TokenWithDenom`](overview.md#tokenwithdenom)               | The token being swapped in.                                                                                               |
 | `asset_out`             | [`Token`](overview#token)                         | The token being swapped out.                                                                                              |
 | `amount_in`             | `Uint128`                       | Amount of the input asset.                                                                                                |
-| `min_amount_out`        | `Uint128`                       | Minimum amount of the output asset for the swap to be considered a success.                                               |
+| `min_amount_out`        | `Uint128`                       | Minimum amount of the output asset for the swap to be considered a success. Used to specify maximum slippage accepted.                                               |
 | `timeout`               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.|
 | `swaps`                 | `Vec<NextSwapPair>`             | The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used. |
-| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the swap. If limit is not specified, then the maximum amount is taken.  |
+| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there are any leftover funds, they are added to the user's virtual balance for the address that initiated the swap. If limit is not specified, then the maximum amount is taken.  |
 | `partner_fee`           | `Option<PartnerFee>`            | Optional partner fee information for swaps.  The maximum fee that can be set is 30 (0.3%).                                                                       |
 
 :::note
@@ -121,18 +121,19 @@ pub struct NextSwapPair {
     pub token_out: Token,
 }
 
-// The percentage of the fee for platform. Specified in basis points ie. 1 = 0.01% 10000 = 100%
+// The percentage of the fee for the platform. Specified in basis points ie. 1 = 0.01% 10000 = 100%
 pub struct PartnerFee {
     // Cannot be set greater than 30 (0.3%)
     pub partner_fee_bps: u64,
+    //address to receive the fee.
     pub recipient: String,
 }
 
 ```
 
-### WithdrawVCoin
+### WithdrawVirtualBalance
 
-Withdraws funds from the user's virtual balance to the specified chains.
+Withdraws funds from the user's virtual balance (Voucher tokens) to the specified chains.
 
 <Tabs tabs={[
 {
@@ -141,7 +142,7 @@ label: 'Rust',
 language: 'rust',
 content: `
  pub enum ExecuteMsg{
- WithdrawVcoin {
+ WithdrawVirtualBalance {
         token: Token,
         amount: Uint128,
         cross_chain_addresses: Vec<CrossChainUserWithLimit>,
@@ -156,21 +157,21 @@ label: 'JSON',
 language: 'json',
 content: `
 {
-    "withdraw_vcoin": {
+    "withdraw_virtual_balance": {
         "token": "usdt",
         "amount": "10000",
         "cross_chain_addresses": [
             {
                 "user": {
-                    "chain_uid": "chain-1",
+                    "chain_uid": "nibiru",
                     "address": "nibi1..."
                 },
                 "limit": "500"
             },
             {
                 "user": {
-                    "chain_uid": "chain-2",
-                    "address": "cosmo1..."
+                    "chain_uid": "osmosis",
+                    "address": "osmo1..."
                 }
             }
         ],
@@ -181,7 +182,7 @@ content: `
 }
 ]} />
 
-| Field                      | Type                                    | Description                                                                                           |
+| **Field**                      | **Type**                                    | **Description**                                                                                           |
 |----------------------------|-----------------------------------------|-------------------------------------------------------------------------------------------------------|
 | `token`                    | [`Token`](overview#token)                                  | The token to withdraw.                                                                                |
 | `amount`                   | `Uint128`                               | The amount of fund to withdraw.                                                                      |
@@ -206,10 +207,8 @@ language: 'rust',
 content: `
 pub enum ExecuteMsg {
   AddLiquidityRequest {
-        pair_info: PairWithDenom,
-        token_1_liquidity: Uint128,
-        token_2_liquidity: Uint128,
-        slippage_tolerance: u64,
+        pair_info: PairWithDenomAndAmount,
+        slippage_tolerance_bps: u64,
         timeout: Option<u64>,
     },
 }
@@ -222,40 +221,38 @@ language: 'json',
 content: `
 {
   "add_liquidity_request": {
-   "pair_info": {
-    "token_1": {
-      "token": "token-1-id",
-      "token_type": {
-        "native": {
-          "denom": "native-denom-1"
+    "pair_info": {
+      "token_1": {
+        "token": "token-1-id",
+        "amount": "10000",
+        "token_type": {
+          "native": {
+            "denom": "native-denom-1"
+          }
+        }
+      },
+      "token_2": {
+        "token": "token-2-id",
+        "amount": "40000",
+        "token_type": {
+          "native": {
+            "denom": "native-denom-2"
+          }
         }
       }
     },
-    "token_2": {
-      "token": "token-2-id",
-      "token_type": {
-        "native": {
-          "denom": "native-denom-2"
-        }
-      }
-    }
-  },
-    "token_1_liquidity": "10000",  
-    "token_2_liquidity": "40000",  
-    "slippage_tolerance": 500,        
-    "timeout": 120                    
+    "slippage_tolerance_bps": 300,
+    "timeout": 120
   }
 }
 `
 }
 ]} />
 
-| **Name**              | **Type**             | **Description**                                                                                                       |
+| **Field**              | **Type**             | **Description**                                                                                                       |
 |-----------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| **pair_info**         | [`PairWithDenom`](overview#pairwithdenom)      | The two tokens to add liquidity to.                                                                                   |
-| **token_1_liquidity** | `Uint128`            | The amount of liquidity added for the first token of the pair.                                                        |
-| **token_2_liquidity** | `Uint128`            | The amount of liquidity added for the second token of the pair.                                                       |
-| **slippage_tolerance**| `u64`                | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as a percentage between 1 and 100. |
+| **pair_info**         | [`PairWithDenomAndAmount`](overview#pairwithdenomandamount)      | The tokens to add liquidity to, with the amount for each.                                                                                   |
+| **slippage_tolerance**| `u64`                | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as a percentage between 1 and 100 using basis points (100bps=1%). |
 | **timeout**           | `Option<u64>`        | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
 
 ### RequestPoolCreation
@@ -322,9 +319,9 @@ content: `
 }
 ]} />
 
-| Field                | Type                                | Description                                                                                                              |
+| **Field**                | **Type**                                | **Description**                                                                                                              |
 |----------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| `pair`               | [`PairWithDenom`](overview#tokenwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
+| `pair`               | [`PairWithDenom`](overview#pairwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
 | `timeout`            | `Option<u64>`                       | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.                |
 | `lp_token_name`      | `String`                            | Name of the liquidity pool token.                                                                                        |
 | `lp_token_symbol`    | `String`                            | Symbol of the liquidity pool token.                                                                                      |
@@ -342,13 +339,71 @@ pub struct InstantiateMarketingInfo {
     pub logo: Option<Logo>,
 }
 ```
-| Field         | Description                          |
+| **Field**         | **Description**                          |
 |---------------|--------------------------------------|
 | `project`     | Optional name of the project.        |
 | `description` | Optional description of the project. |
 | `marketing`   | Optional marketing URL.              |
 | [`logo`](https://docs.rs/cw20/latest/cw20/enum.Logo.html)        | Optional logo information.           |
 
+
+### DepositToken
+Exchange attached funds for voucher tokens. 
+
+:::tip
+Voucher tokens can be swapped on any chain allowing users to swap them using the chains with lowest gas fees.
+:::
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+ pub enum ExecuteMsg{
+   DepositToken {
+        asset_in: TokenWithDenom,
+        amount_in: Uint128,
+        timeout: Option<u64>,
+        recipient: Option<CrossChainUser>,
+    },
+ }
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "deposit_token": {
+    "asset_in": {
+      "token": "token-id",
+      "amount": "5000",
+      "token_type": {
+        "native": {
+          "denom": "native-denom-1"
+        }
+      }
+    },
+    "amount_in": "5000",
+    "timeout": 100,
+    "recipient": {
+      "chain_uid": "osmosis",
+      "address": "osmo1..."
+    }
+  }
+}
+`
+}
+]} />
+
+| **Field**       | **Type**              | **Description**                        |
+|----------------|-----------------------|----------------------------------------|
+| `asset_in`     | [`TokenWithDenom`](overview#tokenwithdenom)      | The asset being exchanged. Should be native in this case.  |
+| `amount_in`    | `Uint128`             | The amount of tokens being exchanged. Should match attached funds to the message.        |
+| `timeout`      | `Option<u64>`         | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.      |
+| `recipient`    | [`Option<CrossChainUser>`](overview#crosschainuser) | Optional recipient to receive the voucher tokens. Defaults to the sender if not specified.      |
 
 ## CW20 Messages
 
@@ -366,10 +421,16 @@ pub struct Cw20ReceiveMsg {
 }
 
 ```
-The `msg` needs to be a CW20HookMsg encoded in base64.
+The `msg` needs to be a FactoryCW20HookMsg encoded in base64.
 
 ```rust
-pub enum Cw20HookMsg {
+#[cw_serde]
+pub enum FactoryCw20HookMsg {
+    Deposit {
+        token: Token,
+        timeout: Option<u64>,
+        recipient: Option<CrossChainUser>,
+    },
     Swap {
         asset_in: TokenWithDenom,
         asset_out: Token,
@@ -379,7 +440,6 @@ pub enum Cw20HookMsg {
         cross_chain_addresses: Vec<CrossChainUserWithLimit>,
         partner_fee: Option<PartnerFee>,
     },
-
     RemoveLiquidity {
         pair: Pair,
         lp_allocation: Uint128,
@@ -404,7 +464,7 @@ pub enum Cw20ExecuteMsg {
     },
 }
 ```
-- The `msg` field here should be the Binary encoded representation of the JSON message of a  `CW20HookMsg` (Swap or RemoveLiquidity).
+- The `msg` field here should be the Binary encoded representation of the JSON message of a  `FactoryCW20HookMsg` (Swap,RemoveLiquidity, or DepositToken).
 :::
 
 
@@ -552,9 +612,55 @@ content: `
 |-----------------------|---------------------------------|---------------------------------------------------------------|
 | pair                  | [`Pair`](overview#pair)                 | The pair of tokens for which liquidity is being removed. |
 | lp_allocation         | `Uint128`                       | The amount of LP tokens being returned to the pool.          |
-| timeout               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
-                         |
-| cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit) |  A set of addresses to specify where the liquidity should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.       |
+| timeout               | `Option<u64>`                   | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.|
+| cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit) |  A set of addresses to specify where the liquidity should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there are any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.       |
+
+
+### Deposit
+Exchange the sent CW20 tokens for voucher tokens. 
+
+:::tip
+Voucher tokens can be swapped on any chain allowing users to swap them using the chains with lowest gas fees.
+:::
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+ Deposit {
+        token: Token,
+        timeout: Option<u64>,
+        recipient: Option<CrossChainUser>,
+    },
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "deposit": {
+    "token": "token-id",
+    "timeout": 100,
+    "recipient": {
+      "chain_uid": "nibiru",
+      "address": "nibi1..."
+    }
+  }
+}
+`
+}
+]} />
+
+| **Field**      | **Type**              | **Description**                        |
+|----------------|-----------------------|----------------------------------------|
+| `token`        | [`Token`](overview#token)               | Token Id of the CW20 token.                |
+| `timeout`      | `Option<u64>`         |  Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.      |
+| `recipient`    | [`Option<CrossChainUser>`](overview#crosschainuser) | Optional recipient to receive the voucher tokens. Defaults to the sender if not specified.        |
+
 
 ## Query Messages 
 
@@ -589,20 +695,31 @@ content: `
 The query returns the following response:
 
 ```rust
+#[cw_serde]
 pub struct StateResponse {
     pub chain_uid: ChainUid,
     pub router_contract: String,
     pub hub_channel: Option<String>,
     pub admin: String,
+    // Escrow Code ID
+    pub escrow_code_id: u64,
+    // CW20 Code ID
+    pub cw20_code_id: u64,
+    pub is_native: bool,
+    pub partner_fees_collected: DenomFees,
 }
-```
 
-| **Name**           | **Type**        | **Description**                                           |
-|--------------------|-----------------|-----------------------------------------------------------|
-| **chain_uid**      | `ChainUid`      | The unique Id of the blockchain the factory is deployed on.                                |
-| **router_contract**| `String`        | The address of the router contract used to relay messages from and to the factory           |
-| **hub_channel**    | `Option<String>`| The IBC channel used to forward messages to and from the hub.                               |
-| **admin**          | `String`        | The address of the admin of the factory.                                                      |
+```
+| **Field**              | **Type**        | **Description**                                                                                   |
+|------------------------|-----------------|---------------------------------------------------------------------------------------------------|
+| `chain_uid`            | `ChainUid`      | The unique Id of the blockchain the factory is deployed on.                                       |
+| `router_contract`      | `String`        | The address of the router contract used to relay messages from and to the factory.                |
+| `hub_channel`          | `Option<String>`| The IBC channel used to forward messages to and from the hub.                                     |
+| `admin`                | `String`        | The address of the admin of the factory.                                                          |
+| `escrow_code_id`       | `u64`           | Code code Id used for escrow contracts.                                                                 |
+| `cw20_code_id`         | `u64`           | Code code Id used for LP token contracts.                                                                    |
+| `is_native`            | `bool`          | Indicates whether the factory is native to the blockchain.                                        |
+| `partner_fees_collected` | `DenomFees`    | Total amount of fees collected by the partner fee. Each denom and amount is returned.                                        |
 
 ### GetEscrow
 
@@ -757,7 +874,7 @@ pub struct SwapRequest {
     pub timeout: IbcTimeout,
     pub cross_chain_addresses: Vec<CrossChainUserWithLimit>,
     pub partner_fee_amount: Uint128,
-    pub partner_fee_recipient: Option<Addr>,
+    pub partner_fee_recipient: Addr,
 }
 ```
 | **Name**               | **Type**                           | **Description**                                      |
@@ -772,7 +889,7 @@ pub struct SwapRequest {
 | **timeout**            | `IbcTimeout`                       | The timeout time for the swap. Returned as a timestamp.                 |
 | **cross_chain_addresses** | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)  |  A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on.      |
 | **partner_fee_amount** | `Uint128`                          | The amount of the partner fee.                       |
-| **partner_fee_recipient** | `Option<Addr>`                 | The recipient of the partner fee.                    |
+| **partner_fee_recipient** | `Addr`                 | The recipient of the partner fee.                    |
 
 ### PendingLiquidity
 
@@ -824,18 +941,14 @@ pub struct GetPendingLiquidityResponse {
 pub struct AddLiquidityRequest {
     pub sender: String,
     pub tx_id: String,
-    pub token_1_liquidity: Uint128,
-    pub token_2_liquidity: Uint128,
-    pub pair_info: PairWithDenom,
+    pub pair_info: PairWithDenomAndAmount,
 }
 ```
 | **Name**             | **Type**           | **Description**                                      |
 |----------------------|--------------------|------------------------------------------------------|
 | **sender**           | `String`           | The address of the user with pending liquidity.      |
 | **tx_id**            | `String`           | The unique Id for the liquidity transaction.         |
-| **token_1_liquidity**| `Uint128`          | The amount of liquidity for the first token.         |
-| **token_2_liquidity**| `Uint128`          | The amount of liquidity for the second token.        |
-| **pair_info**        | [`PairWithDenom`](overview#pairwithdenom)     | Information about the token pair (Token Id and type for each token). |
+| **pair_info**        | [`PairWithDenomAndAmount`](overview#pairwithdenomandamount)     | Information about the token pair (Token Id, type, and amount for each token). |
 
 ### PendingRemoveLiquidity
 
@@ -958,7 +1071,7 @@ pub struct GetVlpResponse {
 
 ### GetLPToken
 
-Queries the LP token for the specified virtual liquidity pool address.
+Queries the contract address of the LP token (CW20) for the specified virtual liquidity pool address.
 
 <Tabs tabs={[
 {

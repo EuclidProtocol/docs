@@ -33,11 +33,11 @@ curl --request POST \
 
 ### Return Fields
 
-| Field         | Type   | Description                                     |
+| **Field**         | **Type**   | **Description**                                     |
 |---------------|--------|-------------------------------------------------|
-| coinDecimal   | Int    | The number of decimal places for the token.     |
-| displayName   | String | The display name of the token.                  |
-| tokenId       | String | The unique identifier of the token.             |
-| description   | String | A brief description of the token.               |
-| image         | String | URL to an image representing the token.         |
-| price         | Float  | The current price of the token.                 |
+| `coinDecimal`   | `Int`    | The number of decimal places for the token.     |
+| `displayName`   | `String` | The display name of the token.                  |
+| `tokenId`       | `String` | The unique identifier of the token.             |
+| `description`   | `String` | A brief description of the token.               |
+| `image`         | `String` | URL to an image representing the token.         |
+| `price`         | `String`  | The current price of the token in USD.                 |

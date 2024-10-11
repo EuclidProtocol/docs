@@ -29,7 +29,7 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| router                 | String | The contract address of the router.                              |
-| admin                  | String | The address of the admin for the VBalance contract.                |
+| `router`                 | `String` | The contract address of the router.                              |
+| `admin`                  | `String` | The address of the admin for the VBalance contract.                |

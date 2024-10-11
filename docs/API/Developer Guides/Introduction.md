@@ -30,7 +30,7 @@ It’s essential to have a solid understanding of how to interact with blockchai
 
 Fetching the chain config is a three step process:
 
-	1.	**Retrieving All Chain UIDs**: This step allows you to gather all available chain unique identifiers (UIDs). We can do this using the [`All Chain UIDs`](../GQL/Chain/All%20Chain%20UIDs.md) GQL query.
+	1.	**Retrieving All Chain UIDs**: This step allows you to gather all available chain unique identifiers (UIDs). We can do this using the [`All Chain UIDs`](../GQL/Chain/All%20Chains.md) GQL query.
 ```graphql
 query All_chain_uids {
   chains {
@@ -41,7 +41,7 @@ query All_chain_uids {
   }
 }
 ```
-	2.	**Obtaining the Chain ID for a Specific UID**: Once you have the list of UIDs, the next step is to get the specific chain ID associated with the UID you’re interested in. We can do this using the [`Chain ID`](../GQL/Chain/Chiain%20Id.md) GQL query:
+	2.	**Obtaining the Chain ID for a Specific UID**: Once you have the list of UIDs, the next step is to get the specific chain ID associated with the UID you’re interested in. We can do this using the [`Chain ID`](../GQL/Chain/All%20Chains.md) GQL query:
   :::tip
   Use the chain UID you want the config for as the parameter.
   :::

@@ -86,7 +86,7 @@ content: `
         "chain_uid": "chainC",
         "address": "comso1..."
       },
-      "token_id": "token-id"
+      "token_id": "tokenA"
     }
   }
 }

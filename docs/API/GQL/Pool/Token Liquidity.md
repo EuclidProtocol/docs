@@ -7,11 +7,12 @@ sidebar_position: 1
 Queries the total amount of liquidity available for the specified token.
 
 ```graphql
-query Pool($token: String!) {
+query Token_liquidity($token: String!) {
   pool {
     token_liquidity(token: $token) {
       token
       total_liquidity
+      total_volume
     }
   }
 }
@@ -36,9 +37,10 @@ curl --request POST \
 
 ### Return Fields
 
-| Field            | Type   | Description                       |
+| **Field**            | **Type**   | **Description**                       |
 |------------------|--------|-----------------------------------|
-| token            | String | The token symbol or identifier.   |
-| total_liquidity  | Float  | The total liquidity of the token. |
+| `token`            | `String` | The token Id.   |
+| `total_liquidity`  | `String`  | The total liquidity of the token. |
+| `total_volume`  | `String`  | The total volume for the token. |
 
 

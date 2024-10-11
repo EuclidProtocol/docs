@@ -5,9 +5,9 @@ sidebar_position: 2
 Queries all the LP reserves and shares on all the chains for the specified VLP.
 
 ```graphql
-query Vlp($contract: String!) {
+query All_pools($contract: String!, $limit: Int, $offset: Int) {
   vlp(contract: $contract) {
-    all_pools {
+    all_pools(limit: $limit, offset: $offset) {
       pools {
         chain_uid
         pool {
@@ -15,6 +15,11 @@ query Vlp($contract: String!) {
           reserve_2
           lp_shares
         }
+      }
+      pagination {
+        total_count
+        limit
+        offset
       }
     }
   }
@@ -27,31 +32,33 @@ query Vlp($contract: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Vcoin($contract: String!) {\n  vlp(contract: $contract) {\n    all_pools {\n      pools {\n        chain_uid\n        pool {\n          reserve_1\n          reserve_2\n          lp_shares\n        }\n      }\n    }\n  }\n}","variables":{"contract":"nibi147sw04ts68nxe80946m332rr8j79qqvas386al8d76jhamnnr99qj6xnfs"}}'
+    --data '{"query":"query Vlp($contract: String!, $limit: Int, $offset: Int) {\n  vlp(contract: $contract) {\n    all_pools(limit: $limit, offset: $offset) {\n      pools {\n        chain_uid\n        pool {\n          reserve_1\n          reserve_2\n          lp_shares\n        }\n      }\n      pagination {\n        total_count\n        limit\n        offset\n      }\n    }\n  }\n}","variables":{"contract":"nibi1ulj49aczcwsdk93mv0nar0c0k0ptqn9n3y6rqwaeslz5tlftlvcs5xvzxa","limit":null,"offset":null}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGpQQCWSAFACTmp4CGUK6RAyinlQOYCEASiLAAOkiJEAbgBsADtQbcWbIvQiMVwsRMlEmMmQH05ECDIDOI8Xr2nzVnbdtQAFkypGYFMDeeT7GWtdf0k8BAt8KQQjAEY-UKJwyLxoowAmBND5Iwt3ZKzbAF9CohKQsr9y8pAAGhApJh4mACMZCIwQJyJRECVmVl72XqQKFopYgBYAdgsAdwAGSZQLADYADiQADwR1hYBOSdW4AGYT9Lw8dYAraf2sLEaLE-XVg3WwadXr9zgkJDw%2B3u11WWyQADMLL1xEUQEUgA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIANERpkecHmyIBJVKJoQAZsoDOCGfJQBKIsAA6SIkQBulKvUYsZdBtxt7Dxk0SZkyAfQoQIZNVQSUrZB0qIq6prsSqoauvpGrq4%2BfmoJLkkmUAAWTHyeMDxgiZkmKWTppUl4CBp4pgieAIwlVUQ1dQ2eAEytVZSearkdfUkAvqNEExnJTPx8TCg8DJVVKBAo7p70MKiTJqEo%2B0QRcZPT4yXTYyDCIKZMvEwARmS1GCDOJgYgVg6sP3YPyQPGePCaMDIACsACwAThYAC8oAB3NRgADWcIAzHBTAAGJCPfFQfEY-EUFBYJBwpDYggANjwWBRTFqZERAFYUGRlDzTFA1JyAB6mRHCpg-YQlH6HQFEJCQsjSlw-U6aeWKjxGG5jIA)
 
 
 ### Arguments
 
 - **contract** (String!): The contract address of the VLP.
+- **limit** (Int): Optional limit to the number of results to return.
+- **offset** (Int): Optional number of pools to skip before starting to return the result set. Used for pagination.
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| chain_uid              | String | The unique identifier (UID) of the chain.               |
-| pool                   | [PoolInfo](#poolinfo) | Detailed information about the pool.                   |
+| `chain_uid`   | `String` | The unique identifier (UID) of the chain.               |
+| `pool`        | [`PoolInfo`](#poolinfo) | Detailed information about the pool.                   |
+| `total_count` | `Int`    | The total number of token pairs (pools) available.      |
+| `limit`       | `Int`    | The maximum number of pools returned per query request. |
+| `offset`      | `Int`    | The number of pools to skip before starting to return the result set. |
 
 ### PoolInfo
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| reserve_1              | String | The reserve amount of the first token.                  |
-| reserve_2              | String | The reserve amount of the second token.                 |
-| lp_shares              | String | The number of liquidity provider shares.                |
+| `reserve_1`              | `String` | The reserve amount of the first token.                  |
+| `reserve_2`              | `String` | The reserve amount of the second token.                 |
+| `lp_shares`              | `String` | The number of liquidity provider shares.                |
 
-### Arguments
-
-- **contract** (String!): The contract address of the VLP to query.

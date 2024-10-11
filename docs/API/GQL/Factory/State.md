@@ -24,10 +24,10 @@ query Factory($chainUid: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Factory($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    state {\n      chain_uid\n      router_contract\n      hub_channel\n      admin\n    }\n  }\n}","variables":{"chainUid":"nibiru"}}'
+    --data '{"query":"query Factory($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    state {\n      chain_uid\n      router_contract\n      hub_channel\n      admin\n    }\n  }\n}","variables":{"chainUid":"osmosis"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcogGcUZFAkkzTp1W01c79onggxredVAio8JVd7RhgAI19mJCQEABtg0zIwODYEgF9XDKQ0kAAaEAA3MkEyMNiEMwwQYzkpEEcOFwwiOqQWMJY8GDqZHLSgA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcogGcUZFAkkzTp1W01c79onggxredVAio8JVd7RhgAI19mJCQEABtg0zIwODYEgF9XDKQ0kAAaEAA3MkEyMNiEMwwQYzkpEEcOFwwiOogzODaWMzqZHLSgA)
 
 ### Arguments
 
@@ -36,15 +36,9 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
-|------------------------|--------|---------------------------------------------------------|
-| state                  | [State](#state-1) | The state information of the factory contract.         |
-
-### State
-
-| Field            | Type   | Description                               |
+| **Field**            | **Type**   | **Description**                               |
 |------------------|--------|-------------------------------------------|
-| chain_uid        | String | The unique identifier (UID) of the chain. |
-| router_contract  | String | The address of the router contract.       |
-| hub_channel      | String | The hub channel used by the factory.      |
-| admin            | String | The admin address of the factory.         |
+| `chain_uid`        | `String` | The unique identifier (UID) of the chain. |
+| `router_contract`  | `String` | The address of the router contract.       |
+| `hub_channel`      | `String` | The hub channel used by the factory.      |
+| `admin`            | `String` | The admin address of the factory.         |
