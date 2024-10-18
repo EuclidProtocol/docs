@@ -22,7 +22,6 @@ query Token_liquidity($token: String!) {
 
 ```bash
 curl --request POST \
-curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
     --data '{"query":"query Token_liquidity($token: String!) {\n  pool {\n    token_liquidity(token: $token) {\n      token\n      total_liquidity\n    }\n  }\n}","variables":{"token":"osmo"}}'

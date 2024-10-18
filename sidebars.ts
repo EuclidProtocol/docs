@@ -81,6 +81,7 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Pool/Token Liquidity",
             "API/GQL/Pool/Volume",
             "API/GQL/Pool/Fees Collected",
+            "API/GQL/Pool/Token Pair With Liquidity",
           ],
         },
         {
