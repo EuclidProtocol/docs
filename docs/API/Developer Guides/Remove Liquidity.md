@@ -141,9 +141,9 @@ The user can select the chain they wish to withdraw from.
 The third step will be getting the contract address for the LP tokens that were transferred to the user when liquidity was added. This address can be fetched using the [Get Token Address](../GQL/Factory/Get%20Token%20Address.md) query:
 
 ```graphql
-query Get_token_address($vlpAddress: String!, $chainUid: String!) {
+query Factory($chainUid: String!, $vlpAddress: String!) {
   factory(chain_uid: $chainUid) {
-    get_token_address(vlp_address: $vlpAddress) {
+    get_LpToken_address(vlp_address: $vlpAddress) {
       token_address
     }
   }

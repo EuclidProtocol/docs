@@ -7,9 +7,9 @@ sidebar_position: 1
 Queries token metadata information for all tokens.
 
 ```graphql
-query Token {
+query Token_metadatas($limit: Int, $offset: Int) {
   token {
-    token_metadatas {
+    token_metadatas(limit: $limit, offset: $offset) {
       coinDecimal
       displayName
       tokenId
@@ -30,6 +30,11 @@ curl --request POST \
     --data '{"query":"query Token {\n  token {\n    token_metadatas {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n    }\n  }\n}"}'
 ```
 [Open in Playground](https://testnet.api.euclidprotocol.com?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyRwAOkkUShVbfQ480gPqIoCGYPvwDO1Ou3ZQIASyQARBFGlw%2BAG3ESiYacIAOqvgQByfRBolNKSAJJhz7MAmFQ803SmkQk9hsr4BzBB8iXVcoILYGAF8NGKQokAAaEAA3Plc%2BACNVJwwQECigA)
+
+### Arguments
+
+- **limit** (Int): Optional limit to the number of results to return.
+- **offset** (Int): Optional number of tokens to skip before starting to return the result set. Used for pagination.
 
 ### Return Fields
 

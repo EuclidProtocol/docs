@@ -30,44 +30,43 @@ It’s essential to have a solid understanding of how to interact with blockchai
 
 Fetching the chain config is a three step process:
 
-	1.	**Retrieving All Chain UIDs**: This step allows you to gather all available chain unique identifiers (UIDs). We can do this using the [`All Chain UIDs`](../GQL/Chain/All%20Chains.md) GQL query.
+	1.	**Retrieving All Chain UIDs**: This step allows you to gather all available chain unique identifiers (UIDs). We can do this using the [`All Chain`](../GQL/Chain/All%20Chains.md) GQL query.
 ```graphql
-query All_chain_uids {
+query Chains {
   chains {
-    all_chain_uids {
+    all_chains {
       chain_uid
       display_name
     }
   }
 }
 ```
-	2.	**Obtaining the Chain ID for a Specific UID**: Once you have the list of UIDs, the next step is to get the specific chain ID associated with the UID you’re interested in. We can do this using the [`Chain ID`](../GQL/Chain/All%20Chains.md) GQL query:
+	2.	**Obtaining the Chain ID for a Specific UID**: Once you have the list of UIDs, the next step is to get the specific chain ID associated with the UID you’re interested in. We can do this using the [`Chain Config`](../GQL/Chain/Chain%20Config.md) GQL query:
   :::tip
   Use the chain UID you want the config for as the parameter.
   :::
 
 ```graphql
-query Chain_id($chainUid: String!) {
+query Chain_config($chainUid: String) {
   chains {
-    chain_id(chain_uid: $chainUid) {
+    chain_config(chain_uid: $chainUid) {
       chain_id
     }
   }
 }
 ``` 
-	3.	**Fetching the Full Chain Config**: Finally, with the chain ID in hand, you can fetch the complete configuration details for that chain using the [`Chain Config`](../GQL/Chain/Chain%20Config.md) query:
+	3.	**Fetching the Full Chain Config**: Finally, with the chain ID in hand, you can fetch the complete configuration details for that chain using the [`Keplr Config`](../GQL/Chain/Keplr%20Config.md) query:
   :::tip
   You can specify what info to return inside the query.
   :::
 
   ```graphql
-query Query($chainId: String!) {
+query Keplr_config($chainId: String) {
   chains {
-    chain_config(chainId: $chainId) {
-      chainID
-      chainName
-      rpc
+    keplr_config(chain_id: $chainId) {
       rest
+      rpc
+      chainID
     }
   }
 }
@@ -78,12 +77,10 @@ query Query($chainId: String!) {
 {
   "data": {
     "chains": {
-      "chain_config": {
-        "chainID": "localwasma-1",
-        "chainName": "Wasm Devnet",
-        "rpc": "https://testnet.api.euclidprotocol.com:20141",
-        "rest": "https://testnet.api.euclidprotocol.com:20241",
-        "coinType": 118
+      "keplr_config": {
+        "rest": "https://lcd.testnet-1.nibiru.fi",
+        "rpc": "https://rpc.testnet-1.nibiru.fi",
+        "chainID": "nibiru-testnet-1"
       }
     }
   }

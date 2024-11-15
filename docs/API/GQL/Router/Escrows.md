@@ -5,9 +5,9 @@ sidebar_position: 6
 Queries the chain UID that contain an escrow with the specified token. Returns information on the escrow if found.
 
 ```graphql
-query Escrows($token: String!) {
+query Escrows($token: String!, $max: String, $min: String, $skip: Int, $limit: Int) {
   router {
-    escrows(token: $token) {
+    escrows(token: $token, max: $max, min: $min, skip: $skip, limit: $limit) {
       chain_uid
       balance
       chain_id

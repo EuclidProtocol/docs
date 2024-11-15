@@ -7,21 +7,11 @@ sidebar_position: 3
 Queries the total amount of fees collected by the VLP for the specified token denomination.
 
 ```graphql
-query Vlp($contract: String!) {
+query Total_fees_collected_per_denom($denom: String!, $contract: String!) {
   vlp(contract: $contract) {
-    total_fees_collected {
-      lp_fees {
-        totals {
-          denom
-          amount
-        }
-      }
-      euclid_fees {
-        totals {
-          denom
-          amount
-        }
-      }
+    total_fees_collected_per_denom(denom: $denom) {
+      lp_fees
+      euclid_fees
     }
   }
 }

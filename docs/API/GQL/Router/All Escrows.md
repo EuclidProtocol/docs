@@ -5,12 +5,12 @@ sidebar_position: 6
 Queries all escrows for their chain UID, token, and total balance.
 
 ```graphql
-query Escrows($token: String!) {
+query All_escrows($max: String, $min: String, $skip: Int, $limit: Int) {
   router {
-    escrows(token: $token) {
+    all_escrows(max: $max, min: $min, skip: $skip, limit: $limit) {
       chain_uid
       balance
-      chain_id
+      token
     }
   }
 }

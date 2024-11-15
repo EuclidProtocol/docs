@@ -8,7 +8,7 @@ Queries the total amount of liquidity available for the specified token.
 
 ```graphql
 query Token_liquidity($token: String!) {
-  pool {
+  token {
     token_liquidity(token: $token) {
       token
       total_liquidity
@@ -24,10 +24,10 @@ query Token_liquidity($token: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token_liquidity($token: String!) {\n  pool {\n    token_liquidity(token: $token) {\n      token\n      total_liquidity\n    }\n  }\n}","variables":{"token":"osmo"}}'
+    --data '{"query":"query Token_liquidity($token: String!) {\n  token {\n    token_liquidity(token: $token) {\n      token\n      total_liquidity\n      total_volume\n    }\n  }\n}","variables":{"token":"usdt"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKBAFACQoXLpEDKKPHSQBzAIQBKIsAA6SIkQAOECDRnzFi7pSS0GMJi3Y7eRLjyTS5Crdsua7RbigCGNfY2atHigL6OAUh%2BIAA0IABursKuAEY0CADOGCA2irIgpkgZfBkQiXAQGfIhfkA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKBAFACQoXLpEDKKPHSQBzAIQBKIsAA6SIkW6UFchYqU8ktBjCYt2y3kS5bpajRqNJ5lxdxQBDGjsbNWtuw%2BdUAbhBp4BE9FAF9PcKRQkAAaEF9HYUcAIxoEAGcMEAsiWRBrPL48mHSwFDyY%2BWjQoA)
 
 ### Arguments
 
@@ -40,6 +40,6 @@ curl --request POST \
 |------------------|--------|-----------------------------------|
 | `token`            | `String` | The token Id.   |
 | `total_liquidity`  | `String`  | The total liquidity of the token. |
-| `total_volume`  | `String`  | The total volume for the token. |
+| `total_volume`  | `String`  | The total trading volume for the token. |
 
 

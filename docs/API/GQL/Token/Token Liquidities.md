@@ -8,7 +8,7 @@ Queries the total amount of liquidity available for tokens.
 
 ```graphql
 query Token_liquidities($page: Int!, $limit: Int!) {
-  pool {
+  token {
     token_liquidities(page: $page, limit: $limit) {
       token
       total_liquidity
@@ -24,10 +24,10 @@ query Token_liquidities($page: Int!, $limit: Int!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token_liquidities($page: Int!, $limit: Int!) {\n  pool {\n    token_liquidities(page: $page, limit: $limit) {\n      token\n      total_liquidity\n      total_volume\n    }\n  }\n}","variables":{"page":1,"limit":5}}'
+    --data '{"query":"query Token_liquidities($page: Int!, $limit: Int!) {\n  token {\n    token_liquidities(page: $page, limit: $limit) {\n      token\n      total_liquidity\n      total_volume\n    }\n  }\n}","variables":{"page":1,"limit":5}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKdCAzgBQAkADgIYBzBOiIBJVAEIANEW704LURJSSAlEWAAdJESK8IEGpp169KCtXqNmrDpwHDRfIQlkKlcjyg3bdZ80skUwCiCxR%2BGloGGCYWAhCA8MiqADcjeAREogBfELykHJBpEFT%2BPDp%2BACMaDgwQPz0tEEcsjCIARmkQ5u9m0QBWHSKcoA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKdCAzgBQAkADgIYBzBOiIBJVAEIANEW704LURJSSAlEWAAdJESIoKyTTr16DlJLQYwmLNlwHDRfIQlkKlcjyg3bdps0MkEwD9CBR%2BGitGZhQCEICDCKiANwgaeAQEogBfELykHJBpEBT%2BPDp%2BACMaDgwQPz0tEEcsjCIARmkQ5u9m0QBWbsKQHKA)
 
 ### Arguments
 
@@ -39,6 +39,8 @@ curl --request POST \
 | **Field**            | **Type**   | **Description**                       |
 |------------------|--------|-----------------------------------|
 | `token`            | `String` | The token symbol or identifier.   |
-| `total_liquidity`  | `Float`  | The total liquidity of the token. |
+| `total_liquidity`  | `String`  | The total liquidity of the token. |
+| `total_volume`  | `String`  | The total trading volume for the token.|
+
 
 

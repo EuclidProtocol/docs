@@ -189,6 +189,51 @@ content: `
 | `cross_chain_addresses`    |[`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)         |       A set of addresses to specify where the funds should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. If limit is not specified, then the maximum amount is taken.                                          |
 | `timeout`                  | `Option<u64>`                           | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
 
+### TransferVirtualBalance
+Transfers tokens from the sender's virtual balance tokens to another address.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+ pub enum ExecuteMsg{
+ TransferVirtualBalance {
+        token: Token,
+        amount: Uint128,
+        recipient_address: CrossChainUser,
+        timeout: Option<u64>,
+    },
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "transfer_virtual_balance": {
+    "token": "Euclid",
+    "amount": "10000000",
+    "recipient_address": {
+      "chain_uid": "nibiru",
+      "address": "nibi1..."
+    },
+    "timeout": 60
+  }
+}
+`
+}
+]} />
+
+| **Field**              | **Type**                                         | **Description**                                                                                           |
+|------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| `token`                | [`Token`](overview#token)                        | The token Id of the token to transfer.                                                                                    |
+| `amount`               | `Uint128`                                        | The amount of virtual balance tokens to transfer.                                                                          |
+| `recipient_address`    | [`CrossChainUser`](overview#crosschainuser)       | The address on the target chain to which the funds should be sent.                                        |
+| `timeout`              | `Option<u64>`                                    | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
+
 ### AddLiquidityRequest
 
 :::note
@@ -252,7 +297,7 @@ content: `
 | **Field**              | **Type**             | **Description**                                                                                                       |
 |-----------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------|
 | **pair_info**         | [`PairWithDenomAndAmount`](overview#pairwithdenomandamount)      | The tokens to add liquidity to, with the amount for each.                                                                                   |
-| **slippage_tolerance**| `u64`                | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as a percentage between 1 and 100 using basis points (100bps=1%). |
+| **slippage_tolerance_bps**| `u64`                | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as a percentage between 1 and 100 using basis points (100bps=1%). |
 | **timeout**           | `Option<u64>`        | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
 
 ### RequestPoolCreation

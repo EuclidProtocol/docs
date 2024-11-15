@@ -77,8 +77,6 @@ const sidebars: SidebarsConfig = {
           label: "Pool",
           items: [
             "API/GQL/Pool/My Pools",
-            "API/GQL/Pool/Token Liquidities",
-            "API/GQL/Pool/Token Liquidity",
             "API/GQL/Pool/Volume",
             "API/GQL/Pool/Fees Collected",
             "API/GQL/Pool/Token Pair With Liquidity",
@@ -95,6 +93,8 @@ const sidebars: SidebarsConfig = {
           items: [
             "API/GQL/Token/Token Metadata by Id",
             "API/GQL/Token/Token Metadata",
+            "API/GQL/Token/Token Liquidities",
+            "API/GQL/Token/Token Liquidity",
           ],
         },
         {

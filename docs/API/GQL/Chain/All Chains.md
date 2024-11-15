@@ -6,9 +6,9 @@ sidebar_position: 1
 Queries information for each chains integrated with Euclid.
 
 ```graphql
-query All_chains {
+query Chains($showAllChains: Boolean) {
   chains {
-    all_chains {
+    all_chains(show_all_chains: $showAllChains) {
       chain_id
       factory_address
       display_name
@@ -26,11 +26,14 @@ query All_chains {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Chains {\n  chains {\n    all_chains {\n      chain_id\n      factory_address\n      display_name\n      explorer_url\n      chain_uid\n      logo\n    }\n  }\n}","variables":{}}'
+    --data '{"query":"query Chains($showAllChains: Boolean) {\n  chains {\n    all_chains(show_all_chains: $showAllChains) {\n      chain_id\n      factory_address\n      display_name\n      explorer_url\n      chain_uid\n      logo\n    }\n  }\n}","variables":{"showAllChains":true}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDORwAOkkUVJTfUy60RQDb8A%2Bu2p0GzXr1E0hVMJKlEAZhSgoIhIRTBg8CWrUVSwVWgAd%2BFAkKQVEx3ggAelzfiEw8-R6xlJPeV8ifggAcwhHAF9FGKQokAAaEAA3CjwqCgAjfgMMEBAooA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDOAFACS1kQDuAggDZfnV3oiAIQgQuCCkgCURYAB0kRIlEo1ashUqUUeAfRX8GLdrp1d9qgUWatOPPmpnzFWpQZq6qYTa6IAzCigUCEJTMDA8BFpaH1cwKloABy4KAl0kCkRYrQQAD2SQ-F0YPC5st0tir3KiLggAcwhsgF8fVqRmkAAaEAA3CjwqCgAjcVoMEGclORBjO15LGIwiFDxcIgVO5qA)
 
+### Arguments
+
+- **token** (Boolean): If true, includes chains that will be integrated with Euclid soon. Otherwise, returns only the chains currently integrated.
 
 ### Return Fields
 
