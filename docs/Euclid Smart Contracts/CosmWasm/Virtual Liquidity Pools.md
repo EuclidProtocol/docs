@@ -42,20 +42,38 @@ The query returns the following response:
 pub struct GetStateResponse {
     pub pair: Pair,
     pub router: String,
-    pub vcoin: String,
+    pub virtual_balance: String,
     pub fee: Fee,
+    pub total_fees_collected: TotalFees,
     pub last_updated: u64,
     pub total_lp_tokens: Uint128,
     pub admin: String,
 }
+```
+With the following TotalFees stuct:
+
+```rust
+pub struct TotalFees {
+    // Fee for lp providers
+    pub lp_fees: DenomFees,
+    // Fee for euclid treasury, distributed among stakers and other euclid related rewards
+    pub euclid_fees: DenomFees,
+}
+
+pub struct DenomFees {
+    // A map to store the total fees per denomination
+    pub totals: HashMap<String, Uint128>,
+}
+
 ```
 
 | Field            | Type            | Description                                                           |
 |------------------|-----------------|-----------------------------------------------------------------------|
 | `pair`           | [`Pair`](overview#pair)           | The token pair of the VLP.                            |
 | `router`         | `String`        | The address of the router contract.                                   |
-| `vcoin`          | `String`        | The address of the Virtual balance contract.                                    |
+| `virtual_balance`          | `String`        | The address of the Virtual Balance contract.                                    |
 | `fee`            | [`Fee`](#fee)           | The fee structure for the transactions.                               |
+| `total_fees_collected`            | `TotalFees`          | The total amount of fees collected from the VLP.                           |
 | `last_updated`   | `u64`           | The timestamp of the last update to the state.                        |
 | `total_lp_tokens`| `Uint128`       | The total amount of liquidity pool tokens.                            |
 | `admin`          | `String`        | The address of the admin of the contract.                             |
@@ -87,9 +105,7 @@ language: 'json',
 content: `
 {
   "simulate_swap": {
-    "asset": {
-      "id": "token-id"
-    },
+    "asset": "nibi",
     "asset_amount": "1000000",
     "swaps": [
       {
@@ -107,7 +123,7 @@ content: `
 
 | **Name**        | **Type**            | **Description**                               |
 |-----------------|---------------------|-----------------------------------------------|
-| **asset**       | [`Token`](overview#token)              | The asset being swapped.                      |
+| **asset**       | [`Token`](overview#token)              | The token Id of the asset being swapped.                      |
 | **asset_amount**| `Uint128`           | The amount of the asset being swapped.        |
 | **swaps**       | `Vec<NextSwapVlp>`  | A vector of VLP addresses that will be used for the swap.       |
 
@@ -128,7 +144,7 @@ pub struct GetSwapResponse {
 ```
 | Name          | Type       | Description                                              |
 |---------------|------------|----------------------------------------------------------|
-| `amount_out`  | `Uint128`  | The amount of asset_out that will be released.           |
+| `amount_out`  | `Uint128`  | The amount of asset_out that will be released from the swap.           |
 | `asset_out`   | [`Token`](overview#token)     | The token Id of the asset going out of the VLP.          |
 
 ### Liquidity
@@ -142,7 +158,7 @@ language: 'rust',
 content: `
 pub enum QueryMsg {
 #[returns(GetLiquidityResponse)]
-    Liquidity { height: Option<u64> },
+    Liquidity {},
 }
 `
 },
@@ -152,17 +168,11 @@ label: 'JSON',
 language: 'json',
 content: `
 {
-  "liquidity": {
-    "height": 324673284
-  }
+  "liquidity": {}
 }
 `
 }
 ]} />
-
-| **Name** | **Type**      | **Description**                         |
-|----------|---------------|-----------------------------------------|
-| **height** | `Option<u64>` | Optional block height to query liquidity at a specific block. |
 
 The query returns the following response:
 
@@ -228,7 +238,7 @@ pub struct Fee {
 | **Name**          | **Type**          | **Description**                                                                                     |
 |-------------------|-------------------|-----------------------------------------------------------------------------------------------------|
 | **lp_fee_bps**    | `u64`             | Fee for liquidity providers, in basis points.  Can be set to a maximum of 10%.                                                      |
-| **euclid_fee_bps**| `u64`             | Fee for Euclid treasury, distributed among stakers and other Euclid-related rewards, in basis points e. 1 = 0.01% 10000 = 100%. Can be set to a maximum of 10%. |
+| **euclid_fee_bps**| `u64`             | Fee for Euclid treasury, distributed among stakers and other Euclid-related rewards, in basis points e. 1 = 0.01% 10000 = 100%. Can be set to a maximum of 3%. |
 | **recipient**     | [`CrossChainUser`](overview#crosschainuser)  | The recipient for the fee. Can be an address on any chain.                                                                       |
 
 ### Pool
@@ -399,7 +409,7 @@ language: 'json',
 content: `
 {
   "total_fees_per_denom": {
-    "denom":"nibiru"
+    "denom":"nibi"
   }
 }
 `

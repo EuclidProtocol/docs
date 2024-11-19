@@ -96,18 +96,32 @@ pub struct ChainResponse {
 pub struct Chain {
     pub factory_chain_id: String,
     pub factory: String,
-    pub from_hub_channel: String,
-    pub from_factory_channel: String,
+    pub chain_type: ChainType,
 }
 ```
 | **Name**              | **Type**   | **Description**                                                             |
 |-----------------------|------------|-----------------------------------------------------------------------------|
 | **factory_chain_id**  | `String`   | The chain Id of the factory.                                                |
 | **factory**           | `String`   | The contract address of the factory contract on the specified chain.         |
-| **from_hub_channel**  | `String`   | The channel Id that connects the hub to the router.                         |
-| **from_factory_channel** | `String` | The channel Id that connects the factory to the router.                     |
+| **chain_type**        |`ChainType` | The type of chain. Either native or IBC. Native means the router contract is deployed on that chain. Since we only have one router, then there is only one chain type which will be native. |
 
+**ChainType**:
+```rust
+pub enum ChainType {
+    Ibc(IbcChain),
+    Native {},
+}
 
+pub struct IbcChain {
+    pub from_hub_channel: String,
+    pub from_factory_channel: String,
+}
+
+```
+| **Field**              | **Type**     | **Description**                             |
+|------------------------|--------------|---------------------------------------------|
+| `from_hub_channel`     | `String`     | The IBC channel used to forward messages from the router to factories on integrated chains.  |
+| `from_factory_channel` | `String`     | The IBC channel used to forward messages from factories to the router. |
 
 ### GetAllChains
 Queries information about all the chains connected to the router.
@@ -344,7 +358,7 @@ language: 'json',
 content: `
 {
   "simulate_release_escrow": {
-    "token": "usdt",
+    "token": "nibi",
     "amount": "100000000",
     "cross_chain_addresses": [
       {
@@ -367,14 +381,14 @@ content: `
 }
 ]} />
 
-| Field                 | Type                               | Description                                           |
+| **Field**                 | **Type**                               | **Description**                                           |
 |-----------------------|------------------------------------|-------------------------------------------------------|
-| token                 | [`Token`](overview#token)                             | Identifier for the token.                             |
-| amount                | Uint128                   | Amount of token to be released.      |
+| `token`                 | [`Token`](overview#token)                             | Identifier for the token.                             |
+| `amount`                | Uint128                   | Amount of token to be released.      |
 | cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)       |  A set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.|
 
 ### QueryTokenEscrows
-Returns a list of chain UIDs belonging to the chains that have an escrow with the specified token Id.
+Returns a list of chain UIDs belonging to the chains that have an escrow with the specified token Id. Also returns the amount of tokens available on each chain.
 
 <Tabs tabs={[
 {
@@ -382,14 +396,11 @@ id: 'rust-example',
 label: 'Rust',
 language: 'rust',
 content: `
-pub enum QueryMsg {
-     #[returns(TokenEscrowsResponse)]
+ #[returns(TokenEscrowsResponse)]
     QueryTokenEscrows {
         token: Token,
         pagination: Pagination<ChainUid>,
-    },
-
-}
+    }
 `
 },
 {
@@ -435,6 +446,63 @@ pub struct TokenEscrowChainResponse {
 | `chainUid`  | `Vec<ChainUid>`  | The unique identifiers for the chain that has an escrow containing the specified token.​ |
 |`balance`     | `Uint128`         | The amount of tokens in the escrow. 
 
+
+
+### QueryAllEscrows
+Queries all the available escrows in the Euclid ecosystem.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+  #[returns(AllEscrowsResponse)]
+    QueryAllEscrows { pagination: Pagination<Token> },
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "query_all_escrows": {
+    "pagination": {
+      "min": "nibiru",
+      "max": "ethereum",
+      "skip": 2,
+      "limit": 15
+    }
+  }
+}
+`
+}
+]} />
+
+| **Field**   | **Type**        | **Description**                                      |
+|-------------|-----------------|------------------------------------------------------|
+| `pagination`   | [`Pagination<(Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
+
+The query returns the following response:
+
+```rust
+pub struct AllEscrowsResponse {
+    pub escrows: Vec<EscrowResponse>,
+}
+
+pub struct EscrowResponse {
+    pub token: Token,
+    pub chain_uid: ChainUid,
+    pub balance: Uint128,
+}
+```
+| **Field**   | **Type**     | **Description**                                  |
+|-------------|--------------|--------------------------------------------------|
+| `token`     | [`Token`](overview#token)      | The token held in the escrow.                        |
+| `chain_uid` | [`ChainUid`](overview#crosschainuser)   | The chain UID of the chain hosting the escrow.|
+| `balance`   | `Uint128`    | The amount of tokens available in the escrow.              |
+
 ### QueryAllTokens
 Queries information on all available tokens.
 
@@ -458,8 +526,8 @@ content: `
 {
   "query_all_tokens": {
     "pagination": {
-      "min": "usdt",
-      "max": "usdt",
+      "min": "nibi",
+      "max": "osmo",
       "skip": 2,
       "limit": 20
     }
@@ -477,17 +545,9 @@ The query returns the following response:
 
 ```rust
 pub struct AllTokensResponse {
-    pub tokens: Vec<TokenResponse>,
+    pub tokens: Vec<Token>,
 }
-
-
-pub struct TokenResponse {
-    pub token: Token,
-    pub chain_uid: ChainUid,
-}
-
 ```
 | **Field**    | **Type**    | **Description**                      |
 |--------------|-------------|--------------------------------------|
-| `token`      | [`Token`](overview#token)     | The unique identifier for the token. |
-| `chain_uid`  | `ChainUid`  | The unique identifier for the chain returned as a string. |
+| `tokens`      | [`Token`](overview#token)     | A vector of token Ids for all tokens that have pools in the Euclid ecosystem.|

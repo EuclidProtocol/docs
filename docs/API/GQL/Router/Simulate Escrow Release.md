@@ -29,11 +29,11 @@ query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUse
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUserWithLimitInput]) {\n  router {\n    simulate_release_escrow(token: $token, amount: $amount, cross_chain_addresses: $crossChainAddresses) {\n      release_amounts {\n        amount\n        cross_chain_user {\n          limit\n          user {\n            address\n            chain_uid\n          }\n        }\n      }\n      remaining_amount\n    }\n  }\n}","variables":{"token":"nibi","amount":10,"crossChainAddresses":[{"limit":null,"user":{"address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts","chain_uid":"nibiru"}}]}}'
+    --data '{"query":"query Simulate_release_escrow($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUserWithLimitInput]) {\n  router {\n    simulate_release_escrow(token: $token, amount: $amount, cross_chain_addresses: $crossChainAddresses) {\n      remaining_amount\n      release_amounts {\n        amount\n        cross_chain_user {\n          user {\n            chain_uid\n            address\n          }\n          limit\n        }\n      }\n    }\n  }\n}","variables":{"token":"euclid","amount":1000,"crossChainAddresses":[{"limit":800,"user":{"address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts","chain_uid":"nibiru"}}]}}'
 
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEAGiI0AhnHKoWASVRCaUPBADOSgMIALEdwCCYMHgQrDLANqrFKjVqQBVJfgDqnFOoAynOM5kAHCgF0ASiJgAB0kIiJFCnxgsIiIpQ8YABsRSgB9A2SEEXt0wwUIAHcqeiYkFjpGZCExCRRKuphZIkKVdKhNbnSRPQMjJUq2tS6kXX1DeyUg0PD4iKycvKbUJVi5%2BYiVlDjNiOGO0fSYezx1vfnkj2ddi6ITmNm7%2Bd6JlVvnzutjzjAPvYAvv94kCNiDgQY4NZuDweuJmjswaCIqCASABCAAG4iLgiABG2SUGBAsxCIDKyDJLDJSE4eM4ZKERDJ2ypRAAjAAGAS7MnDKw6PqTQxskwfJ6bMlXTw7DBEJApZI8sERMkPPBsiV7FlC95yml0zjsgAs6igAA9kkgisksCgsAB2ACsKBQInNADMAGwO42YhheqEepTeHgADnNAGYGAQvSglIzgaqQF9ujBfmyDfS8DAycDkeC5n4wmiAUA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMoCWcMANgIYoID6eCVCNAzowu1HhAO4AKACQoIAa2TpSKPGSQBzAIQAaIsJpwIMVNICSqNcN4R27AMIALGvICCYMMzPdpAbXN8zVm0gCqnPAB1MhRLABkKEIMABxgUAF0ASiJgAB0kIiI%2BOPwU9MzM9gpqOkZmVg4uHj4hMUkkaVEJZDVNbV11Np0UNRMzBihreQYaBydOdka%2BiyGke0duCeS0jILM5jgfeQURrW78tayWNk5d9pR2PNXDoi7UA5vpgdmGGACrm7W33JXPw8GfK8yGAHn9bmNFqCbgBfKGHKiRFBwzKw64FVFrDFEVHQkAqEAANxochoACNWOwMCBfkRUiA6sg6dI6QgYFAESC8Qc6XckRgiABGAAMIpU3JA028dghznYTKIrlBNLWdIRcBC8oAHKK4XTvnh5crDjyZXL%2BXSkGRSWQBQAWSxQAAeVCQ-CoWBQWAA7ABWFAoGiOgBmADYvbaCeIQ5sg%2BxogpNY6AMziAghi50sVolUSl4wYHyi1Wsh4GB0uFYlEHeL5dK46FAA)
 
 ### Arguments
 
@@ -44,8 +44,8 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| amount                  | String | The amount of tokens to release.                        |
-| cross_chain_user         | [CrossChainUserWithLimit](../../../Euclid%20Smart%20Contracts/CosmWasm/overview.md#crosschainuserwithlimit)    | The address and limit for the receiving address of the funds.                                 |
-| remaining_amount          | String | Any remaining tokens after the escrow releases.                    |
+| `amount`                  | `String` | The amount of tokens to release.                        |
+| `cross_chain_user`         | [`CrossChainUserWithLimit`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview.md#crosschainuserwithlimit)    | The address and limit for the receiving address of the funds.                                 |
+| `remaining_amount`          | `String` | Any remaining tokens after the escrow releases.                    |

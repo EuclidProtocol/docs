@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Contracts
@@ -8,11 +8,9 @@ Queries contract information for the specified chain Id and Type.
 
 ```graphql
 
-query Contracts($chainUId: String!, $type: String!) {
+query Contracts($type: String, $chainUId: String) {
   chains {
-    contracts(chainUId: $chainUId, type: $type) {
-      CreatedAt
-      UpdatedAt
+    contracts(type: $type, chainUId: $chainUId) {
       ContractAddress
       ChainUID
       Type
@@ -28,21 +26,19 @@ query Contracts($chainUId: String!, $type: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Contracts($chainUId: String!, $type: String!) {\n  chains {\n    contracts(chainUId: $chainUId, type: $type) {\n      CreatedAt\n      UpdatedAt\n      ContractAddress\n      ChainUID\n      Type\n    }\n  }\n}","variables":{"chainUId":"osmosis","type":"factory"}}'
+    --data '{"query":"query Contracts($chainUId: String, $type: String) {\n  chains {\n    contracts(chainUId: $chainUId, type: $type) {\n      ContractAddress\n      ChainUID\n      Type\n    }\n  }\n}","variables":{"chainUId":"coreum","type":"factory"}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMISp4CGUKAzgBQAkUAFpQJZICqAkmOkQDKKPJwDmAQgA0RRigIAHBAOGikkgJRFgAHSREirDklra9Bg1HIjqdekc69%2Bsh9z4z5SgXMUItu-QsDEjwEShQEMABBFHMgoi4FMHDImLigsgpbKLAwUNpadIsSNkceABEigwAVXyKAXzjGpHqQKRAAN0pRSgAjABsEWgwQAIMdEFcnCYEJiFo4efZCtriJzwQZogmAM1sIQgm9VvqgA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMISp4CGUKAzgBQAkUAFpQJZICqAkmOkQDKKPJwDmAGiKMUBAA4IBw0UjEBKIsAA6SIkVYcktTTr16o5EdTr0DnXv2l3ufKbIUCZ8hBu26zemQU1gCCYGB4CLS0pgGkbPY8ACKxAQAq3qlEAL6xuUjZIBIgAG6UopQARgA2URggfnpaIM4OzQLNFpHwzRKxze4I7UTNAGbWEITNOoXZQA)
 
 ### Arguments
 
-- **chainUId** (String!): The unique identifier of the chain.
-- **type** (String!): The type of the contract.
+- **chainUId** (String): Optional chain to query for contracts. If not specified then all integrated chains are used.
+- **type** (String): Optional type for the contracts. If not specified, all contract types are returned.
 
 ### Returned Fields
 
-| Field           | Type   | Description                                             |
+| **Field**           | **Type**   | **Description**                                             |
 |-----------------|--------|---------------------------------------------------------|
-| CreatedAt       | String | The date and time when the contract was created.        |
-| UpdatedAt       | String | The date and time when the contract was last updated.   |
-| ContractAddress | String | The address of the contract on the blockchain.          |
-| ChainUID         | String | The unique identifier of the chain where the contract is deployed. |
-| Type            | String | The type of the contract.         |
+| `ContractAddress` | `String` | The address of the contract on the blockchain.          |
+| `ChainUID`         | `String` | The unique identifier of the chain where the contract is deployed. |
+| `Type`            | `String` | The type of the contract.         |

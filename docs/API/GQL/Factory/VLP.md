@@ -24,9 +24,9 @@ query Factory($chainUid: String!, $pair: PairInput) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Vlp($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair) {\n      vlp_address\n    }\n  }\n}","variables":{"chainUid":"nibiru","pair":{"token_1":"nibi","token_2":"fundenom"}}}'
+    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair)\n  }\n}","variables":{"chainUid":"stargaze","pair":{"token_1":"euclid","token_2":"stars"}}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUAFgIYCWSAqs2OkQMop6sA5gEIANERoUWebgAVpASSQUYKAJRFgAHSREiAM0ZQUEQlQYskAfRidudJqw5gN23XqIA3SlSnMZEn54rjoeHt4UVoxgYHgIAM7xoR4AvslpSCkgoiCejAKMAEZkCRggbnpaIBZOnFXcVUjMhf4wVaLJVUH1msmVICYA1shWAIw9jc3M7X1EVUMjAEwTIPowSGDIEHBV6TpZKUA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAA6s8PAAqyAkkikwUASiLAAOkiJEAZhSq0mrJAH0YXHg2ZtOYLbv0GiANwA2UmjJZykv54GnoGAL564SBiIB5kgmQARl4IAM4YIK4GOiDmjly5PLlpKAlCZABeCLliYUS5wUXa9TkgVADWyJYAjM25CDBQXoUxrQ3tEF1WAEz9IKUJabn1kUjR4UA)
 
 ### Arguments
 
@@ -34,7 +34,6 @@ curl --request POST \
 - **pair** (PairInput): The input for specifying the token pair by specifying token_1 and token_2.
 
 ### Return Fields
-
-| Field            | Type   | Description                               |
+| **Field**            | **Type**   | **Description**                               |
 |------------------|--------|-------------------------------------------|
-| vlp_address      | String | The address of the VLP contract that contains the specified token pair.          |
+| `vlp_address`      | `String` | The address of the VLP contract that contains the specified token pair.          |

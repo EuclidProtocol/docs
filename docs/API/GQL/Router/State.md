@@ -21,7 +21,7 @@ query State {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query State {\n  router {\n    state {\n      admin\n      vlp_code_id\n      virtual_balance_address\n    }\n  }\n}","variables":{}}'
+    --data '{"query":"query State {\n  router {\n    state {\n      admin\n      vlp_code_id\n      virtual_balance_address\n    }\n  }\n}"}'
 
 ```
 
@@ -30,8 +30,8 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| admin                  | String | The admin address of the router.                        |
-| vlp_code_id            | Int    | The code ID of the VLP.                                 |
-| virtual_balance_address| String | The address of the VBalance contract.         |
+| `admin`                  | `String` | The admin address of the router.                        |
+| `vlp_code_id`            | `Int`    | The code ID of the VLP.                                 |
+| `virtual_balance_address` | `String` | The address of the VBalance contract.                   |

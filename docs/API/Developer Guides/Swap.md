@@ -28,13 +28,10 @@ The following steps describe the workflow to perform a swap using the Euclid Lay
  The first step will be getting all the available tokens and selecting the input and output tokens. This ensures that the tokens involved in the swap are supported by the Euclid Layer. This can be done using the [`All Tokens`](../GQL/Router/All%20Tokens.md) query:
 
 ```graphql
-query All_tokens {
+query Router {
   router {
     all_tokens {
-      tokens {
-        token
-        chain_uid
-      }
+      tokens
     }
   }
 }
@@ -47,26 +44,21 @@ This will return a response similar to the following:
     "router": {
       "all_tokens": {
         "tokens": [
-          {
-            "token": "eth",
-            "chain_uid": "ethereum"
-          },
-          {
-            "token": "sol",
-            "chain_uid": "osmosis"
-          },
-          {
-            "token": "atom",
-            "chain_uid": "nibiru"
-          },
-          {
-            "token": "nibi",
-            "chain_uid": "ethereum"
-          },
-          {
-            "token": "nibi",
-            "chain_uid": "nibiru"
-          }
+          "INJC",
+          "INJD",
+          "INJU",
+          "SP500",
+          "aura",
+          "coin50",
+          "const",
+          "euclid",
+          "inj",
+          "nibi",
+          "ntrn",
+          "sp500",
+          "stars",
+          "testcore",
+          "usdt"
         ]
       }
     }

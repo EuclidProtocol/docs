@@ -28,10 +28,10 @@ query Liquidity($contract: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Liquidity($contract: String!) {\n  vlp(contract: $contract) {\n    liquidity {\n      pair {\n        token_1\n        token_2\n      }\n      token_1_reserve\n      token_2_reserve\n      total_lp_tokens\n    }\n  }\n}","variables":{"contract":"nibi147sw04ts68nxe80946m332rr8j79qqvas386al8d76jhamnnr99qj6xnfs"}}'
+    --data '{"query":"query Liquidity($contract: String!) {\n  vlp(contract: $contract) {\n    liquidity {\n      pair {\n        token_1\n        token_2\n      }\n      token_1_reserve\n      token_2_reserve\n      total_lp_tokens\n    }\n  }\n}","variables":{"contract":"nibi1pys22jem6l222sxhexe7dmggtz8xkmhm49p7z3wjgrcdk3t46hgsle088m"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABADICWOZYZKBAFACRQSp4CGUK6RAyinmSQBzAIQBKIsAA6SIkQBuAGwAOdZqw5ciTFv00TpsuUUUUYVGsUPHjytmTySZNmyggBrZAH0AjM5dybp5IXgBM-jYAvhHGQd4%2BXngIAM748ggxgR7eoYkpaRlGrhAobIpeKl5xSMkx0Ub1kSAANCDybAJsAEaKKRgg1kRSIOp6nMPcw0hkXWQ%2BACwA7MkA7gAM8yjJAGwAHEgAHgi7awCc89twAMxXoXh4uwBWi6dYWO3JV7vbZbtgi9tHgALNhwJBIPCnV6PbYHJAAM1qIBkTUiQA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABADICWOZYZKBAFACRQSp4CGUK6RAyinmSQBzAIQBKIsAA6SIkQBuAGwAOdZqw5ciTFv00TpsuUUUUYVGsUPHjytmTySZNmyggBrZAH0AjM5dybp5IXgBM-jYAvhHGQd4%2BXngIAM748ggxgR7eoYkpaRlGrhAobIpeKl5xSMkx0Ub1kSAANCDybAJsAEaKKRgg1kRSIOp6nMPcw0hkXWQ%2BygTJoaEAVghwAGyKy6HJAB4AFgh7CADsYHBCQigAXgAce%2B5wB3AALACcyqc3AMwA7ishHgoGB3D8UK8NgchMlegAGO53ODDGRNSJAA)
 
 ### Arguments
 
@@ -39,16 +39,16 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| pair                   | [Pair](#pair) | The token pair information.                            |
-| token_1_reserve        | String | The reserve amount of the first token.                  |
-| token_2_reserve        | String | The reserve amount of the second token.                 |
-| total_lp_tokens        | String | The total number of liquidity provider tokens.          |
+| `pair`                   | [`Pair`](#pair) | The token pair information.                            |
+| `token_1_reserve`        | `String` | The reserve amount of the first token.                  |
+| `token_2_reserve`        | `String` | The reserve amount of the second token.                 |
+| `total_lp_tokens`        | `String` | The total number of liquidity provider tokens.          |
 
 ### Pair
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| token_1                | String | The identifier of the first token in the pair.          |
-| token_2                | String | The identifier of the second token in the pair.         |
+| `token_1`                | `String` | The identifier of the first token in the pair.          |
+| `token_2`                | `String` | The identifier of the second token in the pair.         |

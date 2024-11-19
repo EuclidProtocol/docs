@@ -23,12 +23,15 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Router/All Chains",
             "API/GQL/Router/All Tokens",
             "API/GQL/Router/All VLPs",
+            "API/GQL/Router/All Escrows",
             "API/GQL/Router/Chain",
             "API/GQL/Router/Escrows",
             "API/GQL/Router/Simulate Escrow Release",
             "API/GQL/Router/Simulate Swap",
             "API/GQL/Router/State",
             "API/GQL/Router/VLP",
+            "API/GQL/Router/Token Pair From VLP",
+
           ],
         },
         {
@@ -41,18 +44,19 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Factory/Get Token Address",
             "API/GQL/Factory/State",
             "API/GQL/Factory/VLP",
+            "API/GQL/Factory/Allowed Denoms",
+            "API/GQL/Factory/Partner Fees Collected",
           ],
         },
         {
           type: "category",
           label: "Chain",
           items: [
-            "API/GQL/Chain/All Chain UIDs",
+            "API/GQL/Chain/All Chains",
             "API/GQL/Chain/Chain Config",
-            "API/GQL/Chain/Chain UID",
-            "API/GQL/Chain/Chiain Id",
             "API/GQL/Chain/Contracts",
-            "API/GQL/Chain/Router",
+            "API/GQL/Chain/Router Config",
+            "API/GQL/Chain/Keplr Config",
           ],
         },
         {
@@ -64,6 +68,8 @@ const sidebars: SidebarsConfig = {
             "API/GQL/VLP/Liquidity",
             "API/GQL/VLP/Pool",
             "API/GQL/VLP/State",
+            "API/GQL/VLP/Total Fees Collected",
+            "API/GQL/VLP/Total Fees Denom",
           ],
         },
         {
@@ -71,9 +77,9 @@ const sidebars: SidebarsConfig = {
           label: "Pool",
           items: [
             "API/GQL/Pool/My Pools",
-            "API/GQL/Pool/Token Liquidities",
-            "API/GQL/Pool/Token Liquidity",
             "API/GQL/Pool/Volume",
+            "API/GQL/Pool/Fees Collected",
+            "API/GQL/Pool/Token Pair With Liquidity",
           ],
         },
         {
@@ -87,6 +93,8 @@ const sidebars: SidebarsConfig = {
           items: [
             "API/GQL/Token/Token Metadata by Id",
             "API/GQL/Token/Token Metadata",
+            "API/GQL/Token/Token Liquidities",
+            "API/GQL/Token/Token Liquidity",
           ],
         },
         {
