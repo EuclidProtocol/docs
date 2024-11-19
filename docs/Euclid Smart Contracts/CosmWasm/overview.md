@@ -39,7 +39,7 @@ content: `
     "token_1": {
       "token": "token-1-id",
       "token_type": {
-        "Native": {
+        "native": {
           "denom": "native-denom-1"
         }
       }
@@ -47,7 +47,7 @@ content: `
     "token_2": {
       "token": "token-2-id",
       "token_type": {
-        "Native": {
+        "native": {
           "denom": "native-denom-2"
         }
       }
@@ -62,6 +62,31 @@ content: `
 |----------|--------------------------------------|
 | `token_1`| Information about the first token.   |
 | `token_2`| Information about the second token.  |
+
+### PairWithDenomAndAmount
+Struct that specifies a token pair, their denoms, and an amount for each. Used when adding liquidity to a pool.
+
+```rust
+pub struct PairWithDenomAndAmount {
+    pub token_1: TokenWithDenomAndAmount,
+    pub token_2: TokenWithDenomAndAmount,
+}
+
+#[cw_serde]
+pub struct TokenWithDenomAndAmount {
+    pub token: Token,
+    pub amount: Uint128,
+    pub token_type: TokenType,
+}
+```
+
+| **Name**       | **Type**     | **Description**                   |
+|----------------|--------------|-----------------------------------|
+| `token`        | [`Token`](#token)      | The token Id for the token.|
+| `amount`       | `Uint128`    | The amount for the token.            |
+| `token_type`   | [`TokenType`](#tokentype)  | The type of token.               |
+
+
 
 ### TokenWithDenom
 Specifies information on one token. The name of the token and type is specified.
@@ -84,18 +109,18 @@ pub struct Token(String);
 ```
 
 ### TokenType
-Whether the token in native or CW20.
+The type of token. Can be either:
+- **Native**: Specify the denomination of the token.
+- **Smart**: CW20 token. Specify the contract address for the token.
+- **Voucher**: Euclid voucher tokens.
+
 ```rust
 pub enum TokenType {
     Native { denom: String },
     Smart { contract_address: String },
+    Voucher {},
 }
 ```
-| Variant      | Fields                    | Description                         |
-|--------------|---------------------------|-------------------------------------|
-| `Native`     | `denom: String`           | Native token with a denomination.   |
-| `Smart`      | `contract_address: String`| Smart contract token with contract address.  |
-
 
 ### Pair
 The token Id for each token in a token pair.

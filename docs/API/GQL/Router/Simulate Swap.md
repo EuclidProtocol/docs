@@ -20,11 +20,11 @@ query Simulate_swap($assetIn: String!, $amountIn: String!, $assetOut: String!, $
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Simulate_swap($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {\n  router {\n    simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {\n      amount_out\n      asset_out\n    }\n  }\n}","variables":{"assetIn":"nibi","amountIn":"1000","assetOut":"fundenom","minAmountOut":"1","swaps":["nibi","fundenom"]}}'
+    --data '{"query":"query Simulate_swap($assetIn: String!, $amountIn: String!, $assetOut: String!, $minAmountOut: String!, $swaps: [String!]) {\n  router {\n    simulate_swap(asset_in: $assetIn, amount_in: $amountIn, asset_out: $assetOut, min_amount_out: $minAmountOut, swaps: $swaps) {\n      amount_out\n      asset_out\n    }\n  }\n}","variables":{"assetIn":"euclid","amountIn":"1000","assetOut":"nibi","minAmountOut":"1","swaps":["euclid","nibi"]}}'
 
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMoCWcMANgIYoID6AzgO40AOAFACQ1NMIUASSTpSKPGSQBzAIQAaIrzgQYqEWJISpcxb36CA8jBSbtMhUrhSAgirUpjp8ZIt7WHJmIDaW13IBdAEoiYAAdJCIiPFV6PFCIqKimCmo6Rg8uPgEUBikxfRyRRRp7VDzRJVLVdSQSg1zYguyjE0VrJAZqhwYmq1syxzaiTK8lUZDwyKSo7vLYxJmiFsaTRaiAX0WtpA2QeRAANxpJGgAjKgQmDBApqLCQFZEHsQekMjOyB-lFh7nhJAvIgPACMAAYId9fo8Gk4gQ8AGZqMDICBwKHTB4dOw1IYoeEgEEY%2B4gUZA7xvD5ffaI5Go9EgAIRPYbIA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMoCWcMANgIYoID6AzgO40AOAFACQ1NMIUASSTpSKPGSQBzAIQAaIrzgQYqEWJISpcxb36CA8jBSbtMhUrhSAgirUpjp8ZIt7WHJmIDaW13IBdAEoiYAAdJCIiPFV6PFCIqKimCmo6Rg8uPgEUBikxfRyRRRp7VDzRJVLVdSQSg1zYguyjE0VrJAZqhwYmq1syxzaiTK8lUZDwyKSo7vLYxJmiFsaTRaiAX0WtpA2QeRAANxpJGgAjKgQmDBApqLCQFZEHsQeEGCgqMjAH%2BUWHubCJAvIgPACMAAYob9-o8Gk4QQ8kGQzmQYdMHh07DUhihESAwej7iBRiDvG8Pl8fvskSi0SAAhE9hsgA)
 
 ### Arguments
 
@@ -36,7 +36,7 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| amount_out             | String | The amount of the output asset received from the swap.  |
-| asset_out              | String | The identifier of the output asset.                     |
+| `amount_out`             | `String` | The amount of the output asset received from the swap.  |
+| `asset_out`              | `String` | The identifier of the output asset.                     |

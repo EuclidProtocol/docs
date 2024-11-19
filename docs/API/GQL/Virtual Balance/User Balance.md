@@ -35,16 +35,10 @@ curl --request POST \
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| balances               | [BalanceInfo](#balanceinfo) | The balance information for the user.                    |
-
-### BalanceInfo
-
-| Field                  | Type   | Description                                             |
-|------------------------|--------|---------------------------------------------------------|
-| amount                 | String | The amount of tokens in the balance.                              |
-| token_id               | String | The identifier of the token.                            | 
+| `amount`                 | `String` | The amount of tokens in the user's balance.                              |
+| `token_id`               | `String` | The identifier of the token.                            |
 
 
 

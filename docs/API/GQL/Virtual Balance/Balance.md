@@ -30,10 +30,10 @@ curl --request POST \
 
 ### Arguments
 
-- **balanceKey** (BalanceKeyInput): The input key to specify the balance query. It includes the address of the user, the chain UID and the token Id for which we want to get the balance for.
+- **balanceKey** (BalanceKeyInput): The input key for the balance query. It includes the address of the user, the chain UID and the token Id for which we want to get the balance for.
 
 ### Return Fields
 
-| Field                  | Type   | Description                                             |
+| **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| amount                 | String | The amount of tokens in the balance for the specified user.                             |
+| `amount`                 | `String` | The amount of tokens in the balance for the specified user.                             |
