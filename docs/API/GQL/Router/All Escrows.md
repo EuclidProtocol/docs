@@ -1,7 +1,9 @@
- ---
+---
 sidebar_position: 6
 ---
+
 # Escrows
+
 Queries all escrows for their chain UID, token, and total balance.
 
 ```graphql
@@ -15,6 +17,7 @@ query All_escrows($max: String, $min: String, $skip: Int, $limit: Int) {
   }
 }
 ```
+
 ### Example
 
 ```bash
@@ -36,7 +39,7 @@ curl --request POST \
 ### Return Fields
 
 | Field Name  | Type     | Description                                      |
-|-------------|----------|--------------------------------------------------|
-| `chain_uid` | `String` | The UID of the chain that hosts the escrow. |
-| `balance`   | `String`  | The current amount of tokens held in the escrow.   |
-| `token`  | `String`    | The tokne Id for the token stored in the escrow.  |
+| ----------- | -------- | ------------------------------------------------ |
+| `chain_uid` | `String` | The UID of the chain that hosts the escrow.      |
+| `balance`   | `String` | The current amount of tokens held in the escrow. |
+| `token`     | `String` | The tokne Id for the token stored in the escrow. |
