@@ -7,8 +7,8 @@ sidebar_position: 5
 Queries liquidity information for the specified VLP address.
 
 ```graphql
-query Liquidity($contract: String!) {
-  vlp(contract: $contract) {
+query Vlp($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
         token_1
@@ -35,7 +35,8 @@ curl --request POST \
 
 ### Arguments
 
-- **contract** (String!): The contract address of the VLP to query.
+- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
+- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
 
 ### Return Fields
 

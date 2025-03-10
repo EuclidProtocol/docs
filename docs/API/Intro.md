@@ -25,14 +25,14 @@ In the following sections, we will be covering all the available queries for the
 For each query, you can find an example response if you select the "Open in Playground" link.
 :::
 
-- [Chain](../API/GQL/Chain/All%20Chains.md): Query information related to the chain.
+- [Chains](../API/GQL/Chain/All%20Chains.md): Query chain information.
 - [Factory](../API/GQL/Factory/All%20Pools.md): Query information from the factory contract.
 - [Router](../API/GQL/Router/All%20Chains.md): Query information from the router contract.
 - [VLP](../API/GQL/VLP/All%20Pools.md): Query information from VLP contracts.
 - [VCoin](../API/GQL/Virtual%20Balance/Balance.md): Query information from the Virtual Balance contract.
 - [Pool](../API/GQL/Pool/My%20Pools.md): Get information on Euclid pools such as liquidity and volume.
 - [Token](../API/GQL/Token/Token%20Metadata.md): Get token metadata for tokens.
-- [CW20](../API/GQL/CW/Balance.md): Get information on a CW20 token. 
+- [CW20](../API/GQL/CW/Balance.md): Get information on a CW20 token (LP Tokens). 
 
 ### GraphQL Endpoints
 

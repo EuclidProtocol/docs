@@ -4,7 +4,7 @@ description: "Virtual Balance Queries"
 ---
 
 # Balance
-Queries the the balance information for a token on the spcified chain.
+Queries the the balance information for a token on the spcified chain. Only for voucher tokens.
 
 ```graphql
 query Vcoin($balanceKey: BalanceKeyInput) {
@@ -36,4 +36,4 @@ curl --request POST \
 
 | **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| `amount`                 | `String` | The amount of tokens in the balance for the specified user.                             |
+| `amount`                 | `String` | The amount of virtual tokens in the balance for the specified user.                             |

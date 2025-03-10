@@ -1,7 +1,7 @@
- ---
+---
 sidebar_position: 6
 ---
-# Escrows
+# All Escrows
 Queries all escrows for their chain UID, token, and total balance.
 
 ```graphql

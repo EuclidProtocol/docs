@@ -5,8 +5,8 @@ sidebar_position: 2
 Queries all the LP reserves and shares on all the chains for the specified VLP.
 
 ```graphql
-query All_pools($contract: String!, $limit: Int, $offset: Int) {
-  vlp(contract: $contract) {
+query Vlp($contract: String, $pair: PairInput, $limit: Int, $offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $limit, offset: $offset) {
       pools {
         chain_uid
@@ -40,7 +40,8 @@ curl --request POST \
 
 ### Arguments
 
-- **contract** (String!): The contract address of the VLP.
+- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
+- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
 - **limit** (Int): Optional limit to the number of results to return.
 - **offset** (Int): Optional number of pools to skip before starting to return the result set. Used for pagination.
 

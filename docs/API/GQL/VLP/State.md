@@ -6,8 +6,8 @@ sidebar_position: 5
 Queries the state of a VLP contract.
 
 ```graphql
-query Vlp($contract: String!) {
-  vlp(contract: $contract) {
+query Vlp($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       pair {
         token_1
@@ -44,7 +44,8 @@ curl --request POST \
 
 ### Arguments
 
-- **contract** (String!): The contract address of the VLP to query.
+- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
+- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
 
 ### Return Fields
 

@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Router/State",
             "API/GQL/Router/VLP",
             "API/GQL/Router/Token Pair From VLP",
+            "API/GQL/Router/Token Denoms"
 
           ],
         },
@@ -57,6 +58,8 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Chain/Contracts",
             "API/GQL/Chain/Router Config",
             "API/GQL/Chain/Keplr Config",
+            "API/GQL/Chain/EVM Chain Config",
+
           ],
         },
         {
@@ -95,6 +98,9 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Token/Token Metadata",
             "API/GQL/Token/Token Liquidities",
             "API/GQL/Token/Token Liquidity",
+            "API/GQL/Token/Token Denoms",
+            "API/GQL/Token/Dex Metadata",
+            "API/GQL/Token/Get Faucets",
           ],
         },
         {

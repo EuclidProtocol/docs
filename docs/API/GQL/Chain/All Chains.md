@@ -15,9 +15,11 @@ query Chains($showAllChains: Boolean) {
       explorer_url
       chain_uid
       logo
+      type
     }
   }
 }
+
 ```
 
 ### Example
@@ -33,7 +35,7 @@ curl --request POST \
 
 ### Arguments
 
-- **token** (Boolean): If true, includes chains that will be integrated with Euclid soon. Otherwise, returns only the chains currently integrated.
+- **showAllChains** (Boolean): If true, includes chains that will be integrated with Euclid soon. Otherwise, returns only the chains currently integrated.
 
 ### Return Fields
 
@@ -45,3 +47,4 @@ curl --request POST \
 | `logo`             | `String` | The URL or reference to the chain's logo image.      |
 | `chain_id`         | `String` | The chain Id for the chain config. |
 | `explorer_url`     | `String` | The URL to the blockchain explorer for this chain.   |
+| `type`     | `String` | The ecosystem the chain belongs to such as "EVM" or "Cosmwasm".   |

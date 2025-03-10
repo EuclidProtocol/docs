@@ -15,6 +15,10 @@ query Token($tokenId: String!) {
       description
       image
       price
+      price_change_24h
+      price_change_7d
+      dex
+      chain_uids
     }
   }
 }
@@ -25,23 +29,26 @@ query Token($tokenId: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token($tokenId: String!) {\n  token {\n    token_metadata_by_id(token_id: $tokenId) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n    }\n  }\n}","variables":{"tokenId":"nibi"}}'
+    --url 'https://devnet-testing.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Token($tokenId: String!) {\n  token {\n    token_metadata_by_id(token_id: $tokenId) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n    }\n  }\n}","variables":{"tokenId":"usdc"}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACQoXICSY6RAyingJZIDmAhAEoiwADpIiRepQliJkqQyQB9RCgCGYdRuUAjAsq5gq05IZZE6S5sLkKFUCDwAiCKFzjqANuPuSwXADOAA5e6gQAcuqIvn6mSMyx9mAIgVDcwShcEEhJCh7qvAh5ksHcUMXykgC%2BsbVI1SAANCAAburc6rpeqRggdkSiIPGJGIMgSFy6XEPijdVAA)
+[Open in Playground](https://devnet-testing.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACQoXICSY6RAyingJZIDmAhAEoiwADpIiRepQliJkqQyQB9RCgCGYdRuUAjAsq5gq05IZZE6S5sLkKFUCDwAiCKFzjqANuPuSwXADOAA5e6gQAcuqIvn6mSMyx9mAIgVDcwShcEEhJCh7qvAh5ksHcUMXy9mVcFcpQABbqfAjKAEwALA0lRDV1jc1FygDsYD0pAB49AzzKMEaBeQC%2BsStISyBLQA)
 
 ### Arguments
 
-- **limit** (Int): Optional limit to the number of results to return.
-- **offset** (Int): Optional number of tokens to skip before starting to return the result set. Used for pagination.
+- **tokenId** (String!): The unique identifier for the token.
 
 ### Return Fields
 
-| **Field**         | **Type**   | **Description**                                     |
-|---------------|--------|-------------------------------------------------|
-| `coinDecimal`   | `Int`    | The number of decimal places for the token.     |
-| `displayName`   | `String` | The display name of the token.                  |
-| `tokenId`       | `String` | The unique identifier of the token.             |
-| `description`   | `String` | A brief description of the token.               |
-| `image`         | `String` | URL to an image representing the token.         |
-| `price`         | `Float`  | The current price of the token in USD.                |
+| **Field**           | **Type**   | **Description**                                                           |
+|---------------------|------------|---------------------------------------------------------------------------|
+| `coinDecimal`       | `Int`      | The number of decimal places used by the token.                           |
+| `displayName`       | `String`   | The display name of the token.                                            |
+| `tokenId`           | `String`   | The unique identifier for the token.                                      |
+| `description`       | `String`   | A brief description of the token.                                         |
+| `image`             | `String`   | URL to the token's image.                                                 |
+| `price`             | `Float`    | The current price of the token in USD.                                           |
+| `price_change_24h`  | `Float`    | The token's price change over the past 24 hours.                          |
+| `price_change_7d`   | `Float`    | The token's price change over the past 7 days.                            |
+| `dex`               | `String`   | The decentralized exchanges where the token is traded.                   |
+| `chain_uids`        | `[String]` | A list of chain UIDs where the token is available.                        |

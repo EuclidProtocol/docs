@@ -7,8 +7,8 @@ sidebar_position: 3
 Queries the total amount of fees collected by the VLP for the specified token denomination.
 
 ```graphql
-query Total_fees_collected_per_denom($denom: String!, $contract: String!) {
-  vlp(contract: $contract) {
+query Vlp($contract: String, $pair: PairInput, $denom: String!) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected_per_denom(denom: $denom) {
       lp_fees
       euclid_fees
@@ -30,7 +30,8 @@ curl --request POST \
 
 ### Arguments
 
-- **contract** (String!): The contract address of the VLP to query.
+- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
+- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
 - **denom** (String!): The token Id of the token to get the total fees for.
 
 ### Return Fields

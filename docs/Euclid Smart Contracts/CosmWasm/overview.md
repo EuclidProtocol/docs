@@ -137,7 +137,7 @@ pub struct Pair {
 
 ### CrossChainUserWithLimit
 
-Struct that defines a user address and limit on a specified chain. Used to define the amount of funds an address on a specific chain should receive.
+Struct that defines a user address and limit on a specified chain. Used to define the amount and type of funds an address on a specific chain should receive.
 
 <Tabs tabs={[
 {
@@ -147,7 +147,17 @@ language: 'rust',
 content: `
 pub struct CrossChainUserWithLimit {
     pub user: CrossChainUser,
-    pub limit: Option<Uint128>,
+    pub limit: Option<Limit>,
+    pub preferred_denom: Option<TokenType>,
+    pub refund_address: Option<String>,
+    pub forwarding_message: Option<EuclidReceive>,
+}
+
+pub struct EuclidReceive {
+    // Binary message to attach
+    pub data: Binary,
+    // Metadata to be logged into events for some off chain oracle/analytics
+    pub meta: Option<String>,
 }
 
 `
@@ -164,6 +174,12 @@ content: `
               "address": "comso1..."
                 },
         "limit": "500"
+        "preferred_denom": {
+          "native":{
+            "denom":"uusdc"
+          }
+        },
+        "refund_address": "cosmo1..."
     }
 `
 }
@@ -174,6 +190,10 @@ content: `
 |-------------|---------------------------------|------------------------------------------------------------------------|
 | `user`      | [`CrossChainUser`](#crosschainuser) | Information on the cross chain user including the address and chain UID.          |
 | `limit`     | `Option<Uint128>`               | An optional limit to the amount of asset to be received by the user address. Will take the maximum amount if not specified. |
+| `preferred_denom`    | [`TokenType`](#tokentype)                 | The user's preferred token type to receive.                                              |
+| `refund_address`     | `Option<String>`                    | An optional address where refunds should be sent in case the transaction fails. Defaults to the sender.                                                  |
+| `forwarding_message` | `Option<EuclidReceive>`             | Optional message to execute on the receiving address.               |
+
 
 ### CrossChainUser
 

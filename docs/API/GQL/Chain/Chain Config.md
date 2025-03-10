@@ -4,10 +4,10 @@ sidebar_position: 2
 
 # Chain Config
 
-Queries chain config information for wallets like Keplr, Leap etc...
+Queries information for the specified Cosmos chain.
 
 ```graphql
-query Chain_config($chainUid: String, $chainId: String) {
+query Chains($chainUid: String, $chainId: String) {
   chains {
     chain_config(chain_uid: $chainUid, chain_id: $chainId) {
       chain_id
@@ -16,6 +16,7 @@ query Chain_config($chainUid: String, $chainId: String) {
       explorer_url
       chain_uid
       logo
+      type
     }
   }
 }
@@ -33,8 +34,8 @@ curl --request POST \
 
 ### Arguments
 
-- **chainId** (String!): The Id of the chain config being used.
-- **chainUid** (String!): The unique Id for the chain. 
+- **chainId** (String): The Id of the chain to query. In case it is not specified, the chain UID needs to be set.
+- **chainUid** (String): The unique Id (usually the name) for the chain to query. In case it is not specified, the chain Id needs to be set.
 
 
 ### Return Fields
@@ -47,3 +48,4 @@ curl --request POST \
 | `logo`             | `String` | The URL or reference to the chain's logo image.      |
 | `chain_id`         | `String` | The chain Id for the chain config. |
 | `explorer_url`     | `String` | The URL to the blockchain explorer for this chain.   |
+| `type`     | `String` | The ecosystem the chain belongs to such as "EVM" or "Cosmwasm".   |
