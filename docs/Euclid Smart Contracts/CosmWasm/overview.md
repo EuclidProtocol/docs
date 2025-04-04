@@ -37,19 +37,18 @@ content: `
 {
   "pair_with_denom": {
     "token_1": {
-      "token": "token-1-id",
+      "token": "nibiru",
       "token_type": {
         "native": {
-          "denom": "native-denom-1"
+          "denom": "unibi"
         }
       }
-    },
+    }, 
     "token_2": {
-      "token": "token-2-id",
+      "token": "injective",
       "token_type": {
         "native": {
-          "denom": "native-denom-2"
-        }
+          "denom": "uinj
       }
     }
   }
