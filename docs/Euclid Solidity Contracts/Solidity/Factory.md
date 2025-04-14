@@ -84,7 +84,7 @@ content: `
     "partner_fee": {
       "partner_fee_bps": 25,
       "recipient": "0xgkhj33..."
-    },
+    }
   }
 }
 `
@@ -95,7 +95,7 @@ content: `
 |------------------------|------------------------------------------|--------------------------------------------------------------------------------------------------|
 | `sender`               | [`CrossChainUser`](overview.md#crosschainuser)      | Optional user to execute the swap on behalf of.                                                  |
 | `asset_in`             | [`TokenWithDenom`](overview.md#tokenwithdenom)      | The token being used as input for the swap.                                                      |
-| `amount_in`            | `uint256`                                | Amount of `asset_in` to swap.                                                                    |
+| `amount_in`            | `uint256`                                | Amount of `asset_in` to swap. For native assets, this is overridden by `msg.value`.                                                                   |
 | `asset_out`            | `string`                                 | Target token the user wants to receive.                                                          |
 | `min_amount_out`       | `uint256`                                | Minimum amount of the output asset for the swap to be considered a success. Used to specify maximum slippage accepted.                             |
 | `swaps`                | `NextSwapPair[]`                         |  The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used.                                                   |
@@ -180,12 +180,12 @@ content: `
 
 | **Field**     | **Type**                             | **Description**                                                                 |
 |---------------|--------------------------------------|---------------------------------------------------------------------------------|
-| `asset_in`    | [`TokenWithDenom`](overview.md#tokenwithdenom)  | Token to be deposited into the protocol.                                       |
+| `asset_in`    | [`TokenWithDenom`](overview.md#tokenwithdenom)  | The asset being exchanged into vouchers.                                      |
 | `amount_in`   | `uint256`                            | Amount of the token to deposit.                                                |
 | `recipient`   | [`CrossChainUser`](overview.md#crosschainuser)  | Optional recipient for the voucher tokens. Defaults to the sender if omitted.  |
 
 
-### Withdraw Virtua lBalance
+### Withdraw Virtual Balance
 
 :::note
 This message lets users withdraw voucher tokens and release them to one or more cross-chain addresses.
@@ -237,7 +237,7 @@ content: `
 | **Field**                | **Type**                                | **Description**                                                                                   |
 |--------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------|
 | `token`                  | `string`                                | ID of the voucher token to withdraw.                                                              |
-| `amount`                 | `uint128`                               | The amount to withdraw from the user's virtual balance.                                           |
+| `amount`                 | `uint128`                               | The amount of voucher tokens to withdraw.                                           |
 | `cross_chain_addresses` | [`CrossChainUserWithLimit[]`](overview.md#crosschainuserwithlimit) | List of destination addresses to receive the withdrawn funds.                                    |
 
 
@@ -459,6 +459,12 @@ content: `
 | `lp_token_symbol`        | `string`                                      | Symbol (ticker) of the LP token.                                                                  |
 | `lp_token_decimal`       | `uint8`                                       | Number of decimals used by the LP token.                                                          |
 
+
+
+## Query Messages 
+
+List of queries that can be performed on the Factory contract.
+
 ### Get State
 
 Queries the configuration and current status of the Factory contract.
@@ -639,7 +645,7 @@ language: 'json',
 content: `
 {
   "get_l_p_token": {
-    "vlp": "0xabc123abc123abc123abc123abc123abc123abcd"
+    "vlp": "nibi..."
   }
 }
 `

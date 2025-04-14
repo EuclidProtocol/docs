@@ -9,7 +9,7 @@ import Tabs from '@site/src/components/Tabs';
 
 In the [Architecture Overview](../../Architecture%20Overview/General%20Overview.md), we explored the core components that make up the Euclid Unified Liquidity layer. This section covers the Solidity (EVM) smart contracts that power Euclid on EVM-compatible chains.
 
-Since the Factory contract is the **only public entry point** for interacting with the Euclid stack, it is the only contract that exposes execute messages. The rest of the contracts in the system are internal and expose only queryable state, which will be covered individually.
+Since the Factory smart contract is the only entry point for users/projects to interact with the Euclid layer, we will be providing a breakdown of the execute messages as well as the queries. For the rest of the contracts, no messages can be called directly on them so we are only interested in the available queries.
 
 
 ## Common Types
@@ -27,8 +27,8 @@ label: 'Solidity',
 language: 'solidity',
 content: `
 struct TokenWithDenom {
-    string token;        // Token ID used by Euclid
-    TokenType token_type; // Describes token's source (native, smart, or voucher)
+    string token;        
+    TokenType token_type; 
 }
 `
 }
@@ -36,8 +36,8 @@ struct TokenWithDenom {
 
 | **Field**     | **Type**     | **Description**                                                   |
 |---------------|--------------|-------------------------------------------------------------------|
-| `token`       | `string`     | The internal token ID (e.g., `"usdc"`, `"weth"`, `"voucher-dai"`). |
-| `token_type`  | [`TokenType`](#tokentype) | The token's type (native, smart contract, or voucher).           |
+| `token`       | `string`     | The token Id for the token (e.g., `"usdc"`, `"weth"`, `"dai"`). |
+| `token_type`  | [`TokenType`](#tokentype) | The token's type (native, smart, or voucher).           |
 
 ### PairWithDenom
 
@@ -94,7 +94,7 @@ content: `
 
 ### PairWithDenomAndAmount
 
-Used when adding liquidity to a pool. Includes token ID, token type, and amount for each asset.
+Specifies a token pair, their denoms, and an amount for each. Used when adding liquidity to a pool.
 
 <Tabs tabs={[
 {
@@ -122,7 +122,14 @@ struct TokenWithDenomAndAmount {
 | `token_2`     | `TokenWithDenomAndAmount`    | Second token in the pair.                   |
 
 
-### TokenType
+#### TokenWithDenomAndAmount
+| **Field**       | **Type**       | **Description**                                              |
+|-----------------|----------------|--------------------------------------------------------------|
+| `token`         | `string`       | The internal token ID (e.g., `"usdc"`, `"eth"`).             |
+| `amount`        | `uint256`      | The amount of the token being added to the pool.             |
+| `token_type`    | [`TokenType`](#tokentype) | Specifies if the token is native, smart contract, or voucher. |
+
+## TokenType
 Defines the type and source of a token used in the Euclid protocol.
 
 <Tabs tabs={[

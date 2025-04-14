@@ -193,7 +193,7 @@ content: `
 | **Field**                      | **Type**                                    | **Description**                                                                                           |
 |----------------------------|-----------------------------------------|-------------------------------------------------------------------------------------------------------|
 | `token`                    | [`Token`](overview#token)                                  | The token to withdraw.                                                                                |
-| `amount`                   | `Uint128`                               | The amount of fund to withdraw.                                                                      |
+| `amount`                   | `Uint128`                               | The amount of voucher tokens to withdraw.                                                                      |
 | `cross_chain_addresses`    |[`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)         |       A set of addresses to specify where the funds should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. If limit is not specified, then the maximum amount is taken.                                          |
 | `timeout`                  | `Option<u64>`                           | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.
 
