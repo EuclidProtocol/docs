@@ -129,7 +129,7 @@ struct TokenWithDenomAndAmount {
 | `amount`        | `uint256`      | The amount of the token being added to the pool.             |
 | `token_type`    | [`TokenType`](#tokentype) | Specifies if the token is native, smart contract, or voucher. |
 
-## TokenType
+### TokenType
 Defines the type and source of a token used in the Euclid protocol.
 
 <Tabs tabs={[
@@ -248,7 +248,7 @@ language: 'solidity',
 content: `f
 struct CrossChainUserWithLimit {
     CrossChainUser user;
-    uint256 limit;
+    Limit limit;
     TokenType preferred_denom;
     string refund_address;
     EuclidReceive forwarding_message;
@@ -260,6 +260,17 @@ struct CrossChainUserWithLimit {
     // Optional metadata to log with the transaction
     string meta;
     }
+
+struct Limit {
+    LimitType limitType;
+    uint256 value;
+}
+
+    enum LimitType {
+    LessThanOrEqual,
+    Equal,
+    GreaterThanOrEqual
+}
 `
 },
 {
@@ -269,33 +280,45 @@ language: 'json',
 content: `
 {
   "user": {
-    "chain_uid": "chainA",
-    "address": "cosmo1..."
+    "chain_uid": "amoy",
+    "address": "0x123abc..."
   },
-  "limit": "500",
+  "limit": {
+    "limitType": "LessThanOrEqual",
+    "value": "1000000"
+  },
   "preferred_denom": {
     "native": {
-      "denom": "uusdc"
+      "denom": "usdc"
     }
   },
-  "refund_address": "cosmo1...",
+  "refund_address": "0x123abc...",
   "forwarding_message": {
-    "data": "0xabcdef123456...", 
-    "meta": "callback=deposit"
+    "data": "0xabcdef123456...",
+    "meta": "some-meta"
   }
 }
 `
 }
 ]} />
 
-| Field                | Type            | Description                                                                 |
-|---------------------|-----------------|-----------------------------------------------------------------------------|
-| `user`              | [`CrossChainUser`](#crosschainuser)| The destination user + chain.                                               |
-| `limit`             | `uint256`       | An optional limit to the amount of asset to be received by the user address. Will take the maximum amount if not specified.                              |
-| `preferred_denom`   | [`TokenType`](#tokentype)     | The user's preferred token type to receive.                                           |
-| `refund_address`    | `string`        | An optional address where refunds should be sent in case the transaction fails. Defaults to the sender.                            |
-| `forwarding_message`| `EuclidReceive` | Optional message to execute on destination.                           |
+| **Field**              | **Type**                            | **Description**                                                                 |
+|------------------------|-------------------------------------|---------------------------------------------------------------------------------|
+| `user`                 | [`CrossChainUser`](#crosschainuser) | The destination user and their chain UID.                                       |
+| `limit`                | `Limit`                   | Optional constraint on how much to release to the user.                         |
+| `preferred_denom`      | [`TokenType`](#tokentype)           | Preferred token format/type for receiving assets (native, smart, or voucher).             |
+| `refund_address`       | `string`                            | Optional refund address if transaction fails. Defaults to sender if omitted.    |
+| `forwarding_message`   | [`EuclidReceive`](#euclidreceive)   | Optional message to be executed on the receiver's side post-transfer.           |
 
+#### `LimitType`
+
+Defines how much a cross-chain recipient is allowed or required to receive during fund distribution. This enum is used inside the `limit` field of a `CrossChainUserWithLimit`.
+
+- `LessThanOrEqual`: This is the most flexible option. It allows the recipient to receive up to the specified amount, but not more. If the total available is less than the limit, the contract will still send whatever it can. This is useful when distributing across multiple recipients. For example, if two addresses both have a limit of 1000 and 1500 is available, firt one will receive 1000, and the other 500.
+
+- `Equal`: This enforces that the recipient must receive exactly the specified amount. If that exact amount isn’t available, the transaction will fail. This is used when an exact value is required and partial delivery is not acceptable.
+
+- `GreaterThanOrEqual`: This option guarantees that the recipient receives at least the specified amount. If the amount available is less than the specified minimum, the transaction fails. It’s useful for recipients that need a minimum amount to trigger a downstream action (like a forwarding message). Typically, this is used on the last or only recipient in the list.
 
 ### Pagination
 

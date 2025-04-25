@@ -93,7 +93,7 @@ content: `
 
 | **Field**               | **Type**                                | **Description**                                                                                  |
 |------------------------|------------------------------------------|--------------------------------------------------------------------------------------------------|
-| `sender`               | [`CrossChainUser`](overview.md#crosschainuser)      | Optional user to execute the swap on behalf of.                                                  |
+| `sender`               | [`CrossChainUser`](overview.md#crosschainuser)      | Optional user to execute the swap on behalf of. Typically, you do **not** need to specify a `sender` field. Users send tokens directly with their transaction. However, in cross-chain transactions involving **IBC** (where asynchronous behavior happens), external contracts may want to trigger swaps and have **vouchers minted directly to a user** instead of the contract itself. In these cases, setting `sender` allows the final minted vouchers to be credited properly.                                           |
 | `asset_in`             | [`TokenWithDenom`](overview.md#tokenwithdenom)      | The token being used as input for the swap.                                                      |
 | `amount_in`            | `uint256`                                | Amount of `asset_in` to swap. For native assets, this is overridden by `msg.value`.                                                                   |
 | `asset_out`            | `string`                                 | Target token the user wants to receive.                                                          |

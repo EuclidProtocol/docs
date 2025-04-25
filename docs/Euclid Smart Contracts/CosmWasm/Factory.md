@@ -81,7 +81,9 @@ content: `
         "chain_uid": "osmosis",
         "address": "osmo1..."
       },
-      "limit": "150000"
+      "limit":{
+          "equal":"1000"
+        }
     },
     {
       "user": {
@@ -103,7 +105,7 @@ content: `
 
 | Field                   | Type                            | Description                                                                                                               |
 |-------------------------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `sender`              | [`Option<CrossChainUser>`](overview.md#crosschainuser)               | Optional address to execute on behalf of.                                                                                               |
+| `sender`              | [`Option<CrossChainUser>`](overview.md#crosschainuser)               |Optional user to execute the swap on behalf of. Typically, you do **not** need to specify a `sender` field. Users send tokens directly with their transaction. However, in cross-chain transactions involving **IBC** (where asynchronous behavior happens), external contracts may want to trigger swaps and have **vouchers minted directly to a user** instead of the contract itself. In these cases, setting `sender` allows the final minted vouchers to be credited properly.                                                                                                |
 | `asset_in`              | [`TokenWithDenom`](overview.md#tokenwithdenom)               | The token being swapped in.                                                                                               |
 | `asset_out`             | [`Token`](overview#token)                         | The token being swapped out.                                                                                              |
 | `amount_in`             | `Uint128`                       | Amount of the input asset.                                                                                                |
@@ -174,7 +176,9 @@ content: `
                     "chain_uid": "nibiru",
                     "address": "nibi1..."
                 },
-                "limit": "500"
+               "limit":{
+                 "equal":"1000"
+                  }
             },
             {
                 "user": {
@@ -587,14 +591,18 @@ content: `
         "chain_uid": "chain1",
         "address": "cosmo1..."
       },
-      "limit": "150000"
+      "limit":{
+          "equal":"1000"
+        }
     },
     {
       "user": {
         "chain_uid": "chain2",
         "address": "nibi1..."
       },
-      "limit": "200000"
+      "limit":{
+          "equal":"1000"
+        }
     }
   ],
   "partner_fee": {
@@ -652,7 +660,9 @@ content: `
                 "chain_uid": "chainA",
                 "address": "cosmo1..."
             },
-            "limit": "5000"  
+            "limit":{
+          "equal":"1000"
+             }  
         },
         {
             "user": {
