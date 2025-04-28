@@ -121,6 +121,13 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
+          label: "Routes",
+          items: [
+            "API/REST/Routes/Get Routes",
+          ],
+        },
+        {
+          type: "category",
           label: "Transactions",
           items: [
             "API/REST/Transactions/Swap",
@@ -133,6 +140,7 @@ const sidebars: SidebarsConfig = {
             "API/REST/Transactions/Deposit",
           ],
         },
+        
       ],
     },
     {

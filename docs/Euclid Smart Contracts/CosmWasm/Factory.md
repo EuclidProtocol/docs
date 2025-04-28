@@ -3,7 +3,7 @@ sidebar_position: 2
 description: "The Factory Smart Contract"
 ---
 
-import Tabs from '@site/src/components/Tabs';
+import Tabs from '@site/src/components/Tabs'; 
 
 :::note
 Each integrated chain has its own factory contract. These contracts will be created by Euclid whenever an integration with a new chain occurs.
@@ -325,13 +325,18 @@ content: `
 pub enum ExecuteMsg {
      RequestPoolCreation {
         pair: PairWithDenomAndAmount,
+        pool_config: PoolConfig,
         slippage_tolerance_bps: u64,
         timeout: Option<u64>,
         lp_token_name: String,
         lp_token_symbol: String,
         lp_token_decimal: u8,
         lp_token_marketing: Option<cw20_base::msg::InstantiateMarketingInfo>,
-    }
+     }
+ pub enum PoolConfig {
+    Stable { amp_factor: Option<Uint64> }, ///used to create a stable pool. *amp_factor* defaults to 1000.
+    ConstantProduct {}, ///Used to create constant product pools (x*y=k)
+}
 `
 },
 {
@@ -361,6 +366,11 @@ content: `
       }
     }
   },
+  "pool_config": {
+      "stable": {
+        "amp_factor": "1200"
+      }
+    },
   "slippage_tolerance_bps": 100,
   "timeout": 600,
   "lp_token_name": "Liquidity Pool Token",
@@ -383,6 +393,7 @@ content: `
 | **Field**                | **Type**                                | **Description**                                                                                                              |
 |----------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | `pair`               | [`PairWithDenomAndAmount`](overview#pairwithdenomandamount)                      | The token pair to request creating a new pool for.                                                                       |
+| `pool_config`             | `PoolConfig`    | The pool configuration type (e.g., Stable with amplification factor, or ConstantProduct). |
 | `slippage_tolerance_bps` | `u64`                                   | Allowed slippage amount in basis points (bps) during pool creation.                                                       |
 | `timeout`            | `Option<u64>`                       | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.                |
 | `lp_token_name`      | `String`                            | Name of the liquidity pool token.                                                                                        |
@@ -1036,8 +1047,8 @@ label: 'Rust',
 language: 'rust',
 content: `
 pub enum QueryMsg {
-  #[returns(GetPendingLiquidityResponse)]
-    PendingLiquidity {
+  #[returns(GetPendingRemoveLiquidityResponse)]
+    PendingRemoveLiquidity {
         user: Addr,
         pagination: Pagination<Uint128>,
     },
@@ -1050,7 +1061,7 @@ label: 'JSON',
 language: 'json',
 content: `
 {
-  "pending_liquidity": {
+  "pending_remove_liquidity": {
     "user": "cosmo1...",
     "pagination": {
       "min": "5",  

@@ -308,7 +308,7 @@ content: `
 | `limit`                | `Limit`                   | Optional constraint on how much to release to the user.                         |
 | `preferred_denom`      | [`TokenType`](#tokentype)           | Preferred token format/type for receiving assets (native, smart, or voucher).             |
 | `refund_address`       | `string`                            | Optional refund address if transaction fails. Defaults to sender if omitted.    |
-| `forwarding_message`   | [`EuclidReceive`](#euclidreceive)   | Optional message to be executed on the receiver's side post-transfer.           |
+| `forwarding_message`   | `EuclidReceive`  | Optional message to be executed on the receiver's side post-transfer.           |
 
 #### `LimitType`
 

@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
-description: "The Virtual Balance Smart Contract"
+sidebar_position: 6
+description: "The Router Smart Contract"
 ---
 import Tabs from '@site/src/components/Tabs';
 

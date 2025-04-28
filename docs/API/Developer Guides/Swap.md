@@ -315,7 +315,7 @@ $$
 
 :::note
 - Use the responses we got in all the previous steps for the swap fields.
-- For sender address and chain_uid use the ones from the connected chain. In the example below we are using a Keplr wallet.
+- For sender address and chain_uid use the ones from the connected chain.
 - You can include a specific `timeout`. Excluding it will take the default of 60 seconds.
 - You can include a `partner_fee` if you wish to include a fee for your application.
 - The `cross_chain_addresses` are taken as an input from the user. The addresses for different chains can be fetched from the wallet using the chain Id.
@@ -392,7 +392,7 @@ const signer = provider.getSigner();
 const tx = {
   to: msg.msgs[0].to, // Contract address
   data: msg.msgs[0].data, // Encoded calldata
-  value: msg.msgs[0].value || "0x0" // Amount in wei (optional)
+  value: msg.msgs[0].value || "0x0" 
 };
 
 // Send transaction using signer (e.g. MetaMask)

@@ -31,7 +31,7 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
-{"get_state"{}}
+{"get_state":{}}
 `
 }
 ]} />
