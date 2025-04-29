@@ -1,76 +1,76 @@
 .tabs {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+}
+
+.tab-buttons {
+  display: flex;
+
+  margin-bottom: 10px;
+}
+
+.tab-buttons button {
+  padding: 10px 15px;
+  width: max-content;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(30, 30, 30);
+  cursor: pointer;
+  transition: background-color 0s;
+  margin-right: 4px;
+}
+
+.tab-buttons button.active {
+  background-color: #535353;
+}
+
+.tab-content .tab-pane {
+  display: none;
+}
+
+.tab-content .tab-pane.active {
+  display: block;
+  margin-top: 10px;
+}
+
+.tab-content .tab-pane.active pre {
+  background-color: rgb(30, 30, 30);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.code-container {
+  position: relative;
+  margin-top: 10px; /* Adjust as needed */
+}
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.icon {
+  font-size: 1.5em;
+  margin: 0.5rem;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
   }
-  
-  .tab-buttons {
-    display: flex;
-  
-    margin-bottom: 10px;
+  100% {
+    opacity: 0;
   }
-  
-  .tab-buttons button {
-    padding: 10px 15px;
-    width: 5rem;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(30, 30, 30);
-    cursor: pointer;
-    transition: background-color 2s;
-  }
-  
-  .tab-buttons button.active {
-    background-color: #535353;
-  }
-  
-  .tab-content .tab-pane {
-    display: none;
-  }
-  
-  .tab-content .tab-pane.active {
-    display: block;
-    margin-top: 10px;
-  }
-  
-  .tab-content .tab-pane.active pre {
-    background-color: rgb(30, 30, 30);
-    padding: 10px;
-    border-radius: 4px;
-  }
-  
-  .tab-pane {
-    display: none;
-  }
-  
-  .tab-pane.active {
-    display: block;
-  }
-  
-  .code-container {
-    position: relative;
-    margin-top: 10px; /* Adjust as needed */
-  }
-  
-  .copy-button {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ccc;
-  }
-  
-  .icon {
-    font-size: 1.5em;
-    margin: 0.5rem;
-  }
-  
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  
+}
