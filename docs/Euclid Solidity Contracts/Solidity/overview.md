@@ -245,7 +245,7 @@ An extension of `CrossChainUser` that adds an optional withdrawal limit, refund 
 id: 'solidity-example',
 label: 'Solidity',
 language: 'solidity',
-content: `f
+content: `
 struct CrossChainUserWithLimit {
     CrossChainUser user;
     Limit limit;
