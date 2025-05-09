@@ -7,7 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the VLP contract.
-You can read about the VLP architecture [here](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-pools.md)
+You can read about the VLP architecture [here](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-pools.md).
 :::
 List of queries that can be performed on the VLP contract.
 
@@ -48,6 +48,7 @@ pub struct GetStateResponse {
     pub last_updated: u64,
     pub total_lp_tokens: Uint128,
     pub admin: String,
+     pub pool_config: PoolConfig,
 }
 ```
 With the following TotalFees stuct:
@@ -59,12 +60,23 @@ pub struct TotalFees {
     // Fee for euclid treasury, distributed among stakers and other euclid related rewards
     pub euclid_fees: DenomFees,
 }
-
+ 
 pub struct DenomFees {
     // A map to store the total fees per denomination
     pub totals: HashMap<String, Uint128>,
 }
 
+```
+
+#### PoolConfig
+
+Defines the configuration type for a liquidity pool. It can either be a **Stable Pool** (with an optional amplification factor) or a **Constant Product Pool** (normal XYK pool).
+
+```rust
+pub enum PoolConfig {
+    Stable { amp_factor: Option<Uint64> },
+    ConstantProduct {},
+}
 ```
 
 | Field            | Type            | Description                                                           |
@@ -77,7 +89,7 @@ pub struct DenomFees {
 | `last_updated`   | `u64`           | The timestamp of the last update to the state.                        |
 | `total_lp_tokens`| `Uint128`       | The total amount of liquidity pool tokens.                            |
 | `admin`          | `String`        | The address of the admin of the contract.                             |
-
+| `pool_config` | `PoolConfig` | Configuration of the pool. |
 
 ### SimulateSwap
 Simulates a swap for the specified asset in the VLP.

@@ -1,13 +1,13 @@
 ---
-sidebar_position: 5
-description: "The Virtual Balance Smart Contract"
+sidebar_position: 6
+description: "The Router Smart Contract"
 ---
 import Tabs from '@site/src/components/Tabs';
 
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Router contract directly.
-You can read about the Router architecture [here](../../Architecture%20Overview/Architecture/router.md)
+You can read about the Router architecture [here](../../Architecture%20Overview/Architecture/router.md).
 :::
 
 List of queries that can be performed on the Router contract.
@@ -44,7 +44,7 @@ The query returns the following response:
 pub struct StateResponse {
     pub admin: String,
     pub vlp_code_id: u64,
-    pub vcoin_address: Option<Addr>,
+    pub virtual_balance_address: Option<Addr>,
     pub locked: bool,
 }
 ```
@@ -52,7 +52,7 @@ pub struct StateResponse {
 |------------------|-------------------|-------------------------------------------------------------------------------------------------|
 | **admin**        | `String`          | The admin address, which is the only address allowed to call messages on the contract.          |
 | **vlp_code_id**  | `u64`             | The code_id used to instantiate new VLP contracts on the hub chain.                             |
-| **vcoin_address**| `Option<Addr>`    | The address of the Virtual Balance contract used by the router.                                 |
+| **virtual_balance_address**| `Option<Addr>`    | The address of the Virtual Balance contract used by the router.                                 |
 | **locked**| `bool`    | Whether the contract is locked or not.                                 |
 
 ### GetChain
@@ -82,7 +82,7 @@ content: `
 
 | **Name**       | String| **Description**                                 |
 |----------------|-------------|-------------------------------------------------|
-| **chain_uid**       |ChainUid| The unique Id of the chain to get info for.|
+| **chain_uid**       |[`ChainUid`](overview#crosschainuser)| The unique Id of the chain to get info for.|
 
 
 The query returns the following response:
@@ -104,6 +104,7 @@ pub struct Chain {
 | **factory_chain_id**  | `String`   | The chain Id of the factory.                                                |
 | **factory**           | `String`   | The contract address of the factory contract on the specified chain.         |
 | **chain_type**        |`ChainType` | The type of chain. Either native or IBC. Native means the router contract is deployed on that chain. Since we only have one router, then there is only one chain type which will be native. |
+| **chain_uid**       |[`ChainUid`](overview#crosschainuser)| The unique Id of the queried chain.|
 
 **ChainType**:
 ```rust
@@ -149,7 +150,7 @@ content: `
 }
 ]} />
 
-The query returns a vector of **ChainResponse** each containing information about one chain. 
+The query returns a vector of [**ChainResponse**](#getchain) containing information about each chain. 
 
 ### GetVlp
 Queries the VLP address for the specified token pair.
@@ -196,11 +197,11 @@ pub struct VlpResponse {
     pub token_2: Token,
 }
 ```
-| **Name**       | **Description**                                 |
-|----------------|-------------------------------------------------|
-| **vlp**| The contract address of the VLP holding the token pair.|
-| **token_1** | The Id of the first token in the VLP to fetch.|
-| **token_2**| The Id of the second token in the VLP to fetch.|
+| **Name**       | **Type**|**Description**                                 |
+|----------------|-------------------------------------------------|--------|
+| **vlp**| |String|The contract address of the VLP holding the token pair.|
+| **token_1** | [`Token`](overview#token)|The Id of the first token in the VLP to fetch.|
+| **token_2**|[`Token`](overview#token) |The Id of the second token in the VLP to fetch.|
 
 
 ### GetAllVlps
@@ -244,7 +245,7 @@ content: `
 |----------------|-----------------------------------|------------------------------------------------------------|
 | `pagination`   | [`Pagination<(Token, Token)>`](../CosmWasm/overview.md#pagination)      | Pagination parameters.  |
 
-The query returns a vector of **VlpResponse** each containing information about on VLP.
+The query returns a vector of [**VlpResponse**](#getvlp) each containing information about a VLP.
 
 ### SimulateSwap
 Simulates a swap based on the specified info.
@@ -300,7 +301,7 @@ content: `
 |------------------|---------------------|-------------------------------------------------------------|
 | `asset_in`       | [`Token`](overview#token)             | The identifier for the input asset token.                   |
 | `amount_in`      | `Uint128`           | The amount of the input asset token.                        |
-| `asset_out`      | `Token`             | The identifier for the output asset token.                  |
+| `asset_out`      | [`Token`](overview#token)             | The identifier for the output asset token.                  |
 | `min_amount_out` | `Uint128`           | The minimum amount of the output asset token.               |
 | `swaps`          | `Vec<NextSwapPair>` | A list of swap pairs needed to complete the swap.           |
 
@@ -551,3 +552,56 @@ pub struct AllTokensResponse {
 | **Field**    | **Type**    | **Description**                      |
 |--------------|-------------|--------------------------------------|
 | `tokens`      | [`Token`](overview#token)     | A vector of token Ids for all tokens that have pools in the Euclid ecosystem.|
+
+
+### QueryTokenDenoms
+Queries all the available denoms for the specified token.
+
+<Tabs tabs={[
+{
+id: 'rust-example',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum QueryMsg {
+  #[returns(TokenDenomsResponse)]
+    QueryTokenDenoms { token: Token },
+}
+`
+},
+{
+id: 'json-example',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "query_token_denoms": {
+    "token": "usdc"
+  }
+}
+`
+}
+]} />
+
+| **Field**   | **Type**        | **Description**                                      |
+|-------------|-----------------|------------------------------------------------------|
+| `token`   | [`Token`](overview#token)     | The token Id of the token to get all denoms for.  |
+
+The query returns the following response:
+
+```rust
+pub struct TokenDenomsResponse {
+    pub denoms: Vec<TokenDenom>,
+}
+
+pub struct TokenDenom {
+    pub chain_uid: ChainUid,
+    pub token_type: TokenType,
+}
+
+```
+| **Field**    | **Type**    | **Description**                      |
+|--------------|-------------|--------------------------------------|
+| `chain_uid`      | [`ChainUid`](overview#crosschainuser)     | The unique Id of the chain that the denom resides on.  |
+| `token_type`      | [`TokenType`](overview#tokentype)      | The type of token. Returns the denom for native and CW20 contract address for CW20 token.  |
+

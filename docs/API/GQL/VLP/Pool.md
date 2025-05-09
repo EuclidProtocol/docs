@@ -6,8 +6,8 @@ sidebar_position: 1
 Queries the LP reserves and shares for the specified VLP on the specified chain.
 
 ```graphql
-query Vlp($contract: String!, $chainUid: String!) {
-  vlp(contract: $contract) {
+query Vlp($contract: String, $pair: PairInput, $chainUid: String!) {
+  vlp(contract: $contract, pair: $pair) {
     pool(chain_uid: $chainUid) {
       reserve_1
       reserve_2
@@ -31,7 +31,8 @@ curl --request POST \
 ### Arguments
 
 - **chainUid** (String!): The unique identifier of the chain that hosts the LP tokens.
-- **contract** (String!): The contract address of the VLP to query.
+- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
+- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
 
 | **Field**                  | **Type**   | **Description**                                     |
 |------------------------|--------|---------------------------------------------------------|

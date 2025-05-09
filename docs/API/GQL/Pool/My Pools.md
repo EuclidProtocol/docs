@@ -7,14 +7,14 @@ sidebar_position: 4
 Queries information of the pools created by the specified user.
 
 ```graphql
-query Pool($userAddress: String!) {
+query Pool($userAddress: String!, $chainUid: String) {
   pool {
-    my_pools(user_address: $userAddress) {
+    my_pools(user_address: $userAddress, chain_uid: $chainUid) {
       height
       vlp
       user {
-        address
         chain_uid
+        address
       }
       pair {
         token_1
@@ -39,6 +39,7 @@ curl --request POST \
 ### Arguments
 
 - **userAddress** (String!): The address to check the pools for.
+
 
 ### Return Fields
 

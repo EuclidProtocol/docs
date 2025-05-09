@@ -50,7 +50,7 @@ curl --request POST \
 |------------------|--------|-------------------------------------------|
 | `native`           | [`Native`](#native) | Details of the native tokens (Denoms).                   |
 | `smart`            | [`Smart`](#smart) | Details of the CW20 tokens (Contract addresses).            |
-| `Voucher`           | `String`        | Details about the Voucher token. |
+| `voucher`           | `String`        | Details about the Voucher token. |
 
 ### Native
 

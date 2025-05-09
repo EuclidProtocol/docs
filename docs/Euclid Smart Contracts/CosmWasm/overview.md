@@ -37,19 +37,18 @@ content: `
 {
   "pair_with_denom": {
     "token_1": {
-      "token": "token-1-id",
+      "token": "nibiru",
       "token_type": {
         "native": {
-          "denom": "native-denom-1"
+          "denom": "unibi"
         }
       }
-    },
+    }, 
     "token_2": {
-      "token": "token-2-id",
+      "token": "injective",
       "token_type": {
         "native": {
-          "denom": "native-denom-2"
-        }
+          "denom": "uinj
       }
     }
   }
@@ -137,7 +136,7 @@ pub struct Pair {
 
 ### CrossChainUserWithLimit
 
-Struct that defines a user address and limit on a specified chain. Used to define the amount of funds an address on a specific chain should receive.
+Struct that defines a user address and limit on a specified chain. Used to define the amount and type of funds an address on a specific chain should receive.
 
 <Tabs tabs={[
 {
@@ -147,8 +146,25 @@ language: 'rust',
 content: `
 pub struct CrossChainUserWithLimit {
     pub user: CrossChainUser,
-    pub limit: Option<Uint128>,
+    pub limit: Option<Limit>,
+    pub preferred_denom: Option<TokenType>,
+    pub refund_address: Option<String>,
+    pub forwarding_message: Option<EuclidReceive>,
 }
+
+pub struct EuclidReceive {
+    // Binary message to attach
+    pub data: Binary,
+    // Metadata to be logged into events for some off chain oracle/analytics
+    pub meta: Option<String>,
+}
+
+pub enum Limit {
+    LessThanOrEqual(Uint128),
+    Equal(Uint128),
+    GreaterThanOrEqual(Uint128),
+}
+
 
 `
 },
@@ -157,14 +173,25 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
-
-"cross_chain_addresses":{
-        "user": {
-              "chain_uid": "chainA",
-              "address": "comso1..."
-                },
-        "limit": "500"
+{
+  "user": {
+    "chain_uid": "osmosis",
+    "address": "osmo1..."
+  },
+  "limit": {
+    "less_than_or_equal": "1000000"
+  },
+  "preferred_denom": {
+    "native": {
+      "denom": "uosmo"
     }
+  },
+  "refund_address": "osmo1...",
+  "forwarding_message": {
+    "data": "aGVsbG8gd29ybGQ=",  
+    "meta": "{\"asset_in_type\":\"native\}"
+  }
+}
 `
 }
 
@@ -173,7 +200,20 @@ content: `
 | Field       | Type                            | Description                                                            |
 |-------------|---------------------------------|------------------------------------------------------------------------|
 | `user`      | [`CrossChainUser`](#crosschainuser) | Information on the cross chain user including the address and chain UID.          |
-| `limit`     | `Option<Uint128>`               | An optional limit to the amount of asset to be received by the user address. Will take the maximum amount if not specified. |
+| `limit`     | `Option<Limit>`               | An optional limit to the amount of assets to be received by the user address. Will take the maximum amount if not specified. |
+| `preferred_denom`    | [`TokenType`](#tokentype)                 | The user's preferred token type to receive.                                              |
+| `refund_address`     | `Option<String>`                    | An optional address where refunds should be sent in case the transaction fails. Defaults to the sender.                                                  |
+| `forwarding_message` | `Option<EuclidReceive>`             | Optional message to execute on the receiving address.               |
+
+#### `LimitType`
+
+Defines how much a cross-chain recipient is allowed or required to receive during fund distribution. This enum is used inside the `limit` field of a `CrossChainUserWithLimit`.
+
+- `LessThanOrEqual`: This is the most flexible option. It allows the recipient to receive up to the specified amount, but not more. If the total available is less than the limit, the contract will still send whatever it can. This is useful when distributing across multiple recipients. For example, if two addresses both have a limit of 1000 and 1500 is available, firt one will receive 1000, and the other 500.
+
+- `Equal`: This enforces that the recipient must receive exactly the specified amount. If that exact amount isn’t available, the transaction will fail. This is used when an exact value is required and partial delivery is not acceptable.
+
+- `GreaterThanOrEqual`: This option guarantees that the recipient receives at least the specified amount. If the amount available is less than the specified minimum, the transaction fails. It’s useful for recipients that need a minimum amount to trigger a downstream action (like a forwarding message). Typically, this is used on the last or only recipient in the list.
 
 ### CrossChainUser
 

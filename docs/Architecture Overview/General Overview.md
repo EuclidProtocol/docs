@@ -25,11 +25,10 @@ To keep liquidity decentralized, Euclid unifies liquidity **virtually** in its *
 
 Virtual Pools are the main component of the VSL based on Cosmwasm Smart Contracts. Virtual Pools are pools that are responsible for tallying the liquidity for a certain token pair across the entire Euclid layer. They allow external systems to query and retrieve detailed information about the Virtual Pool, including token pair details, overall liquidity status, pending swaps and liquidity additions, and current token reserves.
 
-All liquidity across all integrated blockchains is settled in the Virtual Pool which then sends results back to the Euclid pools across the ecosystem.
 
 ## Euclid Messaging Protocol
 :::note
-By integrating with [Axelar](https://www.axelar.network), Euclid is able to unify liquidity for all chains regardless of the ecosystem they are found in.
+By integrating with [Union](https://union.build/), Euclid is able to unify liquidity for all chains regardless of the ecosystem they are found in.
 :::
 The **Euclid Messaging Protocol** (EMP) is a cross-chain messaging protocol that is built on IBC. Although IBC is mainly built for the Cosmos Ecosystem, EMP extends IBC across the entire blockchain space.
 
@@ -44,11 +43,6 @@ This ensures that exploits seen in other bridges can't occur through our messagi
 Our Messaging Protocol and Virtual Settlement Layer both guarantee instant finality of transactions across the entire blockchain, which ensures user funds will never be stuck in any smart contract on any blockchain.
 
 
-## Liquisync Model
-
-LiquiSync is the architecture that allows for liquidity to exist where it is needed most. This means that to ensure that an integrated chain has enough liquidity to release tokens when it needs to due to a certain transaction. The Euclid smart contracts have been designed to follow this model to ensure liquidity is always available to users.
-
-Liquisync also ensures routing a token through the best route for the best price and slippage rates. This is achieved using Graph algorithms through the API microservice. 
 
 
 

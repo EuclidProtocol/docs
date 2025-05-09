@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Router/State",
             "API/GQL/Router/VLP",
             "API/GQL/Router/Token Pair From VLP",
+            "API/GQL/Router/Token Denoms"
 
           ],
         },
@@ -57,6 +58,8 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Chain/Contracts",
             "API/GQL/Chain/Router Config",
             "API/GQL/Chain/Keplr Config",
+            "API/GQL/Chain/EVM Chain Config",
+
           ],
         },
         {
@@ -95,6 +98,9 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Token/Token Metadata",
             "API/GQL/Token/Token Liquidities",
             "API/GQL/Token/Token Liquidity",
+            "API/GQL/Token/Token Denoms",
+            "API/GQL/Token/Dex Metadata",
+            "API/GQL/Token/Get Faucets",
           ],
         },
         {
@@ -115,39 +121,26 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Chains",
-          items: ["API/REST/Chains/Get Chains"],
-        },
-        {
-          type: "category",
-          label: "Contracts",
-          items: ["API/REST/Contracts/Get Contracts"],
-        },
-        {
-          type: "category",
-          label: "Metadata",
-          items: [
-            "API/REST/Metadata/Get Token Details",
-            "API/REST/Metadata/Token Price",
-          ],
-        },
-        {
-          type: "category",
           label: "Routes",
-          items: ["API/REST/Routes/Get Routes"],
+          items: [
+            "API/REST/Routes/Get Routes",
+          ],
         },
         {
           type: "category",
           label: "Transactions",
           items: [
+            "API/REST/Transactions/Swap",
             "API/REST/Transactions/Add Liquidity",
             "API/REST/Transactions/Remove Liquidity",
-            "API/REST/Transactions/Simulate Swap",
-            "API/REST/Transactions/Swap",
             "API/REST/Transactions/Track Transactions",
             "API/REST/Transactions/Withdraw Virtual Balance",
+            "API/REST/Transactions/Track Swap Transaction",
+            "API/REST/Transactions/Create Pool",
+            "API/REST/Transactions/Deposit",
           ],
         },
+        
       ],
     },
     {
@@ -155,9 +148,9 @@ const sidebars: SidebarsConfig = {
       label: "Developer Guides ",
       items: [
         "API/Developer Guides/Introduction",
+        "API/Developer Guides/Swap",
         "API/Developer Guides/Add Liquidity",
         "API/Developer Guides/Remove Liquidity",
-        "API/Developer Guides/Swap",
         "API/Developer Guides/Withdraw Voucher",
       ],
     },

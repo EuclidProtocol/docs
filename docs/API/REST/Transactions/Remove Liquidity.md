@@ -1,75 +1,131 @@
 ---
 sidebar_position: 4
 ---
+import Tabs from '@site/src/components/Tabs';
 
 # Remove Liquidity
 
 Generates a transaction to remove liquidity from a pool.
 
-### Request URL
- 
-```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove
-```
-### Curl
-```bash
-curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
+### CosmWasm
+<Tabs
+  tabs={[
+    {
+      id: 'cosmos-remove-request',
+      label: 'Request',
+      language: 'bash',
+      content: `curl -X 'POST' \\
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \\
+  -H 'accept: application/json' \\
+  -H 'Content-Type: application/json' \\
   -d '{
-  "cross_chain_addresses": [],
-  "lp_allocation": "1000000000",
-  "pair": {
-    "token_1": "fundenom",
-    "token_2": "nibi"
-  },
-  "sender": {
-    "address": "nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts",
-    "chain_uid": "nibiru"
-  },
-  "timeout": null,
-  "vlp_address": "nibi147sw04ts68nxe80946m332rr8j79qqvas386al8d76jhamnnr99qj6xnfs"
-}'
-```
-### Parameters
-| Field                    | Type   | Description                                                      |
-|--------------------------|--------|------------------------------------------------------------------|
-| `cross_chain_addresses` | [`Vec<CrossChainUserWithLimit>`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuserwithlimit)  | A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. |
-| `lp_allocation`          | String | The amount of liquidity pool allocation to be removed.           |
-| `pair`               | [`PairWithDenom`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#tokenwithdenom)                      | The token pair to request creating a new pool for.                                                                       |
-|`sender`         | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)  | The address performing the swap request.|       
-| `timeout`                | `Option<u64>`        | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified. |
-| `vlp_address`            | String | The address of the VLP contract that the pool is on.                      |
-
-### Example Response
-
-```json
-{
-   "sender":{
-      "chain_uid":"nibiru",
-      "address":"nibi14hcxlnwlqtq75ttaxf674vk6mafspg8x3ky6ts"
-   },
-   // factory address
-   "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
-   "chain_id":"nibiru-testnet-1",
-   "rpc_url":"https://rpc.testnet-1.nibiru.fi",
-   "rest_url":"https://lcd.testnet-1.nibiru.fi",
-   "msgs":[
+    "lp_allocation": "500000",
+    "vlp_address": "nibi...",
+    "sender": {
+      "address": "inj1xyz...",
+      "chain_uid": "injective"
+    },
+    "cross_chain_addresses": [
       {
-         // VLP address
-         "contractAddress":"nibi1x7xu453v3vjq2ve65j66mtju7jsg93qzw55sktr7lvyl6gw7kuks4g0qem",
-         "msg":{
-            "send":{
-               "amount":"1000000000",
-               "contract":"nibi1rwrwsyny3ew703ru0k2tgscwktrqsw9kyg5ykaydrxy0fq7gz6ksuyqfnm",
-               "msg":"eyJyZW1vdmVfbGlxdWlkaXR5Ijp7ImNyb3NzX2NoYWluX2FkZHJlc3NlcyI6W10sImxwX2FsbG9jYXRpb24iOiIxMDAwMDAwMDAwIiwicGFpciI6eyJ0b2tlbl8xIjoiZnVuZGVub20iLCJ0b2tlbl8yIjoibmliaSJ9LCJ0aW1lb3V0IjpudWxsfX0="
-            }
-         },
-         "funds":[
-            
-         ]
+        "user": {
+          "address": "osmo1recipient...",
+          "chain_uid": "osmosis"
+        },
+        "limit": {
+          "less_than_or_equal": "300000"
+        }
       }
-   ]
-}
-```
+    ]
+}'`
+    },
+    {
+      id: 'cosmos-remove-response',
+      label: 'Response',
+      language: 'json',
+      content: `{
+  "type": "cosmwasm",
+  "sender": {
+    "chain_uid": "injective",
+    "address": "inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu"
+  },
+  "contract": "inj1sdmz25644p2nn2zse5ntrkw7cf6g7th0amtdpu",
+  "chain_id": "injective-888",
+  "rpc_url": "https://injective-testnet-rpc.publicnode.com",
+  "rest_url": "https://testnet.sentry.lcd.injective.network",
+  "msgs": [
+    {
+      "contractAddress": "inj14ml2czkry3t3lftplatxkhhz0nqrm8lglh4czg",
+      "msg": {
+        "send": {
+          "amount": "500000",
+          "contract": "inj1sdmz25644p2nn2zse5ntrkw7cf6g7th0amtdpu",
+          "msg": "eyJyZ..."
+        }
+      },
+      "funds": []
+    }
+  ]
+}`
+    }
+  ]}
+/>
+
+### EVM
+
+<Tabs
+  tabs={[
+    {
+      id: 'evm-remove-request',
+      label: 'Request',
+      language: 'bash',
+      content: `curl -X 'POST' \\
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \\
+  -H 'accept: application/json' \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "lp_allocation": "500000",
+    "vlp_address": "nibi...",
+    "sender": {
+      "address": "0x72bbb...",
+      "chain_uid": "base"
+    },
+    "cross_chain_addresses": [
+      {
+        "user": {
+          "address": "0xrecipient...",
+          "chain_uid": "amoy"
+        },
+        "limit": {
+          "less_than_or_equal": "300000"
+        }
+      }
+    ]
+}'`
+    },
+    {
+      id: 'evm-remove-response',
+      label: 'Response',
+      language: 'json',
+      content: `{
+  "msgs": [
+    {
+      "chainId": "84532",
+      "data": "0x4000aea0000000000...",
+      "gasLimit": "0x493E0",
+      "to": "0x0000000000000000000000000000000000000000",
+      "value": "0x0"
+    }
+  ],
+  "type": "evm"
+}`
+    }
+  ]}
+/>
+### Parameters 
+
+| **Field**                 | **Type**                                                                                             | **Description**                                                                 |
+|---------------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| `lp_allocation`           | `string`                                                                                            | Amount of LP tokens to remove (in smallest unit).                              |
+| `vlp_address`             | `string`                                                                                            | Address of the Virtual Liquidity Pool (VLP) smart contract.                     |
+| `sender`                  | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)            | Wallet address and chain of the user initiating the removal.                   |
+| `cross_chain_addresses`   | [`CrossChainUserWithLimit`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuserwithlimit)`[]` | Optional set of addresses to specify where the assets should be released. The first element specified in the vector has highest priority and so on. Defaults to the sender. Defaults to the sender.                          |

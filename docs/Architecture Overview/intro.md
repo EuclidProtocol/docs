@@ -13,7 +13,7 @@ Furthermore, Euclid's modular architecture empowers dApps to access a v
 Euclid is not restriced to any ecosystem and operates on any chain that integrates with the Euclid layer, whether in Cosmos, EVM, Solana or anywhere else. 
 :::
 
-Euclid's mission is to unlock the true potential of decentralized finance by empowering developers, users, and token projects with a robust, permissionless, and efficient protocol for accessing and managing liquidity across the entire blockchain space.
+Euclid's mission is to unlock the true potential of decentralized finance by empowering developers, users, and projects with a robust, permissionless, and efficient protocol for accessing and managing liquidity across the entire blockchain space.
 
 ![Euclid Connected Chains](../../static/img/Euclid-chains.jpg)
 
@@ -29,11 +29,15 @@ Euclid's unified liquidity protocol directly addresses these challenges, creatin
 
 ### DEXs
 
-Integrating with Euclid grants DEXs access to a significantly larger, unified liquidity pool. This leads to deeper order books, tighter spreads, and reduced slippage for their users, making the platform more attractive for trading. Additionally, DEXs can leverage Euclid's existing infrastructure and APIs, allowing them to focus on developing unique features and user experiences rather than building and maintaining complex liquidity management systems. By utilizing Euclid's unified liquidity layer, DEXs can attract users from various chains, expanding their reach and potential trading volume.
+Integrating with Euclid grants DEXs access to a significantly larger, unified liquidity pool. This leads to deeper order books, tighter spreads, and better prices for their users, making the platform more attractive for trading. DEXs gain access to a vast array of tokens across all supported chains. This means that traders can seamlessly access and trade any token available on the Euclid layer, regardless of the DEX’s native inventory. 
+
+ Additionally, DEXs can leverage Euclid's existing infrastructure and APIs, allowing them to focus on developing unique features and user experiences rather than building and maintaining complex liquidity management systems. By utilizing Euclid's unified liquidity layer, DEXs can attract users from various chains, expanding their reach and potential trading volume.
 
 ### Users
 
 For users, Euclid offers a smoother trading experience. Unified liquidity results in less slippage and more predictable pricing, making trading more efficient and user-friendly. Users can also seamlessly trade assets across different blockchains without the need for bridging processes, simplifying cross-chain interactions.
+
+Euclid is truly an all-in-one platform for our user's DeFi needs. Once you’re on Euclid, you never have to leave the ecosystem to swap assets. With everything integrated under one roof, you have unparalleled access to a wide array of tokens, chains, and trading opportunities, making it the ultimate hub for decentralized finance.
 
 ### Protocols
 

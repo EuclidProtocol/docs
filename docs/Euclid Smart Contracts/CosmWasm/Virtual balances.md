@@ -7,7 +7,7 @@ import Tabs from '@site/src/components/Tabs';
 ## Query Messages 
 :::note
 We will only go through the queries for this contract, as users are not allowed to execute any messages on the Virtual Balance contract directly.
-You can read about the Virtual balance architecture [here](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-balances.md)
+You can read about the Virtual balance architecture [here](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-balances.md).
 :::
 List of queries that can be performed on the Virtual Balance contract.
 
@@ -31,7 +31,7 @@ id: 'json-example',
 label: 'JSON',
 language: 'json',
 content: `
-{"get_state"{}}
+{"get_state":{}}
 `
 }
 ]} />
@@ -98,7 +98,7 @@ content: `
 |----------------|------------------|----------------------------------------------|
 | `balance_key`  | `BalanceKey`     | The key used to get the balance.             |
 
-BalanceKey:
+**BalanceKey**
 
 | **Name**            | **Type**          | **Description**   |
 |---------------------|-------------------|-----------------------------------------------------------|

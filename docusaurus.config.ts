@@ -163,7 +163,7 @@ const config: Config = {
           items: [
             {
               label: "App",
-              href: "https://www.euclidprotocol.io/",
+              href: "https://testnet.euclidswap.io/",
             },
             {
               label: "Website",

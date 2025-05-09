@@ -4,7 +4,7 @@ description: "Virtual Balance Queries"
 ---
 
 # User Balance
-Queries the balance of the specified user address on the specified chain.
+Queries the virtual token balance of the specified user address on the specified chain.
 
 ```graphql
 query Vcoin($user: CrossChainUserInput) {

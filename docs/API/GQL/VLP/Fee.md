@@ -6,8 +6,8 @@ sidebar_position: 3
 Queries the fees and fee recipients for the specified VLP.
 
 ```graphql
-query Vlp($contract: String!) {
-  vlp(contract: $contract) {
+query Vlp($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       lp_fee_bps
       euclid_fee_bps
@@ -33,7 +33,8 @@ curl --request POST \
 
 ### Arguments
 
-- **contract** (String!): The contract address of the VLP to query.
+- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
+- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
 
 ### Return Fields
 

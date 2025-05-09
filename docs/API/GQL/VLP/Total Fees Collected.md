@@ -7,8 +7,8 @@ sidebar_position: 3
 Queries the total amount of fees collected by the specifeid VLP.
 
 ```graphql
-query Vlp($contract: String!) {
-  vlp(contract: $contract) {
+query Vlp($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
         totals {
@@ -40,7 +40,8 @@ curl --request POST \
 
 ### Arguments
 
-- **contract** (String!): The contract address of the VLP to query.
+- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
+- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
 
 ### Return Fields
 

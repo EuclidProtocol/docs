@@ -39,6 +39,6 @@ curl --request POST \
 |------------------|--------|-------------------------------------------|
 | `ContractAddress`  | `String` | The address of the router contract.       |
 | `ChainUID`         | `String` | The unique identifier (UID) of the chain. |
-| `Type`             | `String` | The type of the router.                   |
+| `Type`             | `String` | The type of smart contract which is always "router" in this query.                  |
 | `explorer_url`     | `String` | The URL of the blockchain explorer for the VSL.    |
 | `logo`             | `String` | The URL or reference to the logo of the VSL chain.      |

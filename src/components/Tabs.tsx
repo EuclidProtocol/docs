@@ -70,7 +70,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
                 language={tab.language}
                 style={coldarkDark}
                 customStyle={{
-                  maxHeight: "400px",
+                  maxHeight: "full",
                   overflow: "auto",
                   background: "rgb(30,30,30)",
                 }}
