@@ -7,7 +7,7 @@ The **Unified Liquidity Layer** has three main components:
 
 **A. Virtual Settlement Layer for Liquidity (VSL):** The VSL is responsible for consolidating all the virtual pools and performing the necessary calculations for swaps.
 
-**B. Euclid Messaging Protocol (EMP):** The EMP is a custom messaging protocol designed to facilitate communication between the VSL and all blockchains integrated with Euclid. It supports message relaying across different ecosystems, including EVM chains, Cosmos-based chains, Solana, and more.
+**B. Euclid Messaging Protocol (EMP):** The EMP is a custom messaging protocol designed to facilitate communication between the VSL and all blockchains integrated with Euclid. It supports message relaying between the VSL and chains across different ecosystems, including EVM chains, Cosmos-based chains, Solana, and more.
 
 **C. Native Smart Contracts:** A set of smart contracts deployed on each integrated chain responsible for pool creation and communication with the Virtual Settlement Layer using EMP.
 
