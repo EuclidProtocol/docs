@@ -36,15 +36,15 @@ Our Messaging Protocol and Virtual Settlement Layer both guarantee instant final
 
 ### A Closer Look
 
-At the core of Euclid’s architecture is communication and computation flow that enables secure, fast cross-chain interactions, whether it’s swapping tokens, adding liquidity, or querying balances. Here’s a step-by-step example of how a swap request is processed:
+At the core of Euclid’s architecture is a communication and computation flow that enables secure, fast, cross-chain interactions, whether it’s swapping tokens, adding liquidity, or querying balances. Here’s a step-by-step example of how a swap request is processed:
 
 ![Euclid Architecture](../../static/img/arch.png)
 
 :::note
-Euclid allows users to receive the tokens across multiple chains, specifying exactly how many to receive and on each. For example, a user can swap Token Y for Token X and receive the resulting X tokens distributed across 10 different chains in any split they choose. 
+Euclid allows users to receive the tokens across multiple chains, specifying exactly how many to receive on each chain. For example, a user can swap Token Y for Token X and receive the resulting X tokens distributed across 10 different chains in any split they choose. 
 :::
 
-	1.	**User Action:** A user initiates a request — for example, swapping Token Y for Token X.
+	1.	**User Action:** A user initiates a request, for example swapping Token Y for Token X.
 
 	2.	**Factory Layer** : The request is received by the appropriate Factory on the user’s native chain (EVM or Cosmos etc..., depending on the origin).
 
