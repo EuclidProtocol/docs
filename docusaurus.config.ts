@@ -89,7 +89,7 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Introduction",
+          label: "Learn",
         },
         {
           type: "dropdown",

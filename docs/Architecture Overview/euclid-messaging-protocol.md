@@ -3,9 +3,9 @@ sidebar_position: 5
 description: "Learn about Euclid Inovative Messaging Protocol"
 ---
 
-# Euclid Messaging Protocol
+# Euclid Messaging Protocol (EMP)
 
-The Euclid Messaging Protocol is a cross-chain messaging protocol that powers the entire Euclid layer. It allows for the communication of any pool with its respective **Virtual Pool**. The Messaging Protocol is built on top of [IBC Protocol](https://www.ibcprotocol.dev/) and inherits most of its traits, which are explained below.
+The Euclid Messaging Protocol is a cross-chain messaging protocol that powers the entire Euclid layer. It allows for the communication of any pool with its respective **Virtual Pool**. EMP is designed from the ground up to support custom message relaying between the VSL and any blockchain ecosystem including EVM-based chains, Cosmos, Solana, and beyond. It provides a flexible and secure framework for transmitting messages, state, and transaction data.
 
 ## High Level Architecture
 
@@ -35,4 +35,4 @@ Relayers are responsible for transmitting messages containing essential informat
 :::tip
 The Euclid system **Only** requires one relayer between the VSL and each integrated chain. 
 :::
-Public relayers often contend with a high volume of IBC packets bearing different messages and executions. Euclid addresses this by deploying private relayers tailored specifically to manage messages from the Euclid system, filtering out all other packets. These dedicated relayers will significantly enhance execution times compared to those offered by public relayers.
+Public relayers often contend with a high volume of packets bearing different messages and executions. Euclid addresses this by deploying private relayers tailored specifically to manage messages from the Euclid system, filtering out all other packets. These dedicated relayers will significantly enhance execution times compared to those offered by public relayers.
