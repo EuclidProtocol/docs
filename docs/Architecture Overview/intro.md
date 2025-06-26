@@ -25,11 +25,11 @@ Before Euclid, the DeFi landscape faced significant challenges due to fragmented
 
 ## What Euclid Offers to the Space
 
-Euclid's unified liquidity protocol directly addresses these challenges, creating a more efficient, interconnected, and user-friendly DeFi ecosystem.
+Euclid's unified liquidity protocol directly addresses these challenges, creating a more efficient, secure, interconnected, and user-friendly DeFi ecosystem.
 
 ### DEXs
 
-Integrating with Euclid enables DEXs to instantly access tokens across all chains connected to the protocol, not just their native environment. For example, if a DEX on Polygon integrates with Euclid, its users can seamlessly swap tokens from Ethereum, Solana, Cosmos, and any other chains integrated with Euclid, lightning fast and without the need to natively support those assets. This dramatically expands trading possibilities for their users.
+Integrating with Euclid enables DEXs to instantly access tokens across all chains connected to the protocol, not just their native environment. For example, if a DEX on Polygon integrates with Euclid, its users can seamlessly swap tokens from Ethereum, Solana, Cosmos, and any other chains integrated with Euclid, lightning fast and without the need to natively support those assets. This dramatically expands trading possibilities for their users. And the best part? No bridging is involved.
 
 In addition to broad token access, integration with Euclid’s liquidity consensus layer provides deeper order books, tighter spreads, and improved pricing through aggregated cross-chain liquidity, making the DEX more competitive and attractive to traders.
 

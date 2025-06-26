@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+description: "Get a General Introduction to Euclid's Router Contract"
+---
 # Router
 
 ## Introduction
