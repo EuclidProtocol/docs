@@ -31,17 +31,19 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Integrated Chains Layer",
           items: [
-            "Architecture Overview/Architecture/Integrated Chains Layer/escrows",
             "Architecture Overview/Architecture/Integrated Chains Layer/factory",
+            "Architecture Overview/Architecture/Integrated Chains Layer/escrows",
           ],
         },
         {
           type: "category",
           label: "Virtual Settlement Layer",
           items: [
-            "Architecture Overview/Architecture/Virtual Settlement Layer/virtual-balances",
-            "Architecture Overview/Architecture/Virtual Settlement Layer/virtual-pools",
             "Architecture Overview/Architecture/Virtual Settlement Layer/virtual-settlement-layer",
+            "Architecture Overview/Architecture/Virtual Settlement Layer/virtual-pools",
+            "Architecture Overview/Architecture/Virtual Settlement Layer/virtual-balances",
+          
+            
           ],
         },
         "Architecture Overview/Architecture/router",

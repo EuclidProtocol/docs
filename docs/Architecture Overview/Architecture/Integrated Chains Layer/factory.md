@@ -29,7 +29,7 @@ The following diagram illustrates the workflow of the factory contract for a swa
 We will dive deeper into each execute and query messages in the [Factory Smart Contract](../../../Euclid%20Smart%20Contracts/CosmWasm/Factory.md) section.
 :::
 
- ![Factory Architecture](../../../../static/img/Factory.png)
+ ![Factory Architecture](../../../../static/img/factory-2.jpg)
 
 1. User sends the swap request to the factory
 2. Factory forwards the message to the router through a dedicated channel

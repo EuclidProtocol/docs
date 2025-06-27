@@ -5,7 +5,7 @@ description: "Learn About Euclid's Virtual Settlement Layer (VSL)"
 
 
 # VSL Components
- ![Factory Architecture](../../../../static/img/VSL.png)
+ ![Factory Architecture](../../../../static/img/components-1.jpg)
 
 The VSL is composed of two main parts:
 

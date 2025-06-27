@@ -26,7 +26,8 @@ We will dive deeper into each of the contract's messages in the [Euclid Smart Co
 
 Whenever a user requests a swap for some token, the Virtual Balance contract will transfer the tokens from the VLP balance to the user's balance:
 
-![Euclid Virtual balances](../../../../static/img/fixed-vb.png)
+![Euclid Virtual balances](../../../../static/img/virtual-balance-1.jpg)
 
 Then, when the swap is complete and the escrow has released the tokens to the user, the Virtual Balance contract will receive a request to burn the tokens from the user's balance:
-![Euclid Virtual balances](../../../../static/img/Balace-success.png)
+
+![Euclid Virtual balances](../../../../static/img/virtual-balance-2.jpg)
