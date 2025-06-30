@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+description: "Get a General Introduction to Euclid's Router Contract"
+---
 # Router
 
 ## Introduction
@@ -12,4 +16,4 @@ The Router performs the following tasks:
 
 - **Handles Replies:** The Router handles replies from various sub-messages and packets and then forwards the results to the appropriate destination. This ensures that the outcomes of requests are appropriately processed and the state is updated accordingly.
 
-![Euclid Virtual Pools](../../../static/img/Router.png)
+![Euclid Virtual Pools](../../../static/img/router-1.jpg)

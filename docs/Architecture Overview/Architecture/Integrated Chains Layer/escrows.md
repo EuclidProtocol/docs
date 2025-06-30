@@ -24,4 +24,4 @@ The Escrow has a line of communication with the Virtual Pool (through the Factor
 
 :::
 
- ![Factory Architecture](../../../../static/img/Escrow.png)
+ ![Factory Architecture](../../../../static/img/escrow-1.jpg)
