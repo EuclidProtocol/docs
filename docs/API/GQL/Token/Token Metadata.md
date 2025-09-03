@@ -4,12 +4,28 @@ sidebar_position: 1
 
 # Token Metadatas
 
-Queries token metadata information for all tokens.
+Queries a list of tokens and their metadata, including price, volume, tags, DEX listings, and more. Supports filters like verification, chains, DEXs, and text search.
 
 ```graphql
-query Token($limit: Int, $offset: Int, $dex: [String!], $chainUids: [String!]) {
+query Token(
+  $limit: Int,
+  $offset: Int,
+  $verified: Boolean,
+  $dex: [String!],
+  $chainUids: [String!],
+  $showVolume: Boolean,
+  $search: String
+) {
   token {
-    token_metadatas(limit: $limit, offset: $offset, dex: $dex, chain_uids: $chainUids) {
+    token_metadatas(
+      limit: $limit,
+      offset: $offset,
+      verified: $verified,
+      dex: $dex,
+      chain_uids: $chainUids,
+      show_volume: $showVolume,
+      search: $search
+    ) {
       coinDecimal
       displayName
       tokenId
@@ -20,6 +36,12 @@ query Token($limit: Int, $offset: Int, $dex: [String!], $chainUids: [String!]) {
       price_change_7d
       dex
       chain_uids
+      total_volume
+      total_volume_24h
+      tags
+      min_swap_value
+      social
+      is_verified
     }
   }
 }
@@ -30,29 +52,40 @@ query Token($limit: Int, $offset: Int, $dex: [String!], $chainUids: [String!]) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://devnet-testing.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token($limit: Int, $offset: Int, $dex: [String!], $chainUids: [String!]) {\n  token {\n    token_metadatas(limit: $limit, offset: $offset, dex: $dex, chain_uids: $chainUids) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n    }\n  }\n}","variables":{"limit":null,"offset":null,"dex":null,"chainUids":"injective"}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Token($limit: Int, $offset: Int, $verified: Boolean, $dex: [String!], $chainUids: [String!], $showVolume: Boolean, $search: String) {\n  token {\n    token_metadatas(limit: $limit, offset: $offset, verified: $verified, dex: $dex, chain_uids: $chainUids, show_volume: $showVolume, search: $search) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n      total_volume\n      total_volume_24h\n      tags\n      min_swap_value\n      social\n      is_verified\n    }\n  }\n}","variables":{"limit":5,"offset":null,"verified":null,"dex":"euclid","chainUids":null,"showVolume":null,"search":null}}'
 ```
-[Open in Playground](https://devnet-testing.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACQA2AlnAyukQJKoA0RNEAZvwDOCVh268wCAB5sA2gGUUeBkgDmAQgC6PGlAAWAQ1UBVBmCHylK9doCURYAB0kRIigrJHLt24%2BUkAH1EFEMwQ1ChKkZmMXomFh4BYVE2PkERFB4pWUkZHgNjIJhzS15C01KHZ1dfNygIVQARBCgmQzofOqIwBiEABzpDAgA5Q0Quuv9kdjBJ3ykhKBV%2BlAYIJHm3drUELaJ%2BlSg92rrDhmPAwvUEQIAmABZ9ffPL693AgHY504WZfYqxVK8wAvl0wUgQSAQUA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyRwAOkkUShVbfQ480gPqIoCGYPvwDO1Ou3ZQIASyQARBFGlw%2BAG3ESiYacIAOqvgQByfRBolNKSAJJhz7MAmFQ803SmkQk9hsr4BzBB8iXVcoILYJUOlwrigACz4kQK4AJgAWeODo2ISklIB2O0iHBAAPYLzZLhhpMGFgpn5VLgA3CFV4CM0OZraOrrTMxoCGkoY4auEAdz5dNrVcYOFoaTVgnTb8aQAzaQRiiQBfDROkI5AjoA)
 
 ### Arguments
 
-- **limit** (Int): Optional limit to the number of results to return.
-- **offset** (Int): Optional number of tokens to skip before starting to return the result set. Used for pagination.
-- **dex** ([String!]): Optional list of DEX identifiers to filter the token metadata.
-- **chainUids** ([String!]): Optional list of chain UIDs to filter the token metadata.
+| **Argument**      | **Type**         | **Description**                                                      |
+|-------------------|------------------|----------------------------------------------------------------------|
+| `limit`           | `Int`            | Optional limit for pagination.                                       |
+| `offset`          | `Int`            | Optional offset for pagination.                                      |
+| `verified`        | `Boolean`        | If true, only return verified tokens.                                |
+| `dex`             | `[String!]`      | Filter tokens by DEX identifiers.                                    |
+| `chainUids`       | `[String!]`      | Filter tokens by the chains they're deployed on.                     |
+| `showVolume`      | `Boolean`        | Whether to include volume-related fields in the result.              |
+| `search`          | `String`         | Search by token name or symbol.                                      |
 
 ### Return Fields
 
-| **Field**           | **Type**   | **Description**                                                           |
-|---------------------|------------|---------------------------------------------------------------------------|
-| `coinDecimal`       | `Int`      | The number of decimal places used by the token.                           |
-| `displayName`       | `String`   | The display name of the token.                                            |
-| `tokenId`           | `String`   | The unique identifier for the token.                                      |
-| `description`       | `String`   | A brief description of the token.                                         |
-| `image`             | `String`   | URL to the token's image.                                                 |
-| `price`             | `Float`    | The current price of the token in USD.                                           |
-| `price_change_24h`  | `Float`    | The token's price change over the past 24 hours.                          |
-| `price_change_7d`   | `Float`    | The token's price change over the past 7 days.                            |
-| `dex`               | `String`   | The decentralized exchanges where the token is traded.                   |
-| `chain_uids`        | `[String]` | A list of chain UIDs where the token is available.                        |
+| **Field**            | **Type**        | **Description**                                                  |
+|----------------------|-----------------|------------------------------------------------------------------|
+| `coinDecimal`        | `Int`           | Number of decimal places for the token.                          |
+| `displayName`        | `String`        | Human-readable token name.                                       |
+| `tokenId`            | `String`        | Unique token ID used internally.                                 |
+| `description`        | `String`        | Token description.                                               |
+| `image`              | `String`        | Image URL for the token icon.                                    |
+| `price`              | `String`        | Current price of the token.                                      |
+| `price_change_24h`   | `Float`         | Percentage change in price over the last 24 hours.               |
+| `price_change_7d`    | `Float`         | Percentage change in price over the last 7 days.                 |
+| `dex`                | `[String]`      | List of DEXs where the token is traded.                          |
+| `chain_uids`         | `[String]`      | List of chain identifiers the token is available on.             |
+| `total_volume`       | `Float`         | Total trading volume of the token.                               |
+| `total_volume_24h`   | `Float`         | 24-hour trading volume of the token.                             |
+| `tags`               | `[String]`      | Any associated tags (e.g., "unverified").                        |
+| `min_swap_value`     | `Float`         | Minimum value required for swapping the token.                   |
+| `social`             | `Object`        | Social metadata (e.g., links to Twitter, Discord, etc.).         |
+| `is_verified`        | `Boolean`       | Indicates whether the token is verified.                         |

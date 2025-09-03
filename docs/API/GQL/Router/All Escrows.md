@@ -31,10 +31,12 @@ curl --request POST \
 
 ### Arguments
 
-- **max** (ChainUID): The upper limit chain UID that should be returned. Does not include the specified max value.
-- **min** (ChainUID): The lower limit chain UID to start from. Includes the specified min value.
-- **skip** (Int): The number of results to skip in the resonse.
-- **limit** (Int): The maximum number of results to return.
+| **Name** | **Type** | **Description**                                                                 |
+|----------|----------|---------------------------------------------------------------------------------|
+| `max`    | String   | The upper limit chain UID to return (exclusive).                               |
+| `min`    | String   | The lower limit chain UID to start from (inclusive).                           |
+| `skip`   | Int      | The number of results to skip in the response.                                 |
+| `limit`  | Int      | The maximum number of results to return.                                       |
 
 ### Return Fields
 

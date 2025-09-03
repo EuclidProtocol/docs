@@ -28,9 +28,9 @@ curl --request POST \
 
 [Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkFAhgJZ7pEAKTeAkkhTCgEoiwADpIiRPBH75hYiRIBulKg2as6nIaPEKlleXqIoIAa2QB9AIyG9J80gsAmW0QC%2Bhj0jcgANCEV6PEZ6ACMyBABnDBAdCREQNTwE1jiFBPtLGwwiBIQYKDJGMATfVwyzSxcchKRGUMYEzzEfNyA)
 
-### Arguments
-
-- **pair** (PairInput): The two tokens included in the token pair.
+| **Name** | **Type**     | **Description**                           |
+|----------|--------------|-------------------------------------------|
+| `pair`   | `PairInput`  | The two tokens included in the token pair. |
 
 
 ### Return Fields

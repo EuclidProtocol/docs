@@ -40,7 +40,9 @@ curl --request POST \
 
 ### Arguments
 
-- **chainUid** (String!): The unique identifier of the chain.
+| **Name**     | **Type** | **Description**                              |
+|--------------|----------|----------------------------------------------|
+| `chainUid`   | String!  | The unique identifier of the chain.          |
 
 ### Return Fields
 

@@ -31,7 +31,9 @@ curl --request POST \
 
 ### Arguments
 
-- **token**: The token Id of the token to get the liquidity amount for.
+| **Argument** | **Type** | **Description**                                      |
+|--------------|----------|------------------------------------------------------|
+| `token`      | `String` | The token ID of the token to get the liquidity for.  |
 
 
 ### Return Fields

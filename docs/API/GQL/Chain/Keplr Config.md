@@ -75,8 +75,10 @@ curl --request POST \
 
 ### Arguments
 
-- **chainId** (String): Optional Id of the chain config being used. In case it is not specified, the chain UID needs to be set.
-- **chainUid** (String): The unique Id for the chain. In case it is not specified, the chain Id needs to be set.
+| **Name**      | **Type** | **Description**                                                                 |
+|---------------|----------|---------------------------------------------------------------------------------|
+| `chainId`     | String   | Optional ID of the chain. If not provided, `chainUid` must be specified.       |
+| `chainUid`    | String   | Optional UID of the chain. If not provided, `chainId` must be specified.       |
 
 ### Return Fields
 

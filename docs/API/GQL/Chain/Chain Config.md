@@ -7,14 +7,15 @@ sidebar_position: 2
 Queries information for the specified Cosmos chain.
 
 ```graphql
-query Chains($chainUid: String, $chainId: String) {
+query ChainConfig($chainUid: String, $chainId: String) {
   chains {
     chain_config(chain_uid: $chainUid, chain_id: $chainId) {
       chain_id
-      factory_address
+      chain_uid
       display_name
       explorer_url
-      chain_uid
+      factory_address
+      token_factory_address
       logo
       type
     }
@@ -25,27 +26,36 @@ query Chains($chainUid: String, $chainId: String) {
 
 ```bash
 curl --request POST \
-    --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Chain_config($chainUid: String, $chainId: String) {\n  chains {\n    chain_config(chain_uid: $chainUid, chain_id: $chainId) {\n      chain_id\n      factory_address\n      display_name\n      explorer_url\n      chain_uid\n      logo\n    }\n  }\n}","variables":{"chainUid":"osmosis","chainId":"osmo-test-5"}}'
+  --header 'content-type: application/json' \
+  --url 'https://testnet.api.euclidprotocol.com/graphql' \
+  --data '{
+    "query": "query ChainConfig($chainUid: String, $chainId: String) {\n  chains {\n    chain_config(chain_uid: $chainUid, chain_id: $chainId) {\n      chain_id\n      chain_uid\n      display_name\n      explorer_url\n      factory_address\n      token_factory_address\n      logo\n      type\n    }\n  }\n}",
+    "variables": {
+      "chainUid": "osmosis",
+      "chainId": "osmo-test-5"
+    }
+}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZID6UESAZlQOYAUAJFJTQKpUw6IgGUUeGqwA0RbryQBJIaPGSAlEWAAdJESI9qSAM6adevQZr1GLDpboxBwuYYFgZ92k9n2lG7brmFvJeYGZBREwUUCgQhLQUYGB4CEZG4UFgVEYADgA2FAS0SBSIGeYIAB75cfi0MHh55cGG9YLNRHkQrBDlAL7hA0h9IFIgAG4UEhQARnmpGCABelog9m6rwqsQRnA72atS4au%2BYRhE27sQALQoqSjXAKyrOiN9QA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJFABYCGAlkgKqNjpEDKKezA5gBoiNBswCSHbrwEBKIsAA6SIkTpMkAZwXLVq9cwD6UCEgBmjfhQNJDMdp1Ea2YYTcMORNyfKUq9%2BmK27LoBRGb0UCgQhIb0YGB4CJqaoQFgjJoADgA29ASGSPSIaXoIAB65Mfh2eDmlgRp2If4BORD8EA1EKARZCN3RANbIhhFRMQXxicmprUQAvqFLSAsgC0A)
+
 
 ### Arguments
 
-- **chainId** (String): The Id of the chain to query. In case it is not specified, the chain UID needs to be set.
-- **chainUid** (String): The unique Id (usually the name) for the chain to query. In case it is not specified, the chain Id needs to be set.
-
+| **Name**      | **Type** | **Description**                                                                 |
+|---------------|----------|---------------------------------------------------------------------------------|
+| `chainId`     | String   | The ID of the chain. If not provided, `chainUid` must be specified.            |
+| `chainUid`    | String   | The unique identifier (UID) of the chain. If not provided, `chainId` is used.  |
 
 ### Return Fields
 
-| **Field**          | **Type** | **Description**                                      |
-|--------------------|----------|------------------------------------------------------|
-| `factory_address`  | `String` | The contract address of the factory contract on that chain.                 |
-| `chain_uid`        | `String` | The unique identifier (UID) of the chain.             |
-| `display_name`     | `String` | The display name of the chain.                       |
-| `logo`             | `String` | The URL or reference to the chain's logo image.      |
-| `chain_id`         | `String` | The chain Id for the chain config. |
-| `explorer_url`     | `String` | The URL to the blockchain explorer for this chain.   |
-| `type`     | `String` | The ecosystem the chain belongs to such as "EVM" or "Cosmwasm".   |
+| **Field**               | **Type**   | **Description**                                                      |
+|-------------------------|------------|----------------------------------------------------------------------|
+| `chain_id`              | `String`   | The chain ID used in the protocol.                                   |
+| `chain_uid`             | `String`   | The unique identifier (UID) of the chain.                            |
+| `display_name`          | `String`   | A user-friendly name for the chain.                                  |
+| `explorer_url`          | `String`   | A URL to the block explorer for this chain.                          |
+| `factory_address`       | `String`   | The contract address of the main factory on that chain.              |
+| `token_factory_address` | `String`   | The contract address for the token factory on this chain.    |
+| `logo`                  | `String`   | The logo URL or path used in the UI.                                 |
+| `type`                  | `String`   | The ecosystem the chain belongs to such as "EVM" or "Cosmwasm".      |

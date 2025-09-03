@@ -28,11 +28,13 @@ curl --request POST \
 
 ### Arguments
 
-- **assetIn** (String!): The identifier of the input asset.
-- **amountIn** (String!): The amount of the input asset to swap.
-- **assetOut** (String!): The identifier of the output asset.
-- **minAmountOut** (String!): The minimum amount of the output asset expected from the swap.
-- **swaps** ([String!]): The list of swaps to execute.
+| **Name**         | **Type**      | **Description**                                                                 |
+|------------------|---------------|---------------------------------------------------------------------------------|
+| `assetIn`        | String!       | The identifier of the input asset.                                              |
+| `amountIn`       | String!       | The amount of the input asset to swap.                                          |
+| `assetOut`       | String!       | The identifier of the output asset.                                             |
+| `minAmountOut`   | String!       | The minimum amount of the output asset expected from the swap.                 |
+| `swaps`          | [String!]     | The list of swaps to execute for reaching the output asset.                    |
 
 ### Return Fields
 

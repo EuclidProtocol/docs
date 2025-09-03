@@ -41,8 +41,10 @@ curl --request POST \
 
 ### Arguments
 
-- **chainUid** (String!): The unique identifier of the chain.
-- **token_id** (String!): The Id of the token to get all denominations for. 
+| **Argument** | **Type**   | **Description**                                                       |
+|--------------|------------|-----------------------------------------------------------------------|
+| `chainUid`   | `String!`  | The unique identifier of the chain.                                  |
+| `tokenId`    | `String`   | The ID of the token to get all available denominations for.          |
 
 ### Return Fields
 

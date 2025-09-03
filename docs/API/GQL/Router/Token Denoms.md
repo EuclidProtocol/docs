@@ -44,14 +44,38 @@ curl --request POST \
 [Open in Playground](https://devnet-testing.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BmMhHAM4AUAJChcukQMop4CWSAOYBCAJRFgAHSREieCDBT5JMuXPaUkNOoyabORNhyQTps9XNpJ6DVRctyoACwCGgqjH5g1jjSaoUAgAHBHs-SwA6aKIIWQA5VxR%2BADcEMi0SELDzCMckJNSc3zzLEtKAX3K-KocI6MjY2W44VzwUDOQs0PDSuQZW9t6%2BuWqI2r6J0oamogA1RRd8TqRu4rq8lMXnfDHLKZqxg6Ip2oqQCqA)
 
 ### Arguments
-
-- **token** (String!): The token to fetch denoms for.
+| **Name**  | **Type**   | **Description**                        |
+|-----------|------------|----------------------------------------|
+| `token`   | `String!`  | The token to fetch denoms for.         |
 
 
 ### Return Fields
 
-| **Field**                  | **Type**   | **Description**                                             |
-|------------------------|--------|---------------------------------------------------------|
-| `vlp_address`            | `String` | The VLP contract address.                       |
-| `token_1`                | `String` | The Id of the first token in the pool.            |
-| `token_2`                | `String` | The Id of the second token in the pool.            |
+| **Field**        | **Type**                | **Description**                                              |
+|------------------|-------------------------|--------------------------------------------------------------|
+| `denoms`         | `[Denom]`               | The list of token representations across different chains.   |
+
+### Denom
+
+| **Field**        | **Type**                | **Description**                                              |
+|------------------|-------------------------|--------------------------------------------------------------|
+| `chain_uid`      | `String`                | The UID of the chain.                                        |
+| `token_type`     | `TokenType` (union)     | The type of token (Native, Smart, or Voucher).               |
+
+### NativeTokenType
+
+| **Field**        | **Type**     | **Description**                    |
+|------------------|--------------|------------------------------------|
+| `denom`          | `String`     | The native token's denom.          |
+
+### SmartTokenType
+
+| **Field**            | **Type**     | **Description**                        |
+|----------------------|--------------|----------------------------------------|
+| `contract_address`   | `String`     | The smart contract address of token.   |
+
+### VoucherTokenType
+
+| **Field**  | **Type** | **Description**                   |
+|------------|----------|-----------------------------------|
+| `voucher`  | `String` | The voucher denomination string.  |

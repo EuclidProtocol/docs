@@ -47,9 +47,11 @@ curl --request POST \
 
 ### Arguments
 
-- **denom** (String): Optional filter to match a specific token denomination. Can be either the denom for native tokens or contract address for smart tokens.
-- **tokenId** (String): Optional filter to match a specific token identifier.
-- **chainUid** ([String!]): Optional list of chain UIDs to filter the token denoms by chain.
+| **Argument** | **Type**       | **Description**                                                                 |
+|--------------|----------------|---------------------------------------------------------------------------------|
+| `denom`      | `String`       | Optional filter to match a specific token denomination (native denom or contract address). |
+| `tokenId`    | `String`       | Optional filter to match a specific token identifier.                          |
+| `chainUid`   | `[String!]`    | Optional list of chain UIDs to filter the token denoms by chain.               |
 
 
 ### Return Fields

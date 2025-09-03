@@ -100,6 +100,7 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Chain/Router Config",
             "API/GQL/Chain/Keplr Config",
             "API/GQL/Chain/EVM Chain Config",
+            "API/GQL/Chain/All EVM Chains",
 
           ],
         },
@@ -141,6 +142,7 @@ const sidebars: SidebarsConfig = {
             "API/GQL/Token/Token Liquidity",
             "API/GQL/Token/Token Denoms",
             "API/GQL/Token/Dex Metadata",
+            "API/GQL/Token/All Dexes",
             "API/GQL/Token/Get Faucets",
           ],
         },

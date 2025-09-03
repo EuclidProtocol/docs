@@ -37,15 +37,18 @@ query Evm_chain_config($chainUid: String, $chainId: String) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://devnet-testing.api.euclidprotocol.com/graphql' \
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
     --data '{"query":"query Evm_chain_config($chainUid: String, $chainId: String) {\n  chains {\n    evm_chain_config(chain_uid: $chainUid, chain_id: $chainId) {\n      chain_id\n      chain_uid\n      explorer_url\n      name\n      native_currency {\n        decimals\n        name\n        symbol\n      }\n      rpc_urls {\n        default {\n          http\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"monad","chainId":null}}'
 ```
-[Open in Playground](https://devnet-testing.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIBucA%2BlABYCGAlktREgGYMDmRwAOkkSK1GSAM49%2BgwQgrV6TFuy4SBUwcIUMwktUPnMYWnWoQAPAA4AbCHnyUYeS8alI6iZ4NcoGZBNQe2SFDEfKq6RGAIUAxwdJaiHi5uCImCogRwAEYQTmFSAL6JeOZQ9o7ioeGCkWx0MJYoKlVSqUSFeYLtal1t-Pkg%2BUA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIBucA%2BlABYCGAlktREgGYMDmAFACS2MkAVQZh0RAMoo8TTgBoi-ekwCSYydNkBKIsAA6SIkQFMAzroNGjCCtWXMorDjxPMYo8UsEiwC15Q9FVzUdfUMrI39RSwjje0p3MBiIhAAPAAcAGwg8fAS8TOSrJDpEIqMSlAYyBGoYPFykKGIw2KswBCgGODpM03Li0oQBo1MCOAAjCELwiIBfAbx0qHy%2Bi1nYjrY6GEyUdbaImhQUdJGiBY2jS-mYy7mQOaA)
 
 ### Arguments
 
-- **chainId** (String): Optional Id of the chain config being queried. In case it is not specified, the chain UID needs to be set.
-- **chainUid** (String): The unique Id for the chain. In case it is not specified, the chain Id needs to be set.
+| **Name**      | **Type** | **Description**                                                                 |
+|---------------|----------|---------------------------------------------------------------------------------|
+| `chainId`     | String   | Optional ID of the chain. If not provided, `chainUid` must be specified.       |
+| `chainUid`    | String   | Optional UID of the chain. If not provided, `chainId` must be specified.       |
+
 
 ### Returned Fields
 
@@ -73,4 +76,5 @@ curl --request POST \
 
 | **Field** | **Type**   | **Description**                                           |
 |-----------|------------|-----------------------------------------------------------|
-| `http`    | `String`   | The default HTTP RPC endpoint for the chain.            |
+| `http`    | [`String`]   | The list of default HTTP RPC endpoints for the chain.
+            |

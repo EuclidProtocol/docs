@@ -33,8 +33,10 @@ curl --request POST \
 
 ### Arguments
 
-- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
-- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
+| **Argument** | **Type**     | **Description**                                                                 |
+|--------------|--------------|---------------------------------------------------------------------------------|
+| `contract`   | `String`     | The contract address of the VLP. Required if `pair` is not provided.           |
+| `pair`       | `PairInput`  | The token pair of the VLP. Required if `contract` is not provided.             |
 
 ### Return Fields
 

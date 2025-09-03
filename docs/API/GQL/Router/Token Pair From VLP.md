@@ -30,8 +30,9 @@ curl --request POST \
 
 ### Arguments
 
-- **vlp** (String!): The contract address of the VLP to get the token pair for.
-
+| **Name** | **Type**   | **Description**                                       |
+|----------|------------|-------------------------------------------------------|
+| `vlp`    | `String!`  | The contract address of the VLP to get the token pair for. |
 
 ### Return Fields
 
