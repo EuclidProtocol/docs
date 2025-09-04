@@ -45,7 +45,6 @@ For each query, you can find an example response if you select the "Open in Play
 In addition to the GraphQL API, the Euclid platform also provides a REST API for various operations. Below are the available REST API sections we will cover:
 
 - [Chains](../API/REST/Chains/Get%20Chains.md): Get information on the list of chains integrated with Euclid.
-- [Contracts](../API/REST/Contracts/Get%20Contracts.md): Get the list of deployed Euclid contracts.
 - [Routes](../API/REST/Routes/Get%20Routes.md): Get the available routes for a swap.
 - [Metadata](../API/REST/Metadata/Get%20Token%20Details.md): Get the price or information on tokens in Euclid pools.
 - [Transaction](../API/REST/Transactions/Swap.md): Generate transactions for various calls such as making swaps and adding/removing liquidity.
