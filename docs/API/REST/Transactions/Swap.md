@@ -22,51 +22,52 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
       id: 'cosmos-request',
       label: 'Request',
       language: 'bash',
-      content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/swap' \\
-  -H 'accept: application/json' \\
-  -H 'Content-Type: application/json' \\
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/swap' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
   -d '{
-    "amount_in": "1000000",
-    "slippage": "0.01",
+    "amount_in": "100000000000000000",
     "asset_in": {
-      "token": "nibi",
+      "token": "bsc",
       "token_type": {
-        "native": { "denom": "unibi" }
+        "smart": {
+          "contract_address": "0x3246d25b42f6b3deca5b40334775fa4d6e333010"
+        }
       }
     },
-    "minimum_receive": "950000",
+    "slippage": "500",
     "cross_chain_addresses": [
       {
         "user": {
-          "address": "osmo1abc...",
-          "chain_uid": "osmosis"
+          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+          "chain_uid": "0g"
         },
         "limit": {
-          "less_than_or_equal": "950000"
+          "less_than_or_equal": "3563664058479"
         }
       }
     ],
     "partnerFee": {
       "partner_fee_bps": 10,
-      "recipient": "nibi1xyz..."
+      "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
     },
     "sender": {
-      "address": "nibi1sender...",
-      "chain_uid": "nibiru"
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "chain_uid": "neuron"
     },
     "swap_path": {
       "path": [
         {
-          "route": ["nibi", "euclid"],
-          "dex": "euclid",
-          "amount_in": "1000000",
-          "amount_out": "950000",
-          "chain_uid": "nibiru"
+          "route": [
+            "euclid",
+            "bnb"
+          ],
+          "dex": "euclid"
         }
       ]
     }
-}'`
+  }'`
     },
     {
       id: 'cosmos-response',
@@ -75,59 +76,27 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
       content: `{
   "type": "cosmwasm",
   "sender": {
-    "chain_uid": "nibiru",
-    "address": "nibi1sender..."
+    "chain_uid": "neuron",
+    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
   },
-  "contract": "nibi1...",
+  "contract": "euclid1aagn260yt7xtvq0jdecxu265zqzkc6mhc4glql2q2nmdsqwzmyzs8lfhhx",
+  "chain_id": "neuron-1",
+  "rpc_url": "https://rpc.neuron.euclidprotocol.com",
+  "rest_url": "https://lcd.neuron.euclidprotocol.com",
   "msgs": [
     {
-      "contractAddress": "nibi1factory...",
+      "contractAddress": "0x3246d25b42f6b3deca5b40334775fa4d6e333010",
       "msg": {
-        "execute_swap_request": {
-          "amount_in": "1000000",
-          "asset_in": {
-            "token": "nibi",
-            "token_type": {
-              "native": {
-                "denom": "unibi"
-              }
-            }
-          },
-          "asset_out": "euclid",
-          "cross_chain_addresses": [
-            {
-              "user": {
-                "chain_uid": "osmosis",
-                "address": "osmo1abc..."
-              },
-              "limit": {
-                "less_than_or_equal": "950000"
-              }
-            }
-          ],
-          "min_amount_out": "950000",
-          "partner_fee": {
-            "partner_fee_bps": 10,
-            "recipient": "nibi1xyz..."
-          },
-          "swaps": [
-            {
-              "token_in": "nibi",
-              "token_out": "euclid"
-            }
-          ]
+        "send": {
+          "amount": "100000000000000000",
+          "contract": "euclid1aagn260yt7xtvq0jdecxu265zqzkc6mhc4glql2q2nmdsqwzmyzs8lfhhx",
+          "msg": "eyJzd2FwIjp7ImFzc2V0X2luIjp7In..."
         }
       },
-      "funds": [
-        {
-          "denom": "unibi",
-          "amount": "1000000"
-        }
-      ]
+      "funds": []
     }
   ],
-  "rpc_url": "https://rpc.testnet-2.nibiru.fi",
-  "rest_url": "https://lcd.testnet-2.nibiru.fi"
+  "meta": "{\"asset_in_type\":\"smart\",\"releases\":[{\"dex\":\"euclid\",\"release_address\":[{\"chain_uid\":\"0g\",\"address\":\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\",\"amount\":\"3563664058479\"}],\"token\":\"bnb\",\"amount\":\"\"}],\"swaps\":{\"path\":[{\"route\":[\"euclid\",\"bnb\"],\"dex\":\"euclid\",\"chain_uid\":\"\",\"amount_in\":\"100000000000000000\",\"amount_out\":\"34452337010109902848\"}]}}"
 }`
     }
   ]}
@@ -146,45 +115,48 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "amount_in": "100000000000000000",
-    "slippage": "0.01",
-    "asset_in": {
-      "token": "ron",
-      "token_type": {
-        "native": { "denom": "ron" }
+  "amount_in": "100000000000000000",
+  "asset_in": {
+    "token": "codewizard.eucl",
+    "token_type": {
+      "smart": {
+        "contract_address": "0x3246d25b42f6b3deca5b40334775fa4d6e333010"
       }
-    },
-    "minimum_receive": "900000",
-    "cross_chain_addresses": [
-      {
-        "user": {
-          "address": "0x72bbb...",
-          "chain_uid": "amoy"
-        },
-        "limit": {
-          "less_than_or_equal": "900000"
-        }
-      }
-    ],
-    "partnerFee": {
-      "partner_fee_bps": 10,
-      "recipient": "0x72bbb..."
-    },
-    "sender": {
-      "address": "0x72bbb...",
-      "chain_uid": "ronin"
-    },
-    "swap_path": {
-      "path": [
-        {
-          "route": ["ron", "euclid"],
-          "dex": "euclid",
-          "amount_in": "100000000000000000",
-          "amount_out": "900000",
-          "chain_uid": "vsl"
-        }
-      ]
     }
+  },
+  "slippage": "500",
+  "cross_chain_addresses": [
+    {
+      "user": {
+        "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+        "chain_uid": "0g"
+      },
+      "limit": {
+        "less_than_or_equal": "3563664058479"
+      }
+    }
+  ],
+  "partnerFee": {
+    "partner_fee_bps": 10,
+    "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
+  },
+  "sender": {
+    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+    "chain_uid": "bsc"
+  },
+  "swap_path": {
+    "path": [
+      {
+        "route": [
+          "bnb",
+          "euclid"
+        ],
+        "dex": "euclid",
+        "amount_in": "100000000000000000",
+        "amount_out": "635340"
+      }
+    ]
+  }
 }'`
     },
     {
@@ -192,21 +164,30 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
       label: 'Response',
       language: 'json',
       content: `
-      {
-  "chain_id": "2021",
-  "contract": "0x7f2cc9fe79961f628da671ac62d1f2896638edd5",
-  "meta": "{\"asset_in_type\":\"native\",\"releases\":[{\"dex\":\"euclid\",\"release_address\":[{\"chain_uid\":\"amoy\",\"address\":\"0x72bbb...\",\"amount\":\"900000\"}],\"token\":\"euclid\",\"amount\":\"\"}],\"swaps\":{\"path\":[{\"route\":[\"ron\",\"euclid\"],\"dex\":\"euclid\",\"chain_uid\":\"vsl\",\"amount_in\":\"100000000000000000\",\"amount_out\":\"3827226\"}]}}",
+     {
+  "chain_id": "97",
+  "contract": "0x62d8658a3d7c669943c95c781c220469e19beb47",
+  "meta": "{\"asset_in_type\":\"smart\",\"releases\":[{\"dex\":\"euclid\",\"release_address\":[{\"chain_uid\":\"0g\",\"address\":\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\",\"amount\":\"3563664058479\"}],\"token\":\"euclid\",\"amount\":\"\"}],\"swaps\":{\"path\":[{\"route\":[\"bnb\",\"euclid\"],\"dex\":\"euclid\",\"chain_uid\":\"\",\"amount_in\":\"100000000000000000\",\"amount_out\":\"635340\"}]}}",
   "msgs": [
     {
-      "chainId": "2021",
-      "to": "0x7f...",
-      "data": "0x6e31c749000...",
-      "value": "0x16345785d8a0000"
+      "chainId": "97",
+      "to": "0x3246d25b42f6b3deca5b40334775fa4d6e333010",
+      "data": "0x095ea7b30000000000000000000000006...",
+      "value": "0x0"
+    },
+    {
+      "chainId": "97",
+      "to": "0x62d8658a3d7c669943c95c781c220469e19beb47",
+      "data": "0x6e31c74900000000000000000000...",
+      "value": "0x0"
     }
   ],
-  "rest_url": "",
-  "rpc_url": "",
-  "sender": "0x72bbb...",
+  "rest_url": "https://bsc-testnet.drpc.org",
+  "rpc_url": "https://bsc-testnet.drpc.org",
+  "sender": {
+    "chain_uid": "bsc",
+    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+  },
   "type": "evm"
 }
       `
@@ -217,15 +198,45 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
 
 ### Parameters
 :::tip
-The dex field inside each swap_path step allows you to specify which decentralized exchange to use for that segment of the route. For example, setting`"dex": "euclid"` means the swap will use liquidity from Euclid’s unified liquidity layer. However, you can also route your swap through other supported DEXs by specifying their name, such as `"dex": "osmosis"` or `"dex": "astroport"`.
+The dex field inside each swap_path step specifies which decentralized exchange (DEX) to use for that segment of the route. For example, setting "dex": "euclid" means the swap will use liquidity from Euclid’s unified liquidity layer.
+
+You can also route your swap through other supported DEXs by specifying their names, such as "dex": "osmosis" or "dex": "astroport".
+
+These routes, including the exact sequence of tokens and DEXs to be used, are obtained by calling the Get [Routes endpoint](../Routes/Get%20Routes.md). The response will include one or more route options detailing the path and associated DEX for each hop. You should use the selected route in your actual swap call.
 :::
 
 | **Field**                 | **Type**                                                                                             | **Description**                                                                 |
 |---------------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| `amount_in`               | `string`                                                                                             | The amount of the input token to be swapped.                |
-| `asset_in`                | [`TokenWithDenom`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#tokenwithdenom)             | The token and type being sent in.                                              |
-| `minimum_receive`         | `string`                                                                                             | The minimum acceptable amount of output tokens for the swap to be considered a success.                              |
-| `cross_chain_addresses`   | [`CrossChainUserWithLimit`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuserwithlimit)`[]` | Optional set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. Defaults to the sender. Defaults to the sender.                                |
-| `partnerFee`              | `object`                                                                                             | Optional fee configuration (BPS + recipient address).                          |
-| `sender`                  | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)             | Address and chain initiating the swap. Defaults to sender.                                     |
-| `swap_path`               | `object`                                                                                             | Full routing path, including token hops and chain UID.                         |
+| `amount_in`               | `string`                                                                                             | The amount of the input token to be swapped.                                    |
+| `asset_in`                | [`TokenWithDenom`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#tokenwithdenom)             | The input token and its type (either `native` or `smart`).                      |
+| `slippage`                | `string`                                                                                             | Slippage tolerance in **basis points** (e.g., `"500"` for 5%).                  |
+| `minimum_receive`         | `string`                                                                                             | The minimum acceptable amount of output tokens for the swap to be considered successful. |
+| `cross_chain_addresses`   | [`CrossChainUserWithLimit`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuserwithlimit)`[]` | List of recipients for the output asset. Priority is top-down. Defaults to the sender if not provided. |
+| `partnerFee`              | [`PartnerFee`](#partnerfee)                                                                          | Optional partner fee configuration. Includes basis points and recipient.        |
+| `sender`                  | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)             | Address and chain initiating the swap.                                          |
+| `swap_path`               | [`SwapPath`](#swappath)                                                                              | Routing path with token hops and DEX info. Use values from the [Get Routes](../Routes/Get%20Routes.md) endpoint. |
+| `timeout`                 | `string`                                                                                             | *(Optional)* Timeout for the transaction in seconds. Default is `60`. Must be between `30` and `240`. |
+
+
+
+#### `SwapPath`
+
+| **Field** | **Type**       | **Description**                                                   |
+|-----------|----------------|-------------------------------------------------------------------|
+| `path`    | `object[]`     | An array of steps, where each step defines a DEX and token route to use. |
+
+#### Each path object contains:
+
+| **Field**     | **Type**     | **Description**                                                                 |
+|---------------|--------------|---------------------------------------------------------------------------------|
+| `route`       | `string[]`   | The sequence of tokens the swap will go through in this step. For example, `["usdc", "euclid", "eth"]` means `usdc → euclid → eth`. |
+| `dex`         | `string`     | The name of the DEX used for this step (e.g., `"euclid"`, `"osmosis"`).         |
+| `chain_uid`   | `string`     | *(Optional)* UID of the chain where this step is executed.                      |
+| `amount_in`   | `string`     | *(Optional)* Input amount for this step. Usually calculated automatically.      |
+| `amount_out`  | `string`     | *(Optional)* Estimated output amount for this step.                             |
+
+#### PartnerFee
+| **Field**           | **Type**   | **Description**                                                                 |
+|---------------------|------------|---------------------------------------------------------------------------------|
+| `partner_fee_bps`   | `number`   | Fee in basis points (e.g., `10` = 0.1%).                                        |
+| `recipient`         | `string`   | Address to receive the fee (typically on the same chain as `sender`).          |

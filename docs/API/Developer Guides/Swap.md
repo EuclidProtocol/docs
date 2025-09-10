@@ -10,14 +10,12 @@ The [swap](../REST/Transactions/Swap.md) parameters are the following:
 
 ```bash
 asset_in
-asset_out
 amount_in
-min_amount_out
+slippage
 timeout
 swaps
 cross_chain_addresses
 partner_fee
-meta
 ```
 We will go through all the steps needed to get each of the parameters.
 
@@ -296,21 +294,24 @@ The response will return the expected `amount_out` for the swap:
   }
 }
 ```
-### 7. Calculate `min_amount_out` based on slippage tolerance
-Using the `amount_out` from the result of the last step, we can set the `min_amount_out` for the actual swap, depending on the slippage amount to be tolerated. The formula is the following:  
+### 7. Set `slippage` Value
 
-$$
-\text{min\_amount\_out} = \text{simulated\_amount\_out} \times (1 - \text{\%slippage})
-$$
+The `slippage` field specifies the **maximum allowed slippage** for the swap, expressed in **basis points (bps)**:
 
- **Example**
+- `100` = 1%
+- `500` = 5%
+- `1000` = 10%
 
- Assuming simulate swap returned an expected 1000 tokens and you want the slippage to be a maximum of 3%, then `min_amount_out` = 1000 * (1-0.03) = 970. 
- 
- :::note
-- Setting `min_amount_out` as 1 means that the swap will go through no matter the slippage amount.
-- The above defines the maximum amount of slippage that is accepted and not the actual amount that will be used. 
-:::
+This value is used to protect the swap from executing at a worse rate than expected.
+
+**Example**
+
+To allow up to **5% slippage**, set:
+
+```json
+"slippage": "500"
+```
+
 ### 8. Generate swap transaction
 
 :::note
@@ -335,7 +336,7 @@ We now have everything needed to generate the swap transaction message:
   asset_in: data.assetIn, // the type of asset in
   asset_out: data.assetOut, // the type of asset out
   cross_chain_addresses: data.crossChainAddresses, // the chains and addresses to release asset out
-  min_amount_out: data.minAmountOut, // the minimum asset out accepted. Used to specify slippage.
+  slippage: data.slippage, // Used to specify max slippage tolerated.
   sender: {
     address: wallet!.bech32Address,
     chain_uid: chain!.chain_uid,
@@ -352,7 +353,7 @@ We now have everything needed to generate the swap transaction message:
   asset_in: data.assetIn,
   asset_out: data.assetOut,
   cross_chain_addresses: data.crossChainAddresses,
-  min_amount_out: data.minAmountOut,
+  slippage: data.slippage,
   sender: {
     address: walletAddress, // EVM address
     chain_uid: chainUid

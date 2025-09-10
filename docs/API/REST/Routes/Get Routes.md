@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Get Routes 
 
-Gets all swap routes available when swapping the specified asset_in to receive the specified asset_out.
+Gets all swap routes available when swapping the specified `token_in` to receive the specified `token_out`.
 
 ### Request URL
 
@@ -18,30 +18,66 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "amount_in": "100",
-  "token_in": "nibi",
-  "token_out": "stars"
+    "external": true,
+    "token_in": "euclid",
+    "token_out": "0g",
+    "amount_in": "1000000",
+    "chain_uids": []
 }'
+
+
 ```
-| Field       | Type   | Description                        |
-|-------------|--------|------------------------------------|
-| `amount_in`  | String | The amount of tokens being swapped in. |
-| `asset_in`  | String | The identifier of the asset being swapped in. |
-| `asset_out` | String | The identifier of the desired asset out.|
+| Parameter        | Type     | Required | Description                                                                 |
+|--------------|----------|----------|-----------------------------------------------------------------------------|
+| `amount_in`  | String   | Yes      | The amount of tokens being swapped in.                                      |
+| `token_in`   | String   | Yes      | The identifier of the token being swapped in.                               |
+| `token_out`  | String   | Yes      | The identifier of the token desired to receive.                             |
+| `external`   | Boolean  | No       | If true, includes routes that may involve external chains.                  |
+| `chain_uids` | Array    | No       | Optional list of specific chain UIDs to restrict routing paths.             |
 
 ### Example Response
 
 ```json
 {
-   "paths":[
-      {
-         "route":[
-            "nibi",
-            "fundenom",
-            "stars"
-         ],
-         "amount_out":"1"
-      }
-   ]
+  "paths": [
+    {
+      "path": [
+        {
+          "route": [
+            "euclid",
+            "0g"
+          ],
+          "dex": "euclid",
+          "amount_in": "1000000",
+          "amount_out": "47039472846823928",
+          "chain_uid": "vsl",
+          "amount_out_for_hops": [
+            "0g: 47039472846823928"
+          ]
+        }
+      ],
+      "total_price_impact": "0.76"
+    },
+    {
+      "path": [
+        {
+          "route": [
+            "euclid",
+            "gimo",
+            "0g"
+          ],
+          "dex": "euclid",
+          "amount_in": "1000000",
+          "amount_out": "47196320447745512",
+          "chain_uid": "vsl",
+          "amount_out_for_hops": [
+            "gimo: 992618817702689792",
+            "0g: 47196320447745512"
+          ]
+        }
+      ],
+      "total_price_impact": "0.43"
+    }
+  ]
 }
 ```
