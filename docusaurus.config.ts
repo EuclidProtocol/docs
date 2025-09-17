@@ -173,6 +173,10 @@ const config: Config = {
               label: "GitHub",
               href: "https://github.com/EuclidProtocol/docs",
             },
+            {
+              label: "Terms of Service",
+              to: "/docs/terms", 
+            },
           ],
         },
       ],
