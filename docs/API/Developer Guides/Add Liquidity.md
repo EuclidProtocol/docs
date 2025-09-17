@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+title: "Add Liquidity to a Pool"
 ---
 import Tabs from '@site/src/components/Tabs';
 

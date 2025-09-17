@@ -191,8 +191,11 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Developer Guides ",
       items: [
-        "API/Developer Guides/Introduction",
-        "API/Developer Guides/Swap",
+        "API/Developer Guides/Initial Setup",
+        "API/Developer Guides/First Call",
+        "API/Developer Guides/Perform A Swap",
+        "API/Developer Guides/Broadcast Trade Onchain",
+        "API/Developer Guides/Go Live",
         "API/Developer Guides/Add Liquidity",
         "API/Developer Guides/Remove Liquidity",
         "API/Developer Guides/Withdraw Voucher",
