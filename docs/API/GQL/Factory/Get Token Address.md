@@ -30,8 +30,10 @@ curl --request POST \
 
 ### Arguments
 
-- **chainUid** (String!): The unique identifier of the chain to get the address from.
-- **vlp_address** (String!): The address of the VLP whose LP token address we are fetching.
+| **Argument**   | **Type**   | **Description**                                                      |
+|----------------|------------|----------------------------------------------------------------------|
+| `chainUid`     | `String!`  | The unique identifier of the chain to get the address from.         |
+| `vlpAddress`   | `String!`  | The address of the VLP whose LP token address we are fetching.      |
 
 ### Return Fields
 

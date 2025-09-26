@@ -3,14 +3,16 @@ sidebar_position: 1
 ---
 
 # All Chains
-Queries information for each chains integrated with Euclid.
+
+Queries information for each chain integrated with Euclid.
 
 ```graphql
-query Chains($showAllChains: Boolean) {
+query Chains($showAllChains: Boolean, $type: String) {
   chains {
-    all_chains(show_all_chains: $showAllChains) {
+    all_chains(show_all_chains: $showAllChains, type: $type) {
       chain_id
       factory_address
+      token_factory_address
       display_name
       explorer_url
       chain_uid
@@ -26,25 +28,36 @@ query Chains($showAllChains: Boolean) {
 
 ```bash
 curl --request POST \
-    --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Chains($showAllChains: Boolean) {\n  chains {\n    all_chains(show_all_chains: $showAllChains) {\n      chain_id\n      factory_address\n      display_name\n      explorer_url\n      chain_uid\n      logo\n    }\n  }\n}","variables":{"showAllChains":true}}'
+  --header 'content-type: application/json' \
+  --url 'https://testnet.api.euclidprotocol.com/graphql' \
+  --data '{
+    "query": "query Chains($showAllChains: Boolean, $type: String) {\n  chains {\n    all_chains(show_all_chains: $showAllChains, type: $type) {\n      chain_id\n      factory_address\n      token_factory_address\n      display_name\n      explorer_url\n      chain_uid\n      logo\n      type\n    }\n  }\n}",
+    "variables": {
+      "showAllChains": true,
+      "type": "evm"
+    }
+}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDOAFACS1kQDuAggDZfnV3oiAIQgQuCCkgCURYAB0kRIlEo1ashUqUUeAfRX8GLdrp1d9qgUWatOPPmpnzFWpQZq6qYTa6IAzCigUCEJTMDA8BFpaH1cwKloABy4KAl0kCkRYrQQAD2SQ-F0YPC5st0tir3KiLggAcwhsgF8fVqRmkAAaEAA3CjwqCgAjcVoMEGclORBjO15LGIwiFDxcIgVO5qA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BlABYCGAlkgM4AUAJMzRAO7lkBhek2boiAIQgQyCOkgA0RdigIAHBGIDKKPEwDmASiLAAOkiJFajFsbMWLdCtWEtWXXpUdUrIsZ258FELWzIoq6n7hCEam5vYWPkiUDGB28UQAZnRQKBCEnmBgeAjMzGnxYAzMqmR0BJRIdIjl9ggAHjV5%2BJQweGQtCS49KQNEZBB6EKNR0xAA1siUWTl59XSFxaUtAL5pu0jbINtAA)
 
 ### Arguments
 
-- **showAllChains** (Boolean): If true, includes chains that will be integrated with Euclid soon. Otherwise, returns only the chains currently integrated.
+| **Name**         | **Type**  | **Description**                                                                 |
+|------------------|-----------|---------------------------------------------------------------------------------|
+| `showAllChains`  | Boolean   | If true, includes chains that are not yet integrated (but planned).             |
+| `type`           | String    | Optional. Filters chains by type (e.g., `EVM`, `Cosmwasm`, etc).                |
+
 
 ### Return Fields
 
-| **Field**          | **Type** | **Description**                                      |
-|--------------------|----------|------------------------------------------------------|
-| `factory_address`  | `String` | The contract address of the factory contract on that chain.                 |
-| `chain_uid`        | `String` | The unique identifier (UID) of the chain.             |
-| `display_name`     | `String` | The display name of the chain.                       |
-| `logo`             | `String` | The URL or reference to the chain's logo image.      |
-| `chain_id`         | `String` | The chain Id for the chain config. |
-| `explorer_url`     | `String` | The URL to the blockchain explorer for this chain.   |
-| `type`     | `String` | The ecosystem the chain belongs to such as "EVM" or "Cosmwasm".   |
+| **Field**               | **Type**   | **Description**                                                         |
+|-------------------------|------------|-------------------------------------------------------------------------|
+| `chain_id`              | `String`   | The chain ID used in the protocol.                                     |
+| `chain_uid`             | `String`   | The unique identifier (UID) of the chain.                              |
+| `display_name`          | `String`   | A user-friendly name for the chain.                                    |
+| `factory_address`       | `String`   | The contract address of the main factory on that chain.                |
+| `token_factory_address` | `String`   | *(New)* The contract address of the token factory on that chain.       |
+| `explorer_url`          | `String`   | A URL to the block explorer for this chain.                            |
+| `logo`                  | `String`   | The logo URL or path used in the UI.                                   |
+| `type`                  | `String`   | The ecosystem the chain belongs to (e.g., `"EVM"`, `"Cosmwasm"`).      |

@@ -31,8 +31,10 @@ curl --request POST \
 
 ### Arguments
 
-- **page** (Int!): The page number to start from. Used for pagination.
-- **limit** (Int!): The number of items per page.
+| **Argument** | **Type** | **Description**                            |
+|--------------|----------|--------------------------------------------|
+| `page`       | `Int!`   | The page number to start from (pagination). |
+| `limit`      | `Int!`   | The number of items to return per page.     |
 
 ### Return Fields
 

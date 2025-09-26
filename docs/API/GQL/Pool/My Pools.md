@@ -36,9 +36,9 @@ curl --request POST \
 
 [Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACQwDO%2BAgmGHgvfekQMop4BLJAHMAhABoiNKAAsAhkICqAsNz6CRASiLAAOkiJEADuQo79hw3AIB9E5XpUG%2BG3NbtO3Oozws2HeklZBSQbGBUvYKUVbT0DS0MZBAFhGRQLBKIANwojDITnPHN4zKIo0PCwfMy3f05qwwBfBuMFIrjSwxQIAGtkGwBGFq7e-oAmFuaSoimm-UaQcRAsuUE5ACMKDgwQDqJdEHLlKox9kHoUVeEALwQD8QyDwr8PegPuA4vV%2BgGAFhkoAAPChIADuFCwKCwAHYAKwoS6AgBmADZob8sj0UXA5Ej6EZhAAOQEAKwADDJoUiSQd5iBGkA)
 
-### Arguments
-
-- **userAddress** (String!): The address to check the pools for.
+| **Argument**   | **Type**   | **Description**                      |
+|----------------|------------|--------------------------------------|
+| `userAddress`  | `String!`  | The address to check the pools for.  |
 
 
 ### Return Fields

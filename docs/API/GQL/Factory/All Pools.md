@@ -38,9 +38,11 @@ curl --request POST \
 
 ### Arguments
 
-- **chainUid** (String!): The unique identifier of the chain.
-- **limit** (Int): Optional limit to the number of results to return.
-- **offset** (Int): Optional number of pools to skip before starting to return the result set. Used for pagination.
+| **Argument** | **Type**   | **Description**                                                                 |
+|--------------|------------|---------------------------------------------------------------------------------|
+| `chainUid`   | `String!`  | The unique identifier of the chain.                                            |
+| `limit`      | `Int`      | Optional limit to the number of results to return.                             |
+| `offset`     | `Int`      | Optional number of pools to skip before starting to return the result set.     |
 
 ### Return Fields
 

@@ -17,98 +17,101 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
 <Tabs
   tabs={[
     {
-      id: 'cosmos-create-request',
+      id: 'cosmos-request',
       label: 'Request',
       language: 'bash',
-      content: `curl --request POST \\
-  --url https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create \\
-  --header 'content-type: application/json' \\
-  --data '{
-  "sender": {
-    "address": "cosmos1sender...",
-    "chain_uid": "osmosis"
-  },
-  "pair": {
-    "token_1": {
-      "token": "atom",
-      "token_type": {
-        "native": {
-          "denom": "uatom"
-        }
-      },
-      "amount": "5000000"
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "sender": {
+      "chain_uid": "nibiru",
+      "address": "nibi1l0wgje0y43007xpdqkuxaxluffuxj7fy7eccns"
     },
-    "token_2": {
-      "token": "osmo",
-      "token_type": {
-        "smart": {
-          "contract_address": "osmo1cw20token..."
-        }
+    "pair": {
+      "token_1": {
+        "token": "usdt",
+        "token_type": {
+          "native": {
+            "denom": "uusdt"
+          }
+        },
+        "amount": "1000000"
       },
-      "amount": "5000000"
-    }
-  },
-  "slippage_tolerance_bps": 30,
-  "lp_token_name": "ATOM.OSMO",
-  "lp_token_decimal": 6,
-  "lp_token_symbol": "ATOMOSMO",
-  "lp_token_marketing": {
-    "project": "Euclid Protocol",
-    "description": "Liquidity pool token for ATOM-OSMO pair"
-  },
-  "pool_config": {
-    "pool_type": "stable",
-    "amp_factor": null
-  },
-  "timeout": "3600"
+      "token_2": {
+        "token": "euclid",
+        "token_type": {
+          "smart": {
+            "contract_address": "nibi17zymknww0ynlgtad22dzgy6kp6qzeg28gmvm5aq32avf9248rvasxtgxuv"
+          }
+        },
+        "amount": "500000"
+      }
+    },
+    "lp_token_name": "USDT.EUCLID",
+    "lp_token_decimal": 6,
+    "lp_token_symbol": "USDTEUCLID",
+    "lp_token_marketing": {
+      "project": "Euclid Protocol",
+      "description": "Liquidity pool token for USDT-EUCLID on Nibiru",
+      "marketing": "contact@euclidprotocol.com",
+      "logo": {
+        "url": "https://example.com/logo.png"
+      }
+    },
+    "timeout": "3600",
+    "slippage_tolerance_bps": 100
 }'`
     },
     {
-      id: 'cosmos-create-response',
+      id: 'cosmos-response',
       label: 'Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
   "sender": {
-    "chain_uid": "osmosis",
-    "address": "cosmos1sender..."
+    "chain_uid": "nibiru",
+    "address": "nibi1l0wgje0y43007xpdqkuxaxluffuxj7fy7eccns"
   },
-  "contract": "osmo1r8ywf5evunej823x5lagt9ln5leqdgdfplqvkas54cgtkzlvdqgsl36575",
-  "chain_id": "osmo-test-5",
-  "rpc_url": "https://rpc.testnet.osmosis.zone",
-  "rest_url": "https://lcd.testnet.osmosis.zone",
+  "contract": "nibi1ljsgwzz4zwzuk96f6s20rfemddn6m5lrkmsdyms8at7j5jvk67rqqjl6lq",
+  "chain_id": "nibiru-testnet-2",
+  "rpc_url": "https://rpc.testnet-2.nibiru.fi",
+  "rest_url": "https://lcd.testnet-2.nibiru.fi",
   "msgs": [
     {
-      "contractAddress": "osmo1r8ywf5evunej823x5lagt9ln5leqdgdfplqvkas54cgtkzlvdqgsl36575",
+      "contractAddress": "nibi1ljsgwzz4zwzuk96f6s20rfemddn6m5lrkmsdyms8at7j5jvk67rqqjl6lq",
       "msg": {
         "request_pool_creation": {
           "lp_token_decimal": 6,
           "lp_token_marketing": {
             "project": "Euclid Protocol",
-            "description": "Liquidity pool token for ATOM-OSMO pair",
-            "marketing": "",
-            "logo": {}
+            "description": "Liquidity pool token for USDT-EUCLID on Nibiru",
+            "marketing": "contact@euclidprotocol.com",
+            "logo": {
+              "url": "https://example.com/logo.png"
+            }
           },
-          "lp_token_name": "ATOM.OSMO",
-          "lp_token_symbol": "ATOMOSMO",
+          "lp_token_name": "USDT.EUCLID",
+          "lp_token_symbol": "USDTEUCLID",
           "pair": {
             "token_1": {
-              "token": "atom",
-              "token_type": {
-                "native": {
-                  "denom": "uatom"
-                }
-              },
-              "amount": "5000000"
-            },
-            "token_2": {
-              "token": "osmo",
+              "token": "euclid",
               "token_type": {
                 "smart": {
-                  "contract_address": "osmo1cw20token..."
+                  "contract_address": "nibi17zymknww0ynlgtad22dzgy6kp6qzeg28gmvm5aq32avf9248rvasxtgxuv"
                 }
               },
-              "amount": "5000000"
+              "amount": "500000"
+            },
+            "token_2": {
+              "token": "usdt",
+              "token_type": {
+                "native": {
+                  "denom": "uusdt"
+                }
+              },
+              "amount": "1000000"
             }
           },
           "timeout": "3600"
@@ -177,16 +180,16 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
   "msgs": [
     {
       "chainId": "84532",
-      "data": "0x095ea7b3000000000000000000000000c3b9297130e49e0e514884cca150435a1324865b0000000000000000000000000000000000000000000000004563918244f40000",
+      "data": "0x095ea7b300...",
       "gasLimit": "0x186A0",
       "to": "0x3c4e17b9056272ce1b49f6900d8cfd6171a1869d",
       "value": "0x0"
     },
     {
       "chainId": "84532",
-      "data": "0x327bc3f90000...",
+      "data": "0x327bc3f9000...",
       "gasLimit": "0x493E0",
-      "to": "0xc3b9297130e49e0e514884cca150435a1324865b",
+      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
       "value": "0x4563918244f40000"
     }
   ],

@@ -30,9 +30,11 @@ curl --request POST \
 
 ### Arguments
 
-- **chainUid** (String!): The unique identifier of the chain that hosts the LP tokens.
-- **contract** (String): The contract address of the VLP. The pair argument should be set if **contract** is not specified.
-- **pair** (PairInput): The pair of tokens belonging to the VLP. The contract argument should be set if **pair** is not specified.
+| **Argument**  | **Type**     | **Description**                                                                 |
+|---------------|--------------|---------------------------------------------------------------------------------|
+| `chainUid`    | `String!`    | The unique identifier of the chain that hosts the LP tokens.                   |
+| `contract`    | `String`     | The contract address of the VLP. Required if `pair` is not provided.           |
+| `pair`        | `PairInput`  | The token pair belonging to the VLP. Required if `contract` is not provided.   |
 
 | **Field**                  | **Type**   | **Description**                                     |
 |------------------------|--------|---------------------------------------------------------|

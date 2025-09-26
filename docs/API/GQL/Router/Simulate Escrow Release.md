@@ -35,11 +35,14 @@ curl --request POST \
 
 [Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMoCWcMANgIYoID6eCVCNAzowu1HhAO4AKACQoIAa2TpSKPGSQBzAIQAaIsJpwIMVNICSqNcN4R27AMIALGvICCYMMzPdpAbXN8zVm0gCqnPAB1MhRLABkKEIMABxgUAF0ASiJgAB0kIiI%2BOPwU9MzM9gpqOkZmVg4uHj4hMUkkaVEJZDVNbV11Np0UNRMzBihreQYaBydOdka%2BiyGke0duCeS0jILM5jgfeQURrW78tayWNk5d9pR2PNXDoi7UA5vpgdmGGACrm7W33JXPw8GfK8yGAHn9bmNFqCbgBfKGHKiRFBwzKw64FVFrDFEVHQkAqEAANxochoACNWOwMCBfkRUiA6sg6dI6QgYFAESC8Qc6XckRgiABGAAMIpU3JA028dghznYTKIrlBNLWdIRcBC8oAHKK4XTvnh5crDjyZXL%2BXSkGRSWQBQAWSxQAAeVCQ-CoWBQWAA7ABWFAoGiOgBmADYvbaCeIQ5sg%2BxogpNY6AMziAghi50sVolUSl4wYHyi1Wsh4GB0uFYlEHeL5dK46FAA)
 
+
 ### Arguments
 
-- **token** (String!): The token Id of the token to be released.
-- **amount** (Int): The amount of tokens to be released from the escrows.
-- **cross_chain_addresses** ([CrossChainUserWithLimit](../../../Euclid%20Smart%20Contracts/CosmWasm/overview.md#crosschainuserwithlimit)): The destination addresses and amount (for each address) for the tokens released.
+| **Name**                  | **Type**                                               | **Description**                                                                 |
+|---------------------------|--------------------------------------------------------|---------------------------------------------------------------------------------|
+| `token`                   | String!                                                | The token ID of the token to be released.                                       |
+| `amount`                  | Int                                                    | The total amount of tokens to release from escrow.                             |
+| `cross_chain_addresses`   | [CrossChainUserWithLimitInput](../../../Euclid%20Smart%20Contracts/CosmWasm/overview.md#crosschainuserwithlimit)                         | List of destination users and optional limits per user.                        |
 
 
 ### Return Fields

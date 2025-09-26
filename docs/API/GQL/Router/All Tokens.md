@@ -27,10 +27,12 @@ curl --request POST \
 
 ### Arguments
 
-- **max** (Token Id): The upper limit token Id that should be returned. Does not include the specified max value.
-- **min** (Token Id): The lower limit token Id to start from. Includes the specified min value.
-- **skip** (Int): The number of results to skip in the response.
-- **limit** (Int): The maximum number of results to return.
+| **Name** | **Type** | **Description**                                                                 |
+|----------|----------|---------------------------------------------------------------------------------|
+| `max`    | String   | The upper limit token ID to return (exclusive).                                |
+| `min`    | String   | The lower limit token ID to start from (inclusive).                            |
+| `skip`   | Int      | The number of results to skip in the response.                                 |
+| `limit`  | Int      | The maximum number of results to return.                                       |
 
 ### Return Fields
 

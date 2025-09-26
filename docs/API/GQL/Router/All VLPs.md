@@ -32,10 +32,12 @@ curl --request POST \
 
 ### Arguments
 
-- **max** (String, String): The upper limit token pair that should be returned. Does not include the specified max value.
-- **min** (String, String): The lower limit token pair to start from. Includes the specified min value.
-- **skip** (Int): The number of results to skip in the response.
-- **limit** (Int): The maximum number of results to return.
+| **Name** | **Type**     | **Description**                                                                 |
+|----------|--------------|---------------------------------------------------------------------------------|
+| `max`    | [String]     | The upper limit token pair to return (exclusive).                              |
+| `min`    | [String]     | The lower limit token pair to start from (inclusive).                          |
+| `skip`   | Int          | The number of results to skip in the response.                                 |
+| `limit`  | Int          | The maximum number of results to return.                                       |
 
 ### Return Fields
 

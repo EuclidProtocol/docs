@@ -31,8 +31,11 @@ curl --request POST \
 [Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGpQQCWSAFACQwDO%2B6RAwnhAw6wBYCGVAKpM8ASSQAHGCgCURYAB0kRIgDdyVeUpUrG%2BAPoAjPgBs%2BSKAmp68LeiLmLlOlcbMWEDLc5cq%2BcCBhUbV8VFAgAa2R9CjAQlwBfeKIk51TUkAAaEFU%2BPAo%2BQxNPDBAnFQUQG0qWcp1KvjAwPE8GGqJKpApDCgBGADpByszkyqh%2BKn0YWPbO7oo8GEqQ9JAEoA)
 
 
-- **user** (CrossChainUserInput): The input specifying the user for the balance query by specifying the user address and chain UID.
+### Arguments
 
+| **Argument** | **Type**                | **Description**                                                                 |
+|--------------|-------------------------|---------------------------------------------------------------------------------|
+| `user`       | `CrossChainUserInput`   | The input specifying the user for the balance query by providing the address and chain UID. |
 ### Return Fields
 
 | **Field**                  | **Type**   | **Description**                                             |

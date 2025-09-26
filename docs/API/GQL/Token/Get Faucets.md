@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# Get Faucets
+# Get All Faucets
 
 Queries the link to the faucet for testnet for the chains integrated with euclid.
 ```graphql

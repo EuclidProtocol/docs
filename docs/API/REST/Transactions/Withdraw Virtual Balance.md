@@ -53,13 +53,13 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
     "chain_uid": "injective",
     "address": "inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu"
   },
-  "contract": "inj1sdmz25644p2nn2zse5ntrkw7cf6g7th0amtdpu",
+  "contract": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
   "chain_id": "injective-888",
   "rpc_url": "https://injective-testnet-rpc.publicnode.com",
   "rest_url": "https://testnet.sentry.lcd.injective.network",
   "msgs": [
     {
-      "contractAddress": "inj1sdmz25644p2nn2zse5ntrkw7cf6g7th0amtdpu",
+      "contractAddress": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
       "msg": {
         "withdraw_virtual_balance": {
           "amount": "1000000",
@@ -128,7 +128,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
       "chainId": "84532",
       "data": "0x37946af7000000...",
       "gasLimit": "0x493E0",
-      "to": "0xc3b9297130e49e0e514884cca150435a1324865b",
+      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
       "value": "0x0"
     }
   ],
@@ -145,4 +145,4 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 | `token`                   | `string`                                                                                            | The name of the virtual token to withdraw (e.g. `"euclid"`).                   |
 | `amount`                  | `string`                                                                                            | The amount to withdraw (in smallest unit).                                     |
 | `sender`                  | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)            | Address and chain initiating the withdrawal.                                   |
-| `cross_chain_addresses`   | [`CrossChainUserWithLimit`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuserwithlimit)`[]` |  A set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on.                               |
+| `cross_chain_addresses`   | [`CrossChainUserWithLimit`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuserwithlimit)`[]` |  Optional set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on.  Defaults to sender if not specified.                              |

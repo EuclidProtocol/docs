@@ -26,11 +26,11 @@ curl --request POST \
 ```
 [Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIDuAFACRQSp4CGUK6RAyingJZIDmAhABoiNABYMeAVS5hWHbnyEiGYMHgQBnDXM48BASiLAAOkiJEolWvSYsR1zreFRxPAPowZrMRKTSwhiZm5kQARgwANgxIUAgUKmqa2sqq6lqBpiEh4VExCJkhAL4FxUiFIIIgAG4M3AyhEZoYIEHmxiAuvv7trO0aKLW8DABe%2BRUF7Q6MzD1EfQN4GgCMAKwAzPBYAB4ADJFbAFYADlAA1lB4YKcROwBswysEGgBmKLdkK88HGo9goihgGAwABMBwYpwALM9hjAUABODRbYFkDQwHbtQQTEAJNIaWbzWrLCGiKBbCJIMgRLAoLAAdhWKAGW2et1pEKqp1ucAYzw0R14AA5DjtRLSvhjTOVCkA)
 
-### Arguments
-
-- **chainUid** (String!): The unique Id for the chain that the CW20 is deployed on. 
-- **contract** (String!): The contract address of the CW20 contract.
-- **address**  (String!): The user address to query the balance for.
+| **Argument**  | **Type**     | **Description**                                             |
+|---------------|--------------|-------------------------------------------------------------|
+| `chainUid`    | `String!`    | The unique ID for the chain that the CW20 is deployed on.   |
+| `contract`    | `String!`    | The contract address of the CW20 contract.                  |
+| `address`     | `String!`    | The user address to query the balance for.                  |
 
 
 ### Return Fields

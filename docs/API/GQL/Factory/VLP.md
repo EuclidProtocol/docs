@@ -28,8 +28,10 @@ curl --request POST \
 
 ### Arguments
 
-- **chainUid** (String!): The unique identifier of the chain.
-- **pair** (PairInput): The input for specifying the token pair by specifying token_1 and token_2.
+| **Argument** | **Type**      | **Description**                                                        |
+|--------------|---------------|------------------------------------------------------------------------|
+| `chainUid`   | `String!`     | The unique identifier of the chain.                                   |
+| `pair`       | `PairInput`   | The token pair to query, including `token_1` and `token_2` values.     |
 
 ### Return Fields
 
