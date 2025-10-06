@@ -196,6 +196,8 @@ const sidebars: SidebarsConfig = {
         "API/Developer Guides/Perform A Swap",
         "API/Developer Guides/Broadcast Trade Onchain",
         "API/Developer Guides/Go Live",
+        "API/Developer Guides/Fetch Assets",
+        "API/Developer Guides/Fetch Chains",
         "API/Developer Guides/Add Liquidity",
         "API/Developer Guides/Remove Liquidity",
         "API/Developer Guides/Withdraw Voucher",

@@ -168,7 +168,7 @@ Use this approach when depositing to a recipient identified by a standard **wall
 | `amount_in`     | `string`                                                                                     | Amount of the token to be deposited (in raw base units, e.g., wei or uatom).                |
 | `asset_in`      | [`TokenWithDenom`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#tokenwithdenom)     | Token being deposited along with its type (native or smart).                                |
 | `sender`        | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)     | Address and chain initiating the deposit.                                                   |
-| `recipient`     | [`CrossChainUser`]((../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser) )     | Destination address and chain for the deposited asset.                                      |
+| `recipient`     | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser)   | Destination address and chain for the deposited asset.                                      |
 
 
 

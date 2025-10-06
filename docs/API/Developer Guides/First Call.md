@@ -255,9 +255,3 @@ print(response.json())
 `
   }
 ]} />
-
-## Next Steps
-
-- [Send a Trade ](#)
-- [Broadcast On-Chain ](#)
-- [Track a Transaction ](#)
