@@ -83,7 +83,7 @@ curl --request POST \
 |---------------------|------------------|--------------------------------------------------------|
 | `lp_fee_bps`        | `Int`            | Fee for liquidity providers (in basis points).        |
 | `euclid_fee_bps`    | `Int`            | Fee for Euclid treasury (in basis points).            |
-| `recipient`         | `CrossChainUser` | The fee recipient's cross-chain details.              |
+| `recipient`         | [`CrossChainUser`](../../common%20types.md#crosschainuser) | The fee recipient's cross-chain details.              |
 
 
 ### Pair

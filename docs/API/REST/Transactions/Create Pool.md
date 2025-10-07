@@ -204,7 +204,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
 
 | **Field**                 | **Type**                                                       | **Description**                                                                 |
 |---------------------------|----------------------------------------------------------------|---------------------------------------------------------------------------------|
-| `sender`                  | [`CrossChainUser`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#crosschainuser) | Address and chain initiating the transaction. Defaults to sender.              |
+| `sender`                  | [`CrossChainUser`](../../common%20types.md#crosschainuser) | Address and chain initiating the transaction. Defaults to sender.              |
 | `pair`                    | [`PairWithDenomAndAmount`](../../../Euclid%20Smart%20Contracts/CosmWasm/overview#pairwithdenomandamount) | Contains both tokens with types and amounts.                                   |
 | `slippage_tolerance_bps` | `u64`                                                          | Slippage tolerance in basis points (e.g., 30 = 0.3%).                          |
 | `lp_token_name`           | `string`                                                       | Name of the liquidity pool token.                                              |

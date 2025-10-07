@@ -16,6 +16,8 @@ query Chain($chainUid: String!) {
         factory_chain_id
         factory
         chain_type {
+          # Note: `chain_type` is only applicable to Cosmos chains.
+          # For EVM chains, this field will return null.
           ibc {
             from_hub_channel
             from_factory_channel
@@ -27,6 +29,10 @@ query Chain($chainUid: String!) {
 }
 
 ```
+
+:::note
+
+:::
 ### Example
 
 ```bash
@@ -59,9 +65,9 @@ curl --request POST \
 |------------------------|--------|---------------------------------------------------------|
 | `factory_chain_id`      | `String` | The chain Id of the config used by the factory.                          |
 | `factory`               | `String` | The contract address of the factory.                   |
-| `chain_type`            | [`ChainType`](#chain-type) | IBC information used by the chain.         |
+| `chain_type`            | [`ChainType`](#chain-type-cosmos-chains-only) | IBC information used by the chain (Cosmos Chains Only).         |
 
-### Chain Type
+### Chain Type (Cosmos Chains Only)
 
 | **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
