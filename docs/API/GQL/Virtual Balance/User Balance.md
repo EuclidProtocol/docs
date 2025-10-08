@@ -25,10 +25,10 @@ query Vcoin($user: CrossChainUserInput) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Vcoin($user: CrossChainUserInput) {\n  vcoin {\n    user_balance(user: $user) {\n      balances {\n        amount\n        token_id\n      }\n    }\n  }\n}","variables":{"user":{"address":"nibi1...","chain_uid":"nibiru"}}}'
+    --data '{"query":"query Vcoin($user: CrossChainUserInput) {\n  vcoin {\n    user_balance(user: $user) {\n      balances {\n        amount\n        token_id\n      }\n    }\n  }\n}","variables":{"user":{"address":"0x887e4aac216674d2c432798f851c1ea5d505b2e1","chain_uid":"ronin"}}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGpQQCWSAFACQwDO%2B6RAwnhAw6wBYCGVAKpM8ASSQAHGCgCURYAB0kRIgDdyVeUpUrG%2BAPoAjPgBs%2BSKAmp68LeiLmLlOlcbMWEDLc5cq%2BcCBhUbV8VFAgAa2R9CjAQlwBfeKIk51TUkAAaEFU%2BPAo%2BQxNPDBAnFQUQG0qWcp1KvjAwPE8GGqJKpApDCgBGADpByszkyqh%2BKn0YWPbO7oo8GEqQ9JAEoA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGpQQCWSAFACQwDO%2B6RAwnhAw6wBYCGVAKpM8ASSQAHGCgCURYAB0kRIgDdyVeUpUrG%2BAPoAjPgBs%2BSKAmp68LeiLmLlOlcbMWEDLc5cq%2BcCBhUbV8VFAgAa2R9CjAQlwBfeKIk51SEkAAaEFU%2BPAo%2BQxNPDBAnFQUQG0qWcp1KvjAwPE8GGqJKgAYADwAOXoB2BAAWPj4oACYARgA2GYHhsAmoYYBmCYGATl6AM16AVimoKYQ%2BfbB9zv3DCYQpyszkyqh%2BKn0YWPbKjiQqSpD0iAEkA)
 
 
 ### Arguments

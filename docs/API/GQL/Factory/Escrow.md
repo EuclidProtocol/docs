@@ -36,10 +36,10 @@ query Escrow($chainUid: String!, $tokenId: String) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Escrow($chainUid: String!, $tokenId: String) {\n  factory(chain_uid: $chainUid) {\n    escrow(token_id: $tokenId) {\n      escrow_address\n      denoms {\n        ... on NativeTokenType {\n          native {\n            denom\n          }\n        }\n        ... on SmartTokenType {\n          smart {\n            contract_address\n          }\n        }\n        ... on VoucherTokenType {\n          voucher\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"stargaze","tokenId":"usdt"}}'
+    --data '{"query":"query Escrow($chainUid: String!, $tokenId: String) {\n  factory(chain_uid: $chainUid) {\n    escrow(token_id: $tokenId) {\n      escrow_address\n      denoms {\n        ... on NativeTokenType {\n          native {\n            denom\n          }\n        }\n        ... on SmartTokenType {\n          smart {\n            contract_address\n          }\n        }\n        ... on VoucherTokenType {\n          voucher\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"injective","tokenId":"usdt"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIDOUeEA7gBQAkUAFgIYCWSAqm2OkQMoo8HAOYBCADRF6KCAGtkASV4ChogJRFgAHSREiAMxZRZhWs3ZIA%2BjB59GrDtzCade-UQQUqdWQut20n5KLlq6Hh5elDRWLGBgeF5k4RFEYMgQcGRh7qlEAHSFRBB6AHIsKGwAbggAKvLItQQADgg5eRFIFdVtbh2p6UiZKf0AviOp47mphfnFevxwLHgo9f5Nre39RGRLK1vbRFAlQsYosfGJZMnTeVNjExGz80QAahAwzPhrjS29j6kqh8vngAfp7pMJhCpqMQBIQFVlmwWAAjAA2XgwID6RG0IAsTh4eL4eLIKGWIhYAC8EHiJCk8cEkMpibiQDAyGAUHjdLDRkA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIDOUeEA7gBQAkUAFgIYCWSAqm2OkQMoo8HAOYBCADRF6KCAGtkASV4ChogJRFgAHSREiAMxZRZhWs3ZIA%2BjB59GrDtzCade-UQQUqdWQut20n5KLlq6Hh5elDRWLGBgeF5k4RFEYMgQcGRh7qlEAHSFRBB6AHIsKGwAbggAKvLItQQADgg5eRFIFdVtbh2p6UiZKf0AviOp47mphfnFevxwLHgo9f5Nre39RGRLK1vbRFAlQsYosfGJZMnTeVNjExGz80QAahAwzPhrjS29j6kqh8vngAfp7pMJhCpqMQBIQFVlmwWAAjAA2XgwID6RG0IAsTh4eL4eI4ACsECYeniJCk8cEkMpiXiYGQwCg8bpYaMgA)
 
 
 ### Arguments

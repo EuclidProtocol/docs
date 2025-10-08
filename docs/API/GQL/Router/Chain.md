@@ -30,9 +30,6 @@ query Chain($chainUid: String!) {
 
 ```
 
-:::note
-
-:::
 ### Example
 
 ```bash

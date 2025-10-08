@@ -20,9 +20,9 @@ In addition to the GraphQL API, Euclid also provides a REST API, a traditional a
 ## Available Queries
 
 In the following sections, we will be covering all the available queries for the following:
-
-:::tip
-For each query, you can find an example response if you select the "Open in Playground" link.
+:::note
+Factory queries are only applicable to Cosmos-based chains. For EVM chains, use the corresponding router query as an alternative.
+CW20 queries are only applicable to Cosmos-based chains.
 :::
 
 - [Chains](../API/GQL/Chain/All%20Chains.md): Query chain information.

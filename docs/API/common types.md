@@ -3,6 +3,7 @@ sidebar_position: 2
 description: "Common Types"
 Title: "Common Types"
 ---
+import Tabs from '@site/src/components/Tabs';
 
 # Common Types
 
@@ -46,12 +47,28 @@ export interface CrossChainUser {
 
 ### `CrossChainUserInput`
 
-```ts
-export interface CrossChainUserInput {
-  address: string;
-  chain_uid: string;
-}
-```
+<Tabs
+  tabs={[
+    {
+      id: 'crosschainuser-ts',
+      label: 'TypeScript',
+      language: 'ts',
+      content: `export interface CrossChainUser {
+  address: string | null;
+  chain_uid: string | null;
+}`
+    },
+    {
+      id: 'crosschainuser-json',
+      label: 'JSON',
+      language: 'json',
+      content: `{
+  "address": "0xB0b123456789abcdef123456789abcdef1234567",
+  "chain_uid": "base"
+}`
+    }
+  ]}
+/>
 
 #### Input Fields
 
@@ -65,7 +82,7 @@ export interface CrossChainUserInput {
 
 ```ts
 export interface CrossChainUserWithLimit {
-  limit?: string | null;
+  limit?: Limit | null;
   user: CrossChainUser;
 }
 ```
@@ -74,15 +91,139 @@ export interface CrossChainUserWithLimit {
 
 | **Field**     | **Type**                             | **Description**                                      |
 |---------------|--------------------------------------|------------------------------------------------------|
-| `limit`       | `string?`                            | Optional token limit for the user (e.g., escrow cap). |
+| `limit`       | `Limit?`                            | Optional token limit for the user (e.g., escrow cap). |
 | `user`        | [`CrossChainUser`](#crosschainuser) | The user address and chain metadata.                |
 
 
 
-## Developer Tip
+### Limit
 
-- If you're building a flow where a user receives something **on another chain**, you’ll almost always be dealing with one of these types.
-- `chain_uid` is used internally across the protocol to refer to chain IDs in a standardized way.
-- Always validate the `chain_uid` matches what your front-end or wallet expects.
+
+
+<Tabs
+  tabs={[
+    {
+      id: 'limit-ts',
+      label: 'TypeScript',
+      language: 'ts',
+      content: `export type Limit =
+  | { less_than_or_equal: string }
+  | { equal: string }
+  | { greater_than_or_equal: string };`
+    },
+    {
+      id: 'limit-json',
+      label: 'JSON Example',
+      language: 'json',
+      content: `{
+  "less_than_or_equal": "1000000000000000000"
+}`
+    }
+  ]}
+/>
+
+## TokenWithDenom
+
+Represents a token and how it should be interpreted on-chain. The `token_type` determines if it's a native chain token, a smart contract token, or a voucher.
+
+### Structure
+
+<Tabs
+  tabs={[
+    {
+      id: 'tokenwithdenom-ts',
+      label: 'TypeScript',
+      language: 'ts',
+      content: `interface TokenWithDenom {
+  token: string;
+  token_type: TokenType;
+}
+
+type TokenType =
+  | { native: { denom: string } }
+  | { smart: { contract_address: string } }
+  | { voucher: {} };`
+    },
+    {
+      id: 'tokenwithdenom-json',
+      label: 'JSON',
+      language: 'json',
+      content: `{
+  "token": "usdc",
+  "token_type": {
+    "smart": {
+      "contract_address": "0xA1b2C3d4E5F67890123456789abcdef123456789"
+    }
+  }
+}`
+    }
+  ]}
+/>
+
+### TokenType Variants
+
+```ts
+type TokenType =
+  | { native: { denom: string } }
+  | { smart: { contract_address: string } }
+  | { voucher: {} }
+```
+
+## PairWithDenomAndAmount
+
+Used when representing a pair of tokens along with their amounts and token type. Commonly used in swaps and pool-related contexts.
+
+### Structure
+
+<Tabs
+  tabs={[
+    {
+      id: 'pairwithdenomandamount-ts',
+      label: 'TypeScript',
+      language: 'ts',
+      content: `interface PairWithDenomAndAmount {
+  token_1: TokenWithDenomAndAmount;
+  token_2: TokenWithDenomAndAmount;
+}
+
+interface TokenWithDenomAndAmount {
+  token: string;
+  amount: string;
+  token_type: TokenType;
+}
+
+type TokenType =
+  | { native: { denom: string } }
+  | { smart: { contract_address: string } }
+  | { voucher: {} };`
+    },
+    {
+      id: 'pairwithdenomandamount-json',
+      label: 'JSON',
+      language: 'json',
+      content: `{
+  "token_1": {
+    "token": "usdt",
+    "amount": "1000000",
+    "token_type": {
+      "native": {
+        "denom": "usdt"
+      }
+    }
+  },
+  "token_2": {
+    "token": "weth",
+    "amount": "500000000000000000",
+    "token_type": {
+      "smart": {
+        "contract_address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      }
+    }
+  }
+}`
+    }
+  ]}
+/>
+
 
 

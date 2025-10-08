@@ -37,7 +37,7 @@ curl --request POST \
 | `max`    | [String]     | The upper limit token pair to return (exclusive).                              |
 | `min`    | [String]     | The lower limit token pair to start from (inclusive).                          |
 | `skip`   | Int          | The number of results to skip in the response.                                 |
-| `limit`  | Int          | The maximum number of results to return.                                       |
+| `limit`  | Int          | The maximum number of results to return. Defaults to 10 if not specified.                                     |
 
 ### Return Fields
 
