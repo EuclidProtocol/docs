@@ -5,6 +5,8 @@ sidebar_position: 3
 
 import Tabs from '@site/src/components/Tabs';
 
+# Construct a Trade Message
+
 To perform a trade on the Euclid Protocol, you must construct a **trade message** with all necessary parameters. This message is later **broadcast on-chain**, but in this section, we'll walk through how to build it step-by-step.
 
 # Swap
