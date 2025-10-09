@@ -22,7 +22,6 @@ In addition to the GraphQL API, Euclid also provides a REST API, a traditional a
 In the following sections, we will be covering all the available queries for the following:
 :::note
 Factory queries are only applicable to Cosmos-based chains. For EVM chains, use the corresponding router query as an alternative.
-CW20 queries are only applicable to Cosmos-based chains.
 :::
 
 - [Chains](../API/GQL/Chain/All%20Chains.md): Query chain information.
@@ -32,7 +31,7 @@ CW20 queries are only applicable to Cosmos-based chains.
 - [VCoin](../API/GQL/Virtual%20Balance/Balance.md): Query information from the Virtual Balance contract.
 - [Pool](../API/GQL/Pool/My%20Pools.md): Get information on Euclid pools such as liquidity and volume.
 - [Token](../API/GQL/Token/Token%20Metadata.md): Get token metadata for tokens.
-- [CW20](../API/GQL/CW/Balance.md): Get information on a CW20 token (LP Tokens). 
+- [CW](../API/GQL/CW/Balance.md): Get information on a LP Tokens. 
 
 ### GraphQL Endpoints
 
