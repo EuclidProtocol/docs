@@ -53,6 +53,7 @@ const sidebars: SidebarsConfig = {
   
   apiSidebar: [
     "API/Intro",
+    "API/common types",
     {
       type: "category",
       label: "GQL",

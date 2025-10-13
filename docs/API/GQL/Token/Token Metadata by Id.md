@@ -36,9 +36,9 @@ query Token($tokenId: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token($tokenId: String!, $verified: Boolean) {\n  token {\n    token_metadata_by_id(token_id: $tokenId, verified: $verified) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n      total_volume\n      total_volume_24h\n      tags\n      min_swap_value\n      social\n      is_verified\n    }\n  }\n}","variables":{"tokenId":"euclid","verified":null}}'
+    --data '{"query":"query Token($tokenId: String!) {\n  token {\n    token_metadata_by_id(token_id: $tokenId) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n      total_volume\n      total_volume_24h\n      tags\n      min_swap_value\n      social\n      is_verified\n    }\n  }\n}","variables":{"tokenId":"euclid"}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACQoXICSY6RAyingJZIDmAhAEoiwADpIiRepQliJkqQyQB9RCgCGYdRuUAjAsq5gq05IZZE6S5sLkKFUCDwAiCKFzjqANuPuSwXADOAA5e6gQAcuqIvn6mSMyx9mAIgVDcwShcEEhJCh7qvAh5ksHcUMXy9mVcFcpQABbqfAjKAEwALA0lRDV1jc1FygDsYD0pAB49AzzKMEaBPfQaXsoAbhBe8JV%2Biivrm9vtXUuFi1UKcLOBAO7qweveuD2B0FzePUHr%2BFwAZlwIMYXAC%2BsVBSGBIGBQA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACQoXICSY6RAyingJZIDmAhAEoiwADpIiRepQliJkqQyQB9RCgCGYdRuUAjAsq5gq05IZZE6S5sLkKFUCDwAiCKFzjqANuPuSwXADOAA5e6gQAcuqIvn6mSMyx9mAIgVDcwShcEEhJCh7qvAh5ksHcUMXy9mVcFcpQABbqfAjKAEwALA0lRDV1jc1FygDsYD0pAB49AzzKMEaBPfQaXsoAbhBe8JV%2Biivrm9vtXUuFi1UKcLOBAO7qweveuD2B0FzePUHr%2BFwAZlwIMYXAC%2BsVBSGBIAANCA1upuOpdF5UhgQHYiKIQPFEhgMSAEDAoF4jJjxJDgUA)
 
 ### Arguments
 

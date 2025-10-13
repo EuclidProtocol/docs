@@ -24,9 +24,9 @@ query Get_LpToken_address($vlpAddress: String!, $chainUid: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Factory($chainUid: String!, $vlpAddress: String!) {\n  factory(chain_uid: $chainUid) {\n    get_LpToken_address(vlp_address: $vlpAddress) {\n      token_address\n    }\n  }\n}","variables":{"chainUid":"stargaze","vlpAddress":"nibi1wqnpwmumkgj4sn36mz7r2m3mwh057ekadn2f3lqu8h2qhmqr2cysapy926"}}'
+    --data '{"query":"query Factory($chainUid: String!, $vlpAddress: String!) {\n  factory(chain_uid: $chainUid) {\n    get_LpToken_address(vlp_address: $vlpAddress) {\n      token_address\n    }\n  }\n}","variables":{"chainUid":"injective","vlpAddress":"euclid1uzvynexu8yk43njlk2uw9ezywandc4ru8tqyekurxcqwfja8t8kqy7gtll"}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAG4AbAA4BBMGDwIAzmp79BSUQEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAPHTZokIQo9gAycgAqEADWyPZkyqoaNLJyMXHqmpJJSippXia%2BvlRRDrHZGnm%2BAL7lVUgVIGIgUmSCZABGMuoYIN5mRiC27lx9PH1qKM1CZABeCH1i5X2ZqWUYRH1ILK0sAIwA7lhIcrtw8BFCAFYALGpIAMwAbHBTAOx4AExwt3C7jAAMAKzPBARWJIN7mW4yHAADkYbywjDgWHeUAIajIcgIAE43vc%2BiY6hUgA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAG4AbAA4BBMGDwIAzmp79BSUQEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAPHTZokIQo9gAycgAqEADWyPZkyqoaNLJyMXHqmpJJSippXia%2BvlRRDrHZGnm%2BAL7lVUgVIGIgUmSCZABGMuoYIN5mRiC27lx9PH1sAFYIlCxSCH1i5X2ZqWUYRH0IMFAyXACMMABeUgRICAAeMAAcBBEALADMSGMyEQBMMADuAJwI%2BwTvZEgwFAbnhLigsAQEBEYHhTlAsO9zGMyBcUBcIhCAOxCFAyGR9Ex1CpAA)
 
 ### Arguments
 

@@ -31,10 +31,10 @@ query Pool($userAddress: String!, $chainUid: String) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Pool($userAddress: String!, $chainUid: String) {\n  pool {\n    my_pools(user_address: $userAddress, chain_uid: $chainUid) {\n      height\n      vlp\n      user {\n        chain_uid\n        address\n      }\n      pair {\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{"chainUid":"stargze","userAddress":"stars14hcxlnwlqtq75ttaxf674vk6mafspg8xj0h7fj"}}'
+    --data '{"query":"query Pool($userAddress: String!, $chainUid: String) {\n  pool {\n    my_pools(user_address: $userAddress, chain_uid: $chainUid) {\n      height\n      vlp\n      user {\n        chain_uid\n        address\n      }\n      pair {\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{"chainUid":"somnia","userAddress":"0x887e4aac216674d2c432798f851c1ea5d505b2e1"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACQwDO%2BAgmGHgvfekQMop4BLJAHMAhABoiNKAAsAhkICqAsNz6CRASiLAAOkiJEADuQo79hw3AIB9E5XpUG%2BG3NbtO3Oozws2HeklZBSQbGBUvYKUVbT0DS0MZBAFhGRQLBKIANwojDITnPHN4zKIo0PCwfMy3f05qwwBfBuMFIrjSwxQIAGtkGwBGFq7e-oAmFuaSoimm-UaQcRAsuUE5ACMKDgwQDqJdEHLlKox9kHoUVeEALwQD8QyDwr8PegPuA4vV%2BgGAFhkoAAPChIADuFCwKCwAHYAKwoS6AgBmADZob8sj0UXA5Ej6EZhAAOQEAKwADDJoUiSQd5iBGkA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2AFACQwDO%2BAgmGHgvfekQMop4BLJAHMAhABoiNKAAsAhkICqAsNz6CRASiLAAOkiJEADuQo79hw3AIB9E5XpUG%2BG3NbtO3Oozws2HeklZBSQbGBUvYKUVbT0DS0MZBAFhGRQLBKIANwojDITnPHN4zKIo0PCwfMy3f05qwwBfBuMFIrjSwxQIAGtkGwBGFq7e-oAmFuaSoimm-UaQcRAsuUE5ACMKDgwQDqJdEHLlKox9kHoIOCQBOQPxDIPCvw96A%2B4DgAYADwAOH4B2BAAFjkcigYwGADZIf8gWAxlAgQBmMb-ACcPwAZj8AKwDKADBByHFgHEfHHrMYIIYgeYgRpAA)
 
 | **Argument**   | **Type**   | **Description**                      |
 |----------------|------------|--------------------------------------|

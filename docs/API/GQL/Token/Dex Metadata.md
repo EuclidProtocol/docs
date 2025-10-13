@@ -29,7 +29,7 @@ curl --request POST \
     --data '{"query":"query Token($dex: String!) {\n  token {\n    dex_metadata(dex: $dex) {\n      bg_color\n      logo\n      dex_name\n      fg_color\n      chain_uid\n      display_name\n    }\n  }\n}","variables":{"dex":"euclid"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACRgIAe6RAyingJZIDmAhAJRFgAHSREiKCsiGjx4%2BgwD6iFAEMwqtVQXM6jQSLFzxAI26KoEADYQ8s40RvcI94wsVJViV3IBm5yxs7I2MoAAtVLkUYDjAfeQ4AZwAHK1UCDy8EHwBfezykHJAcoA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACRgIAe6RAyingJZIDmAhAJRFgAHSREiKCsiGjx4%2BgwD6iFAEMwqtVQXM6jQSLFzxAI26KoEADYQ8s40RvcI94wsVJViV3IBm5yxs7I2MoAAtVLkUYDjAfeQ4AZwAHK1UCDy8EHwBfezykHJAAGhAAN1VOVRMrBESMEENxYXBGFuYWhBgoK1iW0SKcoA)
 
 
 ### Arguments

@@ -21,11 +21,11 @@ query Get_all_faucets {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://devnet-testing.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Get_all_faucets {\n  token {\n    get_all_faucets {\n      token\n      faucet_link\n    }\n  }\n}"}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Token {\n  token {\n    get_all_faucets {\n      faucet_link\n      token\n    }\n  }\n}"}'
 ```
 
-[Open in Playground](https://devnet-testing.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAOIIoD6AhgDY0UBmVMU5AzkcADpJFEoQA1sk48%2BfAOblqdRs1YoO3XuL4DhSMaqJMW0mgEskgrXwC%2BWi0jMgzQA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyRwAOkkUShVbfQ0QOYIoD6AhgBsBPAGZ8YUbgGdqdduzETuPAQEsk5OfMbMkWhgF8tRpAZAAaEADc%2BeVXwBGAhFIwgQBoA)
 
 
 ### Return Fields

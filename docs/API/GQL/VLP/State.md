@@ -3,11 +3,7 @@ sidebar_position: 5
 ---
 
 # State
-Queries the state of a VLP contract.
-
----
-sidebar_position: 5
----
+Queries information on the state of a VLP contract.
 
 # State
 
@@ -53,7 +49,7 @@ curl --request POST \
     --data '{"query":"query State($contract: String) {\n  vlp(contract: $contract) {\n    state {\n      pair {\n        token_1\n        token_2\n      }\n      router\n      vcoin\n      fee {\n        lp_fee_bps\n        euclid_fee_bps\n        recipient {\n          chain_uid\n          address\n        }\n      }\n      last_updated\n      total_lp_tokens\n      admin\n      pool_config {\n        stable {\n          amp_factor\n        }\n        constant_product\n      }\n    }\n  }\n}","variables":{"contract":"euclid1y2t7uplrund64g3qc034j7pvfnq7udfqck6k5hxnq7gxtdm30zzsxuk8v9"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMooCGKCAFACRQSp7lQrqkp4CWSA5gJRFgAHSREiANwA2AB2oMmLNkXqNOSwSLHiiAZwpUhonTpnkueI9pPiUEANbIA%2BgEZjN2w%2BcAmdyYC%2Bfjp4EDBUeEHiEgw8kUQAZggIVh7isk6JCE4ARjK6ceIIMFBSXGAZSTl5BUR4CFBcMlzIKCmp4lAAFuZITjBlNeLkYGB1uvnWNoGT4tMeUuT6fTJglAhgcXYUUk7pdo5IEx7DcLEzRDIQEDsK8Vy8bR765NlSyVrtQ3AyGUoQEedZjUFM9UE4ZCEwMUUHE5jo4dN-CB-EA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMooCGKCAFACRQSp7lQrqkp4CWSA5gJRFgAHSREiANwA2AB2oMmLNkXqNOSwSLHiiAZwpUhonTpnkueI9pPiUEANbIA%2BgEZjN2w%2BcAmdyYC%2Bfjp4EDBUeEHiEgw8kUQAZggIVh7isk6JCE4ARjK6ceIIMFBSXGAZSTl5BUR4CFBcMlzIKCmp4lAAFuZITjBlNeLkYGB1uvnWNoGT4tMeUuT6fTJglAhgcXYUUk7pdo5IEx7DcLEzRDIQEDsK8Vy8bR765NlSyVrtQ3AyGUoQEedZjUFM9UE4ZCEwMUUHE5jo4dN-CAADQgCTkbgvN66DAgD5EYQgBTqViE9CEoolMouAjeFAAdhgMikeBgSDAADYACy8ADMWCgAAZeVyAFb0mQSeJILCMsDxAX2Dn2ACsnQAHjL6bx1SgwHBeYKAF5G3TqmD2AAcEgAnITREj-EA)
 
 ### Arguments
 
@@ -83,7 +79,7 @@ curl --request POST \
 |---------------------|------------------|--------------------------------------------------------|
 | `lp_fee_bps`        | `Int`            | Fee for liquidity providers (in basis points).        |
 | `euclid_fee_bps`    | `Int`            | Fee for Euclid treasury (in basis points).            |
-| `recipient`         | `CrossChainUser` | The fee recipient's cross-chain details.              |
+| `recipient`         | [`CrossChainUser`](../../common%20types.md#crosschainuser) | The fee recipient's cross-chain details.              |
 
 
 ### Pair

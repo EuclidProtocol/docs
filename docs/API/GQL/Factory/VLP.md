@@ -21,10 +21,10 @@ query Factory($chainUid: String!, $pair: PairInput) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://devnet-testing.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair)\n  }\n}","variables":{"chainUid":"nibiru","pair":{"token_1":"nibi","token_2":"euclid"}}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Factory($chainUid: String!, $pair: PairInput) {\n  factory(chain_uid: $chainUid) {\n    vlp(pair: $pair)\n  }\n}","variables":{"chainUid":"osmosis","pair":{"token_1":"osmo","token_2":"euclid"}}}'
 ```
-[Open in Playground](https://devnet-testing.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhAEoiwADpIiRAGYUqtJqyQB9GFx4NmbTmAnTZcogDcANgAcZcgL4y7IO0A)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidAA6s8PAAqyAkkikwUASiLAAOkiJEAZhSq0mrJAH0YXHg2ZtOYLbv0GiANwA2UmjJZykv54GnoGAL564SBiIB5kgmQARl4IAM4YIK4GOiDmjly5PLkQaXClLGm5YmFEucFF2rU5IFQA1siWAIyNJWUQ1c11rRAdVgBMvSAIMFBehSC14TVuUSDhQA)
 
 ### Arguments
 

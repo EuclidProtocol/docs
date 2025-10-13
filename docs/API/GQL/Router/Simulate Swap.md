@@ -31,14 +31,14 @@ curl --request POST \
 | **Name**         | **Type**      | **Description**                                                                 |
 |------------------|---------------|---------------------------------------------------------------------------------|
 | `assetIn`        | String!       | The identifier of the input asset.                                              |
-| `amountIn`       | String!       | The amount of the input asset to swap.                                          |
+| `amountIn`       | String!       | The amount of the input asset to swap. Specified in micro units.                                          |
 | `assetOut`       | String!       | The identifier of the output asset.                                             |
-| `minAmountOut`   | String!       | The minimum amount of the output asset expected from the swap.                 |
+| `minAmountOut`   | String!       | The minimum amount of the output asset expected from the swap. Specified in micro units.              |
 | `swaps`          | [String!]     | The list of swaps to execute for reaching the output asset.                    |
 
 ### Return Fields
 
 | **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
-| `amount_out`             | `String` | The amount of the output asset received from the swap.  |
+| `amount_out`             | `String` | The amount of the output asset received from the swap. Returned in micro units.  |
 | `asset_out`              | `String` | The identifier of the output asset.                     |

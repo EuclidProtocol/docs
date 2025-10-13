@@ -33,10 +33,10 @@ query Vlp($contract: String, $pair: PairInput) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Vlp($contract: String!) {\n  vlp(contract: $contract) {\n    total_fees_collected {\n      lp_fees {\n        totals {\n          denom\n          amount\n        }\n      }\n      euclid_fees {\n        totals {\n          denom\n          amount\n        }\n      }\n    }\n  }\n}","variables":{"contract":"nibi1pys22jem6l222sxhexe7dmggtz8xkmhm49p7z3wjgrcdk3t46hgsle088m"}}'
+    --data '{"query":"query Vlp($contract: String!) {\n  vlp(contract: $contract) {\n    total_fees_collected {\n      lp_fees {\n        totals {\n          denom\n          amount\n        }\n      }\n      euclid_fees {\n        totals {\n          denom\n          amount\n        }\n      }\n    }\n  }\n}","variables":{"contract":"euclid1y2t7uplrund64g3qc034j7pvfnq7udfqck6k5hxnq7gxtdm30zzsxuk8v9"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIAlEWAAdJESIA3SlXqMWbInQbdloiVOlEUEFEzIB9AGYIEAZ2P0yZBKwRgxk3bspmLllzrfT9hmTe2n5%2BYMgQcK6hukxwEDCo0aEAvsm6ab66CDBQZDxgnlY%2BMXoGRsHpoeFIkVV%2BcQlJWW6ZqeltRJkpIAA0IDJMvEwARvaWGCAhROIgihqss%2ByzSDwjPACMFASWAEy7AFYIcABsZPu7lgAeABYIVwgA7GBw-PwoAF4AHFcA1nA3OAAFgAnBRHh8AMwAdwO-DwUDAv0hKCBJxu-Es9gADF8vlE%2BpIeikgA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIAlEWAAdJESIA3SlXqMWbInQbdloiVOlEUEFEzIB9AGYIEAZ2P0yZBKwRgxk3bspmLllzrfT9hmTe2n5%2BYMgQcK6hukxwEDCo0aEAvsm6ab66CDBQZDxgnlY%2BMXoGRsHpoeFIkVV%2BcQlJWW6ZqeltRJkpIAA0IDJMvEwARvaWGCAhROIgihqss%2ByzOXkFAIwEAEwoAOwwFGR4iWAAbAAs-ADMWFAADFfnAFa7FDKmSFj7YKa3ANanP4AVgAFgAPT67fhglBgOBXO4AL0RljBMD%2BAA4ZABOWa9SQ9FJAA)
 
 ### Arguments
 

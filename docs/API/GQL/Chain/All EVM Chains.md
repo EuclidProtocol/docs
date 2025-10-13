@@ -32,14 +32,12 @@ query AllEvmChains {
 ### Example
 ```bash
 curl --request POST \
-  --header 'content-type: application/json' \
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \
-  --data '{
-    "query": "query AllEvmChains {\n  chains {\n    all_evm_chains {\n      chain_id\n      chain_uid\n      explorer_url\n      name\n      native_currency {\n        decimals\n        name\n        symbol\n      }\n      rpc_urls {\n        default {\n          http\n        }\n      }\n    }\n  }\n}"
-  }'
+    --header 'content-type: application/json' \
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Chains {\n  chains {\n    all_evm_chains {\n      chain_id\n      chain_uid\n      explorer_url\n      name\n      native_currency {\n        decimals\n        name\n        symbol\n      }\n      rpc_urls {\n        default {\n          http\n        }\n      }\n    }\n  }\n}"}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDORwAOkkUVJTfUy60RQDb8A%2BggBucIe2p0GzXryk0hVMHPlsOSITBVr5CAB4AHfhDz5tefnt5IKiG6zsoqohJJh5zSKMW7reMAQoKjgBWkdbewRI1loCOAAjCGseeQBfSLwjKEt%2BLliiIIAzChh%2BFFk0gKJCzOrWeoy1evSQdKA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIDORwAOkkUVJTfUy60RQDb8A%2BggBucIe2p0GzXryk0hVMHPlsOSITBVr5CAB4AHfhDz5tefnt5IKiG6zsoqohJJh5zSKMW7reMAQoKjgBWkdbewRI1loCOAAjCGseeQBfSLwjKEt%2BLliiIIAzChh%2BFFk0gKJCzOrWeoy1evSQABoQUQo8KgpE-gRaDBAQdKA)
 
 
   ### Return Fields

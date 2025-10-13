@@ -30,7 +30,7 @@ curl --request POST \
 
 | **Name** | **Type**     | **Description**                           |
 |----------|--------------|-------------------------------------------|
-| `pair`   | `PairInput`  | The two tokens included in the token pair. |
+| `pair`   | `PairInput`!  | The two tokens included in the token pair. |
 
 
 ### Return Fields
@@ -38,5 +38,5 @@ curl --request POST \
 | **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
 | `vlp_address`            | `String` | The VLP contract address.                       |
-| `token_1`                | `String` | The name of the first token in the pool.            |
-| `token_2`                | `String` | The name of the second token in the pool.            |
+| `token_1`                | `String` | The token Id of the first token in the pool.            |
+| `token_2`                | `String` | The token Id of the second token in the pool.            |
