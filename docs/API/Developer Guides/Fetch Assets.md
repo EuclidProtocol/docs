@@ -14,7 +14,12 @@ To build any trading interface or integrate with Euclid’s swap engine, you’l
 
 ## GraphQL Query
 
-```graphql
+<Tabs tabs={[
+  {
+    id: 'query-token-metadatas',
+    label: 'Query',
+    language: 'graphql',
+    content: `
 query Token_metadatas {
   token {
     token_metadatas {
@@ -23,7 +28,84 @@ query Token_metadatas {
     }
   }
 }
-```
+`
+  },
+  {
+    id: 'response-token-metadatas',
+    label: 'Response',
+    language: 'json',
+    content: `
+{
+  "data": {
+    "token": {
+      "token_metadatas": [
+        {
+          "tokenId": "pol",
+          "price": "302.398686"
+        },
+        {
+          "tokenId": "avax",
+          "price": "784175.829278"
+        },
+        {
+          "tokenId": "teth",
+          "price": "412243.861452"
+        },
+        {
+          "tokenId": "elys",
+          "price": "7264.809695"
+        },
+        {
+          "tokenId": "usdc.p",
+          "price": "341025442719.642090"
+        },
+        {
+          "tokenId": "0g",
+          "price": "6033829.245428"
+        },
+        {
+          "tokenId": "usdt",
+          "price": "1.000000"
+        },
+        {
+          "tokenId": "usdt.p",
+          "price": "4281.590882"
+        },
+        {
+          "tokenId": "usdc",
+          "price": "1.000000"
+        },
+        {
+          "tokenId": "orai",
+          "price": "41.776128"
+        },
+        {
+          "tokenId": "gimo",
+          "price": "173936.051809"
+        },
+        {
+          "tokenId": "plume",
+          "price": "2732.463496"
+        },
+        {
+          "tokenId": "nibi",
+          "price": "149.838356"
+        },
+        {
+          "tokenId": "inj",
+          "price": "18.544231"
+        },
+        {
+          "tokenId": "euclid",
+          "price": "234423.080976"
+        }
+      ]
+    }
+  }
+}
+`
+  }
+]} />
 
 <Tabs tabs={[
   {
@@ -132,7 +214,7 @@ query Token_metadatas {
 
 - Returns a list of all tradeable tokens with their IDs and prices.
 - Supports additional filters like `verified`, `chain_uids`, `dex`, `limit`, `offset` and more.
-- For full field list and parameters see [Full Token Metadata Query](./full-token-metadata).
+- For full field list and parameters see [Full Token Metadata Query](../GQL/Token/Token%20Metadata.md).
 
 ## Verified vs. Unverified Tokens
 

@@ -26,18 +26,12 @@ query ChainConfig($chainUid: String, $chainId: String) {
 
 ```bash
 curl --request POST \
-  --header 'content-type: application/json' \
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \
-  --data '{
-    "query": "query ChainConfig($chainUid: String, $chainId: String) {\n  chains {\n    chain_config(chain_uid: $chainUid, chain_id: $chainId) {\n      chain_id\n      chain_uid\n      display_name\n      explorer_url\n      factory_address\n      token_factory_address\n      logo\n      type\n    }\n  }\n}",
-    "variables": {
-      "chainUid": "osmosis",
-      "chainId": "osmo-test-5"
-    }
-}'
+    --header 'content-type: application/json' \
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Query($chainUid: String, $chainId: String) {\n  chains {\n    chain_config(chain_uid: $chainUid, chain_id: $chainId) {\n      chain_id\n      factory_address\n      display_name\n      explorer_url\n      chain_uid\n      logo\n      type\n      token_factory_address\n    }\n  }\n}","variables":{"chainUid":"coreum"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJFABYCGAlkgKqNjpEDKKezA5gBoiNBswCSHbrwEBKIsAA6SIkTpMkAZwXLVq9cwD6UCEgBmjfhQNJDMdp1Ea2YYTcMORNyfKUq9%2BmK27LoBRGb0UCgQhIb0YGB4CJqaoQFgjJoADgA29ASGSPSIaXoIAB65Mfh2eDmlgRp2If4BORD8EA1EKARZCN3RANbIhhFRMQXxicmprUQAvqFLSAsgC0A)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJFABYCGAlkgKqNjpEDKKezA5gBoiNBswCSHbrwEBKIsAA6SIkTpMkAZwXLVq9cwD6UCEgBmjfhQNJDMdp1Ea2YYTcMORNyfKUq9%2BmK27LoBRGb0UCgQhIb0YGB4CJqaoQFgjJoADgA29ASGSPSIaXoIAB65Mfh2eDmlgRp2If4BORD8EA1EKARZCN3RANbIhhFRMQXxicmprUQAvqFLSAsggiAAbvR89ABGOckYIH6qiiA2Lufo5yZJ8OfKawtAA)
 
 
 ### Arguments
@@ -45,7 +39,7 @@ curl --request POST \
 | **Name**      | **Type** | **Description**                                                                 |
 |---------------|----------|---------------------------------------------------------------------------------|
 | `chainId`     | String   | The ID of the chain. If not provided, `chainUid` must be specified.            |
-| `chainUid`    | String   | The unique identifier (UID) of the chain. If not provided, `chainId` is used.  |
+| `chainUid`    | String   | The unique identifier (UID) of the chain. If not provided, `chainId` must be specified.  |
 
 ### Return Fields
 

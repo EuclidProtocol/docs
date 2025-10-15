@@ -44,4 +44,4 @@ curl --request POST \
 | ----------- | -------- | ------------------------------------------------ |
 | `chain_uid` | `String` | The UID of the chain that hosts the escrow.      |
 | `balance`   | `String` | The current amount of tokens held in the escrow. |
-| `token`     | `String` | The tokne Id for the token stored in the escrow. |
+| `token`     | `String` | The token Id for the token stored in the escrow. |

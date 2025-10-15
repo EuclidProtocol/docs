@@ -39,17 +39,17 @@ query Token_denoms($denom: String, $tokenId: String, $chainUid: [String!]) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://devnet-testing.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token_denoms($denom: String, $tokenId: String, $chainUid: [String!]) {\n  token {\n    token_denoms(denom: $denom, token_id: $tokenId, chain_uid: $chainUid) {\n      denoms {\n        chain_uid\n        token_type {\n          ... on NativeTokenType {\n            native {\n              denom\n            }\n          }\n          ... on SmartTokenType {\n            smart {\n              contract_address\n            }\n          }\n          ... on VoucherTokenType {\n            voucher\n          }\n        }\n      }\n      token_id\n    }\n  }\n}","variables":{"denom":null,"tokenId":"usdc","chainUid":"injective"}}'
+    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --data '{"query":"query Token_denoms($tokenId: String, $chainUid: [String!], $denom: String) {\n  token {\n    token_denoms(token_id: $tokenId, chain_uid: $chainUid, denom: $denom) {\n      denoms {\n        chain_uid\n        token_type {\n          ... on NativeTokenType {\n            native {\n              denom\n            }\n          }\n          ... on SmartTokenType {\n            smart {\n              contract_address\n            }\n          }\n          ... on VoucherTokenType {\n            voucher\n          }\n        }\n      }\n      token_id\n    }\n  }\n}","variables":{"denom":"0x41d722eeb7fd5283e82074e5e471648408604eac"}}'
 ```
 
-[Open in Playground](https://devnet-testing.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BmMhHAM4AUAJLUvekQMop4CWSAOYAaIixQVkASTBdeA4WJZQAFgENBAVX5yiAbQWChAQgC6ASiLAAOkiJFJle7fsPHUpDTqMm7TuL%2BcGJO1LpcEp6yYmqaXjDh4rHaulau7u5BDNZ2GRnJ8bq5eQ6hXigEAA4IOW4lDgB0TUQQ9gBy6ij8AG4IZM4kVTXp9RlInT3DxaMZQdMzAL7zJUt19U0NLfbccOp4KP3Ig9W1M%2B4Mu-unZ%2B5QrXzqUChU6mBgeAgMDMv1q2d-Mw2WyIADUIDA1PhDkhjlM1qNuuDIXgfhkASsfuj3GUqEU1gDVgsQAsgA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BmMhHAM4AUAJLUvekQMop4CWSAOYAaIixQVkASTBdeA4WJZQAFgENBAVX5yiAbQWChAQgC6ASiLAAOkiJFJle7fsPHUpDTqMm7TuL%2BcGJO1LpcEp6yYmqaXjDh4rHaulau7u5BDNZ2GRnJ8bq5eQ6hXigEAA4IOW4lDgB0TUQQ9gBy6ij8AG4IZM4kVTXp9RlInT3DxaMZ0zMAvnMli3X1TQ0t9txw6ngo-ciD1bUz7gw7eyen7kv1K6f3M%2BubRABqEDBq%2BAdIR1Oro26Hy%2BeFuGUey1uEPcZSoRVWjxW8xAIhA3V2-HUACMADYIBgYEAjGzgHwk9AkgAMAA8ACwARjAAHYAEwshAILFMgBmYAArCyABwAZgQgpZlKZtIQfIQtKZ9IAbLTBbTKYLFZTpeooCS7Mj5kA)
 
 ### Arguments
 
 | **Argument** | **Type**       | **Description**                                                                 |
 |--------------|----------------|---------------------------------------------------------------------------------|
-| `denom`      | `String`       | Optional filter to match a specific token denomination (native denom or contract address). |
+| `denom`      | `String`       | Optional filter to match a specific token denomination (`eth`,`0x41d722eeb7fd5283e82074e5e471648408604eac` etc...) |
 | `tokenId`    | `String`       | Optional filter to match a specific token identifier.                          |
 | `chainUid`   | `[String!]`    | Optional list of chain UIDs to filter the token denoms by chain.               |
 

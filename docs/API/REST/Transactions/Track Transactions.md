@@ -103,13 +103,13 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
       id: 'evm-track-request',
       label: 'Request',
       language: 'bash',
-      content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \\
-  -H 'accept: application/json' \\
-  -H 'Content-Type: application/json' \\
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
   -d '{
-    "chain": "amoy",
-    "tx_hash": "0x0611cba0bd2436706a9e48e477107ed6b8b1189fdb44e148e26eafc693b94ca8"
+    "chain": "ronin",
+    "tx_hash": "0xaa9bbb2fbd0d9b26436065d16102e6eb09c6b4b78f9b11dbffcc7849b53b9c38"
 }'`
     },
     {
@@ -119,53 +119,80 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
       content: `{
   "response": {
     "is_completed": true,
-    "tx_hash": "0x0611cba0bd2436706a9e48e477107ed6b8b1189fdb44e148e26eafc693b94ca8",
+    "tx_hash": "0xaa9bbb2fbd0d9b26436065d16102e6eb09c6b4b78f9b11dbffcc7849b53b9c38",
     "asset_in_type": "",
-    "type": "add_liquidity",
+    "type": "withdraw",
     "source_token_id": "",
     "tx_status": "success",
-    "tx_id": "amoy:0x887e4aac216674d2c432798f851c1ea5d505b2e1:80002:20813709:362",
+    "tx_id": "ronin:0x887e4aac216674d2c432798f851c1ea5d505b2e1:2021:42264794:608760",
     "voucher_minted": null,
-    "sequence": "362",
-    "source_chain_uid": "amoy",
-    "source_chain_id": "80002",
-    "source_factory": "0x7f2cc9fe79961f628da671ac62d1f2896638edd5",
+    "sequence": "608760",
+    "source_chain_uid": "ronin",
+    "source_chain_id": "2021",
+    "source_factory": "0x43d4759e0cb8e4d3b2aab1ba6e39a60dce1a8f5b",
     "sender": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "total_duration": "41.205s",
-    "total_estimated_duration": "",
-    "status": [
+    "release_status": [
       {
-        "chain_uid": "amoy",
+        "chain_uid": "vsl",
         "status": "success",
-        "msg": "success",
-        "timestamp": "2025-04-23 15:10:33.748 +0000 UTC",
-        "tx_hash": "0x0611cba0bd2436706a9e48e477107ed6b8b1189fdb44e148e26eafc693b94ca8"
+        "msg": "released",
+        "timestamp": "2025-10-15 16:06:13.31 +0000 UTC",
+        "tx_hash": "78B623D893B1B4B7C2A17020E0FAD0B897391AAAAD80D6DAE217A5580C7AC2DD"
+      },
+      {
+        "chain_uid": "base",
+        "status": "success",
+        "msg": "0x",
+        "timestamp": "2025-10-15 16:06:17.306 +0000 UTC",
+        "tx_hash": "0x89960a57bbe1d06ca244133aec78aac90dc140456afefeb0006eda82c31e3245"
       },
       {
         "chain_uid": "vsl",
         "status": "success",
-        "msg": "eyJvayI6eyJtaW...",
-        "timestamp": "2025-04-23 15:11:24.240725927 +0000 UTC",
-        "tx_hash": "107CF2BA1F73C8A5AA92D2C626B0CDDFBD9251F1C246E0B97BFC4C3159F2B8E5"
-      },
-      {
-        "chain_uid": "amoy",
-        "status": "success",
-        "msg": "0x0000000000000...",
-        "timestamp": "2025-04-23 15:11:14.953 +0000 UTC",
-        "tx_hash": "0x967138042482c6099eeb8e531066f470eb85755509cda4bc1ce3482abb0e51f2"
+        "msg": "Success",
+        "timestamp": "2025-10-15 16:06:20.445 +0000 UTC",
+        "tx_hash": "3115AD6BC7E9EF7BD2B58CF266B19D185E223BF80B6AB4EE58D9F1920C2C86EE"
       }
     ],
-    "liquidity_response": {
-      "add_liquidity": {
-        "token_1_added_liquidity": "1000000",
-        "token_2_added_liquidity": "677000000000000",
-        "lp_allocation": "25481029669"
+    "escrow_release": {
+      "tx_id": "ronin:0x887e4aac216674d2c432798f851c1ea5d505b2e1:2021:42264794:608760",
+      "amount": "25000000",
+      "token": "euclid",
+      "to_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "chain_uid": "base"
+    },
+    "total_duration": "17.264s",
+    "total_estimated_duration": "",
+    "status": [
+      {
+        "chain_uid": "ronin",
+        "status": "success",
+        "msg": "success",
+        "timestamp": "2025-10-15 16:06:10.587 +0000 UTC",
+        "tx_hash": "0xaa9bbb2fbd0d9b26436065d16102e6eb09c6b4b78f9b11dbffcc7849b53b9c38"
       },
-      "pair": {
-        "token_1": "euclid",
-        "token_2": "pol"
+      {
+        "chain_uid": "vsl",
+        "status": "success",
+        "msg": "eyJvayI6eyJ0b2tlbiI6ImV1Y2xpZCIsInR4X2lkIjoicm9uaW46MHg4ODdlNGFhYzIxNjY3NGQyYzQzMjc5OGY4NTFjMWVhNWQ1MDViMmUxOjIwMjE6NDIyNjQ3OTQ6NjA4NzYwIn19",
+        "timestamp": "2025-10-15 16:06:13.31 +0000 UTC",
+        "tx_hash": "78B623D893B1B4B7C2A17020E0FAD0B897391AAAAD80D6DAE217A5580C7AC2DD"
+      },
+      {
+        "chain_uid": "ronin",
+        "status": "success",
+        "msg": "0x",
+        "timestamp": "2025-10-15 16:06:27.851 +0000 UTC",
+        "tx_hash": "0x59cdbfa396f391ca78d172179cb215a25dece67ead1ca9c833a8034d67bb161b"
       }
+    ],
+    "withdraw_voucher_response": {
+      "token": "euclid",
+      "amount": "25000000",
+      "sender_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "sender_chain_uid": "ronin",
+      "recieve_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "recieve_chain_uid": "base"
     }
   }
 }`

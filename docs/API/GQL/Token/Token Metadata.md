@@ -53,9 +53,9 @@ query Token(
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token($limit: Int, $offset: Int, $verified: Boolean, $dex: [String!], $chainUids: [String!], $showVolume: Boolean, $search: String) {\n  token {\n    token_metadatas(limit: $limit, offset: $offset, verified: $verified, dex: $dex, chain_uids: $chainUids, show_volume: $showVolume, search: $search) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n      total_volume\n      total_volume_24h\n      tags\n      min_swap_value\n      social\n      is_verified\n    }\n  }\n}","variables":{"limit":5,"offset":null,"verified":null,"dex":"euclid","chainUids":null,"showVolume":null,"search":null}}'
+    --data '{"query":"query Token($dex: [String!], $limit: Int, $chainUids: [String!]) {\n  token {\n    token_metadatas(dex: $dex, limit: $limit, chain_uids: $chainUids) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n      total_volume\n      total_volume_24h\n      tags\n      min_swap_value\n      social\n      is_verified\n    }\n  }\n}","variables":{"dex":["euclid","osmosis"],"limit":100,"chainUids":["archway","osmosis","megaeth","bsc"]}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyRwAOkkUShVbfQ480gPqIoCGYPvwDO1Ou3ZQIASyQARBFGlw%2BAG3ESiYacIAOqvgQByfRBolNKSAJJhz7MAmFQ803SmkQk9hsr4BzBB8iXVcoILYJUOlwrigACz4kQK4AJgAWeODo2ISklIB2O0iHBAAPYLzZLhhpMGFgpn5VLgA3CFV4CM0OZraOrrTMxoCGkoY4auEAdz5dNrVcYOFoaTVgnTb8aQAzaQRiiQBfDROkI5AjoA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACRQAWAhgJZICqzYAzukQNoBlFHlYBzAIQBdADREaAG2ZxmKXgElUsmmAQAPXoOFipASiLAAOkiJEUFZOas2bdykgD6iFIzCNvXKgYWDxhOHjkg1g5uWUVlVTk4lVkdfTlUs0trZxsoCFYAEQQoJUZ5JxyiMGYuAAd5RgIAOUZECpzXZDUwducdLigRWpRmCCRem1LRBAmiWpEoGeyc%2BeZF9yCkafcAJgAWelnV9c3tgHYe5b69WciQsNm7b3l3ADcIeXglytsIZ7ePl9dgdHoxRFxZsoPFwAO6MWpvMq4WZcaDMMqzGpvfDMABmzAQlxyAF8KqSkMSQNIQK9GCJGAAjeQILgYEBZGwWcA3DD8LkIGBQRQ9KlciBcODimpcmQVLlJFBc3gARgADKrpHKQHdohDeXwuXSGHCCFzNSBxZKuNLRSBEKJGAgUIdbQyBjKrJTiUA)
 
 ### Arguments
 
@@ -64,7 +64,7 @@ curl --request POST \
 | `limit`           | `Int`            | Optional limit for pagination.                                       |
 | `offset`          | `Int`            | Optional offset for pagination.                                      |
 | `verified`        | `Boolean`        | If true, only return verified tokens.                                |
-| `dex`             | `[String!]`      | Filter tokens by DEX identifiers.                                    |
+| `dex`             | `[String!]`      | Filter tokens by DEX identifiers. Currently `euclid`, `osmosis` and `astroport.neutron` dexes exist.                                    |
 | `chainUids`       | `[String!]`      | Filter tokens by the chains they're deployed on.                     |
 | `showVolume`      | `Boolean`        | Whether to include volume-related fields in the result.              |
 | `search`          | `String`         | Search by token name or symbol.                                      |

@@ -53,6 +53,7 @@ const sidebars: SidebarsConfig = {
   
   apiSidebar: [
     "API/Intro",
+    "API/common types",
     {
       type: "category",
       label: "GQL",
@@ -198,6 +199,9 @@ const sidebars: SidebarsConfig = {
         "API/Developer Guides/Go Live",
         "API/Developer Guides/Fetch Assets",
         "API/Developer Guides/Fetch Chains",
+        "API/Developer Guides/Fetch Liquidity",
+        "API/Developer Guides/Fetch Voucher",
+        "API/Developer Guides/Track Transaction",
         "API/Developer Guides/Add Liquidity",
         "API/Developer Guides/Remove Liquidity",
         "API/Developer Guides/Withdraw Voucher",

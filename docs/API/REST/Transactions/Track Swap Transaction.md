@@ -211,13 +211,13 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
       id: 'evm-track-request',
       label: 'Request',
       language: 'bash',
-      content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap' \\
-  -H 'accept: application/json' \\
-  -H 'Content-Type: application/json' \\
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
   -d '{
-    "chain": "amoy",
-    "tx_hash": "0xcbbb1784619b73983d65aca7ace2041d0692814ab2a4bd3635e89d6b845e44eb"
+    "chain": "ronin",
+    "tx_hash": "0x7f78069e33c6d288448bc95219e116f77bc26c8378ba017b5bf6ddf1c5c6d21c"
 }'`
     },
     {
@@ -227,28 +227,28 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
       content: `{
   "response": {
     "is_completed": true,
-    "tx_hash": "0xcbbb1784619b73983d65aca7ace2041d0692814ab2a4bd3635e89d6b845e44eb",
+    "tx_hash": "0x7f78069e33c6d288448bc95219e116f77bc26c8378ba017b5bf6ddf1c5c6d21c",
     "asset_in_type": "smart",
     "type": "swap",
     "destination_chain_uid": [
-      "injective"
+      "bsc"
     ],
-    "destination_token_id": "inj",
+    "destination_token_id": "bnb",
     "source_token_id": "euclid",
     "tx_status": "success",
-    "tx_id": "amoy:0x887e4aac216674d2c432798f851c1ea5d505b2e1:80002:20609432:130",
+    "tx_id": "ronin:0x887e4aac216674d2c432798f851c1ea5d505b2e1:2021:42264661:608732",
     "voucher_minted": {
-      "token": "inj",
+      "token": "bnb",
       "amount": "0",
-      "chain_uid": "amoy"
+      "chain_uid": "ronin"
     },
-    "sequence": "130",
-    "source_chain_uid": "amoy",
-    "source_chain_id": "80002",
-    "source_factory": "0x7f2cc9fe79961f628da671ac62d1f2896638edd5",
+    "sequence": "608732",
+    "source_chain_uid": "ronin",
+    "source_chain_id": "2021",
+    "source_factory": "0x43d4759e0cb8e4d3b2aab1ba6e39a60dce1a8f5b",
     "sender": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "total_duration": "18s",
-    "total_estimated_duration": "26.5s",
+    "total_duration": "8s",
+    "total_estimated_duration": "9.1s",
     "swap_status": [
       {
         "type": "dex",
@@ -256,130 +256,130 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
         "is_ibc": true,
         "route": [
           "euclid",
-          "inj"
+          "bnb"
         ],
-        "amount_in": "1000000000",
+        "amount_in": "4000000",
         "status": {
-          "chain_uid": "amoy",
+          "chain_uid": "ronin",
           "status": "success",
           "msg": "success",
-          "timestamp": "2025-04-18 14:24:07.759 +0000 UTC",
-          "tx_hash": "0xcbbb1784619b73983d65aca7ace2041d0692814ab2a4bd3635e89d6b845e44eb",
-          "duration": "23.746s",
-          "estimated_duration": "23.746s"
+          "timestamp": "2025-10-15 15:59:09.166 +0000 UTC",
+          "tx_hash": "0x7f78069e33c6d288448bc95219e116f77bc26c8378ba017b5bf6ddf1c5c6d21c",
+          "duration": "2.281s",
+          "estimated_duration": "760ms"
         },
         "ibc_status": {
           "send_packet": {
-            "chain_uid": "amoy",
+            "chain_uid": "ronin",
             "status": "success",
             "msg": "success",
-            "timestamp": "2025-04-18 14:24:07.759 +0000 UTC",
-            "tx_hash": "0xcbbb1784619b73983d65aca7ace2041d0692814ab2a4bd3635e89d6b845e44eb",
+            "timestamp": "2025-10-15 15:59:09.166 +0000 UTC",
+            "tx_hash": "0x7f78069e33c6d288448bc95219e116f77bc26c8378ba017b5bf6ddf1c5c6d21c",
             "duration": "0s"
           },
           "recv_packet": {
             "chain_uid": "vsl",
             "status": "success",
             "msg": "ok",
-            "timestamp": "2025-04-18 14:24:12.47 +0000 UTC",
-            "tx_hash": "A59EC543F943A766C8D42D9246B1F120BCC385C16303EB55BC80695B9C6EFFD1"
+            "timestamp": "2025-10-15 15:59:11.447 +0000 UTC",
+            "tx_hash": "4507F4755DBBD333EF844440149B651FDF8B8DF1D0E60716DB4A5A80898797B7"
           },
           "ack_status": {
-            "chain_uid": "amoy",
-            "status": "success",
-            "msg": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000042616d6f793a3078383837653461616332313636373464326334333237393866383531633165613564353035623265313a38303030323a32303630393433323a313330000000000000000000000000000000000000000000000000000000000000",
-            "timestamp": "2025-04-18 14:24:31.505 +0000 UTC",
-            "tx_hash": "0x7ac1eb09ffa571b309a0eff588d221ad1d13d28a163c71d722676a053935fbdf"
+            "chain_uid": "ronin",
+            "status": "pending",
+            "msg": "txn not found",
+            "timestamp": "",
+            "tx_hash": ""
           }
         },
         "asset_in": "euclid",
-        "asset_out": "inj",
-        "expected_amount_out": "40259437837605601280",
-        "amount_out": "40259437837605600454",
+        "asset_out": "bnb",
+        "expected_amount_out": "423756295516401856",
+        "amount_out": "405560554268112375",
         "from_dex": "euclid"
       },
       {
         "type": "release",
         "is_ibc": true,
-        "from_chain_uid": "amoy",
-        "to_chain_uid": "injective",
+        "from_chain_uid": "ronin",
+        "to_chain_uid": "bsc",
         "status": {
-          "chain_uid": "injective",
+          "chain_uid": "bsc",
           "status": "success",
           "msg": "success",
-          "timestamp": "2025-04-18 14:24:26.511 +0000 UTC",
-          "tx_hash": "E3FDF7BB930765A0053BE985B93478DDED009A1070EB834C5F919E629CC89E7B",
-          "duration": "26.464s",
-          "estimated_duration": "26.464s"
+          "timestamp": "2025-10-15 15:59:18.033 +0000 UTC",
+          "tx_hash": "0xb4065b74516d6fc441319c00a59ac79d660429cca48d55e75aa28d7d86b2e238",
+          "duration": "9.534s",
+          "estimated_duration": "8.294s"
         },
         "ibc_status": {
           "send_packet": {
             "chain_uid": "vsl",
             "status": "success",
             "msg": "released",
-            "timestamp": "2025-04-18 14:24:12.47 +0000 UTC",
-            "tx_hash": "A59EC543F943A766C8D42D9246B1F120BCC385C16303EB55BC80695B9C6EFFD1"
+            "timestamp": "2025-10-15 15:59:11.447 +0000 UTC",
+            "tx_hash": "4507F4755DBBD333EF844440149B651FDF8B8DF1D0E60716DB4A5A80898797B7"
           },
           "recv_packet": {
-            "chain_uid": "injective",
+            "chain_uid": "bsc",
             "status": "success",
-            "msg": "eyJvayI6eyJmYWN0b3J5X2FkZHJlc3MiOiJpbmoxc2RtejI1NjQ0cDJubjJ6c2U1bnRya3c3Y2Y2Zzd0aDBhbXRkcHUiLCJjaGFpbl9pZCI6ImluamVjdGl2ZS04ODgiLCJhbW91bnQiOiI0MDI1OTQzNzgzNzYwNTYwMDQ1NCIsInRva2VuIjoiaW5qIiwidG9fYWRkcmVzcyI6ImluajFlcHB0c2x5eTVtbHZyNG0yMzh2MHowOTU0bmY5bTZsbHk3djdwdSIsImRlbm9tcyI6W3sidG9rZW5fdHlwZSI6eyJuYXRpdmUiOnsiZGVub20iOiJpbmoifX0sImFtb3VudCI6IjQwMjU5NDM3ODM3NjA1NjAwNDU0IiwibmV3X2JhbGFuY2UiOiIzOTMxNDAwNDU3MTQ3OTcwMzcxNjMifV19fQ==",
-            "timestamp": "2025-04-18 14:24:26.511 +0000 UTC",
-            "tx_hash": "E3FDF7BB930765A0053BE985B93478DDED009A1070EB834C5F919E629CC89E7B"
+            "msg": "0x",
+            "timestamp": "2025-10-15 15:59:18.033 +0000 UTC",
+            "tx_hash": "0xb4065b74516d6fc441319c00a59ac79d660429cca48d55e75aa28d7d86b2e238"
           },
           "ack_status": {
             "chain_uid": "vsl",
             "status": "success",
             "msg": "Success",
-            "timestamp": "2025-04-18 14:24:38.934 +0000 UTC",
-            "tx_hash": "02AF65238DCB74A0AD540313B6246175BE0E6B06101D1E686F0D03589A3EDCBD"
+            "timestamp": "2025-10-15 15:59:20.981 +0000 UTC",
+            "tx_hash": "7C8100879FA578CBABBAD75AF60AADF488FEAD8E447CD558360723DBCB132828"
           }
         },
-        "token_id": "inj",
-        "expected_amount_out": "40259437837605600454",
-        "amount_out": "40259437837605600454",
+        "token_id": "bnb",
+        "expected_amount_out": "405560554268112375",
+        "amount_out": "405560554268112375",
         "from_dex": "euclid",
-        "to_address": "inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu",
-        "release_tx_hash": "A59EC543F943A766C8D42D9246B1F120BCC385C16303EB55BC80695B9C6EFFD1",
+        "to_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+        "release_tx_hash": "4507F4755DBBD333EF844440149B651FDF8B8DF1D0E60716DB4A5A80898797B7",
         "escrow_release_status": {
           "is_completed": true,
-          "tx_id": "amoy:0x887e4aac216674d2c432798f851c1ea5d505b2e1:nibiru-testnet-2:1145105:0:3231",
+          "tx_id": "ronin:0x887e4aac216674d2c432798f851c1ea5d505b2e1:neuron-1:15866796:6:10416569",
           "type": "EscrowRelease",
           "tx_status": "success",
-          "tx_hash": "A59EC543F943A766C8D42D9246B1F120BCC385C16303EB55BC80695B9C6EFFD1",
-          "sequence": "238",
-          "source_chain_uid": "injective",
-          "source_chain_id": "injective-888",
-          "source_factory": "inj1sdmz25644p2nn2zse5ntrkw7cf6g7th0amtdpu",
+          "tx_hash": "4507F4755DBBD333EF844440149B651FDF8B8DF1D0E60716DB4A5A80898797B7",
+          "sequence": "70543",
+          "source_chain_uid": "bsc",
+          "source_chain_id": "97",
+          "source_factory": "0x62d8658a3d7c669943c95c781c220469e19beb47",
           "status": [
             {
               "chain_uid": "vsl",
               "status": "success",
               "msg": "released",
-              "timestamp": "2025-04-18 14:24:12.47 +0000 UTC",
-              "tx_hash": "A59EC543F943A766C8D42D9246B1F120BCC385C16303EB55BC80695B9C6EFFD1"
+              "timestamp": "2025-10-15 15:59:11.447 +0000 UTC",
+              "tx_hash": "4507F4755DBBD333EF844440149B651FDF8B8DF1D0E60716DB4A5A80898797B7"
             },
             {
-              "chain_uid": "injective",
+              "chain_uid": "bsc",
               "status": "success",
-              "msg": "eyJvayI6eyJmYWN0b3J5X2FkZHJlc3MiOiJpbmoxc2RtejI1NjQ0cDJubjJ6c2U1bnRya3c3Y2Y2Zzd0aDBhbXRkcHUiLCJjaGFpbl9pZCI6ImluamVjdGl2ZS04ODgiLCJhbW91bnQiOiI0MDI1OTQzNzgzNzYwNTYwMDQ1NCIsInRva2VuIjoiaW5qIiwidG9fYWRkcmVzcyI6ImluajFlcHB0c2x5eTVtbHZyNG0yMzh2MHowOTU0bmY5bTZsbHk3djdwdSIsImRlbm9tcyI6W3sidG9rZW5fdHlwZSI6eyJuYXRpdmUiOnsiZGVub20iOiJpbmoifX0sImFtb3VudCI6IjQwMjU5NDM3ODM3NjA1NjAwNDU0IiwibmV3X2JhbGFuY2UiOiIzOTMxNDAwNDU3MTQ3OTcwMzcxNjMifV19fQ==",
-              "timestamp": "2025-04-18 14:24:26.511 +0000 UTC",
-              "tx_hash": "E3FDF7BB930765A0053BE985B93478DDED009A1070EB834C5F919E629CC89E7B"
+              "msg": "0x",
+              "timestamp": "2025-10-15 15:59:18.033 +0000 UTC",
+              "tx_hash": "0xb4065b74516d6fc441319c00a59ac79d660429cca48d55e75aa28d7d86b2e238"
             },
             {
               "chain_uid": "vsl",
               "status": "success",
               "msg": "Success",
-              "timestamp": "2025-04-18 14:24:38.934 +0000 UTC",
-              "tx_hash": "02AF65238DCB74A0AD540313B6246175BE0E6B06101D1E686F0D03589A3EDCBD"
+              "timestamp": "2025-10-15 15:59:20.981 +0000 UTC",
+              "tx_hash": "7C8100879FA578CBABBAD75AF60AADF488FEAD8E447CD558360723DBCB132828"
             }
           ],
           "escrow_response": {
-            "tx_id": "amoy:0x887e4aac216674d2c432798f851c1ea5d505b2e1:nibiru-testnet-2:1145105:0:3231",
-            "amount": "40259437837605600454",
-            "token": "inj",
-            "to_address": "inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu",
-            "chain_uid": "injective-888"
+            "tx_id": "ronin:0x887e4aac216674d2c432798f851c1ea5d505b2e1:2021:42264661:608732",
+            "amount": "405560554268112375",
+            "token": "bnb",
+            "to_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+            "chain_uid": "bsc"
           }
         }
       }

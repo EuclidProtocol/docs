@@ -17,7 +17,12 @@ Each chain includes:
 
 ## GraphQL Query
 
-```graphql
+<Tabs tabs={[
+  {
+    id: 'query-all-chains',
+    label: 'Query',
+    language: 'graphql',
+    content: `
 query Router {
   router {
     all_chains {
@@ -27,7 +32,55 @@ query Router {
     }
   }
 }
-```
+`
+  },
+  {
+    id: 'response-all-chains',
+    label: 'Response',
+    language: 'json',
+    content: `
+{
+  "data": {
+    "router": {
+      "all_chains": [
+        {
+          "chain_id": "16602",
+          "chain_uid": "0g",
+          "factory_address": "0x171931f5670037173b9db13ab83186adab350cf2"
+        },
+        {
+          "chain_id": "constantine-3",
+          "chain_uid": "archway",
+          "factory_address": "archway1p7wukzdarjnt092ed6x4rkxv3k22evd5m36tpq3rcxvln0uzugesxds9tk"
+        },
+        {
+          "chain_id": "84532",
+          "chain_uid": "base",
+          "factory_address": "0x00a739e4479c97289801654ec1a52a67077613c0"
+        },
+        {
+          "chain_id": "coreum-testnet-1",
+          "chain_uid": "coreum",
+          "factory_address": "testcore1x2mr6lpjdd2xzk8cgsq88lp4xgthnr85e5qeamrmrl8zf3lu522qx3yxsj"
+        },
+        {
+          "chain_id": "injective-888",
+          "chain_uid": "injective",
+          "factory_address": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q"
+        },
+        {
+          "chain_id": "3441006",
+          "chain_uid": "manta",
+          "factory_address": "0x30edc073c7c9ce02cba22895020c7f2f8f897007"
+        }
+        // ... more chains
+      ]
+    }
+  }
+}
+`
+  }
+]} />
 
 <Tabs tabs={[
   {

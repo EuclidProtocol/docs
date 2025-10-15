@@ -38,9 +38,9 @@ query Evm_chain_config($chainUid: String, $chainId: String) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Evm_chain_config($chainUid: String, $chainId: String) {\n  chains {\n    evm_chain_config(chain_uid: $chainUid, chain_id: $chainId) {\n      chain_id\n      chain_uid\n      explorer_url\n      name\n      native_currency {\n        decimals\n        name\n        symbol\n      }\n      rpc_urls {\n        default {\n          http\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"monad","chainId":null}}'
+    --data '{"query":"query Evm_chain_config($chainUid: String, $chainId: String) {\n  chains {\n    evm_chain_config(chain_uid: $chainUid, chain_id: $chainId) {\n      chain_id\n      chain_uid\n      explorer_url\n      name\n      native_currency {\n        decimals\n        name\n        symbol\n      }\n      rpc_urls {\n        default {\n          http\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"megaeth"}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIBucA%2BlABYCGAlktREgGYMDmAFACS2MkAVQZh0RAMoo8TTgBoi-ekwCSYydNkBKIsAA6SIkQFMAzroNGjCCtWXMorDjxPMYo8UsEiwC15Q9FVzUdfUMrI39RSwjje0p3MBiIhAAPAAcAGwg8fAS8TOSrJDpEIqMSlAYyBGoYPFykKGIw2KswBCgGODpM03Li0oQBo1MCOAAjCELwiIBfAbx0qHy%2Bi1nYjrY6GEyUdbaImhQUdJGiBY2jS-mYy7mQOaA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIBucA%2BlABYCGAlktREgGYMDmAFACS2MkAVQZh0RAMoo8TTgBoi-ekwCSYydNkBKIsAA6SIkQFMAzroNGjCCtWXMorDjxPMYo8UsEiwC15Q9FVzUdfUMrI39RSwjje0p3MBiIhAAPAAcAGwg8fAS8TOSrJDpEIqMSlAYyBGoYPFykKGIw2KswBCgGODpM03Li0oQBo1MCOAAjCELwiIBfAbx0qHy%2Bi1nYjrY6GEyUdbaImhQUdJGiBY2jS-mYy7mQORAyOhk6CcyEUwwQVqI9ECuHwA9AAxCcOgIFA0AEGB5zIA)
 
 ### Arguments
 

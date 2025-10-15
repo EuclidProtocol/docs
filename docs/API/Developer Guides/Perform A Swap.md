@@ -81,85 +81,179 @@ This will return a response similar to the following:
 ```
 Once fetched, they can be displayed for the user who can select the desired tokens for the swap.
 
-### 2. Get all the chains for `token_in`
-Get the chains that have escrows for `token_in` and then select the one to use. This can be done using the [`Escrows`](../GQL/Router/Escrows.md) query:
+
+
+### 2. Get the Chains + Denoms of Token In 
+
+Next, we get the chains that have escrows for `token_in` and then select the one to use. This can be done using the [`Token Denoms`](../GQL/Router/Token%20Denoms.md) query:
  :::tip
- - The connected wallet needs to be the same as the selected chain.
+ - If a wallet is connected, make sure it matches the selected chain.
  - For the `$token` parameter, use the `token_in` selected in the previous step.
+ - Use the returned denom to construct the `asset_in` parameter for the trade message.
  :::
 
 ```graphql
 query Router($token: String!) {
   router {
-    escrows(token: $token) {
-      balance
-      chain_id
-      chain_uid
+    token_denoms(token: $token) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
     }
   }
 }
 ```
 Here is a response for a "`euclid`" token in:
+
 ```JSON
 {
   "data": {
     "router": {
-      "escrows": [
-        {
-          "balance": "823145535219",
-          "chain_id": "16601",
-          "chain_uid": "0g"
-        },
-        {
-          "balance": "3504281817",
-          "chain_id": "421614",
-          "chain_uid": "arbitrum"
-        },
-        {
-          "balance": "381840742892",
-          "chain_id": "constantine-3",
-          "chain_uid": "archway"
-        },
-        {
-          "balance": "963955072",
-          "chain_id": "43113",
-          "chain_uid": "avalanchefuji"
-        },
-        {
-          "balance": "9789515193",
-          "chain_id": "84532",
-          "chain_uid": "base"
-        },
-        {
-          "balance": "891666393",
-          "chain_id": "97",
-          "chain_uid": "bsc"
-        },
-        {
-          "balance": "924766871",
-          "chain_id": "coreum-testnet-1",
-          "chain_uid": "coreum"
-        },
-        {
-          "balance": "2685533177",
-          "chain_id": "elysicstestnet-1",
-          "chain_uid": "elys"
-        },
-        {
-          "balance": "974092580",
-          "chain_id": "998",
-          "chain_uid": "hyperliquid"
-        },
-        {
-          "balance": "12460761084",
-          "chain_id": "injective-888",
-          "chain_uid": "injective"
-        },
-        {
-          "balance": "0",
-          "chain_id": "oro_1336-1",
-          "chain_uid": "kiichain"
-        }
+      "token_denoms": {
+        "denoms": [
+          {
+            "chain_uid": "neuron",
+            "token_type": {
+              "native": {
+                "denom": "ueuclid"
+              }
+            }
+          },
+          {
+            "chain_uid": "injective",
+            "token_type": {
+              "smart": {
+                "contract_address": "inj1c9s44gr4jqzt9q44xq5as8smsspc8u6qu8ct8w"
+              }
+            }
+          },
+          {
+            "chain_uid": "nibiru",
+            "token_type": {
+              "smart": {
+                "contract_address": "nibi1nxw729ht6dt3tllhtsmfepdx3yz4v4ry6m55p0jl8tzjqe4jejsscadex3"
+              }
+            }
+          },
+          {
+            "chain_uid": "andromeda",
+            "token_type": {
+              "smart": {
+                "contract_address": "andr18mv7knjgwr0s662ztexvpvwau03nmfkcr3dy4yy75v6j3zzff5vs4mypv3"
+              }
+            }
+          },
+          {
+            "chain_uid": "archway",
+            "token_type": {
+              "smart": {
+                "contract_address": "archway1gsj5dj864xea7eglfn6uudxflhfkd27nlg7l88qje9f5m3kqm70qceskg7"
+              }
+            }
+          },
+          {
+            "chain_uid": "coreum",
+            "token_type": {
+              "smart": {
+                "contract_address": "testcore1cgpa0mmqls80h7a7v68qtvjx742eak4f0pnlzcp9rn2jsgnrk6cstqd6yt"
+              }
+            }
+          },
+          {
+            "chain_uid": "neutron",
+            "token_type": {
+              "smart": {
+                "contract_address": "neutron17w83ykjsk92l2uekg6gq6qwdvqgzsydzyd2uzdezwgzy4zk2ck8s0a03fm"
+              }
+            }
+          },
+          {
+            "chain_uid": "stargaze",
+            "token_type": {
+              "smart": {
+                "contract_address": "stars1r2cj4ap3e8felsfnyfm7p7r0j0t579wlkk0mn087s5y5ujcvuvyq6vcqhv"
+              }
+            }
+          },
+          {
+            "chain_uid": "osmosis",
+            "token_type": {
+              "smart": {
+                "contract_address": "osmo16x06cjm7wzw4d89ya9drpru2dc99szeg75yy3t493ujthems2eysz0qpfg"
+              }
+            }
+          },
+          {
+            "chain_uid": "oraichain",
+            "token_type": {
+              "smart": {
+                "contract_address": "orai1z6fjtpsa9fhnkuxvef5lkcaafuw40zc3hr0wml0tngqahtl0s58sduy0e3"
+              }
+            }
+          },
+          {
+            "chain_uid": "monad",
+            "token_type": {
+              "smart": {
+                "contract_address": "0xf6447bc85ff1669a46c849b09cad86b7ca669522"
+              }
+            }
+          },
+          {
+            "chain_uid": "0g",
+            "token_type": {
+              "smart": {
+                "contract_address": "0x72975d80179c6a6e1428108f426c8f14eee46226"
+              }
+            }
+          },
+          {
+            "chain_uid": "base",
+            "token_type": {
+              "smart": {
+                "contract_address": "0x31c25d98e97d7275be6962a200dae6f3838dc709"
+              }
+            }
+          },
+          {
+            "chain_uid": "sepolia",
+            "token_type": {
+              "smart": {
+                "contract_address": "0xaa6a3a711b54b390824d4e12bd73c0cd84a4ea88"
+              }
+            }
+          },
+          {
+            "chain_uid": "manta",
+            "token_type": {
+              "smart": {
+                "contract_address": "0xd0786f3a7e5b0dc05fe8b648d757d684eb84b0ed"
+              }
+            }
+          },
+          {
+            "chain_uid": "unichain",
+            "token_type": {
+              "smart": {
+                "contract_address": "0xd0786f3a7e5b0dc05fe8b648d757d684eb84b0ed"
+              }
+            }
+          },
 
         ...
       ]
@@ -169,56 +263,11 @@ Here is a response for a "`euclid`" token in:
 ```
 You can then prompt the user to select the chain of their choice or automatically use the connected chain, if the wallet is already connected. This ensures that the escrow is selected on a chain where the user is ready to sign and broadcast transactions.
 
-### 3. Retrieve the allowed denoms
 
-Check the allowed denoms for the token in. This can be done using the [`Escrow`](../GQL/Factory/Escrow.md) query:
- :::tip
- Use the Chain UID and token Id from previous steps for the chain selected.
- :::
-
-```graphql
-query Factory($chainUid: String!, $tokenId: String) {
-  factory(chain_uid: $chainUid) {
-    escrow(token_id: $tokenId) {
-      denoms {
-        ... on NativeTokenType {
-          native {
-            denom
-          }
-        }
-        ... on SmartTokenType {
-          smart {
-            contract_address
-          }
-        }
-      }
-    }
-  }
-}
-```
-This will return the denom to be used in the swap based on the parameters passed by the user (`euclid` on `coreum` in this example):
-```JSON
-{
-  "data": {
-    "factory": {
-      "escrow": {
-        "denoms": [
-          {
-            "smart": {
-              "contract_address": "testcore1cgpa0mmqls80h7a7v68qtvjx742eak4f0pnlzcp9rn2jsgnrk6cstqd6yt"
-            }
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
-### 4. Specify token in amount
+### 3. Specify token in amount
 Next, we need to select the amount of `token_in` to swap. This would be specified by the user.
 
-### 5. Get swap routes
+### 4. Get swap routes
 
 In many cases, multiple routes can be taken to perform the desired swap. In this step, we will fetch these routes and select the one we want to use. This can be done using the [`Get Routes`](../REST/Routes/Get%20Routes.md) query:
 ```bash
@@ -289,7 +338,7 @@ Example:
 }
 :::
 
-### 6. Simulate the swap
+### 5. Simulate the swap
 
 Now that we have all the parameters required, we can simulate the swap. This can be done using the [`Simulate Swap`](../GQL/Router/Simulate%20Swap.md) query:
  :::tip
@@ -327,7 +376,7 @@ The response will return the expected `amount_out` for the swap:
   }
 }
 ```
-### 7. Set `slippage` Value
+### 6. Set `slippage` Value
 
 The `slippage` field specifies the **maximum allowed slippage** for the swap, expressed in **basis points (bps)**:
 
@@ -343,6 +392,78 @@ To allow up to **5% slippage**, set:
 
 ```json
 "slippage": "500"
+```
+
+### 7. Select Output Chain
+
+Token out might exist on multiple chains. We query the available escrows for the selected token and then prompt the user to choose which chain they want to receive the tokens on. This can be done using the [`Escrows`](../GQL/Router/Escrows.md) query:
+:::note
+- The returned balance for each chain specifies the amount of tokens available in the escrow. Make sure the selected chain has enough balance to cover the `token_out` amount.
+- In case the balance is less than the expected amount out, remaining tokens will be minted as vouchers.
+:::
+
+```graphql
+query Escrows($token: String!) {
+  router {
+    escrows(token: $token) {
+      chain_uid
+      balance
+      chain_id
+    }
+  }
+}
+```
+Here is an example for `eth` token:
+
+```json
+{
+  "data": {
+    "router": {
+      "escrows": [
+        {
+          "chain_uid": "base",
+          "balance": "0",
+          "chain_id": "84532"
+        },
+        {
+          "chain_uid": "linea",
+          "balance": "0",
+          "chain_id": "59141"
+        },
+        {
+          "chain_uid": "manta",
+          "balance": "0",
+          "chain_id": "3441006"
+        },
+        {
+          "chain_uid": "megaeth",
+          "balance": "20314545986679486197214",
+          "chain_id": "6342"
+        },
+        {
+          "chain_uid": "scroll",
+          "balance": "0",
+          "chain_id": "534351"
+        },
+        {
+          "chain_uid": "sepolia",
+          "balance": "0",
+          "chain_id": "11155111"
+        },
+        {
+          "chain_uid": "soneium",
+          "balance": "0",
+          "chain_id": "1946"
+        },
+        {
+          "chain_uid": "unichain",
+          "balance": "0",
+          "chain_id": "1301"
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### 8. Generate swap transaction
@@ -393,6 +514,48 @@ We now have everything needed to generate the swap transaction message:
   },
   swaps: data.swaps
 }).then((res) => res.data);`
+    }
+  ]}
+/>
+
+### 9. Broadcast the transaction to chain
+
+The final step will be broadcasting this transaction to the chain and signing it with the connected wallet:
+
+<Tabs
+  tabs={[
+    {
+      id: 'cosmos-broadcast',
+      label: 'CosmWasm',
+      language: 'javascript',
+      content: `const tx = await client!.executeMultiple(
+  wallet!.bech32Address,
+  msg.msgs,
+  "auto",
+  "Swap"
+);
+return tx;`
+    },
+    {
+      id: 'evm-broadcast',
+      label: 'EVM',
+      language: 'javascript',
+      content: `const provider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = provider.getSigner();
+
+// Construct the transaction data
+const tx = {
+  to: msg.msgs[0].to, // Contract address
+  data: msg.msgs[0].data, // Encoded calldata
+  value: msg.msgs[0].value || "0x0" 
+};
+
+// Send transaction using signer (e.g. MetaMask)
+const receipt = await signer.sendTransaction(tx);
+
+// Optional: Wait for confirmation
+const confirmed = await receipt.wait();
+return confirmed;`
     }
   ]}
 />
