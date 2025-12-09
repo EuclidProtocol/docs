@@ -33,24 +33,24 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
         "token": "euclid",
         "token_type": {
           "smart": {
-            "contract_address": "nibi17zymknww0ynlgtad22dzgy6kp6qzeg28gmvm5aq32avf9248rvasxtgxuv"
+            "contract_address": "inj1c9s44gr4jqzt9q44xq5as8smsspc8u6qu8ct8w"
           }
         },
         "amount": "900000000"
       },
       "token_2": {
-        "token": "nibi",
+        "token": "inj",
         "token_type": {
           "native": {
-            "denom": "unibi"
+            "denom": "inj"
           }
         },
         "amount": "246867"
       }
     },
     "sender": {
-      "address": "nibi1l0wgje0y43007xpdqkuxaxluffuxj7fy7eccns",
-      "chain_uid": "nibiru"
+      "address": "inj1y2n2fysm3r9t09kw9gmgfnpu746g8yu0pl24en",
+      "chain_uid": "injective"
     }
 }'`
     },
@@ -61,26 +61,26 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
       content: `{
   "type": "cosmwasm",
   "sender": {
-    "chain_uid": "nibiru",
-    "address": "nibi1l0wgje0y43007xpdqkuxaxluffuxj7fy7eccns"
+    "chain_uid": "injective",
+    "address": "inj1y2n2fysm3r9t09kw9gmgfnpu746g8yu0pl24en"
   },
-  "contract": "nibi1ljsgwzz4zwzuk96f6s20rfemddn6m5lrkmsdyms8at7j5jvk67rqqjl6lq",
-  "chain_id": "nibiru-testnet-2",
-  "rpc_url": "https://rpc.testnet-2.nibiru.fi",
-  "rest_url": "https://lcd.testnet-2.nibiru.fi",
+  "contract": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
+  "chain_id": "injective-888",
+  "rpc_url": "https://injective-testnet-rpc.publicnode.com",
+  "rest_url": "https://testnet.sentry.lcd.injective.network",
   "msgs": [
     {
-      "contractAddress": "nibi17zymknww0ynlgtad22dzgy6kp6qzeg28gmvm5aq32avf9248rvasxtgxuv",
+      "contractAddress": "inj1c9s44gr4jqzt9q44xq5as8smsspc8u6qu8ct8w",
       "msg": {
         "increase_allowance": {
           "amount": "900000000",
-          "spender": "nibi1ljsgwzz4zwzuk96f6s20rfemddn6m5lrkmsdyms8at7j5jvk67rqqjl6lq"
+          "spender": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q"
         }
       },
       "funds": []
     },
     {
-      "contractAddress": "nibi1ljsgwzz4zwzuk96f6s20rfemddn6m5lrkmsdyms8at7j5jvk67rqqjl6lq",
+      "contractAddress": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
       "msg": {
         "add_liquidity_request": {
           "pair_info": {
@@ -89,16 +89,16 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
               "token": "euclid",
               "token_type": {
                 "smart": {
-                  "contract_address": "nibi17zymknww0ynlgtad22dzgy6kp6qzeg28gmvm5aq32avf9248rvasxtgxuv"
+                  "contract_address": "inj1c9s44gr4jqzt9q44xq5as8smsspc8u6qu8ct8w"
                 }
               }
             },
             "token_2": {
               "amount": "246867",
-              "token": "nibi",
+              "token": "inj",
               "token_type": {
                 "native": {
-                  "denom": "unibi"
+                  "denom": "inj"
                 }
               }
             }
@@ -109,7 +109,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
       },
       "funds": [
         {
-          "denom": "unibi",
+          "denom": "inj",
           "amount": "246867"
         }
       ]

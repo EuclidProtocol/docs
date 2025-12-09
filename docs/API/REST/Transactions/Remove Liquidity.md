@@ -32,46 +32,28 @@ Generates a transaction to remove liquidity from a pool.
       label: 'Response',
       language: 'json',
       content: `{
-  "response": {
-    "is_completed": false,
-    "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6",
-    "asset_in_type": "",
-    "type": "",
-    "source_token_id": "",
-    "tx_status": "",
-    "tx_id": "",
-    "voucher_minted": null,
-    "sequence": "",
-    "source_chain_uid": "injective",
-    "source_chain_id": "injective-888",
-    "source_factory": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
-    "sender": "",
-    "total_duration": "",
-    "total_estimated_duration": "",
-    "status": [
-      {
-        "chain_uid": "injective",
-        "status": "pending",
-        "msg": "failed to get txn hash data",
-        "timestamp": "",
-        "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6"
+  "type": "cosmwasm",
+  "sender": {
+    "chain_uid": "injective",
+    "address": "inj1ugsn0llmegjn2q6fulexr4dwtazjcnvmgwhlj7"
+  },
+  "contract": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
+  "chain_id": "injective-888",
+  "rpc_url": "https://injective-testnet-rpc.publicnode.com",
+  "rest_url": "https://testnet.sentry.lcd.injective.network",
+  "msgs": [
+    {
+      "contractAddress": "inj109h276p8lju5xuku64at2t5gx63sv5nsuet8ar",
+      "msg": {
+        "send": {
+          "amount": "1000000",
+          "contract": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
+          "msg": "eyJyZW1vdmVfbGlxdWlkaXR5Ijp7ImNyb3NzX2NoYWluX2FkZHJlc3NlcyI6W10sImxwX2FsbG9jYXRpb24iOiIxMDAwMDAwIiwicGFpciI6eyJ0b2tlbl8xIjoiaW5qIiwidG9rZW5fMiI6InVzZGMifSwidGltZW91dCI6bnVsbH19"
+        }
       },
-      {
-        "chain_uid": "vsl",
-        "status": "pending",
-        "msg": "Pending",
-        "timestamp": "",
-        "tx_hash": ""
-      },
-      {
-        "chain_uid": "injective",
-        "status": "pending",
-        "msg": "Pending",
-        "timestamp": "",
-        "tx_hash": ""
-      }
-    ]
-  }
+      "funds": []
+    }
+  ]
 }`
     }
   ]}
@@ -99,8 +81,8 @@ Generates a transaction to remove liquidity from a pool.
     "cross_chain_addresses": [
       {
         "user": {
-          "address": "0x5aBFe1234567890cDEFaBc1234567890dEfABc01",
-          "chain_uid": "amoy"
+          "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml",
+          "chain_uid": "osmosis"
         },
         "limit": {
           "less_than_or_equal": "600000"

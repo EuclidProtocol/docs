@@ -22,11 +22,11 @@ query Vlp($vlp: String!) {
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token_pairs_from_vlp($vlp: String!) {\n  router {\n    token_pairs_from_vlp(vlp: $vlp) {\n      vlp\n      token_1\n      token_2\n    }\n  }\n}","variables":{"vlp":"euclid17g3a2z7l6zn88m8ymgwghk8hnclh824h5zh88zkw4z4zfa8q5zqqhsw40y"}}'
+    --data '{"query":"query Token_pairs_from_vlp($vlp: String!) {\n  router {\n    token_pairs_from_vlp(vlp: $vlp) {\n      vlp\n      token_1\n      token_2\n    }\n  }\n}","variables":{"vlp":"euclid177vjwkg6hqwgccjsvth02cacmwj7d568qs4wxgzg8vt4n70sg9msr6yckv"}}'
 
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgA4CGAlngM5UBmeEcVAbgDY0AFABJ%2BNdEQDKKPAyQBzAIQBKIsAA6SIkU4wU%2BNZu3aUFavSasOXXgMFiJogao1bj2sUfdFTlJFQBGL3dfagAmYKIAXy8YpCiQKKA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgA4CGAlngM5UBmeEcVAbgDY0AFABJ%2BNdEQDKKPAyQBzAIQBKIsAA6SIkU4wU%2BNZu3aUFavSasOXXgMFiJogao1bj2sUfdFTlJFQBGL3dfagAmYKIAXy8YpCiQABoQHjpZOgAjPgRmDBBXbXUUgSKJIoQYKD4GMACAdjqeACsAd3J5ADYACywW%2BSgoJuYeFC6ABjCoOig4Fqa6sABWDoAOLGYAFhaAD3kAL3kVkY2kOrHmeQBOOGY8DoIoch4izQSooA)
 
 ### Arguments
 

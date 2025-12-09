@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 # Escrows
-Queries the chain UID that contain an escrow with the specified token. Returns information on the escrow if found.
+Queries the chain UIDs that contain an escrow with the specified token. Returns information on the escrow if found.
 
 ```graphql
 query Escrows($token: String!, $max: String, $min: String, $skip: Int, $limit: Int) {

@@ -7,13 +7,13 @@ description: "Introduction Into Euclid's API"
 
 The Euclid API is designed to facilitate interactions with the Euclid platform, enabling users to perform a variety of actions such as querying data, executing transactions, and more. This documentation aims to provide comprehensive information on how to use the API, including details on available endpoints, request and response formats, and example usages.
 
-The Euclid API is built using GraphQL, a powerful query language for APIs that allows clients to request exactly the data they need. This approach avoids both the problems of over and under-fetching data, while also allowing for a more powerful and flexible Api.
+The Euclid API is built using GraphQL, a powerful query language for APIs that allows clients to request exactly the data they need. This approach avoids both the problems of over and under-fetching data, while also allowing for a more powerful and flexible API.
 
 :::note
 - Before reading these docs and using the API, it is recommended you familiarise yourself with [GraphQL](https://graphql.org/learn/) by reading the official GraphQL documentation.
 :::
 
-In addition to the GraphQL API, Euclid also provides a REST API, a traditional and widely-used approach for accessing web services. The REST API is mostly used to generate transactions that can signed by a wallet and broadcast to chains.
+In addition to the GraphQL API, Euclid also provides a REST API, a traditional and widely-used approach for accessing web services. The REST API is mostly used to generate transactions that can be signed by a wallet and broadcast to chains.
 
 
 

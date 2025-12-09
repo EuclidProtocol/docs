@@ -33,7 +33,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
     "cross_chain_addresses": [
       {
         "user": {
-          "address": "osmo1recipient...",
+          "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml",
           "chain_uid": "osmosis"
         },
         "limit": {
@@ -67,7 +67,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
             {
               "user": {
                 "chain_uid": "osmosis",
-                "address": "osmo1recipient..."
+                "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml"
               },
               "limit": {
                 "less_than_or_equal": "1000000"

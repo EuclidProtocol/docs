@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 # All Tokens
-Queries all the tokens availabe in the Euclid layer.
+Queries all the tokens available in the Euclid layer.
 
 ```graphql
 query All_tokens($max: String, $min: String, $skip: Int, $limit: Int) {

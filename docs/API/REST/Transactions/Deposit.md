@@ -37,17 +37,17 @@ Use this approach when depositing to a recipient identified by a standard **wall
     "token": "usdc",
     "token_type": {
       "native": {
-        "denom": "uusdc"
+        "denom": "factory/inj17vytdwqczqz72j65saukplrktd4gyfme5agf6c/usdc"
       }
     }
   },
  "sender": {
   "chain_uid": "injective",
-  "address": "inj1eppts..."
+  "address": "inj1y2n2fysm3r9t09kw9gmgfnpu746g8yu0pl24en"
 },
   "recipient": {
     "chain_uid": "osmosis",
-    "address": "osmo1c3..."
+    "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml"
   }
 }'`
     },
@@ -59,7 +59,7 @@ Use this approach when depositing to a recipient identified by a standard **wall
   "type": "cosmwasm",
   "sender": {
     "chain_uid": "injective",
-    "address": "inj1eppts..."
+    "address": "inj1y2n2fysm3r9t09kw9gmgfnpu746g8yu0pl24en"
   },
   "contract": "inj1mhk96ahzy54hjdw8xu9wug89yeg5y8dgm2g35q",
   "chain_id": "injective-888",
@@ -75,20 +75,20 @@ Use this approach when depositing to a recipient identified by a standard **wall
             "token": "usdc",
             "token_type": {
               "native": {
-                "denom": "uusdc"
+                "denom": "factory/inj17vytdwqczqz72j65saukplrktd4gyfme5agf6c/usdc"
               }
             }
           },
           "recipient": {
             "chain_uid": "osmosis",
-            "address": "osmo1c3..."
+            "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml"
           },
           "timeout": null
         }
       },
       "funds": [
         {
-          "denom": "uusdc",
+          "denom": "factory/inj17vytdwqczqz72j65saukplrktd4gyfme5agf6c/usdc",
           "amount": "2000000"
         }
       ]
