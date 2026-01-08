@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
         "Architecture Overview/Concepts/Euclid Messaging Protocol",
         "Architecture Overview/Concepts/Global Settlement Accounts",
         "Architecture Overview/Concepts/Smart Routing",
+        "Architecture Overview/Concepts/Vouchers",
         "Architecture Overview/Concepts/Meta Transactions",
         "Architecture Overview/Automated-Market-Makers",
       ],
@@ -160,62 +161,53 @@ const sidebars: SidebarsConfig = {
         "API/GQL/GQL Calls",
       ],
     },
+    {
+      type: "category",
+      label: "REST",
+      items: [
         {
           type: "category",
-          label: "REST",
+          label: "Routes",
           items: [
-            {
-              type: "category",
-              label: "Routes",
-              items: [
-                "API/REST/Routes/Get Routes",
-              ],
-            },
-            {
-              type: "category",
-              label: "Transactions",
-              items: [
-                "API/REST/Transactions/Swap",
-                {
-                  type: "category",
-                  label: "Liquidity",
-                  items: [
-                    "API/REST/Transactions/Liquidity/Add Liquidity",
-                    "API/REST/Transactions/Liquidity/Remove Liquidity",
-                    "API/REST/Transactions/Liquidity/Create Pool",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Vouchers",
-                  items: [
-                    "API/REST/Transactions/Vouchers/Deposit",
-                    "API/REST/Transactions/Vouchers/Withdraw Virtual Balance",
-                    "API/REST/Transactions/Vouchers/Transfer Voucher",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Tracking",
-                  items: [
-                    "API/REST/Transactions/Tracking/Track Transactions",
-                    "API/REST/Transactions/Tracking/Track Swap Transaction",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Meta Transactions",
-                  items: [
-                    "API/REST/Transactions/Meta Transactions/meta-swap",
-                    "API/REST/Transactions/Meta Transactions/meta-transfer",
-                    "API/REST/Transactions/Meta Transactions/meta-withdraw",
-                  ],
-                },
-              ],
-            },
-            
+            "API/REST/Routes/Get Routes",
           ],
         },
+        {
+          type: "category",
+          label: "Transactions",
+          items: [
+            "API/REST/Transactions/Swap",
+            {
+              type: "category",
+              label: "Liquidity",
+              items: [
+                "API/REST/Transactions/Liquidity/Add Liquidity",
+                "API/REST/Transactions/Liquidity/Create Pool",
+                "API/REST/Transactions/Liquidity/Remove Liquidity",
+              ],
+            },
+            {
+              type: "category",
+              label: "Tracking",
+              items: [
+                "API/REST/Transactions/Tracking/Track Swap Transaction",
+                "API/REST/Transactions/Tracking/Track Transactions",
+              ],
+            },
+            {
+              type: "category",
+              label: "Vouchers",
+              items: [
+                "API/REST/Transactions/Vouchers/Deposit",
+                "API/REST/Transactions/Vouchers/Transfer Voucher",
+                "API/REST/Transactions/Vouchers/Withdraw Virtual Balance",
+              ],
+            },
+          ],
+        },
+        
+      ],
+    },
     {
       type: "category",
       label: "Developer Guides ",

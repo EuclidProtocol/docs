@@ -31,13 +31,13 @@ All of this is covered by the types below, used in our APIs.
 ### `CrossChainUser`
 
 ```ts
-export interface CrossChainUser {
-  address: string | null;
-  chain_uid: string | null;
+type CrossChainUser = {
+  chain_uid?: string
+  address?: string
 }
 ```
 
-#### Return Fields
+#### Fields
 
 | **Field**     | **Type**   | **Description**                          |
 |---------------|------------|------------------------------------------|
@@ -53,9 +53,9 @@ export interface CrossChainUser {
       id: 'crosschainuser-ts',
       label: 'TypeScript',
       language: 'ts',
-      content: `export interface CrossChainUser {
-  address: string | null;
-  chain_uid: string | null;
+      content: `type CrossChainUserInput = {
+  chain_uid?: string
+  address?: string
 }`
     },
     {
@@ -78,27 +78,77 @@ export interface CrossChainUser {
 | `chain_uid`   | `string?`  | The chain UID of the user.               |
 
 
-### `CrossChainUserWithLimit`
+### `CrossChainAddressWithLimit`
 
-```ts
-export interface CrossChainUserWithLimit {
-  limit?: Limit | null;
-  user: CrossChainUser;
+<Tabs
+tabs={[
+{
+id: 'crosschainaddresswithlimit-ts',
+label: 'TypeScript',
+language: 'ts',
+content: `type CrossChainAddressWithLimit = {
+\
+user: CrossChainUserWithAmount 
+limit?: {
+   less_than_or_equal?: string
+   greater_than_or_equal?: string
+   equal?: string }
+preferred_denom?: TokenType
+forwarding_message?: {
+   data?: string 
+   meta?: string } 
+   }`
+},
+{
+id: 'crosschainaddresswithlimit-json',
+label: 'JSON',
+language: 'json',
+content: `{ "user": { "chain_uid": "base", "address": "0xB0b123456789abcdef123456789abcdef1234567", "amount": "1000000" }, "limit": { "greater_than_or_equal": "950000" }, "preferred_denom": { "native": { "denom": "base" } }, "forwarding_message": { "data": "0x", "meta": "forward" } }`
 }
-```
+]}
+/>
 
-#### Return Fields
-
-| **Field**     | **Type**                             | **Description**                                      |
-|---------------|--------------------------------------|------------------------------------------------------|
-| `limit`       | `Limit?`                            | Optional token limit for the user (e.g., escrow cap). |
-| `user`        | [`CrossChainUser`](#crosschainuser) | The user address and chain metadata.                |
-
-
-
-### Limit
+| Field                  | Type                      | Description |
+|-----------------------|----------------------------|-------------|
+| `user`                | [`CrossChainUserWithAmount`](#crosschainuserwithamount) | The target recipient on a specific chain, including the chain UID, address, and optionally an amount or social identity for routing/claims. |
+| `limit`               | [Limit](#limit)                      | Optional delivery constraints that define acceptable amount bounds for this recipient. |
+| `preferred_denom`     | [`TokenType`](#tokentype-variants)                   | Optional preference for how the asset should be represented on the destination chain (native vs smart vs voucher). |
+| `forwarding_message`  | object                       | Optional forwarding payload (data/meta) passed along to downstream handlers or contracts when the cross-chain delivery executes. |
 
 
+### `CrossChainUserWithAmount`
+
+<Tabs
+tabs={[
+{
+id: 'crosschainuserwithamount-ts',
+label: 'TypeScript',
+language: 'ts',
+content: `type CrossChainUserWithAmount = {
+ chain_uid?: string
+ address?: string 
+ amount?: string }`
+},
+{
+id: 'crosschainuserwithamount-json',
+label: 'JSON',
+language: 'json',
+content: `{
+ "chain_uid": "base",
+ "address": "0xB0b123456789abcdef123456789abcdef1234567",
+ "amount": "1000000" }`
+}
+]}
+/>
+
+| Field       | Type     | Description |
+|------------|----------|-------------|
+| `chain_uid` | `string` | Unique chain identifier for the user’s address. |
+| `address`   | `string` | User address on the specified chain. |
+| `amount`    | `string` | Amount associated with the user for this request (as a string). |
+
+
+### `Limit`
 
 <Tabs
   tabs={[
@@ -122,7 +172,7 @@ export interface CrossChainUserWithLimit {
   ]}
 />
 
-## TokenWithDenom
+### TokenWithDenom
 
 Represents a token and how it should be interpreted on-chain. The `token_type` determines if it's a native chain token, a smart contract token, or a voucher.
 
@@ -134,15 +184,12 @@ Represents a token and how it should be interpreted on-chain. The `token_type` d
       id: 'tokenwithdenom-ts',
       label: 'TypeScript',
       language: 'ts',
-      content: `interface TokenWithDenom {
-  token: string;
-  token_type: TokenType;
+      content: `type TokenWithDenom = {
+  token: string
+  token_type: TokenType
+  amount?: string
 }
-
-type TokenType =
-  | { native: { denom: string } }
-  | { smart: { contract_address: string } }
-  | { voucher: {} };`
+`
     },
     {
       id: 'tokenwithdenom-json',
@@ -150,6 +197,7 @@ type TokenType =
       language: 'json',
       content: `{
   "token": "usdc",
+  "amount":"10000000",
   "token_type": {
     "smart": {
       "contract_address": "0xA1b2C3d4E5F67890123456789abcdef123456789"
@@ -160,7 +208,7 @@ type TokenType =
   ]}
 />
 
-### TokenType Variants
+### `TokenType Variants`
 
 ```ts
 type TokenType =
@@ -169,7 +217,7 @@ type TokenType =
   | { voucher: {} }
 ```
 
-## PairWithDenomAndAmount
+### `PairWithDenomAndAmount`
 
 Used when representing a pair of tokens along with their amounts and token type. Commonly used in swaps and pool-related contexts.
 
@@ -181,15 +229,17 @@ Used when representing a pair of tokens along with their amounts and token type.
       id: 'pairwithdenomandamount-ts',
       label: 'TypeScript',
       language: 'ts',
-      content: `interface PairWithDenomAndAmount {
-  token_1: TokenWithDenomAndAmount;
-  token_2: TokenWithDenomAndAmount;
+      content: `
+
+type PairWithDenomAndAmount = {
+  token_1: TokenWithDenomAndAmount
+  token_2: TokenWithDenomAndAmount
 }
 
-interface TokenWithDenomAndAmount {
-  token: string;
-  amount: string;
-  token_type: TokenType;
+type TokenWithDenomAndAmount = {
+  token: string
+  amount: string
+  token_type: TokenType
 }
 
 type TokenType =

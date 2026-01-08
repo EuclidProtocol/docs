@@ -42,10 +42,7 @@ curl --request POST \
 |---------------------------|--------------------------------------------------------|---------------------------------------------------------------------------------|
 | `token`                   | String!                                                | The token ID of the token to be released.                                       |
 | `amount`                  | Int                                                    | The total amount of tokens to release from escrow.                             |
-| `cross_chain_addresses`   | [CrossChainUserWithLimitInput](../../common%20types.md#crosschainuserwithlimit)                         | List of destination users and optional limits per user.                        |
-
-#### CrossChainUserWithLimitInput
-
+| `cross_chain_addresses`   | CrossChainUserWithLimitInput                       | List of destination users and optional limits per user.                        |
 
 
 ### Return Fields
@@ -53,7 +50,7 @@ curl --request POST \
 | **Field**                  | **Type**   | **Description**                                             |
 |------------------------|--------|---------------------------------------------------------|
 | `amount`                  | `String` | The amount of tokens to release.                        |
-| `cross_chain_user`         | [`CrossChainUserWithLimit`](../../common%20types.md#crosschainuserwithlimit)    | The address and limit for the receiving address of the funds.                                 |
+| `cross_chain_user`         | `CrossChainUserWithLimit`  | The address and limit for the receiving address of the funds.                                 |
 | `remaining_amount`          | `String` | Any remaining tokens after the escrow releases.                    |
 
 

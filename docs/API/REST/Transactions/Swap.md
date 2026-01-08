@@ -30,6 +30,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
     "amount_in": "100000000000000000",
     "asset_in": {
       "token": "bsc",
+      "amount": "100000000000000000",
       "token_type": {
         "smart": {
           "contract_address": "0x3246d25b42f6b3deca5b40334775fa4d6e333010"
@@ -41,10 +42,16 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
       {
         "user": {
           "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-          "chain_uid": "0g"
+          "chain_uid": "0g",
+          "amount":"50000000"
         },
         "limit": {
           "less_than_or_equal": "3563664058479"
+        },
+        "preferred_denom": {
+        "native": {
+          "denom": "bsc"
+        } 
         }
       }
     ],
@@ -90,13 +97,13 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
         "send": {
           "amount": "100000000000000000",
           "contract": "euclid1aagn260yt7xtvq0jdecxu265zqzkc6mhc4glql2q2nmdsqwzmyzs8lfhhx",
-          "msg": "eyJzd2FwIjp7ImFzc2V0X2luIjp7In..."
+          "msg": "eyJzd2FwI..."
         }
       },
       "funds": []
     }
   ],
-  "meta": "{\"asset_in_type\":\"smart\",\"releases\":[{\"dex\":\"euclid\",\"release_address\":[{\"chain_uid\":\"0g\",\"address\":\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\",\"amount\":\"3563664058479\"}],\"token\":\"bnb\",\"amount\":\"\"}],\"swaps\":{\"path\":[{\"route\":[\"euclid\",\"bnb\"],\"dex\":\"euclid\",\"chain_uid\":\"\",\"amount_in\":\"100000000000000000\",\"amount_out\":\"34452337010109902848\"}]}}"
+  "meta": "{\"asset_in_type\":\"smart\",\"releases\":[{\"dex\":\"euclid\",\"release_address\":[{\"chain_uid\":\"0g\",\"address\":\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\",\"amount\":\"3563664058479\"}],\"token\":\"bnb\",\"amount\":\"\"}],\"swaps\":{\"path\":[{\"route\":[\"euclid\",\"bnb\"],\"dex\":\"euclid\",\"chain_uid\":\"\",\"amount_in\":\"100000000000000000\",\"amount_out\":\"8152420272192926720\"}]}}"
 }`
     }
   ]}
@@ -118,6 +125,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
   "amount_in": "100000000000000000",
   "asset_in": {
     "token": "codewizard.eucl",
+    "amount":"100000000000000000",
     "token_type": {
       "smart": {
         "contract_address": "0x3246d25b42f6b3deca5b40334775fa4d6e333010"
@@ -129,11 +137,15 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
     {
       "user": {
         "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-        "chain_uid": "0g"
+        "chain_uid": "0g",
+        "amount":"50000000"
       },
       "limit": {
         "less_than_or_equal": "3563664058479"
-      }
+      },
+        "native": {
+          "denom": "euclid"
+        }
     }
   ],
   "partnerFee": {
@@ -211,7 +223,7 @@ These routes, including the exact sequence of tokens and DEXs to be used, are ob
 | `asset_in`                | [`TokenWithDenom`](../../common%20types.md#tokenwithdenom)              | The input token and its type (either `native` or `smart`).                      |
 | `slippage`                | `string`                                                                                             | Slippage tolerance in **basis points** (e.g., `"500"` for 5%).                  |
 | `minimum_receive`         | `string`                                                                                             | The minimum acceptable amount of output tokens for the swap to be considered successful. |
-| `cross_chain_addresses`   | [`CrossChainUserWithLimit`](../../common%20types.md#crosschainuserwithlimit)`[]` | List of recipients for the output asset. Priority is top-down. Defaults to the sender if not provided. |
+| `cross_chain_addresses`   | [`CrossChainUserWithLimit`](../../common%20types.md#crosschainaddresswithlimit)`[]` | List of recipients for the output asset. Priority is top-down. Defaults to the sender if not provided. |
 | `partnerFee`              | [`PartnerFee`](#partnerfee)                                                                          | Optional partner fee configuration. Includes basis points and recipient.        |
 | `sender`                  | [`CrossChainUser`](../../common%20types.md#crosschainuser)             | Address and chain initiating the swap.                                          |
 | `swap_path`               | [`SwapPath`](#swappath)                                                                              | Routing path with token hops and DEX info. Use values from the [Get Routes](../Routes/Get%20Routes.md) endpoint. |

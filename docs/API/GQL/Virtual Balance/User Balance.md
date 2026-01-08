@@ -35,7 +35,7 @@ curl --request POST \
 
 | **Argument** | **Type**                | **Description**                                                                 |
 |--------------|-------------------------|---------------------------------------------------------------------------------|
-| `user`       | [`CrossChainUserInput`](../../common%20types.md#crosschainuserwithlimit)   | The input specifying the user for the balance query by providing the address and chain UID. |
+| `user`       | [`CrossChainUserInput`](../../common%20types.md#crosschainuserinput)   | The input specifying the user for the balance query by providing the address and chain UID. |
 ### Return Fields
 
 | **Field**                  | **Type**   | **Description**                                             |
