@@ -57,10 +57,10 @@ content: `
 }
 ]} />
 
-| Field    | Description                          |
-|----------|--------------------------------------|
-| `token_1`| Information about the first token.   |
-| `token_2`| Information about the second token.  |
+| Field     | Type     | Description                          |
+|-----------|----------|--------------------------------------|
+| `token_1` | [TokenWithDenom](#tokenwithdenom)   | Information about the first token.   |
+| `token_2` | [TokenWithDenom](#tokenwithdenom)    | Information about the second token.  |
 
 ### PairWithDenomAndAmount
 Struct that specifies a token pair, their denoms, and an amount for each. Used when adding liquidity to a pool.
@@ -149,7 +149,12 @@ pub struct CrossChainUserWithLimit {
     pub limit: Option<Limit>,
     pub preferred_denom: Option<TokenType>,
     pub refund_address: Option<String>,
+    // Refund to recipient if release fails, default: false and it will return to original sender (Use this with caution as there is no validation check for wrong addresses)
+    pub unsafe_refund_voucher_to_recipient: Option<bool>,
+    // Forward message to be executed on the destination chain
     pub forwarding_message: Option<EuclidReceive>,
+    // Vcoin Transfer Message to be executed. If this message is provided, escrow release will be skipped.
+    pub vcoin_msg: Option<Binary>,
 }
 
 pub struct EuclidReceive {

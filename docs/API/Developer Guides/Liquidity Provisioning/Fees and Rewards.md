@@ -14,7 +14,7 @@ Every time a swap routes through a pool, the protocol collects a fee. A percenta
 
 - **Fee source**: Swaps submitted through the router.
 - **Distribution**: Collected fees are added to the pool’s reserves, increasing the value of every LP share.
-- **Tracking**: Use the [`VLP Fee`](../GQL/VLP/Fee.md) or [`VLP Total Fees Collected`](../GQL/VLP/Total%20Fees%20Collected.md) queries to monitor how much a pool has generated over time.
+- **Tracking**: Use the [`VLP Fee`](../../GQL/VLP/Fee.md) or [`VLP Total Fees Collected`](../../GQL/VLP/Total%20Fees%20Collected.md) queries to monitor how much a pool has generated over time.
 
 Because fees compound into the pool, LP token value grows without any action required from the LP.
 
@@ -66,7 +66,7 @@ query Liquidity($contract: String) {
 - `liquidity.total_lp_tokens` is the denominator for each LP’s share.
 - `liquidity.pair` lets you map reserves to the specific assets involved.
 
-For fee data, combine the reserves with the [`VLP Total Fees Collected`](../GQL/VLP/Total%20Fees%20Collected.md) and [`VLP Total Fees Denom`](../GQL/VLP/Total%20Fees%20Denom.md) queries, which expose cumulative fees per pool (and optionally per token denomination). Factor those totals into your APR calculations alongside any incentive rewards earned over the analysis window.
+For fee data, combine the reserves with the [`VLP Total Fees Collected`](../../GQL/VLP/Total%20Fees%20Collected.md) and [`VLP Total Fees Denom`](../../GQL/VLP/Total%20Fees%20Denom.md) queries, which expose cumulative fees per pool (and optionally per token denomination). Factor those totals into your APR calculations alongside any incentive rewards earned over the analysis window.
 
 Combine these values with your LP share (`user_lp_balance / total_lp_tokens`) and the time window analyzed to estimate actual performance.
 

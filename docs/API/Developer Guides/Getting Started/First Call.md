@@ -134,7 +134,7 @@ query Router {
 
 ## REST Example
 
-Let’s track the status of a transaction on the `0g` chain using the REST API.
+Let’s track the status of a transaction on the `somnia` chain using the REST API.
 
 ### Endpoint
 
@@ -154,8 +154,8 @@ curl -X 'POST' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "chain": "0g",
-    "tx_hash": "0x9bfa76b64264c641d8d37b3ec46ba05d3f39442d817b95e9aff294bb56f2f31a"
+    "chain": "somnia",
+    "tx_hash": "0xe208d710c03d1f7aaed9a0ac9fcd58bdc0c6f3fea5bb074127d10511279545f9"
 }'
 `
   },
@@ -172,8 +172,8 @@ fetch('https://testnet.api.euclidprotocol.com/api/v1/txn/track', {
     'accept': 'application/json'
   },
   body: JSON.stringify({
-    chain: '0g',
-    tx_hash: '0x9bfa76b64264c641d8d37b3ec46ba05d3f39442d817b95e9aff294bb56f2f31a'
+    chain: 'somnia',
+    tx_hash: '0xe208d710c03d1f7aaed9a0ac9fcd58bdc0c6f3fea5bb074127d10511279545f9'
   })
 })
   .then(res => res.json())
@@ -189,8 +189,8 @@ fetch('https://testnet.api.euclidprotocol.com/api/v1/txn/track', {
 const axios = require('axios');
 
 axios.post('https://testnet.api.euclidprotocol.com/api/v1/txn/track', {
-  chain: '0g',
-  tx_hash: '0x9bfa76b64264c641d8d37b3ec46ba05d3f39442d817b95e9aff294bb56f2f31a'
+  chain: 'somnia',
+  tx_hash: '0xe208d710c03d1f7aaed9a0ac9fcd58bdc0c6f3fea5bb074127d10511279545f9'
 }, {
   headers: {
     'Content-Type': 'application/json',
@@ -219,8 +219,8 @@ headers = {
   "Content-Type": "application/json"
 }
 data = {
-  "chain": "0g",
-  "tx_hash": "0x9bfa76b64264c641d8d37b3ec46ba05d3f39442d817b95e9aff294bb56f2f31a"
+  "chain": "somnia",
+  "tx_hash": "0xe208d710c03d1f7aaed9a0ac9fcd58bdc0c6f3fea5bb074127d10511279545f9"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -249,7 +249,7 @@ print(response.json())
   ],
   "body": {
     "mode": "raw",
-    "raw": "{\\n  \\"chain\\": \\"0g\\",\\n  \\"tx_hash\\": \\"0x9bfa76b64264c641d8d37b3ec46ba05d3f39442d817b95e9aff294bb56f2f31a\\"\\n}"
+    "raw": "{\\n  \\"chain\\": \\"somnia\\",\\n  \\"tx_hash\\": \\"0xe208d710c03d1f7aaed9a0ac9fcd58bdc0c6f3fea5bb074127d10511279545f9\\"\\n}"
   }
 }
 `

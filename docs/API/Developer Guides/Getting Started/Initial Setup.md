@@ -98,6 +98,6 @@ Authorization: Bearer YOUR_API_KEY
 
 Once your environment is ready, explore key integrations:
 
-- [Send Your First Trade ](../Developer%20Guides/First%20Call.md)
-- [Broadcast a Trade On-Chain ](../Developer%20Guides/Broadcast%20Trade%20Onchain.md)
+- [Send Your First Trade ](./First%20Call.md)
+- [Broadcast a Trade On-Chain ](./Broadcast%20Trade%20Onchain.md)
 - [Track a Transaction ](#)

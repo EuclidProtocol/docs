@@ -52,4 +52,4 @@ Monitoring tools help flag risky trades:
 - Track pool liquidity and recent trade sizes to detect thinning depth that may cause future slippage spikes.
 - Use alerts when swap volume surges or the pool experiences rapid reserve changes, indicating heightened volatility.
 
-Want to see how Euclid’s architecture reduces price impact? Read about our [Automated Market Makers](../../Architecture%20Overview/Automated-Market-Makers.md)
+Want to see how Euclid’s architecture reduces price impact? Read about our [Automated Market Makers](../../../Architecture%20Overview/Automated-Market-Makers.md)

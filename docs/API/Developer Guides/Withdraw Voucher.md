@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Withdraw Voucher
 In this example, we will be taking a look at the steps required to withdraw voucher tokens from a user's virtual balance.
-The [Withdraw](../REST/Transactions/Withdraw%20Virtual%20Balance.md) parameters are the following:
+The [Withdraw](../REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance.md) parameters are the following:
 
 ```bash
 token

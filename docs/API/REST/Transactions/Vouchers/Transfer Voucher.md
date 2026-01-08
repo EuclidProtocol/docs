@@ -275,7 +275,7 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
 |---------------------|-------------------|---------------------------------------------------------------------------------|
 | `amount`            | `string`          | Amount of the virtual token to transfer (in base units).                       |
 | `token`             | `string`          | Name of the virtual token to transfer (e.g. "euclid").                        |
-| `sender`            | [`CrossChainUser`](../../common%20types.md#crosschainuser) | The address and chain initiating the transfer.                                  |
+| `sender`            | [`CrossChainUser`](../../../common%20types.md#crosschainuser) | The address and chain initiating the transfer.                                  |
 | `recipient_address` | `object`          | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using email, Twitter, or Telegram. |
 | `timeout`           | `string \| null`  | Optional timeout value in seconds or as an ISO timestamp string.               |
 

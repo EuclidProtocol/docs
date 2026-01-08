@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
         "Architecture Overview/Concepts/Euclid Messaging Protocol",
         "Architecture Overview/Concepts/Global Settlement Accounts",
         "Architecture Overview/Concepts/Smart Routing",
+        "Architecture Overview/Concepts/Meta Transactions",
         "Architecture Overview/Automated-Market-Makers",
       ],
     },
@@ -159,58 +160,128 @@ const sidebars: SidebarsConfig = {
         "API/GQL/GQL Calls",
       ],
     },
-    {
-      type: "category",
-      label: "REST",
-      items: [
         {
           type: "category",
-          label: "Routes",
+          label: "REST",
           items: [
-            "API/REST/Routes/Get Routes",
+            {
+              type: "category",
+              label: "Routes",
+              items: [
+                "API/REST/Routes/Get Routes",
+              ],
+            },
+            {
+              type: "category",
+              label: "Transactions",
+              items: [
+                "API/REST/Transactions/Swap",
+                {
+                  type: "category",
+                  label: "Liquidity",
+                  items: [
+                    "API/REST/Transactions/Liquidity/Add Liquidity",
+                    "API/REST/Transactions/Liquidity/Remove Liquidity",
+                    "API/REST/Transactions/Liquidity/Create Pool",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Vouchers",
+                  items: [
+                    "API/REST/Transactions/Vouchers/Deposit",
+                    "API/REST/Transactions/Vouchers/Withdraw Virtual Balance",
+                    "API/REST/Transactions/Vouchers/Transfer Voucher",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Tracking",
+                  items: [
+                    "API/REST/Transactions/Tracking/Track Transactions",
+                    "API/REST/Transactions/Tracking/Track Swap Transaction",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Meta Transactions",
+                  items: [
+                    "API/REST/Transactions/Meta Transactions/meta-swap",
+                    "API/REST/Transactions/Meta Transactions/meta-transfer",
+                    "API/REST/Transactions/Meta Transactions/meta-withdraw",
+                  ],
+                },
+              ],
+            },
+            
           ],
         },
-        {
-          type: "category",
-          label: "Transactions",
-          items: [
-            "API/REST/Transactions/Swap",
-            "API/REST/Transactions/Add Liquidity",
-            "API/REST/Transactions/Remove Liquidity",
-            "API/REST/Transactions/Create Pool",
-            "API/REST/Transactions/Deposit",
-            "API/REST/Transactions/Track Transactions",
-            "API/REST/Transactions/Withdraw Virtual Balance",
-            "API/REST/Transactions/Transfer Voucher",
-            "API/REST/Transactions/Track Swap Transaction",
-          ],
-        },
-        
-      ],
-    },
     {
       type: "category",
       label: "Developer Guides ",
       items: [
-        "API/Developer Guides/Initial Setup",
-        "API/Developer Guides/First Call",
-        "API/Developer Guides/Perform A Swap",
-        "API/Developer Guides/Broadcast Trade Onchain",
-        "API/Developer Guides/Go Live",
-        "API/Developer Guides/Fetch Assets",
-        "API/Developer Guides/Fetch Chains",
-        "API/Developer Guides/Fetch Liquidity",
-        "API/Developer Guides/Fetch Voucher",
-        "API/Developer Guides/Track Transaction",
-        "API/Developer Guides/Route Calculation",
-        "API/Developer Guides/Constant Pools",
-        "API/Developer Guides/Stable Pool",
-        "API/Developer Guides/Provider Position",
-        "API/Developer Guides/Fees and Rewards",
-        "API/Developer Guides/Risks and Impermanent Loss",
-        "API/Developer Guides/Slippage",
-        "API/Developer Guides/Add Liquidity",
-        "API/Developer Guides/Remove Liquidity",
+        {
+          type: "category",
+          label: "Getting Started",
+          items: [
+            "API/Developer Guides/Getting Started/Initial Setup",
+            "API/Developer Guides/Getting Started/First Call",
+            "API/Developer Guides/Getting Started/Perform A Swap",
+            "API/Developer Guides/Getting Started/Broadcast Trade Onchain",
+            "API/Developer Guides/Getting Started/Go Live",
+          ],
+        },
+        {
+          type: "category",
+          label: "Trading",
+          items: [
+            {
+              type: "category",
+              label: "Endpoints",
+              items: [
+                "API/Developer Guides/Trading/Endpoints/Fetch Assets",
+                "API/Developer Guides/Trading/Endpoints/Fetch Chains",
+                "API/Developer Guides/Trading/Endpoints/Fetch Liquidity",
+                "API/Developer Guides/Trading/Endpoints/Fetch Voucher",
+                "API/Developer Guides/Trading/Endpoints/Track Transaction",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Liquidity Provisioning",
+          items: [
+            "API/Developer Guides/Liquidity Provisioning/Fees and Rewards",
+            {
+              type: "category",
+              label: "Different Liquidity States",
+              items: [
+                "API/Developer Guides/Liquidity Provisioning/Different Liquidity States/Stable Pool",
+                "API/Developer Guides/Liquidity Provisioning/Different Liquidity States/Constant Product Pool",
+              ],
+            },
+            {
+              type: "category",
+              label: "Endpoints",
+              items: [
+                "API/Developer Guides/Liquidity Provisioning/Endpoints/Fetch Liquidity",
+                "API/Developer Guides/Liquidity Provisioning/Endpoints/Add Liquidity",
+                "API/Developer Guides/Liquidity Provisioning/Endpoints/Remove Liquidity",
+                "API/Developer Guides/Liquidity Provisioning/Endpoints/Provider Position",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Pricing",
+          items: [
+            "API/Developer Guides/Pricing/Route Calculation",
+            "API/Developer Guides/Pricing/Slippage",
+            "API/Developer Guides/Pricing/Risks and Impermanent Loss",
+          ],
+        },
         "API/Developer Guides/Withdraw Voucher",
       ],
     },

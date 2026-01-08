@@ -31,7 +31,7 @@ You’ll need the user’s wallet address and signing provider for their selecte
 
 ## Broadcast the Transaction
 
-Assuming you've already constructed the trade message (see [Send a Trade](../Developer%20Guides/Perform%20A%20Swap.md)), you now need to send it.
+Assuming you've already constructed the trade message (see [Send a Trade](./Perform%20A%20Swap.md)), you now need to send it.
 
 
 ### CosmWasm

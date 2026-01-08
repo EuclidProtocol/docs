@@ -166,9 +166,9 @@ Use this approach when depositing to a recipient identified by a standard **wall
 | **Field**       | **Type**                                                                                     | **Description**                                                                              |
 |------------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | `amount_in`     | `string`                                                                                     | Amount of the token to be deposited (in raw base units, e.g., wei or uatom).                |
-| `asset_in`      | [`TokenWithDenom`](../../common%20types.md#tokenwithdenom)     | Token being deposited along with its type (native or smart).                                |
-| `sender`        | [`CrossChainUser`]((../../common%20types.md#crosschainuser)     | Address and chain initiating the deposit.                                                   |
-| `recipient`     | [`CrossChainUser`](../../common%20types.md#crosschainuser)    | Destination address and chain for the deposited asset.                                      |
+| `asset_in`      | [`TokenWithDenom`](../../../common%20types.md#tokenwithdenom)     | Token being deposited along with its type (native or smart).                                |
+| `sender`        | [`CrossChainUser`](../../../common%20types.md#crosschainuser)     | Address and chain initiating the deposit.                                                   |
+| `recipient`     | [`CrossChainUser`](../../../common%20types.md#crosschainuser)    | Destination address and chain for the deposited asset.                                      |
 
 
 
@@ -359,8 +359,8 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
 | **Field**       | **Type**                                                                                     | **Description**                                                                                         |
 |------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | `amount_in`     | `string`                                                                                     | Amount of the token to be deposited (in raw base units, e.g., wei or uatom).                           |
-| `asset_in`      | [`TokenWithDenom`](../../common%20types.md#tokenwithdenom)      | Token being deposited along with its type (native or smart).                                           |
-| `sender`        | [`CrossChainUser`](../../common%20types.md#crosschainuser)    | Address and chain initiating the deposit.                                                              |
+| `asset_in`      | [`TokenWithDenom`](../../../common%20types.md#tokenwithdenom)      | Token being deposited along with its type (native or smart).                                           |
+| `sender`        | [`CrossChainUser`](../../../common%20types.md#crosschainuser)    | Address and chain initiating the deposit.                                                              |
 | `recipient`     | `object`                                                                                     | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using `email`, `twitter`, or `telegram`. Social recipients generate a claim link that allows the user to withdraw on any chain. |
 
 
