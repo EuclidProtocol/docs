@@ -16,13 +16,13 @@ If you're looking to track a **cross-chain swap**, use the [Track Swap Transacti
 https://testnet.api.euclidprotocol.com/api/v1/txn/track
 ```
 
-### CosmWasm
+### Examples
 
 <Tabs
   tabs={[
     {
       id: 'cosmos-track-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
   'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \\
@@ -35,7 +35,7 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
     },
     {
       id: 'cosmos-track-response',
-      label: 'Response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "response": {
@@ -90,18 +90,10 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
     }
   }
 }`
-    }
-  ]}
-/>
-
-  ### EVM
-
-  
-<Tabs
-  tabs={[
+    },
     {
       id: 'evm-track-request',
-      label: 'Request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \
@@ -114,7 +106,7 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
     },
     {
       id: 'evm-track-response',
-      label: 'Response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "response": {

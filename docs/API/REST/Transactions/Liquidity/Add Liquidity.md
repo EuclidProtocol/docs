@@ -13,14 +13,13 @@ Generates a transaction to add liquidity to a pool.
 https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
 ```
 
-
-### CosmWasm
+### Examples
 
 <Tabs
   tabs={[
     {
       id: 'cosmos-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add' \
@@ -56,7 +55,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
     },
     {
       id: 'cosmos-response',
-      label: 'Response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -116,16 +115,10 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
     }
   ]
 }`
-    }
-  ]}
-/>
-
-### EVM 
-<Tabs
-  tabs={[
+    },
     {
       id: 'evm-request',
-      label: 'Request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \\
   'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add' \\
@@ -162,7 +155,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
     },
     {
       id: 'evm-response',
-      label: 'Response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "msgs": [
@@ -186,7 +179,6 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
     }
   ]}
 />
-
 
 ### Parameters 
 

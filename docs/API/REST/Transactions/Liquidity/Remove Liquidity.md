@@ -7,12 +7,13 @@ import Tabs from '@site/src/components/Tabs';
 
 Generates a transaction to remove liquidity from a pool.
 
-### CosmWasm
+### Examples
+
 <Tabs
   tabs={[
     {
       id: 'cosmos-remove-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
@@ -29,7 +30,7 @@ Generates a transaction to remove liquidity from a pool.
     },
     {
       id: 'cosmos-remove-response',
-      label: 'Response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -55,17 +56,10 @@ Generates a transaction to remove liquidity from a pool.
     }
   ]
 }`
-    }
-  ]}
-/>
-
-### EVM
-
-<Tabs
-  tabs={[
+    },
     {
       id: 'evm-remove-request',
-      label: 'Request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
@@ -93,7 +87,7 @@ Generates a transaction to remove liquidity from a pool.
     },
     {
       id: 'evm-remove-response',
-      label: 'Response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "msgs": [
@@ -110,6 +104,7 @@ Generates a transaction to remove liquidity from a pool.
     }
   ]}
 />
+
 ### Parameters 
 
 | **Field**                 | **Type**                                                                                             | **Description**                                                                 |

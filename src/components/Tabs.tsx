@@ -18,6 +18,7 @@ interface TabsProps {
 const Tabs: React.FC<TabsProps> = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
   const [copied, setCopied] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const onClickTab = (tabId: string) => {
     setActiveTab(tabId);
@@ -35,18 +36,29 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 
   return (
     <div className={styles.tabs}>
-      <div className={styles["tab-buttons"]}>
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={activeTab === tab.id ? styles.active : ""}
-            onClick={() => onClickTab(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div className={styles["tab-header"]}>
+        <div className={styles["tab-buttons"]}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={activeTab === tab.id ? styles.active : ""}
+              onClick={() => onClickTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        <button
+          className={styles["expand-button"]}
+          onClick={() => setIsExpanded((prev) => !prev)}
+          aria-expanded={isExpanded}
+          aria-controls="tabs-content"
+          type="button"
+        >
+          {isExpanded ? "Compact" : "Expand"}
+        </button>
       </div>
-      <div className={styles["tab-content"]}>
+      <div id="tabs-content" className={styles["tab-content"]}>
         {tabs.map((tab) => (
           <div
             key={tab.id}
@@ -70,7 +82,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
                 language={tab.language}
                 style={coldarkDark}
                 customStyle={{
-                  maxHeight: "full",
+                  maxHeight: isExpanded ? "none" : "360px",
                   overflow: "auto",
                   background: "rgb(30,30,30)",
                 }}

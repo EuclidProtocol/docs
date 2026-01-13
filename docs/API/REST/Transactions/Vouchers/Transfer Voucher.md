@@ -16,14 +16,15 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer
 
 Use this format to transfer vcoins to a known wallet address on a specific chain.
 
-### CosmWasm
+### Examples
 
 <Tabs
-  tabs={[{
-    id: 'cosmos-vcoin-transfer-request',
-    label: 'Request',
-    language: 'bash',
-    content: `curl -X 'POST' \
+  tabs={[
+    {
+      id: 'cosmos-vcoin-transfer-request',
+      label: 'Cosmos Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -42,10 +43,10 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
     },
     "timeout": null
 }'`
-},
+    },
     {
-      id: 'cosmos-vcoin-response',
-      label: 'Response',
+      id: 'cosmos-vcoin-transfer-response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -75,16 +76,12 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
     }
   ]
 }`
-  }]} />
-
-### EVM
-
-<Tabs
-  tabs={[{
-    id: 'evm-vcoin-transfer-request',
-    label: 'Request',
-    language: 'bash',
-    content: `curl -X 'POST' \
+    },
+    {
+      id: 'evm-vcoin-transfer-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -103,10 +100,10 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
     },
     "timeout": null
 }'`
-},
+    },
     {
-      id: 'cosmos-vcoin-response',
-      label: 'Response',
+      id: 'evm-vcoin-transfer-response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "claimer": {
@@ -126,7 +123,8 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
   ],
   "type": "evm"
 }`
-  }]} />
+    }
+  ]} />
 
 ## Case 2: Transfer to Social Recipient
 
@@ -134,14 +132,15 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
 
 > The recipient will receive a claim link to withdraw funds to any chain after verifying their identity.
 
-### CosmWasm
+### Examples
 
 <Tabs
-  tabs={[{
-    id: 'cosmos-vcoin-transfer-social-request',
-    label: 'Request',
-    language: 'bash',
-    content: `curl -X 'POST' \
+  tabs={[
+    {
+      id: 'cosmos-vcoin-transfer-social-request',
+      label: 'Cosmos Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -161,10 +160,10 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
     },
     "timeout": null
 }'`
-},
+    },
     {
-      id: 'cosmos-vcoin-response',
-      label: 'Response',
+      id: 'cosmos-vcoin-transfer-social-response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -208,16 +207,12 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
     }
   }
 }`
-  }]} />
-
-### EVM
-
-<Tabs
-  tabs={[{
-    id: 'evm-vcoin-transfer-social-request',
-    label: 'Request',
-    language: 'bash',
-    content: `curl -X 'POST' \
+    },
+    {
+      id: 'evm-vcoin-transfer-social-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -237,10 +232,10 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
     },
     "timeout": null
 }'`
- },
+    },
     {
-      id: 'cosmos-vcoin-response',
-      label: 'Response',
+      id: 'evm-vcoin-transfer-social-response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "claimer": {
@@ -267,9 +262,10 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
   ],
   "type": "evm"
 }`
-  }]} />
+    }
+  ]} />
 
-### Parameters
+## Parameters
 
 | **Field**          | **Type**          | **Description**                                                                 |
 |---------------------|-------------------|---------------------------------------------------------------------------------|

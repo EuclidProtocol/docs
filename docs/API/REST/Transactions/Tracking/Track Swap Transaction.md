@@ -14,13 +14,13 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
 ```
 
 
-### CosmWasm
+### Examples
 
 <Tabs
   tabs={[
     {
       id: 'cosmos-track-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
   'https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap' \\
@@ -33,7 +33,7 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
     },
     {
       id: 'cosmos-track-response',
-      label: 'Response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "response": {
@@ -198,18 +198,10 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
     ]
   }
 }`
-    }
-  ]}
-/>
-
-
-### EVM
-
-<Tabs
-  tabs={[
+    },
     {
       id: 'evm-track-request',
-      label: 'Request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap' \
@@ -222,7 +214,7 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
     },
     {
       id: 'evm-track-response',
-      label: 'Response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "response": {

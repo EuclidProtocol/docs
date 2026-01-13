@@ -19,13 +19,13 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit
 
 Use this approach when depositing to a recipient identified by a standard **wallet address and chain UID**. This is the most common format when the destination is a known address on a blockchain like Monad, Osmosis, Ethereum, etc.
 
-### CosmWasm
+### Examples
 
 <Tabs
   tabs={[
     {
       id: 'cosmos-deposit-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
   'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \\
@@ -53,7 +53,7 @@ Use this approach when depositing to a recipient identified by a standard **wall
     },
     {
       id: 'cosmos-deposit-response',
-      label: 'Response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -95,17 +95,10 @@ Use this approach when depositing to a recipient identified by a standard **wall
     }
   ]
 }`
-    }
-  ]}
-/>
-
-### EVM
-
-<Tabs
-  tabs={[
+    },
     {
       id: 'evm-deposit-request',
-      label: 'Request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
@@ -134,7 +127,7 @@ Use this approach when depositing to a recipient identified by a standard **wall
     },
     {
       id: 'evm-deposit-response',
-      label: 'Response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "claimer": {
@@ -187,13 +180,13 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
 - Receive the tokens on their own wallet address on that chain
 
 
-### CosmWasm
+### Examples
 
 <Tabs
   tabs={[
     {
       id: 'cosmos-deposit-social-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
   'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \\
@@ -220,9 +213,9 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
   }
 }'`
     },
-  {
-     id: 'evm-deposit-response',
-      label: 'Response',
+    {
+      id: 'cosmos-deposit-social-response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -281,18 +274,10 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
     }
   }
 }`
-  }
-  ]}
-/>
-
-
-### EVM
-
-<Tabs
-  tabs={[
+  },
     {
-      id: 'evm-deposit-request',
-      label: 'Request',
+      id: 'evm-deposit-social-request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
@@ -321,8 +306,8 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
 }'`
     },
     {
-      id: 'evm-deposit-response',
-      label: 'Response',
+      id: 'evm-deposit-social-response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "claimer": {
@@ -388,3 +373,4 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
     "pub_key": "abcd1234efgh5678ijkl9012mnop3456qrst7890uvwx"
   }
 }
+```

@@ -12,12 +12,13 @@ Generates a transaction to withdraw virtual balance tokens for a user.
 https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 ```
 
-### CosmWasm
+### Examples
+
 <Tabs
   tabs={[
     {
       id: 'cosmos-vcoin-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
   'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
@@ -45,7 +46,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
     },
     {
       id: 'cosmos-vcoin-response',
-      label: 'Response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -82,17 +83,10 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
     }
   ]
 }`
-    }
-  ]}
-/>
-
-### EVM
-
-<Tabs
-  tabs={[
+    },
     {
       id: 'evm-vcoin-request',
-      label: 'Request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \\
   'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
@@ -120,7 +114,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
     },
     {
       id: 'evm-vcoin-response',
-      label: 'Response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "msgs": [

@@ -2,6 +2,14 @@
   font-family: Arial, sans-serif;
 }
 
+.tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .tab-buttons {
   display: flex;
 
@@ -21,6 +29,23 @@
 
 .tab-buttons button.active {
   background-color: #535353;
+}
+
+.active {
+}
+
+.expand-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(30, 30, 30);
+  color: #ccc;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.expand-button:hover {
+  background-color: #3f3f3f;
 }
 
 .tab-content .tab-pane {

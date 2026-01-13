@@ -116,7 +116,7 @@ const config: Config = {
         },
 
         {
-          href: "https://github.com/EuclidProtocol/docs",
+          href: "https://github.com/EuclidProtocol",
           label: "GitHub",
           position: "right",
         },
@@ -171,7 +171,7 @@ const config: Config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/EuclidProtocol/docs",
+              href: "https://github.com/EuclidProtocol",
             },
             {
               label: "Terms of Service",

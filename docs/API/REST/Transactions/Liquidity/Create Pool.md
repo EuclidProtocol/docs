@@ -12,13 +12,13 @@ Creates a new liquidity pool between two tokens.
 https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
 ```
 
-### CosmWasm
+### Examples
 
 <Tabs
   tabs={[
     {
       id: 'cosmos-request',
-      label: 'Request',
+      label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create' \
@@ -66,7 +66,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
     },
     {
       id: 'cosmos-response',
-      label: 'Response',
+      label: 'Cosmos Response',
       language: 'json',
       content: `{
   "type": "cosmwasm",
@@ -121,17 +121,10 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
     }
   ]
 }`
-    }
-  ]}
-/>
-
-### EVM
-
-<Tabs
-  tabs={[
+    },
     {
       id: 'evm-create-request',
-      label: 'Request',
+      label: 'EVM Request',
       language: 'bash',
       content: `curl --request POST \\
   --url https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create \\
@@ -174,7 +167,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
     },
     {
       id: 'evm-create-response',
-      label: 'Response',
+      label: 'EVM Response',
       language: 'json',
       content: `{
   "msgs": [
@@ -198,7 +191,6 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
     }
   ]}
 />
-
 
 ### Parameters
 
