@@ -19,10 +19,13 @@ Vouchers let the hub execute swaps and liquidity moves without waiting on physic
 Only the router can mint or burn voucher balances, creating a single, auditable gate for cross-chain issuance and redemption. That centralized control point (on-chain) makes the system harder to exploit and reduces risk of real funds getting stuck mid-route, since physical assets only move when explicitly released.
 
 ### Ease of management for cross-chain funds
-Escrow balances and voucher balances are decoupled: escrow holds real assets per chain, while vouchers are the consolidated, cross-chain view of a user's value. Users can choose to redeem into native tokens on a specific chain or keep value as vouchers, which can exist on any Euclid-connected chain even if the asset isn't native there. This lets users consolidate diverse assets onto a single chain without forcing immediate redemption.
+Escrow balances and voucher balances are decoupled: escrow holds real assets per chain, while vouchers are the consolidated, cross-chain view of a user's value. At the same time, vouchers never exceed the real assets held in escrow, so they remain directly backed by on-chain liquidity. Users can choose to redeem into native tokens on a specific chain or keep value as vouchers, which can exist on any Euclid-connected chain even if the asset isn't native there. This lets users consolidate diverse assets onto a single chain without forcing immediate redemption.
 
 ### Still decentralized and trackable
 All voucher activity is on-chain: balances, approvals, transfers, and mints/burns are stored and emitted as events, and queries provide transparency. It's a virtual asset, but fully auditable.
+
+### CEX-like UX without centralization
+Crypto is meant to be decentralized, yet most volume still flows through centralized exchanges because they offer a smoother experience: users don't have to think about chains, bridges, or wallet logistics. Vouchers recreate that unified experience inside Euclid while keeping everything decentralized and on-chain. The same ease of use comes from smart contracts and protocol rules, not custody or centralized intermediaries.
 
 ## How vouchers work in the architecture
 ### Core contract model

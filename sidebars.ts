@@ -203,6 +203,18 @@ const sidebars: SidebarsConfig = {
                 "API/REST/Transactions/Vouchers/Withdraw Virtual Balance",
               ],
             },
+            {
+              type: "category",
+              label: "Meta Transactions",
+              items: [
+                "API/REST/Transactions/Meta Transactions/Intro",
+                "API/REST/Transactions/Meta Transactions/Swap",
+                "API/REST/Transactions/Meta Transactions/Transfer",
+                "API/REST/Transactions/Meta Transactions/Withdraw",
+                "API/REST/Transactions/Meta Transactions/Sign",
+                "API/REST/Transactions/Meta Transactions/Broadcast",
+              ],
+            },
           ],
         },
         
