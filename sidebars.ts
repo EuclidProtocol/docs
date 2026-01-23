@@ -65,7 +65,6 @@ const sidebars: SidebarsConfig = {
         "API/Getting Started/Go Live",
       ],
     },
-    "API/Introduction",
     {
       type: "category",
       label: "Trading",
@@ -79,6 +78,7 @@ const sidebars: SidebarsConfig = {
             "API/Trading/Endpoints/Fetch Liquidity",
             "API/Trading/Endpoints/Fetch Voucher",
             "API/Trading/Endpoints/Track Transaction",
+            "API/Withdraw Voucher",
           ],
         },
       ],
@@ -117,7 +117,6 @@ const sidebars: SidebarsConfig = {
         "API/Pricing/Risks and Impermanent Loss",
       ],
     },
-    "API/Swap",
     "API/Withdraw Voucher",
     {
       type: "category",
@@ -249,6 +248,7 @@ const sidebars: SidebarsConfig = {
               label: "Transactions",
               items: [
                 "API/API Reference/REST/Transactions/Swap",
+                "API/API Reference/REST/Transactions/Simulate Swap",
                 {
                   type: "category",
                   label: "Liquidity",

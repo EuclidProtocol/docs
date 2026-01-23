@@ -436,6 +436,17 @@ code[class*="language-"] {
 
 .navbar__brand {
   margin-right: 1.5rem;
+  align-items: center;
+}
+
+.navbar__logo img {
+  height: 40px;
+  width: auto;
+}
+
+.navbar__logo {
+  align-self: center;
+  margin-top: -4px;
 }
 
 .navCta {

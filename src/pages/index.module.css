@@ -252,7 +252,7 @@
   display: grid;
   grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
   gap: 2rem;
-  align-items: stretch;
+  align-items: start;
   animation: fadeUp 0.7s ease both;
   animation-delay: 0.1s;
 }
@@ -281,7 +281,7 @@
   margin: 0;
   display: grid;
   gap: 0.35rem;
-  flex: 1;
+  flex: 0;
 }
 
 .tryList li {
@@ -338,7 +338,7 @@
 }
 
 .tryRunner {
-  height: 100%;
+  height: auto;
 }
 
 @keyframes fadeUp {
