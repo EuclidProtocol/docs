@@ -3,7 +3,7 @@
   text-align: left;
   position: relative;
   overflow: hidden;
-  background-color: rgba(var(--euclid-secondary-rgb), 0.1);
+  background-color: #f2f7f6;
 }
 
 .heroBanner::before {
@@ -12,26 +12,26 @@
   inset: 0;
   background-image: radial-gradient(
       circle at 15% 10%,
-      rgba(var(--euclid-secondary-rgb), 0.52),
+      rgba(var(--euclid-secondary-rgb), 0.26),
       transparent 58%
     ),
     radial-gradient(
       circle at 85% 18%,
-      rgba(var(--euclid-secondary-rgb), 0.42),
+      rgba(var(--euclid-secondary-rgb), 0.22),
       transparent 52%
     ),
     radial-gradient(
       circle at 55% 0%,
-      rgba(var(--euclid-secondary-rgb), 0.36),
+      rgba(var(--euclid-secondary-rgb), 0.2),
       transparent 46%
     ),
     radial-gradient(
-      rgba(var(--euclid-secondary-rgb), 0.34) 0.9px,
+      rgba(var(--euclid-secondary-rgb), 0.22) 0.9px,
       transparent 0.9px
     );
   background-size: 100% 100%, 100% 100%, 100% 100%, 18px 18px;
   background-position: center top;
-  opacity: 1;
+  opacity: 0.85;
   pointer-events: none;
 }
 
@@ -74,7 +74,8 @@
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--euclid-muted);
+  color: rgba(var(--euclid-secondary-rgb), 0.75);
+  font-weight: 600;
 }
 
 .heroTitle {
@@ -82,11 +83,12 @@
   font-weight: 500;
   letter-spacing: -0.02em;
   margin-bottom: 0;
+  color: #0b0f12;
 }
 
 .heroSubtitle {
   font-size: 1.05rem;
-  color: var(--euclid-muted);
+  color: #2b3338;
   max-width: 28rem;
 }
 
@@ -97,7 +99,7 @@
 }
 
 .heroSecondaryLink {
-  color: var(--euclid-secondary);
+  color: var(--euclid-secondary) !important;
   font-weight: 500;
   text-decoration: none;
   position: relative;
@@ -121,68 +123,19 @@
 
 .heroRight > * {
   animation: fadeUp 0.7s ease both;
-}
-
-.heroRight > *:nth-child(1) {
   animation-delay: 0.2s;
 }
 
-.heroRight > *:nth-child(2) {
-  animation-delay: 0.28s;
-}
-
-.heroCard {
-  width: min(320px, 100%);
-  background: #ffffff;
-  border: 1px solid var(--euclid-line);
-  border-radius: 18px;
-  padding: 1.5rem;
-  box-shadow: 0 18px 40px rgba(17, 24, 28, 0.08);
-}
-
-.heroCardTitle {
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--euclid-muted);
-  margin-bottom: 0.75rem;
-}
-
-.heroCardList {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1rem;
-  display: grid;
-  gap: 0.45rem;
-  font-size: 0.95rem;
-}
-
-.heroCardList li {
-  color: var(--euclid-text);
-}
-
-.heroCardMeta {
-  display: flex;
-  gap: 0.75rem;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--euclid-muted);
-}
-
-.heroGraphic {
-  width: min(360px, 100%);
-  background: #ffffff;
-  border: 1px solid var(--euclid-line);
-  border-radius: 18px;
-  padding: 1.5rem;
-  box-shadow: 0 18px 40px rgba(17, 24, 28, 0.08);
-}
-
-.heroGraphic img {
-  width: 100%;
+.heroRightImage {
+  width: min(420px, 100%);
   height: auto;
-  filter: grayscale(1) contrast(1.05);
+  border-radius: 18px;
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  filter: brightness(1.2) contrast(1.05) sepia(0.5) saturate(1.5)
+    hue-rotate(140deg);
 }
 
 .section {
@@ -280,9 +233,10 @@
 }
 
 .linkColumn a {
-  color: var(--euclid-secondary);
+  color: var(--euclid-secondary) !important;
   text-decoration: none;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .linkColumn a:hover {
@@ -371,7 +325,7 @@
 .tryFooterLink {
   display: inline-flex;
   margin-top: auto;
-  color: var(--euclid-secondary);
+  color: var(--euclid-secondary) !important;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;

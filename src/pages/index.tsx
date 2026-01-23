@@ -193,21 +193,11 @@ function HomepageHeader() {
             </div>
           </div>
           <div className={styles.heroRight}>
-            <div className={styles.heroCard}>
-              <div className={styles.heroCardTitle}>Recently viewed</div>
-              <ul className={styles.heroCardList}>
-                <li>Swap integration</li>
-                <li>Euclid Messaging Protocol</li>
-                <li>Virtual Liquidity Pools</li>
-              </ul>
-              <div className={styles.heroCardMeta}>
-                <span>Sandbox</span>
-                <span>Testnet</span>
-              </div>
-            </div>
-            <div className={styles.heroGraphic}>
-              <img src="/img/architecture.png" alt="Euclid architecture diagram" />
-            </div>
+            <img
+              className={styles.heroRightImage}
+              src="/img/euclid_lock.jpg"
+              alt="Euclid lock illustration"
+            />
           </div>
         </div>
       </header>
