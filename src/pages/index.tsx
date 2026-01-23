@@ -13,9 +13,9 @@ function HomepageHeader() {
     {
       title: "Payments & Swaps",
       links: [
-        { label: "Get Routes", to: "/docs/API/REST/Routes/Get%20Routes" },
-        { label: "Perform a Swap", to: "/docs/API/Developer%20Guides/Getting%20Started/Perform%20A%20Swap" },
-        { label: "Track Transactions", to: "/docs/API/REST/Transactions/Tracking/Track%20Transactions" },
+        { label: "Get Routes", to: "/docs/API/API%20Reference/REST/Routes/Get%20Routes" },
+        { label: "Perform a Swap", to: "/docs/API/Getting%20Started/Perform%20A%20Swap" },
+        { label: "Track Transactions", to: "/docs/API/API%20Reference/REST/Transactions/Tracking/Track%20Transactions" },
       ],
     },
     {
@@ -60,7 +60,7 @@ function HomepageHeader() {
   const tryActions = [
     {
       label: "Get Routes",
-      to: "/docs/API/REST/Routes/Get%20Routes",
+      to: "/docs/API/API%20Reference/REST/Routes/Get%20Routes",
       kind: "REST",
       language: "bash",
       code: `curl -X 'POST' \\
@@ -77,7 +77,7 @@ function HomepageHeader() {
     },
     {
       label: "Simulate Swap",
-      to: "/docs/API/REST/Transactions/Simulate%20Swap",
+      to: "/docs/API/API%20Reference/REST/Transactions/Simulate%20Swap",
       kind: "REST",
       language: "bash",
       code: `curl -X 'POST' \\
@@ -95,7 +95,7 @@ function HomepageHeader() {
     },
     {
       label: "Create Pool",
-      to: "/docs/API/REST/Transactions/Liquidity/Create%20Pool",
+      to: "/docs/API/API%20Reference/REST/Transactions/Liquidity/Create%20Pool",
       kind: "REST",
       language: "bash",
       code: `curl -X 'POST' \\
@@ -136,7 +136,7 @@ function HomepageHeader() {
     },
     {
       label: "Withdraw Voucher",
-      to: "/docs/API/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance",
+      to: "/docs/API/API%20Reference/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance",
       kind: "REST",
       language: "bash",
       code: `curl -X 'POST' \\
@@ -187,7 +187,7 @@ function HomepageHeader() {
               >
                 Get started
               </Link>
-              <Link className={styles.heroSecondaryLink} to="/docs/API/Intro">
+              <Link className={styles.heroSecondaryLink} to="/docs/API/Introduction">
                 Explore the API
               </Link>
             </div>
