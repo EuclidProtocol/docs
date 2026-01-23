@@ -53,6 +53,7 @@
   --ifm-font-weight-bold: 600;
   --ifm-heading-color: var(--euclid-text);
   --ifm-navbar-background-color: var(--euclid-bg);
+  --ifm-navbar-height: 96px;
   --ifm-navbar-link-color: var(--euclid-text);
   --ifm-navbar-link-hover-color: var(--euclid-text);
   --ifm-navbar-search-input-background-color: #f4f6f8;
@@ -440,13 +441,14 @@ code[class*="language-"] {
 }
 
 .navbar__logo img {
-  height: 40px;
+  height: 100%;
   width: auto;
 }
 
 .navbar__logo {
   align-self: center;
-  margin-top: -4px;
+  height: 80px;
+  margin-top: 0;
 }
 
 .navCta {
