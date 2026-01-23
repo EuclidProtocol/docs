@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { coldarkCold } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { FaCopy, FaCheck } from "react-icons/fa"; // Import the tick mark icon
 import styles from "./Tabs.module.css";
 
@@ -80,11 +80,14 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
               </button>
               <SyntaxHighlighter
                 language={tab.language}
-                style={coldarkDark}
+                style={coldarkCold}
                 customStyle={{
                   maxHeight: isExpanded ? "none" : "360px",
                   overflow: "auto",
-                  background: "rgb(30,30,30)",
+                  background: "var(--euclid-surface)",
+                  border: "1px solid var(--euclid-line)",
+                  borderRadius: "14px",
+                  boxShadow: "0 12px 30px rgba(17, 24, 28, 0.04)",
                 }}
               >
                 {tab.content.trim()}

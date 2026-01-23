@@ -72,13 +72,12 @@ const config: Config = {
       // Image for social preview
     ],
     colorMode: {
-      defaultMode: "dark", // Set dark mode as default
-      disableSwitch: true, // Disable the option to switch between light and dark modes
+      defaultMode: "light",
+      disableSwitch: true,
     },
     // Replace with your project's social card
     image: "img/EuclidLogo.svg",
     navbar: {
-      style: "dark",
       title: "",
       logo: {
         alt: "My Site Logo",
@@ -119,6 +118,7 @@ const config: Config = {
           href: "https://github.com/EuclidProtocol",
           label: "GitHub",
           position: "right",
+          className: "navCta",
         },
 
         // {
@@ -129,7 +129,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: "dark",
+      style: "light",
 
       links: [
         {
@@ -183,8 +183,8 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Euclid Development, Inc. All Rights Reserved.`,
     },
     prism: {
-      theme: prismThemes.vsDark,
-      darkTheme: prismThemes.vsDark,
+      theme: prismThemes.vsLight,
+      darkTheme: prismThemes.vsLight,
     },
   } satisfies Preset.ThemeConfig,
 
