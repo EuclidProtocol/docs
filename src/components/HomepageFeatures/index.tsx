@@ -62,7 +62,7 @@ const FeatureList2: FeatureItem[] = [
     title: "Euclid Api",
     imgSrc: require("@site/static/img/API.png").default,
     description: <>Explore the fundamentals of Euclid&apos;s API</>,
-    link: "/docs/API/Intro",
+    link: "/docs/API/API%20Reference/Intro",
   },
 ];
 
