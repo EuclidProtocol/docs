@@ -20,6 +20,8 @@ const sidebars: SidebarsConfig = {
         "Architecture Overview/Concepts/Euclid Messaging Protocol",
         "Architecture Overview/Concepts/Global Settlement Accounts",
         "Architecture Overview/Concepts/Smart Routing",
+        "Architecture Overview/Concepts/Vouchers",
+        "Architecture Overview/Concepts/Meta Transactions",
         "Architecture Overview/Automated-Market-Makers",
       ],
     },
@@ -52,151 +54,243 @@ const sidebars: SidebarsConfig = {
   ],
   
   apiSidebar: [
-    "API/Intro",
-    "API/common types",
     {
       type: "category",
-      label: "GQL",
+      label: "Getting Started",
       items: [
-        {
-          type: "category",
-          label: "Router",
-          items: [
-            "API/GQL/Router/All Chains",
-            "API/GQL/Router/All Tokens",
-            "API/GQL/Router/All VLPs",
-            "API/GQL/Router/All Escrows",
-            "API/GQL/Router/Chain",
-            "API/GQL/Router/Escrows",
-            "API/GQL/Router/Simulate Escrow Release",
-            "API/GQL/Router/Simulate Swap",
-            "API/GQL/Router/State",
-            "API/GQL/Router/VLP",
-            "API/GQL/Router/Token Pair From VLP",
-            "API/GQL/Router/Token Denoms"
-
-          ],
-        },
-        {
-          type: "category",
-          label: "Factory",
-          items: [
-            "API/GQL/Factory/All Pools",
-            "API/GQL/Factory/All tokens",
-            "API/GQL/Factory/Escrow",
-            "API/GQL/Factory/Get Token Address",
-            "API/GQL/Factory/State",
-            "API/GQL/Factory/VLP",
-            "API/GQL/Factory/Allowed Denoms",
-            "API/GQL/Factory/Partner Fees Collected",
-          ],
-        },
-        {
-          type: "category",
-          label: "Chain",
-          items: [
-            "API/GQL/Chain/All Chains",
-            "API/GQL/Chain/Chain Config",
-            "API/GQL/Chain/Contracts",
-            "API/GQL/Chain/Router Config",
-            "API/GQL/Chain/Keplr Config",
-            "API/GQL/Chain/EVM Chain Config",
-            "API/GQL/Chain/All EVM Chains",
-
-          ],
-        },
-        {
-          type: "category",
-          label: "VLP",
-          items: [
-            "API/GQL/VLP/All Pools",
-            "API/GQL/VLP/Fee",
-            "API/GQL/VLP/Liquidity",
-            "API/GQL/VLP/Pool",
-            "API/GQL/VLP/State",
-            "API/GQL/VLP/Total Fees Collected",
-            "API/GQL/VLP/Total Fees Denom",
-          ],
-        },
-        {
-          type: "category",
-          label: "Pool",
-          items: [
-            "API/GQL/Pool/My Pools",
-            "API/GQL/Pool/Volume",
-            "API/GQL/Pool/Fees Collected",
-            "API/GQL/Pool/Token Pair With Liquidity",
-          ],
-        },
-        {
-          type: "category",
-          label: "CW",
-          items: ["API/GQL/CW/Balance", "API/GQL/CW/Token Info"],
-        },
-        {
-          type: "category",
-          label: "Token",
-          items: [
-            "API/GQL/Token/Token Metadata by Id",
-            "API/GQL/Token/Token Metadata",
-            "API/GQL/Token/Token Liquidities",
-            "API/GQL/Token/Token Liquidity",
-            "API/GQL/Token/Token Denoms",
-            "API/GQL/Token/Dex Metadata",
-            "API/GQL/Token/All Dexes",
-            "API/GQL/Token/Get Faucets",
-          ],
-        },
-        {
-          type: "category",
-          label: "Virtual Balance",
-          items: [
-            "API/GQL/Virtual Balance/Balance",
-            "API/GQL/Virtual Balance/State",
-            "API/GQL/Virtual Balance/User Balance",
-          ],
-        },
-        "API/GQL/GQL Calls",
+        "API/Getting Started/Initial Setup",
+        "API/Getting Started/First Call",
+        "API/Getting Started/Perform A Swap",
+        "API/Getting Started/Broadcast Trade Onchain",
+        "API/Getting Started/Go Live",
       ],
     },
     {
       type: "category",
-      label: "REST",
+      label: "Trading",
       items: [
         {
           type: "category",
-          label: "Routes",
+          label: "Endpoints",
           items: [
-            "API/REST/Routes/Get Routes",
+            "API/Trading/Endpoints/Fetch Assets",
+            "API/Trading/Endpoints/Fetch Chains",
+            "API/Trading/Endpoints/Fetch Liquidity",
+            "API/Trading/Endpoints/Fetch Voucher",
+            "API/Trading/Endpoints/Track Transaction",
+            "API/Withdraw Voucher",
           ],
         },
-        {
-          type: "category",
-          label: "Transactions",
-          items: [
-            "API/REST/Transactions/Swap",
-            "API/REST/Transactions/Add Liquidity",
-            "API/REST/Transactions/Remove Liquidity",
-            "API/REST/Transactions/Create Pool",
-            "API/REST/Transactions/Deposit",
-            "API/REST/Transactions/Track Transactions",
-            "API/REST/Transactions/Withdraw Virtual Balance",
-            "API/REST/Transactions/Transfer Voucher",
-            "API/REST/Transactions/Track Swap Transaction",
-          ],
-        },
-        
       ],
     },
     {
       type: "category",
-      label: "Developer Guides ",
+      label: "Liquidity Provisioning",
       items: [
-        "API/Developer Guides/Introduction",
-        "API/Developer Guides/Swap",
-        "API/Developer Guides/Add Liquidity",
-        "API/Developer Guides/Remove Liquidity",
-        "API/Developer Guides/Withdraw Voucher",
+        "API/Liquidity Provisioning/Fees and Rewards",
+        {
+          type: "category",
+          label: "Different Liquidity States",
+          items: [
+            "API/Liquidity Provisioning/Different Liquidity States/Stable Pool",
+            "API/Liquidity Provisioning/Different Liquidity States/Constant Product Pool",
+          ],
+        },
+        {
+          type: "category",
+          label: "Endpoints",
+          items: [
+            "API/Liquidity Provisioning/Endpoints/Fetch Liquidity",
+            "API/Liquidity Provisioning/Endpoints/Add Liquidity",
+            "API/Liquidity Provisioning/Endpoints/Remove Liquidity",
+            "API/Liquidity Provisioning/Endpoints/Provider Position",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Pricing",
+      items: [
+        "API/Pricing/Route Calculation",
+        "API/Pricing/Slippage",
+        "API/Pricing/Risks and Impermanent Loss",
+      ],
+    },
+    "API/Withdraw Voucher",
+    {
+      type: "category",
+      label: "API Reference",
+      items: [
+        "API/API Reference/Intro",
+        "API/API Reference/common types",
+        {
+          type: "category",
+          label: "GQL",
+          items: [
+            {
+              type: "category",
+              label: "Router",
+              items: [
+                "API/API Reference/GQL/Router/All Chains",
+                "API/API Reference/GQL/Router/All Tokens",
+                "API/API Reference/GQL/Router/All VLPs",
+                "API/API Reference/GQL/Router/All Escrows",
+                "API/API Reference/GQL/Router/Chain",
+                "API/API Reference/GQL/Router/Escrows",
+                "API/API Reference/GQL/Router/Simulate Escrow Release",
+                "API/API Reference/GQL/Router/Simulate Swap",
+                "API/API Reference/GQL/Router/State",
+                "API/API Reference/GQL/Router/VLP",
+                "API/API Reference/GQL/Router/Token Pair From VLP",
+                "API/API Reference/GQL/Router/Token Denoms"
+
+              ],
+            },
+            {
+              type: "category",
+              label: "Factory",
+              items: [
+                "API/API Reference/GQL/Factory/All Pools",
+                "API/API Reference/GQL/Factory/All tokens",
+                "API/API Reference/GQL/Factory/Escrow",
+                "API/API Reference/GQL/Factory/Get Token Address",
+                "API/API Reference/GQL/Factory/State",
+                "API/API Reference/GQL/Factory/VLP",
+                "API/API Reference/GQL/Factory/Allowed Denoms",
+                "API/API Reference/GQL/Factory/Partner Fees Collected",
+              ],
+            },
+            {
+              type: "category",
+              label: "Chain",
+              items: [
+                "API/API Reference/GQL/Chain/All Chains",
+                "API/API Reference/GQL/Chain/Chain Config",
+                "API/API Reference/GQL/Chain/Contracts",
+                "API/API Reference/GQL/Chain/Router Config",
+                "API/API Reference/GQL/Chain/Keplr Config",
+                "API/API Reference/GQL/Chain/EVM Chain Config",
+                "API/API Reference/GQL/Chain/All EVM Chains",
+
+              ],
+            },
+            {
+              type: "category",
+              label: "VLP",
+              items: [
+                "API/API Reference/GQL/VLP/All Pools",
+                "API/API Reference/GQL/VLP/Fee",
+                "API/API Reference/GQL/VLP/Liquidity",
+                "API/API Reference/GQL/VLP/Pool",
+                "API/API Reference/GQL/VLP/State",
+                "API/API Reference/GQL/VLP/Total Fees Collected",
+                "API/API Reference/GQL/VLP/Total Fees Denom",
+              ],
+            },
+            {
+              type: "category",
+              label: "Pool",
+              items: [
+                "API/API Reference/GQL/Pool/My Pools",
+                "API/API Reference/GQL/Pool/Volume",
+                "API/API Reference/GQL/Pool/Fees Collected",
+                "API/API Reference/GQL/Pool/Token Pair With Liquidity",
+              ],
+            },
+            {
+              type: "category",
+              label: "CW",
+              items: [
+                "API/API Reference/GQL/CW/Balance",
+                "API/API Reference/GQL/CW/Token Info",
+              ],
+            },
+            {
+              type: "category",
+              label: "Token",
+              items: [
+                "API/API Reference/GQL/Token/Token Metadata by Id",
+                "API/API Reference/GQL/Token/Token Metadata",
+                "API/API Reference/GQL/Token/Token Liquidities",
+                "API/API Reference/GQL/Token/Token Liquidity",
+                "API/API Reference/GQL/Token/Token Denoms",
+                "API/API Reference/GQL/Token/Dex Metadata",
+                "API/API Reference/GQL/Token/All Dexes",
+                "API/API Reference/GQL/Token/Get Faucets",
+              ],
+            },
+            {
+              type: "category",
+              label: "Virtual Balance",
+              items: [
+                "API/API Reference/GQL/Virtual Balance/Balance",
+                "API/API Reference/GQL/Virtual Balance/State",
+                "API/API Reference/GQL/Virtual Balance/User Balance",
+              ],
+            },
+            "API/API Reference/GQL/GQL Calls",
+          ],
+        },
+        {
+          type: "category",
+          label: "REST",
+          items: [
+            {
+              type: "category",
+              label: "Routes",
+              items: [
+                "API/API Reference/REST/Routes/Get Routes",
+              ],
+            },
+            {
+              type: "category",
+              label: "Transactions",
+              items: [
+                "API/API Reference/REST/Transactions/Swap",
+                "API/API Reference/REST/Transactions/Simulate Swap",
+                {
+                  type: "category",
+                  label: "Liquidity",
+                  items: [
+                    "API/API Reference/REST/Transactions/Liquidity/Add Liquidity",
+                    "API/API Reference/REST/Transactions/Liquidity/Create Pool",
+                    "API/API Reference/REST/Transactions/Liquidity/Remove Liquidity",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Tracking",
+                  items: [
+                    "API/API Reference/REST/Transactions/Tracking/Track Swap Transaction",
+                    "API/API Reference/REST/Transactions/Tracking/Track Transactions",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Vouchers",
+                  items: [
+                    "API/API Reference/REST/Transactions/Vouchers/Deposit",
+                    "API/API Reference/REST/Transactions/Vouchers/Transfer Voucher",
+                    "API/API Reference/REST/Transactions/Vouchers/Withdraw Virtual Balance",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Meta Transactions",
+                  items: [
+                    "API/API Reference/REST/Transactions/Meta Transactions/Intro",
+                    "API/API Reference/REST/Transactions/Meta Transactions/Swap",
+                    "API/API Reference/REST/Transactions/Meta Transactions/Transfer",
+                    "API/API Reference/REST/Transactions/Meta Transactions/Withdraw",
+                    "API/API Reference/REST/Transactions/Meta Transactions/Sign",
+                    "API/API Reference/REST/Transactions/Meta Transactions/Broadcast",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],

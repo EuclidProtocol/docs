@@ -62,26 +62,22 @@ const FeatureList2: FeatureItem[] = [
     title: "Euclid Api",
     imgSrc: require("@site/static/img/API.png").default,
     description: <>Explore the fundamentals of Euclid&apos;s API</>,
-    link: "/docs/API/Intro",
+    link: "/docs/API/API%20Reference/Intro",
   },
 ];
 
 function Feature({ title, imgSrc, description, extraClass }: FeatureItem) {
   return (
-    <div className={clsx("col col--4")}>
-      <div className="text--center">
-        <img
-          src={imgSrc}
-          className={clsx(styles.featureImg, extraClass)}
-          alt={title}
-        />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3" className="heading-main">
-          {title}
-        </Heading>
-        <p className="text-white font-secondary">{description}</p>
-      </div>
+    <div className={styles.featureCard}>
+      <img
+        src={imgSrc}
+        className={clsx(styles.featureImg, extraClass)}
+        alt={title}
+      />
+      <Heading as="h3" className={styles.featureTitle}>
+        {title}
+      </Heading>
+      <p className={styles.featureText}>{description}</p>
     </div>
   );
 }
@@ -89,17 +85,13 @@ function Feature({ title, imgSrc, description, extraClass }: FeatureItem) {
 function Feature2({ title, imgSrc, description, link }: FeatureItem) {
   return (
     <>
-      <div className={clsx("col col--3 card", styles.feature2Container)}>
+      <div className={styles.feature2Container}>
         <Link href={link}>
-          <div className="text--center">
-            <img src={imgSrc} className={styles.featureImg} alt={title} />
-          </div>
-          <div className="text--center padding-horiz--md">
-            <Heading as="h3" className="heading-main">
-              {title}
-            </Heading>
-            <p className="text-white font-secondary">{description}</p>
-          </div>
+          <img src={imgSrc} className={styles.featureImg} alt={title} />
+          <Heading as="h3" className={styles.featureTitle}>
+            {title}
+          </Heading>
+          <p className={styles.featureText}>{description}</p>
         </Link>
       </div>
     </>
@@ -111,7 +103,7 @@ export default function HomepageFeatures(): JSX.Element {
     <>
       <section className={styles.features}>
         <div className="container">
-          <div className="row">
+          <div className={styles.featureRow}>
             {FeatureList.map((props, idx) => (
               <Feature key={idx} {...props} />
             ))}
@@ -123,7 +115,7 @@ export default function HomepageFeatures(): JSX.Element {
       </section>
       <section className={styles.features}>
         <div className="container bottomContainer">
-          <div className={clsx("row", styles.bottomRow)}>
+          <div className={styles.bottomRow}>
             {FeatureList2.map((props, idx) => (
               <Feature2 key={idx} {...props} />
             ))}

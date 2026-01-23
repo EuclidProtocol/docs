@@ -32,7 +32,7 @@ If a trader wants to swap 10 X tokens for Y tokens in this pool, the amount of Y
 $$ x \cdot y = k $$
 
 Given:
-$$ x = 100, \, y = 100 $$
+$$ x = 100, \, y = 100 $$,
 $$ X \cdot Y = 10,000 $$
 
 The calculation for Y tokens is:
@@ -72,7 +72,7 @@ $$ Y = \frac{40,000}{X} = \frac{40,000}{(200 + 10)} = \frac{40,000}{210} \approx
 
 This will result in the trader receiving:
 
-$$ Y = 200 - 190.45 = 9.55 \, \text{Y tokens} $$ which is a 50% decrease in slippage.
+$$ Y = 200 - 190.45 = 9.55 \, \text{Y tokens} $$ which is a 50% decrease in slippage. 
 
 ![Euclid Architecture](../../static/img/arch-2.png)
 
@@ -86,6 +86,4 @@ Our team has written extensively about CPMM and its limitations in creating effi
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous" />
 </head>
-
-
 
