@@ -1,34 +1,40 @@
 .tabs {
-  font-family: Arial, sans-serif;
+  font-family: var(--ifm-font-family-base);
 }
 
 .tab-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .tab-buttons {
   display: flex;
-
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .tab-buttons button {
-  padding: 10px 15px;
+  padding: 8px 14px;
   width: max-content;
-  border: none;
-  border-radius: 5px;
-  background-color: rgb(30, 30, 30);
+  border: 1px solid var(--euclid-line);
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--euclid-text);
+  letter-spacing: 0.03em;
+  font-size: 0.82rem;
   cursor: pointer;
-  transition: background-color 0s;
-  margin-right: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .tab-buttons button.active {
-  background-color: #535353;
+  background-color: var(--euclid-accent);
+  color: #ffffff;
+  border-color: var(--euclid-accent);
 }
 
 .active {
@@ -36,16 +42,17 @@
 
 .expand-button {
   padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  background-color: rgb(30, 30, 30);
-  color: #ccc;
+  border: 1px solid var(--euclid-line);
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--euclid-text);
+  letter-spacing: 0.03em;
   cursor: pointer;
   margin-bottom: 10px;
 }
 
 .expand-button:hover {
-  background-color: #3f3f3f;
+  background-color: var(--euclid-line-soft);
 }
 
 .tab-content .tab-pane {
@@ -58,9 +65,10 @@
 }
 
 .tab-content .tab-pane.active pre {
-  background-color: rgb(30, 30, 30);
-  padding: 10px;
-  border-radius: 4px;
+  background-color: var(--euclid-surface);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--euclid-line);
 }
 
 .tab-pane {
@@ -83,7 +91,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #ccc;
+  color: var(--euclid-muted);
 }
 
 .icon {
