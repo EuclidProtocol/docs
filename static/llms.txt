@@ -1,0 +1,195 @@
+# Euclid Protocol Docs - LLM Index
+Updated: 2026-01-24
+Base URL: https://docs.euclidprotocol.io
+Docs root: https://docs.euclidprotocol.io/docs
+Repo: https://github.com/EuclidProtocol/docs
+Main site: https://www.euclidprotocol.io
+
+## Docs
+- LLM guide: https://docs.euclidprotocol.io/docs/llms
+- Terms of Service: https://docs.euclidprotocol.io/docs/terms
+
+## Architecture
+- Intro: https://docs.euclidprotocol.io/docs/Architecture%20Overview/intro
+- General overview: https://docs.euclidprotocol.io/docs/Architecture%20Overview/General%20Overview
+- Concepts - Liquidity Consensus Layer: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Concepts/Liquidity%20Consensus%20Layer
+- Concepts - Euclid Messaging Protocol: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Concepts/Euclid%20Messaging%20Protocol
+- Concepts - Global Settlement Accounts: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Concepts/Global%20Settlement%20Accounts
+- Concepts - Smart Routing: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Concepts/Smart%20Routing
+- Concepts - Vouchers: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Concepts/Vouchers
+- Concepts - Meta Transactions: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Concepts/Meta%20Transactions
+- Automated Market Makers: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Automated-Market-Makers
+- Integrated Chains Layer - Factory: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/factory
+- Integrated Chains Layer - Escrows: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/escrows
+- Virtual Settlement Layer - Overview: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-settlement-layer
+- Virtual Settlement Layer - Virtual Pools: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-pools
+- Virtual Settlement Layer - Virtual Balances: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-balances
+- Router: https://docs.euclidprotocol.io/docs/Architecture%20Overview/Architecture/router
+
+## API - Overview
+- Introduction: https://docs.euclidprotocol.io/docs/API/Introduction
+- Swap overview: https://docs.euclidprotocol.io/docs/API/Swap
+- Withdraw voucher: https://docs.euclidprotocol.io/docs/API/Withdraw%20Voucher
+
+## API - Getting Started
+- Initial setup: https://docs.euclidprotocol.io/docs/API/Getting%20Started/Initial%20Setup
+- First call: https://docs.euclidprotocol.io/docs/API/Getting%20Started/First%20Call
+- Perform a swap: https://docs.euclidprotocol.io/docs/API/Getting%20Started/Perform%20A%20Swap
+- Broadcast trade onchain: https://docs.euclidprotocol.io/docs/API/Getting%20Started/Broadcast%20Trade%20Onchain
+- Go live: https://docs.euclidprotocol.io/docs/API/Getting%20Started/Go%20Live
+
+## API - Trading Endpoints
+- Fetch assets: https://docs.euclidprotocol.io/docs/API/Trading/Endpoints/Fetch%20Assets
+- Fetch chains: https://docs.euclidprotocol.io/docs/API/Trading/Endpoints/Fetch%20Chains
+- Fetch liquidity: https://docs.euclidprotocol.io/docs/API/Trading/Endpoints/Fetch%20Liquidity
+- Fetch voucher: https://docs.euclidprotocol.io/docs/API/Trading/Endpoints/Fetch%20Voucher
+- Track transaction: https://docs.euclidprotocol.io/docs/API/Trading/Endpoints/Track%20Transaction
+- Withdraw voucher: https://docs.euclidprotocol.io/docs/API/Withdraw%20Voucher
+
+## API - Liquidity Provisioning
+- Fees and rewards: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Fees%20and%20Rewards
+- Stable pool: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Different%20Liquidity%20States/Stable%20Pool
+- Constant product pool: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Different%20Liquidity%20States/Constant%20Product%20Pool
+- Fetch liquidity: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Fetch%20Liquidity
+- Add liquidity: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Add%20Liquidity
+- Remove liquidity: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Remove%20Liquidity
+- Provider position: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Provider%20Position
+
+## API - Pricing
+- Route calculation: https://docs.euclidprotocol.io/docs/API/Pricing/Route%20Calculation
+- Slippage: https://docs.euclidprotocol.io/docs/API/Pricing/Slippage
+- Risks and impermanent loss: https://docs.euclidprotocol.io/docs/API/Pricing/Risks%20and%20Impermanent%20Loss
+
+## API Reference - Overview
+- Intro: https://docs.euclidprotocol.io/docs/API/API%20Reference/Intro
+- Common types: https://docs.euclidprotocol.io/docs/API/API%20Reference/common%20types
+
+## API Reference - GraphQL
+- GQL calls: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/GQL%20Calls
+
+### Router
+- All chains: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/All%20Chains
+- All tokens: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/All%20Tokens
+- All VLPs: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/All%20VLPs
+- All escrows: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/All%20Escrows
+- Chain: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/Chain
+- Escrows: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/Escrows
+- Simulate escrow release: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/Simulate%20Escrow%20Release
+- Simulate swap: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/Simulate%20Swap
+- State: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/State
+- VLP: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/VLP
+- Token pair from VLP: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/Token%20Pair%20From%20VLP
+- Token denoms: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Router/Token%20Denoms
+
+### Factory
+- All pools: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/All%20Pools
+- All tokens: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/All%20tokens
+- Escrow: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/Escrow
+- Get token address: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/Get%20Token%20Address
+- State: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/State
+- VLP: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/VLP
+- Allowed denoms: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/Allowed%20Denoms
+- Partner fees collected: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Factory/Partner%20Fees%20Collected
+
+### Chain
+- All chains: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Chain/All%20Chains
+- Chain config: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Chain/Chain%20Config
+- Contracts: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Chain/Contracts
+- Router config: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Chain/Router%20Config
+- Keplr config: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Chain/Keplr%20Config
+- EVM chain config: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Chain/EVM%20Chain%20Config
+- All EVM chains: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Chain/All%20EVM%20Chains
+
+### VLP
+- All pools: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/VLP/All%20Pools
+- Fee: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/VLP/Fee
+- Liquidity: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/VLP/Liquidity
+- Pool: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/VLP/Pool
+- State: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/VLP/State
+- Total fees collected: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/VLP/Total%20Fees%20Collected
+- Total fees denom: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/VLP/Total%20Fees%20Denom
+
+### Pool
+- My pools: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Pool/My%20Pools
+- Volume: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Pool/Volume
+- Fees collected: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Pool/Fees%20Collected
+- Token pair with liquidity: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Pool/Token%20Pair%20With%20Liquidity
+
+### CW
+- Balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/CW/Balance
+- Token info: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/CW/Token%20Info
+
+### Token
+- Token metadata by id: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/Token%20Metadata%20by%20Id
+- Token metadata: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/Token%20Metadata
+- Token liquidities: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/Token%20Liquidities
+- Token liquidity: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/Token%20Liquidity
+- Token denoms: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/Token%20Denoms
+- Dex metadata: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/Dex%20Metadata
+- All dexes: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/All%20Dexes
+- Get faucets: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Token/Get%20Faucets
+
+### Virtual Balance
+- Balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Virtual%20Balance/Balance
+- State: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Virtual%20Balance/State
+- User balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Virtual%20Balance/User%20Balance
+
+## API Reference - REST
+
+### Routes
+- Get routes: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Routes/Get%20Routes
+
+### Transactions
+- Swap: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Swap
+- Simulate swap: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Simulate%20Swap
+
+#### Liquidity
+- Add liquidity: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Liquidity/Add%20Liquidity
+- Create pool: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Liquidity/Create%20Pool
+- Remove liquidity: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Liquidity/Remove%20Liquidity
+
+#### Tracking
+- Track swap transaction: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Tracking/Track%20Swap%20Transaction
+- Track transactions: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Tracking/Track%20Transactions
+
+#### Vouchers
+- Deposit: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Deposit
+- Transfer voucher: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Transfer%20Voucher
+- Withdraw virtual balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance
+
+#### Meta Transactions
+- Intro: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Intro
+- Swap: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Swap
+- Transfer: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Transfer
+- Withdraw: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Withdraw
+- Sign: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Sign
+- Broadcast: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast
+
+## Smart Contracts - CosmWasm
+- Overview: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/overview
+- Smart contract integration: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/Smart%20Contract%20Integration
+- Factory: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/Factory
+- Router: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/Router
+- Escrow: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/Escrow
+- Virtual liquidity pools: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/Virtual%20Liquidity%20Pools
+- Stable VLP: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/Stable%20VLP
+- Virtual balances: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/Virtual%20balances
+
+## Smart Contracts - Solidity
+- Overview: https://docs.euclidprotocol.io/docs/Euclid%20Solidity%20Contracts/Solidity/overview
+- Smart contract integration: https://docs.euclidprotocol.io/docs/Euclid%20Solidity%20Contracts/Solidity/solidity-smart-contract-integration
+- Factory: https://docs.euclidprotocol.io/docs/Euclid%20Solidity%20Contracts/Solidity/Factory
+- Escrow: https://docs.euclidprotocol.io/docs/Euclid%20Solidity%20Contracts/Solidity/Escrow
+
+## API endpoints
+- Testnet base: https://testnet.api.euclidprotocol.com
+- Testnet GraphQL: https://testnet.api.euclidprotocol.com/graphql
+- Testnet REST base: https://testnet.api.euclidprotocol.com/api/v1
+- Mainnet base: https://api.euclidprotocol.com
+
+## Instructions for LLM agents
+- Prefer official Euclid docs above; if a link is missing, search the docs root.
+- Default to testnet endpoints unless mainnet is explicitly required.
+- Use the API Reference pages for parameter and response shapes.
+- GraphQL is preferred for data querying; REST is preferred for transaction execution.
+- If authentication is required, use: Authorization: Bearer <API_KEY>.

@@ -174,6 +174,14 @@ const config: Config = {
               href: "https://github.com/EuclidProtocol",
             },
             {
+              label: "LLM Guide",
+              to: "/docs/llms",
+            },
+            {
+              label: "LLMs.txt",
+              href: "/llms.txt",
+            },
+            {
               label: "Terms of Service",
               to: "/docs/terms", 
             },
