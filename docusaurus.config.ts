@@ -113,6 +113,11 @@ const config: Config = {
           position: "left",
           label: "API",
         },
+        {
+          to: "/widget",
+          label: "Widget",
+          position: "left",
+        },
 
         {
           href: "https://github.com/EuclidProtocol",

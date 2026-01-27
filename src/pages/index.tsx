@@ -166,7 +166,6 @@ function HomepageHeader() {
   ];
 
   const [activeAction, setActiveAction] = useState(tryActions[0]);
-
   return (
     <>
       <header className={clsx("hero", styles.heroBanner)}>
@@ -292,6 +291,8 @@ function HomepageHeader() {
           </div>
         </div>
       </section>
+
+
     </>
   );
 }
