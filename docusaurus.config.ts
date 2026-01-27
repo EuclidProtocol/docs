@@ -185,6 +185,7 @@ const config: Config = {
             {
               label: "LLMs.txt",
               href: "/llms.txt",
+              "data-noBrokenLinkCheck": true,
             },
             {
               label: "Terms of Service",

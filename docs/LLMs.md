@@ -4,12 +4,12 @@ title: LLM Guide
 ---
 
 This page explains how to use the Euclid docs with AI tools and links to the
-machine-readable index at `/llms.txt`, which contains the full, expanded list
+machine-readable index file (`llms.txt`), which contains the full, expanded list
 of documentation entry points.
 
 ## LLM index
 
-- `/llms.txt`: https://docs.euclidprotocol.io/llms.txt
+- https://docs.euclidprotocol.io/llms.txt
 
 ## Recommended entry points
 
@@ -21,7 +21,7 @@ of documentation entry points.
 - CosmWasm contracts overview: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/overview
 - Solidity contracts overview: https://docs.euclidprotocol.io/docs/Euclid%20Solidity%20Contracts/Solidity/overview
 
-## Key sections (full list in /llms.txt)
+## Key sections (full list in llms.txt)
 
 - Architecture and concepts
 - API getting started
