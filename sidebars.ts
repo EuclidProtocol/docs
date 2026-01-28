@@ -117,7 +117,6 @@ const sidebars: SidebarsConfig = {
         "API/Pricing/Risks and Impermanent Loss",
       ],
     },
-    "API/Withdraw Voucher",
     {
       type: "category",
       label: "API Reference",

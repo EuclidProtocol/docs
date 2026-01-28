@@ -57,7 +57,7 @@ When listening for messages to relay, relayers read a queue sorted by fee for th
 Block emissions are rewards for when a relayer supports the LCL by transmitting Euclid specific messages back and forth. Euclid generates fees by taking a percentage of the fees that liquidity providers earn on a certain Liquidity State. A portion of this fee is then used to reward a relayer (or set of relayers) that transmit the message to the LCL. This fee will be decided in the initial tokenomics and is then managed by governance.
 
 
-![EMP Layer](../../../static/img/emp-1.webp)
+![EMP Layer](../../../static/img/Euclid%20Messaging%20Protocol_1.jpg)
 *Relayer Revenue Flow in Euclid Protocol*
 
 
@@ -67,5 +67,5 @@ Relayers will have to submit transactions to Euclid Outposts to pass on a confir
 
 Euclid provides a gas registry which keeps moving average of gas fees on different networks that relayers could utilize to decide what messages from queues to pick up to relay. This can also be subsidized by networks or protocols to facilitate transactions on their protocols across the Euclid ecosystem.
 
-![EMP Layer](../../../static/img/emp-2.webp)
+![EMP Layer](../../../static/img/Euclid%20Messaging%20Protocol_2.jpg)
 *High Level Architecture of Relayer*
