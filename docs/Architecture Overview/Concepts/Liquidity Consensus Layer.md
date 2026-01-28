@@ -8,7 +8,7 @@ import React from 'react';
 
 The **_Liquidity Settlement Layer_** (LCL) is a Tendermint Byzantine Fault Tolerant (BFT) consensus network purposely built to serve as a consensus layer for *liquidity states* across any ecosystem.
 
-![Consensus Layer](../../../static/img/consensus-1.webp)
+![Consensus Layer](../../../static/img/Liquidity%20Consesus%20Layer_1.jpg)
 *High Level Transaction Lifecycle through Liquidity Consensus Layer (LCL)*
 
 Its main functions are:
@@ -26,7 +26,7 @@ If you take for example Uniswap, their different AMMs (v2 and v3) exist on diffe
 
 Liquidity States also natively exist beyond where the assets exist (on their native chain) meaning a transaction originating and ending on Solana can access liquidity that exists on Ethereum, Bitcoin, and Stellar all at the same time.
 
-![Consensus Layer](../../../static/img/consensus-2.webp)
+![Consensus Layer](../../../static/img/Liquidity%20Consesus%20Layer_2.jpg)
 *Consensus Layer architecture*
 
 <div style={{
@@ -52,13 +52,13 @@ Liquidity States also natively exist beyond where the assets exist (on their nat
   </div>
 
   <div style={{
-    flex: '0 1 500px',
+    flex: '1 1 auto',
     textAlign: 'center',
     minWidth: '300px'
   }}>
     <figure>
       <img 
-        src="/img/consensus-3.webp" 
+        src="/img/Liquidity%20Consesus%20Layer_3.jpg" 
         alt="Liquidity State internal architecture Flow"
         style={{
           maxWidth: '100%',
@@ -66,7 +66,7 @@ Liquidity States also natively exist beyond where the assets exist (on their nat
           height: 'auto'
         }}
       />
-      <figcaption style={{ fontSize: '0.9rem', color: '#888' }}>
+      <figcaption style={{ fontSize: '0.9rem', color: '#888', textAlign: 'left' }}>
         Liquidity State Internal Architecture Flow
       </figcaption>
     </figure>
@@ -84,7 +84,7 @@ The LCL simulation engine is a programmable verification layer which allows to s
 
 The LCL simulation engine is able to reason and simulate a certain liquidity action across hundreds of different liquidity states in < 1 second.  This allows routers and solvers to build arbitrarily complex paths using multiple liquidity states and receive guaranteed validation before committing.
 
-![Consensus Layer](../../../static/img/consensus-4.webp)
+![Consensus Layer](../../../static/img/Liquidity%20Consesus%20Layer_4.jpg)
 *Simulation Engine solves for a path of a subset of all available liquidity states for a pair (Input, Output)*
 
 <br />

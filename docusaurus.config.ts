@@ -136,8 +136,27 @@ const config: Config = {
           items: [
             {
               html: `
-              <img src="/img/EuclidLogo.svg" alt="Logo" style="width: 150px; height: auto;" />
+              <div style="display:flex; align-items:center; justify-content:flex-start;">
+                <img src="/img/logo-last.png" alt="Euclid logo" style="width: 180px; height: auto;" />
+              </div>
             `,
+            },
+          ],
+        },
+        {
+          title: "Apps",
+          items: [
+            {
+              label: "Euclid Swap",
+              href: "https://testnet.euclidswap.io/",
+            },
+            {
+              label: "Euclid Launch",
+              href: "https://launch.euclidprotocol.io/",
+            },
+            {
+              label: "Planet Euclid",
+              href: "https://planet.euclidprotocol.io/",
             },
           ],
         },
@@ -153,18 +172,14 @@ const config: Config = {
               href: "https://x.com/EuclidProtocol",
             },
             {
-              label: "Medium",
-              href: "https://euclidprotocol.medium.com/",
+              label: "Blog",
+              href: "https://blog.euclidprotocol.io/",
             },
           ],
         },
         {
           title: "More",
           items: [
-            {
-              label: "App",
-              href: "https://testnet.euclidswap.io/",
-            },
             {
               label: "Website",
               href: "https://www.euclidprotocol.io/",
@@ -180,6 +195,8 @@ const config: Config = {
             {
               label: "LLMs.txt",
               href: "/llms.txt",
+              target: "_blank",
+              rel: "noopener noreferrer",
             },
             {
               label: "Terms of Service",

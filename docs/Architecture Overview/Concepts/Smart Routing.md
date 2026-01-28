@@ -10,7 +10,7 @@ The **Liquidity Consensus Layer (LCL)** achieves a breakthrough for trading whic
 1. All the liquidity states exist in the same consensus layer, even though the assets do not, and all are normalized to have a state transition function $f(n)$  which routers are able to use to simulate a route across this liquidity state. This creates a connected state graph composed of all liquidity states that exist in the LCL.
 2. For a unique type of liquidity state, there can only exist for a certain asset(s) one of this liquidity state to avoid same state fragmentation. Also, in order to create a new liquidity state, one of the assets should already have another liquidity state created in the LCL. This ensures that all pools are interconnected to optimize routing and liquidity.
 
-![Snart Routing](../../../static/img/consensus-4.webp)
+![Snart Routing](../../../static/img/Smart%20Routing_1.jpg)
 *Chaining of Liquidity States in the LCL*
 
 # The Routing Engine

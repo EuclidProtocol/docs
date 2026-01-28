@@ -15,7 +15,7 @@ The **Unified Liquidity Layer** has three main components:
 The bottom layer acts like a CPAMM pool but is in fact a series of escrows. We will dive deeper into it in later sections.
 :::
 
-![Euclid Architecture](../../static/img/arch-no-logo.png)
+![Euclid Architecture](../../static/img/General_1.jpg)
 
 ### Virtual Settlement Layer
 
@@ -38,7 +38,7 @@ Our Messaging Protocol and Virtual Settlement Layer both guarantee instant final
 
 At the core of Euclid’s architecture is a communication and computation flow that enables secure, fast, cross-chain interactions, whether it’s swapping tokens, adding liquidity, or querying balances. Here’s a step-by-step example of how a swap request is processed:
 
-![Euclid Architecture](../../static/img/arch.png)
+![Euclid Architecture](../../static/img/General_2.jpg)
 
 :::note
 Euclid allows users to receive the tokens across multiple chains, specifying exactly how many to receive on each chain. For example, a user can swap Token Y for Token X and receive the resulting X tokens distributed across 10 different chains in any split they choose. 
@@ -57,8 +57,6 @@ Euclid allows users to receive the tokens across multiple chains, specifying exa
 	6.	**Acknowledgment Path** : The result of the computation (e.g., how much Token X the user receives) is sent back to the Router, which then forwards it to the factory on the receiving chain (Chain where the user wants to receive the tokens).
 
 	7.	**Escrow Execution**: The Factory triggers an action on the Escrow contract to release the funds to the user's specified destination address.
-
-
 
 
 

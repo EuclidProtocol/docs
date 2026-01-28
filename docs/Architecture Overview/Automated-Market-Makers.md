@@ -74,7 +74,7 @@ This will result in the trader receiving:
 
 $$ Y = 200 - 190.45 = 9.55 \, \text{Y tokens} $$ which is a 50% decrease in slippage. 
 
-![Euclid Architecture](../../static/img/arch-2.png)
+![Euclid Architecture](../../static/img/Automated%20Market%20Makers_1.jpg)
 
 
 ## Research
@@ -86,4 +86,3 @@ Our team has written extensively about CPMM and its limitations in creating effi
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous" />
 </head>
-

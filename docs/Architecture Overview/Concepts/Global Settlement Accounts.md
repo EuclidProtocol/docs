@@ -16,7 +16,7 @@ This architecture allows users to settle liquidity through the **Liquidity Conse
 
 The architecture is also built so that it does not require any more work or technical integrations from protocols and wallets building on top of Euclid to support. This ensures direct compatibility to any existing protocols.
 
-![Settlement Accounts](../../../static/img/accounts-1.webp)
+![Settlement Accounts](../../../static/img/Global%20Settlement%20Accounts_1.jpg)
 
 ## Use Cases
 

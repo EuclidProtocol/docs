@@ -472,6 +472,29 @@ code[class*="language-"] {
   background-color: var(--euclid-bg) !important;
 }
 
+.markdown table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.markdown table th:nth-child(1),
+.markdown table td:nth-child(1) {
+  width: 22%;
+  white-space: nowrap;
+}
+
+.markdown table th:nth-child(2),
+.markdown table td:nth-child(2) {
+  width: 18%;
+  white-space: nowrap;
+}
+
+.markdown table th:nth-child(3),
+.markdown table td:nth-child(3) {
+  width: 60%;
+  white-space: normal;
+}
+
 footer {
   background-color: var(--euclid-bg) !important;
   bottom: 0;
