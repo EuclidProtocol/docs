@@ -1,7 +1,6 @@
 ---
 sidebar_label: Create Swap Payload
 id: create-swap-payload
-unlisted: true
 ---
 
 # Step 2 — Create the Swap Payload

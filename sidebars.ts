@@ -119,6 +119,25 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Integrations",
+      items: [
+        {
+          type: "category",
+          label: "Aggregators",
+          items: [
+            "API/Integrations/Aggregators/Intro",
+            "API/Integrations/Aggregators/get-routes",
+            "API/Integrations/Aggregators/create-swap-payload",
+            "API/Integrations/Aggregators/broadcast",
+            "API/Integrations/Aggregators/track-execution",
+            "API/Integrations/Aggregators/operational-tips",
+            "API/Integrations/Aggregators/FAQ",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "API Reference",
       items: [
         "API/API Reference/Intro",

@@ -1,7 +1,6 @@
 ---
 sidebar_label: Broadcast
 id: broadcast
-unlisted: true
 ---
 
 # Step 3 — Broadcast the Transaction

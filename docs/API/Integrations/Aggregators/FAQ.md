@@ -1,6 +1,5 @@
 ---
 sidebar_label: FAQ
-unlisted: true
 ---
 
 # Aggregator FAQ

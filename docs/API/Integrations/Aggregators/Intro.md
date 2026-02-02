@@ -1,6 +1,5 @@
 ---
 sidebar_label: Overview
-unlisted: true
 ---
 
 # Aggregator Integration Overview

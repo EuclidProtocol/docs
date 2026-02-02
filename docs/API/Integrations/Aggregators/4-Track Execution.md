@@ -1,7 +1,6 @@
 ---
 sidebar_label: Track Execution
 id: track-execution
-unlisted: true
 ---
 
 # Step 4 — Track Execution

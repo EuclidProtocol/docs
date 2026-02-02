@@ -1,7 +1,6 @@
 ---
 sidebar_label: Operational Tips
 id: operational-tips
-unlisted: true
 ---
 
 # Step 5 — Operational Tips

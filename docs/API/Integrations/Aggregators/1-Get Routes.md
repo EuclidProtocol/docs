@@ -1,7 +1,6 @@
 ---
 sidebar_label: Get Routes
 id: get-routes
-unlisted: true
 ---
 
 # Step 1 — Get Routes
