@@ -62,7 +62,6 @@ const sidebars: SidebarsConfig = {
         "API/Getting Started/First Call",
         "API/Getting Started/Perform A Swap",
         "API/Getting Started/Broadcast Trade Onchain",
-        "API/Getting Started/Go Live",
       ],
     },
     {
