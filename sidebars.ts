@@ -225,6 +225,7 @@ const sidebars: SidebarsConfig = {
                 "API/API Reference/GQL/Virtual Balance/Balance",
                 "API/API Reference/GQL/Virtual Balance/State",
                 "API/API Reference/GQL/Virtual Balance/User Balance",
+                "API/API Reference/GQL/Virtual Balance/Unified User Balance",
               ],
             },
             "API/API Reference/GQL/GQL Calls",
