@@ -16,6 +16,9 @@ Each chain includes:
 - `factory_address`: The contract responsible for managing pools or trades on that chain
 
 ## GraphQL Query
+<!-- no toc -->
+
+**Example Requests**
 
 <Tabs tabs={[
   {
@@ -81,6 +84,8 @@ query Router {
 `
   }
 ]} />
+
+**Example Requests**
 
 <Tabs tabs={[
   {
@@ -168,24 +173,6 @@ client.query({
 }).catch(err => {
   console.error('Error:', err);
 });
-`
-  },
-  {
-    id: 'gql-playground',
-    label: 'GraphQL Playground',
-    language: 'graphql',
-    content: `
-# Paste this into the GraphQL Playground
-
-query Router {
-  router {
-    all_chains {
-      chain_id
-      chain_uid
-      factory_address
-    }
-  }
-}
 `
   }
 ]} />
@@ -328,26 +315,6 @@ client.query({
 .then(res => console.log(JSON.stringify(res.data, null, 2)))
 .catch(err => console.error(err));
 `
-  },
-  {
-    id: 'evm-playground',
-    label: 'GraphQL Playground',
-    language: 'graphql',
-    content: `
-query Evm_chain_config($chainUid: String, $chainId: String) {
-  chains {
-    evm_chain_config(chain_uid: $chainUid, chain_id: $chainId) {
-      rpc_urls {
-        default {
-          http
-        }
-      }
-      explorer_url
-      name
-    }
-  }
-}
-`
   }
 ]} />
 
@@ -359,6 +326,8 @@ For Cosmos-based chains, the Euclid API exposes Keplr-compatible configuration i
 
 Use the following query to retrieve RPC endpoints, REST endpoints, and explorer details using either the `chain_id` or `chain_uid`.
 
+
+**Example Requests**
 
 <Tabs tabs={[
   {
@@ -466,24 +435,6 @@ client.query({
 })
 .then(res => console.log(JSON.stringify(res.data, null, 2)))
 .catch(err => console.error(err));
-`
-  },
-  {
-    id: 'keplr-playground',
-    label: 'GraphQL Playground',
-    language: 'graphql',
-    content: `
-query Keplr_config($chainId: String, $chainUid: String) {
-  chains {
-    keplr_config(chain_id: $chainId, chain_uid: $chainUid) {
-      chainID
-      chainName
-      rpc
-      rest
-      explorer_url
-    }
-  }
-}
 `
   }
 ]} />

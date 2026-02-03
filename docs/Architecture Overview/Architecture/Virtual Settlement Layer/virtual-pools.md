@@ -19,7 +19,7 @@ We will dive deeper into each of the contract's messaeges in the [Euclid Smart C
 
 The following diagram illustrates the interaction between the VLP and the rest of the Euclid system:
 
-![Euclid Virtual Pools](../../../../static/img/Virtual%20Pools_1.jpg)
+![Euclid Virtual Pools](../../../../static/img/Virtual%20Pools-new.jpg)
 
 ## Guaranteed Finality
 

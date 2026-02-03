@@ -29,13 +29,13 @@ Euclid's unified liquidity protocol directly addresses these challenges, creatin
 
 ### DEXs
 
-Integrating with Euclid enables DEXs to instantly access tokens across all chains connected to the protocol, not just their native environment. For example, if a DEX on Polygon integrates with Euclid, its users can seamlessly swap tokens from Ethereum, Solana, Cosmos, and any other chains integrated with Euclid, lightning fast and without the need to natively support those assets. This dramatically expands trading possibilities for their users. And the best part? No bridging is involved.
+Integrating with Euclid enables DEXs to instantly access tokens across all chains connected to the protocol, not just their native environment. For example, if a DEX on Polygon integrates with Euclid, its users can directly swap tokens from Ethereum, Solana, Cosmos, and any other chains integrated with Euclid, lightning fast and without the need to natively support those assets. This dramatically expands trading possibilities for their users. And the best part? No bridging is involved.
 
 In addition to broad token access, integration with Euclid’s liquidity consensus layer provides deeper order books, tighter spreads, and improved pricing through aggregated cross-chain liquidity, making the DEX more competitive and attractive to traders.
 
 ### Users
 
-For users, Euclid offers a smoother trading experience. Unified liquidity results in less slippage and more predictable pricing, making trading more efficient and user-friendly. Users can also seamlessly trade assets across different blockchains without the need for bridging processes, simplifying cross-chain interactions.
+For users, Euclid offers a smoother trading experience. Unified liquidity results in less slippage and more predictable pricing, making trading more efficient and user-friendly. Users can also easily trade assets across different blockchains without the need for bridging processes, simplifying cross-chain interactions.
 
 Euclid is truly an all-in-one platform for our user's DeFi needs. Once you’re on Euclid, you never have to leave the ecosystem to swap assets. With everything integrated under one roof, you have unparalleled access to a wide array of tokens, chains, and trading opportunities, making it the ultimate hub for decentralized finance.
 
