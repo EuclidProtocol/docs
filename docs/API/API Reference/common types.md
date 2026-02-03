@@ -127,7 +127,8 @@ language: 'ts',
 content: `type CrossChainUserWithAmount = {
  chain_uid?: string
  address?: string 
- amount?: string }`
+ amount?: string 
+ }`
 },
 {
 id: 'crosschainuserwithamount-json',
@@ -136,7 +137,8 @@ language: 'json',
 content: `{
  "chain_uid": "base",
  "address": "0xB0b123456789abcdef123456789abcdef1234567",
- "amount": "1000000" }`
+ "amount": "1000000" 
+}`
 }
 ]}
 />
@@ -210,12 +212,21 @@ Represents a token and how it should be interpreted on-chain. The `token_type` d
 
 ### `TokenType Variants`
 
-```ts
+<Tabs
+  tabs={[
+    {
+      id: 'tokentype-variants-ts',
+      label: 'TypeScript',
+      language: 'ts',
+      content: `
 type TokenType =
   | { native: { denom: string } }
   | { smart: { contract_address: string } }
   | { voucher: {} }
-```
+`
+    }
+  ]}
+/>
 
 ### `PairWithDenomAndAmount`
 
@@ -274,6 +285,4 @@ type TokenType =
     }
   ]}
 />
-
-
 

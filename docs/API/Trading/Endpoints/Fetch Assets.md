@@ -10,9 +10,10 @@ import Tabs from '@site/src/components/Tabs';
 
 To build any trading interface or integrate with Euclid’s swap engine, you’ll likely want to start by fetching a complete list of tradeable tokens available on the protocol. This query gives you access to all tokens recognized by Euclid’s router, including their **tokenId** and **current price** in USD.
 
-> **Tip:** The `token_metadatas` query also supports powerful filtering (verified only, specific chains, DEX names, pagination, etc.). For a full list of available fields and parameters, see the [Full Token Metadata Query](../../../API Reference/GQL/Token/Token%20Metadata.md).
+> **Tip:** The `token_metadatas` query also supports powerful filtering (verified only, specific chains, DEX names, pagination, etc.). For a full list of available fields and parameters, see the [Full Token Metadata Query](../../API%20Reference/GQL/Token/Token%20Metadata.md).
 
 ## GraphQL Query
+<!-- no toc -->
 
 <Tabs tabs={[
   {
@@ -107,6 +108,8 @@ query Token_metadatas {
   }
 ]} />
 
+**Example Requests**
+
 <Tabs tabs={[
   {
     id: 'gql-curl',
@@ -192,29 +195,12 @@ client.query({
   console.error('Error:', err);
 });
 `
-  },
-  {
-    id: 'gql-playground',
-    label: 'GraphQL Playground',
-    language: 'graphql',
-    content: `
-# Use this in your GraphQL playground
-
-query Token_metadatas {
-  token {
-    token_metadatas {
-      tokenId
-      price
-    }
-  }
-}
-`
   }
 ]} />
 
 - Returns a list of all tradeable tokens with their IDs and prices.
 - Supports additional filters like `verified`, `chain_uids`, `dex`, `limit`, `offset` and more.
-- For full field list and parameters see [Full Token Metadata Query](../../../API Reference/GQL/Token/Token%20Metadata.md).
+- For full field list and parameters see [Full Token Metadata Query](../../API%20Reference/GQL/Token/Token%20Metadata.md).
 
 ## Verified vs. Unverified Tokens
 

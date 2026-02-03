@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Withdraw Voucher
 In this example, we will be taking a look at the steps required to withdraw voucher tokens from a user's virtual balance.
-The [Withdraw](../API Reference/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance.md) parameters are the following:
+The [Withdraw](API%20Reference/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance.md) parameters are the following:
 
 ```bash
 token
@@ -23,7 +23,7 @@ The following steps describe the workflow to successfully withdraw voucher token
 To select the chain to withdraw from, simply let the user connect their wallet address for that chain.
 
 ### 2. Select the token to withdraw
-Next, we need to let the user select which voucher tokens they want to withdraw. To do this, we need to get all the available virtual balances for the user. We can do this using the [User Balance](../API Reference/GQL/Virtual%20Balance/User%20Balance.md) query:
+Next, we need to let the user select which voucher tokens they want to withdraw. To do this, we need to get all the available virtual balances for the user. We can do this using the [User Balance](API%20Reference/GQL/Virtual%20Balance/User%20Balance.md) query:
 
 :::tip
 You need to specify the chain_uid and address of the connected wallet.
@@ -81,7 +81,7 @@ The response will return all the voucher coins types and amounts:
 ```
 ### 3. Select the chain to withdraw to
 
-Now we need to fetch the chains that have escrows containing the token to withdraw. We can use the [Escrows](../API Reference/GQL/Router/Escrows.md) query:
+Now we need to fetch the chains that have escrows containing the token to withdraw. We can use the [Escrows](API%20Reference/GQL/Router/Escrows.md) query:
 
 ```graphql
 query Router($token: String!) {
