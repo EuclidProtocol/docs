@@ -24,7 +24,7 @@ Euclid supports multiple wallets. Please refer to their docs to learn how to int
 - [Rabby](https://rabby.io/docs/integrating-rabby-wallet/)
 
 ### Using GQL Queries
-You will need to know how to call a GQL query. If unfamiliar with the process, you can find examples [here](../API Reference/GQL/GQL%20Calls.md).
+You will need to know how to call a GQL query. If unfamiliar with the process, you can find examples [here](API%20Reference/GQL/GQL%20Calls.md).
 
 ### Fetching a Chain Config 
 
@@ -32,7 +32,7 @@ It’s essential to have a solid understanding of how to interact with blockchai
 
 Fetching the chain config is a two step process:
 
-	1. **Retrieving All Chain UIDs/IDs**: To be able to get a chain’s configuration, we first need to retrieve either its chain UID or chain ID. We can do this using the [`All Chain`](../API Reference/GQL/Chain/All%20Chains.md) GQL query.
+	1. **Retrieving All Chain UIDs/IDs**: To be able to get a chain’s configuration, we first need to retrieve either its chain UID or chain ID. We can do this using the [`All Chain`](API%20Reference/GQL/Chain/All%20Chains.md) GQL query.
   :::tip
   - You can set the `type` to `"evm"` or `"cosmwasm"` to filter the results. 
   :::
@@ -49,7 +49,7 @@ query Chains($type: String) {
 }
 ```
 
-2. **Fetching the Full Chain Config**: Using either the chain UID or chain ID retrieved in the previous step, you can fetch the full configuration for that chain. For CosmWasm chains, use the [`Keplr Config`](../API Reference/GQL/Chain/Keplr%20Config.md) query. For EVM chains, use the [`EVM Chain Config`](../API Reference/GQL/Chain/EVM%20Chain%20Config.md) query.
+2. **Fetching the Full Chain Config**: Using either the chain UID or chain ID retrieved in the previous step, you can fetch the full configuration for that chain. For CosmWasm chains, use the [`Keplr Config`](API%20Reference/GQL/Chain/Keplr%20Config.md) query. For EVM chains, use the [`EVM Chain Config`](API%20Reference/GQL/Chain/EVM%20Chain%20Config.md) query.
   :::tip
   You can specify what info to return inside the query.
   :::
