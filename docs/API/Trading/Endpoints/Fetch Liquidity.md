@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: "Fetch All VLPs"
 description: "Retrieve VLPs from the Euclid protocol. Supports optional pagination with limit, skip, and min/max filters."
+hide_table_of_contents: true
 ---
 
 import Tabs from '@site/src/components/Tabs';
@@ -21,6 +22,7 @@ You can optionally use the following parameters to paginate or filter the result
 - `max`: Filter VLPs with liquidity less than or equal to these token values
 
 ## GraphQL Query
+<!-- no toc -->
 
 <Tabs tabs={[
   {
@@ -109,6 +111,8 @@ query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {
 `
   }
 ]} />
+
+**Example Requests**
 
 <Tabs tabs={[
   {
@@ -211,24 +215,6 @@ client.query({
 }).then(res => {
   console.log(JSON.stringify(res.data, null, 2));
 }).catch(err => console.error("Error:", err));
-`
-  },
-  {
-    id: 'vlps-playground',
-    label: 'GraphQL Playground',
-    language: 'graphql',
-    content: `
-query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {
-  router {
-    all_vlps(max: $max, min: $min, skip: $skip, limit: $limit) {
-      vlps {
-        vlp
-        token_1
-        token_2
-      }
-    }
-  }
-}
 `
   }
 ]} />

@@ -13,6 +13,7 @@ To build any trading interface or integrate with Euclid’s swap engine, you’l
 > **Tip:** The `token_metadatas` query also supports powerful filtering (verified only, specific chains, DEX names, pagination, etc.). For a full list of available fields and parameters, see the [Full Token Metadata Query](../../API%20Reference/GQL/Token/Token%20Metadata.md).
 
 ## GraphQL Query
+<!-- no toc -->
 
 <Tabs tabs={[
   {
@@ -107,6 +108,8 @@ query Token_metadatas {
   }
 ]} />
 
+**Example Requests**
+
 <Tabs tabs={[
   {
     id: 'gql-curl',
@@ -191,23 +194,6 @@ client.query({
 }).catch(err => {
   console.error('Error:', err);
 });
-`
-  },
-  {
-    id: 'gql-playground',
-    label: 'GraphQL Playground',
-    language: 'graphql',
-    content: `
-# Use this in your GraphQL playground
-
-query Token_metadatas {
-  token {
-    token_metadatas {
-      tokenId
-      price
-    }
-  }
-}
 `
   }
 ]} />

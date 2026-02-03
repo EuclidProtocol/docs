@@ -14,6 +14,7 @@ Once your environment is set up, you’re ready to send your first request to th
 Let’s fetch a list of all tokens available through the Euclid router.
 
 ### GraphQL Query
+<!-- no toc -->
 
 ```graphql
 query Router {
@@ -24,6 +25,8 @@ query Router {
   }
 }
 ```
+
+**Example Requests**
 
 <Tabs tabs={[
   {
@@ -111,22 +114,6 @@ client.query({
 }).catch(err => {
   console.error('Error:', err);
 });
-`
-  },
-  {
-    id: 'gql-playground',
-    label: 'GraphQL Playground',
-    language: 'graphql',
-    content: `
-# Use this directly in your GraphQL playground
-
-query Router {
-  router {
-    all_tokens {
-      tokens
-    }
-  }
-}
 `
   }
 ]} />
