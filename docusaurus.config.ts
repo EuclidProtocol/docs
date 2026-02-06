@@ -158,6 +158,10 @@ const config: Config = {
               label: "Planet Euclid",
               href: "https://planet.euclidprotocol.io/",
             },
+            {
+              label: "Euclid Scan",
+              href: "https://scan.euclidprotocol.io/",
+            },
           ],
         },
         {

@@ -87,6 +87,7 @@ const sidebars: SidebarsConfig = {
       label: "Liquidity Provisioning",
       items: [
         "API/Liquidity Provisioning/Fees and Rewards",
+        "API/Liquidity Provisioning/Euclid Pools",
         {
           type: "category",
           label: "Different Liquidity States",
@@ -100,6 +101,7 @@ const sidebars: SidebarsConfig = {
           label: "Endpoints",
           items: [
             "API/Liquidity Provisioning/Endpoints/Fetch Liquidity",
+            "API/Liquidity Provisioning/Endpoints/Create Pool",
             "API/Liquidity Provisioning/Endpoints/Add Liquidity",
             "API/Liquidity Provisioning/Endpoints/Remove Liquidity",
             "API/Liquidity Provisioning/Endpoints/Provider Position",

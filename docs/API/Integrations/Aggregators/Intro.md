@@ -8,6 +8,10 @@ A DeFi aggregator needs fast quoting, reliable execution, and simple tracking ac
 
 ## What you will build
 
+After integrating with Euclid, your aggregator can quote across unified cross-chain liquidity, surface best-available pricing across DEX liquidity and orderbooks, execute deterministic swaps, and reliably track outcomes end-to-end while letting users receive assets on their preferred chains.
+
+### Steps we will cover
+
 - Fetch a route for a token swap.
 - Submit a swap transaction payload.
 - Broadcast the transaction on-chain.
@@ -18,12 +22,3 @@ A DeFi aggregator needs fast quoting, reliable execution, and simple tracking ac
 - Familiarity with Euclid REST APIs.
 - A backend service to fetch routes and submit transactions.
 - A wallet or signing service to broadcast transactions.
-
-## Recommended flow
-
-1. **Get a quote** via the Routes endpoint.
-2. **Build the swap** payload and sign it.
-3. **Broadcast** the transaction.
-4. **Track** execution until completion.
-
-Next: start with route discovery.

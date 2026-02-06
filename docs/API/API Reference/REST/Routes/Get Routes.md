@@ -24,16 +24,14 @@ curl -X 'POST' \
     "amount_in": "1000000",
     "chain_uids": []
 }'
-
-
 ```
-| Parameter        | Type     | Required | Description                                                                 |
-|--------------|----------|----------|-----------------------------------------------------------------------------|
-| `amount_in`  | String   | Yes      | The amount of tokens being swapped in.                                      |
-| `token_in`   | String   | Yes      | The identifier of the token being swapped in.                               |
-| `token_out`  | String   | Yes      | The identifier of the token desired to receive.                             |
-| `external`   | Boolean  | No       | If true, includes routes that may involve external chains.                  |
-| `chain_uids` | Array    | No       | Optional list of specific chain UIDs to restrict routing paths.             |
+| Parameter        | Type     | Description                                                                 |
+|--------------|----------|-----------------------------------------------------------------------------|
+| `amount_in`  | String   | The amount of tokens being swapped in.                                      |
+| `token_in`   | String   | The identifier of the token being swapped in.                               |
+| `token_out`  | String   | The identifier of the token desired to receive.                             |
+| `external`   | Boolean  | Optional. If true, includes routes that may involve external Dexes.        |
+| `chain_uids` | Array    | Optional list of specific chain UIDs to restrict routing paths.             |
 
 ### Example Response
 
