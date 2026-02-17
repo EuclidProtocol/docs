@@ -24,6 +24,60 @@ Use this approach when depositing to a recipient identified by a standard **wall
 <Tabs
   tabs={[
     {
+      id: 'evm-deposit-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "amount_in": "2000000000000000000",
+    "asset_in": {
+      "token": "stt",
+      "token_type": {
+        "native": {
+          "denom": "stt"
+        }
+      }
+    },
+    "sender": {
+    "chain_uid": "0g",
+    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+  },
+    "recipient": {
+      "chain_uid": "somnia",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    },
+    "timeout": "60"
+}'`
+    },
+    {
+      id: 'evm-deposit-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "claimer": {
+    "public_secret": "",
+    "otp": "",
+    "_id": "",
+    "created_at": "0001-01-01T00:00:00Z"
+  },
+  "msgs": [
+    {
+      "chainId": "16601",
+      "data": "0xaf18a6d700000000...",
+      "gasLimit": "0x493E0",
+      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
+      "value": "0x1bc16d674ec80000"
+    }
+  ],
+  "type": "evm"
+}`
+
+
+    },
+    {
       id: 'cosmos-deposit-request',
       label: 'Cosmos Request',
       language: 'bash',
@@ -95,60 +149,6 @@ Use this approach when depositing to a recipient identified by a standard **wall
     }
   ]
 }`
-    },
-    {
-      id: 'evm-deposit-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "amount_in": "2000000000000000000",
-    "asset_in": {
-      "token": "stt",
-      "token_type": {
-        "native": {
-          "denom": "stt"
-        }
-      }
-    },
-    "sender": {
-    "chain_uid": "0g",
-    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-  },
-    "recipient": {
-      "chain_uid": "somnia",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    },
-    "timeout": "60"
-}'`
-    },
-    {
-      id: 'evm-deposit-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "claimer": {
-    "public_secret": "",
-    "otp": "",
-    "_id": "",
-    "created_at": "0001-01-01T00:00:00Z"
-  },
-  "msgs": [
-    {
-      "chainId": "16601",
-      "data": "0xaf18a6d700000000...",
-      "gasLimit": "0x493E0",
-      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
-      "value": "0x1bc16d674ec80000"
-    }
-  ],
-  "type": "evm"
-}`
-
-
     }
   ]}
 />
@@ -184,6 +184,66 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
 
 <Tabs
   tabs={[
+    {
+      id: 'evm-deposit-social-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "amount_in": "2000000000000000000",
+    "asset_in": {
+      "token": "stt",
+      "token_type": {
+        "native": {
+          "denom": "stt"
+        }
+      }
+    },
+    "sender": {
+      "chain_uid": "0g",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    },
+    "recipient": {
+      "social": {
+        "email": "hello@example.com"
+      }
+    },
+    "timeout": "60"
+}'`
+    },
+    {
+      id: 'evm-deposit-social-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "claimer": {
+    "public_secret": "BGD3GhXfHo7zDqcSsDEJuPV7GD+eQ3UifvclndGbVitHZlMAZkqbzW7y0c8X/ayz78UX4lYXV/KoYEyu+Nq8FzM=",
+    "otp": "LGdL6B",
+    "_id": "68c19e0749cfdc66a2340bb4",
+    "social": {
+      "email": "hello@example.com"
+    },
+    "created_at": "2025-09-10T15:49:27.564391531Z",
+    "sender": {
+      "chain_uid": "0g",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    }
+  },
+  "msgs": [
+    {
+      "chainId": "16601",
+      "data": "0xaf18a6d7...",
+      "gasLimit": "0x493E0",
+      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
+      "value": "0x1bc16d674ec80000"
+    }
+  ],
+  "type": "evm"
+}`
+    },
     {
       id: 'cosmos-deposit-social-request',
       label: 'Cosmos Request',
@@ -274,67 +334,7 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
     }
   }
 }`
-  },
-    {
-      id: 'evm-deposit-social-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "amount_in": "2000000000000000000",
-    "asset_in": {
-      "token": "stt",
-      "token_type": {
-        "native": {
-          "denom": "stt"
-        }
-      }
-    },
-    "sender": {
-      "chain_uid": "0g",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    },
-    "recipient": {
-      "social": {
-        "email": "hello@example.com"
-      }
-    },
-    "timeout": "60"
-}'`
-    },
-    {
-      id: 'evm-deposit-social-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "claimer": {
-    "public_secret": "BGD3GhXfHo7zDqcSsDEJuPV7GD+eQ3UifvclndGbVitHZlMAZkqbzW7y0c8X/ayz78UX4lYXV/KoYEyu+Nq8FzM=",
-    "otp": "LGdL6B",
-    "_id": "68c19e0749cfdc66a2340bb4",
-    "social": {
-      "email": "hello@example.com"
-    },
-    "created_at": "2025-09-10T15:49:27.564391531Z",
-    "sender": {
-      "chain_uid": "0g",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    }
-  },
-  "msgs": [
-    {
-      "chainId": "16601",
-      "data": "0xaf18a6d7...",
-      "gasLimit": "0x493E0",
-      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
-      "value": "0x1bc16d674ec80000"
-    }
-  ],
-  "type": "evm"
-}`
-    }
+  }
   ]}
 />
 

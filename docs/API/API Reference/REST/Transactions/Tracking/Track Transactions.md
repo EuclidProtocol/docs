@@ -21,77 +21,6 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
 <Tabs
   tabs={[
     {
-      id: 'cosmos-track-request',
-      label: 'Cosmos Request',
-      language: 'bash',
-      content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \\
-  -H 'accept: application/json' \\
-  -H 'Content-Type: application/json' \\
-  -d '{
-    "chain": "injective",
-    "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6"
-}'`
-    },
-    {
-      id: 'cosmos-track-response',
-      label: 'Cosmos Response',
-      language: 'json',
-      content: `{
-  "response": {
-    "is_completed": true,
-    "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6",
-    "asset_in_type": "",
-    "type": "add_liquidity",
-    "source_token_id": "",
-    "tx_status": "success",
-    "tx_id": "injective:inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu:injective-888:72808079:1:2323",
-    "voucher_minted": null,
-    "sequence": "2322",
-    "source_chain_uid": "injective",
-    "source_chain_id": "injective-888",
-    "source_factory": "inj1sdmz25644p2nn2zse5ntrkw7cf6g7th0amtdpu",
-    "sender": "inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu",
-    "total_duration": "2m59.414170628s",
-    "total_estimated_duration": "",
-    "status": [
-      {
-        "chain_uid": "injective",
-        "status": "success",
-        "msg": "Success",
-        "timestamp": "2025-04-23 14:34:47.806 +0000 UTC",
-        "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6"
-      },
-      {
-        "chain_uid": "vsl",
-        "status": "success",
-        "msg": "eyJvayI6eyJtaW50X2xw...",
-        "timestamp": "2025-04-23 14:35:06.579811852 +0000 UTC",
-        "tx_hash": "8BB553DF2A6DE34478A7F1CDBC5F1CCC8761A79F5CD1E4B3CCF46C9DA410DFE4"
-      },
-      {
-        "chain_uid": "injective",
-        "status": "success",
-        "msg": "Success",
-        "timestamp": "2025-04-23 14:37:47.220170628 +0000 UTC",
-        "tx_hash": "6209EF3E571AA67C8B13ABD792CCCBCA829E4BB39029F615592CC1E4BCBEAC72"
-      }
-    ],
-    "liquidity_response": {
-      "add_liquidity": {
-        "token_1_added_liquidity": "10000000",
-        "token_2_added_liquidity": "28072809",
-        "lp_allocation": "16924547"
-      },
-      "pair": {
-        "token_1": "usdc",
-        "token_2": "usdt"
-      }
-    }
-  }
-}`
-    },
-    {
       id: 'evm-track-request',
       label: 'EVM Request',
       language: 'bash',
@@ -185,6 +114,77 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
       "sender_chain_uid": "ronin",
       "recieve_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
       "recieve_chain_uid": "base"
+    }
+  }
+}`
+    },
+    {
+      id: 'cosmos-track-request',
+      label: 'Cosmos Request',
+      language: 'bash',
+      content: `curl -X 'POST' \\
+  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \\
+  -H 'accept: application/json' \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "chain": "injective",
+    "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6"
+}'`
+    },
+    {
+      id: 'cosmos-track-response',
+      label: 'Cosmos Response',
+      language: 'json',
+      content: `{
+  "response": {
+    "is_completed": true,
+    "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6",
+    "asset_in_type": "",
+    "type": "add_liquidity",
+    "source_token_id": "",
+    "tx_status": "success",
+    "tx_id": "injective:inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu:injective-888:72808079:1:2323",
+    "voucher_minted": null,
+    "sequence": "2322",
+    "source_chain_uid": "injective",
+    "source_chain_id": "injective-888",
+    "source_factory": "inj1sdmz25644p2nn2zse5ntrkw7cf6g7th0amtdpu",
+    "sender": "inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu",
+    "total_duration": "2m59.414170628s",
+    "total_estimated_duration": "",
+    "status": [
+      {
+        "chain_uid": "injective",
+        "status": "success",
+        "msg": "Success",
+        "timestamp": "2025-04-23 14:34:47.806 +0000 UTC",
+        "tx_hash": "8CF90E30D820DB1B700EBA86A54A5748BC37B0244489BD95F2F64E96A39071B6"
+      },
+      {
+        "chain_uid": "vsl",
+        "status": "success",
+        "msg": "eyJvayI6eyJtaW50X2xw...",
+        "timestamp": "2025-04-23 14:35:06.579811852 +0000 UTC",
+        "tx_hash": "8BB553DF2A6DE34478A7F1CDBC5F1CCC8761A79F5CD1E4B3CCF46C9DA410DFE4"
+      },
+      {
+        "chain_uid": "injective",
+        "status": "success",
+        "msg": "Success",
+        "timestamp": "2025-04-23 14:37:47.220170628 +0000 UTC",
+        "tx_hash": "6209EF3E571AA67C8B13ABD792CCCBCA829E4BB39029F615592CC1E4BCBEAC72"
+      }
+    ],
+    "liquidity_response": {
+      "add_liquidity": {
+        "token_1_added_liquidity": "10000000",
+        "token_2_added_liquidity": "28072809",
+        "lp_allocation": "16924547"
+      },
+      "pair": {
+        "token_1": "usdc",
+        "token_2": "usdt"
+      }
     }
   }
 }`

@@ -14,7 +14,7 @@ of documentation entry points.
 ## Recommended entry points
 
 - Architecture overview: https://docs.euclidprotocol.io/docs/Architecture%20Overview/intro
-- API introduction: https://docs.euclidprotocol.io/docs/API/Introduction
+- API prerequisites and chain configuration: https://docs.euclidprotocol.io/docs/API/Getting%20Started/API%20Prerequisites%20and%20Chain%20Configuration
 - API reference intro: https://docs.euclidprotocol.io/docs/API/API%20Reference/Intro
 - GraphQL calls guide: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/GQL%20Calls
 - REST routes guide: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Routes/Get%20Routes

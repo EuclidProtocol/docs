@@ -17,6 +17,51 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 <Tabs
   tabs={[
     {
+      id: 'evm-vcoin-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \\
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
+  -H 'accept: application/json' \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "token": "euclid",
+    "amount": "1000000",
+    "sender": {
+      "address": "0x887e4aac216674d2c432798f851C1Ea5d505b2E1",
+      "chain_uid": "base"
+    },
+    "cross_chain_addresses": [
+      {
+        "user": {
+          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+          "chain_uid": "base"
+        },
+        "limit": {
+          "less_than_or_equal": "3477907"
+        }
+      }
+    ]
+}'`
+    },
+    {
+      id: 'evm-vcoin-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "msgs": [
+    {
+      "chainId": "84532",
+      "data": "0x37946af7000000...",
+      "gasLimit": "0x493E0",
+      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
+      "value": "0x0"
+    }
+  ],
+  "type": "evm"
+}`
+    },
+    {
       id: 'cosmos-vcoin-request',
       label: 'Cosmos Request',
       language: 'bash',
@@ -82,51 +127,6 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
       "funds": []
     }
   ]
-}`
-    },
-    {
-      id: 'evm-vcoin-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
-  -H 'accept: application/json' \\
-  -H 'Content-Type: application/json' \\
-  -d '{
-    "token": "euclid",
-    "amount": "1000000",
-    "sender": {
-      "address": "0x887e4aac216674d2c432798f851C1Ea5d505b2E1",
-      "chain_uid": "base"
-    },
-    "cross_chain_addresses": [
-      {
-        "user": {
-          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-          "chain_uid": "base"
-        },
-        "limit": {
-          "less_than_or_equal": "3477907"
-        }
-      }
-    ]
-}'`
-    },
-    {
-      id: 'evm-vcoin-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "msgs": [
-    {
-      "chainId": "84532",
-      "data": "0x37946af7000000...",
-      "gasLimit": "0x493E0",
-      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
-      "value": "0x0"
-    }
-  ],
-  "type": "evm"
 }`
     }
   ]}

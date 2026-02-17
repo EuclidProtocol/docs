@@ -60,6 +60,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "API/Getting Started/Initial Setup",
         "API/Getting Started/First Call",
+        "API/Getting Started/API Prerequisites and Chain Configuration",
         "API/Getting Started/Perform A Swap",
         "API/Getting Started/Broadcast Trade Onchain",
       ],

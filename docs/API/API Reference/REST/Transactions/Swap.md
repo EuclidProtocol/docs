@@ -20,101 +20,6 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
 <Tabs
   tabs={[
     {
-      id: 'cosmos-request',
-      label: 'Cosmos Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/swap' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "amount_in": "100000000000000000",
-    "asset_in": {
-      "token": "bsc",
-      "token_type": {
-        "smart": {
-          "contract_address": "0x3246d25b42f6b3deca5b40334775fa4d6e333010"
-        }
-      }
-    },
-    "slippage": "500",
-    "recipients": [
-      {
-        "recipient": {
-          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-          "chain_uid": "0g"
-        },
-        "amount": {
-          "less_than_or_equal": "3563664058479"
-        },
-        "denom": {
-          "native": {
-            "denom": "bsc"
-          }
-        }
-      }
-    ],
-    "partner_fee": {
-      "partner_fee_bps": 10,
-      "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
-    },
-    "sender": {
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "chain_uid": "neuron"
-    },
-    "swap_path": {
-      "path": [
-        {
-          "route": [
-            "euclid",
-            "bnb"
-          ],
-          "dex": "euclid",
-          "amount_in": "100000000000000000",
-          "amount_out": "8152420272192926720",
-          "chain_uid": "vsl",
-          "amount_out_for_hops": [
-            "bnb: 8152420272192926720"
-          ]
-        }
-      ],
-      "total_price_impact": "0.00"
-    }
-  }'`
-    },
-    {
-      id: 'cosmos-response',
-      label: 'Cosmos Response',
-      language: 'json',
-      content: `{
-   "type":"cosmwasm",
-   "sender":{
-      "chain_uid":"neuron",
-      "address":"0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-   },
-   "contract":"euclid1aagn260yt7xtvq0jdecxu265zqzkc6mhc4glql2q2nmdsqwzmyzs8lfhhx",
-   "chain_id":"neuron-1",
-   "rpc_url":"https://rpc.neuron.euclidprotocol.com",
-   "rest_url":"https://lcd.neuron.euclidprotocol.com",
-   "msgs":[
-      {
-         "contractAddress":"0x3246d25b42f6b3deca5b40334775fa4d6e333010",
-         "msg":{
-            "send":{
-               "amount":"100000000000000000",
-               "contract":"euclid1aagn260yt7xtvq0jdecxu265zqzkc6mhc4glql2q2nmdsqwzmyzs8lfhhx",
-               "msg":"eyJzd2FwIjp7ImFzc2V0X2luIjp7InRva2VuIjoiZXVjbGlkIiwidG9rZW5fdHlwZSI6eyJzbWFydCI6eyJjb250cmFjdF9hZGRyZXNzIjoiMHgzMjQ2ZDI1YjQyZjZiM2RlY2E1YjQwMzM0Nzc1ZmE0ZDZlMzMzMDEwIn19fSwiYXNzZXRfb3V0IjoiYm5iIiwiY3Jvc3NfY2hhaW5fYWRkcmVzc2VzIjpudWxsLCJtZXRhIjoie1wiYXNzZXRfaW5fdHlwZVwiOlwic21hcnRcIixcInJlbGVhc2VzXCI6W3tcImRleFwiOlwiZXVjbGlkXCIsXCJyZWxlYXNlX2FkZHJlc3NcIjpbe1wiY2hhaW5fdWlkXCI6XCJuZXVyb25cIixcImFkZHJlc3NcIjpcIjB4ODg3ZTRhYWMyMTY2NzRkMmM0MzI3OThmODUxYzFlYTVkNTA1YjJlMVwiLFwiYW1vdW50XCI6XCIwXCJ9XSxcInRva2VuXCI6XCJibmJcIixcImFtb3VudFwiOlwiXCJ9XSxcInN3YXBzXCI6e1wicGF0aFwiOlt7XCJyb3V0ZVwiOltcImV1Y2xpZFwiLFwiYm5iXCJdLFwiZGV4XCI6XCJldWNsaWRcIixcImNoYWluX3VpZFwiOlwidnNsXCIsXCJhbW91bnRfaW5cIjpcIjEwMDAwMDAwMDAwMDAwMDAwMFwiLFwiYW1vdW50X291dFwiOlwiODE1MjQyMDI3MjE5MjkyNjcyMFwifV19fSIsIm1pbl9hbW91bnRfb3V0IjoiNzc0NDc5OTI1ODU4MzI4MDM2MiIsInBhcnRuZXJfZmVlIjp7InBhcnRuZXJfZmVlX2JwcyI6MTAsInJlY2lwZW50IjoiIn0sInN3YXBzIjpbeyJ0b2tlbl9pbiI6ImV1Y2xpZCIsInRva2VuX291dCI6ImJuYiJ9XX19"
-            }
-         },
-         "funds":[
-            
-         ]
-      }
-   ],
-   "meta":"{\\"asset_in_type\\":\\"smart\\",\\"releases\\":[{\\"dex\\":\\"euclid\\",\\"release_address\\":[{\\"chain_uid\\":\\"neuron\\",\\"address\\":\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\",\\"amount\\":\\"0\\"}],\\"token\\":\\"bnb\\",\\"amount\\":\\"\\"}],\\"swaps\\":{\\"path\\":[{\\"route\\":[\\"euclid\\",\\"bnb\\"],\\"dex\\":\\"euclid\\",\\"chain_uid\\":\\"vsl\\",\\"amount_in\\":\\"100000000000000000\\",\\"amount_out\\":\\"8152420272192926720\\"}]}}"
-}`
-    },
-    {
       id: 'evm-request',
       label: 'EVM Request',
       language: 'bash',
@@ -208,6 +113,101 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
       "address":"0x887e4aac216674d2c432798f851c1ea5d505b2e1"
    },
    "type":"evm"
+}`
+    },
+    {
+      id: 'cosmos-request',
+      label: 'Cosmos Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/swap' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "amount_in": "100000000000000000",
+    "asset_in": {
+      "token": "bsc",
+      "token_type": {
+        "smart": {
+          "contract_address": "0x3246d25b42f6b3deca5b40334775fa4d6e333010"
+        }
+      }
+    },
+    "slippage": "500",
+    "recipients": [
+      {
+        "recipient": {
+          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+          "chain_uid": "0g"
+        },
+        "amount": {
+          "less_than_or_equal": "3563664058479"
+        },
+        "denom": {
+          "native": {
+            "denom": "bsc"
+          }
+        }
+      }
+    ],
+    "partner_fee": {
+      "partner_fee_bps": 10,
+      "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
+    },
+    "sender": {
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "chain_uid": "neuron"
+    },
+    "swap_path": {
+      "path": [
+        {
+          "route": [
+            "euclid",
+            "bnb"
+          ],
+          "dex": "euclid",
+          "amount_in": "100000000000000000",
+          "amount_out": "8152420272192926720",
+          "chain_uid": "vsl",
+          "amount_out_for_hops": [
+            "bnb: 8152420272192926720"
+          ]
+        }
+      ],
+      "total_price_impact": "0.00"
+    }
+  }'`
+    },
+    {
+      id: 'cosmos-response',
+      label: 'Cosmos Response',
+      language: 'json',
+      content: `{
+   "type":"cosmwasm",
+   "sender":{
+      "chain_uid":"neuron",
+      "address":"0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+   },
+   "contract":"euclid1aagn260yt7xtvq0jdecxu265zqzkc6mhc4glql2q2nmdsqwzmyzs8lfhhx",
+   "chain_id":"neuron-1",
+   "rpc_url":"https://rpc.neuron.euclidprotocol.com",
+   "rest_url":"https://lcd.neuron.euclidprotocol.com",
+   "msgs":[
+      {
+         "contractAddress":"0x3246d25b42f6b3deca5b40334775fa4d6e333010",
+         "msg":{
+            "send":{
+               "amount":"100000000000000000",
+               "contract":"euclid1aagn260yt7xtvq0jdecxu265zqzkc6mhc4glql2q2nmdsqwzmyzs8lfhhx",
+               "msg":"eyJzd2FwIjp7ImFzc2V0X2luIjp7InRva2VuIjoiZXVjbGlkIiwidG9rZW5fdHlwZSI6eyJzbWFydCI6eyJjb250cmFjdF9hZGRyZXNzIjoiMHgzMjQ2ZDI1YjQyZjZiM2RlY2E1YjQwMzM0Nzc1ZmE0ZDZlMzMzMDEwIn19fSwiYXNzZXRfb3V0IjoiYm5iIiwiY3Jvc3NfY2hhaW5fYWRkcmVzc2VzIjpudWxsLCJtZXRhIjoie1wiYXNzZXRfaW5fdHlwZVwiOlwic21hcnRcIixcInJlbGVhc2VzXCI6W3tcImRleFwiOlwiZXVjbGlkXCIsXCJyZWxlYXNlX2FkZHJlc3NcIjpbe1wiY2hhaW5fdWlkXCI6XCJuZXVyb25cIixcImFkZHJlc3NcIjpcIjB4ODg3ZTRhYWMyMTY2NzRkMmM0MzI3OThmODUxYzFlYTVkNTA1YjJlMVwiLFwiYW1vdW50XCI6XCIwXCJ9XSxcInRva2VuXCI6XCJibmJcIixcImFtb3VudFwiOlwiXCJ9XSxcInN3YXBzXCI6e1wicGF0aFwiOlt7XCJyb3V0ZVwiOltcImV1Y2xpZFwiLFwiYm5iXCJdLFwiZGV4XCI6XCJldWNsaWRcIixcImNoYWluX3VpZFwiOlwidnNsXCIsXCJhbW91bnRfaW5cIjpcIjEwMDAwMDAwMDAwMDAwMDAwMFwiLFwiYW1vdW50X291dFwiOlwiODE1MjQyMDI3MjE5MjkyNjcyMFwifV19fSIsIm1pbl9hbW91bnRfb3V0IjoiNzc0NDc5OTI1ODU4MzI4MDM2MiIsInBhcnRuZXJfZmVlIjp7InBhcnRuZXJfZmVlX2JwcyI6MTAsInJlY2lwZW50IjoiIn0sInN3YXBzIjpbeyJ0b2tlbl9pbiI6ImV1Y2xpZCIsInRva2VuX291dCI6ImJuYiJ9XX19"
+            }
+         },
+         "funds":[
+            
+         ]
+      }
+   ],
+   "meta":"{\\"asset_in_type\\":\\"smart\\",\\"releases\\":[{\\"dex\\":\\"euclid\\",\\"release_address\\":[{\\"chain_uid\\":\\"neuron\\",\\"address\\":\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\",\\"amount\\":\\"0\\"}],\\"token\\":\\"bnb\\",\\"amount\\":\\"\\"}],\\"swaps\\":{\\"path\\":[{\\"route\\":[\\"euclid\\",\\"bnb\\"],\\"dex\\":\\"euclid\\",\\"chain_uid\\":\\"vsl\\",\\"amount_in\\":\\"100000000000000000\\",\\"amount_out\\":\\"8152420272192926720\\"}]}}"
 }`
     }
   ]}
