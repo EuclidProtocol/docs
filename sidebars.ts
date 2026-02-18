@@ -123,6 +123,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Integrations",
       items: [
+        "API/Integrations/Intro",
         {
           type: "category",
           label: "Aggregators",
