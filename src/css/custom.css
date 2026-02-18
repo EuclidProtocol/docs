@@ -645,6 +645,21 @@ footer {
 
 .table-of-contents__link {
   color: var(--euclid-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.35;
+  display: block;
+}
+
+.table-of-contents__link code,
+.theme-doc-toc-desktop .table-of-contents__link code {
+  /* Keep heading labels styled as code, but prevent awkward per-character wraps in TOC pills. */
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  font-family: inherit;
+  font-size: 0.9em;
 }
 
 .table-of-contents__link--active {

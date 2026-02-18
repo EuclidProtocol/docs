@@ -35,6 +35,12 @@ Factory queries are only applicable to Cosmos-based chains. For EVM chains, use 
 
 ### GraphQL Endpoints
 
+:::note
+Examples in the docs use testnet endpoints.
+:::
+
+**Mainnet**: [`https://api.euclidprotocol.com/`](https://api.euclidprotocol.com/)
+
 **Testnet**: [`https://testnet.api.euclidprotocol.com`](https://testnet.api.euclidprotocol.com)
 
 

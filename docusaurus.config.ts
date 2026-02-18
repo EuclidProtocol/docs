@@ -193,6 +193,10 @@ const config: Config = {
               href: "https://github.com/EuclidProtocol",
             },
             {
+              label: "Contact Us",
+              href: "mailto:general@euclidswap.io",
+            },
+            {
               label: "LLM Guide",
               to: "/docs/llms",
             },

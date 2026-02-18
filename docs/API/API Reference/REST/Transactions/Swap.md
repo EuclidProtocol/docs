@@ -40,7 +40,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
   "slippage": "500",
   "recipients": [
     {
-      "recipient": {
+      "user": {
         "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
         "chain_uid": "0g"
       },
@@ -136,7 +136,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/swap
     "slippage": "500",
     "recipients": [
       {
-        "recipient": {
+        "user": {
           "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
           "chain_uid": "0g"
         },
@@ -224,22 +224,20 @@ You should obtain the `swap_path` from the [Get Routes endpoint](../Routes/Get%2
 | `amount_in` | `string` | Amount of the input token to be swapped. |
 | `asset_in` | [`TokenWithDenom`](/docs/API/API%20Reference/common%20types.md#tokenwithdenom) | Input token and its type (either `native` or `smart`). |
 | `slippage` | `string` | Slippage tolerance in basis points (e.g., `"500"` for 5%). |
-| `minimum_receive` | `string` | Minimum acceptable output amount for the swap. |
 | `recipients` | [`RecipientWithDenom`](#recipientwithdenom)`[]` | Recipients for the output asset. Defaults to the sender if omitted. |
 | `partner_fee` | [`PartnerFee`](#partnerfee) | Partner fee configuration. Includes basis points and recipient. |
-| `sender` | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser) | Address and chain initiating the swap. |
+| `sender` | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Address and chain initiating the swap. |
 | `swap_path` | [`SwapPath`](#swappath) | Routing path with token hops and DEX info. Use values from the [Get Routes](../Routes/Get%20Routes.md) endpoint. |
-| `timeout` | `string` | Timeout in seconds. Default is `60`. Must be between `30` and `240`. |
 
 ### RecipientWithDenom
 
 | Field | Type | Description |
 |---|---|---|
-| `recipient` | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser) | Recipient address and chain. |
-| `amount` | `Limit` | Optional output limits for the recipient. |
+| `user` | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Recipient address and chain. |
+| `amount` | [`Limit`](/docs/API/API%20Reference/common%20types.md#limit) | Optional output limits for the recipient. |
 | `denom` | [`TokenType`](/docs/API/API%20Reference/common%20types.md#tokentype-variants) | Token denom/type to release to the recipient. |
 | `forwarding_message` | `string` | Optional forwarding payload (base64 or string, chain-dependent). |
-| `unsafe_refund_as_voucher` | `boolean` | If true, refunds are returned as vouchers. |
+| `unsafe_refund_as_voucher` | `boolean` | If true, failed release refunds are sent as vouchers to the recipient (router cannot validate recipient address). If false, refund is sent to the sender. |
 
 ### SwapPath
 
@@ -254,7 +252,7 @@ You should obtain the `swap_path` from the [Get Routes endpoint](../Routes/Get%2
 | `route` | `string[]` | Token sequence for the step (e.g., `["usdc", "euclid", "eth"]`). |
 | `dex` | `string` | DEX used for this step. Currently only `"euclid"` is supported. |
 | `chain_uid` | `string` | UID of the chain where this step is executed. |
-| `amount_in` | `string` | Input amount for this step (usually calculated automatically). |
+| `amount_in` | `string` | Input amount for this step. |
 | `amount_out` | `string` | Estimated output amount for this step. |
 
 ### PartnerFee

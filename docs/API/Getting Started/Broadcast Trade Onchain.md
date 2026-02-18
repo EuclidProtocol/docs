@@ -13,8 +13,6 @@ This section covers:
 - Broadcasting and confirming the transaction
 
 
-## Prerequisites
-
 ### Wallet Connection
 
 You must connect a compatible wallet to sign and send transactions:

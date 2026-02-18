@@ -148,6 +148,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
 | `signature` | `string` | Signature for the payload. |
 | `types` | `string[]` | List of message types included in the payload. |
 | `wallet_address` | `string` | Wallet address of the signer. |
+| `meta` | `object[]` | Optional meta transaction context array passed along with broadcast payload. |
 
 ### CallDataPayload
 

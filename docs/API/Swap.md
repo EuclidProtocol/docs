@@ -12,9 +12,9 @@ The [swap](API%20Reference/REST/Transactions/Swap.md) parameters are the followi
 asset_in
 amount_in
 slippage
-timeout
-swaps
-cross_chain_addresses
+swap_path
+recipients
+sender
 partner_fee
 ```
 We will go through all the steps needed to get each of the parameters.
@@ -465,9 +465,8 @@ Here is an example for `eth` token:
 :::note
 - Use the responses we got in all the previous steps for the swap fields.
 - For sender address and chain_uid use the ones from the connected chain.
-- You can include a specific `timeout`. Excluding it will take the default of 60 seconds.
 - You can include a `partner_fee` if you wish to include a fee for your application.
-- The `cross_chain_addresses` are taken as an input from the user. The addresses for different chains can be fetched from the wallet using the chain Id.
+- The `recipients` are taken as an input from the user. Each recipient should provide `user` details and optional amount/denom preferences.
 :::
 
 We now have everything needed to generate the swap transaction message:
@@ -482,14 +481,13 @@ We now have everything needed to generate the swap transaction message:
       content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/swap", {
   amount_in: data.amountIn, // amount of asset in being swapped 
   asset_in: data.assetIn, // the type of asset in
-  asset_out: data.assetOut, // the type of asset out
-  cross_chain_addresses: data.crossChainAddresses, // the chains and addresses to release asset out
+  recipients: data.recipients, // recipients and optional amount/denom constraints
   slippage: data.slippage, // Used to specify max slippage tolerated.
   sender: {
     address: wallet!.bech32Address,
     chain_uid: chain!.chain_uid,
   },
-  swaps: data.swaps,
+  swap_path: data.swapPath, // selected route from /routes
 }).then((res) => res.data as TxResult);`
     },
     {
@@ -499,14 +497,13 @@ We now have everything needed to generate the swap transaction message:
       content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/swap", {
   amount_in: data.amountIn,
   asset_in: data.assetIn,
-  asset_out: data.assetOut,
-  cross_chain_addresses: data.crossChainAddresses,
+  recipients: data.recipients,
   slippage: data.slippage,
   sender: {
     address: walletAddress, // EVM address
     chain_uid: chainUid
   },
-  swaps: data.swaps
+  swap_path: data.swapPath
 }).then((res) => res.data);`
     }
   ]}

@@ -5,46 +5,29 @@ id: broadcast
 
 # Step 3 — Broadcast the Transaction
 
-Broadcast the signed transaction to the target chain using your wallet or signing service. This step submits the payload produced by the swap call.
+Broadcast the transaction payload returned in Step 2 using chain-native signing tooling.
 
-## Endpoint
+## Endpoint guidance
 
-Use the broadcast flow that matches your environment:
+There is no single REST endpoint for standard swap broadcast. Use returned `msgs` with your chain stack:
 
-- EVM: sign and broadcast with your EVM wallet stack.
-- Cosmos: sign and broadcast via Cosmos SDK/Keplr compatible tooling.
+- EVM: sign and send transactions with your EVM provider/wallet.
+- Cosmos: sign and broadcast messages with Cosmos SDK tooling.
 
-If you are using Euclid meta transactions, see:
+If you use Euclid meta transactions, see:
+
 - [Meta Transactions — Sign](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Sign)
 - [Meta Transactions — Broadcast](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast)
 
-## Minimal example (meta-tx broadcast)
+## Minimal execution flow
 
-```bash
-curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "call_data": {
-      "call_data": [
-        {
-          "target": "euclid1...",
-          "call_data": "{\"swap\":{...}}"
-        }
-      ],
-      "expiry": 1768847836,
-      "nonce": "1768847776",
-      "signer_address": "0x...",
-      "signer_chain_uid": "bsc",
-      "signer_prefix": "0x"
-    },
-    "chain_uid": "bsc",
-    "pub_key": "0x...",
-    "signature": "0x...",
-    "types": ["swap"],
-    "wallet_address": "0x..."
-  }'
-```
+- EVM: sign/send each item in `msgs` (`to`, `data`, `value`).
+- Cosmos: broadcast the returned contract messages with your signer.
 
-Next: track the transaction.
+## Required data to persist
+
+- Source-chain transaction hash(es).
+- Sender address and source chain UID.
+- Execution timestamp for timeout/retry policy.
+
+Next step: [Track Execution](./track-execution).

@@ -10,6 +10,11 @@ Queries all the token pair pools, their VLP address, liquidity amount, and APR (
 query Token_pair_with_liquidity($token: String, $limit: Int, $offset: Int, $onlyShowVerified: Boolean, $sortBy: TokenPairSortBy, $sortOrder: SortOrder) {
   pool {
     token_pair_with_liquidity(token: $token, limit: $limit, offset: $offset, only_show_verified: $onlyShowVerified, sort_by: $sortBy, sort_order: $sortOrder) {
+      pagination {
+        total_count
+        limit
+        offset
+      }
       results {
         pair {
           token_1
@@ -20,11 +25,6 @@ query Token_pair_with_liquidity($token: String, $limit: Int, $offset: Int, $only
         apr
         tags
         created_at
-      }
-      pagination {
-        total_count
-        limit
-        offset
       }
     }
   }
@@ -37,10 +37,10 @@ query Token_pair_with_liquidity($token: String, $limit: Int, $offset: Int, $only
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://testnet.api.euclidprotocol.com/graphql' \
-    --data '{"query":"query Token_pair_with_liquidity($limit: Int, $onlyShowVerified: Boolean, $sortOrder: SortOrder) {\n  pool {\n    token_pair_with_liquidity(limit: $limit, only_show_verified: $onlyShowVerified, sort_order: $sortOrder) {\n      results {\n        pair {\n          token_1\n          token_2\n        }\n        vlp\n        total_liquidity\n        apr\n        tags\n        created_at\n      }\n      pagination {\n        total_count\n        limit\n        offset\n      }\n    }\n  }\n}","variables":{"limit":"1000","onlyShowVerified":false,"sortOrder":"ASC"}}'
+    --data '{"query":"query Token_pair_with_liquidity($token: String, $limit: Int, $offset: Int, $onlyShowVerified: Boolean, $sortBy: TokenPairSortBy, $sortOrder: SortOrder) {\n  pool {\n    token_pair_with_liquidity(token: $token, limit: $limit, offset: $offset, only_show_verified: $onlyShowVerified, sort_by: $sortBy, sort_order: $sortOrder) {\n      pagination {\n        total_count\n        limit\n        offset\n      }\n      results {\n        pair {\n          token_1\n          token_2\n        }\n        vlp\n        total_liquidity\n        apr\n        tags\n        created_at\n      }\n    }\n  }\n}","variables":{"token":"euclid","limit":3,"offset":1,"onlyShowVerified":true,"sortBy":"CREATED_AT","sortOrder":"DESC"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgA4CGAlnlQO4MoAWVANgzg2HbFgAHSREiNCBG5FR4iURQVq9Jq3Zde-QSmFjFivAgDOMbihNyDhxWrzWFtxcspIqARhvOJr6gCZvWwBfIMMAN24aMJcIFDpuHj4YASEYiToaPHSlOgBzExyoYzoUBDAqUpjQpzt8hiRShghxeR8lOISqKAgYVBzeOHYciAAzUZMEFGqgmoka4JAAGhBwujwGOgAjblMMEDaiERBB4YwjkA8ABhvjpZtjlu4CAGUOCBYANXwGUYZy47oIijBKTe4KY4mCB4FAAeTwYHwgOOAEEXgBhY5iRbBIA)
+[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgA4CGAlnlQO4MoAWVANgzg2HYEAFABIUFZOiIBlFHgZIA5gBoio3nHbSAkqjWiIAMyMBnBCl371EJNwIyOEFgDV8DIwwRhpAIQgQ3Ah0SAamEHgovgTSZJRIAAqMeDIRUQRhaQDyeGD40qmROXl4AJREwAA6SERENAHcFdW1tRLxtMms7Fy8-IIoIm1S6kOhRJra6hMoasZmFtKGJuYzRLb2VKZOLFQAbu6e3ovrDttuCodgauGRVABGMeo36ddpVBEli8-F%2BOVVNS1avQlIo6CgGLYmgDAa0ICg6NwqFAIDBUM0YbVpuiMXMVtiWgBffG1PAIUwwbgoUxQjFA5I02mw9oARmJMNGVAATGzakToTDdtwaDyiBJ4YjejABEIRXQaHgRfClKYRVBSWDvFQwWy%2BYDdUQ%2BQSQCoQLs6Ao6HcgqYMCB-rVKiBRo7pI6EDAoLwwI6VOjHViMEQAMy%2BgGO3EWF1EZmhh0gE6OZznDxeb2B%2BS4WNER3PaIux0AYQASgBRACCJBLABEqBWfX6QN9cvgo46qyWZAXHdUjQSgA)
 
 | **Argument**         | **Type**              | **Description**                                                                 |
 |----------------------|-----------------------|---------------------------------------------------------------------------------|
@@ -48,7 +48,7 @@ curl --request POST \
 | `limit`              | `Int`                 | Limit the number of results returned (optional).                               |
 | `offset`             | `Int`                 | Number of pools to skip before starting to return results (for pagination).    |
 | `onlyShowVerified`   | `Boolean`             | If true, only return verified pools.                                           |
-| `sortBy`             | `TokenPairSortBy`     | Field to sort the results by (e.g., `APR`, `Liquidity`, etc).                  |
+| `sortBy`             | `TokenPairSortBy`     | Field to sort results by. Allowed values: `TOTAL_LIQUIDITY` or `CREATED_AT`.                  |
 | `sortOrder`          | `SortOrder`           | Order of sorting: `ASC` or `DESC`.                                             |
 
 ### Return Fields

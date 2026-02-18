@@ -5,23 +5,28 @@ id: operational-tips
 
 # Step 5 — Operational Tips
 
-Keep integration latency low and improve quote quality with a few best practices.
+Use these practices to keep execution reliable and user-facing status clear.
 
-## Quote freshness
+## Quote and execution policy
 
-- Refresh routes frequently for volatile pairs.
-- Prefer routes with consistent liquidity across hops.
+- Use short quote TTLs for volatile pairs.
+- Re-quote before execution when TTL expires.
+- Enforce deterministic payload generation from the selected route.
 
-## User experience
+## Tracking and observability
 
-- Surface ETA and status updates in your UI.
-- Provide fallback messaging if a route fails or times out.
+- Persist `chain` + `tx_hash` for every execution.
+- Track full lifecycle timestamps (quoted, submitted, terminal).
+- Capture terminal failures with structured reason codes.
 
-## Multi-chain support
+## UX guidance
 
-- Use chain-aware UI flows when a route includes multiple chains.
-- Clearly show where the final asset will be released.
+- Show live status states (`pending`, `in_progress`, `success`, `failed`).
+- Show final destination chain and settled amount.
+- Provide a clear retry/support path when timeouts are reached.
 
-## Optional: bridging considerations
+## Optional hardening
 
-Euclid can facilitate flows across EVM and Cosmos ecosystems. If you support both, highlight wallet requirements and chain availability to avoid user friction.
+- Add idempotency keys for execution requests.
+- Add circuit-breakers for repeated endpoint failures.
+- Alert on stuck swaps that exceed your timeout SLO.

@@ -5,7 +5,7 @@ id: get-routes
 
 # Step 1 — Get Routes
 
-Use the Routes endpoint to discover the best path for a swap. Routes can include multiple hops and multiple DEXes; you choose the best option based on price, latency, or other heuristics.
+Use the Routes endpoint to fetch candidate swap routes.
 
 ## Endpoint
 
@@ -27,8 +27,10 @@ curl -X 'POST' \
   }'
 ```
 
-## What to do with the response
+## Required output from this step
 
-- Select the best route.
-- Persist the `swap_path` and any metadata you need for your quote.
-- Pass the selected path into the swap call in the next step.
+- Select one route from `paths`.
+- Store the selected route as `swap_path` for Step 2.
+- Keep quote metadata (output amount, price impact, timestamp) for UI/validation.
+
+Next step: [Create Swap Payload](./create-swap-payload).

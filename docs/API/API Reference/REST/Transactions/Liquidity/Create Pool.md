@@ -196,8 +196,8 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
 
 | **Field**                 | **Type**                                                       | **Description**                                                                 |
 |---------------------------|----------------------------------------------------------------|---------------------------------------------------------------------------------|
-| `sender`                  | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser) | Address and chain initiating the transaction. Defaults to sender.              |
-| `pair`                    | [`PairWithDenomAndAmount`](/docs/API/API%20Reference/common%20types.md#pairwithdenomandamount) | Contains both tokens with types and amounts.                                   |
+| `sender`                  | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Address and chain initiating the transaction. Defaults to sender.              |
+| `pair`                    | [`PairWithDenom`](/docs/API/API%20Reference/common%20types.md#pairwithdenom) | Contains both tokens with types and amounts.                                   |
 | `slippage_tolerance_bps` | `u64`                                                          | Slippage tolerance in basis points (e.g., 30 = 0.3%).                          |
 | `lp_token_name`           | `string`                                                       | Name of the liquidity pool token.                                              |
 | `lp_token_symbol`         | `string`                                                       | Symbol of the liquidity pool token.                                            |

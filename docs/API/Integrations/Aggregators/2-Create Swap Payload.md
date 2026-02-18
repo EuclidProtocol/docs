@@ -3,9 +3,9 @@ sidebar_label: Create Swap Payload
 id: create-swap-payload
 ---
 
-# Step 2 — Create the Swap Payload
+# Step 2 — Create Swap Payload
 
-Build the swap payload using the selected route. This is the signed transaction payload your system will broadcast on behalf of the user.
+Build the swap payload using the route selected in Step 1.
 
 ## Endpoint
 
@@ -24,6 +24,18 @@ curl -X 'POST' \
       "token": "euclid",
       "token_type": { "native": { "denom": "ueuclid" } }
     },
+    "slippage": "50",
+    "recipients": [
+      {
+        "user": {
+          "chain_uid": "neutron",
+          "address": "neutron1..."
+        },
+        "amount": {
+          "dynamic": "true"
+        }
+      }
+    ],
     "sender": {
       "chain_uid": "neutron",
       "address": "neutron1..."
@@ -32,17 +44,21 @@ curl -X 'POST' \
       "path": [
         {
           "route": ["euclid", "bnb"],
-          "dex": "euclid"
+          "dex": "euclid",
+          "chain_uid": "vsl",
+          "amount_in": "1000000",
+          "amount_out": "..."
         }
       ]
-    },
-    "slippage": "50"
+    }
   }'
 ```
 
-## Notes
+## Required validation before submit
 
-- The `swap_path` should come directly from your chosen route.
-- You can provide additional fields (limits, partner fee, or routing constraints) as needed.
+- `swap_path` is exactly the selected route from Step 1.
+- `sender` matches the signing wallet context.
+- `recipients` contains the intended destination chain and address.
+- `recipients[].amount` is set for each recipient (`dynamic` is recommended when exact output is unknown before execution).
 
-Next: broadcast the transaction.
+Next step: [Broadcast](./broadcast).

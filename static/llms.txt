@@ -1,5 +1,5 @@
 # Euclid Protocol Docs - LLM Index
-Updated: 2026-01-24
+Updated: 2026-02-18
 Base URL: https://docs.euclidprotocol.io
 Docs root: https://docs.euclidprotocol.io/docs
 Repo: https://github.com/EuclidProtocol/docs
@@ -49,9 +49,11 @@ Main site: https://www.euclidprotocol.io
 
 ## API - Liquidity Provisioning
 - Fees and rewards: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Fees%20and%20Rewards
+- Euclid pools: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Euclid%20Pools
 - Stable pool: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Different%20Liquidity%20States/Stable%20Pool
 - Constant product pool: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Different%20Liquidity%20States/Constant%20Product%20Pool
 - Fetch liquidity: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Fetch%20Liquidity
+- Create pool: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Create%20Pool
 - Add liquidity: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Add%20Liquidity
 - Remove liquidity: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Remove%20Liquidity
 - Provider position: https://docs.euclidprotocol.io/docs/API/Liquidity%20Provisioning/Endpoints/Provider%20Position
@@ -60,6 +62,13 @@ Main site: https://www.euclidprotocol.io
 - Route calculation: https://docs.euclidprotocol.io/docs/API/Pricing/Route%20Calculation
 - Slippage: https://docs.euclidprotocol.io/docs/API/Pricing/Slippage
 - Risks and impermanent loss: https://docs.euclidprotocol.io/docs/API/Pricing/Risks%20and%20Impermanent%20Loss
+
+## API - Integrations
+- Aggregators overview: https://docs.euclidprotocol.io/docs/API/Integrations/Aggregators/Intro
+- Get routes: https://docs.euclidprotocol.io/docs/API/Integrations/Aggregators/get-routes
+- Create swap payload: https://docs.euclidprotocol.io/docs/API/Integrations/Aggregators/create-swap-payload
+- Broadcast: https://docs.euclidprotocol.io/docs/API/Integrations/Aggregators/broadcast
+- Track execution: https://docs.euclidprotocol.io/docs/API/Integrations/Aggregators/track-execution
 
 ## API Reference - Overview
 - Intro: https://docs.euclidprotocol.io/docs/API/API%20Reference/Intro
@@ -134,6 +143,7 @@ Main site: https://www.euclidprotocol.io
 - Balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Virtual%20Balance/Balance
 - State: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Virtual%20Balance/State
 - User balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Virtual%20Balance/User%20Balance
+- Unified user balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/Virtual%20Balance/Unified%20User%20Balance
 
 ## API Reference - REST
 
@@ -156,7 +166,8 @@ Main site: https://www.euclidprotocol.io
 #### Vouchers
 - Deposit: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Deposit
 - Transfer voucher: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Transfer%20Voucher
-- Withdraw virtual balance: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance
+- Collect voucher fees: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance
+- Withdraw voucher tokens: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Vouchers/Withdraw%20Escrow%20Balance
 
 #### Meta Transactions
 - Intro: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Intro

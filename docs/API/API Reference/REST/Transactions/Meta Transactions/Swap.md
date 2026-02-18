@@ -34,7 +34,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
       "voucher": {}
     }
   },
-  "cross_chain_addresses": [
+  "recipients": [
     {
       "forwarding_message": {
         "data": "0x...",
@@ -55,7 +55,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
   ],
   "partner_fee": {
     "partner_fee_bps": 10,
-    "recipent": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
+    "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
   },
   "sender": {
     "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
@@ -96,7 +96,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
           }
         },
         "asset_out": "euclid",
-        "cross_chain_addresses": [
+        "recipients": [
           {
             "user": {
               "chain_uid": "0g",
@@ -148,7 +148,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
         "min_amount_out": "603573",
         "partner_fee": {
           "partner_fee_bps": 10,
-          "recipent": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
+          "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
         },
         "partner_fee_amount": "0",
         "partner_fee_recipient": {
@@ -196,7 +196,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
       "voucher": {}
     }
   },
-  "cross_chain_addresses": [
+  "recipients": [
     {
       "forwarding_message": {
         "data": "0x...",
@@ -217,7 +217,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
   ],
   "partner_fee": {
     "partner_fee_bps": 10,
-    "recipent": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
+    "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
   },
   "sender": {
     "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
@@ -258,7 +258,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
           }
         },
         "asset_out": "bnb",
-        "cross_chain_addresses": [
+        "recipients": [
           {
             "user": {
               "chain_uid": "0g",
@@ -310,7 +310,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
         "min_amount_out": "7744799258583280362",
         "partner_fee": {
           "partner_fee_bps": 10,
-          "recipent": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
+          "recipient": "0x8ed341da628fb9f540ab3a4ce4432ee9b4f5d658"
         },
         "partner_fee_amount": "0",
         "partner_fee_recipient": {
@@ -351,7 +351,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
 | `amount_in` | `string` | Amount of the input token to be swapped. |
 | `asset_in` | [`TokenWithDenom`](/docs/API/API%20Reference/common%20types.md#tokenwithdenom) | Input token and its type (`native`, `smart`, or `voucher`). |
 | `slippage` | `string` | Slippage tolerance in basis points (e.g., `"500"` for 5%). |
-| `cross_chain_addresses` | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` | Recipients for the output asset, with optional limits and forwarding. |
+| `recipients` | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` | Recipients for the output asset, with optional limits and forwarding. |
 | `partner_fee` | `object` | Partner fee configuration. Includes basis points and recipient. |
 | `sender` | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Address and chain initiating the swap. |
 | `swap_path` | `object` | Routing path with token hops and DEX info. |
@@ -377,4 +377,4 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
 | Field | Type | Description |
 |---|---|---|
 | `partner_fee_bps` | `number` | Fee in basis points (e.g., `10` = 0.1%). |
-| `recipent` | `string` | Address to receive the fee. |
+| `recipient` | `string` | Address to receive the fee. |

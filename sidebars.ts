@@ -132,8 +132,6 @@ const sidebars: SidebarsConfig = {
             "API/Integrations/Aggregators/create-swap-payload",
             "API/Integrations/Aggregators/broadcast",
             "API/Integrations/Aggregators/track-execution",
-            "API/Integrations/Aggregators/operational-tips",
-            "API/Integrations/Aggregators/FAQ",
           ],
         },
       ],
