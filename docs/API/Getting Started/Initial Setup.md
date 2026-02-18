@@ -88,12 +88,14 @@ Authorization: Bearer YOUR_API_KEY
 ```
 
 
-## 4. Use the Sandbox / Testnet
+## 4. Select Your Environment
 
->  *Test trades and simulate transactions without spending real assets using our testnet.*
+:::note
+Best practice is to start on **testnet first** for development, simulation, and validation before moving to mainnet.
+:::
 
-- GraphQL Sandbox Endpoint: `https://testnet.api.euclidprotocol.com/`
-- [Faucet Links ](#)
+- **Testnet (recommended first):** [`https://testnet.api.euclidprotocol.com`](https://testnet.api.euclidprotocol.com)
+- **Mainnet:** [`https://api.euclidprotocol.com/`](https://api.euclidprotocol.com/)
 
 
 ## 5. Explore Further
