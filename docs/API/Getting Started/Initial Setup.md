@@ -79,7 +79,7 @@ Euclid supports several wallet types across EVM and Cosmos:
 ## 3. (Optional) Get an API Key
 
 :::note
-If your API usage requires a key (for example higher rate limits or transaction tracking), generate one in the Euclid Developer Portal. If you do not have portal access yet, [contact us](mailto:general@euclidswap.io).
+If your API usage requires a key (for example higher rate limits or transaction tracking), [contact us](mailto:general@euclidswap.io).
 :::
 
 Include it as a header:
