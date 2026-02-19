@@ -4,7 +4,7 @@ title: LLM Guide
 ---
 
 This page explains how to use the Euclid docs with AI tools and links to the
-machine-readable index at `/llms.txt`, which contains the full, expanded list
+machine-readable index at `/llms.txt`, which contains the full and current list
 of documentation entry points.
 
 ## LLM index
@@ -14,8 +14,9 @@ of documentation entry points.
 ## Recommended entry points
 
 - Architecture overview: https://docs.euclidprotocol.io/docs/Architecture%20Overview/intro
-- API introduction: https://docs.euclidprotocol.io/docs/API/Introduction
+- API prerequisites and chain configuration: https://docs.euclidprotocol.io/docs/API/Getting%20Started/API%20Prerequisites%20and%20Chain%20Configuration
 - API reference intro: https://docs.euclidprotocol.io/docs/API/API%20Reference/Intro
+- Aggregator integration overview: https://docs.euclidprotocol.io/docs/API/Integrations/Aggregators/Intro
 - GraphQL calls guide: https://docs.euclidprotocol.io/docs/API/API%20Reference/GQL/GQL%20Calls
 - REST routes guide: https://docs.euclidprotocol.io/docs/API/API%20Reference/REST/Routes/Get%20Routes
 - CosmWasm contracts overview: https://docs.euclidprotocol.io/docs/Euclid%20Smart%20Contracts/CosmWasm/overview
@@ -25,8 +26,9 @@ of documentation entry points.
 
 - Architecture and concepts
 - API getting started
-- Trading, liquidity provisioning, and pricing
+- Trading, liquidity provisioning, pricing, and integrations
 - API reference (GraphQL + REST)
+- Voucher operations (collect voucher fees, withdraw voucher tokens)
 - Smart contracts (CosmWasm + Solidity)
 
 ## API endpoints

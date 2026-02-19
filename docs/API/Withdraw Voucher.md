@@ -138,7 +138,7 @@ Prompt the user to select the amount of tokens to withdraw.
 
 ```javascript
 
-const msg = await REST_AXIOS.post("/execute/vcoin/withdraw", {
+const msg = await REST_AXIOS.post("/execute/escrow/withdraw", {
         token: data.token, // token to withdraw
         amount: data.amount, //amount to withdraw
         cross_chain_addresses: data.crossChainAddresses, //addresses to withdraw to

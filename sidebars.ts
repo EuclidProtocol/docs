@@ -60,6 +60,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "API/Getting Started/Initial Setup",
         "API/Getting Started/First Call",
+        "API/Getting Started/API Prerequisites and Chain Configuration",
         "API/Getting Started/Perform A Swap",
         "API/Getting Started/Broadcast Trade Onchain",
       ],
@@ -87,6 +88,7 @@ const sidebars: SidebarsConfig = {
       label: "Liquidity Provisioning",
       items: [
         "API/Liquidity Provisioning/Fees and Rewards",
+        "API/Liquidity Provisioning/Euclid Pools",
         {
           type: "category",
           label: "Different Liquidity States",
@@ -100,6 +102,7 @@ const sidebars: SidebarsConfig = {
           label: "Endpoints",
           items: [
             "API/Liquidity Provisioning/Endpoints/Fetch Liquidity",
+            "API/Liquidity Provisioning/Endpoints/Create Pool",
             "API/Liquidity Provisioning/Endpoints/Add Liquidity",
             "API/Liquidity Provisioning/Endpoints/Remove Liquidity",
             "API/Liquidity Provisioning/Endpoints/Provider Position",
@@ -114,6 +117,24 @@ const sidebars: SidebarsConfig = {
         "API/Pricing/Route Calculation",
         "API/Pricing/Slippage",
         "API/Pricing/Risks and Impermanent Loss",
+      ],
+    },
+    {
+      type: "category",
+      label: "Integrations",
+      items: [
+        "API/Integrations/Intro",
+        {
+          type: "category",
+          label: "Aggregators",
+          items: [
+            "API/Integrations/Aggregators/Intro",
+            "API/Integrations/Aggregators/get-routes",
+            "API/Integrations/Aggregators/create-swap-payload",
+            "API/Integrations/Aggregators/broadcast",
+            "API/Integrations/Aggregators/track-execution",
+          ],
+        },
       ],
     },
     {

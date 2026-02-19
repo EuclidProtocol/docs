@@ -18,6 +18,67 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
 <Tabs
   tabs={[
     {
+      id: 'evm-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \\
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add' \\
+  -H 'accept: application/json' \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "slippage_tolerance_bps": 100,
+    "timeout": "60",
+    "pair_info": {
+      "token_1": {
+        "token": "ron",
+        "token_type": {
+          "native": {
+            "denom": "ron"
+          }
+        },
+        "amount": "100000000000000000"
+      },
+      "token_2": {
+        "token": "euclid",
+        "token_type": {
+          "smart": {
+            "contract_address": "0xeuclidtoken..."
+          }
+        },
+        "amount": "250000"
+      }
+    },
+    "sender": {
+      "address": "0x72bbb...",
+      "chain_uid": "ronin"
+    }
+}'`
+    },
+    {
+      id: 'evm-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "msgs": [
+    {
+      "chainId": "2021",
+      "data": "0x095ea7b300...",
+      "gasLimit": "0x186A0",
+      "to": "0xeuclidtoken...",
+      "value": "0x0"
+    },
+    {
+      "chainId": "2021",
+      "data": "0x08c9bfe400000...",
+      "gasLimit": "0x493E0",
+      "to": "0x43d4759e0cb8e4d3b2aab1ba6e39a60dce1a8f5b",
+      "value": "0x16345785d8a0000"
+    }
+  ],
+  "type": "evm"
+}`
+    },
+    {
       id: 'cosmos-request',
       label: 'Cosmos Request',
       language: 'bash',
@@ -115,67 +176,6 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
     }
   ]
 }`
-    },
-    {
-      id: 'evm-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add' \\
-  -H 'accept: application/json' \\
-  -H 'Content-Type: application/json' \\
-  -d '{
-    "slippage_tolerance_bps": 100,
-    "timeout": "60",
-    "pair_info": {
-      "token_1": {
-        "token": "ron",
-        "token_type": {
-          "native": {
-            "denom": "ron"
-          }
-        },
-        "amount": "100000000000000000"
-      },
-      "token_2": {
-        "token": "euclid",
-        "token_type": {
-          "smart": {
-            "contract_address": "0xeuclidtoken..."
-          }
-        },
-        "amount": "250000"
-      }
-    },
-    "sender": {
-      "address": "0x72bbb...",
-      "chain_uid": "ronin"
-    }
-}'`
-    },
-    {
-      id: 'evm-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "msgs": [
-    {
-      "chainId": "2021",
-      "data": "0x095ea7b300...",
-      "gasLimit": "0x186A0",
-      "to": "0xeuclidtoken...",
-      "value": "0x0"
-    },
-    {
-      "chainId": "2021",
-      "data": "0x08c9bfe400000...",
-      "gasLimit": "0x493E0",
-      "to": "0x43d4759e0cb8e4d3b2aab1ba6e39a60dce1a8f5b",
-      "value": "0x16345785d8a0000"
-    }
-  ],
-  "type": "evm"
-}`
     }
   ]}
 />
@@ -187,4 +187,4 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
 | `slippage_tolerance_bps`  | `int`                                                                                                      | Max slippage allowed, in basis points (e.g. 100 = 1%).                         |
 | `timeout`                 | `string`                                                                                                      | Optional duration in seconds after which the message will be timed out. Can be set to a minimum of 30 seconds and a maximum of 240 seconds. Defaults to 60 seconds if not specified.                                    |
 | `pair_info`               | [`PairWithDenomAndAmount`](/docs/API/API%20Reference/common%20types.md#pairwithdenomandamount) | Token pair with amounts and token types.                                       |
-| `sender`                  | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser)                | Wallet address and chain UID of the sender.                                    |
+| `sender`                  | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)                | Wallet address and chain UID of the sender.                                    |

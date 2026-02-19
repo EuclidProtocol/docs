@@ -187,7 +187,7 @@ function HomepageHeader() {
               >
                 Get started
               </Link>
-              <Link className={styles.heroSecondaryLink} to="/docs/API/Introduction">
+              <Link className={styles.heroSecondaryLink} to="/docs/API/Getting%20Started/API%20Prerequisites%20and%20Chain%20Configuration">
                 Explore the API
               </Link>
             </div>

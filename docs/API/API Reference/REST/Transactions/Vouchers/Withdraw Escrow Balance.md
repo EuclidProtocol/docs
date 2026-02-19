@@ -1,6 +1,7 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 title: "Withdraw Voucher Tokens"
+draft: true
 ---
 import Tabs from '@site/src/components/Tabs';
 
@@ -10,7 +11,7 @@ Generates a transaction for users to withdraw voucher balances into native asset
 
 ### Request URL
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
+https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw
 ```
 
 ### Examples
@@ -18,11 +19,11 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 <Tabs
   tabs={[
     {
-      id: 'evm-vcoin-request',
+      id: 'evm-escrow-request',
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -38,15 +39,21 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
           "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
           "chain_uid": "base"
         },
-        "limit": {
+        "amount": {
           "less_than_or_equal": "3477907"
+        },
+        "denom": {
+          "native": {
+            "denom": "euclid"
+          }
         }
       }
-    ]
+    ],
+    "timeout": "60"
 }'`
     },
     {
-      id: 'evm-vcoin-response',
+      id: 'evm-escrow-response',
       label: 'EVM Response',
       language: 'json',
       content: `{
@@ -63,11 +70,11 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 }`
     },
     {
-      id: 'cosmos-vcoin-request',
+      id: 'cosmos-escrow-request',
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -83,15 +90,21 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
           "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml",
           "chain_uid": "osmosis"
         },
-        "limit": {
+        "amount": {
           "less_than_or_equal": "1000000"
+        },
+        "denom": {
+          "native": {
+            "denom": "euclid"
+          }
         }
       }
-    ]
+    ],
+    "timeout": "60"
 }'`
     },
     {
-      id: 'cosmos-vcoin-response',
+      id: 'cosmos-escrow-response',
       label: 'Cosmos Response',
       language: 'json',
       content: `{
@@ -116,12 +129,17 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
                 "chain_uid": "osmosis",
                 "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml"
               },
-              "limit": {
+              "amount": {
                 "less_than_or_equal": "1000000"
+              },
+              "denom": {
+                "native": {
+                  "denom": "euclid"
+                }
               }
             }
           ],
-          "timeout": null,
+          "timeout": "60",
           "token": "euclid"
         }
       },
@@ -135,9 +153,11 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 
 ### Parameters
 
-| **Field**                 | **Type**                                                                                             | **Description**                                                                 |
-|---------------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| `token`                   | `string`                                                                                            | The name of the virtual token to withdraw (e.g. `"euclid"`).                   |
-| `amount`                  | `string`                                                                                            | The amount to withdraw (in smallest unit).                                     |
-| `sender`                  | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)            | Address and chain initiating the withdrawal.                                   |
-| `cross_chain_addresses`   | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` |  Optional set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on.  Defaults to sender if not specified.                              |
+| **Field**                 | **Type**                                                                                                  | **Description**                                                                 |
+|---------------------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| `token`                   | `string`                                                                                                  | The name of the voucher token to withdraw (e.g. `"euclid"`).                 |
+| `amount`                  | `string`                                                                                                  | The amount to withdraw (in smallest unit).                                      |
+| `sender`                  | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)      | Address and chain initiating the withdrawal.                                    |
+| `cross_chain_addresses`   | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` | Optional recipient list and amount constraints for release. Defaults to `sender` if omitted. |
+| `cross_chain_addresses[].denom` | [`TokenType`](/docs/API/API%20Reference/common%20types.md#tokentype-variants)                     | Optional preferred denomination/token type for each recipient.                  |
+| `timeout`                 | `string`                                                                                                  | Optional timeout in seconds (typically `30` to `240`, default `60`).            |

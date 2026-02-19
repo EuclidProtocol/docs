@@ -18,45 +18,6 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
 <Tabs
   tabs={[
     {
-      id: 'cosmos-request',
-      label: 'Cosmos Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "call_data": {
-    "call_data": [
-      {
-        "call_data": "{\\\"transfer\\\":{\\\"amount\\\":\\\"1000000\\\",\\\"from\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"msg\\\":\\\"\\\",\\\"recipient_address\\\":{\\\"user\\\":{\\\"chain_uid\\\":\\\"0g\\\",\\\"address\\\":\\\"0x5abfe1234567890cdefabc1234567890defabc01\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"limit\\\":{\\\"less_than_or_equal\\\":\\\"1000000\\\"},\\\"preferred_denom\\\":{\\\"voucher\\\":{}},\\\"forwarding_message\\\":{\\\"data\\\":\\\"0x\\\"}},\\\"sender\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"timeout\\\":\\\"60\\\",\\\"token\\\":\\\"euclid\\\",\\\"tx_id\\\":\\\"\\\"}}",
-        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq"
-      }
-    ],
-    "expiry": 1768847504,
-    "nonce": "1768847444",
-    "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "signer_chain_uid": "neuron",
-    "signer_prefix": "0x"
-  },
-  "chain_uid": "neuron",
-  "pub_key": "0x02c1aab42e1e0f3e19d9c8e0f2f93d6c8b6b9e77f6f5d2a3b3a1f6f8a2f1b1c3d4",
-  "signature": "0x2f9a4c8e0b7d3a1f9c4d6e8f7a5b3c1d9e0f2a4b6c8d0e1f2a3b4c5d6e7f8a9b",
-  "types": [
-    "transfer_voucher"
-  ],
-  "wallet_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-}'`
-    },
-    {
-      id: 'cosmos-response',
-      label: 'Cosmos Response',
-      language: 'json',
-      content: `{
-  "queue_id": "0x887e4aac216674d2c432798f851c1ea5d505b2e1-neuron-20260120161630"
-}`
-    },
-    {
       id: 'evm-request',
       label: 'EVM Request',
       language: 'bash',
@@ -93,6 +54,45 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
       language: 'json',
       content: `{
   "queue_id": "0x887e4aac216674d2c432798f851c1ea5d505b2e1-bsc-20260120161734"
+}`
+    },
+    {
+      id: 'cosmos-request',
+      label: 'Cosmos Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "call_data": {
+    "call_data": [
+      {
+        "call_data": "{\\\"transfer\\\":{\\\"amount\\\":\\\"1000000\\\",\\\"from\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"msg\\\":\\\"\\\",\\\"recipient_address\\\":{\\\"user\\\":{\\\"chain_uid\\\":\\\"0g\\\",\\\"address\\\":\\\"0x5abfe1234567890cdefabc1234567890defabc01\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"limit\\\":{\\\"less_than_or_equal\\\":\\\"1000000\\\"},\\\"preferred_denom\\\":{\\\"voucher\\\":{}},\\\"forwarding_message\\\":{\\\"data\\\":\\\"0x\\\"}},\\\"sender\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"timeout\\\":\\\"60\\\",\\\"token\\\":\\\"euclid\\\",\\\"tx_id\\\":\\\"\\\"}}",
+        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq"
+      }
+    ],
+    "expiry": 1768847504,
+    "nonce": "1768847444",
+    "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+    "signer_chain_uid": "neuron",
+    "signer_prefix": "0x"
+  },
+  "chain_uid": "neuron",
+  "pub_key": "0x02c1aab42e1e0f3e19d9c8e0f2f93d6c8b6b9e77f6f5d2a3b3a1f6f8a2f1b1c3d4",
+  "signature": "0x2f9a4c8e0b7d3a1f9c4d6e8f7a5b3c1d9e0f2a4b6c8d0e1f2a3b4c5d6e7f8a9b",
+  "types": [
+    "transfer_voucher"
+  ],
+  "wallet_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+}'`
+    },
+    {
+      id: 'cosmos-response',
+      label: 'Cosmos Response',
+      language: 'json',
+      content: `{
+  "queue_id": "0x887e4aac216674d2c432798f851c1ea5d505b2e1-neuron-20260120161630"
 }`
     }
   ]}
@@ -148,6 +148,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
 | `signature` | `string` | Signature for the payload. |
 | `types` | `string[]` | List of message types included in the payload. |
 | `wallet_address` | `string` | Wallet address of the signer. |
+| `meta` | `object[]` | Optional meta transaction context array passed along with broadcast payload. |
 
 ### CallDataPayload
 

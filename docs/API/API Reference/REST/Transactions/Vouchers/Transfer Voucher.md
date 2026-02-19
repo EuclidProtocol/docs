@@ -21,6 +21,53 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
 <Tabs
   tabs={[
     {
+      id: 'evm-vcoin-transfer-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "amount": "1000000",
+    "token": "euclid",
+    "sender": {
+      "chain_uid": "base",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    },
+    "recipient_address": {
+      "user": {
+        "address": "0x5abfe1234567890cdefabc1234567890defabc01",
+        "chain_uid": "amoy"
+      }
+    },
+    "timeout": null
+}'`
+    },
+    {
+      id: 'evm-vcoin-transfer-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "claimer": {
+    "public_secret": "",
+    "otp": "",
+    "_id": "",
+    "created_at": "0001-01-01T00:00:00Z"
+  },
+  "msgs": [
+    {
+      "chainId": "84532",
+      "data": "0xf2ef68ca000000...",
+      "gasLimit": "0x493E0",
+      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
+      "value": "0x0"
+    }
+  ],
+  "type": "evm"
+}`
+    },
+    {
       id: 'cosmos-vcoin-transfer-request',
       label: 'Cosmos Request',
       language: 'bash',
@@ -76,9 +123,21 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
     }
   ]
 }`
-    },
+    }
+  ]} />
+
+## Case 2: Transfer to Social Recipient
+
+Use this format to send vouchers to a recipient identified via email, Twitter, or Telegram.
+
+> The recipient will receive a claim link to withdraw funds to any chain after verifying their identity.
+
+### Examples
+
+<Tabs
+  tabs={[
     {
-      id: 'evm-vcoin-transfer-request',
+      id: 'evm-vcoin-transfer-social-request',
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
@@ -94,28 +153,36 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
     },
     "recipient_address": {
       "user": {
-        "address": "0x5abfe1234567890cdefabc1234567890defabc01",
-        "chain_uid": "amoy"
+        "social": {
+          "email": "hello@example.com"
+        }
       }
     },
     "timeout": null
 }'`
     },
     {
-      id: 'evm-vcoin-transfer-response',
+      id: 'evm-vcoin-transfer-social-response',
       label: 'EVM Response',
       language: 'json',
       content: `{
   "claimer": {
-    "public_secret": "",
-    "otp": "",
-    "_id": "",
-    "created_at": "0001-01-01T00:00:00Z"
+    "public_secret": "BM1KMpH9lWivFx47fdepokMz1OYoW8NVlN53VtSF/ohm/lxutP0hHAu54XppChYSEZdel7rhjS5i6H3O+8JlP5I=",
+    "otp": "tjssQK",
+    "_id": "68c1b21ea6528cd2c9902283",
+    "social": {
+      "email": "hello@example.com"
+    },
+    "created_at": "2025-09-10T17:15:10.09659361Z",
+    "sender": {
+      "chain_uid": "base",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    }
   },
   "msgs": [
     {
       "chainId": "84532",
-      "data": "0xf2ef68ca000000...",
+      "data": "0xf2ef68ca0000...",
       "gasLimit": "0x493E0",
       "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
       "value": "0x0"
@@ -123,19 +190,7 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
   ],
   "type": "evm"
 }`
-    }
-  ]} />
-
-## Case 2: Transfer to Social Recipient
-
-Use this format to send vouchers to a recipient identified via email, Twitter, or Telegram.
-
-> The recipient will receive a claim link to withdraw funds to any chain after verifying their identity.
-
-### Examples
-
-<Tabs
-  tabs={[
+    },
     {
       id: 'cosmos-vcoin-transfer-social-request',
       label: 'Cosmos Request',
@@ -207,61 +262,6 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
     }
   }
 }`
-    },
-    {
-      id: 'evm-vcoin-transfer-social-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "amount": "1000000",
-    "token": "euclid",
-    "sender": {
-      "chain_uid": "base",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    },
-    "recipient_address": {
-      "user": {
-        "social": {
-          "email": "hello@example.com"
-        }
-      }
-    },
-    "timeout": null
-}'`
-    },
-    {
-      id: 'evm-vcoin-transfer-social-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "claimer": {
-    "public_secret": "BM1KMpH9lWivFx47fdepokMz1OYoW8NVlN53VtSF/ohm/lxutP0hHAu54XppChYSEZdel7rhjS5i6H3O+8JlP5I=",
-    "otp": "tjssQK",
-    "_id": "68c1b21ea6528cd2c9902283",
-    "social": {
-      "email": "hello@example.com"
-    },
-    "created_at": "2025-09-10T17:15:10.09659361Z",
-    "sender": {
-      "chain_uid": "base",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    }
-  },
-  "msgs": [
-    {
-      "chainId": "84532",
-      "data": "0xf2ef68ca0000...",
-      "gasLimit": "0x493E0",
-      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
-      "value": "0x0"
-    }
-  ],
-  "type": "evm"
-}`
     }
   ]} />
 
@@ -271,9 +271,9 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
 |---------------------|-------------------|---------------------------------------------------------------------------------|
 | `amount`            | `string`          | Amount of the virtual token to transfer (in base units).                       |
 | `token`             | `string`          | Name of the virtual token to transfer (e.g. "euclid").                        |
-| `sender`            | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser) | The address and chain initiating the transfer.                                  |
+| `sender`            | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | The address and chain initiating the transfer.                                  |
 | `recipient_address` | `object`          | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using email, Twitter, or Telegram. |
-| `timeout`           | `string \| null`  | Optional timeout value in seconds or as an ISO timestamp string.               |
+| `timeout`           | `string \| null`  | Optional timeout value in seconds.               |
 
 ### Social Recipient Format Examples
 

@@ -24,6 +24,60 @@ Use this approach when depositing to a recipient identified by a standard **wall
 <Tabs
   tabs={[
     {
+      id: 'evm-deposit-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "amount_in": "2000000000000000000",
+    "asset_in": {
+      "token": "stt",
+      "token_type": {
+        "native": {
+          "denom": "stt"
+        }
+      }
+    },
+    "sender": {
+    "chain_uid": "0g",
+    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+  },
+    "recipient": {
+      "chain_uid": "somnia",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    },
+    "timeout": "60"
+}'`
+    },
+    {
+      id: 'evm-deposit-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "claimer": {
+    "public_secret": "",
+    "otp": "",
+    "_id": "",
+    "created_at": "0001-01-01T00:00:00Z"
+  },
+  "msgs": [
+    {
+      "chainId": "16601",
+      "data": "0xaf18a6d700000000...",
+      "gasLimit": "0x493E0",
+      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
+      "value": "0x1bc16d674ec80000"
+    }
+  ],
+  "type": "evm"
+}`
+
+
+    },
+    {
       id: 'cosmos-deposit-request',
       label: 'Cosmos Request',
       language: 'bash',
@@ -95,60 +149,6 @@ Use this approach when depositing to a recipient identified by a standard **wall
     }
   ]
 }`
-    },
-    {
-      id: 'evm-deposit-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "amount_in": "2000000000000000000",
-    "asset_in": {
-      "token": "stt",
-      "token_type": {
-        "native": {
-          "denom": "stt"
-        }
-      }
-    },
-    "sender": {
-    "chain_uid": "0g",
-    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-  },
-    "recipient": {
-      "chain_uid": "somnia",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    },
-    "timeout": "60"
-}'`
-    },
-    {
-      id: 'evm-deposit-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "claimer": {
-    "public_secret": "",
-    "otp": "",
-    "_id": "",
-    "created_at": "0001-01-01T00:00:00Z"
-  },
-  "msgs": [
-    {
-      "chainId": "16601",
-      "data": "0xaf18a6d700000000...",
-      "gasLimit": "0x493E0",
-      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
-      "value": "0x1bc16d674ec80000"
-    }
-  ],
-  "type": "evm"
-}`
-
-
     }
   ]}
 />
@@ -160,8 +160,9 @@ Use this approach when depositing to a recipient identified by a standard **wall
 |------------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | `amount_in`     | `string`                                                                                     | Amount of the token to be deposited (in raw base units, e.g., wei or uatom).                |
 | `asset_in`      | [`TokenWithDenom`](/docs/API/API%20Reference/common%20types.md#tokenwithdenom)     | Token being deposited along with its type (native or smart).                                |
-| `sender`        | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser)     | Address and chain initiating the deposit.                                                   |
-| `recipient`     | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser)    | Destination address and chain for the deposited asset.                                      |
+| `sender`        | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)     | Address and chain initiating the deposit.                                                   |
+| `recipient`     | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)    | Destination address and chain for the deposited asset.                                      |
+| `timeout`       | `string`                                                                                     | Optional timeout in seconds.                                                                |
 
 
 
@@ -184,6 +185,66 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
 
 <Tabs
   tabs={[
+    {
+      id: 'evm-deposit-social-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "amount_in": "2000000000000000000",
+    "asset_in": {
+      "token": "stt",
+      "token_type": {
+        "native": {
+          "denom": "stt"
+        }
+      }
+    },
+    "sender": {
+      "chain_uid": "0g",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    },
+    "recipient": {
+      "social": {
+        "email": "hello@example.com"
+      }
+    },
+    "timeout": "60"
+}'`
+    },
+    {
+      id: 'evm-deposit-social-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "claimer": {
+    "public_secret": "BGD3GhXfHo7zDqcSsDEJuPV7GD+eQ3UifvclndGbVitHZlMAZkqbzW7y0c8X/ayz78UX4lYXV/KoYEyu+Nq8FzM=",
+    "otp": "LGdL6B",
+    "_id": "68c19e0749cfdc66a2340bb4",
+    "social": {
+      "email": "hello@example.com"
+    },
+    "created_at": "2025-09-10T15:49:27.564391531Z",
+    "sender": {
+      "chain_uid": "0g",
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
+    }
+  },
+  "msgs": [
+    {
+      "chainId": "16601",
+      "data": "0xaf18a6d7...",
+      "gasLimit": "0x493E0",
+      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
+      "value": "0x1bc16d674ec80000"
+    }
+  ],
+  "type": "evm"
+}`
+    },
     {
       id: 'cosmos-deposit-social-request',
       label: 'Cosmos Request',
@@ -274,67 +335,7 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
     }
   }
 }`
-  },
-    {
-      id: 'evm-deposit-social-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "amount_in": "2000000000000000000",
-    "asset_in": {
-      "token": "stt",
-      "token_type": {
-        "native": {
-          "denom": "stt"
-        }
-      }
-    },
-    "sender": {
-      "chain_uid": "0g",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    },
-    "recipient": {
-      "social": {
-        "email": "hello@example.com"
-      }
-    },
-    "timeout": "60"
-}'`
-    },
-    {
-      id: 'evm-deposit-social-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "claimer": {
-    "public_secret": "BGD3GhXfHo7zDqcSsDEJuPV7GD+eQ3UifvclndGbVitHZlMAZkqbzW7y0c8X/ayz78UX4lYXV/KoYEyu+Nq8FzM=",
-    "otp": "LGdL6B",
-    "_id": "68c19e0749cfdc66a2340bb4",
-    "social": {
-      "email": "hello@example.com"
-    },
-    "created_at": "2025-09-10T15:49:27.564391531Z",
-    "sender": {
-      "chain_uid": "0g",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-    }
-  },
-  "msgs": [
-    {
-      "chainId": "16601",
-      "data": "0xaf18a6d7...",
-      "gasLimit": "0x493E0",
-      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
-      "value": "0x1bc16d674ec80000"
-    }
-  ],
-  "type": "evm"
-}`
-    }
+  }
   ]}
 />
 
@@ -345,8 +346,9 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
 |------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | `amount_in`     | `string`                                                                                     | Amount of the token to be deposited (in raw base units, e.g., wei or uatom).                           |
 | `asset_in`      | [`TokenWithDenom`](/docs/API/API%20Reference/common%20types.md#tokenwithdenom)      | Token being deposited along with its type (native or smart).                                           |
-| `sender`        | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser)    | Address and chain initiating the deposit.                                                              |
+| `sender`        | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)    | Address and chain initiating the deposit.                                                              |
 | `recipient`     | `object`                                                                                     | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using `email`, `twitter`, or `telegram`. Social recipients generate a claim link that allows the user to withdraw on any chain. |
+| `timeout`       | `string`                                                                                     | Optional timeout in seconds.                                                                                         |
 
 
 ### Social Recipient Format Examples

@@ -93,7 +93,6 @@ query Router {
     label: 'curl',
     language: 'bash',
     content: `
-# fetch-chains.sh
 curl --request POST \\
   --header 'content-type: application/json' \\
   --url 'https://testnet.api.euclidprotocol.com/graphql' \\
@@ -210,14 +209,13 @@ query Evm_chain_config($chainUid: String, $chainId: String) {
     label: 'curl',
     language: 'bash',
     content: `
-# fetch-evm-config.sh
 curl --request POST \\
   --header 'content-type: application/json' \\
   --url 'https://testnet.api.euclidprotocol.com/graphql' \\
   --data '{
     "query": "query Evm_chain_config($chainUid: String, $chainId: String) { chains { evm_chain_config(chain_uid: $chainUid, chain_id: $chainId) { rpc_urls { default { http } } explorer_url name } } }",
     "variables": {
-      "chainUid": "evm:0g",
+      "chainUid": "somnia",
       "chainId": null
     }
   }'
@@ -258,7 +256,7 @@ function App() {
     client.query({
       query: EVM_QUERY,
       variables: {
-        chainUid: "evm:0g",
+        chainUid: "somnia",
         chainId: null
       }
     })
@@ -308,7 +306,7 @@ const EVM_QUERY = gql\\\`
 client.query({
   query: EVM_QUERY,
   variables: {
-    chainUid: "evm:0g",
+    chainUid: "somnia",
     chainId: null
   }
 })
@@ -335,14 +333,13 @@ Use the following query to retrieve RPC endpoints, REST endpoints, and explorer 
     label: 'curl',
     language: 'bash',
     content: `
-# fetch-keplr-config.sh
 curl --request POST \\
   --header 'content-type: application/json' \\
   --url 'https://testnet.api.euclidprotocol.com/graphql' \\
   --data '{
     "query": "query Keplr_config($chainId: String, $chainUid: String) { chains { keplr_config(chain_id: $chainId, chain_uid: $chainUid) { chainID chainName rpc rest explorer_url } } }",
     "variables": {
-      "chainUid": "cosmos:osmosis",
+      "chainUid": "injective",
       "chainId": null
     }
   }'
@@ -429,7 +426,7 @@ const KEPLR_QUERY = gql\\\`
 client.query({
   query: KEPLR_QUERY,
   variables: {
-    chainUid: "cosmos:osmosis",
+    chainUid: "injective",
     chainId: null
   }
 })

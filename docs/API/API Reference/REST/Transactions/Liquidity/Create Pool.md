@@ -17,6 +17,73 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
 <Tabs
   tabs={[
     {
+      id: 'evm-create-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl --request POST \\
+  --url https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create \\
+  --header 'content-type: application/json' \\
+  --data '{
+  "sender": {
+    "address": "0x887e4aac216674d2c432798f851C1Ea5d505b2E1",
+    "chain_uid": "base"
+  },
+  "pair": {
+    "token_1": {
+      "token": "ron",
+      "token_type": {
+        "native": {
+          "denom": "ron"
+        }
+      },
+      "amount": "5000000000000000000"
+    },
+    "token_2": {
+      "token": "axs",
+      "token_type": {
+        "smart": {
+          "contract_address": "0x3c4e17b9056272ce1b49f6900d8cfd6171a1869d"
+        }
+      },
+      "amount": "5000000000000000000"
+    }
+  },
+  "slippage_tolerance_bps": 30,
+  "lp_token_name": "RON.AXS",
+  "lp_token_decimal": 18,
+  "lp_token_symbol": "RONAXS",
+  "pool_config": {
+    "pool_type": "stable",
+    "amp_factor": null
+  },
+  "timeout": "3600"
+}'`
+    },
+    {
+      id: 'evm-create-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "msgs": [
+    {
+      "chainId": "84532",
+      "data": "0x095ea7b300...",
+      "gasLimit": "0x186A0",
+      "to": "0x3c4e17b9056272ce1b49f6900d8cfd6171a1869d",
+      "value": "0x0"
+    },
+    {
+      "chainId": "84532",
+      "data": "0x327bc3f9000...",
+      "gasLimit": "0x493E0",
+      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
+      "value": "0x4563918244f40000"
+    }
+  ],
+  "type": "evm"
+}`
+    },
+    {
       id: 'cosmos-request',
       label: 'Cosmos Request',
       language: 'bash',
@@ -121,73 +188,6 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
     }
   ]
 }`
-    },
-    {
-      id: 'evm-create-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl --request POST \\
-  --url https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create \\
-  --header 'content-type: application/json' \\
-  --data '{
-  "sender": {
-    "address": "0x887e4aac216674d2c432798f851C1Ea5d505b2E1",
-    "chain_uid": "base"
-  },
-  "pair": {
-    "token_1": {
-      "token": "ron",
-      "token_type": {
-        "native": {
-          "denom": "ron"
-        }
-      },
-      "amount": "5000000000000000000"
-    },
-    "token_2": {
-      "token": "axs",
-      "token_type": {
-        "smart": {
-          "contract_address": "0x3c4e17b9056272ce1b49f6900d8cfd6171a1869d"
-        }
-      },
-      "amount": "5000000000000000000"
-    }
-  },
-  "slippage_tolerance_bps": 30,
-  "lp_token_name": "RON.AXS",
-  "lp_token_decimal": 18,
-  "lp_token_symbol": "RONAXS",
-  "pool_config": {
-    "pool_type": "stable",
-    "amp_factor": null
-  },
-  "timeout": "3600"
-}'`
-    },
-    {
-      id: 'evm-create-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "msgs": [
-    {
-      "chainId": "84532",
-      "data": "0x095ea7b300...",
-      "gasLimit": "0x186A0",
-      "to": "0x3c4e17b9056272ce1b49f6900d8cfd6171a1869d",
-      "value": "0x0"
-    },
-    {
-      "chainId": "84532",
-      "data": "0x327bc3f9000...",
-      "gasLimit": "0x493E0",
-      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
-      "value": "0x4563918244f40000"
-    }
-  ],
-  "type": "evm"
-}`
     }
   ]}
 />
@@ -196,8 +196,8 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create
 
 | **Field**                 | **Type**                                                       | **Description**                                                                 |
 |---------------------------|----------------------------------------------------------------|---------------------------------------------------------------------------------|
-| `sender`                  | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser) | Address and chain initiating the transaction. Defaults to sender.              |
-| `pair`                    | [`PairWithDenomAndAmount`](/docs/API/API%20Reference/common%20types.md#pairwithdenomandamount) | Contains both tokens with types and amounts.                                   |
+| `sender`                  | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Address and chain initiating the transaction. Defaults to sender.              |
+| `pair`                    | [`PairWithDenom`](/docs/API/API%20Reference/common%20types.md#pairwithdenom) | Contains both tokens with types and amounts.                                   |
 | `slippage_tolerance_bps` | `u64`                                                          | Slippage tolerance in basis points (e.g., 30 = 0.3%).                          |
 | `lp_token_name`           | `string`                                                       | Name of the liquidity pool token.                                              |
 | `lp_token_symbol`         | `string`                                                       | Symbol of the liquidity pool token.                                            |

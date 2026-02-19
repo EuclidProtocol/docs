@@ -12,8 +12,10 @@ The [Remove Liquidity](../../API%20Reference/REST/Transactions/Liquidity/Remove%
 ```bash
 pair
 lp_allocation
+vlp_address
+receiver
+sender
 timeout
-cross_chain_addresses
 ```
 We will go through all the steps needed to get each of the parameters.
 
@@ -244,7 +246,7 @@ Now when the user specifies the amount, you can do a check to make sure the amou
 :::note
 - Use the responses we got in all the previous steps for the fields.
 - For sender address and chain_uid use the ones from the connected chain. In the example below, we are using a Keplr wallet.
-- The `cross_chain_addresses` are taken as an input from the user. The addresses for different chains can be fetched from the wallet using the chain Id.
+- Set `receiver` to the chain/address that should receive withdrawn assets.
 :::
 
 <Tabs
@@ -256,10 +258,13 @@ Now when the user specifies the amount, you can do a check to make sure the amou
       content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove", {
   lp_allocation: data.lp_allocation, // Amount of LP tokens to remove
   vlp_address: data.vlp_address, // Address of the LP token contract
+  pair: data.pair, // token_1 and token_2 symbols
+  receiver: data.receiver, // target chain/address for withdrawn assets
   sender: {
     address: wallet!.bech32Address,
     chain_uid: chain!.chain_uid,
   },
+  timeout: "60"
 }).then((res) => res.data as TxResult);`
     },
     {
@@ -269,10 +274,13 @@ Now when the user specifies the amount, you can do a check to make sure the amou
       content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove", {
   lp_allocation: data.lp_allocation,
   vlp_address: data.vlp_address,
+  pair: data.pair,
+  receiver: data.receiver,
   sender: {
     address: walletAddress,
     chain_uid: chainUid
-  }
+  },
+  timeout: "60"
 }).then((res) => res.data);`
     }
   ]}

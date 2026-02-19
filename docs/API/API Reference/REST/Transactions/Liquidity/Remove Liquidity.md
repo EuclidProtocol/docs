@@ -12,6 +12,49 @@ Generates a transaction to remove liquidity from a pool.
 <Tabs
   tabs={[
     {
+      id: 'evm-remove-request',
+      label: 'EVM Request',
+      language: 'bash',
+      content: `curl -X 'POST' \
+  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "lp_allocation": "1000000",
+    "vlp_address": "euclid1fa7tuuwmd5r3r40ujtrz82xxnxx8l4v2u74x9643v0c9j0h698qs6hx5nz",
+    "pair": {
+      "token_1": "inj",
+      "token_2": "usdc"
+    },
+    "receiver": {
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "chain_uid": "base"
+    },
+    "sender": {
+      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "chain_uid": "base"
+    },
+    "timeout": "60"
+}'`
+    },
+    {
+      id: 'evm-remove-response',
+      label: 'EVM Response',
+      language: 'json',
+      content: `{
+  "msgs": [
+    {
+      "chainId": "84532",
+      "data": "0x4000aea000000000000000000000000000a739e4479...",
+      "gasLimit": "0x493E0",
+      "to": "0x0000000000000000000000000000000000000000",
+      "value": "0x0"
+    }
+  ],
+  "type": "evm"
+}`
+    },
+    {
       id: 'cosmos-remove-request',
       label: 'Cosmos Request',
       language: 'bash',
@@ -22,10 +65,19 @@ Generates a transaction to remove liquidity from a pool.
   -d '{
     "lp_allocation": "1000000",
     "vlp_address": "euclid1fa7tuuwmd5r3r40ujtrz82xxnxx8l4v2u74x9643v0c9j0h698qs6hx5nz",
+    "pair": {
+      "token_1": "inj",
+      "token_2": "usdc"
+    },
+    "receiver": {
+      "address": "inj1ugsn0llmegjn2q6fulexr4dwtazjcnvmgwhlj7",
+      "chain_uid": "injective"
+    },
     "sender": {
       "address": "inj1ugsn0llmegjn2q6fulexr4dwtazjcnvmgwhlj7",
       "chain_uid": "injective"
-    }
+    },
+    "timeout": "60"
 }'`
     },
     {
@@ -56,51 +108,6 @@ Generates a transaction to remove liquidity from a pool.
     }
   ]
 }`
-    },
-    {
-      id: 'evm-remove-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "lp_allocation": "1000000",
-    "vlp_address": "euclid1fa7tuuwmd5r3r40ujtrz82xxnxx8l4v2u74x9643v0c9j0h698qs6hx5nz",
-    "sender": {
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "chain_uid": "base"
-    },
-    "cross_chain_addresses": [
-      {
-        "user": {
-          "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml",
-          "chain_uid": "osmosis"
-        },
-        "limit": {
-          "less_than_or_equal": "600000"
-        }
-      }
-    ]
-}'`
-    },
-    {
-      id: 'evm-remove-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "msgs": [
-    {
-      "chainId": "84532",
-      "data": "0x4000aea000000000000000000000000000a739e4479...",
-      "gasLimit": "0x493E0",
-      "to": "0x0000000000000000000000000000000000000000",
-      "value": "0x0"
-    }
-  ],
-  "type": "evm"
-}`
     }
   ]}
 />
@@ -110,6 +117,8 @@ Generates a transaction to remove liquidity from a pool.
 | **Field**                 | **Type**                                                                                             | **Description**                                                                 |
 |---------------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | `lp_allocation`           | `string`                                                                                            | Amount of LP tokens to remove (in smallest unit).                              |
-| `vlp_address`             | `string`                                                                                            | Address of the Virtual Liquidity Pool (VLP) smart contract.                     |
-| `sender`                  | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser)            | Wallet address and chain of the user initiating the removal.                   |
-| `cross_chain_addresses`   | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` | Optional set of addresses to specify where the assets should be released. The first element specified in the vector has highest priority and so on. Defaults to the sender.                          |
+| `vlp_address`             | `string`                                                                                            | Address of the Virtual Liquidity Pool (VLP) smart contract.                    |
+| `pair`                    | [`PairToken`](/docs/API/API%20Reference/common%20types.md#pairtoken)                               | Pair tokens used for liquidity removal (`token_1`, `token_2`).                 |
+| `receiver`                | [`CrossChainUser`](/docs/API/API%20Reference/common%20types.md#crosschainuser)                     | Receiver for the withdrawn assets.                                              |
+| `sender`                  | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Wallet address and chain of the user initiating the removal.                   |
+| `timeout`                 | `string`                                                                                            | Optional timeout in seconds.                                                    |

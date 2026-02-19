@@ -158,6 +158,10 @@ const config: Config = {
               label: "Planet Euclid",
               href: "https://planet.euclidprotocol.io/",
             },
+            {
+              label: "Euclid Scan",
+              href: "https://scan.euclidprotocol.io/",
+            },
           ],
         },
         {
@@ -187,6 +191,10 @@ const config: Config = {
             {
               label: "GitHub",
               href: "https://github.com/EuclidProtocol",
+            },
+            {
+              label: "Contact Us",
+              href: "mailto:general@euclidswap.io",
             },
             {
               label: "LLM Guide",
