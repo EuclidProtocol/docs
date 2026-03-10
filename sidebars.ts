@@ -135,6 +135,17 @@ const sidebars: SidebarsConfig = {
             "API/Integrations/Aggregators/track-execution",
           ],
         },
+        {
+          type: "category",
+          label: "Meta Transaction Integration",
+          items: [
+            "API/Integrations/Meta Transaction integration/meta-tx-integration-overview",
+            "API/Integrations/Meta Transaction integration/meta-tx-generate-message",
+            "API/Integrations/Meta Transaction integration/meta-tx-build-payload",
+            "API/Integrations/Meta Transaction integration/meta-tx-sign-payload",
+            "API/Integrations/Meta Transaction integration/meta-tx-broadcast",
+          ],
+        },
       ],
     },
     {
@@ -284,6 +295,7 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "API/API Reference/REST/Transactions/Tracking/Track Swap Transaction",
                     "API/API Reference/REST/Transactions/Tracking/Track Transactions",
+                    "API/API Reference/REST/Transactions/Tracking/Meta Track",
                   ],
                 },
                 {

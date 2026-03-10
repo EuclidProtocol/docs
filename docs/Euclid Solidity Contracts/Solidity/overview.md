@@ -9,164 +9,65 @@ import Tabs from '@site/src/components/Tabs';
 
 In the [Architecture Overview](../../Architecture%20Overview/General%20Overview.md), we explored the core components that make up the Euclid Unified Liquidity layer. This section covers the Solidity (EVM) smart contracts that power Euclid on EVM-compatible chains.
 
-Since the Factory smart contract is the only entry point for users/projects to interact with the Euclid layer, we will be providing a breakdown of the execute messages as well as the queries. For the rest of the contracts, no messages can be called directly on them so we are only interested in the available queries.
-
+Since the Factory smart contract is the main entry point for users/projects to interact with the Euclid layer, this page focuses on the common Solidity types used across Factory methods.
 
 ## Common Types
-A list of structs that are used in many of our contracts.
-
-
-### TokenWithDenom
-
-Represents a token identifier along with its token type (native, smart, or voucher).
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-struct TokenWithDenom {
-    string token;        
-    TokenType token_type; 
-}
-`
-}
-]} />
-
-| **Field**     | **Type**     | **Description**                                                   |
-|---------------|--------------|-------------------------------------------------------------------|
-| `token`       | `string`     | The token Id for the token (e.g., `"usdc"`, `"weth"`, `"dai"`). |
-| `token_type`  | [`TokenType`](#tokentype) | The token's type (native, smart, or voucher).           |
-
-### PairWithDenom
-
-Defines a token pair. Each token includes its name and token type.
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-struct PairWithDenom {
-    TokenWithDenom token_1;
-    TokenWithDenom token_2;
-}
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "pair_with_denom": {
-    "token_1": {
-      "token": "amoy",
-      "token_type": {
-        "native": {
-          "denom": "pol"
-        }
-      }
-    },
-    "token_2": {
-      "token": "euclid",
-      "token_type": {
-        "smart": {
-          "contract_address": "0x1e..."
-        }
-      }
-    }
-  }
-}
-`
-}
-]} />
-
-| Field     | Description                          |
-|-----------|--------------------------------------|
-| `token_1` | Information about the first token.   |
-| `token_2` | Information about the second token.  |
-
-
-
-
-### PairWithDenomAndAmount
-
-Specifies a token pair, their denoms, and an amount for each. Used when adding liquidity to a pool.
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-struct PairWithDenomAndAmount {
-    TokenWithDenomAndAmount token_1;
-    TokenWithDenomAndAmount token_2;
-}
-
-struct TokenWithDenomAndAmount {
-    string token;
-    uint256 amount;
-    TokenType token_type;
-}
-`
-}
-]} />
-
-| **Field**     | **Type**                     | **Description**                             |
-|---------------|------------------------------|---------------------------------------------|
-| `token_1`     | `TokenWithDenomAndAmount`    | First token in the pair.                    |
-| `token_2`     | `TokenWithDenomAndAmount`    | Second token in the pair.                   |
-
-
-#### TokenWithDenomAndAmount
-| **Field**       | **Type**       | **Description**                                              |
-|-----------------|----------------|--------------------------------------------------------------|
-| `token`         | `string`       | The internal token ID (e.g., `"usdc"`, `"eth"`).             |
-| `amount`        | `uint256`      | The amount of the token being added to the pool.             |
-| `token_type`    | [`TokenType`](#tokentype) | Specifies if the token is native, smart contract, or voucher. |
 
 ### TokenType
+
 Defines the type and source of a token used in the Euclid protocol.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-overview-tokentype',
 label: 'Solidity',
 language: 'solidity',
 content: `
-enum TokenTypeEnum {
-    Native,
-    Smart,
-    Voucher
-}
 struct TokenType {
-    TokenTypeEnum tokenType;
-    string denom;           
-    address contractAddress; 
+    string token_type;
+    string native_denom;
+    string erc20_address;
 }
 `
 }
 ]} />
 
-| **Field**         | **Type**           | **Description**                                      |
-|-------------------|--------------------|------------------------------------------------------|
-| `tokenType`       | `TokenTypeEnum`    | The type of token: Native, Smart, or Voucher.        |
-| `denom`           | `string`           | The denomination (only used for native tokens).      |
-| `contractAddress` | `address`          | The ERC20 contract address (only used for smart tokens). |
+| Field | Type | Description |
+|---|---|---|
+| `token_type` | `string` | The token type (native, smart, or voucher). |
+| `native_denom` | `string` | Native token denom. |
+| `erc20_address` | `string` | ERC20 contract address. |
 
+### TokenWithDenom
 
-
-### TokenWithDenomAndAmount
-
-Used when providing liquidity or other functions that require a token, amount, and type.
+Represents a token identifier along with its token type.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-overview-tokenwithdenom',
+label: 'Solidity',
+language: 'solidity',
+content: `
+struct TokenWithDenom {
+    string token;
+    TokenType token_type;
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `token` | `string` | The token id. |
+| `token_type` | [`TokenType`](#tokentype) | The token type (native, smart, or voucher). |
+
+### TokenWithDenomAndAmount
+
+Represents a token id, amount, and token type.
+
+<Tabs tabs={[
+{
+id: 'solidity-overview-tokenwithdenomandamount',
 label: 'Solidity',
 language: 'solidity',
 content: `
@@ -179,20 +80,19 @@ struct TokenWithDenomAndAmount {
 }
 ]} />
 
-| **Field**     | **Type**     | **Description**                             |
-|---------------|--------------|---------------------------------------------|
-| `token`       | `string`     | The token ID/name.                          |
-| `amount`      | `uint256`    | Amount of the token.                        |
-| `token_type`  | [`TokenType`](#tokentype)  | Whether the token is native, smart-based, or voucher.|
-
+| Field | Type | Description |
+|---|---|---|
+| `token` | `string` | The token id. |
+| `amount` | `uint256` | The amount for this token. |
+| `token_type` | [`TokenType`](#tokentype) | The denomination/type of this token. |
 
 ### Pair
 
-Token pair consisting of two token IDs.
+Token pair consisting of two token ids.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-overview-pair',
 label: 'Solidity',
 language: 'solidity',
 content: `
@@ -204,145 +104,256 @@ struct Pair {
 }
 ]} />
 
-| Field     | Type     | Description                          |
-|-----------|----------|--------------------------------------|
-| `token_1` | `string` | ID of the first token in the pair.   |
-| `token_2` | `string` | ID of the second token in the pair.  |
+| Field | Type | Description |
+|---|---|---|
+| `token_1` | `string` | Id of the first token in the pair. |
+| `token_2` | `string` | Id of the second token in the pair. |
 
----
+### PairWithDenomAndAmount
 
-### CrossChainUser
-
-Represents a user address on a different blockchain.
+Token pair including amount and denomination details for each side.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-overview-pairwithdenomandamount',
 label: 'Solidity',
 language: 'solidity',
 content: `
-struct CrossChainUser {
-    string chain_uid;
-    string address;
+struct PairWithDenomAndAmount {
+    TokenWithDenomAndAmount token_1;
+    TokenWithDenomAndAmount token_2;
 }
 `
 }
 ]} />
 
-| Field       | Type     | Description                            |
-|-------------|----------|----------------------------------------|
-| `chain_uid` | `string` | Unique identifier of the target chain. |
-| `address`   | `string` | The user’s address on that chain.      |
+| Field | Type | Description |
+|---|---|---|
+| `token_1` | [`TokenWithDenomAndAmount`](#tokenwithdenomandamount) | Information about the first token in the pair. |
+| `token_2` | [`TokenWithDenomAndAmount`](#tokenwithdenomandamount) | Information about the second token in the pair. |
 
----
+### CrossChainUser
 
-### CrossChainUserWithLimit
-
-An extension of `CrossChainUser` that adds an optional withdrawal limit, refund fallback, and optional message forwarding.
+Represents a user on a specific chain.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-overview-crosschainuser',
 label: 'Solidity',
 language: 'solidity',
 content: `
-struct CrossChainUserWithLimit {
-    CrossChainUser user;
-    Limit limit;
-    TokenType preferred_denom;
-    string refund_address;
-    EuclidReceive forwarding_message;
+struct CrossChainUser {
+    string chain_uid;
+    string sender;
 }
+`
+}
+]} />
 
- struct EuclidReceive {
-     //Encoded message to be executed on the destination
+| Field | Type | Description |
+|---|---|---|
+| `chain_uid` | `string` | Unique identifier of the chain. |
+| `sender` | `string` | User address on that chain. |
+
+### EuclidReceive
+
+Message payload forwarded to destination integrations.
+
+<Tabs tabs={[
+{
+id: 'solidity-overview-euclidreceive',
+label: 'Solidity',
+language: 'solidity',
+content: `
+struct EuclidReceive {
     bytes data;
-    // Optional metadata to log with the transaction
-    string meta;
-    }
-
-struct Limit {
-    LimitType limitType;
-    uint256 value;
 }
+`
+}
+]} />
 
-    enum LimitType {
-    LessThanOrEqual,
-    Equal,
-    GreaterThanOrEqual
+| Field | Type | Description |
+|---|---|---|
+| `data` | `bytes` | Binary payload forwarded to receive hook target. |
+
+### Limit
+
+Defines a per-recipient release policy.
+
+<Tabs tabs={[
+{
+id: 'solidity-overview-limit',
+label: 'Solidity',
+language: 'solidity',
+content: `
+struct Limit {
+    string limit_type;
+    uint256 value;
 }
 `
 },
 {
-id: 'json-example',
+id: 'solidity-overview-limit-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "user": {
-    "chain_uid": "amoy",
-    "address": "0x123abc..."
-  },
-  "limit": {
-    "limitType": "LessThanOrEqual",
+  "equal": {
+    "limit_type": "equal",
     "value": "1000000"
   },
-  "preferred_denom": {
-    "native": {
-      "denom": "usdc"
-    }
+  "less_than_or_equal": {
+    "limit_type": "less_than_or_equal",
+    "value": "1000000"
   },
-  "refund_address": "0x123abc...",
-  "forwarding_message": {
-    "data": "0xabcdef123456...",
-    "meta": "some-meta"
+  "greater_than_or_equal": {
+    "limit_type": "greater_than_or_equal",
+    "value": "1000000"
+  },
+  "dynamic": {
+    "limit_type": "dynamic",
+    "value": "0"
   }
 }
 `
 }
 ]} />
 
-| **Field**              | **Type**                            | **Description**                                                                 |
-|------------------------|-------------------------------------|---------------------------------------------------------------------------------|
-| `user`                 | [`CrossChainUser`](#crosschainuser) | The destination user and their chain UID.                                       |
-| `limit`                | `Limit`                   | Optional constraint on how much to release to the user.                         |
-| `preferred_denom`      | [`TokenType`](#tokentype)           | Preferred token format/type for receiving assets (native, smart, or voucher).             |
-| `refund_address`       | `string`                            | Optional refund address if transaction fails. Defaults to sender if omitted.    |
-| `forwarding_message`   | `EuclidReceive`  | Optional message to be executed on the receiver's side post-transfer.           |
+| Field | Type | Description |
+|---|---|---|
+| `limit_type` | `string` | One of: `equal`, `less_than_or_equal`, `greater_than_or_equal`, `dynamic`. |
+| `value` | `uint256` | Value for limit evaluation. For `dynamic`, this should be `0`. |
 
-#### `LimitType`
+`limit_type` options:
 
-Defines how much a cross-chain recipient is allowed or required to receive during fund distribution. This enum is used inside the `limit` field of a `CrossChainUserWithLimit`.
+| Option | Description |
+|---|---|
+| `dynamic` | Use when final output is unknown before execution (for example swaps).<br/>Forces release of the full computed amount to this recipient.<br/>If full release is not possible, the transaction fails. |
+| `equal` | Enforces an exact release amount.<br/>Useful when expected output is known beforehand. |
+| `greater_than_or_equal` | Sets a minimum amount that must be released.<br/>Execution can still release more than this threshold. |
+| `less_than_or_equal` | Sets a maximum amount that may be released to this recipient.<br/>Useful for capped distribution across recipients. |
 
-- `LessThanOrEqual`: This is the most flexible option. It allows the recipient to receive up to the specified amount, but not more. If the total available is less than the limit, the contract will still send whatever it can. This is useful when distributing across multiple recipients. For example, if two addresses both have a limit of 1000 and 1500 is available, firt one will receive 1000, and the other 500.
+### Recipient
 
-- `Equal`: This enforces that the recipient must receive exactly the specified amount. If that exact amount isn’t available, the transaction will fail. This is used when an exact value is required and partial delivery is not acceptable.
-
-- `GreaterThanOrEqual`: This option guarantees that the recipient receives at least the specified amount. If the amount available is less than the specified minimum, the transaction fails. It’s useful for recipients that need a minimum amount to trigger a downstream action (like a forwarding message). Typically, this is used on the last or only recipient in the list.
-
-### Pagination
-
-Used in query messages to paginate responses.
+Defines destination release instructions for swap/deposit/transfer outputs.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-overview-recipient',
 label: 'Solidity',
 language: 'solidity',
 content: `
-struct Pagination {
-    uint256 min;
-    uint256 max;
-    uint64 skip;
-    uint64 limit;
+struct Recipient {
+    CrossChainUser recipient;
+    Limit amount;
+    TokenType denom;
+    bytes forwarding_message;
+    bool unsafe_refund_as_voucher;
 }
 `
 }
 ]} />
 
-| Field     | Type     | Description                                      |
-|-----------|----------|--------------------------------------------------|
-| `min`     | `uint256`| Lower bound filter (inclusive).                  |
-| `max`     | `uint256`| Upper bound filter (inclusive).                  |
-| `skip`    | `uint64` | How many records to skip.                        |
-| `limit`   | `uint64` | Max number of results to return.                 |
+| Field | Type | Description |
+|---|---|---|
+| `recipient` | [`CrossChainUser`](#crosschainuser) | Destination cross-chain user receiving funds. |
+| `amount` | [`Limit`](#limit) | Release amount constraint for this recipient. |
+| `denom` | [`TokenType`](#tokentype) | Denomination/type to release for this recipient. |
+| `forwarding_message` | `bytes` | Optional encoded message for downstream integrations. |
+| `unsafe_refund_as_voucher` | `bool` | If true, failed release refunds vouchers to `recipient` (unsafe because router cannot validate destination address). If false, refund goes back to sender. |
+
+### CrossChainConfig
+
+Cross-chain transport options attached to execute messages.
+
+<Tabs tabs={[
+{
+id: 'solidity-overview-crosschainconfig',
+label: 'Solidity',
+language: 'solidity',
+content: `
+struct CrossChainConfig {
+    uint256 timeout;
+    bytes ack_response;
+    string meta;
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `timeout` | `uint256` | Timeout for the cross chain message. |
+| `ack_response` | `bytes` | Ack response for the cross chain message. Will be used to trigger a receive message on sender when ack is received. |
+| `meta` | `string` | Meta data for the cross chain message. Will be used to store any additional data needed for the cross chain message as event attributes. |
+
+### PoolConfig
+
+Pool configuration used during pool creation.
+
+<Tabs tabs={[
+{
+id: 'solidity-overview-poolconfig',
+label: 'Solidity',
+language: 'solidity',
+content: `
+struct PoolConfig {
+    string pool_type;
+    uint256 amp_factor;
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `pool_type` | `string` | Pool type literal: `stable` or `cp` (constant product). |
+| `amp_factor` | `uint256` | Amplification factor used for `stable` pools. |
+
+### NextSwapPair
+
+Describes a hop in a swap route.
+
+<Tabs tabs={[
+{
+id: 'solidity-overview-nextswappair',
+label: 'Solidity',
+language: 'solidity',
+content: `
+struct NextSwapPair {
+    string token_in;
+    string token_out;
+    bool test_fail;
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `token_in` | `string` | Input token id for this route step. |
+| `token_out` | `string` | Output token id for this route step. |
+| `test_fail` | `bool` | Testing flag used in module tests. Keep `false` for normal usage. |
+
+### PartnerFee
+
+Partner fee settings for swap transactions.
+
+<Tabs tabs={[
+{
+id: 'solidity-overview-partnerfee',
+label: 'Solidity',
+language: 'solidity',
+content: `
+struct PartnerFee {
+    uint64 partner_fee_bps;
+    address recipient;
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `partner_fee_bps` | `uint64` | Partner fee in basis points. Max supported value is `30` (0.3%). |
+| `recipient` | `address` | Address receiving the partner fee. |

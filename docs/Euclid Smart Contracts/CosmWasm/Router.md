@@ -386,7 +386,7 @@ content: `
 |-----------------------|------------------------------------|-------------------------------------------------------|
 | `token`                 | [`Token`](overview#token)                             | Identifier for the token.                             |
 | `amount`                | Uint128                   | Amount of token to be released.      |
-| cross_chain_addresses | [`Vec<CrossChainUserWithLimit>`](overview#crosschainuserwithlimit)       |  A set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.|
+| cross_chain_addresses | [`Vec<Recipient>`](overview#recipient)       |  A set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there is any leftover funds, they are added to the user's virtual balance for the address that initiated the message. If limit is not specified, then the maximum amount is taken.|
 
 ### QueryTokenEscrows
 Returns a list of chain UIDs belonging to the chains that have an escrow with the specified token Id. Also returns the amount of tokens available on each chain.
@@ -604,4 +604,3 @@ pub struct TokenDenom {
 |--------------|-------------|--------------------------------------|
 | `chain_uid`      | [`ChainUid`](overview#crosschainuser)     | The unique Id of the chain that the denom resides on.  |
 | `token_type`      | [`TokenType`](overview#tokentype)      | The type of token. Returns the denom for native and CW20 contract address for CW20 token.  |
-

@@ -5,7 +5,7 @@ import Tabs from '@site/src/components/Tabs';
 
 # Meta Sign
 
-Create a meta-transaction signature payload for one or more messages.
+Build and return the signable meta-transaction payload for one or more prepared messages.
 
 ### Request URL
 
@@ -13,230 +13,68 @@ Create a meta-transaction signature payload for one or more messages.
 https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 ```
 
-### Examples
+### Example
 
 <Tabs
   tabs={[
     {
-      id: 'evm-request',
-      label: 'EVM Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
+      id: 'request',
+      label: 'Request',
+      language: 'json',
+      content: `{
   "msgs": [
     {
       "msg": {
-        "call_data": "{\\\"transfer\\\":{\\\"amount\\\":\\\"1000000\\\",\\\"from\\\":{\\\"chain_uid\\\":\\\"bsc\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"msg\\\":\\\"\\\",\\\"recipient_address\\\":{\\\"user\\\":{\\\"chain_uid\\\":\\\"0g\\\",\\\"address\\\":\\\"0x5abfe1234567890cdefabc1234567890defabc01\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"limit\\\":{\\\"less_than_or_equal\\\":\\\"1000000\\\"},\\\"preferred_denom\\\":{\\\"voucher\\\":{}},\\\"forwarding_message\\\":{\\\"data\\\":\\\"0x\\\"}},\\\"sender\\\":{\\\"chain_uid\\\":\\\"bsc\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"timeout\\\":\\\"60\\\",\\\"token\\\":\\\"euclid\\\",\\\"tx_id\\\":\\\"\\\"}}",
-        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq"
+        "target": "lumen1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsvavs5t",
+        "call_data": "{...}"
       },
-      "type": "transfer_voucher"
-    }
-  ],
-  "sender_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-  "sender_chain_uid": "bsc"
-}'`
-    },
-    {
-      id: 'evm-response',
-      label: 'EVM Response',
-      language: 'json',
-      content: `{
-  "meta": [
-    {
-      "type": "transfer_voucher",
+      "type": "withdraw_voucher",
       "token_in": "",
       "token_out": "",
-      "token": "",
-      "amount_in": "",
+      "token": "euclid",
+      "amount_in": "90000",
       "amount_out": ""
     }
   ],
-  "payload": {
-    "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "signer_prefix": "0x",
-    "signer_chain_uid": "bsc",
-    "call_data": [
-      {
-        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq",
-        "call_data": {
-          "transfer": {
-            "amount": "1000000",
-            "from": {
-              "chain_uid": "bsc",
-              "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-              "amount": "1000000"
-            },
-            "msg": "",
-            "recipient_address": {
-              "user": {
-                "chain_uid": "0g",
-                "address": "0x5abfe1234567890cdefabc1234567890defabc01",
-                "amount": "1000000"
-              },
-              "limit": {
-                "less_than_or_equal": "1000000"
-              },
-              "preferred_denom": {
-                "voucher": {}
-              },
-              "forwarding_message": {
-                "data": "0x"
-              }
-            },
-            "sender": {
-              "chain_uid": "bsc",
-              "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-              "amount": "1000000"
-            },
-            "timeout": "60",
-            "token": "euclid",
-            "tx_id": ""
-          }
-        }
-      }
-    ],
-    "expiry": 1768847836,
-    "nonce": "1768847776"
-  },
-  "types": [
-    "transfer_voucher"
-  ]
+  "sender_address": "lumen10f4xyp6sq3g47yf6m8dfxh233r878wqjegmtug",
+  "sender_chain_uid": "lumen"
 }`
     },
     {
-      id: 'cosmos-request',
-      label: 'Cosmos Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "msgs": [
-    {
-      "msg": {
-        "call_data": "{\\\"transfer\\\":{\\\"amount\\\":\\\"1000000\\\",\\\"from\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"msg\\\":\\\"\\\",\\\"recipient_address\\\":{\\\"user\\\":{\\\"chain_uid\\\":\\\"0g\\\",\\\"address\\\":\\\"0x5abfe1234567890cdefabc1234567890defabc01\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"limit\\\":{\\\"less_than_or_equal\\\":\\\"1000000\\\"},\\\"preferred_denom\\\":{\\\"voucher\\\":{}},\\\"forwarding_message\\\":{\\\"data\\\":\\\"0x\\\"}},\\\"sender\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"timeout\\\":\\\"60\\\",\\\"token\\\":\\\"euclid\\\",\\\"tx_id\\\":\\\"\\\"}}",
-        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq"
-      },
-      "type": "transfer_voucher"
-    }
-  ],
-  "sender_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-  "sender_chain_uid": "neuron"
-}'`
-    },
-    {
-      id: 'cosmos-response',
-      label: 'Cosmos Response',
+      id: 'response',
+      label: 'Response',
       language: 'json',
       content: `{
+  "cosmos_raw_payload": "...",
+  "evm_raw_payload": "...",
   "meta": [
     {
-      "type": "transfer_voucher",
+      "type": "withdraw_voucher",
       "token_in": "",
       "token_out": "",
-      "token": "",
-      "amount_in": "",
+      "token": "euclid",
+      "amount_in": "90000",
       "amount_out": ""
     }
   ],
   "payload": {
-    "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "signer_prefix": "0x",
-    "signer_chain_uid": "neuron",
+    "signer_address": "lumen10f4xyp6sq3g47yf6m8dfxh233r878wqjegmtug",
+    "signer_prefix": "lumen",
+    "signer_chain_uid": "lumen",
     "call_data": [
       {
-        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq",
-        "call_data": {
-          "transfer": {
-            "amount": "1000000",
-            "from": {
-              "chain_uid": "neuron",
-              "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-              "amount": "1000000"
-            },
-            "msg": "",
-            "recipient_address": {
-              "user": {
-                "chain_uid": "0g",
-                "address": "0x5abfe1234567890cdefabc1234567890defabc01",
-                "amount": "1000000"
-              },
-              "limit": {
-                "less_than_or_equal": "1000000"
-              },
-              "preferred_denom": {
-                "voucher": {}
-              },
-              "forwarding_message": {
-                "data": "0x"
-              }
-            },
-            "sender": {
-              "chain_uid": "neuron",
-              "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-              "amount": "1000000"
-            },
-            "timeout": "60",
-            "token": "euclid",
-            "tx_id": ""
-          }
-        }
+        "target": "lumen1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsvavs5t",
+        "call_data": "{...}"
       }
     ],
-    "expiry": 1768847504,
-    "nonce": "1768847444"
+    "expiry": 1772797186,
+    "nonce": "1772796886"
   },
-  "types": [
-    "transfer_voucher"
-  ]
+  "types": ["withdraw_voucher"]
 }`
     }
   ]}
 />
-
-### Decoded call_data (transfer example)
-
-```json
-{
-  "transfer": {
-    "amount": "1000000",
-    "from": {
-      "chain_uid": "neuron",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "amount": "1000000"
-    },
-    "msg": "",
-    "recipient_address": {
-      "user": {
-        "chain_uid": "0g",
-        "address": "0x5abfe1234567890cdefabc1234567890defabc01",
-        "amount": "1000000"
-      },
-      "limit": {
-        "less_than_or_equal": "1000000"
-      },
-      "preferred_denom": {
-        "voucher": {}
-      },
-      "forwarding_message": {
-        "data": "0x"
-      }
-    },
-    "sender": {
-      "chain_uid": "neuron",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "amount": "1000000"
-    },
-    "timeout": "60",
-    "token": "euclid",
-    "tx_id": ""
-  }
-}
-```
 
 ### Parameters
 
@@ -245,17 +83,37 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 | `msgs` | `object[]` | Array of messages to be signed. Each item includes `type` and `msg`. |
 | `sender_address` | `string` | Address of the signer. |
 | `sender_chain_uid` | `string` | Chain UID of the signer. |
+| `expiry_time` | `string` | Optional expiry duration (for example `5m`, `10m`, `1h`). |
 
 ### MsgItem
 
 | Field | Type | Description |
 |---|---|---|
-| `type` | `string` | Message type (e.g., `transfer_voucher`, `swap`, `withdraw_voucher`). |
+| `type` | `string` | Message type (for example `swap`, `transfer_voucher`, `withdraw_voucher`). |
 | `msg` | `object` | Message payload containing `target` and `call_data`. |
+| `token_in` | `string` | Optional metadata token-in value used for tracking. |
+| `token_out` | `string` | Optional metadata token-out value used for tracking. |
+| `token` | `string` | Optional metadata token value used for tracking. |
+| `amount_in` | `string` | Optional metadata input amount used for tracking. |
+| `amount_out` | `string` | Optional metadata output amount used for tracking. |
 
-### MsgPayload
+### Payload Response
 
 | Field | Type | Description |
 |---|---|---|
-| `target` | `string` | Contract address to receive the meta transaction. |
-| `call_data` | `string` | Encoded call data payload for the meta transaction. |
+| `cosmos_raw_payload` | `string` | Cosmos-ready encoded sign bytes. |
+| `evm_raw_payload` | `string` | EVM personal-sign formatted message. |
+| `meta` | `object[]` | Meta summary for tracking. |
+| `payload` | `object` | Canonical payload that is signed and later broadcast. |
+| `types` | `string[]` | Transaction types included in the payload. |
+
+### Payload Object
+
+| Field | Type | Description |
+|---|---|---|
+| `signer_address` | `string` | Address of the signer. |
+| `signer_prefix` | `string` | Signing prefix (for example `0x`, `lumen`, `cosmos`). |
+| `signer_chain_uid` | `string` | Chain UID of the signer. |
+| `call_data` | `object[]` | Array of target call-data items. |
+| `expiry` | `number` | Expiry timestamp for the signed payload. |
+| `nonce` | `string` | Nonce used for replay protection. |
