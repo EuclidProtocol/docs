@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
         "Architecture Overview/Concepts/Smart Routing",
         "Architecture Overview/Concepts/Vouchers",
         "Architecture Overview/Concepts/Meta Transactions",
+        "Architecture Overview/Concepts/Bi-directional Liquidity",
         "Architecture Overview/Automated-Market-Makers",
       ],
     },
