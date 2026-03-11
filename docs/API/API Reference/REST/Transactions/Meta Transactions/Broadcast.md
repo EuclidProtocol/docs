@@ -20,37 +20,40 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
     {
       id: 'request',
       label: 'Request',
-      language: 'json',
-      content: `{
-  "wallet_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-  "chain_uid": "monad",
-  "signature": "09943f80f12cd92bd159cf08d3dc3505cdc22017fef2929f1d5f2946da952056...",
-  "pub_key": "0437c6e8362883ef2497eed6adefa91e8d11783a1f4d535334d6e9d3040bbbd3...",
-  "call_data": {
-    "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "signer_prefix": "0x",
-    "signer_chain_uid": "monad",
-    "call_data": [
+      language: 'bash',
+      content: `curl --request POST \\
+  --url https://api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast \\
+  --header 'content-type: application/json' \\
+  --data '{
+    "wallet_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+    "chain_uid": "monad",
+    "signature": "09943f80f12cd92bd159cf08d3dc3505cdc22017fef2929f1d5f2946da952056...",
+    "pub_key": "0437c6e8362883ef2497eed6adefa91e8d11783a1f4d535334d6e9d3040bbbd3...",
+    "call_data": {
+      "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "signer_prefix": "0x",
+      "signer_chain_uid": "monad",
+      "call_data": [
+        {
+          "target": "euclid1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsy5hngy",
+          "call_data": "{...}"
+        }
+      ],
+      "expiry": 1771849451,
+      "nonce": "1771849151"
+    },
+    "types": ["swap"],
+    "meta": [
       {
-        "target": "euclid1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsy5hngy",
-        "call_data": "{...}"
+        "type": "swap",
+        "token_in": "mon",
+        "token_out": "usdt",
+        "token": "",
+        "amount_in": "40000000000000000",
+        "amount_out": ""
       }
-    ],
-    "expiry": 1771849451,
-    "nonce": "1771849151"
-  },
-  "types": ["swap"],
-  "meta": [
-    {
-      "type": "swap",
-      "token_in": "mon",
-      "token_out": "usdt",
-      "token": "",
-      "amount_in": "40000000000000000",
-      "amount_out": ""
-    }
-  ]
-}`
+    ]
+  }'`
     },
     {
       id: 'response',

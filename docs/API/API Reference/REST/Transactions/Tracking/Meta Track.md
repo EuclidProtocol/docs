@@ -20,11 +20,13 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/meta-txn
     {
       id: 'request',
       label: 'Request',
-      language: 'json',
-      content: `{
-  "chain": "vsl",
-  "queue_id": "0x887e4aac216674d2c432798f851c1ea5d505b2e1-monad-20260120161734"
-}`
+      language: 'bash',
+      content: `curl --request POST \\
+  --url https://api.euclidprotocol.com/api/v1/txn/track/meta-txn \\
+  --header 'content-type: application/json' \\
+  --data '{
+    "queue_id": "1772700210201242"
+}'`
     },
     {
       id: 'response',

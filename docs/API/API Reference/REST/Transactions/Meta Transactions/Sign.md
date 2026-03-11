@@ -20,25 +20,28 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign
     {
       id: 'request',
       label: 'Request',
-      language: 'json',
-      content: `{
-  "msgs": [
-    {
-      "msg": {
-        "target": "lumen1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsvavs5t",
-        "call_data": "{...}"
-      },
-      "type": "withdraw_voucher",
-      "token_in": "",
-      "token_out": "",
-      "token": "euclid",
-      "amount_in": "90000",
-      "amount_out": ""
-    }
-  ],
-  "sender_address": "lumen10f4xyp6sq3g47yf6m8dfxh233r878wqjegmtug",
-  "sender_chain_uid": "lumen"
-}`
+      language: 'bash',
+      content: `curl --request POST \\
+  --url https://api.euclidprotocol.com/api/v1/execute/meta-txn/sign \\
+  --header 'content-type: application/json' \\
+  --data '{
+    "msgs": [
+      {
+        "msg": {
+          "target": "lumen1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsvavs5t",
+          "call_data": "{...}"
+        },
+        "type": "withdraw_voucher",
+        "token_in": "",
+        "token_out": "",
+        "token": "euclid",
+        "amount_in": "90000",
+        "amount_out": ""
+      }
+    ],
+    "sender_address": "lumen10f4xyp6sq3g47yf6m8dfxh233r878wqjegmtug",
+    "sender_chain_uid": "lumen"
+  }'`
     },
     {
       id: 'response',
