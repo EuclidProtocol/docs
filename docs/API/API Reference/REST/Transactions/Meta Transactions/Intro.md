@@ -18,7 +18,7 @@ For a deeper overview, see [Meta Transactions concepts](/docs/Architecture%20Ove
 The flow has 4 steps:
 1. Generate transaction message
 2. Build meta-transaction payload
-3. Sign payload
+3. Sign stringified payload
 4. Broadcast signed transaction
 
 ```text
@@ -40,7 +40,7 @@ User
  ▼
  Client
  │
- ├─ 3) Sign payload
+ ├─ 3) Sign stringified payload
  ▼
  Client
  │

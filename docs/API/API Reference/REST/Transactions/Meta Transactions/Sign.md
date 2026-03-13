@@ -83,7 +83,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 
 | Field | Type | Description |
 |---|---|---|
-| `msgs` | `object[]` | Array of messages to be signed. Each item includes `type` and `msg`. |
+| `msgs` | `object[]` | Array of prepared messages to be signed. Use the message items returned by the previous transaction-construction steps (for example swap, transfer, withdraw). Each item includes `type` and `msg`. |
 | `sender_address` | `string` | Address of the signer. |
 | `sender_chain_uid` | `string` | Chain UID of the signer. |
 | `expiry_time` | `string` | Optional expiry duration (for example `5m`, `10m`, `1h`). |
@@ -93,7 +93,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 | Field | Type | Description |
 |---|---|---|
 | `type` | `string` | Message type (for example `swap`, `transfer_voucher`, `withdraw_voucher`). |
-| `msg` | `object` | Message payload containing `target` and `call_data`. |
+| `msg` | `object` | Message payload containing `target` and `call_data`, typically copied from the corresponding transaction-construction response in the previous step. |
 | `token_in` | `string` | Optional metadata token-in value used for tracking. |
 | `token_out` | `string` | Optional metadata token-out value used for tracking. |
 | `token` | `string` | Optional metadata token value used for tracking. |

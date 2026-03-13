@@ -24,6 +24,10 @@ You can also sign `evm_raw_payload` if your wallet flow expects a preformatted m
 2. Sign with your backend-managed key.
 3. Return `signature` and `pub_key`.
 
+:::tip
+For programmatic/private-key signing, sign the chain-specific raw payload directly (`evm_raw_payload` or `cosmos_raw_payload`), not a re-serialized `payload` object.
+:::
+
 ## Output Needed For Step 4
 
 - `signature`
