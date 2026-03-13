@@ -7,8 +7,12 @@ sidebar_position: 5
 Base URL: `https://oms.liquideuclid.com`
 
 Authenticated endpoints require headers from [Authentication Headers](./authentication-and-api-keys.md).
+For OMS requests, use `Authorization: Bearer <token>` (OMS validates Bearer JWT auth).
 
-Use this page in order: find the route in the index, then open the matching endpoint section to see request params and a real response example.
+## Quick Navigation
+- [Endpoint Index](#endpoint-index): complete OMS route list.
+- [Endpoints](#endpoints): request params and response examples for each route.
+- [Response Schemas](#response-schemas): reusable payload shapes used across endpoints.
 
 ## Endpoint Index
 

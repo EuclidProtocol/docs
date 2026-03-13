@@ -6,7 +6,6 @@ sidebar_position: 4
 
 - Audience: Trading API integrators.
 - What this page covers: What API users can expect about execution responses, data freshness, retries, and settlement visibility.
-- Where to go next: Cross-check behavior in [Engine API](../developer-reference/engine-api.md), [OMS API](../developer-reference/oms-service.md), and [Market Data API](../developer-reference/market-data.md).
 
 ## Reliability Mental Model
 For API users, reliability is best understood as three separate timelines:
@@ -41,3 +40,6 @@ Short-lived eventual-consistency windows are normal in distributed async pipelin
 - `VSL publication` is the public verification step for the rollup state update.
 
 For integrators, the key distinction is simple: trade execution is fast, public verification follows on the VSL cadence, and read APIs may briefly trail the execution response.
+
+## Read Next
+Cross-check behavior in [Engine API](../developer-reference/engine-api.md), [OMS API](../developer-reference/oms-service.md), and [Market Data API](../developer-reference/market-data.md).

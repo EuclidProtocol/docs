@@ -6,7 +6,6 @@ sidebar_position: 2
 
 - Audience: Trading API integrators.
 - What this page covers: Matching priority, price-level behavior, order-type constraints, and state gating.
-- Where to go next: Read [Architecture](./architecture.md) and [Reliability](./reliability.md), then map behavior to [Engine API](../developer-reference/engine-api.md).
 
 ## Price-Time Priority
 The orderbook uses price-time priority:
@@ -51,3 +50,8 @@ If a pair uses scaled integer units:
 - Human-readable decimal conversion is an integration-layer responsibility.
 
 This design avoids floating-point precision errors in matching and settlement math.
+
+## Read Next
+- [Architecture](./architecture.md)
+- [Reliability](./reliability.md)
+- [Engine API](../developer-reference/engine-api.md)

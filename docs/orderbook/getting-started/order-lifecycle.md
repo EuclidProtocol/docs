@@ -6,7 +6,6 @@ sidebar_position: 2
 
 - Audience: Trading API integrators.
 - What this page covers: Place/cancel behavior, order status outcomes, and where to query final state.
-- Where to go next: Review [Orderbook Mechanics](../concepts/orderbook-mechanics.md), then endpoint details in [Engine API](../developer-reference/engine-api.md) and [OMS Service](../developer-reference/oms-service.md).
 
 ## Place Order Path
 1. Client submits an order to engine (`POST /orders` or `POST /signed_orders`).
@@ -67,3 +66,8 @@ sequenceDiagram
     S->>S: Mark cancelled / remove from open
     E-->>C: 200 cancelled
 ```
+
+## Read Next
+- [Orderbook Mechanics](../concepts/orderbook-mechanics.md)
+- [Engine API](../developer-reference/engine-api.md)
+- [OMS Service](../developer-reference/oms-service.md)

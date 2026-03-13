@@ -113,7 +113,7 @@ This makes the liquidity layer useful not only for onchain applications, but als
 
 ## Read Next
 
-- [General Overview](../General Overview.md)
-- [Liquidity Consensus Layer](./Liquidity Consensus Layer.md)
+- [General Overview](../General%20Overview.md)
+- [Liquidity Consensus Layer](./Liquidity%20Consensus%20Layer.md)
 - [Automated Market Makers](../Automated-Market-Makers.md)
 - [Orderbook Overview](../../orderbook/overview.md)

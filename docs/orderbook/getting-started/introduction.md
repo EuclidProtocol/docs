@@ -6,9 +6,8 @@ sidebar_position: 1
 
 - Audience: Trading API integrators.
 - What this page covers: The rollup execution model, who this stack is for, and the three core integration paths.
-- Where to go next: Read [Order Lifecycle](./order-lifecycle.md), then [Concepts Overview](../concepts/overview.md), then [Authentication Headers](../developer-reference/authentication-and-api-keys.md). For underlying settlement architecture, see [Virtual Settlement Layer](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-settlement-layer.md).
 
-## What This Platform Is
+## What You’re Integrating
 This stack is an orderbook rollup: it runs matching offchain for performance, then posts proofs and full state commitments directly to the Virtual Settlement Layer (VSL) every 2 blocks.
 
 That architecture gives integrators two properties at the same time:
@@ -58,8 +57,8 @@ graph LR
 ```
 
 ## Read Next
-- [Order Lifecycle](./order-lifecycle.md)
-- [Orderbook Mechanics](../concepts/orderbook-mechanics.md)
-- [Architecture](../concepts/architecture.md)
-- [Engine API](../developer-reference/engine-api.md)
-- [Market Data WebSocket](../developer-reference/market-data.md#websocket-channels)
+- [Order Lifecycle](./order-lifecycle.md): maps request outcomes (`open`, `partially_filled`, `filled`, `cancelled`, `rejected`) to the APIs you should query after each action.
+- [Orderbook Mechanics](../concepts/orderbook-mechanics.md): explains matching behavior, order-type constraints, and market/pair state gates that affect acceptance.
+- [Architecture](../concepts/architecture.md): shows how execution, OMS, and market-data projections relate so you can design for consistency windows.
+- [Engine API](../developer-reference/engine-api.md): production request/response contract for trading, balances, and withdrawals.
+- [Market Data WebSocket](../developer-reference/market-data.md#websocket-channels): channel payloads and runtime key formats needed for real-time feeds.

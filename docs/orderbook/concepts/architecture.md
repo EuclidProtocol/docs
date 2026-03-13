@@ -6,7 +6,7 @@ sidebar_position: 3
 
 - Audience: Trading API integrators.
 - What this page covers: High-level system layers, rollup proof/state flow to VSL, and how API surfaces map to those layers.
-- Where to go next: Read [Reliability Model](./reliability.md), then the public interfaces in [Engine API](../developer-reference/engine-api.md), [OMS API](../developer-reference/oms-service.md), and [Market Data API](../developer-reference/market-data.md). For chain-side settlement context, see [Virtual Settlement Layer](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-settlement-layer.md).
+- Where to go next: Read [Reliability Model](./reliability.md), then the public interfaces in [Engine API](../developer-reference/engine-api.md), [OMS API](../developer-reference/oms-service.md), and [Market Data API](../developer-reference/market-data.md). For chain-side settlement context, see [Liquidity Consensus Layer](../../Architecture%20Overview/Concepts/Liquidity%20Consensus%20Layer.md).
 
 ## Rollup Settlement Model
 This orderbook runs as a rollup execution layer:
@@ -49,7 +49,7 @@ graph TD
 | Place or cancel trades | [Engine API](../developer-reference/engine-api.md) |
 | Fetch open orders or order history | [OMS API](../developer-reference/oms-service.md) |
 | Fetch depth, trades, or klines | [Market Data API](../developer-reference/market-data.md) |
-| Understand final settlement guarantees | [Virtual Settlement Layer](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-settlement-layer.md) |
+| Understand final settlement guarantees | [Liquidity Consensus Layer](../../Architecture%20Overview/Concepts/Liquidity%20Consensus%20Layer.md) |
 
 ## Integration Implication
 - Use the trading API for actions that change state.

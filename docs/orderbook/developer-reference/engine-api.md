@@ -8,7 +8,13 @@ Base URL: `https://api.liquideuclid.com`
 
 Authenticated endpoints require headers from [Authentication Headers](./authentication-and-api-keys.md).
 
-Use this page in order: find the route in the index, then jump to the matching section for request params, request body, and response example.
+## Quick Navigation
+- [Endpoint Index](#endpoint-index): full route list grouped by function.
+- [Public Market Endpoints](#public-market-endpoints): health, time, assets, pairs, depth, and public trades.
+- [Account and Balance Endpoints](#account-and-balance-endpoints): authenticated account, balances, and user trades.
+- [Order Endpoints](#order-endpoints): place, signed place, cancel, cancel-replace, and cancel-all.
+- [Withdrawal Endpoints](#withdrawal-endpoints): request, status, permit, and relay.
+- [Error Format](#error-format): standard error response shape and `error_code`.
 
 ## Endpoint Index
 

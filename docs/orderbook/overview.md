@@ -4,11 +4,13 @@ description: Developer-first introduction to Euclid's orderbook stack, architect
 sidebar_position: 1
 ---
 
-- Audience: Developers building trading bots, connectors, broker adapters, or trading UIs.
-- What this page covers: What this orderbook rollup is, how it scales matching without giving up decentralization, and how to start integrating quickly.
-- Where to go next: Read [Introduction](./getting-started/introduction.md), then [Order Lifecycle](./getting-started/order-lifecycle.md), then [Engine API](./developer-reference/engine-api.md). For settlement context, see [Virtual Settlement Layer](../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-settlement-layer.md).
+## Who This Is For
+Developers building trading bots, connectors, broker adapters, or trading UIs.
 
-## What an Orderbook Is
+## What This Page Covers
+What this orderbook rollup is, how it scales matching without giving up decentralization, and the fastest path to integration.
+
+## What Is an Orderbook
 An orderbook is a market model where buyers and sellers place limit orders at specific prices. The matching engine continuously matches compatible buy and sell orders using price-time priority.
 
 At a high level:

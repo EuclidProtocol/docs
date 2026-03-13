@@ -6,7 +6,7 @@ sidebar_position: 1
 
 - Audience: Trading API integrators.
 - What this page covers: Shared terminology and concept map across rollup execution, proof posting, market views, and trading workflows.
-- Where to go next: Read [Orderbook Mechanics](./orderbook-mechanics.md), [Architecture](./architecture.md), then [Reliability](./reliability.md). For full settlement-layer background, see [Virtual Settlement Layer](../../Architecture%20Overview/Architecture/Virtual%20Settlement%20Layer/virtual-settlement-layer.md).
+- Where to go next: Read [Orderbook Mechanics](./orderbook-mechanics.md), [Architecture](./architecture.md), then [Reliability](./reliability.md). For full settlement-layer background, see [Liquidity Consensus Layer](../../Architecture%20Overview/Concepts/Liquidity%20Consensus%20Layer.md).
 
 ## Core Mental Model
 The orderbook stack is a rollup execution engine:
