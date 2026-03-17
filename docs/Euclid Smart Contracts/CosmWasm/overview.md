@@ -8,7 +8,7 @@ import Tabs from '@site/src/components/Tabs';
 
 In the [Architecture Overview](../../Architecture%20Overview/General%20Overview.md), we took a look at the different components that make up the Euclid Unified Liquidity layer. In this section, we will be looking at each of the Euclid smart contracts and their respective messages. 
 
-Since the Factory smart contract is the only entry point for users/projects to interact with the Euclid layer, we will be providing a breakdown of the execute messages as well as the queries. For the rest of the contracts, no messages can be called directly on them so we are only interested in the available queries.
+Factory is still the primary entry point for user-facing flows, so we provide a detailed breakdown of its execute and query messages. Other Euclid contracts also expose execute messages, but many are protocol/admin/internal integration paths.
 
 
 ## Common Types 
@@ -48,7 +48,8 @@ content: `
       "token": "injective",
       "token_type": {
         "native": {
-          "denom": "uinj
+          "denom": "uinj"
+        }
       }
     }
   }
@@ -57,15 +58,20 @@ content: `
 }
 ]} />
 
-| Field     | Type     | Description                          |
-|-----------|----------|--------------------------------------|
-| `token_1` | [TokenWithDenom](#tokenwithdenom)   | Information about the first token.   |
-| `token_2` | [TokenWithDenom](#tokenwithdenom)    | Information about the second token.  |
+| Field | Type | Description |
+|---|---|---|
+| `token_1` | [`TokenWithDenom`](#tokenwithdenom) | Information about the first token. |
+| `token_2` | [`TokenWithDenom`](#tokenwithdenom) | Information about the second token. |
 
 ### PairWithDenomAndAmount
 Struct that specifies a token pair, their denoms, and an amount for each. Used when adding liquidity to a pool.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example-pairwithdenomandamount',
+label: 'Rust',
+language: 'rust',
+content: `
 pub struct PairWithDenomAndAmount {
     pub token_1: TokenWithDenomAndAmount,
     pub token_2: TokenWithDenomAndAmount,
@@ -77,35 +83,57 @@ pub struct TokenWithDenomAndAmount {
     pub amount: Uint128,
     pub token_type: TokenType,
 }
-```
+`
+}
+]} />
 
-| **Name**       | **Type**     | **Description**                   |
-|----------------|--------------|-----------------------------------|
-| `token`        | [`Token`](#token)      | The token Id for the token.|
-| `amount`       | `Uint128`    | The amount for the token.            |
-| `token_type`   | [`TokenType`](#tokentype)  | The type of token.               |
+| Field | Type | Description |
+|---|---|---|
+| `token_1` | [`TokenWithDenomAndAmount`](#tokenwithdenomandamount) | Information about the first token in the pair. |
+| `token_2` | [`TokenWithDenomAndAmount`](#tokenwithdenomandamount) | Information about the second token in the pair. |
+
+### TokenWithDenomAndAmount
+
+| Field | Type | Description |
+|---|---|---|
+| `token` | [`Token`](#token) | The token id. |
+| `amount` | `Uint128` | The amount for this token. |
+| `token_type` | [`TokenType`](#tokentype) | The denomination/type of this token. |
 
 
 
 ### TokenWithDenom
 Specifies information on one token. The name of the token and type is specified.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example-tokenwithdenom',
+label: 'Rust',
+language: 'rust',
+content: `
 pub struct TokenWithDenom {
     pub token: Token,
     pub token_type: TokenType,
 }
-
-```
-| Field        | Description                          |
-|--------------|--------------------------------------|
-| `token`      | The name of the token.        |
-| `token_type` | Type of the token (native or smart). |
+`
+}
+]} />
+| Field | Type | Description |
+|---|---|---|
+| `token` | [`Token`](#token) | The token id. |
+| `token_type` | [`TokenType`](#tokentype) | The token type (native, smart, or voucher). |
 
 ### Token
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example-token',
+label: 'Rust',
+language: 'rust',
+content: `
 pub struct Token(String);
-```
+`
+}
+]} />
 
 ### TokenType
 The type of token. Can be either:
@@ -113,30 +141,50 @@ The type of token. Can be either:
 - **Smart**: CW20 token. Specify the contract address for the token.
 - **Voucher**: Euclid voucher tokens.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example-tokentype',
+label: 'Rust',
+language: 'rust',
+content: `
 pub enum TokenType {
     Native { denom: String },
     Smart { contract_address: String },
     Voucher {},
 }
-```
+`
+}
+]} />
+
+| Variant | Payload | Description |
+|---|---|---|
+| `Native` | `{ denom: String }` | Native token denom. |
+| `Smart` | `{ contract_address: String }` | CW20 contract address. |
+| `Voucher` | `{}` | Euclid voucher token. |
 
 ### Pair
 The token Id for each token in a token pair.
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example-pair',
+label: 'Rust',
+language: 'rust',
+content: `
 pub struct Pair {
     pub token_1: Token,
     pub token_2: Token,
 }
-```
-| **Name**   | **Type** | **Description**                |
-|------------|----------|--------------------------------|
-| **token_1**| [`Token`](#token)  | Id of the first token in the pair. |
-| **token_2**| [`Token`](#token)  | Id of the second token in the pair.|
+`
+}
+]} />
+| Field | Type | Description |
+|---|---|---|
+| `token_1` | [`Token`](#token) | Id of the first token in the pair. |
+| `token_2` | [`Token`](#token) | Id of the second token in the pair. |
 
-### CrossChainUserWithLimit
+### Recipient
 
-Struct that defines a user address and limit on a specified chain. Used to define the amount and type of funds an address on a specific chain should receive.
+Defines where funds should be released, how much should be released, and in what denomination.
 
 <Tabs tabs={[
 {
@@ -144,30 +192,12 @@ id: 'rust-example',
 label: 'Rust',
 language: 'rust',
 content: `
-pub struct CrossChainUserWithLimit {
-    pub user: CrossChainUser,
-    pub limit: Option<Limit>,
-    pub preferred_denom: Option<TokenType>,
-    pub refund_address: Option<String>,
-    // Refund to recipient if release fails, default: false and it will return to original sender (Use this with caution as there is no validation check for wrong addresses)
-    pub unsafe_refund_voucher_to_recipient: Option<bool>,
-    // Forward message to be executed on the destination chain
-    pub forwarding_message: Option<EuclidReceive>,
-    // Vcoin Transfer Message to be executed. If this message is provided, escrow release will be skipped.
-    pub vcoin_msg: Option<Binary>,
-}
-
-pub struct EuclidReceive {
-    // Binary message to attach
-    pub data: Binary,
-    // Metadata to be logged into events for some off chain oracle/analytics
-    pub meta: Option<String>,
-}
-
-pub enum Limit {
-    LessThanOrEqual(Uint128),
-    Equal(Uint128),
-    GreaterThanOrEqual(Uint128),
+pub struct Recipient {
+    pub recipient: CrossChainUser,
+    pub amount: Limit,
+    pub denom: TokenType,
+    pub forwarding_message: Option<String>,
+    pub unsafe_refund_as_voucher: Option<bool>,
 }
 
 
@@ -179,65 +209,134 @@ label: 'JSON',
 language: 'json',
 content: `
 {
-  "user": {
+  "recipient": {
     "chain_uid": "osmosis",
     "address": "osmo1..."
   },
-  "limit": {
+  "amount": {
     "less_than_or_equal": "1000000"
   },
-  "preferred_denom": {
+  "denom": {
     "native": {
       "denom": "uosmo"
     }
   },
-  "refund_address": "osmo1...",
-  "forwarding_message": {
-    "data": "aGVsbG8gd29ybGQ=",  
-    "meta": "{\"asset_in_type\":\"native\}"
-  }
+  "forwarding_message": "eyJzd2FwX2hvb2siOnsicGFpciI6eyJ0b2tlbl8xIjoidXNkdCIsInRva2VuXzIiOiJ1c2RjIn19fQ==",
+  "unsafe_refund_as_voucher": false
 }
 `
 }
 
 ]} />
 
-| Field       | Type                            | Description                                                            |
-|-------------|---------------------------------|------------------------------------------------------------------------|
-| `user`      | [`CrossChainUser`](#crosschainuser) | Information on the cross chain user including the address and chain UID.          |
-| `limit`     | `Option<Limit>`               | An optional limit to the amount of assets to be received by the user address. Will take the maximum amount if not specified. |
-| `preferred_denom`    | [`TokenType`](#tokentype)                 | The user's preferred token type to receive.                                              |
-| `refund_address`     | `Option<String>`                    | An optional address where refunds should be sent in case the transaction fails. Defaults to the sender.                                                  |
-| `forwarding_message` | `Option<EuclidReceive>`             | Optional message to execute on the receiving address.               |
+| Field | Type | Description |
+|---|---|---|
+| `recipient` | [`CrossChainUser`](#crosschainuser) | Destination cross-chain user receiving funds. |
+| `amount` | [`Limit`](#limit) | Release amount constraint for this recipient. |
+| `denom` | [`TokenType`](#tokentype) | Denomination/type to release for this recipient. |
+| `forwarding_message` | `Option<String>` | Optional encoded message for downstream integrations. |
+| `unsafe_refund_as_voucher` | `Option<bool>` | If true, vouchers are refunded to the recipient when release fails. This is unsafe because the router cannot validate whether the recipient address is valid. If false, the sender receives the refund. |
 
-#### `LimitType`
+### Limit
 
-Defines how much a cross-chain recipient is allowed or required to receive during fund distribution. This enum is used inside the `limit` field of a `CrossChainUserWithLimit`.
+Defines how much a recipient is allowed or required to receive during distribution.
 
-- `LessThanOrEqual`: This is the most flexible option. It allows the recipient to receive up to the specified amount, but not more. If the total available is less than the limit, the contract will still send whatever it can. This is useful when distributing across multiple recipients. For example, if two addresses both have a limit of 1000 and 1500 is available, firt one will receive 1000, and the other 500.
+<Tabs tabs={[
+{
+id: 'rust-example-limit',
+label: 'Rust',
+language: 'rust',
+content: `
+pub enum Limit {
+    LessThanOrEqual(Uint128),
+    Equal(Uint128),
+    GreaterThanOrEqual(Uint128),
+    Dynamic(Uint128),
+}
+`
+}
+]} />
 
-- `Equal`: This enforces that the recipient must receive exactly the specified amount. If that exact amount isn’t available, the transaction will fail. This is used when an exact value is required and partial delivery is not acceptable.
+| Variant | Payload | Description |
+|---|---|---|
+| `Dynamic` | `Uint128` | Use when final output is unknown before execution (for example swaps). It forces release of the full computed amount to this recipient; if full release is not possible, the transaction fails. |
+| `Equal` | `Uint128` | Enforces an exact release amount. Useful when expected output is known beforehand. |
+| `GreaterThanOrEqual` | `Uint128` | Sets a minimum amount that must be released. Execution can still release more than this threshold. |
+| `LessThanOrEqual` | `Uint128` | Sets a maximum amount that may be released to this recipient. |
 
-- `GreaterThanOrEqual`: This option guarantees that the recipient receives at least the specified amount. If the amount available is less than the specified minimum, the transaction fails. It’s useful for recipients that need a minimum amount to trigger a downstream action (like a forwarding message). Typically, this is used on the last or only recipient in the list.
+Example behavior:
+- Swap from token A to token B where exact output is unknown: use `Dynamic` to force all actual output to be released to the recipient.
+- Using `GreaterThanOrEqual(1)` only sets a floor, so partial release above that floor can still pass.
+- Using `Equal` is best when exact output is known in advance.
+
+### CrossChainConfig
+Common cross-chain options for timeout, acknowledgements, and metadata.
+
+<Tabs tabs={[
+{
+id: 'rust-example-crosschainconfig',
+label: 'Rust',
+language: 'rust',
+content: `
+pub struct CrossChainConfig {
+    pub timeout: Option<u64>,
+    pub ack_response: Option<Binary>,
+    pub meta: Option<String>,
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `timeout` | `Option<u64>` | Optional timeout in seconds for cross-chain flow. |
+| `ack_response` | `Option<Binary>` | Optional acknowledgement payload returned to sender side. |
+| `meta` | `Option<String>` | Optional metadata emitted/logged for integrations. |
+
+### EuclidReceive
+Wrapper used for protocol receive hooks.
+
+<Tabs tabs={[
+{
+id: 'rust-example-euclidreceive',
+label: 'Rust',
+language: 'rust',
+content: `
+pub struct EuclidReceive {
+    pub msg: Binary,
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `msg` | `Binary` | Binary payload forwarded to receive hook target. |
 
 ### CrossChainUser
 
 The chain UID and address of the user.
 
-```rust
+<Tabs tabs={[
+{
+id: 'rust-example-crosschainuser',
+label: 'Rust',
+language: 'rust',
+content: `
 pub struct CrossChainUser {
     pub chain_uid: ChainUid,
     pub address: String,
 }
 
-
 pub struct ChainUid(String);
-```
+`
+}
+]} />
 
-| Field       | Type                | Description                            |
-|-------------|---------------------|----------------------------------------|
-| `chain_uid` | `ChainUid` | The unique identifier of the chain.    |
-| `address`   | `String`            | The address of the user on the chain.  |
+| Field | Type | Description |
+|---|---|---|
+| `chain_uid` | `ChainUid` | Unique identifier of the chain. |
+| `address` | `String` | User address on that chain. |
 
 ### Pagination
 Struct used to define pagination parameters.
@@ -275,9 +374,9 @@ content: `
 
 ]} />
 
-| **Field**  | **Type**           | **Description**                                  | 
-|------------|--------------------|--------------------------------------------------|
-| `min`      | `T`  | The lower limit value, used to filter results. Type depends on the type of Id used.   |
-| `max`      | `T` | The upper limit value, used to filter results. Type depends on the type of Id used.   | 
-| `skip`     | `u64`    | Number of results to skip from the result set. Defaults to 0 if not specified.   | 
-| `limit`    | `u64`    | Maximum number of results to return. Defaults to 10 if not specified.          | 
+| Field | Type | Description |
+|---|---|---|
+| `min` | `Option<T>` | Lower bound filter. |
+| `max` | `Option<T>` | Upper bound filter. |
+| `skip` | `Option<u64>` | Number of results to skip (default 0). |
+| `limit` | `Option<u64>` | Maximum results to return (default 10). |

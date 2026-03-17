@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Intro
 
-Meta Transactions let users sign intents for voucher actions without paying gas. A relayer/queue submits the signed intent on-chain, and Euclid verifies the signature before executing the action. This makes cross-chain voucher operations fast and user-friendly, while keeping verification on-chain.
+Meta Transactions let users sign intents off-chain while a relayer submits the signed payload on-chain. This enables gas abstraction and a smoother UX.
 
 For a deeper overview, see [Meta Transactions concepts](/docs/Architecture%20Overview/Concepts/Meta%20Transactions).
 
@@ -13,5 +13,45 @@ For a deeper overview, see [Meta Transactions concepts](/docs/Architecture%20Ove
 - Transfer voucher balances
 - Withdraw voucher balances
 
-## Chain Notes (Cosmos vs EVM)
-Meta transaction payloads share the same structure across Cosmos and EVM. The primary differences are the values you provide (e.g., `chain_uid`, addresses, and token identifiers). If chain-specific rules apply to fields like `forwarding_message`, they will be documented here.
+## Meta Transaction Flow
+
+The flow has 4 steps:
+1. Generate transaction message
+2. Build meta-transaction payload
+3. Sign stringified payload
+4. Broadcast signed transaction
+
+```text
+User
+ │
+ ├─ 1) Request meta call-data (swap/transfer/withdraw)
+ ▼
+ Euclid API
+ │
+ │ returns: { msg: { target, call_data }, type, ...meta }
+ ▼
+ Client
+ │
+ ├─ 2) Send msg into /execute/meta-txn/sign
+ ▼
+ Euclid API
+ │
+ │ returns: payload + evm_raw_payload + cosmos_raw_payload
+ ▼
+ Client
+ │
+ ├─ 3) Sign stringified payload
+ ▼
+ Client
+ │
+ ├─ 4) Broadcast signed payload to /execute/meta-txn/broadcast
+ ▼
+ Relayer
+ │
+ └─ Broadcasts transaction on-chain
+```
+
+## Notes
+- Meta transaction endpoints are chain-agnostic in shape.
+- Use your chain-specific values for `chain_uid`, addresses, and token identifiers.
+- Signing depends on `signer_prefix` and `signer_chain_uid`.
