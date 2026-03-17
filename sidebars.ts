@@ -161,6 +161,16 @@ const sidebars: SidebarsConfig = {
         "API/Integrations/Intro",
         {
           type: "category",
+          label: "Integration Models",
+          items: [
+            "API/Integrations/Integration Models/Intro",
+            "API/Integrations/Integration Models/Performance",
+            "API/Integrations/Integration Models/Moving Assets",
+            "API/Integrations/Integration Models/Choosing the Right Model",
+          ],
+        },
+        {
+          type: "category",
           label: "Aggregators",
           items: [
             "API/Integrations/Aggregators/Intro",
