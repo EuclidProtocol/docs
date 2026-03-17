@@ -5,7 +5,7 @@ import Tabs from '@site/src/components/Tabs';
 
 # Meta Withdraw
 
-Create a meta-transaction payload to withdraw voucher balances.
+Create a meta-transaction message payload to withdraw voucher balances.
 
 ### Request URL
 
@@ -13,177 +13,58 @@ Create a meta-transaction payload to withdraw voucher balances.
 https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw
 ```
 
-### Examples
+### Example
 
 <Tabs
   tabs={[
     {
-      id: 'evm-request',
-      label: 'EVM Request',
+      id: 'request',
+      label: 'Request',
       language: 'bash',
       content: `curl -X 'POST' \
   'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "amount": "1000000",
+  "amount": "90000",
   "cross_chain_addresses": [
     {
-      "forwarding_message": {
-        "data": "0x",
-        "meta": ""
+      "user": {
+        "address": "lumen10f4xyp6sq3g47yf6m8dfxh233r878wqjegmtug",
+        "chain_uid": "lumen"
       },
-      "limit": {
-        "less_than_or_equal": "1000000"
+      "amount": {
+        "less_than_or_equal": "90000"
       },
-      "preferred_denom": {
+      "denom": {
         "voucher": {}
       },
-      "user": {
-        "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-        "amount": "1000000",
-        "chain_uid": "0g"
-      }
+      "forwarding_message": "",
+      "unsafe_refund_as_voucher": false
     }
   ],
   "sender": {
-    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "amount": "1000000",
-    "chain_uid": "bsc"
+    "address": "lumen10f4xyp6sq3g47yf6m8dfxh233r878wqjegmtug",
+    "chain_uid": "lumen"
   },
   "timeout": "60",
   "token": "euclid"
 }'`
     },
     {
-      id: 'evm-response',
-      label: 'EVM Response',
+      id: 'response',
+      label: 'Response',
       language: 'json',
       content: `{
   "msg": {
-    "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq",
-    "call_data": {
-      "withdraw": {
-        "amount": "1000000",
-        "cross_chain_addresses": [
-          {
-            "user": {
-              "chain_uid": "0g",
-              "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-              "amount": "1000000"
-            },
-            "limit": {
-              "less_than_or_equal": "1000000"
-            },
-            "preferred_denom": {
-              "voucher": {}
-            },
-            "forwarding_message": {
-              "data": "0x"
-            }
-          }
-        ],
-        "sender": {
-          "chain_uid": "bsc",
-          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-          "amount": "1000000"
-        },
-        "timeout": "60",
-        "token": "euclid",
-        "tx_id": ""
-      }
-    }
+    "target": "euclid1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsy5hngy",
+    "call_data": "{\"transfer_voucher\":{...}}"
   },
   "type": "withdraw_voucher",
   "token_in": "",
   "token_out": "",
   "token": "euclid",
-  "amount_in": "1000000",
-  "amount_out": ""
-}`
-    },
-    {
-      id: 'cosmos-request',
-      label: 'Cosmos Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "amount": "1000000",
-  "cross_chain_addresses": [
-    {
-      "forwarding_message": {
-        "data": "0x",
-        "meta": ""
-      },
-      "limit": {
-        "less_than_or_equal": "1000000"
-      },
-      "preferred_denom": {
-        "voucher": {}
-      },
-      "user": {
-        "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-        "amount": "1000000",
-        "chain_uid": "0g"
-      }
-    }
-  ],
-  "sender": {
-    "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "amount": "1000000",
-    "chain_uid": "neuron"
-  },
-  "timeout": "60",
-  "token": "euclid"
-}'`
-    },
-    {
-      id: 'cosmos-response',
-      label: 'Cosmos Response',
-      language: 'json',
-      content: `{
-  "msg": {
-    "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq",
-    "call_data": {
-      "withdraw": {
-        "amount": "1000000",
-        "cross_chain_addresses": [
-          {
-            "user": {
-              "chain_uid": "0g",
-              "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-              "amount": "1000000"
-            },
-            "limit": {
-              "less_than_or_equal": "1000000"
-            },
-            "preferred_denom": {
-              "voucher": {}
-            },
-            "forwarding_message": {
-              "data": "0x"
-            }
-          }
-        ],
-        "sender": {
-          "chain_uid": "neuron",
-          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-          "amount": "1000000"
-        },
-        "timeout": "60",
-        "token": "euclid",
-        "tx_id": ""
-      }
-    }
-  },
-  "type": "withdraw_voucher",
-  "token_in": "",
-  "token_out": "",
-  "token": "euclid",
-  "amount_in": "1000000",
+  "amount_in": "90000",
   "amount_out": ""
 }`
     }
@@ -197,5 +78,15 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw
 | `amount` | `string` | Amount of voucher tokens to withdraw. |
 | `token` | `string` | Voucher token identifier. |
 | `sender` | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Address and chain initiating the meta transaction. |
-| `cross_chain_addresses` | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` | Recipients for the output asset, with optional limits and forwarding. |
+| `cross_chain_addresses` | [`CrossChainAddressWithLimit[]`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit) | Recipients for the output asset, with optional limits and forwarding. |
 | `timeout` | `string` | Optional timeout in seconds. |
+
+### Response Fields
+
+| Field | Type | Description |
+|---|---|---|
+| `msg.target` | `string` | Router contract address that will receive the message. |
+| `msg.call_data` | `string` | Encoded contract call data. |
+| `type` | `string` | Transaction type (`withdraw_voucher`). |
+| `token` | `string` | Token identifier for this meta message. |
+| `amount_in` | `string` | Input amount tracked for this meta message. |

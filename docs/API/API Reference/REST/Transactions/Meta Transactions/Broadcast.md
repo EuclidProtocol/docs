@@ -5,7 +5,7 @@ import Tabs from '@site/src/components/Tabs';
 
 # Meta Broadcast
 
-Broadcast a signed meta-transaction payload to the network.
+Broadcast a signed meta-transaction payload to the relayer.
 
 ### Request URL
 
@@ -13,130 +13,58 @@ Broadcast a signed meta-transaction payload to the network.
 https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
 ```
 
-### Examples
+### Example
 
 <Tabs
   tabs={[
     {
-      id: 'evm-request',
-      label: 'EVM Request',
+      id: 'request',
+      label: 'Request',
       language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "call_data": {
-    "call_data": [
+      content: `curl --request POST \\
+  --url https://api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast \\
+  --header 'content-type: application/json' \\
+  --data '{
+    "wallet_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+    "chain_uid": "monad",
+    "signature": "09943f80f12cd92bd159cf08d3dc3505cdc22017fef2929f1d5f2946da952056...",
+    "pub_key": "0437c6e8362883ef2497eed6adefa91e8d11783a1f4d535334d6e9d3040bbbd3...",
+    "call_data": {
+      "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
+      "signer_prefix": "0x",
+      "signer_chain_uid": "monad",
+      "call_data": [
+        {
+          "target": "euclid1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsy5hngy",
+          "call_data": "{...}"
+        }
+      ],
+      "expiry": 1771849451,
+      "nonce": "1771849151"
+    },
+    "types": ["swap"],
+    "meta": [
       {
-        "call_data": "{\\\"transfer\\\":{\\\"amount\\\":\\\"1000000\\\",\\\"from\\\":{\\\"chain_uid\\\":\\\"bsc\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"msg\\\":\\\"\\\",\\\"recipient_address\\\":{\\\"user\\\":{\\\"chain_uid\\\":\\\"0g\\\",\\\"address\\\":\\\"0x5abfe1234567890cdefabc1234567890defabc01\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"limit\\\":{\\\"less_than_or_equal\\\":\\\"1000000\\\"},\\\"preferred_denom\\\":{\\\"voucher\\\":{}},\\\"forwarding_message\\\":{\\\"data\\\":\\\"0x\\\"}},\\\"sender\\\":{\\\"chain_uid\\\":\\\"bsc\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"timeout\\\":\\\"60\\\",\\\"token\\\":\\\"euclid\\\",\\\"tx_id\\\":\\\"\\\"}}",
-        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq"
+        "type": "swap",
+        "token_in": "mon",
+        "token_out": "usdt",
+        "token": "",
+        "amount_in": "40000000000000000",
+        "amount_out": ""
       }
-    ],
-    "expiry": 1768847836,
-    "nonce": "1768847776",
-    "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "signer_chain_uid": "bsc",
-    "signer_prefix": "0x"
-  },
-  "chain_uid": "bsc",
-  "pub_key": "0x02c1aab42e1e0f3e19d9c8e0f2f93d6c8b6b9e77f6f5d2a3b3a1f6f8a2f1b1c3d4",
-  "signature": "0x2f9a4c8e0b7d3a1f9c4d6e8f7a5b3c1d9e0f2a4b6c8d0e1f2a3b4c5d6e7f8a9b",
-  "types": [
-    "transfer_voucher"
-  ],
-  "wallet_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-}'`
+    ]
+  }'`
     },
     {
-      id: 'evm-response',
-      label: 'EVM Response',
+      id: 'response',
+      label: 'Response',
       language: 'json',
       content: `{
-  "queue_id": "0x887e4aac216674d2c432798f851c1ea5d505b2e1-bsc-20260120161734"
-}`
-    },
-    {
-      id: 'cosmos-request',
-      label: 'Cosmos Request',
-      language: 'bash',
-      content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "call_data": {
-    "call_data": [
-      {
-        "call_data": "{\\\"transfer\\\":{\\\"amount\\\":\\\"1000000\\\",\\\"from\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"msg\\\":\\\"\\\",\\\"recipient_address\\\":{\\\"user\\\":{\\\"chain_uid\\\":\\\"0g\\\",\\\"address\\\":\\\"0x5abfe1234567890cdefabc1234567890defabc01\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"limit\\\":{\\\"less_than_or_equal\\\":\\\"1000000\\\"},\\\"preferred_denom\\\":{\\\"voucher\\\":{}},\\\"forwarding_message\\\":{\\\"data\\\":\\\"0x\\\"}},\\\"sender\\\":{\\\"chain_uid\\\":\\\"neuron\\\",\\\"address\\\":\\\"0x887e4aac216674d2c432798f851c1ea5d505b2e1\\\",\\\"amount\\\":\\\"1000000\\\"},\\\"timeout\\\":\\\"60\\\",\\\"token\\\":\\\"euclid\\\",\\\"tx_id\\\":\\\"\\\"}}",
-        "target": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq"
-      }
-    ],
-    "expiry": 1768847504,
-    "nonce": "1768847444",
-    "signer_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "signer_chain_uid": "neuron",
-    "signer_prefix": "0x"
-  },
-  "chain_uid": "neuron",
-  "pub_key": "0x02c1aab42e1e0f3e19d9c8e0f2f93d6c8b6b9e77f6f5d2a3b3a1f6f8a2f1b1c3d4",
-  "signature": "0x2f9a4c8e0b7d3a1f9c4d6e8f7a5b3c1d9e0f2a4b6c8d0e1f2a3b4c5d6e7f8a9b",
-  "types": [
-    "transfer_voucher"
-  ],
-  "wallet_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1"
-}'`
-    },
-    {
-      id: 'cosmos-response',
-      label: 'Cosmos Response',
-      language: 'json',
-      content: `{
-  "queue_id": "0x887e4aac216674d2c432798f851c1ea5d505b2e1-neuron-20260120161630"
+  "queue_id": "0x887e4aac216674d2c432798f851c1ea5d505b2e1-monad-20260120161734"
 }`
     }
   ]}
 />
-
-### Decoded call_data (transfer example)
-
-```json
-{
-  "transfer": {
-    "amount": "1000000",
-    "from": {
-      "chain_uid": "neuron",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "amount": "1000000"
-    },
-    "msg": "",
-    "recipient_address": {
-      "user": {
-        "chain_uid": "0g",
-        "address": "0x5abfe1234567890cdefabc1234567890defabc01",
-        "amount": "1000000"
-      },
-      "limit": {
-        "less_than_or_equal": "1000000"
-      },
-      "preferred_denom": {
-        "voucher": {}
-      },
-      "forwarding_message": {
-        "data": "0x"
-      }
-    },
-    "sender": {
-      "chain_uid": "neuron",
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "amount": "1000000"
-    },
-    "timeout": "60",
-    "token": "euclid",
-    "tx_id": ""
-  }
-}
-```
 
 ### Parameters
 
@@ -148,15 +76,15 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
 | `signature` | `string` | Signature for the payload. |
 | `types` | `string[]` | List of message types included in the payload. |
 | `wallet_address` | `string` | Wallet address of the signer. |
-| `meta` | `object[]` | Optional meta transaction context array passed along with broadcast payload. |
+| `meta` | `object[]` | Optional meta transaction context passed with broadcast payload. |
 
 ### CallDataPayload
 
 | Field | Type | Description |
 |---|---|---|
-| `call_data` | `object[]` | Array of target call data items. |
+| `call_data` | `object[]` | Array of target call-data items. |
 | `expiry` | `number` | Expiry timestamp for the signed payload. |
-| `nonce` | `string` | Nonce used for signing. |
+| `nonce` | `string` | Nonce used for signing and replay protection. |
 | `signer_address` | `string` | Address of the signer. |
 | `signer_chain_uid` | `string` | Chain UID of the signer. |
 | `signer_prefix` | `string` | Prefix used for signing. |

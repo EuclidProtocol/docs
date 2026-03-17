@@ -6,84 +6,88 @@ description: "The Factory Smart Contract (EVM)"
 import Tabs from '@site/src/components/Tabs';
 
 :::note
-Each integrated chain has its own factory contract. These contracts will be created by Euclid whenever an integration with a new chain occurs.
+Each integrated chain has its own factory contract. These contracts are created by Euclid whenever an integration with a new chain occurs.
 You can read about the factory architecture [here](../../Architecture%20Overview/Architecture/Integrated%20Chains%20Layer/factory.md).
 :::
 
 ## Execute Messages
 
-List of execute messages that can be performed on the Factory contract.
+List of user-facing execute methods that can be called on the Solidity Factory contract.
 
+### Swap
 
-### Swap Request
-
-:::note
-The `asset_in` is the token being swapped from, and `asset_out` is the token you want to receive. Cross-chain support is built in via the `cross_chain_addresses` field.
-:::
+Performs a swap from `asset_in` into `asset_out`, optionally distributing the output across one or more recipients.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-factory-swap-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
-function swap_request(
-    CrossChainUser memory sender,
-    TokenWithDenom memory asset_in,
+function swap(
+    TokenWithDenom calldata asset_in,
     uint256 amount_in,
-    string memory asset_out,
+    string calldata asset_out,
     uint256 min_amount_out,
-    NextSwapPair[] memory swaps,
-    CrossChainUserWithLimit[] memory cross_chain_addresses,
-    PartnerFee memory partnerFee,
-    string memory meta
-) external;
+    NextSwapPair[] calldata swaps,
+    Recipient[] memory recipients,
+    PartnerFee memory partner_fee,
+    CrossChainConfig calldata cross_chain_config
+) external payable;
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-swap-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "swap_request": {
-    "sender": {
-      "chain_uid": "ethereum",
-      "address": "0xabc123abc123abc123abc123abc123abc123abcd"
-    },
+  "swap": {
     "asset_in": {
       "token": "usdc",
       "token_type": {
-        "native": {
-          "denom": "usdc"
-        }
+        "token_type": "smart",
+        "native_denom": "",
+        "erc20_address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831"
       }
     },
     "amount_in": "1000000",
-    "asset_out": "dai",
-    "min_amount_out": "990000",
+    "asset_out": "usdt",
+    "min_amount_out": "998000",
     "swaps": [
       {
         "token_in": "usdc",
-        "token_out": "weth"
-      },
-      {
-        "token_in": "weth",
-        "token_out": "dai"
+        "token_out": "usdt",
+        "test_fail": false
       }
     ],
-    "cross_chain_addresses": [
+    "recipients": [
       {
-        "user": {
+        "recipient": {
           "chain_uid": "arbitrum",
-          "address": "0xdef456def456def456def456def456def456abcd"
+          "sender": "0x7a93d4bc1f1e51d3b8a912b1e6d2a5a13c44b9f1"
         },
-        "limit": "800000"
+        "amount": {
+          "limit_type": "dynamic",
+          "value": "0"
+        },
+        "denom": {
+          "token_type": "smart",
+          "native_denom": "",
+          "erc20_address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+        },
+        "forwarding_message": "0x",
+        "unsafe_refund_as_voucher": false
       }
     ],
     "partner_fee": {
-      "partner_fee_bps": 25,
-      "recipient": "0xgkhj33..."
+      "partner_fee_bps": 30,
+      "recipient": "0x4f2a8cc4b36a1de5f5df9b3a1b09c2d893a8e11f"
+    },
+    "cross_chain_config": {
+      "timeout": 60,
+      "ack_response": "0x",
+      "meta": "swap-route-usdc-usdt"
     }
   }
 }
@@ -91,185 +95,106 @@ content: `
 }
 ]} />
 
-| **Field**               | **Type**                                | **Description**                                                                                  |
-|------------------------|------------------------------------------|--------------------------------------------------------------------------------------------------|
-| `sender`               | [`CrossChainUser`](overview.md#crosschainuser)      | Optional user to execute the swap on behalf of. Typically, you do **not** need to specify a `sender` field. Users send tokens directly with their transaction. However, in cross-chain transactions involving **IBC** (where asynchronous behavior happens), external contracts may want to trigger swaps and have **vouchers minted directly to a user** instead of the contract itself. In these cases, setting `sender` allows the final minted vouchers to be credited properly.                                           |
-| `asset_in`             | [`TokenWithDenom`](overview.md#tokenwithdenom)      | The token being used as input for the swap.                                                      |
-| `amount_in`            | `uint256`                                | Amount of `asset_in` to swap. For native assets, this is overridden by `msg.value`.                                                                   |
-| `asset_out`            | `string`                                 | Target token the user wants to receive.                                                          |
-| `min_amount_out`       | `uint256`                                | Minimum amount of the output asset for the swap to be considered a success. Used to specify maximum slippage accepted.                             |
-| `swaps`                | `NextSwapPair[]`                         |  The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C-> D then D->B. Usually the most efficient route is used.                                                   |
-| `cross_chain_addresses`| [`CrossChainUserWithLimit[]`](overview.md#crosschainuserwithlimit) |A set of addresses to specify where the asset_out should be released. The first element specified in the vector has highest priority and so on. User specifies a limit for each provided address which indicates the amount of funds that should be released to that address. In case there are any leftover funds, they are added to the user's virtual balance for the address that initiated the swap. If limit is not specified, then the maximum amount is taken.                                               |
-| `partner_fee`          | `PartnerFee`              | Optional partner fee information for swaps.  The maximum fee that can be set is 30 (0.3%).                                                  |
-| `meta`                 | `string`                                 | Optional metadata field for tracking or sequencing.                                              |
+| Field | Type | Description |
+|---|---|---|
+| `asset_in` | [`TokenWithDenom`](overview.md#tokenwithdenom) | The token being swapped in. |
+| `amount_in` | `uint256` | Amount of the input asset. |
+| `asset_out` | `string` | The token id being swapped out. |
+| `min_amount_out` | `uint256` | Minimum amount of the output asset for the swap to be considered a success. Used to specify maximum slippage accepted. |
+| `swaps` | `NextSwapPair[]` | The different swaps to get from asset_in to asset_out. This could be a direct swap or multiple swaps. For example, if swapping from token A to B, the swaps can be A -> B directly, or A -> C then C -> D then D -> B. Usually the most efficient route is used. |
+| `recipients` | [`Recipient[]`](overview.md#recipient) | A set of recipients to specify where the asset_out should be released. Recipient amount constraints define how much should be released to each destination. |
+| `partner_fee` | [`PartnerFee`](overview.md#partnerfee) | Optional partner fee information for swaps. The maximum fee that can be set is 30 (0.3%). |
+| `cross_chain_config` | [`CrossChainConfig`](overview.md#crosschainconfig) | Cross-chain timeout/ack/meta controls for this request. |
+
+:::note
+- Swap paths are usually determined off-chain (for example by routing services) and passed in `swaps`.
+:::
 
 With the following structs:
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-factory-swap-structs',
 label: 'Solidity',
 language: 'solidity',
 content: `
+/// The next token pair in the swap route
 struct NextSwapPair {
     string token_in;
     string token_out;
+    // Internal testing flag, keep false in production usage.
+    bool test_fail;
 }
 
-// The percentage of the fee for the platform. Specified in basis points (bps)
-// Example: 1 = 0.01%, 30 = 0.3%, 10000 = 100%
+/// The percentage of the fee for the platform. Specified in basis points:
+/// 1 = 0.01%, 10000 = 100%
 struct PartnerFee {
-    uint64 partner_fee_bps;    // Max 30 (0.3%)
-    address recipient;         // Address to receive the fee
+    // Cannot be set greater than 30 (0.3%)
+    uint64 partner_fee_bps;
+    // Address to receive the fee.
+    address recipient;
 }
 `
 }
 ]} />
 
-| **Struct**    | **Field**           | **Type**   | **Description**                                                               |
-|---------------|---------------------|------------|-------------------------------------------------------------------------------|
-| `NextSwapPair`| `token_in`          | `string`   | The input token in the swap segment.                                          |
-|               | `token_out`         | `string`   | The output token in the swap segment.                                         |
-| `PartnerFee`  | `partner_fee_bps`   | `uint64`   | Fee percentage in basis points (max 30 = 0.3%).                               |
-|               | `recipient`         | `address`  | Address that receives the partner/referral fee.                              |
+### DepositToken
 
-### Deposit Token
-
-:::tip
-Used to deposit tokens into the protocol and receive voucher tokens in return. Supports native and smart tokens.
-:::
+Exchanges deposited native/ERC20 tokens for voucher balances/releases using recipient rules.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-factory-deposit-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
 function depositToken(
-  TokenWithDenom memory asset_in,
-  uint256 amount_in,
-  CrossChainUser memory recipientOpt
-) external;
+    TokenWithDenom calldata asset_in,
+    uint256 amount_in,
+    Recipient[] memory recipients,
+    CrossChainConfig calldata cross_chain_config
+) external payable;
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-deposit-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "deposit_token": {
+  "depositToken": {
     "asset_in": {
-      "token": "usdc",
+      "token": "eth",
       "token_type": {
-        "native": {
-          "denom": "usdc"
-        }
+        "token_type": "native",
+        "native_denom": "eth",
+        "erc20_address": ""
       }
     },
-    "amount_in": "500000",
-    "recipient": {
-      "chain_uid": "amoy",
-      "address": "0xfeed123feed123feed123feed123feed123abcd"
-    }
-  }
-}
-`
-}
-]} />
-
-| **Field**     | **Type**                             | **Description**                                                                 |
-|---------------|--------------------------------------|---------------------------------------------------------------------------------|
-| `asset_in`    | [`TokenWithDenom`](overview.md#tokenwithdenom)  | The asset being exchanged into vouchers.                                      |
-| `amount_in`   | `uint256`                            | Amount of the token to deposit.                                                |
-| `recipient`   | [`CrossChainUser`](overview.md#crosschainuser)  | Optional recipient for the voucher tokens. Defaults to the sender if omitted.  |
-
-
-### Withdraw Virtual Balance
-
-:::note
-This message lets users withdraw voucher tokens and release them to one or more cross-chain addresses.
-:::
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function withdrawVirtualBalance(
-  string memory token,
-  uint128 amount,
-  CrossChainUserWithLimit[] memory cross_chain_addresses
-) external;
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "withdraw_virtual_balance": {
-    "token": "dai",
-    "amount": "250000",
-    "cross_chain_addresses": [
+    "amount_in": "1000000000000000000",
+    "recipients": [
       {
-        "user": {
-          "chain_uid": "ethereum",
-          "address": "0x00112233445566778899aabbccddeeff00112233"
+        "recipient": {
+          "chain_uid": "base",
+          "sender": "0x1111222233334444555566667777888899990000"
         },
-        "limit": "200000"
-      },
-      {
-        "user": {
-          "chain_uid": "optimism",
-          "address": "0x445566778899aabbccddeeff0011223344556677"
-        }
+        "amount": {
+          "limit_type": "equal",
+          "value": "1000000000000000000"
+        },
+        "denom": {
+          "token_type": "voucher",
+          "native_denom": "",
+          "erc20_address": ""
+        },
+        "forwarding_message": "0x",
+        "unsafe_refund_as_voucher": false
       }
-    ]
-  }
-}
-`
-}
-]} />
-
-| **Field**                | **Type**                                | **Description**                                                                                   |
-|--------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------|
-| `token`                  | `string`                                | ID of the voucher token to withdraw.                                                              |
-| `amount`                 | `uint128`                               | The amount of voucher tokens to withdraw.                                           |
-| `cross_chain_addresses` | [`CrossChainUserWithLimit[]`](overview.md#crosschainuserwithlimit) | List of destination addresses to receive the withdrawn funds.                                    |
-
-
-### Transfer Virtual Balance
-
-Transfers voucher tokens from the sender’s virtual balance to another user on a specific chain.
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function transferVirtualBalance(
-  string memory token,
-  uint256 amount,
-  CrossChainUser memory recipient_address
-) external;
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "transfer_virtual_balance": {
-    "token": "dai",
-    "amount": "150000",
-    "recipient_address": {
-      "chain_uid": "amoy",
-      "address": "0xaabbccddeeff0011223344556677889900aabbcc"
+    ],
+    "cross_chain_config": {
+      "timeout": 60,
+      "ack_response": "0x",
+      "meta": "deposit-eth"
     }
   }
 }
@@ -277,634 +202,561 @@ content: `
 }
 ]} />
 
-| **Field**            | **Type**                           | **Description**                                                        |
-|----------------------|------------------------------------|------------------------------------------------------------------------|
-| `token`              | `string`                           | The voucher token ID to transfer.                                      |
-| `amount`             | `uint256`                          | Amount of virtual balance to transfer.                                 |
-| `recipient_address`  | [`CrossChainUser`](overview.md#crosschainuser) | Target address and chain to receive the tokens.                         |
+| Field | Type | Description |
+|---|---|---|
+| `asset_in` | [`TokenWithDenom`](overview.md#tokenwithdenom) | The asset being exchanged. |
+| `amount_in` | `uint256` | The amount of tokens being exchanged. Should match attached funds to the message when native funds are used. |
+| `recipients` | [`Recipient[]`](overview.md#recipient) | Recipients that define who should receive resulting vouchers/releases and under what constraints. |
+| `cross_chain_config` | [`CrossChainConfig`](overview.md#crosschainconfig) | Cross-chain timeout/ack/meta options. |
 
+### TransferVoucher
 
-### Add Liquidity Request
-
-Adds liquidity to a pool using a pair of tokens. User receives LP tokens representing their share in the pool. Supports native and smart tokens.
+Transfers voucher balances and optionally releases them based on recipient settings.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-factory-transfervoucher-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
-function addLiquidityRequest(
-  PairWithDenomAndAmount memory pair_info,
-  uint64 slippage_tolerance_bps
-) external;
+function transferVoucher(
+    string calldata token_id,
+    uint256 amount,
+    CrossChainUser memory from,
+    Recipient[] memory recipients,
+    CrossChainConfig calldata cross_chain_config
+) external payable;
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-transfervoucher-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "add_liquidity_request": {
-    "pair_info": {
+  "transferVoucher": {
+    "token_id": "usdc",
+    "amount": "500000",
+    "from": {
+      "chain_uid": "arbitrum",
+      "sender": "0x7a93d4bc1f1e51d3b8a912b1e6d2a5a13c44b9f1"
+    },
+    "recipients": [
+      {
+        "recipient": {
+          "chain_uid": "optimism",
+          "sender": "0x2222333344445555666677778888999900001111"
+        },
+        "amount": {
+          "limit_type": "less_than_or_equal",
+          "value": "500000"
+        },
+        "denom": {
+          "token_type": "smart",
+          "native_denom": "",
+          "erc20_address": "0x754704bc059f8c67012fed69bc8a327a5aafb603"
+        },
+        "forwarding_message": "0x",
+        "unsafe_refund_as_voucher": false
+      }
+    ],
+    "cross_chain_config": {
+      "timeout": 60,
+      "ack_response": "0x",
+      "meta": "transfer-voucher"
+    }
+  }
+}
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `token_id` | `string` | Token id of the voucher balance to transfer. |
+| `amount` | `uint256` | Amount of voucher balance to transfer. |
+| `from` | [`CrossChainUser`](overview.md#crosschainuser) | Source user for this transfer flow. |
+| `recipients` | [`Recipient[]`](overview.md#recipient) | Destination recipients and release constraints. |
+| `cross_chain_config` | [`CrossChainConfig`](overview.md#crosschainconfig) | Cross-chain timeout/ack/meta options. |
+
+### Add Liquidity
+
+Requests adding liquidity for a pair using token amounts and denom details.
+
+<Tabs tabs={[
+{
+id: 'solidity-factory-addliq-sol',
+label: 'Solidity',
+language: 'solidity',
+content: `
+function add_liquidity(
+    PairWithDenomAndAmount calldata pair_with_denom_and_amount,
+    uint64 slippage_tolerance_bps,
+    CrossChainConfig calldata cross_chain_config
+) external payable;
+`
+},
+{
+id: 'solidity-factory-addliq-json',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "add_liquidity": {
+    "pair_with_denom_and_amount": {
       "token_1": {
         "token": "usdc",
         "amount": "1000000",
         "token_type": {
-          "native": {
-            "denom": "usdc"
-          }
+          "token_type": "smart",
+          "native_denom": "",
+          "erc20_address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831"
         }
       },
       "token_2": {
-        "token": "dai",
+        "token": "usdt",
         "amount": "1000000",
         "token_type": {
-          "smart": {
-            "contract_address": "0x5f123abc123abc123abc123abc123abc123abcde"
-          }
+          "token_type": "smart",
+          "native_denom": "",
+          "erc20_address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
         }
       }
     },
-    "slippage_tolerance_bps": 300
+    "slippage_tolerance_bps": 300,
+    "cross_chain_config": {
+      "timeout": 60,
+      "ack_response": "0x",
+      "meta": "add-liquidity"
+    }
   }
 }
 `
 }
 ]} />
 
-| **Field**                 | **Type**                                      | **Description**                                                                 |
-|--------------------------|-----------------------------------------------|---------------------------------------------------------------------------------|
-| `pair_info`              | [`PairWithDenomAndAmount`](overview.md#pairwithdenomandamount) | Token pair and amounts to add as liquidity.                                     |
-| `slippage_tolerance_bps` | `uint64`                                      | Max slippage tolerated in basis points (e.g., `300` = 3%).                      |
+| Field | Type | Description |
+|---|---|---|
+| `pair_with_denom_and_amount` | [`PairWithDenomAndAmount`](overview.md#pairwithdenomandamount) | The tokens to add liquidity to, with the amount for each. |
+| `slippage_tolerance_bps` | `uint64` | The amount of slippage tolerated. If the slippage amount surpasses the specified amount, the request will fail and the user receives back the tokens. Specified as basis points. |
+| `cross_chain_config` | [`CrossChainConfig`](overview.md#crosschainconfig) | Cross-chain timeout/ack/meta options. |
 
-### Remove Liquidity Request
+### Remove Liquidity
 
-Removes liquidity from a pool and sends the tokens to one or more cross-chain addresses based on the user's allocation preferences.
+Requests removing liquidity from a pool and releasing output to a target recipient.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-factory-remliq-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
-function removeLiquidityRequest(
-  Pair memory pair,
-  uint256 lp_allocation,
-  CrossChainUserWithLimit[] memory cross_chain_addresses
-) external;
+function remove_liquidity(
+    Pair calldata pair,
+    uint256 lp_allocation,
+    CrossChainUser memory recipient,
+    CrossChainConfig calldata cross_chain_config
+) external payable;
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-remliq-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "remove_liquidity_request": {
+  "remove_liquidity": {
     "pair": {
       "token_1": "usdc",
-      "token_2": "dai"
+      "token_2": "usdt"
     },
-    "lp_allocation": "100000000000",
-    "cross_chain_addresses": [
-      {
-        "user": {
-          "chain_uid": "amoy",
-          "address": "0xfeed123feed123feed123feed123feed123abcd"
-        },
-        "limit": "500000"
-      },
-      {
-        "user": {
-          "chain_uid": "arbitrum",
-          "address": "0xdef456def456def456def456def456def456abcd"
-        }
-      }
-    ]
+    "lp_allocation": "1000000000000000000",
+    "recipient": {
+      "chain_uid": "base",
+      "sender": "0x3333444455556666777788889999000011112222"
+    },
+    "cross_chain_config": {
+      "timeout": 60,
+      "ack_response": "0x",
+      "meta": "remove-liquidity"
+    }
   }
 }
 `
 }
 ]} />
 
-| **Field**                | **Type**                                      | **Description**                                                                                   |
-|--------------------------|-----------------------------------------------|---------------------------------------------------------------------------------------------------|
-| `pair`                   | [`Pair`](overview.md#pair)                    | The token pair for the pool you want to remove liquidity from.                                   |
-| `lp_allocation`          | `uint256`                                     | Amount of LP tokens to redeem.                                                                    |
-| `cross_chain_addresses`  | [`CrossChainUserWithLimit[]`](overview.md#crosschainuserwithlimit) | Where to send the redeemed tokens. First entry has the highest priority.                         |
+| Field | Type | Description |
+|---|---|---|
+| `pair` | [`Pair`](overview.md#pair) | The pair of tokens for which liquidity is being removed. |
+| `lp_allocation` | `uint256` | The amount of LP tokens being returned to the pool. |
+| `recipient` | [`CrossChainUser`](overview.md#crosschainuser) | Destination user/chain for release. |
+| `cross_chain_config` | [`CrossChainConfig`](overview.md#crosschainconfig) | Cross-chain timeout/ack/meta options. |
 
 ### Request Pool Creation
 
-Sends a request to create a new liquidity pool for a given token pair. The user defines the pool configuration and LP token metadata.
+Requests creation of a new pool with pair settings, pool config, and LP token metadata.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-factory-createpool-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
 function request_pool_creation(
-  PairWithDenomAndAmount memory pair,
-  uint64 slippage_tolerance_bps,
-  string memory lp_token_name,
-  string memory lp_token_symbol,
-  uint8 lp_token_decimal
-) external;
+    PairWithDenomAndAmount calldata pair_with_denom_and_amount,
+    PoolConfig calldata pool_config,
+    string calldata lp_token_name,
+    string memory lp_token_symbol,
+    uint8 lp_token_decimals,
+    uint64 slippage_tolerance_bps,
+    CrossChainConfig calldata cross_chain_config
+) external payable;
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-createpool-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
   "request_pool_creation": {
-    "pair": {
+    "pair_with_denom_and_amount": {
       "token_1": {
         "token": "usdc",
-        "amount": "500000",
+        "amount": "2000000",
         "token_type": {
-          "native": {
-            "denom": "usdc"
-          }
+          "token_type": "smart",
+          "native_denom": "",
+          "erc20_address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831"
         }
       },
       "token_2": {
-        "token": "dai",
-        "amount": "500000",
+        "token": "usdt",
+        "amount": "2000000",
         "token_type": {
-          "smart": {
-            "contract_address": "0x9876543210abcdef9876543210abcdef98765432"
-          }
+          "token_type": "smart",
+          "native_denom": "",
+          "erc20_address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
         }
       }
     },
+    "pool_config": {
+      "pool_type": "stable",
+      "amp_factor": "1200"
+    },
+    "lp_token_name": "USDC-USDT LP",
+    "lp_token_symbol": "USDCUSDT-LP",
+    "lp_token_decimals": 18,
     "slippage_tolerance_bps": 200,
-    "lp_token_name": "USDC-DAI Pool Token",
-    "lp_token_symbol": "USDCDAI-LP",
-    "lp_token_decimal": 18
+    "cross_chain_config": {
+      "timeout": 120,
+      "ack_response": "0x",
+      "meta": "create-pool"
+    }
   }
 }
 `
 }
 ]} />
 
-| **Field**                 | **Type**                                      | **Description**                                                                                   |
-|--------------------------|-----------------------------------------------|---------------------------------------------------------------------------------------------------|
-| `pair`                   | [`PairWithDenomAndAmount`](overview.md#pairwithdenomandamount) | Token pair and amounts used to initialize the pool.                                               |
-| `slippage_tolerance_bps` | `uint64`                                      | Max slippage allowed when creating the pool (in basis points).                                   |
-| `lp_token_name`          | `string`                                      | Full name of the LP token.                                                                        |
-| `lp_token_symbol`        | `string`                                      | Symbol (ticker) of the LP token.                                                                  |
-| `lp_token_decimal`       | `uint8`                                       | Number of decimals used by the LP token.                                                          |
+| Field | Type | Description |
+|---|---|---|
+| `pair_with_denom_and_amount` | [`PairWithDenomAndAmount`](overview.md#pairwithdenomandamount) | The token pair to request creating a new pool for. |
+| `pool_config` | [`PoolConfig`](overview.md#poolconfig) | The pool configuration type (for example stable with amplification factor, or constant product). |
+| `lp_token_name` | `string` | LP token name. |
+| `lp_token_symbol` | `string` | LP token symbol. |
+| `lp_token_decimals` | `uint8` | LP token decimals. |
+| `slippage_tolerance_bps` | `uint64` | Allowed slippage amount in basis points (bps) during pool creation. |
+| `cross_chain_config` | [`CrossChainConfig`](overview.md#crosschainconfig) | Cross-chain timeout/ack/meta options. |
 
+## Query Messages
 
+List of read-only methods exposed by the Solidity Factory contract.
 
-## Query Messages 
+### get_factory_state
 
-List of queries that can be performed on the Factory contract.
-
-### Get State
-
-Queries the configuration and current status of the Factory contract.
-
-#### Query Call
+Returns the factory state configuration.
 
 <Tabs tabs={[
 {
-id: 'solidity-example',
+id: 'solidity-factory-q-getstate-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
-function getState() external view returns (State memory);
+function get_factory_state() external pure returns (FactoryStorage.Layout memory);
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-q-getstate-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "get_state": {}
+  "method": "get_factory_state",
+  "params": []
 }
 `
 }
 ]} />
 
-#### Response
+The query returns the following response:
 
 <Tabs tabs={[
 {
-id: 'solidity-response',
+id: 'solidity-factory-q-getstate-res-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
-struct State {
+struct Layout {
     string chain_uid;
-    address router;
-    address admin;
-    uint256 escrow_code_id;
-    uint256 voucher_token_code_id;
-    bool is_native;
-    DenomFees partner_fees_collected;
+    string router_address;
+    string native_denom;
+    address fund_manager;
+    address relayer;
 }
-
-struct DenomFees {
-    string[] denoms;
-    uint256[] amounts;
-}
-`
-}
-]} />
-
-| **Field**                | **Type**         | **Description**                                                              |
-|--------------------------|------------------|------------------------------------------------------------------------------|
-| `chain_uid`              | `string`         | Unique chain ID (e.g., "amoy", "ethereum").                                  |
-| `router`                 | `address`        | Address of the router contract.                                              |
-| `admin`                  | `address`        | Address of the factory admin.                                                |
-| `escrow_code_id`         | `uint256`        | Code ID for escrow contract deployment.                                      |
-| `voucher_token_code_id`  | `uint256`        | Code ID for voucher token contracts.                                         |
-| `is_native`              | `bool`           | Whether the factory is native to this chain.                                 |
-| `partner_fees_collected` | `DenomFees`      | Fee totals per denom collected from partner fees.                            |
-
-
-
-### Get All Tokens
-
-Returns a list of all token IDs registered in the factory.
-
-#### Query Call
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function getAllTokens() external view returns (string[] memory);
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-q-getstate-res-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "get_all_tokens": {}
+  "chain_uid": "arbitrum",
+  "router_address": "vsl.router",
+  "native_denom": "eth",
+  "fund_manager": "0x8f8c6f1f7f9f4d7f8a7a9f8b6a6b4e3d2c1b0a9f",
+  "relayer": "0x1234567890abcdef1234567890abcdef12345678"
 }
 `
 }
 ]} />
 
-#### Response
+| Field | Type | Description |
+|---|---|---|
+| `chain_uid` | `string` | Chain UID where this factory is deployed. |
+| `router_address` | `string` | Router address/port identifier used for cross-chain relay. |
+| `native_denom` | `string` | Native denom configured for this chain. |
+| `fund_manager` | `address` | Fund manager contract address. |
+| `relayer` | `address` | Relayer contract address. |
+
+### get_factory_modules
+
+Returns the module implementation addresses configured in factory.
 
 <Tabs tabs={[
 {
-id: 'solidity-response',
+id: 'solidity-factory-q-getmodules-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
-string[] tokens;
-`
-}
-]} />
-
-| **Field** | **Type**    | **Description**                    |
-|-----------|-------------|------------------------------------|
-| `tokens`  | `string[]`  | List of registered token IDs.      |
-
-
-### Get Partner Fees Collected
-
-Returns the total amount of partner fees collected by the protocol, grouped by token denomination.
-
-#### Query Call
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function getPartnerFeesCollected() external view returns (DenomFees memory);
+function get_factory_modules() external view returns (FactoryModules memory);
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-q-getmodules-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "get_partner_fees_collected": {}
+  "method": "get_factory_modules",
+  "params": []
 }
 `
 }
 ]} />
 
-#### Response
+The query returns the following response:
 
 <Tabs tabs={[
 {
-id: 'solidity-response',
+id: 'solidity-factory-q-getmodules-res-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
-struct DenomFees {
-    string[] denoms;
-    uint256[] amounts;
+struct FactoryModules {
+    address cross_chain_module;
+    address pool_module;
+    address swap_module;
+    address token_module;
 }
-`
-}
-]} />
-
-| **Field** | **Type**      | **Description**                                |
-|-----------|---------------|------------------------------------------------|
-| `denoms`  | `string[]`    | Array of token denoms (e.g., `usdc`, `dai`).   |
-| `amounts` | `uint256[]`   | Total amount collected for each corresponding denom. |
-
-### Get LP Token
-
-Returns the address of the LP (liquidity provider) token for the specified VLP contract.
-
-#### Query Call
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function getLPToken(address vlp) external view returns (address);
 `
 },
 {
-id: 'json-example',
+id: 'solidity-factory-q-getmodules-res-json',
 label: 'JSON',
 language: 'json',
 content: `
 {
-  "get_l_p_token": {
-    "vlp": "nibi..."
-  }
+  "cross_chain_module": "0x1111111111111111111111111111111111111111",
+  "pool_module": "0x2222222222222222222222222222222222222222",
+  "swap_module": "0x3333333333333333333333333333333333333333",
+  "token_module": "0x4444444444444444444444444444444444444444"
 }
 `
 }
 ]} />
 
-#### Input Parameters
+| Field | Type | Description |
+|---|---|---|
+| `cross_chain_module` | `address` | Cross-chain module implementation address. |
+| `pool_module` | `address` | Pool module implementation address. |
+| `swap_module` | `address` | Swap module implementation address. |
+| `token_module` | `address` | Token module implementation address. |
 
-| **Field** | **Type**  | **Description**                              |
-|-----------|-----------|----------------------------------------------|
-| `vlp`     | `address` | The address of the liquidity pool (VLP).     |
+### get_token_escrow
 
-#### Response
+Returns escrow contract address for a token id.
 
 <Tabs tabs={[
 {
-id: 'solidity-response',
+id: 'solidity-factory-q-getescrow-sol',
+label: 'Solidity',
+language: 'solidity',
+content: `
+function get_token_escrow(string calldata token_id) external view returns (address);
+`
+},
+{
+id: 'solidity-factory-q-getescrow-json',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "method": "get_token_escrow",
+  "params": ["usdc"]
+}
+`
+}
+]} />
+
+The query returns the following response:
+
+<Tabs tabs={[
+{
+id: 'solidity-factory-q-getescrow-res-sol',
+label: 'Solidity',
+language: 'solidity',
+content: `
+address escrow_address;
+`
+},
+{
+id: 'solidity-factory-q-getescrow-res-json',
+label: 'JSON',
+language: 'json',
+content: `
+"0x5555555555555555555555555555555555555555"
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `token_id` | `string` | Token id used to fetch escrow. |
+| `escrow_address` | `address` | Escrow contract address for that token id. |
+
+### get_pool_vlp
+
+Returns VLP key/address string for a pool key.
+
+<Tabs tabs={[
+{
+id: 'solidity-factory-q-getpoolvlp-sol',
+label: 'Solidity',
+language: 'solidity',
+content: `
+function get_pool_vlp(string calldata pool_key) public view returns (string memory);
+`
+},
+{
+id: 'solidity-factory-q-getpoolvlp-json',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "method": "get_pool_vlp",
+  "params": ["usdc:usdt"]
+}
+`
+}
+]} />
+
+The query returns the following response:
+
+<Tabs tabs={[
+{
+id: 'solidity-factory-q-getpoolvlp-res-sol',
+label: 'Solidity',
+language: 'solidity',
+content: `
+string vlp_key;
+`
+},
+{
+id: 'solidity-factory-q-getpoolvlp-res-json',
+label: 'JSON',
+language: 'json',
+content: `
+"arbitrum.0x9f3a31b1a08e2b10f65d68edca1d1a4956b4f6d1"
+`
+}
+]} />
+
+| Field | Type | Description |
+|---|---|---|
+| `pool_key` | `string` | Pool key (for example `token_1:token_2`). |
+| `vlp_key` | `string` | VLP key/address string mapped to that pool. |
+
+### get_vlp_lp_address
+
+Returns LP token contract address for a VLP key.
+
+<Tabs tabs={[
+{
+id: 'solidity-factory-q-getvlplp-sol',
+label: 'Solidity',
+language: 'solidity',
+content: `
+function get_vlp_lp_address(string calldata vlp_key) public view returns (address);
+`
+},
+{
+id: 'solidity-factory-q-getvlplp-json',
+label: 'JSON',
+language: 'json',
+content: `
+{
+  "method": "get_vlp_lp_address",
+  "params": ["arbitrum.0x9f3a31b1a08e2b10f65d68edca1d1a4956b4f6d1"]
+}
+`
+}
+]} />
+
+The query returns the following response:
+
+<Tabs tabs={[
+{
+id: 'solidity-factory-q-getvlplp-res-sol',
 label: 'Solidity',
 language: 'solidity',
 content: `
 address lp_token_address;
 `
-}
-]} />
-
-| **Field**          | **Type**   | **Description**                         |
-|--------------------|------------|-----------------------------------------|
-| `lp_token_address` | `address`  | The ERC20 contract address of the LP token. |
-
-### Get VLP
-
-Returns the VLP contract address for a given token pair.
-
-#### Query Call
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function getVlp(Pair memory pair) external view returns (address);
-`
 },
 {
-id: 'json-example',
+id: 'solidity-factory-q-getvlplp-res-json',
 label: 'JSON',
 language: 'json',
 content: `
-{
-  "get_vlp": {
-    "pair": {
-      "token_1": "usdc",
-      "token_2": "dai"
-    }
-  }
-}
+"0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"
 `
 }
 ]} />
 
-#### Input Parameters
-
-| **Field**   | **Type**   | **Description**                         |
-|-------------|------------|-----------------------------------------|
-| `token_1`   | `string`   | ID of the first token in the pair.      |
-| `token_2`   | `string`   | ID of the second token in the pair.     |
-
-#### Response
-
-<Tabs tabs={[
-{
-id: 'solidity-response',
-label: 'Solidity',
-language: 'solidity',
-content: `
-address vlp_address;
-`
-}
-]} />
-
-| **Field**      | **Type**   | **Description**                                   |
-|----------------|------------|---------------------------------------------------|
-| `vlp_address`  | `address`  | Address of the VLP contract for the given pair.   |
-
-### Get VLP
-
-Returns the VLP contract address for a given token pair.
-
-#### Query Call
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function getVlp(Pair memory pair) external view returns (address);
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "get_vlp": {
-    "pair": {
-      "token_1": "usdc",
-      "token_2": "dai"
-    }
-  }
-}
-`
-}
-]} />
-
-#### Input Parameters
-
-| **Field**   | **Type**   | **Description**                         |
-|-------------|------------|-----------------------------------------|
-| `token_1`   | `string`   | ID of the first token in the pair.      |
-| `token_2`   | `string`   | ID of the second token in the pair.     |
-
-#### Response
-
-<Tabs tabs={[
-{
-id: 'solidity-response',
-label: 'Solidity',
-language: 'solidity',
-content: `
-address vlp_address;
-`
-}
-]} />
-
-| **Field**      | **Type**   | **Description**                                   |
-|----------------|------------|---------------------------------------------------|
-| `vlp_address`  | `address`  | Address of the VLP contract for the given pair.   |
-
-### Get All Pools
-
-Returns all registered liquidity pools and their associated token pairs.
-
-#### Query Call
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function getAllPools() external view returns (PoolVlpResponse[] memory);
-
-struct PoolVlpResponse {
-    Pair pair;
-    address vlp;
-}
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "get_all_pools": {}
-}
-`
-}
-]} />
-
-#### Response
-
-<Tabs tabs={[
-{
-id: 'solidity-response',
-label: 'Solidity',
-language: 'solidity',
-content: `
-struct PoolVlpResponse {
-    Pair pair;
-    address vlp;
-}
-
-struct Pair {
-    string token_1;
-    string token_2;
-}
-`
-}
-]} />
-
-| **Field**     | **Type**    | **Description**                                 |
-|---------------|-------------|-------------------------------------------------|
-| `pair.token_1`| `string`    | First token in the liquidity pair.              |
-| `pair.token_2`| `string`    | Second token in the liquidity pair.             |
-| `vlp`         | `address`   | The address of the corresponding VLP contract.  |
-
-
-### Get Escrow
-
-Returns the escrow contract address and token types for a given token ID.
-
-#### Query Call
-
-<Tabs tabs={[
-{
-id: 'solidity-example',
-label: 'Solidity',
-language: 'solidity',
-content: `
-function getEscrow(string memory token_id) external view returns (EscrowResponse memory);
-
-struct EscrowResponse {
-    address escrow_address;
-    TokenType[] token_types;
-}
-`
-},
-{
-id: 'json-example',
-label: 'JSON',
-language: 'json',
-content: `
-{
-  "get_escrow": {
-    "token_id": "usdc"
-  }
-}
-`
-}
-]} />
-
-#### Input Parameters
-
-| **Field**   | **Type**   | **Description**                         |
-|-------------|------------|-----------------------------------------|
-| `token_id`  | `string`   | The token ID to look up escrow for.     |
-
-#### Response
-
-<Tabs tabs={[
-{
-id: 'solidity-response',
-label: 'Solidity',
-language: 'solidity',
-content: `
-struct EscrowResponse {
-    address escrow_address;
-    TokenType[] token_types;
-}
-`
-}
-]} />
-
-| **Field**           | **Type**              | **Description**                                    |
-|---------------------|-----------------------|----------------------------------------------------|
-| `escrow_address`    | `address`             | Address of the escrow contract (if any).           |
-| `token_types`       | `TokenType[]`         | Supported token types backing this token ID.       |
-
+| Field | Type | Description |
+|---|---|---|
+| `vlp_key` | `string` | VLP key string returned by `get_pool_vlp`. |
+| `lp_token_address` | `address` | LP token contract address. |
