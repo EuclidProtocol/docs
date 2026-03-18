@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
         "Architecture Overview/Concepts/Smart Routing",
         "Architecture Overview/Concepts/Vouchers",
         "Architecture Overview/Concepts/Meta Transactions",
+        "Architecture Overview/Concepts/Bi-directional Liquidity",
         "Architecture Overview/Automated-Market-Makers",
       ],
     },
@@ -49,6 +50,40 @@ const sidebars: SidebarsConfig = {
           ],
         },
         "Architecture Overview/Architecture/router",
+      ],
+    },
+  ],
+
+  orderbookSidebar: [
+    "orderbook/overview",
+    {
+      type: "category",
+      label: "Getting Started",
+      items: [
+        "orderbook/getting-started/introduction",
+        "orderbook/getting-started/order-lifecycle",
+      ],
+    },
+    {
+      type: "category",
+      label: "Concepts",
+      items: [
+        "orderbook/concepts/overview",
+        "orderbook/concepts/orderbook-mechanics",
+        "orderbook/concepts/architecture",
+        "orderbook/concepts/reliability",
+      ],
+    },
+    {
+      type: "category",
+      label: "Developer Reference",
+      items: [
+        "orderbook/developer-reference/authentication-and-api-keys",
+        "orderbook/developer-reference/endpoints",
+        "orderbook/developer-reference/deposit",
+        "orderbook/developer-reference/engine-api",
+        "orderbook/developer-reference/oms-service",
+        "orderbook/developer-reference/market-data",
       ],
     },
   ],

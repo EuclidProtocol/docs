@@ -14,6 +14,8 @@ of documentation entry points.
 ## Recommended entry points
 
 - Architecture overview: https://docs.euclidprotocol.io/docs/Architecture%20Overview/intro
+- Orderbook overview: https://docs.euclidprotocol.io/docs/orderbook/overview
+- Orderbook engine API: https://docs.euclidprotocol.io/docs/orderbook/developer-reference/engine-api
 - API prerequisites and chain configuration: https://docs.euclidprotocol.io/docs/API/Getting%20Started/API%20Prerequisites%20and%20Chain%20Configuration
 - API reference intro: https://docs.euclidprotocol.io/docs/API/API%20Reference/Intro
 - Aggregator integration overview: https://docs.euclidprotocol.io/docs/API/Integrations/Aggregators/Intro
@@ -25,6 +27,7 @@ of documentation entry points.
 ## Key sections (full list in /llms.txt)
 
 - Architecture and concepts
+- Orderbook (overview, lifecycle, concepts, and developer reference)
 - API getting started
 - Trading, liquidity provisioning, pricing, and integrations
 - API reference (GraphQL + REST)

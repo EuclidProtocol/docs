@@ -32,6 +32,10 @@ const config: Config = {
     locales: ["en"],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   presets: [
     [
       "classic",
@@ -89,6 +93,12 @@ const config: Config = {
           sidebarId: "architectureSidebar",
           position: "left",
           label: "Learn",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "orderbookSidebar",
+          position: "left",
+          label: "Orderbook",
         },
         {
           type: "dropdown",
@@ -232,6 +242,7 @@ const config: Config = {
   ],
 
   themes: [
+    require.resolve("@docusaurus/theme-mermaid"),
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
