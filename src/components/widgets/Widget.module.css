@@ -1,0 +1,312 @@
+/* src/components/widgets/Widget.module.css */
+
+/* CSS variables injected by theme.ts via applyTheme() */
+.widget {
+  --w-accent: #092322;
+  --w-accent-soft: rgba(9, 35, 34, 0.08);
+  --w-surface: #ffffff;
+  --w-panel: #f2f4f6;
+  --w-border: rgba(17, 24, 28, 0.12);
+  --w-text: #11181c;
+  --w-muted: #4b5563;
+
+  font-family: "Lexend", "Segoe UI", sans-serif;
+  background: var(--w-surface);
+  border: 1px solid var(--w-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: var(--w-text);
+  max-width: 480px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 8px 24px rgba(17, 24, 28, 0.06);
+}
+
+.panel {
+  background: var(--w-panel);
+  border: 1px solid var(--w-border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--w-muted);
+  margin-bottom: 0.35rem;
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--w-text);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: var(--w-muted);
+  opacity: 0.5;
+}
+
+.tokenSelect {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--w-surface);
+  border: 1px solid var(--w-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem 0.35rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--w-text);
+  transition: border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.tokenSelect:hover {
+  border-color: var(--w-accent);
+}
+
+.tokenImg {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tokenImgPlaceholder {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--w-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--w-accent);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.swapArrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--w-panel);
+  border: 1px solid var(--w-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--w-muted);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.swapArrow:hover {
+  background: var(--w-accent-soft);
+  color: var(--w-accent);
+}
+
+.btn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--w-accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  background: var(--w-panel);
+  color: var(--w-text);
+  border: 1px solid var(--w-border);
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: var(--w-accent-soft);
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--w-muted);
+  margin-top: 0.5rem;
+}
+
+.impactBadge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--w-accent-soft);
+  color: var(--w-accent);
+}
+
+.impactHigh {
+  background: rgba(220, 50, 50, 0.08);
+  color: #c0392b;
+}
+
+.error {
+  font-size: 0.82rem;
+  color: #c0392b;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(220, 50, 50, 0.06);
+  border-radius: 8px;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--w-panel) 25%, var(--w-border) 50%, var(--w-panel) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+  height: 1em;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Token dropdown overlay */
+.dropdown {
+  position: absolute;
+  z-index: 100;
+  background: var(--w-surface);
+  border: 1px solid var(--w-border);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(17, 24, 28, 0.1);
+  min-width: 240px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.dropdownSearch {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--w-border);
+  border-radius: 8px;
+  background: var(--w-panel);
+  font-size: 0.875rem;
+  color: var(--w-text);
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 0.35rem;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.dropdownItem:hover {
+  background: var(--w-panel);
+}
+
+.dropdownItemName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--w-text);
+}
+
+.dropdownItemId {
+  font-size: 0.75rem;
+  color: var(--w-muted);
+}
+
+/* Pricing table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--w-muted);
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--w-border);
+}
+
+.table td {
+  padding: 0.65rem 0.75rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(17, 24, 28, 0.04);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.positive { color: #16a34a; font-weight: 500; }
+.negative { color: #dc2626; font-weight: 500; }
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.pageBtn {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--w-border);
+  border-radius: 6px;
+  background: var(--w-surface);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--w-text);
+}
+
+.pageBtn:hover:not(:disabled) { background: var(--w-panel); }
+.pageBtn:disabled { opacity: 0.35; cursor: not-allowed; }
+.pageBtnActive { background: var(--w-accent); color: #fff; border-color: var(--w-accent); }
