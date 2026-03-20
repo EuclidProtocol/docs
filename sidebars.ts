@@ -371,6 +371,14 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
+
+  widgetsSidebar: [
+    "Widgets/overview",
+    "Widgets/swap-widget",
+    "Widgets/payment-widget",
+    "Widgets/pricing-widget",
+    "Widgets/quote-widget",
+  ],
 };
 
 export default sidebars;
