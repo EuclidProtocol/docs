@@ -28,11 +28,11 @@ query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUse
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router($token: String!, $amount: Int, $crossChainAddresses: [CrossChainUserWithLimitInput]) {\n  router {\n    simulate_release_escrow(token: $token, amount: $amount, cross_chain_addresses: $crossChainAddresses) {\n      release_amounts {\n        amount\n        cross_chain_user {\n          user {\n            chain_uid\n            address\n          }\n          limit\n        }\n      }\n      remaining_amount\n    }\n  }\n}","variables":{"token":"euclid","amount":100000000000,"crossChainAddresses":[{"limit":null,"user":{"address":"0x6287a53c957F13BE3b79Ffc637A19fc2504C4D16","chain_uid":"monad"}}]}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEAGiI0AhnHKoWASVRCaUPBADOSgMIALEdwCCYMHgQrDLANqrFKjVqQBVJfgDqnFOoAynOM5kAHCgF0ASiJgAB0kIiJFCnxgsIiIpQ8YABsRSgB9A2SEEXt0wwUIAHcqeiYkFjpGZCExCRRKuphZIkKVdKhNbnSRPQMjJUq2tS6kXX1DeyUg0PD4iKycvKbUJVi5%2BYiVlDjNiOGO0fSYezx1vfmTmNmLzc7rY84wXdutvsmXi4BfT73kj2cv3iPw2wKBBjg1m4PB64maO1BIIiIK%2BIAEIAAbiIuCIAEbZJQYEA3IghEBlZBklhkhAwKD-Z5o3Zk7ZUogARgADNyebzOQJmSBhlYdO8BmyTJ8SfMyf9PDsMEQkClkgLQREyVc8GzpZsWWKlGyyZyAB4ANgATAAOADsIgArABmKAATntNoAYuzHQAhACijtxNpdHoAZlAzY6bdp2S7wxb7ZyACyqJMAEXZZrJatuZPu3RgTyNIHESF6ZKBSLBcz8YVRXyAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEAGiI0AhnHKoWASVRCaUPBADOSgMIALEdwCCYMHgQrDLANqrFKjVqQBVJfgDqnFOoAynOM5kAHCgF0ASiJgAB0kIiJFCnxgsIiIpQ8YABsRSgB9A2SEEXt0wwUIAHcqeiYkFjpGZCExCRRKuphZIkKVdKhNbnSRPQMjJUq2tS6kXX1DeyUg0PD4iKycvKbUJVi5%2BYiVlDjNiOGO0fSYezx1vfmTmNmLzc7rY84wXdutvsmXi4BfT73kj2cv3iPw2wKBBjg1m4PB64maO1BIIiIK%2BIAEIAAbiIuCIAEbZJQYEA3IghEBlZBklhkhAwKD-Z5o3Zk7ZUogARgADNyebzOQJmSBhlYdO8BmyTJ8SfMyf9PDsMEQkClkgLQREyVc8GzpZsWWKlGyyZyAB4ANgATAAOADsIgArABmKAATntNoAYuzHQAhACijtxNpdHoAZlAzY6bdp2S7wxb7ZyACyqJMAEXZZrJatuZPu3RgTyNIHESF6ZKBSLBcz8YVRXyAA)
 
 
 ### Arguments

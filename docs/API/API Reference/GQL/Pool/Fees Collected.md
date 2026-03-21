@@ -26,11 +26,11 @@ query Fees_collected {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Fees_collected {\n  pool {\n    fees_collected {\n      total_overall\n      breakdown {\n        token1\n        token2\n        total_fee\n      }\n    }\n  }\n}"}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGIIIDOA%2BlBADZ0JQoJhHAA6SRRADhPXZcePAGblqtBkxZtO3ETxQQUAQzpUIAN3zq6wxUQBGeBKoDWkAO7d5hkcvPIAjAfuPkAJjeHlajeIIPjwAvj5hChEhIAA0IFqqeACWqkaMFBggICFAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGIIIDOA%2BlBADZ0JQoJhHAA6SRRADhPXZcePAGblqtBkxZtO3ETxQQUAQzpUIAN3zq6wxUQBGeBKoDWkAO7d5hkcvPIAjAfuPkAJjeHlajeIIPjwAvj5hChEhIAA0IFqqeACWqkaMFBggICFAA)
 
 
 ### Return Fields

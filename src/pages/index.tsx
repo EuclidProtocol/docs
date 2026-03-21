@@ -64,33 +64,122 @@ function HomepageHeader() {
       kind: "REST",
       language: "bash",
       code: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/routes' \\
+  'https://api.euclidprotocol.com/api/v1/routes' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "external": true,
-    "token_in": "euclid",
-    "token_out": "0g",
+    "token_in": "usdc",
+    "token_out": "usdt",
     "amount_in": "1000000",
     "chain_uids": []
-  }'`,
+}'`,
     },
     {
-      label: "Simulate Swap",
-      to: "/docs/API/API%20Reference/REST/Transactions/Simulate%20Swap",
+      label: "Swap Request",
+      to: "/docs/API/API%20Reference/REST/Transactions/Swap",
       kind: "REST",
       language: "bash",
       code: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/simulate-swap' \\
+  'https://api.euclidprotocol.com/api/v1/execute/swap' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
-  "amount_in": "10",
-  "asset_in": "fundenom",
-  "asset_out": "nibi",
-  "contract": "nibi1vndyr364cmexy3qq8zx4x2v757purq4flt9mj4qe3z2s2wn29v5sdfc830",
-  "min_amount_out": "1",
-  "swaps": ["fundenom","nibi"]
+  "amount_in": "1000000",
+  "asset_in": {
+    "token": "usdc",
+    "token_type": {
+      "smart": {
+        "contract_address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+      }
+    }
+  },
+  "slippage": "100",
+  "recipients": [
+    {
+      "user": {
+        "address": "0x1111111111111111111111111111111111111111",
+        "chain_uid": "polygon"
+      },
+      "amount": {
+        "less_than_or_equal": "995000"
+      },
+      "denom": {
+        "smart": {
+          "contract_address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+        }
+      },
+      "forwarding_message": "",
+      "unsafe_refund_as_voucher": false
+    }
+  ],
+  "sender": {
+    "address": "0x1111111111111111111111111111111111111111",
+    "chain_uid": "polygon"
+  },
+  "swap_path": {
+    "path": [
+      {
+        "route": [
+          "usdc",
+          "usdt"
+        ],
+        "dex": "euclid",
+        "amount_in": "1000000",
+        "amount_out": "1003064",
+        "chain_uid": "vsl",
+        "amount_out_for_hops": [
+          "usdt: 1003064"
+        ]
+      }
+    ],
+    "total_price_impact": "0.00"
+  }
+}'`,
+    },
+    {
+      label: "Token Metadata",
+      to: "/docs/API/API%20Reference/GQL/Token/Token%20Metadata",
+      kind: "REST",
+      language: "bash",
+      code: `curl --request GET \\
+  --url 'https://api.euclidprotocol.com/api/v1/tokens/details'`,
+    },
+    {
+      label: "Add Liquidity",
+      to: "/docs/API/API%20Reference/REST/Transactions/Liquidity/Add%20Liquidity",
+      kind: "REST",
+      language: "bash",
+      code: `curl -X 'POST' \\
+  'https://api.euclidprotocol.com/api/v1/execute/liquidity/add' \\
+  -H 'accept: application/json' \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "slippage_tolerance_bps": 100,
+    "timeout": "60",
+    "pair_info": {
+      "token_1": {
+        "token": "usdt",
+        "token_type": {
+          "smart": {
+            "contract_address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+          }
+        },
+        "amount": "1000000"
+      },
+      "token_2": {
+        "token": "usdc",
+        "token_type": {
+          "smart": {
+            "contract_address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+          }
+        },
+        "amount": "1000000"
+      }
+    },
+    "sender": {
+      "address": "0x1111111111111111111111111111111111111111",
+      "chain_uid": "polygon"
+    }
 }'`,
     },
     {
@@ -99,68 +188,43 @@ function HomepageHeader() {
       kind: "REST",
       language: "bash",
       code: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create' \\
+  'https://api.euclidprotocol.com/api/v1/execute/pool/create' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
     "sender": {
-      "chain_uid": "nibiru",
-      "address": "nibi1l0wgje0y43007xpdqkuxaxluffuxj7fy7eccns"
+      "address": "0x1111111111111111111111111111111111111111",
+      "chain_uid": "polygon"
     },
     "pair": {
       "token_1": {
         "token": "usdt",
         "token_type": {
-          "native": {
-            "denom": "uusdt"
+          "smart": {
+            "contract_address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
           }
         },
         "amount": "1000000"
       },
       "token_2": {
-        "token": "euclid",
+        "token": "usdc",
         "token_type": {
           "smart": {
-            "contract_address": "nibi17zymknww0ynlgtad22dzgy6kp6qzeg28gmvm5aq32avf9248rvasxtgxuv"
+            "contract_address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
           }
         },
-        "amount": "500000"
+        "amount": "1000000"
       }
     },
-    "lp_token_name": "USDT.EUCLID",
-    "lp_token_decimal": 6,
-    "lp_token_symbol": "USDTEUCLID",
-    "timeout": "3600",
-    "slippage_tolerance_bps": 100
-}'`,
+    "slippage_tolerance_bps": 30,
+    "lp_token_name": "USDT-USDC",
+    "lp_token_symbol": "USDTUSDC",
+    "lp_token_decimal": 18,
+    "pool_config": {
+      "pool_type": "stable",
+      "amp_factor": null
     },
-    {
-      label: "Withdraw Voucher",
-      to: "/docs/API/API%20Reference/REST/Transactions/Vouchers/Withdraw%20Virtual%20Balance",
-      kind: "REST",
-      language: "bash",
-      code: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
-  -H 'accept: application/json' \\
-  -H 'Content-Type: application/json' \\
-  -d '{
-    "token": "euclid",
-    "amount": "1000000",
-    "sender": {
-      "address": "inj1epptslyy5mlvr4m238v0z0954nf9m6lly7v7pu",
-      "chain_uid": "injective"
-    },
-    "cross_chain_addresses": [
-      {
-        "user": {
-          "address": "osmo1468tkm9zh0fl8ragatwjuwz0v065zssadrunml",
-          "chain_uid": "osmosis"
-        },
-        "limit": {
-          "less_than_or_equal": "1000000"
-        }
-      }
-    ]
+    "timeout": "3600"
 }'`,
     },
   ];
@@ -255,7 +319,7 @@ function HomepageHeader() {
               Try it out
             </Heading>
             <p className={styles.sectionSubtitle}>
-              Use the REST API to simulate swaps and build routing flows.
+              Run live protocol REST calls against the current mainnet API.
             </p>
           </div>
           <div className={styles.tryGrid}>

@@ -36,12 +36,12 @@ query Token_denoms($token: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router($token: String!) {\n  router {\n    token_denoms(token: $token) {\n      denoms {\n        chain_uid\n        token_type {\n          ... on NativeTokenType {\n            native {\n              denom\n            }\n          }\n          ... on SmartTokenType {\n            smart {\n              contract_address\n            }\n          }\n          ... on VoucherTokenType {\n            voucher\n          }\n        }\n      }\n    }\n  }\n}","variables":{"token":"usdt"}}'
 
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEASiLAAOkiJE85SnmFiJE%2BkyQB9MMghwAzlSXMidRsiGjxCieqSatcs%2BYlQAFgENuKmJzDz7io6pQEAA4Itj7mAHSRRBDiAHLOKJwAbggAKn6pQSGmYfZICcnZ3rnmxSUAvmU%2BlXZhkeHR4qxwzngo6cqZwaElElotbT29ElVhNb3jJfWNRABq5E74HchdRbW5SQuO%2BKPmk9Wj%2B0STNeUgADQgSa2czgBGADYIWhggOUQiIHpInyyfMFowChPmIzuUgA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr4AUAJChANbLpEDKKeAlkgOYCEASiLAAOkiJE85SnmFiJE%2BkyQB9MMghwAzlSXMidRsiGjxCieqSatcs%2BYlQAFgENuKmJzDz7io6pQEAA4Itj7mAHSRRBDiAHLOKJwAbggAKn6pQSGmYfZICcnZ3rnmxSUAvmU%2BlXZhkeHR4qxwzngo6cqZwaElElotbT29ElVhNb3jJfWNRABq5E74HchdRbW5SQuO%2BKPmk9Wj%2B0STNeUgADQgSa2czgBGADYIWhggOUQiIHpInyyfMFowChPmIzuUgA)
 
 ### Arguments
 | **Name**  | **Type**   | **Description**                        |

@@ -15,41 +15,53 @@ See the REST API reference: [Swap](/docs/API/API%20Reference/REST/Transactions/S
 
 ```bash
 curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/swap' \
+  'https://api.euclidprotocol.com/api/v1/execute/swap' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
     "amount_in": "1000000",
     "asset_in": {
-      "token": "euclid",
-      "token_type": { "native": { "denom": "ueuclid" } }
+      "token": "usdc",
+      "token_type": {
+        "smart": {
+          "contract_address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+        }
+      }
     },
-    "slippage": "50",
+    "slippage": "100",
     "recipients": [
       {
         "user": {
-          "chain_uid": "neutron",
-          "address": "neutron1..."
+          "chain_uid": "polygon",
+          "address": "0x1111111111111111111111111111111111111111"
         },
         "amount": {
-          "dynamic": "true"
-        }
+          "less_than_or_equal": "995000"
+        },
+        "denom": {
+          "smart": {
+            "contract_address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+          }
+        },
+        "forwarding_message": "",
+        "unsafe_refund_as_voucher": false
       }
     ],
     "sender": {
-      "chain_uid": "neutron",
-      "address": "neutron1..."
+      "chain_uid": "polygon",
+      "address": "0x1111111111111111111111111111111111111111"
     },
     "swap_path": {
       "path": [
         {
-          "route": ["euclid", "bnb"],
+          "route": ["usdc", "usdt"],
           "dex": "euclid",
           "chain_uid": "vsl",
           "amount_in": "1000000",
-          "amount_out": "..."
+          "amount_out": "1003064"
         }
-      ]
+      ],
+      "total_price_impact": "0.00"
     }
   }'
 ```

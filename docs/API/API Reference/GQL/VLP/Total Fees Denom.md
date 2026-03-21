@@ -22,11 +22,11 @@ query Vlp($contract: String, $pair: PairInput, $denom: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Total_fees_collected_per_denom($denom: String!, $contract: String!) {\n  vlp(contract: $contract) {\n    total_fees_collected_per_denom(denom: $denom) {\n      lp_fees\n      euclid_fees\n    }\n  }\n}","variables":{"contract":"euclid1y2t7uplrund64g3qc034j7pvfnq7udfqck6k5hxnq7gxtdm30zzsxuk8v9","denom":"0g"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQoCGANgPoBmCCAzjVBFVQlCgmDQA74aYZBDgAKACQikY9EQDKKPAEskAcwCEAGiKS2qPBW7ylqjZoCURYAB0kRIgDcq-cQeXGU8-RENfrOwdHIhRyanpGFjYOLh4%2BQTxhUQkZOT00uED7EJDXSOYc3KIEGCgqFT4GQuDHAF8ihqQ6kG0QJwpVCgAjTiYMECDHWxAPI24R%2BRHS8sqARgIAJhQAdhh%2BKjwYJDAANgAWdQBmLCgABiP9gCsV-ic6JCw1sDpTgGtdt4BWAAsAD0eK3UfxQYDgRzOAC9IUw-jA3gAOJwAThG2iKI0ykyIIzO6jR9hadSAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQoCGANgPoBmCCAzjVBFVQlCgmDQA74aYZBDgAKACQikY9EQDKKPAEskAcwCEAGiKS2qPBW7ylqjZoCURYAB0kRIgDcq-cQeXGU8-RENfrOwdHIhRyanpGFjYOLh4%2BQTxhUQkZOT00uED7EJDXSOYc3KIEGCgqFT4GQuDHAF8ihqQ6kG0QJwpVCgAjTiYMECDHWxAPI24R%2BRHS8sqARgIAJhQAdhh%2BKjwYJDAANgAWdQBmLCgABiP9gCsV-ic6JCw1sDpTgGtdt4BWAAsAD0eK3UfxQYDgRzOAC9IUw-jA3gAOJwAThG2iKI0ykyIIzO6jR9hadSAA)
 
 ### Arguments
 

@@ -7,23 +7,25 @@ sidebar_position: 2
 Simulates a swap given the swap parameters.
 
 ### Request URL
+
+**Method:** `POST`
  
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/simulate-swap
+https://api.euclidprotocol.com/api/v1/simulate-swap
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/simulate-swap' \
+  'https://api.euclidprotocol.com/api/v1/simulate-swap' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "amount_in": "1000000000000000000",
-  "asset_in": "stt",
-  "asset_out": "bnb",
-  "contract": "euclid1ywzqwvhmm58e02lvr579xlcn873kptl40a4teqnjd8t8kndfps7qdghdaq",
+  "amount_in": "100000000",
+  "asset_in": "usdc",
+  "asset_out": "eth",
+  "contract": "euclid1yvgh8xeju5dyr0zxlkvq09htvhjj20fncp5g58np4u25g8rkpgjsy5hngy",
   "min_amount_out": "1",
-  "swaps": ["stt","euclid","bnb"]
+  "swaps": ["usdc","eth"]
 }'
 ```
 ### Parameters
@@ -42,5 +44,5 @@ curl -X 'POST' \
 ### Example Response
 
 ```json
-{"amount_out":"57810274463639","asset_out":"bnb"}
+{"id":"","amount_out":"45377330596656764","asset_out":"eth"}
 ```

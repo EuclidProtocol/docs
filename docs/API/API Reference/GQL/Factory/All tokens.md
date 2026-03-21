@@ -26,11 +26,11 @@ query All_tokens($chainUid: String!, $limit: Int, $offset: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query All_tokens($chainUid: String!, $limit: Int, $offset: Int) {\n  factory(chain_uid: $chainUid) {\n    all_tokens(limit: $limit, offset: $offset) {\n      tokens\n      pagination {\n        total_count\n        limit\n        offset\n      }\n    }\n  }\n}","variables":{"chainUid":"nibiru","limit":7,"offset":null}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BihANbIDOAFACRQAWAhgJZICq3MOiIBlFHl4BzAIQAaIizLc43FMICSqeSwgAzXQwRqimlAEoiwADpIiRXZyg1CTDjySUYg4Wy68BYBbWtnZEnBTUdIxMSirGisqq8noGRj4phuaWNqGhNPRIDDm5RAAOnJK8nCjcELbBJXkQKOGUUBAwqMWNsardJRlG-XYAvv1jIRMjILIgAG6cEpwARmQIDBggDURWIG7%2BgrvCu0jcy9x4MLuyxbu9KEdEAOw3IbuDDxhESDAUNtMjIA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BihANbIDOAFACRQAWAhgJZICq3MOiIBlFHl4BzAIQAaIizLc43FMICSqeSwgAzXQwRqimlAEoiwADpIiRXZyg1CTDjySUYg4Wy68BYBbWtnZEnBTUdIxMSirGisqq8noGRj4phuaWNqGhNPRIDDm5RAAOnJK8nCjcELbBJXkQKOGUUBAwqMWNsardJRlG-XYAvv1jIRMjILIgAG6cEpwARmQIDBggDURWIG7%2BgrvCu0jcy9x4MLuyxbu9KEdEAOw3IbuDDxhESDAUNtMjIA)
 
 
 ### Arguments

@@ -36,11 +36,11 @@ query Token_pair_with_liquidity($token: String, $limit: Int, $offset: Int, $only
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Token_pair_with_liquidity($token: String, $limit: Int, $offset: Int, $onlyShowVerified: Boolean, $sortBy: TokenPairSortBy, $sortOrder: SortOrder) {\n  pool {\n    token_pair_with_liquidity(token: $token, limit: $limit, offset: $offset, only_show_verified: $onlyShowVerified, sort_by: $sortBy, sort_order: $sortOrder) {\n      pagination {\n        total_count\n        limit\n        offset\n      }\n      results {\n        pair {\n          token_1\n          token_2\n        }\n        vlp\n        total_liquidity\n        apr\n        tags\n        created_at\n      }\n    }\n  }\n}","variables":{"token":"euclid","limit":3,"offset":1,"onlyShowVerified":true,"sortBy":"CREATED_AT","sortOrder":"DESC"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgA4CGAlnlQO4MoAWVANgzg2HYEAFABIUFZOiIBlFHgZIA5gBoio3nHbSAkqjWiIAMyMBnBCl371EJNwIyOEFgDV8DIwwRhpAIQgQ3Ah0SAamEHgovgTSZJRIAAqMeDIRUQRhaQDyeGD40qmROXl4AJREwAA6SERENAHcFdW1tRLxtMms7Fy8-IIoIm1S6kOhRJra6hMoasZmFtKGJuYzRLb2VKZOLFQAbu6e3ovrDttuCodgauGRVABGMeo36ddpVBEli8-F%2BOVVNS1avQlIo6CgGLYmgDAa0ICg6NwqFAIDBUM0YbVpuiMXMVtiWgBffG1PAIUwwbgoUxQjFA5I02mw9oARmJMNGVAATGzakToTDdtwaDyiBJ4YjejABEIRXQaHgRfClKYRVBSWDvFQwWy%2BYDdUQ%2BQSQCoQLs6Ao6HcgqYMCB-rVKiBRo7pI6EDAoLwwI6VOjHViMEQAMy%2BgGO3EWF1EZmhh0gE6OZznDxeb2B%2BS4WNER3PaIux0AYQASgBRACCJBLABEqBWfX6QN9cvgo46qyWZAXHdUjQSgA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgA4CGAlnlQO4MoAWVANgzg2HYEAFABIUFZOiIBlFHgZIA5gBoio3nHbSAkqjWiIAMyMBnBCl371EJNwIyOEFgDV8DIwwRhpAIQgQ3Ah0SAamEHgovgTSZJRIAAqMeDIRUQRhaQDyeGD40qmROXl4AJREwAA6SERENAHcFdW1tRLxtMms7Fy8-IIoIm1S6kOhRJra6hMoasZmFtKGJuYzRLb2VKZOLFQAbu6e3ovrDttuCodgauGRVABGMeo36ddpVBEli8-F%2BOVVNS1avQlIo6CgGLYmgDAa0ICg6NwqFAIDBUM0YbVpuiMXMVtiWgBffG1PAIUwwbgoUxQjFA5I02mw9oARmJMNGVAATGzakToTDdtwaDyiBJ4YjejABEIRXQaHgRfClKYRVBSWDvFQwWy%2BYDdUQ%2BQSQCoQLs6Ao6HcgqYMCB-rVKiBRo7pI6EDAoLwwI6VOjHViMEQAMy%2BgGO3EWF1EZmhh0gE6OZznDxeb2B%2BS4WNER3PaIux0AYQASgBRACCJBLABEqBWfX6QN9cvgo46qyWZAXHdUjQSgA)
 
 | **Argument**         | **Type**              | **Description**                                                                 |
 |----------------------|-----------------------|---------------------------------------------------------------------------------|

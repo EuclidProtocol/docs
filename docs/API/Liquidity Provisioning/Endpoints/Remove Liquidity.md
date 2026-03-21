@@ -255,7 +255,7 @@ Now when the user specifies the amount, you can do a check to make sure the amou
       id: 'cosmwasm-remove-liquidity-js',
       label: 'CosmWasm',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/liquidity/remove", {
   lp_allocation: data.lp_allocation, // Amount of LP tokens to remove
   vlp_address: data.vlp_address, // Address of the LP token contract
   pair: data.pair, // token_1 and token_2 symbols
@@ -271,7 +271,7 @@ Now when the user specifies the amount, you can do a check to make sure the amou
       id: 'evm-remove-liquidity-js',
       label: 'EVM',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/liquidity/remove", {
   lp_allocation: data.lp_allocation,
   vlp_address: data.vlp_address,
   pair: data.pair,

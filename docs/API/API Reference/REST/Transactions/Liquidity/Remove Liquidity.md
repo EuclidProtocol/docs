@@ -16,23 +16,23 @@ Generates a transaction to remove liquidity from a pool.
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
+  'https://api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
     "lp_allocation": "1000000",
-    "vlp_address": "euclid1fa7tuuwmd5r3r40ujtrz82xxnxx8l4v2u74x9643v0c9j0h698qs6hx5nz",
+    "vlp_address": "euclid1g6kht9c5s4jwn4akfjt3zmsfh4nvguewaegjeavpz3f0q9uylrqsz7xg3r",
     "pair": {
-      "token_1": "inj",
-      "token_2": "usdc"
+      "token_1": "usdc",
+      "token_2": "usdt"
     },
     "receiver": {
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "chain_uid": "base"
+      "address": "0x1111111111111111111111111111111111111111",
+      "chain_uid": "polygon"
     },
     "sender": {
-      "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "chain_uid": "base"
+      "address": "0x1111111111111111111111111111111111111111",
+      "chain_uid": "polygon"
     },
     "timeout": "60"
 }'`
@@ -44,10 +44,17 @@ Generates a transaction to remove liquidity from a pool.
       content: `{
   "msgs": [
     {
-      "chainId": "84532",
-      "data": "0x4000aea000000000000000000000000000a739e4479...",
+      "chainId": "137",
+      "data": "0x095ea7b300000000000000000000000008e6604931e9c2a978d4861b912f7894cc6063f700000000000000000000000000000000000000000000000000000000000f4240",
+      "gasLimit": "0x186A0",
+      "to": "0x8EE0d319865D30B27dCa58C322628597Bf5f4885",
+      "value": "0x0"
+    },
+    {
+      "chainId": "137",
+      "data": "0xee970de2...",
       "gasLimit": "0x493E0",
-      "to": "0x0000000000000000000000000000000000000000",
+      "to": "0x08E6604931E9c2a978D4861b912f7894CC6063F7",
       "value": "0x0"
     }
   ],
@@ -59,7 +66,7 @@ Generates a transaction to remove liquidity from a pool.
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
+  'https://api.euclidprotocol.com/api/v1/execute/liquidity/remove' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

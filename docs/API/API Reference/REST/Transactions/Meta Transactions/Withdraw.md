@@ -10,7 +10,7 @@ Create a meta-transaction message payload to withdraw voucher balances.
 ### Request URL
 
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw
+https://api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw
 ```
 
 ### Example
@@ -22,7 +22,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw
       label: 'Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw' \
+  'https://api.euclidprotocol.com/api/v1/execute/meta-txn/withdraw' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

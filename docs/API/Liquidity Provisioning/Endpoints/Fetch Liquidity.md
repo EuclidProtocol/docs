@@ -123,7 +123,7 @@ query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {
 # fetch-vlps.sh
 curl --request POST \\
   --header 'content-type: application/json' \\
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \\
+  --url 'https://api.euclidprotocol.com/graphql' \\
   --data '{
     "query": "query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) { router { all_vlps(max: $max, min: $min, skip: $skip, limit: $limit) { vlps { vlp token_1 token_2 } } } }",
     "variables": {
@@ -143,7 +143,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -190,7 +190,7 @@ const { ApolloClient, InMemoryCache, HttpLink, gql } = require('@apollo/client/c
 const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql', fetch }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql', fetch }),
   cache: new InMemoryCache(),
 });
 

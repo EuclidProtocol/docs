@@ -20,11 +20,11 @@ query Escrows($token: String!, $max: String, $min: String, $skip: Int, $limit: I
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Escrows($token: String!) {\n  router {\n    escrows(token: $token) {\n      chain_uid\n      balance\n      chain_id\n    }\n  }\n}","variables":{"token":"euclid"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIDOUeEA7mQBQAkKEA1sukQMop4CWSAcwCEASiLAAOkiJEqMFPnFSZMhBSq06zNkg5NWyMZOkqZUABYBDfgH0YvMMtNEARpYA2lpFARPTF6yQbBz8iAF8nCKQwkAAaEAA3Sz5LF3c1DBBjGQkQbWRcjlyEGCh3EJApGLCgA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIDOUeEA7mQBQAkKEA1sukQMop4CWSAcwCEASiLAAOkiJEqMFPnFSZMhBSq06zNkg5NWyMZOkqZUABYBDfgH0YvMMtNEARpYA2lpFARPTF6yQbBz8iAF8nCKQwkAAaEAA3Sz5LF3c1DBBjGQkQbWRcjlyEGCh3EJApGLCgA)
 
 ### Arguments
 

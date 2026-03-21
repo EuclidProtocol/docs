@@ -8,20 +8,21 @@ Gets all swap routes available when swapping the specified `token_in` to receive
 
 ### Request URL
 
+**Method:** `POST`
+
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/routes
+https://api.euclidprotocol.com/api/v1/routes
 ```
 ### Curl
 ```bash
 curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/routes' \
+  'https://api.euclidprotocol.com/api/v1/routes' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-    "external": true,
-    "token_in": "euclid",
-    "token_out": "0g",
-    "amount_in": "1000000",
+    "token_in": "usdc",
+    "token_out": "eth",
+    "amount_in": "100000000",
     "chain_uids": []
 }'
 ```
@@ -42,39 +43,19 @@ curl -X 'POST' \
       "path": [
         {
           "route": [
-            "euclid",
-            "0g"
+            "usdc",
+            "eth"
           ],
           "dex": "euclid",
-          "amount_in": "1000000",
-          "amount_out": "47039472846823928",
+          "amount_in": "100000000",
+          "amount_out": "45377330596656768",
           "chain_uid": "vsl",
           "amount_out_for_hops": [
-            "0g: 47039472846823928"
+            "eth: 45377330596656768"
           ]
         }
       ],
-      "total_price_impact": "0.76"
-    },
-    {
-      "path": [
-        {
-          "route": [
-            "euclid",
-            "gimo",
-            "0g"
-          ],
-          "dex": "euclid",
-          "amount_in": "1000000",
-          "amount_out": "47196320447745512",
-          "chain_uid": "vsl",
-          "amount_out_for_hops": [
-            "gimo: 992618817702689792",
-            "0g: 47196320447745512"
-          ]
-        }
-      ],
-      "total_price_impact": "0.43"
+      "total_price_impact": "10.58"
     }
   ]
 }

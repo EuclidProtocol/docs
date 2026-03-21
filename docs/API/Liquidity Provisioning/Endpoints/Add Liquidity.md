@@ -252,7 +252,7 @@ We now have everything needed to generate the Add Liquidity transaction message:
       id: 'cosmwasm-liquidity-js',
       label: 'CosmWasm',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/liquidity/add", {
   token_1_liquidity: token1Amount, // Liquidity to add for token 1
   token_2_liquidity: token2Amount, // Liquidity to add for token 2
   slippage_tolerance: slippageTolerance, // Slippage tolerance in %
@@ -269,7 +269,7 @@ console.log(msg.msgs, "Liquidity Response");`
       id: 'evm-liquidity-js',
       label: 'EVM',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/liquidity/add", {
   token_1_liquidity: token1Amount,
   token_2_liquidity: token2Amount,
   slippage_tolerance: slippageTolerance,

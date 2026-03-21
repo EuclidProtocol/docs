@@ -80,7 +80,7 @@ query User_balance($user: CrossChainUserInput) {
 # fetch-vouchers.sh
 curl --request POST \\
   --header 'content-type: application/json' \\
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \\
+  --url 'https://api.euclidprotocol.com/graphql' \\
   --data '{
     "query": "query User_balance($user: CrossChainUserInput) { vcoin { user_balance(user: $user) { balances { amount token_id } } } }",
     "variables": {
@@ -102,7 +102,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -150,7 +150,7 @@ const { ApolloClient, InMemoryCache, HttpLink, gql } = require('@apollo/client/c
 const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql', fetch }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql', fetch }),
   cache: new InMemoryCache(),
 });
 
@@ -498,7 +498,7 @@ query Unified_user_balance($address: String!, $limit: Int, $offset: Int, $chainU
 # fetch-vouchers-all-chains.sh
 curl --request POST \\
   --header 'content-type: application/json' \\
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \\
+  --url 'https://api.euclidprotocol.com/graphql' \\
   --data '{
     "query": "query Unified_user_balance($address: String!, $limit: Int, $offset: Int, $chainUids: [String]) { vcoin { unified_user_balance(address: $address, limit: $limit, offset: $offset, chain_uids: $chainUids) { balances { amount token_id } chain_uid } } }",
     "variables": {
@@ -520,7 +520,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -569,7 +569,7 @@ const { ApolloClient, InMemoryCache, HttpLink, gql } = require('@apollo/client/c
 const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql', fetch }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql', fetch }),
   cache: new InMemoryCache(),
 });
 
