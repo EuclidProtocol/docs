@@ -8,9 +8,11 @@ import Tabs from '@site/src/components/Tabs';
 Generates a transaction to add liquidity to a pool.
 
 ### Request URL
+
+**Method:** `POST`
  
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
+https://api.euclidprotocol.com/api/v1/execute/liquidity/add
 ```
 
 ### Examples
@@ -22,7 +24,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add' \\
+  'https://api.euclidprotocol.com/api/v1/execute/liquidity/add' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -30,27 +32,27 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
     "timeout": "60",
     "pair_info": {
       "token_1": {
-        "token": "ron",
-        "token_type": {
-          "native": {
-            "denom": "ron"
-          }
-        },
-        "amount": "100000000000000000"
-      },
-      "token_2": {
-        "token": "euclid",
+        "token": "usdt",
         "token_type": {
           "smart": {
-            "contract_address": "0xeuclidtoken..."
+            "contract_address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
           }
         },
-        "amount": "250000"
+        "amount": "1000000"
+      },
+      "token_2": {
+        "token": "usdc",
+        "token_type": {
+          "smart": {
+            "contract_address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+          }
+        },
+        "amount": "1000000"
       }
     },
     "sender": {
-      "address": "0x72bbb...",
-      "chain_uid": "ronin"
+      "address": "0x1111111111111111111111111111111111111111",
+      "chain_uid": "polygon"
     }
 }'`
     },
@@ -61,18 +63,25 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
       content: `{
   "msgs": [
     {
-      "chainId": "2021",
-      "data": "0x095ea7b300...",
+      "chainId": "137",
+      "data": "0x095ea7b300000000000000000000000008e6604931e9c2a978d4861b912f7894cc6063f700000000000000000000000000000000000000000000000000000000000f4240",
       "gasLimit": "0x186A0",
-      "to": "0xeuclidtoken...",
+      "to": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
       "value": "0x0"
     },
     {
-      "chainId": "2021",
-      "data": "0x08c9bfe400000...",
+      "chainId": "137",
+      "data": "0x095ea7b300000000000000000000000008e6604931e9c2a978d4861b912f7894cc6063f700000000000000000000000000000000000000000000000000000000000f4240",
+      "gasLimit": "0x186A0",
+      "to": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+      "value": "0x0"
+    },
+    {
+      "chainId": "137",
+      "data": "0x1d53cc080000000000000000000000000000000000000000000000000000000000000060...",
       "gasLimit": "0x493E0",
-      "to": "0x43d4759e0cb8e4d3b2aab1ba6e39a60dce1a8f5b",
-      "value": "0x16345785d8a0000"
+      "to": "0x08E6604931E9c2a978D4861b912f7894CC6063F7",
+      "value": "0x0"
     }
   ],
   "type": "evm"
@@ -83,7 +92,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/liquidity/add' \
+  'https://api.euclidprotocol.com/api/v1/execute/liquidity/add' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

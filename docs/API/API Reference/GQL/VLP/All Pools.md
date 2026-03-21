@@ -31,11 +31,11 @@ query Vlp($contract: String, $pair: PairInput, $limit: Int, $offset: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Vlp($contract: String!, $limit: Int, $offset: Int) {\n  vlp(contract: $contract) {\n    all_pools(limit: $limit, offset: $offset) {\n      pools {\n        chain_uid\n        pool {\n          reserve_1\n          reserve_2\n          lp_shares\n        }\n      }\n      pagination {\n        total_count\n        limit\n        offset\n      }\n    }\n  }\n}","variables":{"contract":"euclid12a4ecpxsz8pz75chryl6wda6fsnqdx8zgn4ykvp0u7v939m50tvswvnvw8","limit":null,"offset":null}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIANERpkecHmyIBJVKJoQAZsoDOCGfJQBKIsAA6SIkQBulKvUYsZdBtxt7Dxk0SZkyAfQoQIZNVQSUrZB0qIq6prsSqoauvpGrq4%2BfmoJLkkmUAAWTHyeMDxgiZkmKWTppUl4CBp4pgieAIwlVUQ1dQ2eAEytVZSearkdfUkAvqNEExnJTPx8TCg8DJVVKBAo7p70MKiTJqEo%2B0QRcZPT4yXTYyDCIKZMvEwARmS1GCDOJgYgVg6sP3YPwQMCgEjATW6TAALAgoBQAB5qABeAA4KMiAOwAVhyhDIADYAO5gJgE9RILBgBGo5H8JDQggAa1MFAADDBMaYAJwAZm5cGxbJQpjURNMSFMRNRP2EJR%2Bh0BRCQMA8cpcP1OmiVKo8RhuYyAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkUEqeAhlCukQMop4CWSA5gEIANERpkecHmyIBJVKJoQAZsoDOCGfJQBKIsAA6SIkQBulKvUYsZdBtxt7Dxk0SZkyAfQoQIZNVQSUrZB0qIq6prsSqoauvpGrq4%2BfmoJLkkmUAAWTHyeMDxgiZkmKWTppUl4CBp4pgieAIwlVUQ1dQ2eAEytVZSearkdfUkAvqNEExnJTPx8TCg8DJVVKBAo7p70MKiTJqEo%2B0QRcZPT4yXTYyDCIKZMvEwARmS1GCDOJgYgVg6sP3YPwQMCgEjATW6TAALAgoBQAB5qABeAA4KMiAOwAVhyhDIADYAO5gJgE9RILBgBGo5H8JDQggAa1MFAADDBMaYAJwAZm5cGxbJQpjURNMSFMRNRP2EJR%2Bh0BRCQMA8cpcP1OmiVKo8RhuYyAA)
 
 
 ### Arguments

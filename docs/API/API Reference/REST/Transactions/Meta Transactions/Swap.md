@@ -10,7 +10,7 @@ Create a meta-transaction message payload for a voucher swap.
 ### Request URL
 
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
+https://api.euclidprotocol.com/api/v1/execute/meta-txn/swap
 ```
 
 ### Example
@@ -22,7 +22,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap
       label: 'Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap' \
+  'https://api.euclidprotocol.com/api/v1/execute/meta-txn/swap' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

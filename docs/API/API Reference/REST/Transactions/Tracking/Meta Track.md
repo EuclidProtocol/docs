@@ -10,7 +10,7 @@ Track a meta transaction status using the `queue_id` returned by Meta Broadcast,
 ### Request URL
 
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/txn/track/meta-txn
+https://api.euclidprotocol.com/api/v1/txn/track/meta-txn
 ```
 
 ### Example

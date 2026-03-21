@@ -26,10 +26,10 @@ query Token($limit: Int, $offset: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Token($limit: Int, $offset: Int) {\n  token {\n    all_dexes(limit: $limit, offset: $offset) {\n      bg_color\n      logo\n      dex_name\n      fg_color\n      chain_uid\n      display_name\n    }\n  }\n}","variables":{"limit":null,"offset":null}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACQA2AlnAyukQJKoA0RNEAZvwDOCVh1QBKIsAA6SIkRQVk0uQoUBDOnQD6YBAA8EQqo2Zj6TFjwHDRbPoJEops%2BeoUAjAOY6oEOgg8NQ8iQO8IEI99Ax0kDUQo9X5ff0Dg9w8oAAsNBiQdGAYwJIUwBiEABzoNAjiEhCSAXxCWpCaQJqA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACQA2AlnAyukQJKoA0RNEAZvwDOCVh1QBKIsAA6SIkRQVk0uQoUBDOnQD6YBAA8EQqo2Zj6TFjwHDRbPoJEops%2BeoUAjAOY6oEOgg8NQ8iQO8IEI99Ax0kDUQo9X5ff0Dg9w8oAAsNBiQdGAYwJIUwBiEABzoNAjiEhCSAXxCWpCaQJqA)
 
 ### Arguments 
 

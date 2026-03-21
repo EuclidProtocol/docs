@@ -11,7 +11,7 @@ type Props = {
   className?: string;
 };
 
-const DEFAULT_GRAPHQL_ENDPOINT = "https://testnet.api.euclidprotocol.com/graphql";
+const DEFAULT_GRAPHQL_ENDPOINT = "https://api.euclidprotocol.com/graphql";
 
 type ParsedCurl = {
   url: string;

@@ -10,8 +10,10 @@ Exchanges native or smart tokens to voucher tokens and sends them to the specifi
 
 ### Request URL
 
+**Method:** `POST`
+
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit
+https://api.euclidprotocol.com/api/v1/execute/token/deposit
 ```
 
 
@@ -28,7 +30,7 @@ Use this approach when depositing to a recipient identified by a standard **wall
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
+  'https://api.euclidprotocol.com/api/v1/execute/token/deposit' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -65,10 +67,10 @@ Use this approach when depositing to a recipient identified by a standard **wall
   },
   "msgs": [
     {
-      "chainId": "16601",
-      "data": "0xaf18a6d700000000...",
+      "chainId": "16661",
+      "data": "0x3c29ede800000000...",
       "gasLimit": "0x493E0",
-      "to": "0x171931f5670037173b9db13ab83186adab350cf2",
+      "to": "0x08E6604931E9c2a978D4861b912f7894CC6063F7",
       "value": "0x1bc16d674ec80000"
     }
   ],
@@ -82,7 +84,7 @@ Use this approach when depositing to a recipient identified by a standard **wall
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \\
+  'https://api.euclidprotocol.com/api/v1/execute/token/deposit' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -190,7 +192,7 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \
+  'https://api.euclidprotocol.com/api/v1/execute/token/deposit' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -250,7 +252,7 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/token/deposit' \\
+  'https://api.euclidprotocol.com/api/v1/execute/token/deposit' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{

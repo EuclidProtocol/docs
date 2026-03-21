@@ -31,10 +31,10 @@ query All_pools($chainUid: String!, $limit: Int, $offset: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Factory($chainUid: String!, $limit: Int, $offset: Int) {\n  factory(chain_uid: $chainUid) {\n    all_pools(limit: $limit, offset: $offset) {\n      pools {\n        pair {\n          token_1\n          token_2\n        }\n        vlp\n      }\n      pagination {\n        total_count\n        limit\n        offset\n      }\n    }\n  }\n}","variables":{"chainUid":"stargaze","limit":7,"offset":null}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidADYs4LFDwCSqCXQgAzdQGcECospQBKIsAA6SIkXUUqtJqyQB9GFx4NmbTmGNmLlomRSUo4ADhAQUlo0MnJ60rLyEhraum7JOkYm5v7%2BYRFaWX45liGseIXFxVQA1siOAIzZlf41dQBMTZUAvp3FAG5SIb2WPUW5ZEJsZCgsEBa%2BzURUKIGOUBAwqMP%2BMfLblum626M5J0SjXSBiIH1kgmQARlIIWhggC0SmIPaeXF88Xy0KzwQjIAC8EF8xE0vrsUP8iAB2aF%2BL6HeEYIhIGBBcyXLpAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGICGUKEhAFACRQAWZAlkgKotjpEDKKeNgHMAhABoidADYs4LFDwCSqCXQgAzdQGcECospQBKIsAA6SIkXUUqtJqyQB9GFx4NmbTmGNmLlomRSUo4ADhAQUlo0MnJ60rLyEhraum7JOkYm5v7%2BYRFaWX45liGseIXFxVQA1siOAIzZlf41dQBMTZUAvp3FAG5SIb2WPUW5ZEJsZCgsEBa%2BzURUKIGOUBAwqMP%2BMfLblum626M5J0SjXSBiIH1kgmQARlIIWhggC0SmIPaeXF88Xy0KzwQjIAC8EF8xE0vrsUP8iAB2aF%2BL6HeEYIhIGBBcyXLpAA)
 
 ### Arguments
 

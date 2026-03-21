@@ -35,11 +35,11 @@ query Chain($chainUid: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Chain($chainUid: String!) {\n  router {\n    chain(chain_uid: $chainUid) {\n      chain_uid\n      chain {\n        factory_chain_id\n        factory\n        chain_type {\n          ibc {\n            from_hub_channel\n            from_factory_channel\n          }\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"osmosis"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIAUAJFJTQKpVjpEDKKeNA5gEIAlEWAAdJESJ4IMFPjGTp0ptTpqaAfRjtOjZkjZhREqStWGd7ZRaKapZuyoBmFKCgiEtDrTfPObh5eBLbOvigEAA4ISgHORFQARlBxCXYusnBaZDBJPpRISAgANmHpRJkQ2UGe3mpFpeXOAL7NKm3x0p0WPUSdLSAANCAAbhR8FEklCADOGCBOROIgDsYrnCsQs3DbVLMrkoMtQA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIAWAhgJZIAUAJFJTQKpVjpEDKKeNA5gEIAlEWAAdJESJ4IMFPjGTp0ptTpqaAfRjtOjZkjZhREqStWGd7ZRaKapZuyoBmFKCgiEtDrTfPObh5eBLbOvigEAA4ISgHORFQARlBxCXYusnBaZDBJPpRISAgANmHpRJkQ2UGe3mpFpeXOAL7NKm3x0p0WPUSdLSAANCAAbhR8FEklCADOGCBOROIgDsYrnCsQs3DbVLMrkoMtQA)
 
 ### Arguments
 

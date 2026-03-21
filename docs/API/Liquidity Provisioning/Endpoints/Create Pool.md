@@ -54,7 +54,7 @@ Build and call the endpoint with your selected chain, token pair, amounts, and p
       id: 'cosmwasm-create-pool',
       label: 'CosmWasm',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/pool/create", {
   sender: {
     address: wallet!.bech32Address,
     chain_uid: chain!.chain_uid,
@@ -85,7 +85,7 @@ console.log(msg.msgs, "Create Pool Response");`
       id: 'evm-create-pool',
       label: 'EVM',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/pool/create", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/pool/create", {
   sender: {
     address: walletAddress,
     chain_uid: chainUid,

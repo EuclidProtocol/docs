@@ -272,17 +272,18 @@ Next, we need to select the amount of `token_in` to swap. This would be specifie
 In many cases, multiple routes can be taken to perform the desired swap. In this step, we will fetch these routes and select the one we want to use. This can be done using the [`Get Routes`](../API%20Reference/REST/Routes/Get%20Routes.md) query:
 ```bash
 curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/routes' \
+  'https://api.euclidprotocol.com/api/v1/routes' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
   "amount_in": "1000000",
-  "token_in": "euclid",
-  "token_out": "eth"
+  "token_in": "usdc",
+  "token_out": "usdt",
+  "chain_uids": []
 }'
 ```
 
-Here is a result for `euclid` in and `eth` out:
+Here is a result for `usdc` in and `usdt` out:
 
 
 
@@ -293,19 +294,19 @@ Here is a result for `euclid` in and `eth` out:
       "path": [
         {
           "route": [
-            "euclid",
-            "eth"
+            "usdc",
+            "usdt"
           ],
           "dex": "euclid",
           "amount_in": "1000000",
-          "amount_out": "143104841102727696",
+          "amount_out": "1003064",
           "chain_uid": "vsl",
           "amount_out_for_hops": [
-            "eth: 143104841102727696"
+            "usdt: 1003064"
           ]
         }
       ],
-      "total_price_impact": "0"
+      "total_price_impact": "0.00"
     }
   ]
 }
@@ -484,7 +485,7 @@ We now have everything needed to generate the swap transaction message:
       id: 'cosmwasm-js',
       label: 'CosmWasm',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/swap", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/swap", {
   amount_in: data.amountIn, // amount of asset in being swapped 
   asset_in: data.assetIn, // the type of asset in
   recipients: data.recipients, // recipients and optional amount/denom constraints
@@ -500,7 +501,7 @@ We now have everything needed to generate the swap transaction message:
       id: 'evm-js',
       label: 'EVM',
       language: 'javascript',
-      content: `const msg = await axios.post("https://testnet.api.euclidprotocol.com/api/v1/execute/swap", {
+      content: `const msg = await axios.post("https://api.euclidprotocol.com/api/v1/execute/swap", {
   amount_in: data.amountIn,
   asset_in: data.assetIn,
   recipients: data.recipients,

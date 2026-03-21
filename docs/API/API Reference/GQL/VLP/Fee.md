@@ -25,11 +25,11 @@ query Vlp($contract: String, $pair: PairInput) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Fee($contract: String!) {\n  vlp(contract: $contract) {\n    fee {\n      lp_fee_bps\n      euclid_fee_bps\n      recipient {\n        chain_uid\n        address\n      }\n    }\n  }\n}","variables":{"contract":"euclid12a4ecpxsz8pz75chryl6wda6fsnqdx8zgn4ykvp0u7v939m50tvswvnvw8"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGIIIAUAJFBKngIZQrpEDKKeAlkgOYCEASiLAAOkiJEAbgBsADhVr0mLIjTqcVwsRMlEAZuRHi9e%2BQH1DCcwCM5AZxOmiCGFBlcwl8rYdPTeAhQXHJcyCjGus5EUAAWDDzmMJ7%2BzgxgYIH2jlF6AL6pBbpFeSAANCBSDNwMNjII9hggOpKiIEqazG2sba7ungCMAEwMACxBcgAe9gBeABxyMwDsAKxxhDIAbADuYAyb%2BvZIWGCTczO8SKMEANZScgAMMEtSAJwAzK9wKw8oUvbbKRIKTbOZtMriUp5IA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGIIIAUAJFBKngIZQrpEDKKeAlkgOYCEASiLAAOkiJEAbgBsADhVr0mLIjTqcVwsRMlEAZuRHi9e%2BQH1DCcwCM5AZxOmiCGFBlcwl8rYdPTeAhQXHJcyCjGus5EUAAWDDzmMJ7%2BzgxgYIH2jlF6AL6pBbpFeSAANCBSDNwMNjII9hggOpKiIEqazG2sba7ungCMAEwMACxBcgAe9gBeABxyMwDsAKxxhDIAbADuYAyb%2BvZIWGCTczO8SKMEANZScgAMMEtSAJwAzK9wKw8oUvbbKRIKTbOZtMriUp5IA)
 
 ### Arguments
 

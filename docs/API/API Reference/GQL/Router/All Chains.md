@@ -22,12 +22,12 @@ query Router {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Router {\n  router {\n    all_chains {\n      factory_address\n      chain_id\n      chain_uid\n    }\n  }\n}"}'
 
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6UABacAlkgDObehwYAzTlBQRCfTmDB4E48exlEhopHxFhdMg2L4wTZogF9dDpHZAAaEADdOeEZwBG3FoYICB2QA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAEoQwr5HAA6SRRe5le1dDDAhgDbcD6UABacAlkgDObehwYAzTlBQRCfTmDB4E48exlEhopHxFhdMg2L4wTZogF9dDpHZAAaEADdOeEZwBG3FoYICB2QA)
 
 ### Return Fields
 

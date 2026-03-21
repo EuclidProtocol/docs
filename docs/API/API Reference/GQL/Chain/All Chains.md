@@ -29,7 +29,7 @@ query Chains($showAllChains: Boolean, $type: String) {
 ```bash
 curl --request POST \
   --header 'content-type: application/json' \
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \
+  --url 'https://api.euclidprotocol.com/graphql' \
   --data '{
     "query": "query Chains($showAllChains: Boolean, $type: String) {\n  chains {\n    all_chains(show_all_chains: $showAllChains, type: $type) {\n      chain_id\n      factory_address\n      token_factory_address\n      display_name\n      explorer_url\n      chain_uid\n      logo\n      type\n    }\n  }\n}",
     "variables": {
@@ -39,7 +39,7 @@ curl --request POST \
 }'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BlABYCGAlkgM4AUAJMzRAO7lkBhek2boiAIQgQyCOkgA0RdigIAHBGIDKKPEwDmASiLAAOkiJFajFsbMWLdCtWEtWXXpUdUrIsZ258FELWzIoq6n7hCEam5vYWPkiUDGB28UQAZnRQKBCEnmBgeAjMzGnxYAzMqmR0BJRIdIjl9ggAHjV5%2BJQweGQtCS49KQNEZBB6EKNR0xAA1siUWTl59XSFxaUtAL5pu0jbINtAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BlABYCGAlkgM4AUAJMzRAO7lkBhek2boiAIQgQyCOkgA0RdigIAHBGIDKKPEwDmASiLAAOkiJFajFsbMWLdCtWEtWXXpUdUrIsZ258FELWzIoq6n7hCEam5vYWPkiUDGB28UQAZnRQKBCEnmBgeAjMzGnxYAzMqmR0BJRIdIjl9ggAHjV5%2BJQweGQtCS49KQNEZBB6EKNR0xAA1siUWTl59XSFxaUtAL5pu0jbINtAA)
 
 ### Arguments
 

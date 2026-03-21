@@ -19,7 +19,7 @@ Use one of these:
 
 ```bash
 curl -X POST \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/swap' \
+  'https://api.euclidprotocol.com/api/v1/execute/meta-txn/swap' \
   -H 'Content-Type: application/json' \
   -d '{
   "amount_in": "100000000000000000",
