@@ -95,7 +95,7 @@ query Router {
     content: `
 curl --request POST \\
   --header 'content-type: application/json' \\
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \\
+  --url 'https://api.euclidprotocol.com/graphql' \\
   --data '{"query":"query Router { router { all_chains { chain_id chain_uid factory_address } } }"}'
 `
   },
@@ -109,7 +109,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -149,7 +149,7 @@ const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://testnet.api.euclidprotocol.com/graphql',
+    uri: 'https://api.euclidprotocol.com/graphql',
     fetch
   }),
   cache: new InMemoryCache(),
@@ -211,7 +211,7 @@ query Evm_chain_config($chainUid: String, $chainId: String) {
     content: `
 curl --request POST \\
   --header 'content-type: application/json' \\
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \\
+  --url 'https://api.euclidprotocol.com/graphql' \\
   --data '{
     "query": "query Evm_chain_config($chainUid: String, $chainId: String) { chains { evm_chain_config(chain_uid: $chainUid, chain_id: $chainId) { rpc_urls { default { http } } explorer_url name } } }",
     "variables": {
@@ -231,7 +231,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -281,7 +281,7 @@ const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://testnet.api.euclidprotocol.com/graphql',
+    uri: 'https://api.euclidprotocol.com/graphql',
     fetch
   }),
   cache: new InMemoryCache(),
@@ -335,7 +335,7 @@ Use the following query to retrieve RPC endpoints, REST endpoints, and explorer 
     content: `
 curl --request POST \\
   --header 'content-type: application/json' \\
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \\
+  --url 'https://api.euclidprotocol.com/graphql' \\
   --data '{
     "query": "query Keplr_config($chainId: String, $chainUid: String) { chains { keplr_config(chain_id: $chainId, chain_uid: $chainUid) { chainID chainName rpc rest explorer_url } } }",
     "variables": {
@@ -355,7 +355,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -403,7 +403,7 @@ const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://testnet.api.euclidprotocol.com/graphql',
+    uri: 'https://api.euclidprotocol.com/graphql',
     fetch
   }),
   cache: new InMemoryCache(),

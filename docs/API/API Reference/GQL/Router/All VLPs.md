@@ -24,11 +24,11 @@ query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query All_vlps($max: [String], $min: [String], $skip: Int, $limit: Int) {\n  router {\n    all_vlps(max: $max, min: $min, skip: $skip, limit: $limit) {\n      vlps {\n        vlp\n        token_1\n        token_2\n      }\n    }\n  }\n}","variables":{"max":null,"min":null,"skip":null,"limit":null}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BgG5kAOAzgBQAkcAhgB7pEDaAyijwBLJAHMAugBoibUTwFDRkmSwYBrYXR4BJVKrLC4wlLtQBKIsAA6SIkTwQYKfFdv377CjXrMO3WX8ZYyQeOSQZDS0wqLoZQ2NTWQSTSxs7D3taRjcMzKz6d3z7FAh1ZEoARiLi0vKkSgAmGo8AXxb2jM7WkCkQanYRdgAjMgQGDBB0%2B2sQf1meJBgKKSLZkIWiJZW1kFjN7bJVjNmUlAPlslse1qA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BgG5kAOAzgBQAkcAhgB7pEDaAyijwBLJAHMAugBoibUTwFDRkmSwYBrYXR4BJVKrLC4wlLtQBKIsAA6SIkTwQYKfFdv377CjXrMO3WX8ZYyQeOSQZDS0wqLoZQ2NTWQSTSxs7D3taRjcMzKz6d3z7FAh1ZEoARiLi0vKkSgAmGo8AXxb2jM7WkCkQanYRdgAjMgQGDBB0%2B2sQf1meJBgKKSLZkIWiJZW1kFjN7bJVjNmUlAPlslse1qA)
 
 ### Arguments
 

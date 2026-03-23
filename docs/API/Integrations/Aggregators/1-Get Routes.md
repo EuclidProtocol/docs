@@ -15,13 +15,12 @@ See the REST API reference: [Get Routes](/docs/API/API%20Reference/REST/Routes/G
 
 ```bash
 curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/routes' \
+  'https://api.euclidprotocol.com/api/v1/routes' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-    "external": true,
-    "token_in": "euclid",
-    "token_out": "bnb",
+    "token_in": "usdc",
+    "token_out": "usdt",
     "amount_in": "1000000",
     "chain_uids": []
   }'

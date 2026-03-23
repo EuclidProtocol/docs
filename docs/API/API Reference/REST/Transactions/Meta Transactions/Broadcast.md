@@ -10,7 +10,7 @@ Broadcast a signed meta-transaction payload to the relayer.
 ### Request URL
 
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
+https://api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
 ```
 
 ### Example

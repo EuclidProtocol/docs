@@ -23,11 +23,11 @@ query Token_liquidity($token: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Token_liquidity($token: String!) {\n  token {\n    token_liquidity(token: $token) {\n      token\n      total_liquidity\n      total_volume\n    }\n  }\n}","variables":{"token":"usdt"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKBAFACQoXLpEDKKPHSQBzAIQBKIsAA6SIkW6UFchYqU8ktBjCYt2y3kS5bpajRqNJ5lxdxQBDGjsbNWtuw%2BdUAbhBp4BE9FAF9PcKRQkAAaEF9HYUcAIxoEAGcMEAsiWRBrPL48mHSwFDyY%2BWjQoA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKBAFACQoXLpEDKKPHSQBzAIQBKIsAA6SIkW6UFchYqU8ktBjCYt2y3kS5bpajRqNJ5lxdxQBDGjsbNWtuw%2BdUAbhBp4BE9FAF9PcKRQkAAaEF9HYUcAIxoEAGcMEAsiWRBrPL48mHSwFDyY%2BWjQoA)
 
 ### Arguments
 

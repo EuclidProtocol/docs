@@ -27,11 +27,11 @@ query Pool {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Pool {\n  pool {\n    volume {\n      volume_24hours\n      total_liquidity\n      total_volume\n      volume_breakdown_24hours {\n        pair\n        volume\n      }\n    }\n  }\n}"}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2RwAOkkUQA7lW30NEBul8C1dHDtwq8A%2BgCYALAAsIMPAGcBgoiggoAhhVEUAljl1hdKAssFrN24bzNCeiUQCM8CDQGtIAdyQSZcxfzsKkwauni2gtaIEUQAvrbx7ImxIAA0IJwaeLoajhQIChggILFAA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoQQA2RwAOkkUQA7lW30NEBul8C1dHDtwq8A%2BgCYALAAsIMPAGcBgoiggoAhhVEUAljl1hdKAssFrN24bzNCeiUQCM8CDQGtIAdyQSZcxfzsKkwauni2gtaIEUQAvrbx7ImxIAA0IJwaeLoajhQIChggILFAA)
 
 
 ### Return Fields

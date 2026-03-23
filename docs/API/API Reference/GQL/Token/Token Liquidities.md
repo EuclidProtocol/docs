@@ -23,11 +23,11 @@ query Token_liquidities($page: Int!, $limit: Int!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Token_liquidities($page: Int!, $limit: Int!) {\n  token {\n    token_liquidities(page: $page, limit: $limit) {\n      token\n      total_liquidity\n      total_volume\n    }\n  }\n}","variables":{"page":1,"limit":5}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKdCAzgBQAkADgIYBzBOiIBJVAEIANEW704LURJSSAlEWAAdJESIoKyTTr16DlJLQYwmLNlwHDRfIQlkKlcjyg3bdps0MkEwD9CBR%2BGitGZhQCEICDCKiANwgaeAQEogBfELykHJBpEBT%2BPDp%2BACMaDgwQPz0tEEcsjCIARmkQ5u9m0QBWbsKQHKA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyA%2BgDYCWOdYdKdCAzgBQAkADgIYBzBOiIBJVAEIANEW704LURJSSAlEWAAdJESIoKyTTr16DlJLQYwmLNlwHDRfIQlkKlcjyg3bdps0MkEwD9CBR%2BGitGZhQCEICDCKiANwgaeAQEogBfELykHJBpEBT%2BPDp%2BACMaDgwQPz0tEEcsjCIARmkQ5u9m0QBWbsKQHKA)
 
 ### Arguments
 

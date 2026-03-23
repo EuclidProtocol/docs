@@ -9,8 +9,11 @@ import Tabs from '@site/src/components/Tabs';
 Generates a transaction for users to withdraw voucher balances into native assets.
 
 ### Request URL
+
+**Method:** `POST`
+
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
+https://api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 ```
 
 ### Examples
@@ -22,24 +25,31 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
+  'https://api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "token": "euclid",
-    "amount": "1000000",
+    "amount": "100000",
+    "asset_in": {
+      "token": "usdt",
+      "token_type": {
+        "smart": {
+          "contract_address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+        }
+      }
+    },
     "sender": {
-      "address": "0x887e4aac216674d2c432798f851C1Ea5d505b2E1",
-      "chain_uid": "base"
+      "address": "0x09851e1de798af7e1ad04a72a04b59f4e0009b05",
+      "chain_uid": "polygon"
     },
     "cross_chain_addresses": [
       {
         "user": {
-          "address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-          "chain_uid": "base"
+          "address": "0x06aa195f71ad7911cda33d97bd0b6be9c1998a22",
+          "chain_uid": "polygon"
         },
-        "limit": {
-          "less_than_or_equal": "3477907"
+        "amount": {
+          "equal": "100000"
         }
       }
     ]
@@ -52,10 +62,10 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
       content: `{
   "msgs": [
     {
-      "chainId": "84532",
-      "data": "0x37946af7000000...",
+      "chainId": "137",
+      "data": "0x1793876b000000...",
       "gasLimit": "0x493E0",
-      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
+      "to": "0x08E6604931E9c2a978D4861b912f7894CC6063F7",
       "value": "0x0"
     }
   ],
@@ -67,7 +77,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
+  'https://api.euclidprotocol.com/api/v1/execute/vcoin/withdraw' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -137,7 +147,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/withdraw
 
 | **Field**                 | **Type**                                                                                             | **Description**                                                                 |
 |---------------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| `token`                   | `string`                                                                                            | The name of the virtual token to withdraw (e.g. `"euclid"`).                   |
+| `asset_in`                | [`TokenWithDenom`](/docs/API/API%20Reference/common%20types.md#tokenwithdenom)                    | The voucher token to withdraw, including its token type and contract/denom.    |
 | `amount`                  | `string`                                                                                            | The amount to withdraw (in smallest unit).                                     |
 | `sender`                  | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)            | Address and chain initiating the withdrawal.                                   |
-| `cross_chain_addresses`   | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` |  Optional set of addresses to specify where the tokens should be released. The first element specified in the vector has highest priority and so on.  Defaults to sender if not specified.                              |
+| `cross_chain_addresses`   | [`CrossChainAddressWithLimit`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit)`[]` | Optional release destinations. Use `amount` inside each entry to specify the withdrawal rule for that recipient. |

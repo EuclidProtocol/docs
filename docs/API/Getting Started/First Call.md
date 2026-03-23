@@ -35,7 +35,7 @@ query Router {
     language: 'bash',
     content: `
 # index.sh
-curl -X POST https://testnet.api.euclidprotocol.com/graphql \\
+curl -X POST https://api.euclidprotocol.com/graphql \\
   -H "Content-Type: application/json" \\
   -d '{"query":"query Router { router { all_tokens { tokens } } }"}'
 `
@@ -50,7 +50,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -93,7 +93,7 @@ const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://testnet.api.euclidprotocol.com/graphql',
+    uri: 'https://api.euclidprotocol.com/graphql',
     fetch
   }),
   cache: new InMemoryCache(),
@@ -126,7 +126,7 @@ Let’s track the status of a transaction on the `somnia` chain using the REST A
 ### Endpoint
 
 ```
-POST https://testnet.api.euclidprotocol.com/api/v1/txn/track
+POST https://api.euclidprotocol.com/api/v1/txn/track
 ```
 
 <Tabs tabs={[
@@ -137,7 +137,7 @@ POST https://testnet.api.euclidprotocol.com/api/v1/txn/track
     content: `
 # index.sh
 curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \\
+  'https://api.euclidprotocol.com/api/v1/txn/track' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -152,7 +152,7 @@ curl -X 'POST' \\
     language: 'javascript',
     content: `
 // index.js
-fetch('https://testnet.api.euclidprotocol.com/api/v1/txn/track', {
+fetch('https://api.euclidprotocol.com/api/v1/txn/track', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ fetch('https://testnet.api.euclidprotocol.com/api/v1/txn/track', {
 // index.js
 const axios = require('axios');
 
-axios.post('https://testnet.api.euclidprotocol.com/api/v1/txn/track', {
+axios.post('https://api.euclidprotocol.com/api/v1/txn/track', {
   chain: 'somnia',
   tx_hash: '0xe208d710c03d1f7aaed9a0ac9fcd58bdc0c6f3fea5bb074127d10511279545f9'
 }, {
@@ -200,7 +200,7 @@ axios.post('https://testnet.api.euclidprotocol.com/api/v1/txn/track', {
 # index.py
 import requests
 
-url = "https://testnet.api.euclidprotocol.com/api/v1/txn/track"
+url = "https://api.euclidprotocol.com/api/v1/txn/track"
 headers = {
   "accept": "application/json",
   "Content-Type": "application/json"
@@ -223,7 +223,7 @@ print(response.json())
 
 {
   "method": "POST",
-  "url": "https://testnet.api.euclidprotocol.com/api/v1/txn/track",
+  "url": "https://api.euclidprotocol.com/api/v1/txn/track",
   "headers": [
     {
       "key": "Content-Type",

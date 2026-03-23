@@ -8,8 +8,11 @@ import Tabs from '@site/src/components/Tabs';
 Transfers virtual voucher tokens (vcoins) to a recipient, either directly to a wallet or via a social claim link.
 
 ### Request URL
+
+**Method:** `POST`
+
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer
+https://api.euclidprotocol.com/api/v1/execute/vcoin/transfer
 ```
 
 ## Case 1: Transfer to On-Chain Address
@@ -25,7 +28,7 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
+  'https://api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -57,10 +60,10 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
   },
   "msgs": [
     {
-      "chainId": "84532",
-      "data": "0xf2ef68ca000000...",
+      "chainId": "8453",
+      "data": "0x1793876b000000...",
       "gasLimit": "0x493E0",
-      "to": "0x00a739e4479c97289801654ec1a52a67077613c0",
+      "to": "0x08e6604931e9c2a978d4861b912f7894cc6063f7",
       "value": "0x0"
     }
   ],
@@ -72,7 +75,7 @@ Use this format to transfer vcoins to a known wallet address on a specific chain
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
+  'https://api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -141,7 +144,7 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
+  'https://api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -196,7 +199,7 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
+  'https://api.euclidprotocol.com/api/v1/execute/vcoin/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

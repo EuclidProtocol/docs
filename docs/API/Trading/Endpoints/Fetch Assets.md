@@ -119,7 +119,7 @@ query Token_metadatas {
 # fetch-assets.sh
 curl --request POST \\
   --header 'content-type: application/json' \\
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \\
+  --url 'https://api.euclidprotocol.com/graphql' \\
   --data '{"query":"query Token_metadatas { token { token_metadatas { tokenId price } } }"}'
 `
   },
@@ -133,7 +133,7 @@ import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://testnet.api.euclidprotocol.com/graphql' }),
+  link: new HttpLink({ uri: 'https://api.euclidprotocol.com/graphql' }),
   cache: new InMemoryCache(),
 });
 
@@ -172,7 +172,7 @@ const fetch = require('cross-fetch');
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://testnet.api.euclidprotocol.com/graphql',
+    uri: 'https://api.euclidprotocol.com/graphql',
     fetch
   }),
   cache: new InMemoryCache(),

@@ -11,7 +11,7 @@ Generates a transaction for users to withdraw voucher balances into native asset
 
 ### Request URL
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw
+https://api.euclidprotocol.com/api/v1/execute/escrow/withdraw
 ```
 
 ### Examples
@@ -23,7 +23,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw' \\
+  'https://api.euclidprotocol.com/api/v1/execute/escrow/withdraw' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -74,7 +74,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/escrow/withdraw' \\
+  'https://api.euclidprotocol.com/api/v1/execute/escrow/withdraw' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{

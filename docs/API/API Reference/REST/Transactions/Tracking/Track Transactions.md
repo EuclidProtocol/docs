@@ -12,8 +12,10 @@ If you're looking to track a **cross-chain swap**, use the [Track Swap Transacti
 
 ### Request URL
 
+**Method:** `POST`
+
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/txn/track
+https://api.euclidprotocol.com/api/v1/txn/track
 ```
 
 ### Examples
@@ -25,12 +27,12 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \
+  'https://api.euclidprotocol.com/api/v1/txn/track' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-    "chain": "ronin",
-    "tx_hash": "0xaa9bbb2fbd0d9b26436065d16102e6eb09c6b4b78f9b11dbffcc7849b53b9c38"
+    "chain": "polygon",
+    "tx_hash": "0x49aa5637570c11fd33c19e62b03a62d09e8ec622e14019defb780d875d59fd63"
 }'`
     },
     {
@@ -40,80 +42,50 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
       content: `{
   "response": {
     "is_completed": true,
-    "tx_hash": "0xaa9bbb2fbd0d9b26436065d16102e6eb09c6b4b78f9b11dbffcc7849b53b9c38",
+    "is_release": false,
+    "tx_hash": "0x49aa5637570c11fd33c19e62b03a62d09e8ec622e14019defb780d875d59fd63",
     "asset_in_type": "",
-    "type": "withdraw",
+    "type": "deposit_token",
     "source_token_id": "",
     "tx_status": "success",
-    "tx_id": "ronin:0x887e4aac216674d2c432798f851c1ea5d505b2e1:2021:42264794:608760",
+    "tx_id": "polygon:0x09851e1de798af7e1ad04a72a04b59f4e0009b05:137:84441196:2786",
     "voucher_minted": null,
-    "sequence": "608760",
-    "source_chain_uid": "ronin",
-    "source_chain_id": "2021",
-    "source_factory": "0x43d4759e0cb8e4d3b2aab1ba6e39a60dce1a8f5b",
-    "sender": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-    "release_status": [
-      {
-        "chain_uid": "vsl",
-        "status": "success",
-        "msg": "released",
-        "timestamp": "2025-10-15 16:06:13.31 +0000 UTC",
-        "tx_hash": "78B623D893B1B4B7C2A17020E0FAD0B897391AAAAD80D6DAE217A5580C7AC2DD"
-      },
-      {
-        "chain_uid": "base",
-        "status": "success",
-        "msg": "0x",
-        "timestamp": "2025-10-15 16:06:17.306 +0000 UTC",
-        "tx_hash": "0x89960a57bbe1d06ca244133aec78aac90dc140456afefeb0006eda82c31e3245"
-      },
-      {
-        "chain_uid": "vsl",
-        "status": "success",
-        "msg": "Success",
-        "timestamp": "2025-10-15 16:06:20.445 +0000 UTC",
-        "tx_hash": "3115AD6BC7E9EF7BD2B58CF266B19D185E223BF80B6AB4EE58D9F1920C2C86EE"
-      }
-    ],
-    "escrow_release": {
-      "tx_id": "ronin:0x887e4aac216674d2c432798f851c1ea5d505b2e1:2021:42264794:608760",
-      "amount": "25000000",
-      "token": "euclid",
-      "to_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "chain_uid": "base"
-    },
-    "total_duration": "17.264s",
+    "sequence": "2786",
+    "source_chain_uid": "polygon",
+    "source_chain_id": "137",
+    "source_factory": "0x08E6604931E9c2a978D4861b912f7894CC6063F7",
+    "sender": "0x09851e1de798af7e1ad04a72a04b59f4e0009b05",
+    "total_duration": "11.831s",
     "total_estimated_duration": "",
     "status": [
       {
-        "chain_uid": "ronin",
+        "chain_uid": "polygon",
         "status": "success",
         "msg": "success",
-        "timestamp": "2025-10-15 16:06:10.587 +0000 UTC",
-        "tx_hash": "0xaa9bbb2fbd0d9b26436065d16102e6eb09c6b4b78f9b11dbffcc7849b53b9c38"
+        "timestamp": "2026-03-20 10:27:06 +0000 UTC",
+        "tx_hash": "0x49aa5637570c11fd33c19e62b03a62d09e8ec622e14019defb780d875d59fd63"
       },
       {
         "chain_uid": "vsl",
         "status": "success",
-        "msg": "eyJvayI6eyJ0b2tlbiI6ImV1Y2xpZCIsInR4X2lkIjoicm9uaW46MHg4ODdlNGFhYzIxNjY3NGQyYzQzMjc5OGY4NTFjMWVhNWQ1MDViMmUxOjIwMjE6NDIyNjQ3OTQ6NjA4NzYwIn19",
-        "timestamp": "2025-10-15 16:06:13.31 +0000 UTC",
-        "tx_hash": "78B623D893B1B4B7C2A17020E0FAD0B897391AAAAD80D6DAE217A5580C7AC2DD"
+        "msg": "eyJkZXBvc2l0X3Rva2VuIjp7ImFtb3VudF9pbiI6IjI1NTAwMDAwMCIsImFzc2V0X2luIjp7InRva2VuIjoidXNkYyIsInRva2VuX3R5cGUiOnsic21hcnQiOnsiY29udHJhY3RfYWRkcmVzcyI6IjB4M2M0OTljNTQyY2VmNWUzODExZTExOTJjZTcwZDhjYzAzZDVjMzM1OSJ9fX0sInJlY2lwaWVudHMiOltdLCJzZW5kZXIiOnsiYWRkcmVzcyI6IjB4MDk4NTFlMWRlNzk4YWY3ZTFhZDA0YTcyYTA0YjU5ZjRlMDAwOWIwNSIsImNoYWluX3VpZCI6InBvbHlnb24ifSwidHhfaWQiOiJwb2x5Z29uOjB4MDk4NTFlMWRlNzk4YWY3ZTFhZDA0YTcyYTA0YjU5ZjRlMDAwOWIwNToxMzc6ODQ0NDExOTY6Mjc4NiJ9fQ==",
+        "timestamp": "2026-03-20 10:27:10.992 +0000 UTC",
+        "tx_hash": "831AD6D86EC2EFD710D304E9EFF00ACA81F611C6E0FD87F1907F1F95FF42AFA7"
       },
       {
-        "chain_uid": "ronin",
+        "chain_uid": "polygon",
         "status": "success",
-        "msg": "0x",
-        "timestamp": "2025-10-15 16:06:27.851 +0000 UTC",
-        "tx_hash": "0x59cdbfa396f391ca78d172179cb215a25dece67ead1ca9c833a8034d67bb161b"
+        "msg": "Success",
+        "timestamp": "2026-03-20 10:27:17.831 +0000 UTC",
+        "tx_hash": "0xe99feebf0fddf414bd550bc5b1f391a62c902d7961eda96e78bae0e935149a58"
       }
     ],
-    "withdraw_voucher_response": {
-      "token": "euclid",
-      "amount": "25000000",
-      "sender_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "sender_chain_uid": "ronin",
-      "recieve_address": "0x887e4aac216674d2c432798f851c1ea5d505b2e1",
-      "recieve_chain_uid": "base"
+    "deposit_token_response": {
+      "token": "usdc",
+      "amount": "255000000",
+      "sender_address": "0x09851e1de798af7e1ad04a72a04b59f4e0009b05",
+      "sender_chain_uid": "polygon",
+      "recieve_address": "0x09851e1de798af7e1ad04a72a04b59f4e0009b05"
     }
   }
 }`
@@ -123,7 +95,7 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track' \\
+  'https://api.euclidprotocol.com/api/v1/txn/track' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{

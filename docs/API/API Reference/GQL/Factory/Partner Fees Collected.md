@@ -25,11 +25,11 @@ query Partner_fees_collected($chainUid: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Partner_fees_collected($chainUid: String!) {\n  factory(chain_uid: $chainUid) {\n    partner_fees_collected {\n      total {\n        totals {\n          denom\n          amount\n        }\n      }\n    }\n  }\n}","variables":{"chainUid":"archway"}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoCGeKS%2BA%2BgGYIIDONUEANuwlCgmABQASKAAsyASyQBVcWHREAyijySA5gEIAlEWAAdJESJ0yPCIX6iJSGjFnzhYyTLDa9Bw0QAOFKrQbNWDi4ePh19Dw8UCBQydjD3CMMomPYmeMTEsGQIOHCMjzI4CBhUPIyAXzKPSoSiGsMa8pAAGhAANwpxMgAjLiYMEDdDXRBLJ1kR%2BRGKUQB3MgIR5v0m8qA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAAoCGeKS%2BA%2BgGYIIDONUEANuwlCgmABQASKAAsyASyQBVcWHREAyijySA5gEIAlEWAAdJESJ0yPCIX6iJSGjFnzhYyTLDa9Bw0QAOFKrQbNWDi4ePh19Dw8UCBQydjD3CMMomPYmeMTEsGQIOHCMjzI4CBhUPIyAXzKPSoSiGsMa8pAAGhAANwpxMgAjLiYMEDdDXRBLJ1kR%2BRGKUQB3MgIR5v0m8qA)
 
 ### Arguments
 

@@ -21,12 +21,12 @@ query Vlp($pair: PairInput) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Vlp($pair: PairInput) {\n  router {\n    vlp(pair: $pair) {\n      vlp\n      token_1\n      token_2\n    }\n  }\n}","variables":{"pair":{"token_1":"euclid","token_2":"nibi"}}}'
 
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkFAhgJZ7pEAKTeAkkhTCgEoiwADpIiRPBH75hYiRIBulKg2as6nIaPEKlleXqIoIAa2QB9AIyG9J80gsAmW0QC%2Bhj0jcgANCEV6PEZ6ACMyBABnDBAdCREQNTwE1jiFBPtLGwwiBIQYKDJGMATfVwyzSxcchKRGUMYEzzEfNyA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoA2ADgBQAkFAhgJZ7pEAKTeAkkhTCgEoiwADpIiRPBH75hYiRIBulKg2as6nIaPEKlleXqIoIAa2QB9AIyG9J80gsAmW0QC%2Bhj0jcgANCEV6PEZ6ACMyBABnDBAdCREQNTwE1jiFBPtLGwwiBIQYKDJGMATfVwyzSxcchKRGUMYEzzEfNyA)
 
 | **Name** | **Type**     | **Description**                           |
 |----------|--------------|-------------------------------------------|

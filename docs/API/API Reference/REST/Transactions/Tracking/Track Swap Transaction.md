@@ -9,8 +9,11 @@ Checks the current status of a cross-chain swap by providing the tx_hash and the
 
 
 ### Request URL
+
+**Method:** `POST`
+
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
+https://api.euclidprotocol.com/api/v1/txn/track/swap
 ```
 
 
@@ -23,12 +26,12 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
       label: 'EVM Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap' \
+  'https://api.euclidprotocol.com/api/v1/txn/track/swap' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-    "chain": "base",
-    "tx_hash": "0x5b21601301293885b2a828acc43b76f6335ec519a8fd4c2d3def1baa31196d1a"
+    "chain": "ethereum",
+    "tx_hash": "0x31604586b4844a82eb07116abccde69073d73fe8d9a364bda92d552588bfcff9"
 }'`
     },
     {
@@ -38,28 +41,24 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
       content: `{
   "response": {
     "is_completed": true,
-    "tx_hash": "0x5b21601301293885b2a828acc43b76f6335ec519a8fd4c2d3def1baa31196d1a",
+    "is_release": false,
+    "tx_hash": "0x31604586b4844a82eb07116abccde69073d73fe8d9a364bda92d552588bfcff9",
     "asset_in_type": "native",
     "type": "swap",
     "destination_chain_uid": [
-      "base"
+      "bsc"
     ],
-    "destination_token_id": "0g",
+    "destination_token_id": "bnb",
     "source_token_id": "eth",
     "tx_status": "success",
-    "tx_id": "base:0x91128e4d81e18e51f4d74b568f322360ffce263d:84532:37780457:3548734",
-    "voucher_minted": {
-      "token": "0g",
-      "amount": "9275499864631325",
-      "chain_uid": "base"
-    },
-    "sequence": "3548734",
-    "source_chain_uid": "base",
-    "source_chain_id": "84532",
-    "source_factory": "0x00a739e4479c97289801654ec1a52a67077613c0",
-    "sender": "0x91128e4d81e18e51f4d74b568f322360ffce263d",
+    "tx_id": "ethereum:0x05b03301b2bc9fa54fe3b81d5a32af55c9210c68:1:24694125:391",
+    "sequence": "391",
+    "source_chain_uid": "ethereum",
+    "source_chain_id": "1",
+    "source_factory": "0x08e6604931e9c2a978d4861b912f7894cc6063f7",
+    "sender": "0x05b03301b2bc9fa54fe3b81d5a32af55c9210c68",
     "total_duration": "9s",
-    "total_estimated_duration": "4.7s",
+    "total_estimated_duration": "4.2s",
     "swap_status": [
       {
         "type": "dex",
@@ -67,137 +66,27 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
         "is_ibc": true,
         "route": [
           "eth",
-          "euclid",
-          "0g"
+          "usdc",
+          "usdt",
+          "bnb"
         ],
-        "amount_in": "10000000000000000",
-        "status": {
-          "chain_uid": "base",
-          "status": "success",
-          "msg": "success",
-          "timestamp": "2026-02-17 11:53:23.114 +0000 UTC",
-          "tx_hash": "0x5b21601301293885b2a828acc43b76f6335ec519a8fd4c2d3def1baa31196d1a",
-          "duration": "13.918s",
-          "estimated_duration": "0s"
-        },
-        "ibc_status": {
-          "send_packet": {
-            "chain_uid": "base",
-            "status": "success",
-            "msg": "success",
-            "timestamp": "2026-02-17 11:53:23.114 +0000 UTC",
-            "tx_hash": "0x5b21601301293885b2a828acc43b76f6335ec519a8fd4c2d3def1baa31196d1a",
-            "duration": "0s"
-          },
-          "recv_packet": {
-            "chain_uid": "vsl",
-            "status": "success",
-            "msg": "ok",
-            "timestamp": "2026-02-17 11:53:32.328 +0000 UTC",
-            "tx_hash": "54808CE1D78CE9D888829B6E2F3B08C613751E92652403116E5BD18A301E5753"
-          },
-          "ack_status": {
-            "chain_uid": "base",
-            "status": "success",
-            "msg": "0x",
-            "timestamp": "2026-02-17 11:53:37.032 +0000 UTC",
-            "tx_hash": "0x0b9f19568a9eb8cc90c704465a4cb06e87617a2927b233ae860d0708964788d9"
-          }
-        },
+        "amount_in": "7500000000000000",
         "asset_in": "eth",
-        "asset_out": "0g",
-        "expected_amount_out": "9275788963566520",
-        "amount_out": "9275499864631325",
+        "asset_out": "bnb",
+        "expected_amount_out": "24132227223352383",
+        "amount_out": "24380841329206352",
         "from_dex": "euclid"
       },
       {
         "type": "release",
         "is_ibc": true,
-        "from_chain_uid": "base",
-        "to_chain_uid": "base",
-        "status": {
-          "chain_uid": "base",
-          "status": "success",
-          "msg": "success",
-          "timestamp": "2026-02-17 11:53:32.328 +0000 UTC",
-          "tx_hash": "",
-          "duration": "0s",
-          "estimated_duration": "4.711s"
-        },
-        "ibc_status": {
-          "send_packet": {
-            "chain_uid": "vsl",
-            "status": "success",
-            "msg": "escrow not released",
-            "timestamp": "2026-02-17 11:53:32.328 +0000 UTC",
-            "tx_hash": "54808CE1D78CE9D888829B6E2F3B08C613751E92652403116E5BD18A301E5753"
-          },
-          "recv_packet": {
-            "chain_uid": "base",
-            "status": "pending",
-            "msg": "Pending",
-            "timestamp": "",
-            "tx_hash": ""
-          },
-          "ack_status": {
-            "chain_uid": "vsl",
-            "status": "pending",
-            "msg": "Pending",
-            "timestamp": "",
-            "tx_hash": ""
-          }
-        },
-        "token_id": "0g",
-        "expected_amount_out": "0",
-        "from_dex": "euclid",
-        "voucher_minted": {
-          "token": "0g",
-          "amount": "0",
-          "chain_uid": "base"
-        },
-        "to_address": "0x91128e4d81e18e51f4d74b568f322360ffce263d",
-        "release_tx_hash": "54808CE1D78CE9D888829B6E2F3B08C613751E92652403116E5BD18A301E5753",
-        "escrow_release_status": {
-          "is_completed": true,
-          "tx_id": "",
-          "type": "EscrowRelease",
-          "tx_status": "success",
-          "tx_hash": "54808CE1D78CE9D888829B6E2F3B08C613751E92652403116E5BD18A301E5753",
-          "sequence": "",
-          "source_chain_uid": "base",
-          "source_chain_id": "84532",
-          "source_factory": "0x00a739e4479c97289801654ec1a52a67077613c0",
-          "status": [
-            {
-              "chain_uid": "vsl",
-              "status": "success",
-              "msg": "escrow not released",
-              "timestamp": "2026-02-17 11:53:32.328 +0000 UTC",
-              "tx_hash": "54808CE1D78CE9D888829B6E2F3B08C613751E92652403116E5BD18A301E5753"
-            },
-            {
-              "chain_uid": "base",
-              "status": "pending",
-              "msg": "Pending",
-              "timestamp": "",
-              "tx_hash": ""
-            },
-            {
-              "chain_uid": "vsl",
-              "status": "pending",
-              "msg": "Pending",
-              "timestamp": "",
-              "tx_hash": ""
-            }
-          ],
-          "escrow_response": {
-            "tx_id": "",
-            "amount": "",
-            "token": "",
-            "to_address": "",
-            "chain_uid": ""
-          }
-        }
+        "from_chain_uid": "ethereum",
+        "to_chain_uid": "bsc",
+        "token_id": "bnb",
+        "expected_amount_out": "24380841329206352",
+        "amount_out": "24380841329206352",
+        "to_address": "0x05b03301b2bc9fa54fe3b81d5a32af55c9210c68",
+        "release_tx_hash": "66378BEDC0AE9DCF9DF33361E685C040BC38B8F66230E7000EE9A4AB94A0F84F"
       }
     ]
   }
@@ -208,7 +97,7 @@ https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap
       label: 'Cosmos Request',
       language: 'bash',
       content: `curl -X 'POST' \\
-  'https://testnet.api.euclidprotocol.com/api/v1/txn/track/swap' \\
+  'https://api.euclidprotocol.com/api/v1/txn/track/swap' \\
   -H 'accept: application/json' \\
   -H 'Content-Type: application/json' \\
   -d '{

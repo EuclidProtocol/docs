@@ -23,7 +23,7 @@ query Contracts($type: String, $chainUId: String) {
 ```bash
 curl --request POST \
   --header 'content-type: application/json' \
-  --url 'https://testnet.api.euclidprotocol.com/graphql' \
+  --url 'https://api.euclidprotocol.com/graphql' \
   --data '{
     "query": "query Contracts($chainUId: String, $type: String) {\n  chains {\n    contracts(chainUId: $chainUId, type: $type) {\n      ContractAddress\n      ChainUID\n      Type\n    }\n  }\n}",
     "variables": {
@@ -32,7 +32,7 @@ curl --request POST \
     }
 }'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMISp4CGUKAzkcADpJFFQAWlAlkvUy6zbkUVGn2aDBZCtRQBBMGDwJatCZNKceAVQCSAEXWSAKgQAOCI0QC%2B620mshrQA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMISp4CGUKAzkcADpJFFQAWlAlkvUy6zbkUVGn2aDBZCtRQBBMGDwJatCZNKceAVQCSAEXWSAKgQAOCI0QC%2B620mshrQA)
 
 
 | **Name**      | **Type** | **Description**                                                                 |

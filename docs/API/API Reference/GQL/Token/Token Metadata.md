@@ -52,10 +52,10 @@ query Token(
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Token($dex: [String!], $limit: Int, $chainUids: [String!]) {\n  token {\n    token_metadatas(dex: $dex, limit: $limit, chain_uids: $chainUids) {\n      coinDecimal\n      displayName\n      tokenId\n      description\n      image\n      price\n      price_change_24h\n      price_change_7d\n      dex\n      chain_uids\n      total_volume\n      total_volume_24h\n      tags\n      min_swap_value\n      social\n      is_verified\n    }\n  }\n}","variables":{"dex":["euclid","osmosis"],"limit":100,"chainUids":["archway","osmosis","megaeth","bsc"]}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACRQAWAhgJZICqzYAzukQNoBlFHlYBzAIQBdADREaAG2ZxmKXgElUsmmAQAPXoOFipASiLAAOkiJEUFZOas2bdykgD6iFIzCNvXKgYWDxhOHjkg1g5uWUVlVTk4lVkdfTlUs0trZxsoCFYAEQQoJUZ5JxyiMGYuAAd5RgIAOUZECpzXZDUwducdLigRWpRmCCRem1LRBAmiWpEoGeyc%2BeZF9yCkafcAJgAWelnV9c3tgHYe5b69WciQsNm7b3l3ADcIeXglytsIZ7ePl9dgdHoxRFxZsoPFwAO6MWpvMq4WZcaDMMqzGpvfDMABmzAQlxyAF8KqSkMSQNIQK9GCJGAAjeQILgYEBZGwWcA3DD8LkIGBQRQ9KlciBcODimpcmQVLlJFBc3gARgADKrpHKQHdohDeXwuXSGHCCFzNSBxZKuNLRSBEKJGAgUIdbQyBjKrJTiUA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABACoQDWyAFACRQAWAhgJZICqzYAzukQNoBlFHlYBzAIQBdADREaAG2ZxmKXgElUsmmAQAPXoOFipASiLAAOkiJEUFZOas2bdykgD6iFIzCNvXKgYWDxhOHjkg1g5uWUVlVTk4lVkdfTlUs0trZxsoCFYAEQQoJUZ5JxyiMGYuAAd5RgIAOUZECpzXZDUwducdLigRWpRmCCRem1LRBAmiWpEoGeyc%2BeZF9yCkafcAJgAWelnV9c3tgHYe5b69WciQsNm7b3l3ADcIeXglytsIZ7ePl9dgdHoxRFxZsoPFwAO6MWpvMq4WZcaDMMqzGpvfDMABmzAQlxyAF8KqSkMSQNIQK9GCJGAAjeQILgYEBZGwWcA3DD8LkIGBQRQ9KlciBcODimpcmQVLlJFBc3gARgADKrpHKQHdohDeXwuXSGHCCFzNSBxZKuNLRSBEKJGAgUIdbQyBjKrJTiUA)
 
 ### Arguments
 

@@ -18,11 +18,11 @@ query All_tokens($max: String, $min: String, $skip: Int, $limit: Int) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query All_tokens($max: String, $min: String, $skip: Int, $limit: Int) {\n  router {\n    all_tokens(max: $max, min: $min, skip: $skip, limit: $limit) {\n      tokens\n    }\n  }\n}","variables":{"max":"stars","min":"euclid","skip":null,"limit":7}}'
 ```
 
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BihANbIDOAFACRwCGAHukQMop4AlkgDmAGiJthPfkNESWDWoIAOPAJKoFZQXEEoNqAJRFgAHSREieCDBT5TFq1fYVqdRkw7dJ3iXqQeKSQJJVUgsJUJHT0DSRj9E3NLZysaeiQGJ2cAX2y8pByQMRAAN3YhdgAjMgQGDBBkqzMQbxaeFoYUCqzi7JaA9qIWhBgoHTAWsX6QSKGkGApplJaElCGAdgsinKA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZA%2BihANbIDOAFACRwCGAHukQMop4AlkgDmAGiJthPfkNESWDWoIAOPAJKoFZQXEEoNqAJRFgAHSREieCDBT5TFq1fYVqdRkw7dJ3iXqQeKSQJJVUgsJUJHT0DSRj9E3NLZysaeiQGJ2cAX2y8pByQMRAAN3YhdgAjMgQGDBBkqzMQbxaeFoYUCqzi7JaA9qIWhBgoHTAWsX6QSKGkGApplJaElCGAdgsinKA)
 
 
 ### Arguments

@@ -10,7 +10,7 @@ Build and return the signable meta-transaction payload for one or more prepared 
 ### Request URL
 
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/sign
+https://api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 ```
 
 ### Example

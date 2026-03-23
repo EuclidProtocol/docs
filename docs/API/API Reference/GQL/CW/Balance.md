@@ -21,10 +21,10 @@ query Cw($contract: String!, $chainUid: String!, $address: String!) {
 ```bash
 curl --request POST \
     --header 'content-type: application/json' \
-    --url 'https://testnet.api.euclidprotocol.com/graphql' \
+    --url 'https://api.euclidprotocol.com/graphql' \
     --data '{"query":"query Cw($contract: String!, $chainUid: String!, $address: String!) {\n  cw(contract: $contract, chain_uid: $chainUid) {\n    balance(address: $address) {\n      balance\n    }\n  }\n}","variables":{"chainUid":"injective","contract":"inj16kxz36d9r9l3lsh9c6lkl50ta8fcamkgasht9q","address":"inj1y2n2fysm3r9t09kw9gmgfnpu746g8yu0pl24en"}}'
 ```
-[Open in Playground](https://testnet.api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIDuAFACRQSp4CGUK6RAyingJZIDmAhABoiNABYMeAVS5hWHbnyEiGYMHgQBnDXM48BASiLAAOkiJEolWvSYsR1zreFRxPAPowZrMRKTSwhiZm5kQARgwANgxIUAgUKmqa2sqq6lqBpiEh4VExCJkhAL4FxUiFIIIgAG4M3AyhEZoYIEHmxiAuvv7trO08AFYIzFxV%2BRUF7Q6MzD1EfUj9AIwAbADWAB4AXgDMy2AAnHj7EdsRGqL7UMsRqxEArAAMKAwAHABmUAxwq7wM5yj7LDtQQTEAJNIaWbzJYEABMSFhbwIGjg2yOKAe%2B1WZH2vDgvDeSAADjAAOwAFmWvBeBBgDyJEVh5OQwNM5UKQA)
+[Open in Playground](https://api.euclidprotocol.com/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAMIDuAFACRQSp4CGUK6RAyingJZIDmAhABoiNABYMeAVS5hWHbnyEiGYMHgQBnDXM48BASiLAAOkiJEolWvSYsR1zreFRxPAPowZrMRKTSwhiZm5kQARgwANgxIUAgUKmqa2sqq6lqBpiEh4VExCJkhAL4FxUiFIIIgAG4M3AyhEZoYIEHmxiAuvv7trO08AFYIzFxV%2BRUF7Q6MzD1EfUj9AIwAbADWAB4AXgDMy2AAnHj7EdsRGqL7UMsRqxEArAAMKAwAHABmUAxwq7wM5yj7LDtQQTEAJNIaWbzJYEABMSFhbwIGjg2yOKAe%2B1WZH2vDgvDeSAADjAAOwAFmWvBeBBgDyJEVh5OQwNM5UKQA)
 
 | **Argument**  | **Type**     | **Description**                                             |
 |---------------|--------------|-------------------------------------------------------------|

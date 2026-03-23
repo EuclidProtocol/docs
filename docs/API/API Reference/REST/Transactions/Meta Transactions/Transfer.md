@@ -10,7 +10,7 @@ Create a meta-transaction message payload to transfer voucher balances.
 ### Request URL
 
 ```bash
-https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/transfer
+https://api.euclidprotocol.com/api/v1/execute/meta-txn/transfer
 ```
 
 ### Example
@@ -22,7 +22,7 @@ https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/transfer
       label: 'Request',
       language: 'bash',
       content: `curl -X 'POST' \
-  'https://testnet.api.euclidprotocol.com/api/v1/execute/meta-txn/transfer' \
+  'https://api.euclidprotocol.com/api/v1/execute/meta-txn/transfer' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
