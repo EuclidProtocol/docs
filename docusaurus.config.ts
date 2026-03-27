@@ -118,19 +118,10 @@ const config: Config = {
         },
 
         {
-          type: "dropdown",
-          label: "Widgets",
+          type: "docSidebar",
+          sidebarId: "widgetsSidebar",
           position: "left",
-          items: [
-            {
-              label: "Playground",
-              to: "/widget-playground",
-            },
-            {
-              label: "Docs",
-              to: "/docs/Widgets/overview",
-            },
-          ],
+          label: "Widgets",
         },
 
         {

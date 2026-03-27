@@ -179,6 +179,35 @@ table {
   word-break: break-word;
 }
 
+/* Give the Description (last) column more room in props tables */
+.markdown table th:last-child,
+.theme-doc-markdown table th:last-child,
+.markdown table td:last-child,
+.theme-doc-markdown table td:last-child {
+  width: 45%;
+}
+
+.markdown table th:first-child,
+.theme-doc-markdown table th:first-child,
+.markdown table td:first-child,
+.theme-doc-markdown table td:first-child {
+  width: 15%;
+}
+
+.markdown table th:nth-child(2),
+.theme-doc-markdown table th:nth-child(2),
+.markdown table td:nth-child(2),
+.theme-doc-markdown table td:nth-child(2) {
+  width: 22%;
+}
+
+.markdown table th:nth-child(3),
+.theme-doc-markdown table th:nth-child(3),
+.markdown table td:nth-child(3),
+.theme-doc-markdown table td:nth-child(3) {
+  width: 18%;
+}
+
 .markdown table tbody tr + tr td,
 .theme-doc-markdown table tbody tr + tr td {
   border-top: 1px solid var(--euclid-line-soft);
@@ -316,50 +345,13 @@ code[class*="language-"] {
 .theme-code-block code,
 pre code,
 code[class*="language-"] {
-  color: #1f2933 !important;
+  color: #1f2933;
   text-shadow: none !important;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: #6b7280 !important;
-}
-
-.token.punctuation {
-  color: #4b5563 !important;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted,
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted,
-.token.operator,
-.token.entity,
-.token.url,
-.token.atrule,
-.token.keyword,
-.token.function,
-.token.class-name,
-.token.regex,
-.token.important,
-.token.variable {
-  color: #1f2933 !important;
 }
 
 .prism-code,
 .prism-code .token-line {
-  color: #1f2933 !important;
+  color: #1f2933;
 }
 
 [data-theme="dark"] {

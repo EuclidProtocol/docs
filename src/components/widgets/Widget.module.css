@@ -281,14 +281,15 @@
   font-size: 0.875rem;
   border-bottom: 1px solid rgba(17, 24, 28, 0.04);
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .table tr:last-child td {
   border-bottom: none;
 }
 
-.positive { color: #16a34a; font-weight: 500; }
-.negative { color: #dc2626; font-weight: 500; }
+.positive { color: #16a34a; font-weight: 500; white-space: nowrap; }
+.negative { color: #dc2626; font-weight: 500; white-space: nowrap; }
 
 .pagination {
   display: flex;

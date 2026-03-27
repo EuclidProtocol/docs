@@ -10,8 +10,8 @@ export type PaymentWidgetProps = {
   recipientAddress: string;
   recipientChainUid: string;
   tokenOut: string;
-  senderAddress?: string;
-  senderChainUid?: string;
+  senderAddress: string;
+  senderChainUid: string;
   defaultTokenIn?: string;
   defaultAmount?: string;
   slippageBps?: number;
@@ -27,9 +27,9 @@ export function PaymentWidget({
   recipientAddress,
   recipientChainUid,
   tokenOut,
-  senderAddress = "",
+  senderAddress,
   senderChainUid,
-  defaultTokenIn = "euclid",
+  defaultTokenIn = "eth",
   defaultAmount = "",
   slippageBps = 500,
   theme,
@@ -40,11 +40,8 @@ export function PaymentWidget({
   const rootRef = useRef<HTMLDivElement>(null);
 
   const [tokens, setTokens] = useState<TokenMeta[]>([]);
-  const [chains, setChains] = useState<ChainMeta[]>([]);
   const [tokenIn, setTokenIn] = useState(defaultTokenIn);
-  const [chainUid, setChainUid] = useState(senderChainUid ?? "");
   const [amountIn, setAmountIn] = useState(defaultAmount);
-  const [senderAddr, setSenderAddr] = useState(senderAddress);
   const [bestPath, setBestPath] = useState<SwapPath | null>(null);
   const [uiState, setUiState] = useState<UIState>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -57,15 +54,11 @@ export function PaymentWidget({
   }, [theme]);
 
   useEffect(() => {
-    Promise.all([
-      fetchTokens({ base: apiBase, verified: true, dex: ["euclid"], limit: 200 }),
-      fetchChains(apiBase),
-    ]).then(([t, c]) => {
-      setTokens(t);
-      setChains(c);
-      if (!senderChainUid && c.length > 0) setChainUid(c[0].chain_uid);
-    }).catch(() => setErrorMsg("Failed to load tokens")).finally(() => setLoading(false));
-  }, [apiBase, senderChainUid]);
+    fetchTokens({ base: apiBase, verified: true, dex: ["euclid"], limit: 200 })
+      .then((t) => setTokens(t))
+      .catch(() => setErrorMsg("Failed to load tokens"))
+      .finally(() => setLoading(false));
+  }, [apiBase]);
 
   const tokenMap = Object.fromEntries(tokens.map((t) => [t.tokenId, t]));
   const inMeta = tokenMap[tokenIn];
@@ -96,7 +89,7 @@ export function PaymentWidget({
   }, [amountIn, tokenIn, fetchQuote]);
 
   const handleBuildPayment = async () => {
-    if (!bestPath || !senderAddr) return;
+    if (!bestPath) return;
     setUiState("building");
     try {
       const inDecimals = inMeta?.coinDecimal ?? 6;
@@ -115,7 +108,7 @@ export function PaymentWidget({
             unsafe_refund_as_voucher: false,
           },
         ],
-        sender: { address: senderAddr, chain_uid: chainUid },
+        sender: { address: senderAddress, chain_uid: senderChainUid },
         swap_path: bestPath,
       });
       setUiState("ready");
@@ -136,8 +129,8 @@ export function PaymentWidget({
     <div ref={rootRef} className={styles.widget} style={{ position: "relative" }}>
       <div style={{ fontWeight: 600, fontSize: "0.95rem", marginBottom: "0.25rem" }}>Payment</div>
       <div style={{ fontSize: "0.8rem", color: "var(--w-muted)", marginBottom: "1rem" }}>
-        Recipient receives <strong>{outMeta?.displayName ?? tokenOut}</strong> on <strong>{recipientChainUid}</strong>
-        {" "}· {shortAddress(recipientAddress)}
+        Paying to <strong>{shortAddress(recipientAddress)}</strong> on <strong>{recipientChainUid}</strong>
+        {" "}· receives <strong>{outMeta?.displayName ?? tokenOut}</strong>
       </div>
 
       {loading ? (
@@ -183,30 +176,13 @@ export function PaymentWidget({
             </span>
           </div>
 
-          <div style={{ marginTop: "0.75rem" }}>
-            <div className={styles.label}>Sender chain</div>
-            <select style={{ width: "100%", padding: "0.5rem 0.75rem", borderRadius: "8px", border: "1px solid var(--w-border)", background: "var(--w-panel)", color: "var(--w-text)", fontFamily: "inherit", fontSize: "0.9rem" }} value={chainUid} onChange={(e) => setChainUid(e.target.value)}>
-              {chains.map((c) => <option key={c.chain_uid} value={c.chain_uid}>{c.chain_uid}</option>)}
-            </select>
-          </div>
-
-          <div style={{ marginTop: "0.75rem" }}>
-            <div className={styles.label}>Your wallet address</div>
-            <input
-              style={{ width: "100%", padding: "0.5rem 0.75rem", borderRadius: "8px", border: "1px solid var(--w-border)", background: "var(--w-panel)", color: "var(--w-text)", fontFamily: "inherit", fontSize: "0.875rem", boxSizing: "border-box" as const }}
-              placeholder="0x... or cosmos1..."
-              value={senderAddr}
-              onChange={(e) => setSenderAddr(e.target.value)}
-            />
-          </div>
-
           {errorMsg && <div className={styles.error}>{errorMsg}</div>}
           {uiState === "ready" && <div style={{ fontSize: "0.82rem", color: "#16a34a", marginTop: "0.5rem", textAlign: "center" as const }}>✓ Payment payload ready</div>}
 
           <button
             className={styles.btn}
             style={{ marginTop: "1rem" }}
-            disabled={["building", "fetching-quote", "idle"].includes(uiState) || !amountIn || !senderAddr}
+            disabled={["building", "fetching-quote", "idle"].includes(uiState) || !amountIn}
             onClick={handleBuildPayment}
           >
             {uiState === "fetching-quote" ? "Getting quote..." :

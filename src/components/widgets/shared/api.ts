@@ -1,7 +1,7 @@
 // src/components/widgets/shared/api.ts
 import type { TokenMeta, ChainMeta, RoutesResponse, SwapPayload } from "./types";
 
-const DEFAULT_BASE = "https://testnet.api.euclidprotocol.com";
+const DEFAULT_BASE = "https://api.euclidprotocol.com";
 
 async function gql<T>(base: string, query: string, variables: Record<string, unknown>): Promise<T> {
   const res = await fetch(`${base}/graphql`, {

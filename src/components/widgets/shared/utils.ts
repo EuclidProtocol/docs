@@ -16,11 +16,11 @@ export function toBaseUnits(humanAmount: string, decimals: number): string {
  * Convert base units back to human-readable string.
  * e.g. fromBaseUnits("1500000", 6) => "1.5"
  */
-export function fromBaseUnits(baseAmount: string, decimals: number): string {
+export function fromBaseUnits(baseAmount: string, decimals: number, maxDisplay = 5): string {
   if (!baseAmount || baseAmount === "0") return "0";
   const padded = baseAmount.padStart(decimals + 1, "0");
   const whole = padded.slice(0, padded.length - decimals) || "0";
-  const frac = padded.slice(padded.length - decimals).replace(/0+$/, "");
+  const frac = padded.slice(padded.length - decimals).slice(0, maxDisplay).replace(/0+$/, "");
   return frac ? `${whole}.${frac}` : whole;
 }
 

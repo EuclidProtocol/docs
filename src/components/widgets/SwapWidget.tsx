@@ -9,8 +9,9 @@ import styles from "./Widget.module.css";
 export type SwapWidgetProps = {
   defaultTokenIn?: string;
   defaultTokenOut?: string;
-  defaultChainUid?: string;
-  senderAddress?: string;
+  defaultRecipientChainUid?: string;
+  senderAddress: string;
+  senderChainUid: string;
   slippageBps?: number;
   partnerFeeBps?: number;
   partnerFeeRecipient?: string;
@@ -75,10 +76,11 @@ function TokenPicker({
 }
 
 export function SwapWidget({
-  defaultTokenIn = "euclid",
-  defaultTokenOut = "usdc",
-  defaultChainUid,
-  senderAddress = "",
+  defaultTokenIn = "eth",
+  defaultTokenOut = "usdt",
+  defaultRecipientChainUid,
+  senderAddress,
+  senderChainUid,
   slippageBps = 500,
   partnerFeeBps,
   partnerFeeRecipient,
@@ -93,9 +95,9 @@ export function SwapWidget({
   const [chains, setChains] = useState<ChainMeta[]>([]);
   const [tokenIn, setTokenIn] = useState(defaultTokenIn);
   const [tokenOut, setTokenOut] = useState(defaultTokenOut);
-  const [chainUid, setChainUid] = useState(defaultChainUid ?? "");
+  const [recipientChainUid, setRecipientChainUid] = useState(defaultRecipientChainUid ?? "");
   const [amountIn, setAmountIn] = useState("");
-  const [senderAddr, setSenderAddr] = useState(senderAddress);
+  const [recipientAddr, setRecipientAddr] = useState("");
   const [bestPath, setBestPath] = useState<SwapPath | null>(null);
   const [uiState, setUiState] = useState<UIState>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -116,11 +118,11 @@ export function SwapWidget({
     ]).then(([t, c]) => {
       setTokens(t);
       setChains(c);
-      if (!defaultChainUid && c.length > 0) setChainUid(c[0].chain_uid);
+      if (!defaultRecipientChainUid && c.length > 0) setRecipientChainUid(c[0].chain_uid);
     }).catch(() => {
       setErrorMsg("Failed to load tokens/chains");
     }).finally(() => setLoading(false));
-  }, [apiBase, defaultChainUid]);
+  }, [apiBase, defaultRecipientChainUid]);
 
   const tokenMap = Object.fromEntries(tokens.map((t) => [t.tokenId, t]));
   const inMeta = tokenMap[tokenIn];
@@ -156,7 +158,7 @@ export function SwapWidget({
   }, [amountIn, tokenIn, tokenOut, fetchQuote]);
 
   const handleBuildSwap = async () => {
-    if (!bestPath || !senderAddr) return;
+    if (!bestPath || !recipientAddr) return;
     setUiState("building");
     try {
       const inDecimals = inMeta?.coinDecimal ?? 6;
@@ -171,14 +173,14 @@ export function SwapWidget({
         slippage: String(slippageBps),
         recipients: [
           {
-            user: { address: senderAddr, chain_uid: chainUid },
+            user: { address: recipientAddr, chain_uid: recipientChainUid },
             amount: { less_than_or_equal: lastHop.amount_out },
             denom: { native: { denom: tokenOut } },
             forwarding_message: "",
             unsafe_refund_as_voucher: false,
           },
         ],
-        sender: { address: senderAddr, chain_uid: chainUid },
+        sender: { address: senderAddress, chain_uid: senderChainUid },
         swap_path: bestPath,
         ...(partnerFeeBps && partnerFeeRecipient
           ? { partner_fee: { partner_fee_bps: partnerFeeBps, recipient: partnerFeeRecipient } }
@@ -269,13 +271,13 @@ export function SwapWidget({
             </div>
           </div>
 
-          {/* Chain selector */}
+          {/* Recipient chain */}
           <div style={{ marginTop: "0.75rem" }}>
-            <div className={styles.label}>Sender chain</div>
+            <div className={styles.label}>Recipient chain</div>
             <select
               style={{ width: "100%", padding: "0.5rem 0.75rem", borderRadius: "8px", border: "1px solid var(--w-border)", background: "var(--w-panel)", color: "var(--w-text)", fontFamily: "inherit", fontSize: "0.9rem" }}
-              value={chainUid}
-              onChange={(e) => setChainUid(e.target.value)}
+              value={recipientChainUid}
+              onChange={(e) => setRecipientChainUid(e.target.value)}
             >
               {chains.map((c) => (
                 <option key={c.chain_uid} value={c.chain_uid}>{c.chain_uid}</option>
@@ -283,14 +285,14 @@ export function SwapWidget({
             </select>
           </div>
 
-          {/* Sender address */}
+          {/* Recipient address */}
           <div style={{ marginTop: "0.75rem" }}>
-            <div className={styles.label}>Your wallet address</div>
+            <div className={styles.label}>Recipient address</div>
             <input
               style={{ width: "100%", padding: "0.5rem 0.75rem", borderRadius: "8px", border: "1px solid var(--w-border)", background: "var(--w-panel)", color: "var(--w-text)", fontFamily: "inherit", fontSize: "0.875rem", boxSizing: "border-box" as const }}
               placeholder="0x... or cosmos1..."
-              value={senderAddr}
-              onChange={(e) => setSenderAddr(e.target.value)}
+              value={recipientAddr}
+              onChange={(e) => setRecipientAddr(e.target.value)}
             />
           </div>
 
@@ -316,7 +318,7 @@ export function SwapWidget({
           <button
             className={styles.btn}
             style={{ marginTop: "1rem" }}
-            disabled={uiState === "building" || uiState === "fetching-quote" || !amountIn || !senderAddr || uiState === "idle"}
+            disabled={uiState === "building" || uiState === "fetching-quote" || !amountIn || !recipientAddr || uiState === "idle"}
             onClick={handleBuildSwap}
           >
             {uiState === "fetching-quote" ? "Getting quote..." :
