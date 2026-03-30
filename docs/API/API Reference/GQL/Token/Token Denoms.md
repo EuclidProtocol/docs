@@ -122,7 +122,7 @@ curl --request POST \
 |------------------|--------|-------------------------------------------|
 | `id`                | `String`   | Unique identifier for the token denom response object. |
 | `token_id`          | `String`   | The token identifier being queried. |
-| `denoms`            | `[Denom]`  | Token representations available across the matching chains. |
+| `denoms`            | [`Denom[]`](#denom)  | Token representations available across the matching chains. |
 
 ### Denom
 
@@ -130,7 +130,7 @@ curl --request POST \
 |------------------|--------|-------------------------------------------|
 | `id`                | `String` | Unique identifier for the denom entry. |
 | `chain_uid`         | `String` | The chain UID where this token representation exists. |
-| `token_type`        | `TokenType` | The token representation on that chain. |
+| `token_type`        | [`TokenType`](#tokentype) | The token representation on that chain. |
 | `chain_type`        | `String` | The chain family for this denom entry, for example `evm` or `cosmwasm`. |
 
 ### TokenType
@@ -139,7 +139,7 @@ curl --request POST \
 |------------------|--------|-------------------------------------------|
 | `native`           | [`Native`](#native) | Details of native token denoms. |
 | `smart`            | [`Smart`](#smart) | Details of smart-token contract addresses. |
-| `voucher`          | `String` | Voucher marker for voucher token representations. |
+| `voucher`          | `JSON` | Voucher marker payload for voucher token representations. |
 
 ### Native
 
@@ -151,4 +151,4 @@ curl --request POST \
 
 | **Field**            | **Type**   | **Description**                               |
 |------------------|--------|-------------------------------------------|
-| `contractAddress`  | `String` | The contract address of the smart token.  |
+| `contract_address` | `String!` | The contract address of the smart token. |

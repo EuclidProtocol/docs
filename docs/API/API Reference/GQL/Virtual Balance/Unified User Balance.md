@@ -44,7 +44,14 @@ curl --request POST \
 
 | **Field**    | **Type**     | **Description**                                                                 |
 |--------------|--------------|---------------------------------------------------------------------------------|
-| `chain_uid`  | `String`     | The chain UID for the returned balances.                                        |
-| `balances`   | `[Object]`   | List of token balances for the chain.                                           |
+| `id`         | `ID!`        | Globally unique identifier for the balance response item.                       |
+| `chain_uid`  | `String!`    | The chain UID for the returned balances.                                        |
+| `balances`   | [`VcoinBalanceUserResponse[]`](#vcoinbalanceuserresponse) | List of token balances for the chain.      |
+
+### VcoinBalanceUserResponse
+
+| **Field**    | **Type**     | **Description**                                                                 |
+|--------------|--------------|---------------------------------------------------------------------------------|
+| `id`         | `ID!`        | Globally unique identifier for the token balance item.                          |
 | `amount`     | `String`     | The amount of the token in the user's balance.                                  |
 | `token_id`   | `String`     | The identifier of the token.                                                    |

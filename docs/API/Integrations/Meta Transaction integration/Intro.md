@@ -3,7 +3,7 @@ sidebar_label: Overview
 id: meta-tx-integration-overview
 ---
 
-# Meta Transaction Integration Overview
+# Gasless Voucher Integration Overview
 
 This guide shows how to integrate Euclid Meta Transactions end to end:
 

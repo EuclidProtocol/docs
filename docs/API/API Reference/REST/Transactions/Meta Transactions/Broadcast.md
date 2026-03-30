@@ -3,7 +3,7 @@ sidebar_position: 6
 ---
 import Tabs from '@site/src/components/Tabs';
 
-# Meta Broadcast
+# Broadcast
 
 Broadcast a signed meta-transaction payload to the relayer.
 
@@ -70,24 +70,35 @@ https://api.euclidprotocol.com/api/v1/execute/meta-txn/broadcast
 
 | Field | Type | Description |
 |---|---|---|
-| `call_data` | `object` | Signed call data payload from the `meta-txn/sign` response. |
+| `call_data` | [`CallDataPayload`](#calldatapayload) | Signed call data payload from the `meta-txn/sign` response. |
 | `chain_uid` | `string` | Chain UID to broadcast on. |
 | `pub_key` | `string` | Public key of the signer. |
 | `signature` | `string` | Signature for the payload. |
 | `types` | `string[]` | List of message types included in the payload. |
 | `wallet_address` | `string` | Wallet address of the signer. |
-| `meta` | `object[]` | Optional meta transaction context passed with broadcast payload. |
+| `meta` | [`MetaItem[]`](#metaitem) | Optional meta transaction context passed with broadcast payload. |
 
 ### CallDataPayload
 
 | Field | Type | Description |
 |---|---|---|
-| `call_data` | `object[]` | Array of target call-data items. |
+| `call_data` | [`CallDataItem[]`](#calldataitem) | Array of target call-data items. |
 | `expiry` | `number` | Expiry timestamp for the signed payload. |
 | `nonce` | `string` | Nonce used for signing and replay protection. |
 | `signer_address` | `string` | Address of the signer. |
 | `signer_chain_uid` | `string` | Chain UID of the signer. |
 | `signer_prefix` | `string` | Prefix used for signing. |
+
+### MetaItem
+
+| Field | Type | Description |
+|---|---|---|
+| `type` | `string` | Message type included in the meta transaction. |
+| `token_in` | `string` | Optional metadata token-in value used for tracking. |
+| `token_out` | `string` | Optional metadata token-out value used for tracking. |
+| `token` | `string` | Optional metadata token value used for tracking. |
+| `amount_in` | `string` | Optional metadata input amount used for tracking. |
+| `amount_out` | `string` | Optional metadata output amount used for tracking. |
 
 ### CallDataItem
 

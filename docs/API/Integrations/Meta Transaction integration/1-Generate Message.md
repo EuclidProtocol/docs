@@ -11,9 +11,9 @@ Create the contract `msg` that will later be signed and broadcast.
 
 Use one of these:
 
-- [Meta Swap](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Swap)
-- [Meta Transfer](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Transfer)
-- [Meta Withdraw](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Withdraw)
+- [Swap](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Swap)
+- [Transfer](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Transfer)
+- [Withdraw](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Withdraw)
 
 ## Example (Swap)
 

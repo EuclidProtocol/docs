@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 import Tabs from '@site/src/components/Tabs';
 
-# Meta Withdraw
+# Withdraw
 
 Create a meta-transaction message payload to withdraw voucher balances.
 

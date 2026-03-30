@@ -16,8 +16,8 @@ There is no single REST endpoint for standard swap broadcast. Use returned `msgs
 
 If you use Euclid meta transactions, see:
 
-- [Meta Transactions — Sign](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Sign)
-- [Meta Transactions — Broadcast](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast)
+- [Gasless Voucher Actions — Sign](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Sign)
+- [Gasless Voucher Actions — Broadcast](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast)
 
 ## Minimal execution flow
 

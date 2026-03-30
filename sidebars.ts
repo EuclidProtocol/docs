@@ -182,7 +182,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Meta Transaction Integration",
+          label: "Gasless Voucher Integration",
           items: [
             "API/Integrations/Meta Transaction integration/meta-tx-integration-overview",
             "API/Integrations/Meta Transaction integration/meta-tx-generate-message",
@@ -345,23 +345,29 @@ const sidebars: SidebarsConfig = {
                 },
                 {
                   type: "category",
-                  label: "Vouchers",
+                  label: "Voucher Actions",
                   items: [
-                    "API/API Reference/REST/Transactions/Vouchers/Deposit",
-                    "API/API Reference/REST/Transactions/Vouchers/Transfer Voucher",
-                    "API/API Reference/REST/Transactions/Vouchers/Withdraw Virtual Balance",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Meta Transactions",
-                  items: [
-                    "API/API Reference/REST/Transactions/Meta Transactions/Intro",
-                    "API/API Reference/REST/Transactions/Meta Transactions/Swap",
-                    "API/API Reference/REST/Transactions/Meta Transactions/Transfer",
-                    "API/API Reference/REST/Transactions/Meta Transactions/Withdraw",
-                    "API/API Reference/REST/Transactions/Meta Transactions/Sign",
-                    "API/API Reference/REST/Transactions/Meta Transactions/Broadcast",
+                    {
+                      type: "category",
+                      label: "Regular Voucher Actions",
+                      items: [
+                        "API/API Reference/REST/Transactions/Vouchers/Deposit",
+                        "API/API Reference/REST/Transactions/Vouchers/Transfer Voucher",
+                        "API/API Reference/REST/Transactions/Vouchers/Withdraw Virtual Balance",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Gasless Voucher Actions",
+                      items: [
+                        "API/API Reference/REST/Transactions/Meta Transactions/Intro",
+                        "API/API Reference/REST/Transactions/Meta Transactions/Swap",
+                        "API/API Reference/REST/Transactions/Meta Transactions/Transfer",
+                        "API/API Reference/REST/Transactions/Meta Transactions/Withdraw",
+                        "API/API Reference/REST/Transactions/Meta Transactions/Sign",
+                        "API/API Reference/REST/Transactions/Meta Transactions/Broadcast",
+                      ],
+                    },
                   ],
                 },
               ],

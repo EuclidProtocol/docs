@@ -34,6 +34,6 @@ Specialized step-by-step guides for additional integration types (MMs, trading b
 
 If you are building as an aggregator, start with: [Aggregator Integration Overview](./Aggregators/Intro.md).
 
-If you are integrating gasless relay flows, start with: [Meta Transaction Integration Overview](./Meta%20Transaction%20integration/Intro.md).
+If you are integrating gasless relay flows, start with: [Gasless Voucher Integration Overview](./Meta%20Transaction%20integration/Intro.md).
 
 If you are deciding between direct execution and voucher-based UX, start with: [Integration Models Overview](./Integration%20Models/Intro.md).

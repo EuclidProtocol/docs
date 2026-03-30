@@ -9,7 +9,7 @@ Send one or more Step 1 responses in `msgs` to get a signable payload.
 
 ## Endpoint
 
-[Meta Sign](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Sign)
+[Sign](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Sign)
 
 ## Request
 

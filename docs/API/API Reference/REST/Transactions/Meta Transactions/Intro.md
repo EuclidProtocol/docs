@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Intro
+# Overview
 
-Meta Transactions let users sign intents off-chain while a relayer submits the signed payload on-chain. This enables gas abstraction and a smoother UX.
+Gasless voucher actions are Euclid's meta-transaction flow for voucher operations. Users sign intents off-chain while a relayer submits the signed payload on-chain. This enables gas abstraction and a smoother UX.
 
 For a deeper overview, see [Meta Transactions concepts](/docs/Architecture%20Overview/Concepts/Meta%20Transactions).
 

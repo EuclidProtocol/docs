@@ -275,8 +275,31 @@ Use this format to send vouchers to a recipient identified via email, Twitter, o
 | `amount`            | `string`          | Amount of the virtual token to transfer (in base units).                       |
 | `token`             | `string`          | Name of the virtual token to transfer (e.g. "euclid").                        |
 | `sender`            | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | The address and chain initiating the transfer.                                  |
-| `recipient_address` | `object`          | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using email, Twitter, or Telegram. |
+| `recipient_address` | [`RecipientAddress`](#recipientaddress) | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using email, Twitter, or Telegram. |
 | `timeout`           | `string \| null`  | Optional timeout value in seconds.               |
+
+### RecipientAddress
+
+| **Field**          | **Type**                        | **Description**                                                                 |
+|---------------------|---------------------------------|---------------------------------------------------------------------------------|
+| `user`             | [`RecipientUser`](#recipientuser) | Recipient target, either an on-chain address or a social recipient.            |
+
+### RecipientUser
+
+| **Field**          | **Type**                        | **Description**                                                                 |
+|---------------------|---------------------------------|---------------------------------------------------------------------------------|
+| `address`          | `string`                        | Recipient wallet address for on-chain transfers.                               |
+| `chain_uid`        | `string`                        | Recipient chain UID for on-chain transfers.                                    |
+| `social`           | [`SocialRecipient`](#socialrecipient) | Social recipient identity used to generate a claim link.                  |
+
+### SocialRecipient
+
+| **Field**          | **Type**          | **Description**                                                                 |
+|---------------------|-------------------|---------------------------------------------------------------------------------|
+| `email`            | `string`          | Email recipient identifier.                                                     |
+| `telegram`         | `string`          | Telegram username recipient identifier.                                         |
+| `twitter`          | `string`          | Twitter/X handle recipient identifier.                                          |
+| `pub_key`          | `string`          | Optional public key used for social-claim flows.                                |
 
 ### Social Recipient Format Examples
 
