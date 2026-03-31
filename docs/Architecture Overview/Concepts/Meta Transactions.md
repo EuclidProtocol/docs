@@ -8,7 +8,7 @@ description: "Overview of how Euclid supports meta transactions for gasless user
 Meta Transactions provide a quick and gasless method for cross-chain users to manage their voucher assets within Euclid Protocol.
 
 ## What is a Meta Transaction?
-In the context of blockchain, a standard transaction requires the sender to pay for the gas fee, which is often paid in the network's native currency (e.g., ETH, MATIC). A Meta Transaction separates the creation of a transaction from the actual execution and payment of the gas fee.
+In the context of blockchain, a standard transaction requires the sender to pay for the gas fee, which is often paid in the network's native currency (e.g., ETH, POL). A Meta Transaction separates the creation of a transaction from the actual execution and payment of the gas fee.
 
 In Euclid Protocol, a Meta Transaction allows users to sign a message that describes the desired action using vouchers (e.g., swap using voucher, transfer voucher asset or withdraw vouchers) without needing to hold or spend the native gas token. This also helps in Unifying multiple chains as signing doesn’t need chain related data, as long as you can prove ownership for your wallet.
 
@@ -42,4 +42,3 @@ Actions that can be enabled by Meta Transactions include:
 - Swap using Voucher
 - Transfer Voucher
 - Withdraw Voucher
-

@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 import Tabs from '@site/src/components/Tabs';
 
-# Meta Transfer
+# Transfer
 
 Create a meta-transaction message payload to transfer voucher balances.
 

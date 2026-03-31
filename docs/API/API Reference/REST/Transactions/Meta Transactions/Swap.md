@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 import Tabs from '@site/src/components/Tabs';
 
-# Meta Swap
+# Swap
 
 Create a meta-transaction message payload for a voucher swap.
 
@@ -100,16 +100,16 @@ https://api.euclidprotocol.com/api/v1/execute/meta-txn/swap
 | `recipients` | [`CrossChainAddressWithLimit[]`](/docs/API/API%20Reference/common%20types.md#crosschainaddresswithlimit) | A set of recipients to specify where the output should be released. |
 | `slippage` | `string` | Slippage tolerance in basis points (for example `500` = 5%). |
 | `sender` | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount) | Address and chain initiating the swap. |
-| `swap_path` | `object` | Routing path with token hops and DEX info. |
-| `partner_fee` | `object` | Optional partner fee information for swaps. |
+| `swap_path` | [`SwapPath`](#swappath) | Routing path with token hops and DEX info. |
+| `partner_fee` | [`PartnerFee`](#partnerfee) | Optional partner fee information for swaps. |
 
 ### SwapPath
 
 | Field | Type | Description |
 |---|---|---|
-| `path` | `object[]` | Steps for the swap route, each defining token route and dex. |
+| `path` | [`SwapPathStep[]`](#swappathstep) | Steps for the swap route, each defining token route and dex. |
 
-#### Each path object
+#### SwapPathStep
 
 | Field | Type | Description |
 |---|---|---|

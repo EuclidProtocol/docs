@@ -7,6 +7,11 @@ import Tabs from '@site/src/components/Tabs';
 
 Generate a transaction payload for a swap request.
 
+:::tip
+- This swap flow supports `native`, `smart`, or `voucher` assets depending on the token denom specified for release in `recipients[].denom`.
+- If you are looking to swap `voucher -> voucher` tokens, consider using [Gasless Voucher Swap](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Swap).
+:::
+
 ## Endpoint
 
 **Method:** `POST`
@@ -239,9 +244,9 @@ You should obtain the `swap_path` from the [Get Routes endpoint](../Routes/Get%2
 
 | Field | Type | Description |
 |---|---|---|
-| `path` | `object[]` | Steps for the swap route, each defining a DEX and token route. |
+| `path` | [`SwapPathStep[]`](#swappathstep) | Steps for the swap route, each defining a DEX and token route. |
 
-#### Each path object
+#### SwapPathStep
 
 | Field | Type | Description |
 |---|---|---|

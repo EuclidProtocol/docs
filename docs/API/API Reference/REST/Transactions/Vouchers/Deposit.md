@@ -163,8 +163,25 @@ Use this approach when depositing to a recipient identified by a standard **wall
 | `amount_in`     | `string`                                                                                     | Amount of the token to be deposited (in raw base units, e.g., wei or uatom).                |
 | `asset_in`      | [`TokenWithDenom`](/docs/API/API%20Reference/common%20types.md#tokenwithdenom)     | Token being deposited along with its type (native or smart).                                |
 | `sender`        | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)     | Address and chain initiating the deposit.                                                   |
-| `recipient`     | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)    | Destination address and chain for the deposited asset.                                      |
+| `recipient`     | [`DepositRecipient`](#depositrecipient)    | Destination address and chain for the deposited asset.                                      |
 | `timeout`       | `string`                                                                                     | Optional timeout in seconds.                                                                |
+
+### DepositRecipient
+
+| **Field**       | **Type**                                                                                     | **Description**                                                                              |
+|------------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| `chain_uid`     | `string`                                                                                     | Destination chain UID when depositing to an on-chain address.                               |
+| `address`       | `string`                                                                                     | Destination wallet address when depositing to an on-chain address.                          |
+| `social`        | [`SocialRecipient`](#socialrecipient)                                                        | Social recipient identity used to generate a claim link.                                    |
+
+### SocialRecipient
+
+| **Field**       | **Type**                                                                                     | **Description**                                                                              |
+|------------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| `email`         | `string`                                                                                     | Email recipient identifier.                                                                  |
+| `telegram`      | `string`                                                                                     | Telegram username recipient identifier.                                                      |
+| `twitter`       | `string`                                                                                     | Twitter/X handle recipient identifier.                                                       |
+| `pub_key`       | `string`                                                                                     | Optional public key used for social-claim flows.                                             |
 
 
 
@@ -349,7 +366,7 @@ When using a social identifier (like email, Twitter, or Telegram), the system cr
 | `amount_in`     | `string`                                                                                     | Amount of the token to be deposited (in raw base units, e.g., wei or uatom).                           |
 | `asset_in`      | [`TokenWithDenom`](/docs/API/API%20Reference/common%20types.md#tokenwithdenom)      | Token being deposited along with its type (native or smart).                                           |
 | `sender`        | [`CrossChainUserWithAmount`](/docs/API/API%20Reference/common%20types.md#crosschainuserwithamount)    | Address and chain initiating the deposit.                                                              |
-| `recipient`     | `object`                                                                                     | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using `email`, `twitter`, or `telegram`. Social recipients generate a claim link that allows the user to withdraw on any chain. |
+| `recipient`     | [`DepositRecipient`](#depositrecipient)                                                      | Either a standard recipient with `chain_uid` and `address`, or a `social` recipient using `email`, `twitter`, or `telegram`. Social recipients generate a claim link that allows the user to withdraw on any chain. |
 | `timeout`       | `string`                                                                                     | Optional timeout in seconds.                                                                                         |
 
 

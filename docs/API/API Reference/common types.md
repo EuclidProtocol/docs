@@ -73,7 +73,16 @@ type CrossChainUserInput = CrossChainUser
 | `chain_uid` | `string` | Unique chain identifier for the user address. |
 | `address` | `string` | User address on the specified chain. |
 | `amount` | `string` | Optional amount associated with this user. |
-| `social` | `object` | Optional social recipient descriptor (email/telegram/twitter). |
+| `social` | [`Social`](#social) | Optional social recipient descriptor (email/telegram/twitter). |
+
+### `Social`
+
+| Field | Type | Description |
+|---|---|---|
+| `email` | `string` | Email-based recipient identifier. |
+| `telegram` | `string` | Telegram username-based recipient identifier. |
+| `twitter` | `string` | Twitter/X handle-based recipient identifier. |
+| `pub_key` | `string` | Optional public key used for social-claim flows. |
 
 ### `CrossChainAddressWithLimit`
 
@@ -283,8 +292,8 @@ Used in add-liquidity requests (`pair_info`).
 
 | Field | Type | Description |
 |---|---|---|
-| `token_1` | `object` | First token entry with `token`, `amount`, and optional `token_type`. |
-| `token_2` | `object` | Second token entry with `token`, `amount`, and optional `token_type`. |
+| `token_1` | [`TokenWithDenom`](#tokenwithdenom) | First token entry with `token`, `amount`, and optional `token_type`. |
+| `token_2` | [`TokenWithDenom`](#tokenwithdenom) | Second token entry with `token`, `amount`, and optional `token_type`. |
 | `token_1.token_type` | [`TokenType`](#tokentype-variants) | Optional type metadata for the first token. |
 | `token_2.token_type` | [`TokenType`](#tokentype-variants) | Optional type metadata for the second token. |
 

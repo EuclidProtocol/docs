@@ -3,7 +3,7 @@ sidebar_position: 5
 ---
 import Tabs from '@site/src/components/Tabs';
 
-# Meta Sign
+# Sign
 
 Build and return the signable meta-transaction payload for one or more prepared messages.
 
@@ -83,7 +83,7 @@ https://api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 
 | Field | Type | Description |
 |---|---|---|
-| `msgs` | `object[]` | Array of prepared messages to be signed. Use the message items returned by the previous transaction-construction steps (for example swap, transfer, withdraw). Each item includes `type` and `msg`. |
+| `msgs` | [`MsgItem[]`](#msgitem) | Array of prepared messages to be signed. Use the message items returned by the previous transaction-construction steps (for example swap, transfer, withdraw). Each item includes `type` and `msg`. |
 | `sender_address` | `string` | Address of the signer. |
 | `sender_chain_uid` | `string` | Chain UID of the signer. |
 | `expiry_time` | `string` | Optional expiry duration (for example `5m`, `10m`, `1h`). |
@@ -93,7 +93,7 @@ https://api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 | Field | Type | Description |
 |---|---|---|
 | `type` | `string` | Message type (for example `swap`, `transfer_voucher`, `withdraw_voucher`). |
-| `msg` | `object` | Message payload containing `target` and `call_data`, typically copied from the corresponding transaction-construction response in the previous step. |
+| `msg` | [`CallDataItem`](#calldataitem) | Message payload containing `target` and `call_data`, typically copied from the corresponding transaction-construction response in the previous step. |
 | `token_in` | `string` | Optional metadata token-in value used for tracking. |
 | `token_out` | `string` | Optional metadata token-out value used for tracking. |
 | `token` | `string` | Optional metadata token value used for tracking. |
@@ -106,8 +106,8 @@ https://api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 |---|---|---|
 | `cosmos_raw_payload` | `string` | Cosmos-ready encoded sign bytes. |
 | `evm_raw_payload` | `string` | EVM personal-sign formatted message. |
-| `meta` | `object[]` | Meta summary for tracking. |
-| `payload` | `object` | Canonical payload that is signed and later broadcast. |
+| `meta` | [`MetaItem[]`](#metaitem) | Meta summary for tracking. |
+| `payload` | [`PayloadObject`](#payload-object) | Canonical payload that is signed and later broadcast. |
 | `types` | `string[]` | Transaction types included in the payload. |
 
 ### Payload Object
@@ -117,6 +117,24 @@ https://api.euclidprotocol.com/api/v1/execute/meta-txn/sign
 | `signer_address` | `string` | Address of the signer. |
 | `signer_prefix` | `string` | Signing prefix (for example `0x`, `lumen`, `cosmos`). |
 | `signer_chain_uid` | `string` | Chain UID of the signer. |
-| `call_data` | `object[]` | Array of target call-data items. |
+| `call_data` | [`CallDataItem[]`](#calldataitem) | Array of target call-data items. |
 | `expiry` | `number` | Expiry timestamp for the signed payload. |
 | `nonce` | `string` | Nonce used for replay protection. |
+
+### MetaItem
+
+| Field | Type | Description |
+|---|---|---|
+| `type` | `string` | Message type included in the signed meta transaction. |
+| `token_in` | `string` | Optional metadata token-in value used for tracking. |
+| `token_out` | `string` | Optional metadata token-out value used for tracking. |
+| `token` | `string` | Optional metadata token value used for tracking. |
+| `amount_in` | `string` | Optional metadata input amount used for tracking. |
+| `amount_out` | `string` | Optional metadata output amount used for tracking. |
+
+### CallDataItem
+
+| Field | Type | Description |
+|---|---|---|
+| `target` | `string` | Contract or router address that receives the call. |
+| `call_data` | `string` | Encoded call payload for the target contract. |

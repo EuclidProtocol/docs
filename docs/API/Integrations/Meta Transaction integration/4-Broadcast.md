@@ -9,7 +9,7 @@ Submit the signed payload for relay and on-chain execution.
 
 ## Endpoint
 
-[Meta Broadcast](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast)
+[Broadcast](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast)
 
 ## Request
 
