@@ -7,6 +7,15 @@ import Tabs from '@site/src/components/Tabs';
 
 Generates a transaction to add liquidity to a pool.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All Tokens](/docs/API/API%20Reference/GQL/Router/All%20Tokens): Use this query to fetch valid token IDs for `pair_info.token_1.token` and `pair_info.token_2.token`.
+- [Token Denoms](/docs/API/API%20Reference/GQL/Token/Token%20Denoms): Use this query to fetch the correct `token_type` values for each token in `pair_info`.
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to validate supported chain UIDs. In most integrations, `sender.chain_uid` is derived from the connected wallet or source chain context.
+
+</details>
+
 ### Request URL
 
 **Method:** `POST`

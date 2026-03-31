@@ -8,6 +8,16 @@ import Tabs from '@site/src/components/Tabs';
 
 Generates a transaction for users to withdraw voucher balances into native assets.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [User Balance](/docs/API/API%20Reference/GQL/Virtual%20Balance/User%20Balance): Use this query to fetch the sender's available voucher balances before constructing the withdraw.
+- [Unified User Balance](/docs/API/API%20Reference/GQL/Virtual%20Balance/Unified%20User%20Balance): Use this query if you need voucher balances across multiple chains before selecting the withdraw source.
+- [Token Denoms](/docs/API/API%20Reference/GQL/Token/Token%20Denoms): Use this query to fetch the correct `token_type` value for `asset_in.token_type`.
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid destination chain UIDs for `cross_chain_addresses[].user.chain_uid`. In most integrations, `sender.chain_uid` is derived from the connected wallet or source chain context.
+
+</details>
+
 ### Request URL
 
 **Method:** `POST`

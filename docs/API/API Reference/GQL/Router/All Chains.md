@@ -6,7 +6,6 @@ sidebar_position: 2
 Queries all chain info within the router contract.
 
 ```graphql
-
 query Router {
   router {
     all_chains {

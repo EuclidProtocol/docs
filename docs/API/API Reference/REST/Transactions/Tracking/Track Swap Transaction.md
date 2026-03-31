@@ -7,6 +7,13 @@ import Tabs from '@site/src/components/Tabs';
 
 Checks the current status of a cross-chain swap by providing the tx_hash and the chain it was submitted on.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid chain UIDs for `chain`.
+
+</details>
+
 
 ### Request URL
 

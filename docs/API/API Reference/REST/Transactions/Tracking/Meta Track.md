@@ -7,6 +7,13 @@ import Tabs from '@site/src/components/Tabs';
 
 Track a meta transaction status using the `queue_id` returned by [Broadcast](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast), or by `tx_hash`.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- No GraphQL queries are typically required for this call. Use the `queue_id` returned by [Broadcast](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Broadcast), or track by `tx_hash` if you already have it.
+
+</details>
+
 ### Request URL
 
 ```bash

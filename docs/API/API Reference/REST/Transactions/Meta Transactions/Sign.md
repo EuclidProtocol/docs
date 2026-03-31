@@ -7,6 +7,13 @@ import Tabs from '@site/src/components/Tabs';
 
 Build and return the signable meta-transaction payload for one or more prepared messages.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- No GraphQL queries are typically required for this call. It consumes the prepared message objects returned by the gasless voucher action endpoints such as [Swap](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Swap), [Transfer](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Transfer), or [Withdraw](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Withdraw).
+
+</details>
+
 ### Request URL
 
 ```bash
