@@ -7,6 +7,15 @@ import Tabs from '@site/src/components/Tabs';
 
 Generate a transaction payload for a swap request.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All Tokens](/docs/API/API%20Reference/GQL/Router/All%20Tokens): Use this query to fetch valid token IDs for `asset_in.token`, recipient release assets, and swap route tokens.
+- [Token Denoms](/docs/API/API%20Reference/GQL/Token/Token%20Denoms): Use this query to fetch the correct `native`, `smart`, or `voucher` denom details used in `asset_in.token_type` and `recipients[].denom`.
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid destination chain UIDs for `recipients[].user.chain_uid`. In most integrations, `sender.chain_uid` is derived from the connected wallet or source chain context.
+
+</details>
+
 :::tip
 - This swap flow supports `native`, `smart`, or `voucher` assets depending on the token denom specified for release in `recipients[].denom`.
 - If you are looking to swap `voucher -> voucher` tokens, consider using [Gasless Voucher Swap](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Swap).

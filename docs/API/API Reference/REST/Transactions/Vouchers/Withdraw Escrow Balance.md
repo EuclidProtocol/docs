@@ -9,6 +9,14 @@ import Tabs from '@site/src/components/Tabs';
 
 Generates a transaction for users to withdraw voucher balances into native assets.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All Escrows](/docs/API/API%20Reference/GQL/Router/All%20Escrows): Use this query to inspect escrow balances before constructing the withdraw.
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid destination chain UIDs for `cross_chain_addresses[].user.chain_uid`. In most integrations, `sender.chain_uid` is derived from the connected wallet or source chain context.
+
+</details>
+
 ### Request URL
 ```bash
 https://api.euclidprotocol.com/api/v1/execute/escrow/withdraw

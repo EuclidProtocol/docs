@@ -7,6 +7,14 @@ import Tabs from '@site/src/components/Tabs';
 
 Generates a transaction to remove liquidity from a pool.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All VLPs](/docs/API/API%20Reference/GQL/Router/All%20VLPs): Use this query to fetch valid `vlp_address` values and the associated token pair.
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid destination chain UIDs for `receiver.chain_uid`. In most integrations, `sender.chain_uid` is derived from the connected wallet or source chain context.
+
+</details>
+
 ### Examples
 
 <Tabs

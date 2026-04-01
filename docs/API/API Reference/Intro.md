@@ -52,6 +52,12 @@ In addition to the GraphQL API, the Euclid platform also provides a REST API for
 - [Routes](./REST/Routes/Get%20Routes.md): Get the available routes for a swap.
 - [Transaction](./REST/Transactions/Swap.md): Generate transactions for various calls such as making swaps and adding/removing liquidity.
 
+### Related Queries
+
+When a REST reference page includes a `Related Queries` section, it points to the GraphQL queries you would typically use to construct the request body before calling that REST endpoint.
+
+These queries are usually used to fetch live values such as token IDs, chain UIDs, contract addresses, pool state, or route data needed to build the REST request correctly.
+
 ### Common HTTP Responses
 
 The backend Swagger currently documents these common REST response codes:

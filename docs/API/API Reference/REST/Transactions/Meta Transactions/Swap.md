@@ -7,6 +7,16 @@ import Tabs from '@site/src/components/Tabs';
 
 Create a meta-transaction message payload for a voucher swap.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [User Balance](/docs/API/API%20Reference/GQL/Virtual%20Balance/User%20Balance): Use this query to fetch the sender's available voucher balances before constructing the swap.
+- [Unified User Balance](/docs/API/API%20Reference/GQL/Virtual%20Balance/Unified%20User%20Balance): Use this query if you need voucher balances across multiple chains before selecting the swap source.
+- [All Tokens](/docs/API/API%20Reference/GQL/Router/All%20Tokens): Use this query to fetch valid token IDs for voucher assets and swap route tokens.
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid destination chain UIDs for `recipients[].user.chain_uid`. In most integrations, `sender.chain_uid` is derived from the connected wallet or source chain context.
+
+</details>
+
 ### Request URL
 
 ```bash

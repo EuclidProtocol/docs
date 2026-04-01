@@ -7,6 +7,13 @@ import Tabs from '@site/src/components/Tabs';
 
 Broadcast a signed meta-transaction payload to the relayer.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- No GraphQL queries are typically required for this call. It consumes the signed payload returned by [Sign](/docs/API/API%20Reference/REST/Transactions/Meta%20Transactions/Sign).
+
+</details>
+
 ### Request URL
 
 ```bash

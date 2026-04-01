@@ -10,6 +10,13 @@ Checks the current status of a transaction by providing the `tx_hash` and the ch
 If you're looking to track a **cross-chain swap**, use the [Track Swap Transaction](./Track%20Swap%20Transaction) endpoint instead. This endpoint is designed specifically to provide detailed status updates and IBC event traces for swap transactions.
 :::
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid chain UIDs for `chain`.
+
+</details>
+
 ### Request URL
 
 **Method:** `POST`

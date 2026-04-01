@@ -6,6 +6,14 @@ sidebar_position: 2
 
 Simulates a swap given the swap parameters.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All Tokens](/docs/API/API%20Reference/GQL/Router/All%20Tokens): Use this query to fetch valid token IDs for `asset_in`, `asset_out`, and the entries in `swaps`.
+- [Router Config](/docs/API/API%20Reference/GQL/Chain/Router%20Config): Use this query to fetch the router contract address for `contract`.
+
+</details>
+
 ### Request URL
 
 **Method:** `POST`

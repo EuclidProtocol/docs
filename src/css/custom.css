@@ -362,6 +362,53 @@ code[class*="language-"] {
   color: #1f2933 !important;
 }
 
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.punctuation,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.punctuation,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.punctuation,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.punctuation {
+  color: #6b7280 !important;
+}
+
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.keyword,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.keyword,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.keyword,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.keyword {
+  color: #2563eb !important;
+}
+
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.variable,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.variable,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.variable,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.variable {
+  color: #ea580c !important;
+}
+
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.property,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.property,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.attr-name,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.attr-name,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.function,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.function,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.property,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.property,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.attr-name,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.attr-name,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.function,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.function {
+  color: #0f766e !important;
+}
+
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.string,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.string,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-graphql"] .token.class-name,
+.theme-code-block:not(.mdx-curl-block) pre[class*="language-gql"] .token.class-name,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.string,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.string,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-graphql"] .token.class-name,
+.theme-code-block:not(.mdx-curl-block) code[class*="language-gql"] .token.class-name {
+  color: #9333ea !important;
+}
+
 [data-theme="dark"] {
   --ifm-background-color: var(--euclid-bg);
   --ifm-font-color-base: var(--euclid-text);

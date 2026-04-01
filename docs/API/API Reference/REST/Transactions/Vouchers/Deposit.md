@@ -7,6 +7,15 @@ import Tabs from '@site/src/components/Tabs';
 
 Exchanges native or smart tokens to voucher tokens and sends them to the specified recipient address.
 
+<details>
+<summary><strong>Related Queries</strong></summary>
+
+- [All Tokens](/docs/API/API%20Reference/GQL/Router/All%20Tokens): Use this query to fetch valid token IDs for `asset_in.token`.
+- [Token Denoms](/docs/API/API%20Reference/GQL/Token/Token%20Denoms): Use this query to fetch the correct `token_type` value for `asset_in.token_type`.
+- [All Chains](/docs/API/API%20Reference/GQL/Router/All%20Chains): Use this query to fetch valid destination chain UIDs for on-chain `recipient.chain_uid`. In most integrations, `sender.chain_uid` is derived from the connected wallet or source chain context.
+
+</details>
+
 
 ### Request URL
 
