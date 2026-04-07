@@ -95,12 +95,6 @@ const config: Config = {
           label: "Learn",
         },
         {
-          type: "docSidebar",
-          sidebarId: "orderbookSidebar",
-          position: "left",
-          label: "Orderbook",
-        },
-        {
           type: "dropdown",
           sidebarId: "contractsSidebar",
           position: "left",
@@ -116,12 +110,22 @@ const config: Config = {
             },
           ],
         },
-
         {
-          type: "docSidebar",
-          sidebarId: "apiSidebar",
+          type: "dropdown",
           position: "left",
-          label: "API",
+          label: "Products",
+          items: [
+            {
+              type: "docSidebar",
+              sidebarId: "apiSidebar",
+              label: "AMM",
+            },
+            {
+              type: "docSidebar",
+              sidebarId: "orderbookSidebar",
+              label: "Orderbook",
+            },
+          ],
         },
 
         {

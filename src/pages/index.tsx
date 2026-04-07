@@ -13,9 +13,9 @@ function HomepageHeader() {
     {
       title: "Payments & Swaps",
       links: [
-        { label: "Get Routes", to: "/docs/API/API%20Reference/REST/Routes/Get%20Routes" },
-        { label: "Perform a Swap", to: "/docs/API/Getting%20Started/Perform%20A%20Swap" },
-        { label: "Track Transactions", to: "/docs/API/API%20Reference/REST/Transactions/Tracking/Track%20Transactions" },
+        { label: "Getting Started", to: "/docs/API/Getting%20Started/Initial%20Setup" },
+        { label: "Integrations", to: "/docs/API/Integrations/Integration%20Models/Intro" },
+        { label: "API Reference", to: "/docs/API/API%20Reference/GQL/GQL%20Calls" },
       ],
     },
     {
@@ -32,6 +32,14 @@ function HomepageHeader() {
         { label: "CosmWasm Overview", to: "/docs/Euclid%20Smart%20Contracts/CosmWasm/overview" },
         { label: "Solidity Overview", to: "/docs/Euclid%20Solidity%20Contracts/Solidity/overview" },
         { label: "Escrow Contract", to: "/docs/Euclid%20Smart%20Contracts/CosmWasm/Escrow" },
+      ],
+    },
+    {
+      title: "Orderbook",
+      links: [
+        { label: "Orderbook Overview", to: "/docs/orderbook/overview" },
+        { label: "Getting Started", to: "/docs/orderbook/getting-started/introduction" },
+        { label: "API Reference", to: "/docs/orderbook/developer-reference/endpoints" },
       ],
     },
   ];
